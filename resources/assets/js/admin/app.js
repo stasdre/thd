@@ -8,7 +8,7 @@
 try {
     window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap-sass');
+    require('bootstrap');
     require('admin-lte');
 } catch (e) {}
 
