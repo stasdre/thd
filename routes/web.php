@@ -15,3 +15,9 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 Route::get('logout', '\Thd\Http\Controllers\Auth\LoginController@logout');
+
+Route::prefix('admin')->group(function(){
+    Route::middleware(['auth'])->group(function(){
+        Route::get('/', 'Admin\DashboardController@index');
+    });
+});
