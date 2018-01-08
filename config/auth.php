@@ -68,6 +68,7 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => Thd\User::class,
+            'table' => 'users',
         ],
 
         // 'users' => [
