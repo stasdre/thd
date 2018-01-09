@@ -86,13 +86,17 @@ module.exports = __webpack_require__(5);
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(6);
+    window.$ = window.jQuery = __webpack_require__(6);
 
-  __webpack_require__(7);
-  __webpack_require__(20);
+    __webpack_require__(7);
+    __webpack_require__(20);
 } catch (e) {}
 
 var token = document.head.querySelector('meta[name="csrf-token"]');
+
+$(".thd-alerts-messages").fadeTo(5500, 500).slideUp(500, function () {
+    $(".thd-alerts-messages").slideUp(500);
+});
 
 /***/ }),
 /* 6 */
