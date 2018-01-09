@@ -19,5 +19,6 @@ Route::get('logout', '\Thd\Http\Controllers\Auth\LoginController@logout');
 Route::prefix('admin-thd')->group(function(){
     Route::middleware(['auth', 'role:owner|admin|manager'])->group(function(){
         Route::get('/', 'Admin\DashboardController@index')->name('dashboard');
+        Route::resource('house-plan', 'Admin\HousePlansController');
     });
 });
