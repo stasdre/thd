@@ -2,7 +2,7 @@
 
 @section('title', 'Edit '.$style->name)
 
-@section('breadcrumbs', Breadcrumbs::render('style-create'))
+@section('breadcrumbs', Breadcrumbs::render('style-edit', $style))
 
 @section('content')
     <div class="box box-default">

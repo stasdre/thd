@@ -26,3 +26,8 @@ Breadcrumbs::register('style-create', function ($breadcrumbs) {
     $breadcrumbs->parent('style');
     $breadcrumbs->push('Create New House Plan style', route('styles.create'));
 });
+
+Breadcrumbs::register('style-edit', function ($breadcrumbs, $style) {
+    $breadcrumbs->parent('style');
+    $breadcrumbs->push('Edit '.$style->name, route('styles.edit', ['style'=>$style->id]));
+});
