@@ -19,6 +19,7 @@
                     <th>In search</th>
                     <th>Created At</th>
                     <th>Updated At</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
             </table>
@@ -34,6 +35,7 @@
 <script>
     $(function() {
         $('#styles-table').DataTable({
+            autoWidth: false,
             processing: true,
             serverSide: true,
             ajax: '{!! route('styles.data') !!}',
@@ -43,7 +45,8 @@
                 { data: 'short_name', name: 'short_name' },
                 { data: 'in_filter', name: 'in_filter', orderable: false, searchable: false, className: "dt-center" },
                 { data: 'created_at', name: 'created_at' },
-                { data: 'updated_at', name: 'updated_at' }
+                { data: 'updated_at', name: 'updated_at' },
+                { data: 'actions', name: 'actions', orderable: false, searchable: false, className: "dt-center" }
             ]
         });
     });
