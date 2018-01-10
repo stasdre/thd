@@ -56,6 +56,6 @@
 </div>
 <!-- ./wrapper -->
 <script src="{{asset('js/admin/app.js')}}"></script>
-<script src="{{ asset('js/admin/tinymce.js') }}"></script>
+@stack('tinymce')
 </body>
 </html>
