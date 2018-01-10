@@ -63,7 +63,7 @@ class StyleController extends Controller
      */
     public function edit(Style $style)
     {
-        return view('admin.style.edit');
+        return view('admin.style.edit', ['style'=>$style]);
     }
 
     /**
@@ -73,9 +73,21 @@ class StyleController extends Controller
      * @param  \Thd\Style  $style
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Style $style)
+    public function update(StylesRequest $request, Style $style)
     {
-        //
+        $style->name = $request->input('name');
+        $style->short_name = $request->input('short_name');
+        $style->description = $request->input('description');
+        $style->in_filter = $request->input('in_filter', 0);
+        $style->update();
+
+        return redirect()->route('styles.index')
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$style->name.' was updated',
+                'autoHide'=>1]);
+
     }
 
     /**

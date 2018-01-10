@@ -1,40 +1,39 @@
-{{ Route::currentRouteName() }}
-<form class="form-horizontal" method="post" action="{{ route('styles.store') }}">
-    {{ csrf_field() }}
+@if(Route::currentRouteName() == 'styles.edit')
+    {{ Form::model($style, ['route' => ['styles.update', $style->id], 'class' => 'form-horizontal', 'method' => 'PATCH']) }}
+@else
+    {!! Form::open(['route' => 'style.store', 'class' => 'form-horizontal', 'method' => 'post']) !!}
+@endif
     <div class="box-body">
         <div class="form-group">
-            <label for="name" class="col-sm-2 control-label">Name</label>
-
+            {{ Form::label('name', 'Name', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-10">
-                <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name" placeholder="Name">
+                {{ Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Style Name']) }}
             </div>
         </div>
         <div class="form-group">
-            <label for="short_name" class="col-sm-2 control-label">Short Name</label>
-
+            {{ Form::label('short_name', 'Short Name', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-10">
-                <input type="text" value="{{ old('short_name') }}" name="short_name" class="form-control" id="short_name" placeholder=" Short Name">
+                {{ Form::text('short_name', null, ['class'=>'form-control', 'placeholder'=>'Style Short Name']) }}
             </div>
         </div>
         <div class="form-group">
-            <label for="description" class="col-sm-2 control-label">Description</label>
-
+            {{ Form::label('description', 'Description', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-10">
-                <textarea name="description" id="description" class="form-control tinymce-editor" placeholder="Description ...">{{ old('description') }}</textarea>
+                {{ Form::textarea('description', null, ['class'=>'form-control tinymce-editor']) }}
             </div>
         </div>
         <div class="col-sm-offset-2 col-sm-10">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" value="1" name="in_filter"> Show in filter for search
+                    {{ Form::checkbox('in_filter', 1) }} Show in filter for search
                 </label>
             </div>
         </div>
     </div>
     <!-- /.box-body -->
     <div class="box-footer">
-        <a class="btn btn-default" href="{{ route('styles.index') }}" role="button">Cancel</a>
-        <button type="submit" class="btn btn-success pull-right">Save</button>
+        {{ link_to_route('styles.index', 'Cancel', [], ['class'=>'btn btn-default', 'role'=>'button']) }}
+        {{ Form::button('Save', ['class'=>'btn btn-success pull-right', 'type'=>'submit']) }}
     </div>
     <!-- /.box-footer -->
-</form>
+{!! Form::close() !!}
