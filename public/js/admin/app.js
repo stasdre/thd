@@ -10354,7 +10354,7 @@ try {
 
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
-$(".thd-alerts-messages").fadeTo(5500, 500).slideUp(500, function () {
+$(".thd-alerts-messages").fadeTo(3000, 500).slideUp(500, function () {
     $(".thd-alerts-messages").slideUp(500);
 });
 
