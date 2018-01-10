@@ -11,3 +11,7 @@
         </div>
     </div>
 @endsection
+
+@push('datatables')
+<script src="{{ asset('js/admin/datatables.js') }}"></script>
+@endpush

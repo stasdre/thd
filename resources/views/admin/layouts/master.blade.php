@@ -57,5 +57,6 @@
 <!-- ./wrapper -->
 <script src="{{asset('js/admin/app.js')}}"></script>
 @stack('tinymce')
+@stack('datatables')
 </body>
 </html>

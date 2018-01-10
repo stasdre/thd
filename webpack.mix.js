@@ -19,3 +19,5 @@ mix.js('resources/assets/js/admin/app.js', 'public/js/admin/')
 
 mix.js('resources/assets/js/admin/tinymce.js', 'public/js/admin')
     .copy('node_modules/tinymce/skins', 'public/js/admin/skins');
+
+mix.js('resources/assets/js/admin/datatables.js', 'public/js/admin');
