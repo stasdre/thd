@@ -2,6 +2,7 @@
 
 namespace Thd\Http\Controllers\Admin;
 
+use Thd\Http\Requests\StylesRequest;
 use Thd\Style;
 use Illuminate\Http\Request;
 use Thd\Http\Controllers\Controller;
@@ -36,14 +37,8 @@ class StyleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StylesRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:100',
-            'short_name' => 'required|max:50',
-            'description' => 'required',
-            'in_filter' => 'boolean'
-        ]);
 
         $style = new Style();
         $style->name = $request->input('name');
