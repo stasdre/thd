@@ -47,7 +47,12 @@ class StyleController extends Controller
         $style->in_filter = $request->input('in_filter', 0);
         $style->save();
 
-        return redirect()->route('styles.index');
+        return redirect()->route('styles.index')
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>$style->name.' was added',
+                    'autoHide'=>1]);
     }
 
     /**

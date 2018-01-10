@@ -39,6 +39,27 @@
 
         <!-- Main content -->
         <section class="content">
+            @if ($errors->any())
+                @component('partials.alert', ['type'=>'danger'])
+                    @slot('title')
+                        Error
+                    @endslot
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endcomponent
+            @endif
+
+            @if (session()->has('message'))
+                @component('partials.alert', ['type'=>session()->get('message')['type'], 'autoHide'=>session()->get('message')['autoHide']])
+                    @slot('title')
+                        {{ session()->get('message')['title'] }}
+                    @endslot
+                    {{ session()->get('message')['message'] }}
+                @endcomponent
+            @endif
 
             @yield('content')
 
