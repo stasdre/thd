@@ -98,7 +98,14 @@ class StyleController extends Controller
      */
     public function destroy(Style $style)
     {
-        //
+        $style->delete();
+
+        return redirect()->route('styles.index')
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$style->name.' was deleted',
+                'autoHide'=>1]);
     }
 
     /**
@@ -111,7 +118,7 @@ class StyleController extends Controller
         $styles = Style::select(['id', 'name', 'short_name', 'in_filter', 'created_at', 'updated_at']);
         return Datatables::of($styles)
             ->addColumn('actions', function($style){
-                return '<a class="btn btn-info btn-sm" href="'.route('styles.edit', ['style'=>$style->id]).'" role="button">Edit</a> <form style="display: inline-block" action="'.route('styles.destroy', ['style'=>$style->id]).'" method="POST"><input type="hidden" name="_method" value="PUT"><input type="hidden" name="_token" value="'.csrf_token().'"><button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
+                return '<a class="btn btn-info btn-sm" href="'.route('styles.edit', ['style'=>$style->id]).'" role="button">Edit</a> <form style="display: inline-block" action="'.route('styles.destroy', ['style'=>$style->id]).'" method="POST"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'"><button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
             })
             ->editColumn('in_filter', function($style){
                 if($style->in_filter == 1)
