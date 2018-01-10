@@ -96,6 +96,14 @@ class StyleController extends Controller
      */
     public function anyData()
     {
-        return Datatables::of(Style::query())->make(true);
+        $styles = Style::select(['id', 'name', 'short_name', 'in_filter', 'created_at', 'updated_at']);
+        return Datatables::of($styles)
+            ->editColumn('in_filter', function($style){
+                if($style->in_filter == 1)
+                    return '<i style="color: green;" class="fa fa-check" aria-hidden="true"></i>';
+                return '';
+            })
+            ->rawColumns(['in_filter'])
+            ->make(true);
     }
 }
