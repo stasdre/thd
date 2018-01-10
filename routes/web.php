@@ -21,4 +21,7 @@ Route::prefix('admin-thd')->group(function(){
         Route::get('/', 'Admin\DashboardController@index')->name('dashboard');
         Route::resource('house-plan', 'Admin\HousePlansController');
     });
+    Route::middleware(['auth', 'role:owner|admin'])->group(function(){
+        Route::resource('styles', 'Admin\StyleController', ['except'=>['show']]);
+    });
 });
