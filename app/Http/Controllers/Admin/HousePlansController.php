@@ -5,6 +5,9 @@ namespace Thd\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Thd\Http\Controllers\Controller;
 
+use Thd\User;
+use Thd\Plan;
+
 class HousePlansController extends Controller
 {
     /**
