@@ -23,5 +23,6 @@ Route::prefix('admin-thd')->group(function(){
     });
     Route::middleware(['auth', 'role:owner|admin'])->group(function(){
         Route::resource('styles', 'Admin\StyleController', ['except'=>['show']]);
+        Route::get('styles/data', 'Admin\StyleController@anyData')->name('styles.data');
     });
 });

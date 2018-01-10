@@ -70,7 +70,7 @@
 
 __webpack_require__(2);
 __webpack_require__(3);
-module.exports = __webpack_require__(7);
+module.exports = __webpack_require__(4);
 
 
 /***/ }),
@@ -86,10 +86,7 @@ module.exports = __webpack_require__(7);
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */
+/* 4 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
