@@ -39,12 +39,10 @@ class StyleController extends Controller
      */
     public function store(StylesRequest $request)
     {
+        $inputs = $request->except('_token');
 
         $style = new Style();
-        $style->name = $request->input('name');
-        $style->short_name = $request->input('short_name');
-        $style->description = $request->input('description');
-        $style->in_filter = $request->input('in_filter', 0);
+        $style->fill($inputs);
         $style->save();
 
         return redirect()->route('styles.index')
@@ -75,10 +73,12 @@ class StyleController extends Controller
      */
     public function update(StylesRequest $request, Style $style)
     {
-        $style->name = $request->input('name');
-        $style->short_name = $request->input('short_name');
-        $style->description = $request->input('description');
-        $style->in_filter = $request->input('in_filter', 0);
+        $inputs = $request->except(['_method', '_token']);
+
+        if(!$request->has('in_filter'))
+            $inputs['in_filter'] = 0;
+
+        $style->fill($inputs);
         $style->update();
 
         return redirect()->route('styles.index')

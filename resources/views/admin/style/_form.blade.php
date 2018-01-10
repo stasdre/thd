@@ -1,7 +1,7 @@
 @if(Route::currentRouteName() == 'styles.edit')
     {{ Form::model($style, ['route' => ['styles.update', $style->id], 'class' => 'form-horizontal', 'method' => 'PATCH']) }}
 @else
-    {!! Form::open(['route' => 'style.store', 'class' => 'form-horizontal', 'method' => 'post']) !!}
+    {!! Form::open(['route' => 'styles.store', 'class' => 'form-horizontal', 'method' => 'post']) !!}
 @endif
     <div class="box-body">
         <div class="form-group">
