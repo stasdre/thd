@@ -1,8 +1,8 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Dashboard')
+@section('title', 'House Plans dashboard')
 
-@section('breadcrumbs', Breadcrumbs::render('dashboard'))
+@section('breadcrumbs', Breadcrumbs::render('plans'))
 
 @section('content')
     <div class="box box-default">

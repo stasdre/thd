@@ -19,5 +19,10 @@ Route::get('logout', '\Thd\Http\Controllers\Auth\LoginController@logout');
 Route::prefix('admin-thd')->group(function(){
     Route::middleware(['auth', 'role:owner|admin|manager'])->group(function(){
         Route::get('/', 'Admin\DashboardController@index')->name('dashboard');
+        Route::resource('house-plan', 'Admin\HousePlansController');
+    });
+    Route::middleware(['auth', 'role:owner|admin'])->group(function(){
+        Route::resource('styles', 'Admin\StyleController', ['except'=>['show']]);
+        Route::get('styles/data', 'Admin\StyleController@anyData')->name('styles.data');
     });
 });

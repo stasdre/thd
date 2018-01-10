@@ -60,46 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */,
-/* 1 */,
-/* 2 */,
-/* 3 */,
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(5);
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
-try {
-    window.$ = window.jQuery = __webpack_require__(6);
-
-    __webpack_require__(7);
-    __webpack_require__(20);
-} catch (e) {}
-
-var token = document.head.querySelector('meta[name="csrf-token"]');
-
-$(".thd-alerts-messages").fadeTo(5500, 500).slideUp(500, function () {
-    $(".thd-alerts-messages").slideUp(500);
-});
-
-/***/ }),
-/* 6 */
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10357,6 +10322,41 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
+
+/***/ }),
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(6);
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
+try {
+    window.$ = window.jQuery = __webpack_require__(0);
+
+    __webpack_require__(7);
+    __webpack_require__(20);
+} catch (e) {}
+
+var token = document.head.querySelector('meta[name="csrf-token"]');
+
+$(".thd-alerts-messages").fadeTo(3000, 500).slideUp(500, function () {
+    $(".thd-alerts-messages").slideUp(500);
+});
 
 /***/ }),
 /* 7 */

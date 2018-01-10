@@ -28,4 +28,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     *
+     * Get the house plans for the user.
+     *
+     */
+    public function plans()
+    {
+        return $this->hasMany('Thd\Plan');
+    }
 }
