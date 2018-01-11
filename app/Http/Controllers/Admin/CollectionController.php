@@ -5,6 +5,7 @@ namespace Thd\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Thd\Collection;
 use Thd\Http\Controllers\Controller;
+use Thd\Http\Requests\CollectionsRequest;
 use Yajra\Datatables\Datatables;
 
 class CollectionController extends Controller
@@ -26,7 +27,7 @@ class CollectionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.collection.create');
     }
 
     /**
@@ -35,9 +36,20 @@ class CollectionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CollectionsRequest $request)
     {
-        //
+        $inputs = $request->except('_token');
+
+        $collection = new Collection();
+        $collection->fill($inputs);
+        $collection->save();
+
+        return redirect()->route('collections.index')
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$collection->name.' was added',
+                'autoHide'=>1]);
     }
 
     /**

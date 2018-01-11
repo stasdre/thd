@@ -2,7 +2,7 @@
 
 @section('title', 'Specialty Collections')
 
-@section('breadcrumbs', Breadcrumbs::render('style'))
+@section('breadcrumbs', Breadcrumbs::render('collection'))
 
 @section('content')
     <div class="box box-default">
