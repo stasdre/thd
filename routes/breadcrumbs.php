@@ -31,3 +31,19 @@ Breadcrumbs::register('style-edit', function ($breadcrumbs, $style) {
     $breadcrumbs->parent('style');
     $breadcrumbs->push('Edit '.$style->name, route('styles.edit', ['style'=>$style->id]));
 });
+
+// House Plans collections
+Breadcrumbs::register('collection', function ($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push('Specialty Collections', route('collections.index'));
+});
+
+Breadcrumbs::register('collection-create', function ($breadcrumbs) {
+    $breadcrumbs->parent('collection');
+    $breadcrumbs->push('Create New Collection', route('collections.create'));
+});
+
+Breadcrumbs::register('collection-edit', function ($breadcrumbs, $collection) {
+    $breadcrumbs->parent('collection');
+    $breadcrumbs->push('Edit '.$collection->name, route('collections.edit', ['collection'=>$collection->id]));
+});
