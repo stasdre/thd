@@ -55,24 +55,37 @@ class CollectionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \Thd\Collection  $collection
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Collection $collection)
     {
-        //
+        return view('admin.collection.edit', ['collection'=>$collection]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Thd\Http\Request\CollectionsRequest  $request
+     * @param  \Thd\Collection  $collection
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CollectionsRequest $request, Collection $collection)
     {
-        //
+        $inputs = $request->except(['_method', '_token']);
+
+        if(!$request->has('in_filter'))
+            $inputs['in_filter'] = 0;
+
+        $collection->fill($inputs);
+        $collection->update();
+
+        return redirect()->route('collections.index')
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$collection->name.' was updated',
+                'autoHide'=>1]);
     }
 
     /**
