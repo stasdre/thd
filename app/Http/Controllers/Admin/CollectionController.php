@@ -91,12 +91,19 @@ class CollectionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \Thd\Collection  $collection
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Collection $collection)
     {
-        //
+        $collection->delete();
+
+        return redirect()->route('collections.index')
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$collection->name.' was deleted',
+                'autoHide'=>1]);
     }
 
     /**
