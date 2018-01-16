@@ -3,6 +3,7 @@
 namespace Thd\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Thd\Http\Controllers\Controller;
 
 use Thd\User;
