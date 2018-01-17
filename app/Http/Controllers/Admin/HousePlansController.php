@@ -72,7 +72,7 @@ class HousePlansController extends Controller
             throw $e;
         }
 
-        return redirect()->route('house-plan.index')
+        return redirect()->route('plan-info.create', ['id'=>$plan->id])
             ->with('message', [
                 'type'=>'success',
                 'title'=>'Success!',

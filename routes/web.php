@@ -21,6 +21,8 @@ Route::prefix('admin-thd')->group(function(){
         Route::get('/', 'Admin\DashboardController@index')->name('dashboard');
         Route::resource('house-plan', 'Admin\HousePlansController');
         Route::post('plan-images-store', 'Admin\PlanImageController@store')->name('planImageStore');
+        Route::get('plan-info/create/{id}', 'Admin\PlanInformationController@create')->where('id', '[0-9]+')->name('plan-info.create');
+        Route::get('plan-info/store/', 'Admin\PlanInformationController@create')->name('plan-info.store');
     });
     Route::middleware(['auth', 'role:owner|admin'])->group(function(){
         Route::resource('styles', 'Admin\StyleController', ['except'=>['show']]);
