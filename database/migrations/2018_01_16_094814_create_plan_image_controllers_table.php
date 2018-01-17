@@ -15,7 +15,7 @@ class CreatePlanImageControllersTable extends Migration
     {
         Schema::create('plan_images', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('label', 100);
+            $table->string('label', 100)->nullable();
             $table->string('file_name', 50);
             $table->integer('plan_id')->unsigned()->nullable();
             $table->timestamps();

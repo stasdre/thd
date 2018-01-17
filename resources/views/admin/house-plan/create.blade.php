@@ -11,39 +11,22 @@
         @else
             {!! Form::open(['route' => 'house-plan.store', 'class' => 'form-horizontal', 'method' => 'post']) !!}
         @endif
-        <div class="box-body">
-            <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">General</a></li>
-                <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Images</a></li>
-                <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Packages</a></li>
-            </ul>
-            <div class="tab-content">
-                <div class="tab-pane active" id="tab_1">
-                    @include('admin.house-plan._form-general')
+        <div class="box-header with-border">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 style="margin-top: 0px;">General Information</h3>
                 </div>
-                <!-- /.tab-pane -->
-                <div class="tab-pane" id="tab_2">
-                    @include('admin.house-plan._form-images')
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-success pull-right">Save & Next step</button>
                 </div>
-                <!-- /.tab-pane -->
-                <div class="tab-pane" id="tab_3">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    It has survived not only five centuries, but also the leap into electronic typesetting,
-                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                    like Aldus PageMaker including versions of Lorem Ipsum.
-                </div>
-                <!-- /.tab-pane -->
             </div>
-            <!-- /.tab-content -->
         </div>
+        <div class="box-body">
+            @include('admin.house-plan._form-general')
         </div>
         <div class="box-footer">
             <a class="btn btn-default" href="{{ route('house-plan.index') }}" role="button">Cancel</a>
-            <button type="submit" class="btn btn-success pull-right">Save</button>
+            <button type="submit" class="btn btn-success pull-right">Save & Next step</button>
         </div>
         {!! Form::close() !!}
     </div>

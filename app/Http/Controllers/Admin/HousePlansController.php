@@ -4,8 +4,12 @@ namespace Thd\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Thd\PlanImage;
 use Thd\Http\Controllers\Controller;
 
+use Thd\Http\Requests\PlansRequest;
 use Thd\User;
 use Thd\Plan;
 
@@ -37,9 +41,22 @@ class HousePlansController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PlansRequest $request)
     {
-        //
+        $dataPlan = $request->except('_token');
+
+
+        $plan = new Plan();
+        $plan->user()->associate(Auth::user());
+        $plan->fill($dataPlan);
+        $plan->save();
+
+        return redirect()->route('house-plan.index')
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$plan->name.' was added',
+                'autoHide'=>1]);
     }
 
     /**

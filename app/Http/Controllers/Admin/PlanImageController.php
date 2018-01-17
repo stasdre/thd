@@ -23,7 +23,7 @@ class PlanImageController extends Controller
     {
         $input = Input::all();
         $rules = array(
-            'file' => 'image|max:3000',
+            'file' => 'image|max:3000|dimensions:min_width=200,min_height=200',
         );
 
         $validation = Validator::make($input, $rules);
@@ -39,7 +39,7 @@ class PlanImageController extends Controller
         $upload_success = Image::make($image->getRealPath())->save($path, 100);
 
         if( $upload_success ) {
-            return response()->json(['success', 'file_name'=>$filename], 200);
+            return response()->json(['success', 'file_name'=>$filename, 'id'=>str_random(10)], 200);
         } else {
             return response()->json('error', 400);
         }
