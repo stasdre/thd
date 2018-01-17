@@ -9,10 +9,25 @@ use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 use Thd\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Response;
+use Thd\Plan;
 
 
 class PlanImageController extends Controller
 {
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create($id)
+    {
+        $plan = Plan::findOrFail($id);
+        return view('admin.plan-image.create', [
+            'plan'=>$plan
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

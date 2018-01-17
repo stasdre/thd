@@ -16,7 +16,10 @@ class PlanInformationController extends Controller
     public function create($id)
     {
         $plan = Plan::findOrFail($id);
-        return view('admin.plan-info.create');
+
+        return view('admin.plan-info.create',[
+            'plan'=>$plan
+        ]);
     }
 
     /**
@@ -25,8 +28,15 @@ class PlanInformationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
+        $plan = Plan::findOrFail($id);
 
+        return redirect()->route('plan-images.create', ['id'=>$plan->id])
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$plan->name.' information was added',
+                'autoHide'=>1]);
     }
 }
