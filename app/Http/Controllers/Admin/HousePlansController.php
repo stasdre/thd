@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Thd\Collection;
 use Thd\PlanImage;
 use Thd\Http\Controllers\Controller;
 
@@ -34,9 +35,11 @@ class HousePlansController extends Controller
     public function create()
     {
         $styles = Style::orderBy('name')->pluck('name', 'id');
+        $collections = Collection::orderBy('name')->pluck('name', 'id');
 
         return view('admin.house-plan.create')
-            ->with('styles', $styles);
+            ->with('styles', $styles)
+            ->with('collections', $collections);
     }
 
     /**
@@ -47,8 +50,9 @@ class HousePlansController extends Controller
      */
     public function store(PlansRequest $request)
     {
-        $dataPlan = $request->except(['_token', 'style_id']);
+        $dataPlan = $request->except(['_token', 'style_id', 'collection_id']);
         $stylesData = $request->get('style_id');
+        $collectionsData = $request->get('collection_id');
 
         try {
             DB::beginTransaction();
@@ -59,6 +63,7 @@ class HousePlansController extends Controller
             $plan->save();
 
             $plan->styles()->attach(array_flatten($stylesData));
+            $plan->collections()->attach(array_flatten($collectionsData));
 
             DB::commit();
         }catch(\Exception $e){

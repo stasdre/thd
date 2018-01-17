@@ -29,6 +29,12 @@
     </div>
 </div>
 <div class="form-group">
+    {{ Form::label('collection_id', 'Design Styles', ['class' => 'col-sm-2 control-label']) }}
+    <div class="col-sm-10">
+        {!! Form::select('collection_id[]', $collections, null, ['id' => 'collection_id', 'class' => 'form-control select2', 'multiple' => 'multiple', 'data-placeholder' => 'Select Collections']) !!}
+    </div>
+</div>
+<div class="form-group">
     {{ Form::label('meta_title', 'Meta Title', ['class' => 'col-sm-2 control-label']) }}
     <div class="col-sm-6">
         {{ Form::text('meta_title', null, ['class'=>'form-control', 'placeholder'=>'Meta Title']) }}
@@ -46,7 +52,7 @@
 @push('scripts')
 <script>
     $(function() {
-        $('#style_id').select2();
+        $('#style_id, #collection_id').select2();
     });
 </script>
 @endpush

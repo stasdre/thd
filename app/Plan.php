@@ -20,6 +20,11 @@ class Plan extends Model
         return $this->belongsToMany('Thd\Style', 'style_plan');
     }
 
+    public function collections()
+    {
+        return $this->belongsToMany('Thd\Collection', 'collection_plan');
+    }
+
     public function images()
     {
         return $this->hasMany('Thd\PlanImage');
