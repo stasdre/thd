@@ -10,6 +10,7 @@ use Thd\PlanImage;
 use Thd\Http\Controllers\Controller;
 
 use Thd\Http\Requests\PlansRequest;
+use Thd\Style;
 use Thd\User;
 use Thd\Plan;
 
@@ -32,7 +33,10 @@ class HousePlansController extends Controller
      */
     public function create()
     {
-        return view('admin.house-plan.create');
+        $styles = Style::orderBy('name')->pluck('name', 'id');
+
+        return view('admin.house-plan.create')
+            ->with('styles', $styles);
     }
 
     /**
@@ -43,13 +47,25 @@ class HousePlansController extends Controller
      */
     public function store(PlansRequest $request)
     {
-        $dataPlan = $request->except('_token');
+        $dataPlan = $request->except(['_token', 'style_id']);
+        $stylesData = $request->get('style_id');
 
+        try {
+            DB::beginTransaction();
 
-        $plan = new Plan();
-        $plan->user()->associate(Auth::user());
-        $plan->fill($dataPlan);
-        $plan->save();
+            $plan = new Plan();
+            $plan->user()->associate(Auth::user());
+            $plan->fill($dataPlan);
+            $plan->save();
+
+            $plan->styles()->attach(array_flatten($stylesData));
+
+            DB::commit();
+        }catch(\Exception $e){
+            DB::rollback();
+
+            throw $e;
+        }
 
         return redirect()->route('house-plan.index')
             ->with('message', [

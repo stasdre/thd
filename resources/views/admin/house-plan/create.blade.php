@@ -31,7 +31,3 @@
         {!! Form::close() !!}
     </div>
 @endsection
-
-@push('tinymce')
-<script src="{{ asset('js/admin/tinymce.js') }}"></script>
-@endpush

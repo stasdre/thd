@@ -10,6 +10,7 @@ try {
 
     require('bootstrap');
     require('admin-lte');
+    require('select2');
 } catch (e) {}
 
 

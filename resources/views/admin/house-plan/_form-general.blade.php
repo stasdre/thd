@@ -23,6 +23,12 @@
     </div>
 </div>
 <div class="form-group">
+    {{ Form::label('style_id', 'Design Styles', ['class' => 'col-sm-2 control-label']) }}
+    <div class="col-sm-10">
+        {!! Form::select('style_id[]', $styles, null, ['id' => 'style_id', 'class' => 'form-control select2', 'multiple' => 'multiple', 'data-placeholder' => 'Select Styles']) !!}
+    </div>
+</div>
+<div class="form-group">
     {{ Form::label('meta_title', 'Meta Title', ['class' => 'col-sm-2 control-label']) }}
     <div class="col-sm-6">
         {{ Form::text('meta_title', null, ['class'=>'form-control', 'placeholder'=>'Meta Title']) }}
@@ -34,3 +40,13 @@
         {{ Form::textarea('meta_description', null, ['class'=>'form-control']) }}
     </div>
 </div>
+@push('tinymce')
+<script src="{{ asset('js/admin/tinymce.js') }}"></script>
+@endpush
+@push('scripts')
+<script>
+    $(function() {
+        $('#style_id').select2();
+    });
+</script>
+@endpush

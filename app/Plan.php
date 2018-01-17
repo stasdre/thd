@@ -15,6 +15,11 @@ class Plan extends Model
         return $this->belongsTo('Thd\User');
     }
 
+    public function styles()
+    {
+        return $this->belongsToMany('Thd\Style', 'style_plan');
+    }
+
     public function images()
     {
         return $this->hasMany('Thd\PlanImage');
