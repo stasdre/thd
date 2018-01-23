@@ -8,8 +8,11 @@
 try {
     window.$ = window.jQuery = require('jquery');
 
+    require('jquery-ui');
     require('bootstrap');
     require('admin-lte');
+    require('select2');
+    require('jquery-ui/ui/widgets/sortable');
 } catch (e) {}
 
 

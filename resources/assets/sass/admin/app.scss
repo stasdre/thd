@@ -12,6 +12,7 @@
 @import "~font-awesome/css/font-awesome.css";
 
 // import admin lte css
+@import "~select2/dist/css/select2.min.css";
 @import "~admin-lte/dist/css/adminLTE.css";
 @import "~admin-lte/dist/css/skins/_all-skins.css";
 
@@ -20,4 +21,30 @@
 
 .dt-center{
   text-align: center;
+}
+
+.placeholder {
+  border: 1px solid #148CBF;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 10px #888;
+  -moz-box-shadow: 0px 0px 10px #888;
+  box-shadow: 0px 0px 10px #888;
+  width: 120px;
+  height: 120px;
+}
+
+.biggest{
+  width: 160px !important;
+  height: 160px !important;
+}
+.dropzone .dz-preview .dz-error-message{
+  top: 90px !important;
+}
+
+.dropzone .dz-preview.dz-error .dz-error-message{
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.dropzone.dz-clickable *{
+  cursor: pointer !important;
 }
