@@ -16849,3 +16849,30 @@ div.FixedHeader_Cloned table {
   text-align: center;
 }
 
+.placeholder {
+  border: 1px solid #148CBF;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 10px #888;
+  box-shadow: 0px 0px 10px #888;
+  width: 120px;
+  height: 120px;
+}
+
+.biggest {
+  width: 160px !important;
+  height: 160px !important;
+}
+
+.dropzone .dz-preview .dz-error-message {
+  top: 90px !important;
+}
+
+.dropzone .dz-preview.dz-error .dz-error-message {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.dropzone.dz-clickable * {
+  cursor: pointer !important;
+}
+

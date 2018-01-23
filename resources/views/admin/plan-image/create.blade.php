@@ -6,7 +6,6 @@
 
 @section('content')
     <div class="box box-default">
-        {!! Form::open(['route' => ['plan-images.store', $plan->id], 'class' => 'form-horizontal', 'method' => 'post']) !!}
         <div class="box-header with-border">
             <div class="row">
                 <div class="col-sm-6">
@@ -24,6 +23,5 @@
             <a class="btn btn-default" href="{{ route('house-plan.index') }}" role="button">Cancel</a>
             <button type="submit" class="btn btn-success pull-right">Next step</button>
         </div>
-        {!! Form::close() !!}
     </div>
 @endsection

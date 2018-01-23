@@ -3,16 +3,14 @@
 namespace Thd\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Thd\Collection;
-use Thd\PlanImage;
 use Thd\Http\Controllers\Controller;
 
 use Thd\Http\Requests\PlansRequest;
 use Thd\Style;
-use Thd\User;
 use Thd\Plan;
 
 class HousePlansController extends Controller
@@ -71,6 +69,9 @@ class HousePlansController extends Controller
 
             throw $e;
         }
+
+        Storage::makeDirectory('public/plans/'.$plan->id);
+        Storage::makeDirectory('public/plans/' . $plan->id . '/thumb');
 
         return redirect()->route('plan-info.create', ['id'=>$plan->id])
             ->with('message', [

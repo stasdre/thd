@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PlanImage extends Model
 {
-    protected $fillable = ['label', 'file_name', 'plan_id'];
+    protected $fillable = ['title', 'file_name', 'description', 'sort_number'];
 
     public function plan()
     {

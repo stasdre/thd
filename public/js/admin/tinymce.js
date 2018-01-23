@@ -60,81 +60,81 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 22);
+/******/ 	return __webpack_require__(__webpack_require__.s = 29);
 /******/ })
 /************************************************************************/
-/******/ (Array(22).concat([
-/* 22 */
+/******/ (Array(29).concat([
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(23);
+module.exports = __webpack_require__(30);
 
 
 /***/ }),
-/* 23 */
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tinymce_tinymce__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tinymce_tinymce__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tinymce_tinymce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_tinymce_tinymce__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tinymce_themes_modern_theme__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tinymce_themes_modern_theme__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tinymce_themes_modern_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_tinymce_themes_modern_theme__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_tinymce_plugins_advlist_plugin__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_tinymce_plugins_advlist_plugin__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_tinymce_plugins_advlist_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_tinymce_plugins_advlist_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_tinymce_plugins_autolink_plugin__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_tinymce_plugins_autolink_plugin__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_tinymce_plugins_autolink_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_tinymce_plugins_autolink_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_tinymce_plugins_link_plugin__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_tinymce_plugins_link_plugin__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_tinymce_plugins_link_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_tinymce_plugins_link_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_tinymce_plugins_image_plugin__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_tinymce_plugins_image_plugin__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_tinymce_plugins_image_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_tinymce_plugins_image_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_tinymce_plugins_lists_plugin__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_tinymce_plugins_lists_plugin__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_tinymce_plugins_lists_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_tinymce_plugins_lists_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_tinymce_plugins_charmap_plugin__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_tinymce_plugins_charmap_plugin__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_tinymce_plugins_charmap_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_tinymce_plugins_charmap_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_tinymce_plugins_print_plugin__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_tinymce_plugins_print_plugin__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_tinymce_plugins_print_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_tinymce_plugins_print_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_tinymce_plugins_preview_plugin__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_tinymce_plugins_preview_plugin__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_tinymce_plugins_preview_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_tinymce_plugins_preview_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_tinymce_plugins_hr_plugin__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_tinymce_plugins_hr_plugin__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_tinymce_plugins_hr_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_tinymce_plugins_hr_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_tinymce_plugins_anchor_plugin__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_tinymce_plugins_anchor_plugin__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_tinymce_plugins_anchor_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_tinymce_plugins_anchor_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_tinymce_plugins_pagebreak_plugin__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_tinymce_plugins_pagebreak_plugin__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_tinymce_plugins_pagebreak_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_tinymce_plugins_pagebreak_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_tinymce_plugins_spellchecker_plugin__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_tinymce_plugins_spellchecker_plugin__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_tinymce_plugins_spellchecker_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_tinymce_plugins_spellchecker_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_tinymce_plugins_searchreplace_plugin__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_tinymce_plugins_searchreplace_plugin__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_tinymce_plugins_searchreplace_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_tinymce_plugins_searchreplace_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_tinymce_plugins_wordcount_plugin__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_tinymce_plugins_wordcount_plugin__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_tinymce_plugins_wordcount_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_tinymce_plugins_wordcount_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_tinymce_plugins_visualblocks_plugin__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_tinymce_plugins_visualblocks_plugin__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_tinymce_plugins_visualblocks_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16_tinymce_plugins_visualblocks_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_tinymce_plugins_visualchars_plugin__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_tinymce_plugins_visualchars_plugin__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_tinymce_plugins_visualchars_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_tinymce_plugins_visualchars_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_tinymce_plugins_code_plugin__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_tinymce_plugins_code_plugin__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_tinymce_plugins_code_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_tinymce_plugins_code_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_tinymce_plugins_fullscreen_plugin__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_tinymce_plugins_fullscreen_plugin__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_tinymce_plugins_fullscreen_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19_tinymce_plugins_fullscreen_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_tinymce_plugins_insertdatetime_plugin__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_tinymce_plugins_insertdatetime_plugin__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_tinymce_plugins_insertdatetime_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20_tinymce_plugins_insertdatetime_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_tinymce_plugins_media_plugin__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_tinymce_plugins_media_plugin__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_tinymce_plugins_media_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_21_tinymce_plugins_media_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_tinymce_plugins_nonbreaking_plugin__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_tinymce_plugins_nonbreaking_plugin__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_tinymce_plugins_nonbreaking_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_22_tinymce_plugins_nonbreaking_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_tinymce_plugins_save_plugin__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_tinymce_plugins_save_plugin__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_tinymce_plugins_save_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_23_tinymce_plugins_save_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_tinymce_plugins_table_plugin__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_tinymce_plugins_table_plugin__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_tinymce_plugins_table_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_24_tinymce_plugins_table_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_tinymce_plugins_contextmenu_plugin__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_tinymce_plugins_contextmenu_plugin__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_tinymce_plugins_contextmenu_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_25_tinymce_plugins_contextmenu_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_tinymce_plugins_directionality_plugin__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_tinymce_plugins_directionality_plugin__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_tinymce_plugins_directionality_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_26_tinymce_plugins_directionality_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_tinymce_plugins_template_plugin__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_tinymce_plugins_template_plugin__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_tinymce_plugins_template_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_27_tinymce_plugins_template_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_tinymce_plugins_paste_plugin__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_tinymce_plugins_paste_plugin__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_tinymce_plugins_paste_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_28_tinymce_plugins_paste_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29_tinymce_plugins_textcolor_plugin__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29_tinymce_plugins_textcolor_plugin__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29_tinymce_plugins_textcolor_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_29_tinymce_plugins_textcolor_plugin__);
 // Core
 
@@ -179,7 +179,7 @@ __WEBPACK_IMPORTED_MODULE_0_tinymce_tinymce___default.a.init({
 });
 
 /***/ }),
-/* 24 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate) {// 4.7.4 (2017-12-05)
@@ -44582,10 +44582,10 @@ define(
 dem('tinymce.core.api.Main')();
 })();
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32).setImmediate))
 
 /***/ }),
-/* 25 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -44638,13 +44638,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(26);
+__webpack_require__(33);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 26 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -44834,10 +44834,10 @@ exports.clearImmediate = clearImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(27), __webpack_require__(28)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34), __webpack_require__(35)))
 
 /***/ }),
-/* 27 */
+/* 34 */
 /***/ (function(module, exports) {
 
 var g;
@@ -44864,7 +44864,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 28 */
+/* 35 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -45054,7 +45054,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 29 */
+/* 36 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -63371,7 +63371,7 @@ dem('tinymce.themes.modern.Theme')();
 
 
 /***/ }),
-/* 30 */
+/* 37 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -63805,7 +63805,7 @@ dem('tinymce.plugins.advlist.Plugin')();
 
 
 /***/ }),
-/* 31 */
+/* 38 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -64215,7 +64215,7 @@ dem('tinymce.plugins.autolink.Plugin')();
 
 
 /***/ }),
-/* 32 */
+/* 39 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -65452,7 +65452,7 @@ dem('tinymce.plugins.link.Plugin')();
 
 
 /***/ }),
-/* 33 */
+/* 40 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -67030,7 +67030,7 @@ dem('tinymce.plugins.image.Plugin')();
 
 
 /***/ }),
-/* 34 */
+/* 41 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -69021,7 +69021,7 @@ dem('tinymce.plugins.lists.Plugin')();
 
 
 /***/ }),
-/* 35 */
+/* 42 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -69877,7 +69877,7 @@ dem('tinymce.plugins.charmap.Plugin')();
 
 
 /***/ }),
-/* 36 */
+/* 43 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -70077,7 +70077,7 @@ dem('tinymce.plugins.print.Plugin')();
 
 
 /***/ }),
-/* 37 */
+/* 44 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -70493,7 +70493,7 @@ dem('tinymce.plugins.preview.Plugin')();
 
 
 /***/ }),
-/* 38 */
+/* 45 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -70694,7 +70694,7 @@ dem('tinymce.plugins.hr.Plugin')();
 
 
 /***/ }),
-/* 39 */
+/* 46 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -71038,7 +71038,7 @@ dem('tinymce.plugins.anchor.Plugin')();
 
 
 /***/ }),
-/* 40 */
+/* 47 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -71398,7 +71398,7 @@ dem('tinymce.plugins.pagebreak.Plugin')();
 
 
 /***/ }),
-/* 41 */
+/* 48 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -72823,7 +72823,7 @@ dem('tinymce.plugins.spellchecker.Plugin')();
 
 
 /***/ }),
-/* 42 */
+/* 49 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -73806,7 +73806,7 @@ dem('tinymce.plugins.searchreplace.Plugin')();
 
 
 /***/ }),
-/* 43 */
+/* 50 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -74547,7 +74547,7 @@ dem('tinymce.plugins.wordcount.Plugin')();
 
 
 /***/ }),
-/* 44 */
+/* 51 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -75012,7 +75012,7 @@ dem('tinymce.plugins.visualblocks.Plugin')();
 
 
 /***/ }),
-/* 45 */
+/* 52 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -76343,7 +76343,7 @@ dem('tinymce.plugins.visualchars.Plugin')();
 
 
 /***/ }),
-/* 46 */
+/* 53 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -76687,7 +76687,7 @@ dem('tinymce.plugins.code.Plugin')();
 
 
 /***/ }),
-/* 47 */
+/* 54 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -77148,7 +77148,7 @@ dem('tinymce.plugins.fullscreen.Plugin')();
 
 
 /***/ }),
-/* 48 */
+/* 55 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -77636,7 +77636,7 @@ dem('tinymce.plugins.insertdatetime.Plugin')();
 
 
 /***/ }),
-/* 49 */
+/* 56 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -79668,7 +79668,7 @@ dem('tinymce.plugins.media.Plugin')();
 
 
 /***/ }),
-/* 50 */
+/* 57 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -79987,7 +79987,7 @@ dem('tinymce.plugins.nonbreaking.Plugin')();
 
 
 /***/ }),
-/* 51 */
+/* 58 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -80363,7 +80363,7 @@ dem('tinymce.plugins.save.Plugin')();
 
 
 /***/ }),
-/* 52 */
+/* 59 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -95896,7 +95896,7 @@ dem('tinymce.plugins.table.Plugin')();
 
 
 /***/ }),
-/* 53 */
+/* 60 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -96398,7 +96398,7 @@ dem('tinymce.plugins.contextmenu.Plugin')();
 
 
 /***/ }),
-/* 54 */
+/* 61 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -96674,7 +96674,7 @@ dem('tinymce.plugins.directionality.Plugin')();
 
 
 /***/ }),
-/* 55 */
+/* 62 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -97487,7 +97487,7 @@ dem('tinymce.plugins.template.Plugin')();
 
 
 /***/ }),
-/* 56 */
+/* 63 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -100428,7 +100428,7 @@ dem('tinymce.plugins.paste.Plugin')();
 
 
 /***/ }),
-/* 57 */
+/* 64 */
 /***/ (function(module, exports) {
 
 (function () {
