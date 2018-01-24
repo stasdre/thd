@@ -114,7 +114,56 @@
             </div>
         </div>
     </div>
-    <div role="tabpanel" class="tab-pane" id="key_features">...</div>
+    <div role="tabpanel" class="tab-pane" style="margin-top: 20px;" id="key_features">
+        <div class="form-group">
+            {{ Form::label('style_id', 'Design Styles', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-10">
+                {!! Form::select('style_id[]', [], null, ['id' => 'style_id', 'class' => 'form-control select2', 'multiple' => 'multiple', 'data-placeholder' => 'Select Styles']) !!}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 col-sm-push-1">
+                <strong>Kitchen</strong>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        Butler's pantry
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        Country kitchen
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-3 col-sm-push-1">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        Kitchen island
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-3 col-sm-push-1">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        Peninsula /eating bar
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
     <div role="tabpanel" class="tab-pane" id="others">...</div>
 
 </div>
+
+@push('scripts')
+<script>
+    $(function() {
+        $('#style_id').select2();
+    });
+</script>
+@endpush
