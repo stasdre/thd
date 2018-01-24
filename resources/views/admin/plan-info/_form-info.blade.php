@@ -133,6 +133,12 @@
                 {!! Form::select('room_interior[]', $roomsInteriors, null, ['id' => 'room_interior', 'class' => 'form-control select2', 'multiple' => 'multiple', 'data-placeholder' => 'Select Rooms & Interior']) !!}
             </div>
         </div>
+        <div class="form-group">
+            {{ Form::label('porch_exteriror', 'Porches & Exterior', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-10">
+                {!! Form::select('porch_exteriror[]', $porchExterirors, null, ['id' => 'porch_exteriror', 'class' => 'form-control select2', 'multiple' => 'multiple', 'data-placeholder' => 'Select Porches & Exterior']) !!}
+            </div>
+        </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="others">...</div>
 
@@ -142,7 +148,7 @@
 <script>
     $.fn.select2.defaults.set("width", '100%');
     $(function() {
-        $('#kitchen, #bed, #room_interior').select2();
+        $('#kitchen, #bed, #room_interior, #porch_exteriror').select2();
     });
 </script>
 @endpush
