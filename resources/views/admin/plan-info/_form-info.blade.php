@@ -148,7 +148,7 @@
 <script>
     $.fn.select2.defaults.set("width", '100%');
     $(function() {
-        $('#kitchen, #bed, #room_interior, #porch_exteriror').select2();
+        $('.select2').select2();
     });
 </script>
 @endpush

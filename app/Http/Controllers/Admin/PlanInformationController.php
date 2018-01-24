@@ -4,6 +4,7 @@ namespace Thd\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Thd\Bed;
+use Thd\Bedroom;
 use Thd\Http\Controllers\Controller;
 use Thd\Kitchen;
 use Thd\Plan;
@@ -30,7 +31,7 @@ class PlanInformationController extends Controller
             'kitchens'=>$kitchens,
             'beds'=>$beds,
             'roomsInteriors'=>$roomsInteriors,
-            'porchExterirors'=>$porchExterirors
+            'porchExterirors'=>$porchExterirors,
         ]);
     }
 
