@@ -8,6 +8,7 @@ use Thd\Bedroom;
 use Thd\Garage;
 use Thd\Http\Controllers\Controller;
 use Thd\Kitchen;
+use Thd\Outdoor;
 use Thd\Plan;
 use Thd\PorchExterior;
 use Thd\RoomInterior;
@@ -27,6 +28,7 @@ class PlanInformationController extends Controller
         $roomsInteriors = RoomInterior::orderBy('name')->pluck('name', 'id');
         $porchExterirors = PorchExterior::orderBy('name')->pluck('name', 'id');
         $garages = Garage::orderBy('name')->pluck('name', 'id');
+        $outdoors = Outdoor::orderBy('name')->pluck('name', 'id');
 
         return view('admin.plan-info.create',[
             'plan'=>$plan,
@@ -34,7 +36,8 @@ class PlanInformationController extends Controller
             'beds'=>$beds,
             'roomsInteriors'=>$roomsInteriors,
             'porchExterirors'=>$porchExterirors,
-            'garages'=>$garages
+            'garages'=>$garages,
+            'outdoors'=>$outdoors
         ]);
     }
 

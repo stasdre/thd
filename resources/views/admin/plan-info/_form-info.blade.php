@@ -145,6 +145,12 @@
                 {!! Form::select('garages[]', $garages, null, ['id' => 'garages', 'class' => 'form-control select2', 'multiple' => 'multiple', 'data-placeholder' => 'Select Garages']) !!}
             </div>
         </div>
+        <div class="form-group">
+            {{ Form::label('outdoors', 'Outdoor Spaces', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-10">
+                {!! Form::select('outdoors[]', $outdoors, null, ['id' => 'outdoors', 'class' => 'form-control select2', 'multiple' => 'multiple', 'data-placeholder' => 'Select Outdoor Spaces']) !!}
+            </div>
+        </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="others">...</div>
 
