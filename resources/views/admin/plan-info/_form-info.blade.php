@@ -139,6 +139,12 @@
                 {!! Form::select('porch_exteriror[]', $porchExterirors, null, ['id' => 'porch_exteriror', 'class' => 'form-control select2', 'multiple' => 'multiple', 'data-placeholder' => 'Select Porches & Exterior']) !!}
             </div>
         </div>
+        <div class="form-group">
+            {{ Form::label('garages', 'Garage', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-10">
+                {!! Form::select('garages[]', $garages, null, ['id' => 'garages', 'class' => 'form-control select2', 'multiple' => 'multiple', 'data-placeholder' => 'Select Garages']) !!}
+            </div>
+        </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="others">...</div>
 

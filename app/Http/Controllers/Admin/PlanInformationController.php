@@ -5,6 +5,7 @@ namespace Thd\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Thd\Bed;
 use Thd\Bedroom;
+use Thd\Garage;
 use Thd\Http\Controllers\Controller;
 use Thd\Kitchen;
 use Thd\Plan;
@@ -25,6 +26,7 @@ class PlanInformationController extends Controller
         $beds = Bed::orderBy('name')->pluck('name', 'id');
         $roomsInteriors = RoomInterior::orderBy('name')->pluck('name', 'id');
         $porchExterirors = PorchExterior::orderBy('name')->pluck('name', 'id');
+        $garages = Garage::orderBy('name')->pluck('name', 'id');
 
         return view('admin.plan-info.create',[
             'plan'=>$plan,
@@ -32,6 +34,7 @@ class PlanInformationController extends Controller
             'beds'=>$beds,
             'roomsInteriors'=>$roomsInteriors,
             'porchExterirors'=>$porchExterirors,
+            'garages'=>$garages
         ]);
     }
 
