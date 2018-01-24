@@ -7,6 +7,7 @@ use Thd\Bed;
 use Thd\Http\Controllers\Controller;
 use Thd\Kitchen;
 use Thd\Plan;
+use Thd\RoomInterior;
 
 class PlanInformationController extends Controller
 {
@@ -20,11 +21,13 @@ class PlanInformationController extends Controller
         $plan = Plan::findOrFail($id);
         $kitchens = Kitchen::orderBy('name')->pluck('name', 'id');
         $beds = Bed::orderBy('name')->pluck('name', 'id');
+        $roomsInteriors = RoomInterior::orderBy('name')->pluck('name', 'id');
 
         return view('admin.plan-info.create',[
             'plan'=>$plan,
             'kitchens'=>$kitchens,
-            'beds'=>$beds
+            'beds'=>$beds,
+            'roomsInteriors'=>$roomsInteriors
         ]);
     }
 
