@@ -3,6 +3,7 @@
 namespace Thd\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Thd\Bed;
 use Thd\Http\Controllers\Controller;
 use Thd\Kitchen;
 use Thd\Plan;
@@ -18,10 +19,12 @@ class PlanInformationController extends Controller
     {
         $plan = Plan::findOrFail($id);
         $kitchens = Kitchen::orderBy('name')->pluck('name', 'id');
+        $beds = Bed::orderBy('name')->pluck('name', 'id');
 
         return view('admin.plan-info.create',[
             'plan'=>$plan,
-            'kitchens'=>$kitchens
+            'kitchens'=>$kitchens,
+            'beds'=>$beds
         ]);
     }
 
