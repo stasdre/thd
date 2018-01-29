@@ -95,7 +95,7 @@ class AddonsController extends Controller
     {
         $addon->delete();
 
-        return redirect()->route('packages.index')
+        return redirect()->route('addons.index')
             ->with('message', [
                 'type'=>'success',
                 'title'=>'Success!',
