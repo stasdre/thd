@@ -28,6 +28,7 @@
                     <ul class="treeview-menu">
                         <li><a href="{{ route('styles.index') }}"><i class="fa fa-circle-o"></i> Architectural Design Styles</a></li>
                         <li><a href="{{ route('collections.index') }}"><i class="fa fa-folder-o"></i> Specialty Collections</a></li>
+                        <li><a href="{{ route('packages.index') }}"><i class="fa fa-folder-o"></i> Packages</a></li>
                     </ul>
                 </li>
             @endrole

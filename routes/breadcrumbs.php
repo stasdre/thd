@@ -47,3 +47,19 @@ Breadcrumbs::register('collection-edit', function ($breadcrumbs, $collection) {
     $breadcrumbs->parent('collection');
     $breadcrumbs->push('Edit '.$collection->name, route('collections.edit', ['collection'=>$collection->id]));
 });
+
+// House Plans packages
+Breadcrumbs::register('package', function ($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push('Packages', route('packages.index'));
+});
+
+Breadcrumbs::register('package-create', function ($breadcrumbs) {
+    $breadcrumbs->parent('package');
+    $breadcrumbs->push('Create New Package', route('packages.create'));
+});
+
+Breadcrumbs::register('package-edit', function ($breadcrumbs, $package) {
+    $breadcrumbs->parent('package');
+    $breadcrumbs->push('Edit '.$package->name, route('packages.edit', ['package'=>$package->id]));
+});

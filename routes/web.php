@@ -39,5 +39,8 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::resource('collections', 'Admin\CollectionController', ['except'=>['show']]);
         Route::get('collections/data', 'Admin\CollectionController@anyData')->name('collections.data');
+
+        Route::resource('packages', 'Admin\PackageController', ['except'=>['show']]);
+        Route::get('packages/data', 'Admin\PackageController@anyData')->name('packages.data');
     });
 });
