@@ -63,3 +63,20 @@ Breadcrumbs::register('package-edit', function ($breadcrumbs, $package) {
     $breadcrumbs->parent('package');
     $breadcrumbs->push('Edit '.$package->name, route('packages.edit', ['package'=>$package->id]));
 });
+
+
+// House Plans foundation options
+Breadcrumbs::register('foundation-options', function ($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push('Foundation options', route('foundation-options.index'));
+});
+
+Breadcrumbs::register('foundation-options-create', function ($breadcrumbs) {
+    $breadcrumbs->parent('foundation-options');
+    $breadcrumbs->push('Create New Foundation option', route('foundation-options.create'));
+});
+
+Breadcrumbs::register('foundation-options-edit', function ($breadcrumbs, $foundationOption) {
+    $breadcrumbs->parent('foundation-options');
+    $breadcrumbs->push('Edit '.$foundationOption->name, route('foundation-options.edit', ['option'=>$foundationOption->id]));
+});
