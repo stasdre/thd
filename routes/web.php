@@ -45,5 +45,8 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::resource('foundation-options', 'Admin\FoundationOptionController', ['except'=>['show']]);
         Route::get('foundation-options/data', 'Admin\FoundationOptionController@anyData')->name('foundation-options.data');
+
+        Route::resource('addons', 'Admin\AddonsController', ['except'=>['show']]);
+        Route::get('addons/data', 'Admin\AddonsController@anyData')->name('addons.data');
     });
 });

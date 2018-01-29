@@ -80,3 +80,19 @@ Breadcrumbs::register('foundation-options-edit', function ($breadcrumbs, $founda
     $breadcrumbs->parent('foundation-options');
     $breadcrumbs->push('Edit '.$foundationOption->name, route('foundation-options.edit', ['option'=>$foundationOption->id]));
 });
+
+// House Plans Add-Ons
+Breadcrumbs::register('addons', function ($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push('Add-Ons', route('addons.index'));
+});
+
+Breadcrumbs::register('addons-create', function ($breadcrumbs) {
+    $breadcrumbs->parent('addons');
+    $breadcrumbs->push('Create New Add-On', route('addons.create'));
+});
+
+Breadcrumbs::register('addons-edit', function ($breadcrumbs, $addon) {
+    $breadcrumbs->parent('addons');
+    $breadcrumbs->push('Edit '.$addon->name, route('addons.edit', ['addon'=>$addon->id]));
+});

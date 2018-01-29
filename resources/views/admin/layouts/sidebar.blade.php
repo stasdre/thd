@@ -30,6 +30,7 @@
                         <li><a href="{{ route('collections.index') }}"><i class="fa fa-folder-o"></i> Specialty Collections</a></li>
                         <li><a href="{{ route('packages.index') }}"><i class="fa fa-folder-o"></i> Packages</a></li>
                         <li><a href="{{ route('foundation-options.index') }}"><i class="fa fa-folder-o"></i> Foundation Options</a></li>
+                        <li><a href="{{ route('addons.index') }}"><i class="fa fa-folder-o"></i> Add-Ons</a></li>
                     </ul>
                 </li>
             @endrole
