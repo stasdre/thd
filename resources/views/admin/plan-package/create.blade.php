@@ -6,22 +6,24 @@
 
 @section('content')
     <div class="box box-default">
+        {!! Form::open(['route' => ['plan-packages.store', $plan->id], 'class' => 'form-horizontal', 'method' => 'post']) !!}
         <div class="box-header with-border">
             <div class="row">
                 <div class="col-sm-6">
-                    <h3 style="margin-top: 0px;">Plan Images</h3>
+                    <h3 style="margin-top: 0px;">Plan Packages</h3>
                 </div>
                 <div class="col-sm-6">
-                    <button type="submit" class="btn btn-success pull-right">Next step</button>
+                    <button type="submit" class="btn btn-success pull-right">Save</button>
                 </div>
             </div>
         </div>
         <div class="box-body">
-            @include('admin.plan-image._form-images')
+            @include('admin.plan-package._form')
         </div>
         <div class="box-footer">
             <a class="btn btn-default" href="{{ route('house-plan.index') }}" role="button">Cancel</a>
-            <a class="btn btn-success pull-right" href="{{ route('plan-packages.create', ['plan'=>$plan->id]) }}" role="button">Next step</a>
+            <button type="submit" class="btn btn-success pull-right">Save</button>
         </div>
+        {!! Form::close() !!}
     </div>
 @endsection

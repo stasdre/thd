@@ -71,7 +71,7 @@ class PlanImageController extends Controller
             ]);
             $imagePlan->plan()->associate($plan);
             $imagePlan->save();
-            return response()->json(['success', 'file_name'=>$filename, 'id'=>$imagePlan->id], 200);
+            return response()->json(['success', 'plan_id' => $plan->id, 'file_name'=>$filename, 'id'=>$imagePlan->id], 200);
         } else {
             return response()->json('error', 400);
         }
