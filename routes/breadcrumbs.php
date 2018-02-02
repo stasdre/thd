@@ -47,3 +47,52 @@ Breadcrumbs::register('collection-edit', function ($breadcrumbs, $collection) {
     $breadcrumbs->parent('collection');
     $breadcrumbs->push('Edit '.$collection->name, route('collections.edit', ['collection'=>$collection->id]));
 });
+
+// House Plans packages
+Breadcrumbs::register('package', function ($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push('Packages', route('packages.index'));
+});
+
+Breadcrumbs::register('package-create', function ($breadcrumbs) {
+    $breadcrumbs->parent('package');
+    $breadcrumbs->push('Create New Package', route('packages.create'));
+});
+
+Breadcrumbs::register('package-edit', function ($breadcrumbs, $package) {
+    $breadcrumbs->parent('package');
+    $breadcrumbs->push('Edit '.$package->name, route('packages.edit', ['package'=>$package->id]));
+});
+
+
+// House Plans foundation options
+Breadcrumbs::register('foundation-options', function ($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push('Foundation options', route('foundation-options.index'));
+});
+
+Breadcrumbs::register('foundation-options-create', function ($breadcrumbs) {
+    $breadcrumbs->parent('foundation-options');
+    $breadcrumbs->push('Create New Foundation option', route('foundation-options.create'));
+});
+
+Breadcrumbs::register('foundation-options-edit', function ($breadcrumbs, $foundationOption) {
+    $breadcrumbs->parent('foundation-options');
+    $breadcrumbs->push('Edit '.$foundationOption->name, route('foundation-options.edit', ['option'=>$foundationOption->id]));
+});
+
+// House Plans Add-Ons
+Breadcrumbs::register('addons', function ($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push('Add-Ons', route('addons.index'));
+});
+
+Breadcrumbs::register('addons-create', function ($breadcrumbs) {
+    $breadcrumbs->parent('addons');
+    $breadcrumbs->push('Create New Add-On', route('addons.create'));
+});
+
+Breadcrumbs::register('addons-edit', function ($breadcrumbs, $addon) {
+    $breadcrumbs->parent('addons');
+    $breadcrumbs->push('Edit '.$addon->name, route('addons.edit', ['addon'=>$addon->id]));
+});

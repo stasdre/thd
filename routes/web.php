@@ -32,6 +32,9 @@ Route::prefix('admin-thd')->group(function(){
         Route::delete('plan-images/{image}', 'Admin\PlanImageController@destroy')->where('image', '[0-9]+')->name('plan-images.destroy');
         Route::post('plan-images-sotr/{id}', 'Admin\PlanImageController@sort')->where('id', '[0-9]+')->name('plan-images.sort');
 
+        Route::get('plan-packages/create/{plan}', 'Admin\PlanPackageController@create')->where('plan', '[0-9]+')->name('plan-packages.create');
+        Route::post('plan-packages/store/{plan}', 'Admin\PlanInformationController@store')->where('id', '[0-9]+')->name('plan-packages.store');
+
     });
     Route::middleware(['auth', 'role:owner|admin'])->group(function(){
         Route::resource('styles', 'Admin\StyleController', ['except'=>['show']]);
@@ -39,5 +42,14 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::resource('collections', 'Admin\CollectionController', ['except'=>['show']]);
         Route::get('collections/data', 'Admin\CollectionController@anyData')->name('collections.data');
+
+        Route::resource('packages', 'Admin\PackageController', ['except'=>['show']]);
+        Route::get('packages/data', 'Admin\PackageController@anyData')->name('packages.data');
+
+        Route::resource('foundation-options', 'Admin\FoundationOptionController', ['except'=>['show']]);
+        Route::get('foundation-options/data', 'Admin\FoundationOptionController@anyData')->name('foundation-options.data');
+
+        Route::resource('addons', 'Admin\AddonsController', ['except'=>['show']]);
+        Route::get('addons/data', 'Admin\AddonsController@anyData')->name('addons.data');
     });
 });

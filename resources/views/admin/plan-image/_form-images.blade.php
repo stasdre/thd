@@ -50,7 +50,7 @@
                 thumbnailHeight: 160,
                 success: function(file, data){
                     if(data.file_name){
-                        file.previewElement.querySelector("img").src = "/storage/plans/29/thumb/" + data.file_name;
+                        file.previewElement.querySelector("img").src = "/storage/plans/" +data.plan_id+ "/thumb/" + data.file_name;
                         $(file.previewElement).find('.imag_container').addClass('downloaded');
                         $(file.previewElement).addClass('file_sortable');
                         $(file.previewElement).prop('id', 'sortable_id_' + data.id);
