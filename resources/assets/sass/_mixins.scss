@@ -1,0 +1,16 @@
+.reset-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.transition {
+	transition: 300ms ease;
+}
+
+.overlay-dark {
+	background: rgba(#000, .7);
+}
+.overlay-light {
+	background: rgba(#fff, .7);
+}
