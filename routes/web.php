@@ -51,5 +51,8 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::resource('addons', 'Admin\AddonsController', ['except'=>['show']]);
         Route::get('addons/data', 'Admin\AddonsController@anyData')->name('addons.data');
+
+        Route::resource('gallery', 'Admin\GalleryController', ['except'=>['show']]);
+        Route::get('gallery/data', 'Admin\GalleryController@anyData')->name('gallery.data');
     });
 });

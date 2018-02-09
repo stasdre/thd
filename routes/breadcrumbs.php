@@ -96,3 +96,17 @@ Breadcrumbs::register('addons-edit', function ($breadcrumbs, $addon) {
     $breadcrumbs->parent('addons');
     $breadcrumbs->push('Edit '.$addon->name, route('addons.edit', ['addon'=>$addon->id]));
 });
+
+// Home Page Gallery
+Breadcrumbs::register('gallery', function ($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push('Home Page Gallery', route('gallery.index'));
+});
+Breadcrumbs::register('gallery-create', function ($breadcrumbs) {
+    $breadcrumbs->parent('gallery');
+    $breadcrumbs->push('Create New Slide', route('gallery.create'));
+});
+Breadcrumbs::register('gallery-edit', function ($breadcrumbs, $gallery) {
+    $breadcrumbs->parent('gallery');
+    $breadcrumbs->push('Edit slide '.$gallery->name, route('gallery.edit', ['gallery'=>$gallery->id]));
+});

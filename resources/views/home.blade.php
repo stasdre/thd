@@ -5,153 +5,21 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="slider-hero">
-                    <div class="slide-item">
-                        <div class="hero-card" style="background-image: url({{ asset('img/page-home/hero/hero-item-1.jpg') }})" >
+                    @foreach($gallery as $img)
+                        <div class="slide-item">
+                        <div class="hero-card" style="background-image: url({{ asset('/storage/gallery/'.$img->file) }})" >
                             <ul class="hero-label house-label house-label-lg">
-                                <li>PLEASANT COVE</li>
-                                <li class="active" >HOUSE PLAN 2267</li>
+                                <li>{{ $img->name }}</li>
                             </ul>
 
                             <div class="hero-quote-wrap">
                                 <div class="hero-quote">
-                                    “FAMILIES LOVE THIS COZY CRAFTSMAN COTTAGE WITH FABULOUS WRAPAROUND PORCH”
+                                    {!! $img->description !!}
                                 </div>
-                                <p class="hero-quote-author">DAVID E. WIGGINS</p>
                             </div>
                         </div>
                     </div>
-
-                    <div class="slide-item">
-                        <div class="hero-card" style="background-image: url({{asset('img/page-home/hero/hero-item-2.jpg')}})" >
-                            <ul class="hero-label house-label house-label-lg">
-                                <li>PLEASANT COVE</li>
-                                <li class="active" >HOUSE PLAN 2267</li>
-                            </ul>
-
-                            <div class="hero-quote-wrap">
-                                <div class="hero-quote">
-                                    “FAMILIES LOVE THIS COZY CRAFTSMAN COTTAGE WITH FABULOUS WRAPAROUND PORCH”
-                                </div>
-                                <p class="hero-quote-author">DAVID E. WIGGINS</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slide-item">
-                        <div class="hero-card" style="background-image: url({{asset('img/page-home/hero/hero-item-3.jpg')}})" >
-                            <ul class="hero-label house-label house-label-lg">
-                                <li>PLEASANT COVE</li>
-                                <li class="active" >HOUSE PLAN 2267</li>
-                            </ul>
-
-                            <div class="hero-quote-wrap">
-                                <div class="hero-quote">
-                                    “FAMILIES LOVE THIS COZY CRAFTSMAN COTTAGE WITH FABULOUS WRAPAROUND PORCH”
-                                </div>
-                                <p class="hero-quote-author">DAVID E. WIGGINS</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slide-item">
-                        <div class="hero-card" style="background-image: url({{asset('img/page-home/hero/hero-item-4.jpg')}})" >
-                            <ul class="hero-label house-label house-label-lg">
-                                <li>PLEASANT COVE</li>
-                                <li class="active" >HOUSE PLAN 2267</li>
-                            </ul>
-
-                            <div class="hero-quote-wrap">
-                                <div class="hero-quote">
-                                    “FAMILIES LOVE THIS COZY CRAFTSMAN COTTAGE WITH FABULOUS WRAPAROUND PORCH”
-                                </div>
-                                <p class="hero-quote-author">DAVID E. WIGGINS</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="slide-item">
-                        <div class="hero-card" style="background-image: url({{asset('img/page-home/hero/hero-item-5.jpg')}})" >
-                            <ul class="hero-label house-label house-label-lg">
-                                <li>PLEASANT COVE</li>
-                                <li class="active" >HOUSE PLAN 2267</li>
-                            </ul>
-
-                            <div class="hero-quote-wrap">
-                                <div class="hero-quote">
-                                    “FAMILIES LOVE THIS COZY CRAFTSMAN COTTAGE WITH FABULOUS WRAPAROUND PORCH”
-                                </div>
-                                <p class="hero-quote-author">DAVID E. WIGGINS</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slide-item">
-                        <div class="hero-card" style="background-image: url({{asset('img/page-home/hero/hero-item-6.jpg')}})" >
-                            <ul class="hero-label house-label house-label-lg">
-                                <li>PLEASANT COVE</li>
-                                <li class="active" >HOUSE PLAN 2267</li>
-                            </ul>
-
-                            <div class="hero-quote-wrap">
-                                <div class="hero-quote">
-                                    “FAMILIES LOVE THIS COZY CRAFTSMAN COTTAGE WITH FABULOUS WRAPAROUND PORCH”
-                                </div>
-                                <p class="hero-quote-author">DAVID E. WIGGINS</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slide-item">
-                        <div class="hero-card" style="background-image: url({{asset('img/page-home/hero/hero-item-7.jpg')}})" >
-                            <ul class="hero-label house-label house-label-lg">
-                                <li>PLEASANT COVE</li>
-                                <li class="active" >HOUSE PLAN 2267</li>
-                            </ul>
-
-                            <div class="hero-quote-wrap">
-                                <div class="hero-quote">
-                                    “FAMILIES LOVE THIS COZY CRAFTSMAN COTTAGE WITH FABULOUS WRAPAROUND PORCH”
-                                </div>
-                                <p class="hero-quote-author">DAVID E. WIGGINS</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="slide-item">
-                        <div class="hero-card" style="background-image: url({{asset('img/page-home/hero/hero-item-8.jpg')}})" >
-                            <ul class="hero-label house-label house-label-lg">
-                                <li>PLEASANT COVE</li>
-                                <li class="active" >HOUSE PLAN 2267</li>
-                            </ul>
-
-                            <div class="hero-quote-wrap">
-                                <div class="hero-quote">
-                                    “FAMILIES LOVE THIS COZY CRAFTSMAN COTTAGE WITH FABULOUS WRAPAROUND PORCH”
-                                </div>
-                                <p class="hero-quote-author">DAVID E. WIGGINS</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="slide-item">
-                        <div class="hero-card" style="background-image: url({{asset('img/page-home/hero/hero-item-9.jpg')}})" >
-                            <ul class="hero-label house-label house-label-lg">
-                                <li>PLEASANT COVE</li>
-                                <li class="active" >HOUSE PLAN 2267</li>
-                            </ul>
-
-                            <div class="hero-quote-wrap">
-                                <div class="hero-quote">
-                                    “FAMILIES LOVE THIS COZY CRAFTSMAN COTTAGE WITH FABULOUS WRAPAROUND PORCH”
-                                </div>
-                                <p class="hero-quote-author">DAVID E. WIGGINS</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
