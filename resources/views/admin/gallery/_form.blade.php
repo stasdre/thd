@@ -26,7 +26,7 @@
         {{ Form::label('file', 'Image/Video (min. 2400x1092 px)', ['class' => 'col-sm-3 control-label']) }}
         <div class="col-sm-5">
             <div class="input-group input-group-sm">
-                @if($gallery->file)
+                @if(isset($gallery->file))
                     <input class="form-control file-input hidden" type="file" name="file">
                     <span class="input-group-addon file-input hidden"> <i class="fa fa-file" aria-hidden="true"></i></span>
                     <p id="file-name">/gallery/{{ $gallery->file }} <a href="#" id="delete-file" style="margin-left: 15px; color: red;"><i class="fa fa-ban"></i></a></p>
