@@ -33,6 +33,17 @@
                         <li><a href="{{ route('addons.index') }}"><i class="fa fa-folder-o"></i> Add-Ons</a></li>
                     </ul>
                 </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-cogs"></i>
+                        <span>Site Settings</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ route('gallery.index') }}"><i class="fa fa-photo"></i> Home Page Gallery</a></li>
+                        <li><a href="{{ route('about-david.edit') }}"><i class="fa fa-pencil-square-o"></i> About David E.</a></li>
+                    </ul>
+                </li>
             @endrole
         </ul>
     </section>
