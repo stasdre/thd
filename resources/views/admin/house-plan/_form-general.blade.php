@@ -25,13 +25,13 @@
 <div class="form-group">
     {{ Form::label('style_id', 'Design Styles', ['class' => 'col-sm-2 control-label']) }}
     <div class="col-sm-10">
-        {!! Form::select('style_id[]', $styles, null, ['id' => 'style_id', 'class' => 'form-control select2', 'multiple' => 'multiple', 'data-placeholder' => 'Select Styles']) !!}
+        {!! Form::select('style_id[]', $styles, isset($plan) ? $plan->styles->pluck('id')->all() : null, ['id' => 'style_id', 'class' => 'form-control select2', 'multiple' => 'multiple', 'data-placeholder' => 'Select Styles']) !!}
     </div>
 </div>
 <div class="form-group">
-    {{ Form::label('collection_id', 'Design Styles', ['class' => 'col-sm-2 control-label']) }}
+    {{ Form::label('collection_id', 'Design Collections', ['class' => 'col-sm-2 control-label']) }}
     <div class="col-sm-10">
-        {!! Form::select('collection_id[]', $collections, null, ['id' => 'collection_id', 'class' => 'form-control select2', 'multiple' => 'multiple', 'data-placeholder' => 'Select Collections']) !!}
+        {!! Form::select('collection_id[]', $collections, isset($plan) ? $plan->collections->pluck('id')->all() : null, ['id' => 'collection_id', 'class' => 'form-control select2', 'multiple' => 'multiple', 'data-placeholder' => 'Select Collections']) !!}
     </div>
 </div>
 <div class="form-group">

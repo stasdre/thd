@@ -10,11 +10,15 @@ Breadcrumbs::register('plans', function ($breadcrumbs) {
     $breadcrumbs->parent('dashboard');
     $breadcrumbs->push('House Plans', route('house-plan.index'));
 });
-
 Breadcrumbs::register('plans-create', function ($breadcrumbs) {
     $breadcrumbs->parent('plans');
     $breadcrumbs->push('Create New House Plan', route('house-plan.create'));
 });
+Breadcrumbs::register('plans-edit', function ($breadcrumbs, $plan) {
+    $breadcrumbs->parent('plans');
+    $breadcrumbs->push('Edit '.$plan->name, route('house-plan.edit', ['house_plan'=>$plan->id]));
+});
+
 
 // House Plans styles
 Breadcrumbs::register('style', function ($breadcrumbs) {

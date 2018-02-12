@@ -23,11 +23,21 @@ class PlansRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|max:100',
-            'plan_number' => 'required|integer|unique:plans,plan_number',
-            'style_id' => 'required|array',
-            'collection_id' => 'required|array'
-        ];
+        switch ($this->method()){
+            case 'POST':
+                return [
+                    'name' => 'required|max:100',
+                    'plan_number' => 'required|integer|unique:plans,plan_number',
+                    'style_id' => 'required|array',
+                    'collection_id' => 'required|array'
+                ];
+            case 'PATCH':
+                return [
+                    'name' => 'required|max:100',
+                    //'plan_number' => 'required|integer|unique:plans,plan_number,'.$this->input('plan_number'),
+                    'style_id' => 'required|array',
+                    'collection_id' => 'required|array'
+                ];
+        }
     }
 }

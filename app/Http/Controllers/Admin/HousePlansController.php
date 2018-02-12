@@ -98,9 +98,18 @@ class HousePlansController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Plan $house_plan)
     {
-        //
+        $styles = Style::orderBy('name')->pluck('name', 'id');
+        $collections = Collection::orderBy('name')->pluck('name', 'id');
+
+        //$house_plan->loadMissing('styles');
+        //print_r($house_plan->styles);
+        return view('admin.house-plan.edit', [
+            'plan'=>$house_plan,
+            'styles'=>$styles,
+            'collections'=>$collections
+        ]);
     }
 
     /**
@@ -110,9 +119,22 @@ class HousePlansController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PlansRequest $request, Plan $house_plan)
     {
-        //
+        $inputs = $request->except(['_method', '_token', 'style_id', 'collection_id']);
+
+        $house_plan->fill($inputs);
+        $house_plan->update();
+
+        $house_plan->styles()->sync($request->input('style_id'));
+        $house_plan->collections()->sync($request->input('collection_id'));
+
+        return redirect()->route('house-plan.index')
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$house_plan->name.' was updated',
+                'autoHide'=>1]);
     }
 
     /**
