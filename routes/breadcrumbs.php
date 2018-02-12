@@ -110,3 +110,9 @@ Breadcrumbs::register('gallery-edit', function ($breadcrumbs, $gallery) {
     $breadcrumbs->parent('gallery');
     $breadcrumbs->push('Edit slide '.$gallery->name, route('gallery.edit', ['gallery'=>$gallery->id]));
 });
+
+// About David E.
+Breadcrumbs::register('about-david', function ($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push('About David E. Wiggins', route('about-david.edit'));
+});

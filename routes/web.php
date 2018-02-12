@@ -54,5 +54,8 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::resource('gallery', 'Admin\GalleryController', ['except'=>['show']]);
         Route::get('gallery/data', 'Admin\GalleryController@anyData')->name('gallery.data');
+
+        Route::get('about-david/edit', 'Admin\AboutDavidController@edit')->name('about-david.edit');
+        Route::post('about-david/update', 'Admin\AboutDavidController@update')->name('about-david.update');
     });
 });
