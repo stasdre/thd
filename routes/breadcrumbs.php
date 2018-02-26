@@ -19,6 +19,11 @@ Breadcrumbs::register('plans-edit', function ($breadcrumbs, $plan) {
     $breadcrumbs->push('Edit '.$plan->name, route('house-plan.edit', ['house_plan'=>$plan->id]));
 });
 
+Breadcrumbs::register('plans-info-create', function ($breadcrumbs, $plan) {
+    $breadcrumbs->parent('plans-edit', $plan);
+    $breadcrumbs->push('Plan Information');
+});
+
 
 // House Plans styles
 Breadcrumbs::register('style', function ($breadcrumbs) {

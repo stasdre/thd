@@ -2,7 +2,7 @@
 
 @section('title', 'Create new House Plan')
 
-@section('breadcrumbs', Breadcrumbs::render('plans-create'))
+@section('breadcrumbs', Breadcrumbs::render('plans-info-create', $plan))
 
 @section('content')
     <div class="box box-default">
@@ -14,6 +14,7 @@
                 </div>
                 <div class="col-sm-6">
                     <button type="submit" class="btn btn-success pull-right">Save & Next step</button>
+                    <a class="btn btn-link pull-right" href="{{ route('house-plan.edit', ['house_plan'=>$plan->id]) }}" role="button">Previous</a>
                 </div>
             </div>
         </div>
@@ -22,7 +23,9 @@
         </div>
         <div class="box-footer">
             <a class="btn btn-default" href="{{ route('house-plan.index') }}" role="button">Cancel</a>
+
             <button type="submit" class="btn btn-success pull-right">Save & Next step</button>
+            <a class="btn btn-link pull-right" href="{{ route('house-plan.edit', ['house_plan'=>$plan->id]) }}" role="button">Previous</a>
         </div>
         {!! Form::close() !!}
     </div>
