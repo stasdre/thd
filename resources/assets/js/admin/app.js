@@ -13,6 +13,8 @@ try {
     require('admin-lte');
     require('select2');
     require('jquery-ui/ui/widgets/sortable');
+    require('jquery-ui/ui/widgets/datepicker');
+    require('jquery-ui/ui/widgets/autocomplete');
 } catch (e) {}
 
 
