@@ -7,27 +7,24 @@
 @section('content')
     <div class="box box-default">
         @if(Route::currentRouteName() == 'house-plan.edit')
-            {{ Form::model($plan, ['route' => ['house-plan.update', $plan->id], 'class' => 'form-horizontal', 'method' => 'PATCH']) }}
         @else
-            {!! Form::open(['route' => 'house-plan.store', 'class' => 'form-horizontal', 'method' => 'post']) !!}
         @endif
         <div class="box-header with-border">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h3 style="margin-top: 0px;">General Information</h3>
-                </div>
-                <div class="col-sm-6">
-                    <button type="submit" class="btn btn-success pull-right">Save & Next step</button>
-                </div>
+            <div class="col-sm-8">
+                @include('admin._plans_menu', ['active'=>'details', 'plan'=>$plan->id])
+            </div>
+            <div class="col-sm-4" style="padding-top: 5px;">
+                <a class="btn btn-default" href="{{ route('house-plan.index') }}" role="button">Cancel</a>
+                <a role="button" id="plans-submit-close" href="#" class="btn btn-warning">Save & Close</a>
+                <a role="button" id="plans-submit-next" href="#" class="btn btn-success">Save & Next step</a>
             </div>
         </div>
         <div class="box-body">
-            @include('admin.house-plan._form-general')
+            {{ Form::model($plan, ['route' => ['house-plan.update', $plan->id], 'class' => 'form-horizontal', 'method' => 'PATCH', 'id'=>'plans-form']) }}
+                @include('admin.house-plan._form-general')
+            {!! Form::close() !!}
         </div>
         <div class="box-footer">
-            <a class="btn btn-default" href="{{ route('house-plan.index') }}" role="button">Cancel</a>
-            <button type="submit" class="btn btn-success pull-right">Save & Next step</button>
         </div>
-        {!! Form::close() !!}
     </div>
 @endsection
