@@ -37,6 +37,8 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::get('plan-features/create/{id}', 'Admin\PlanFeaturesController@create')->where('id', '[0-9]+')->name('plan-features.create');
 
+        Route::get('plan-desc/create/{id}', 'Admin\PlanDescriptionController@create')->where('id', '[0-9]+')->name('plan-desc.create');
+
     });
     Route::middleware(['auth', 'role:owner|admin'])->group(function(){
         Route::resource('styles', 'Admin\StyleController', ['except'=>['show']]);
