@@ -11,11 +11,24 @@
                     <div class="checkbox">
                         <label>{{ Form::checkbox('package[]', $package->id, false, ['class'=>'use-package']) }} Use {{ $package->name }}</label>
                     </div>
-                    <div id="package_files_{{ $package->id }}" class="row hidden" style="padding-left: 50px; padding-top: 10px;">
+                    <div id="package_files_{{ $package->id }}" class="row plan-packages" style="display: none">
                         <div class="col-sm-4">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control" type="file">
-                                <span class="input-group-addon"><i class="fa fa-file" aria-hidden="true"></i></span>
+                            <div class="input-group input-group-sm package-price">
+                                <input class="form-control" type="text">
+                                <span class="input-group-addon">$</span>
+                            </div>
+                            <div class="files-fields">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-sm package-file">
+                                            <input class="form-control" type="file">
+                                            <span class="input-group-addon"><i class="fa fa-file" aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <i class="fa fa-plus-circle fa-lg click-icon green-icon add-new-file"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -47,10 +60,30 @@
     <!-- /.tab-content -->
 </div>
 
-@push('script')
+@push('scripts')
 <script>
     $(function(){
+        $(".add-new-file").on('click', function(){
+            var html = '<div class="row">' +
+                '<div class="col-sm-10">' +
+                '<div class="input-group input-group-sm package-file"><input class="form-control" type="file"><span class="input-group-addon"><i class="fa fa-file" aria-hidden="true"></i></span></div>' +
+                '</div>' +
+                '<div class="col-sm-2"><i class="fa fa-minus-circle fa-lg click-icon red-icon rem-package-file"></i></div>' +
+                '</div>';
+            $(this).parents('.files-fields').append(html);
+        });
 
+        $('input:checkbox[name="package[]"]').on('click', function(){
+            if( $(this).prop('checked') === true ){
+                $("#package_files_" + $(this).val()).show();
+            }else{
+                $("#package_files_" + $(this).val()).hide();
+            }
+        });
+    });
+
+    $(document).on('click', '.rem-package-file', function(){
+        $(this).closest('.row').remove();
     });
 </script>
 @endpush

@@ -1,28 +1,53 @@
-<div id="file_upload" class="dropzone needsclick dz-clickable">
-    <div class="dz-message needsclick">
-        Drop files here or click to upload.<br>
-    </div>
-    <div id="files_sortable">
-        @foreach($planImages as $image)
-            <div class="dz-preview dz-processing sending dz-image-preview file_sortable dz-complete" id="sortable_id_{{ $image->id }}">
-                <div class="imag_container downloaded" id="image_id_{{ $image->id }}">
-                    <div class="dz-image biggest">
-                        <img data-dz-thumbnail alt="{{ $image->title or $image->file_name }}" src="{{ '/storage/plans/'.$image->plan_id.'/thumb/'.$image->file_name }}" />
-                    </div>
-                    <div class="dz-details">
-                        <div class="dz-size" data-dz-size><strong>{{ round(Storage::size('public/plans/'.$image->plan_id.'/thumb/'.$image->file_name) / 1000, 2) }}</strong> KB</div>
-                        <div class="dz-filename"><span data-dz-name>{{ $image->title or $image->file_name }}</span></div>
-                    </div>
-                    <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
-                    <div class="dz-error-message"><span data-dz-errormessage></span></div>
-                    <div class="dz-success-mark"></div>
-                    <div class="dz-error-mark"></div>
-                </div>
-                <a class="remov_image" href="#">Remove file</a>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#slideshow" aria-controls="slideshow" role="tab" data-toggle="tab">Slideshow images</a></li>
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Floor plans <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li role="presentation"><a href="#first-floor-tab" aria-controls="first-floor-tab" role="tab" data-toggle="tab">First floor plans</a></li>
+            <li role="presentation"><a href="#second-floor-tab" aria-controls="second-floor-tab" role="tab" data-toggle="tab">Second floor plans</a></li>
+            <li role="presentation"><a href="#basement-floor-tab" aria-controls="basement-floor-tab" role="tab" data-toggle="tab">Basement floor plans</a></li>
+            <li role="presentation"><a href="#bonus-floor-tab" aria-controls="bonus-floor-tab" role="tab" data-toggle="tab">Bonus floor plans</a></li>
+        </ul>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="slideshow">
+        <div id="file_upload" class="dropzone needsclick dz-clickable">
+            <div class="dz-message needsclick">
+                Drop files here or click to upload.<br>
             </div>
-        @endforeach
+            <div id="files_sortable">
+                @foreach($planImages as $image)
+                    <div class="dz-preview dz-processing sending dz-image-preview file_sortable dz-complete" id="sortable_id_{{ $image->id }}">
+                        <div class="imag_container downloaded" id="image_id_{{ $image->id }}">
+                            <div class="dz-image biggest">
+                                <img data-dz-thumbnail alt="{{ $image->title or $image->file_name }}" src="{{ '/storage/plans/'.$image->plan_id.'/thumb/'.$image->file_name }}" />
+                            </div>
+                            <div class="dz-details">
+                                <div class="dz-size" data-dz-size><strong>{{ round(Storage::size('public/plans/'.$image->plan_id.'/thumb/'.$image->file_name) / 1000, 2) }}</strong> KB</div>
+                                <div class="dz-filename"><span data-dz-name>{{ $image->title or $image->file_name }}</span></div>
+                            </div>
+                            <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+                            <div class="dz-error-message"><span data-dz-errormessage></span></div>
+                            <div class="dz-success-mark"></div>
+                            <div class="dz-error-mark"></div>
+                        </div>
+                        <a class="remov_image" href="#">Remove file</a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </div>
+    <div role="tabpanel" class="tab-pane fade" id="first-floor-tab"></div>
+    <div role="tabpanel" class="tab-pane fade" id="second-floor-tab"></div>
+    <div role="tabpanel" class="tab-pane fade" id="basement-floor-tab"></div>
+    <div role="tabpanel" class="tab-pane fade" id="bonus-floor-tab"></div>
 </div>
+
+
 
 @push('css')
 <link rel="stylesheet" href="{{asset('css/admin/dropzone.min.css')}}">

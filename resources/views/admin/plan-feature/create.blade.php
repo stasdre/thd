@@ -8,16 +8,16 @@
     <div class="box box-default">
         <div class="box-header with-border">
             <div class="col-sm-8">
-                @include('admin._plans_menu', ['active'=>'graphics', 'plan'=>$plan->id])
+                @include('admin._plans_menu', ['active'=>'features', 'plan'=>$plan->id])
             </div>
             <div class="col-sm-4" style="padding-top: 5px;">
                 <a class="btn btn-default" href="{{ route('house-plan.index') }}" role="button">Cancel</a>
                 <a role="button" href="{{ route('house-plan.index') }}" class="btn btn-warning">Save & Close</a>
-                <a role="button" href="{{ route('plan-features.create', [$plan->id]) }}" class="btn btn-success">Save & Next step</a>
+                <a role="button" href="{{ route('plan-desc.create', [$plan->id]) }}" class="btn btn-success">Save & Next step</a>
             </div>
         </div>
         <div class="box-body">
-            @include('admin.plan-image._form-images')
+            @include('admin.plan-feature._form-features')
         </div>
         <div class="box-footer">
         </div>

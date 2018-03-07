@@ -28,15 +28,15 @@ class PlansRequest extends FormRequest
                 return [
                     'name' => 'required|max:100',
                     'plan_number' => 'required|integer|unique:plans,plan_number',
-                    'style_id' => 'required|array',
-                    'collection_id' => 'required|array'
+                    //'style_id' => 'required|array',
+                    //'collection_id' => 'required|array'
                 ];
             case 'PATCH':
                 return [
                     'name' => 'required|max:100',
                     'plan_number' => 'required|integer|unique:plans,plan_number,'.$this->input('plan_number'),
-                    'style_id' => 'required|array',
-                    'collection_id' => 'required|array'
+                    //'style_id' => 'required|array',
+                    //'collection_id' => 'required|array'
                 ];
         }
     }
