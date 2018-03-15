@@ -61,5 +61,7 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::get('about-david/edit', 'Admin\AboutDavidController@edit')->name('about-david.edit');
         Route::post('about-david/update', 'Admin\AboutDavidController@update')->name('about-david.update');
+
+        Route::resource('user', 'Admin\UserController', ['except'=>['show']]);
     });
 });
