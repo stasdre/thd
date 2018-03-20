@@ -183,7 +183,7 @@
         <div class="form-group">
             {{ Form::label('stories', 'Stories', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-2">
-                {!! Form::select('stories', ['1', '2', '3', '4'], null, ['class' => 'form-control']) !!}
+                {!! Form::select('stories', ['1', '1.5', '2', '3', '4'], null, ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group">
