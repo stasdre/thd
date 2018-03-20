@@ -396,6 +396,24 @@
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            {{ Form::label('celing_3_floor', '3rd Floor', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-2">
+                <div class="input-group">
+                    {{ Form::text('celing_3_floor', null, ['class'=>'form-control']) }}
+                    <span class="input-group-addon">ft.</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            {{ Form::label('celing_lower_floor', 'Lower Level', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-2">
+                <div class="input-group">
+                    {{ Form::text('celing_lower_floor', null, ['class'=>'form-control']) }}
+                    <span class="input-group-addon">ft.</span>
+                </div>
+            </div>
+        </div>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="roof">
         <h3 class="text-center">Roof Load</h3>
