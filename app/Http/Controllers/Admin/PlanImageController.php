@@ -100,7 +100,7 @@ class PlanImageController extends Controller
         $input = $request->all();
 
         $rules = array(
-            'title' => 'alpha_dash|max:100'
+            'title' => 'string|max:100'
         );
 
         $validation = Validator::make($input, $rules);
@@ -111,6 +111,8 @@ class PlanImageController extends Controller
 
         $image->title = $input['title'];
         $image->description = $input['description'];
+        $image->first_image = $input['first_image'] == 1 ? 1 : 0;
+        $image->for_search = $input['for_search'] == 1 ? 1 : 0;
 
         if($image->update()){
             return response()->json('success', 200);
