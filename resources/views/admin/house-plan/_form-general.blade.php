@@ -416,6 +416,7 @@
         </div>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="roof">
+<!--
         <h3 class="text-center">Roof Load</h3>
         <div class="form-group">
             {{ Form::label('live', 'Live', ['class' => 'col-sm-2 control-label']) }}
@@ -435,6 +436,7 @@
                 {{ Form::text('max_wind', null, ['class'=>'form-control']) }}
             </div>
         </div>
+-->
         <h3 class="text-center">Roof Pitch</h3>
         <div class="form-group">
             {{ Form::label('primary', 'Primary', ['class' => 'col-sm-2 control-label']) }}
@@ -448,6 +450,7 @@
                 {{ Form::text('secondary', null, ['class'=>'form-control']) }}
             </div>
         </div>
+<!--
         <div class="form-group">
             {{ Form::label('ternary', 'Ternary', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-3">
@@ -472,6 +475,7 @@
                 {{ Form::text('porch', null, ['class'=>'form-control']) }}
             </div>
         </div>
+-->
     </div>
     <div role="tabpanel" class="tab-pane fade" id="insulation">
         <div class="form-group">
