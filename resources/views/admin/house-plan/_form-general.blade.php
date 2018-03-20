@@ -187,21 +187,48 @@
             </div>
         </div>
         <div class="form-group">
-            {{ Form::label('width', 'Width', ['class' => 'col-sm-2 control-label']) }}
-            <div class="col-sm-3">
-                {{ Form::text('width', null, ['class'=>'form-control', 'placeholder'=>'Width']) }}
+            {{ Form::label('width_ft', 'Width', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-2">
+                <div class="input-group">
+                    {{ Form::text('width_ft', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                    <span class="input-group-addon">ft.</span>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="input-group">
+                    {{ Form::text('width_in', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                    <span class="input-group-addon">in.</span>
+                </div>
             </div>
         </div>
         <div class="form-group">
-            {{ Form::label('depth', 'Depth', ['class' => 'col-sm-2 control-label']) }}
-            <div class="col-sm-3">
-                {{ Form::text('depth', null, ['class'=>'form-control', 'placeholder'=>'Depth']) }}
+            {{ Form::label('depth_ft', 'Depth', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-2">
+                <div class="input-group">
+                    {{ Form::text('depth_ft', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                    <span class="input-group-addon">ft.</span>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="input-group">
+                    {{ Form::text('depth_in', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                    <span class="input-group-addon">in.</span>
+                </div>
             </div>
         </div>
         <div class="form-group">
-            {{ Form::label('height', 'Height', ['class' => 'col-sm-2 control-label']) }}
-            <div class="col-sm-3">
-                {{ Form::text('height', null, ['class'=>'form-control', 'placeholder'=>'Height']) }}
+            {{ Form::label('height_ft', 'Height', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-2">
+                <div class="input-group">
+                    {{ Form::text('height_ft', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                    <span class="input-group-addon">ft.</span>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="input-group">
+                    {{ Form::text('height_in', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                    <span class="input-group-addon">in.</span>
+                </div>
             </div>
         </div>
     </div>
