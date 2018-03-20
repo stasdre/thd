@@ -515,14 +515,14 @@
     <div role="tabpanel" class="tab-pane fade" id="garage-tab">
         <div class="form-group">
             {{ Form::label('car', 'Car', ['class' => 'col-sm-2 control-label']) }}
-            <div class="col-sm-3">
-                {!! Form::select('car', ['1', '2', '3'], null, ['class' => 'form-control']) !!}
+            <div class="col-sm-2">
+                {{ Form::text('car', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
             </div>
         </div>
         <div class="form-group">
             {{ Form::label('car_location', 'Location', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-3">
-                {!! Form::select('car_location', ['1', '2', '3'], null, ['class' => 'form-control']) !!}
+                {!! Form::select('car_location', [''=>'--Select--', '1'=>'front entry', '2'=>'rear entry', '3'=>'side entry'], null, ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group">
@@ -551,21 +551,6 @@
                 <div class="checkbox">
                     <label>
                         {{ Form::checkbox('car_options[]', 'none') }} None
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        {{ Form::checkbox('car_options[]', 'oversized') }} Oversized
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        {{ Form::checkbox('car_options[]', 'rear') }} Rear-entry
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        {{ Form::checkbox('car_options[]', 'side') }} Side-entry
                     </label>
                 </div>
                 <div class="checkbox">
