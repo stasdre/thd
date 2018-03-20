@@ -2,11 +2,14 @@
 
 namespace Thd\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Input;
 use Thd\Http\Requests\StylesRequest;
 use Thd\Style;
 use Illuminate\Http\Request;
 use Thd\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Yajra\Datatables\Datatables;
 
 class StyleController extends Controller
@@ -39,10 +42,44 @@ class StyleController extends Controller
      */
     public function store(StylesRequest $request)
     {
-        $inputs = $request->except('_token');
+        if( $request->input('added-plan') ){
+            $dataPlans = [];
+            $count = 0;
+            foreach ( $request->input('added-plan') as $plan ){
+                $dataPlans[$count]['title'] = Input::get('plan_title.'.$count);
+                $dataPlans[$count]['url'] = Input::get('plan_url.'.$count);
+                $dataPlans[$count]['img_alt'] = Input::get('plan_img_alt.'.$count);
 
-        $style = new Style();
-        $style->fill($inputs);
+                $image = Input::file('plan_img.'.$count);
+                $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
+
+                $path = storage_path('app/public/styles/' . $filename);
+                $pathThumb = storage_path('app/public/styles/thumb/' . $filename);
+
+                $img = Image::make($image->getRealPath())->save($path, 100);
+
+                $imgThumb = Image::make($image->getRealPath());
+                $imgThumb->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $imgThumb->save($pathThumb);
+
+                $dataPlans[$count]['img'] = $filename;
+
+                $count ++;
+            }
+        }
+
+        $style = new Style([
+            'name' => $request->input('name'),
+            'short_name' => $request->input('short_name'),
+            'description' => $request->input('description'),
+            'in_filter' => $request->input('in_filter') == 1 ? 1 : 0,
+            'meta_title' => $request->input('meta_title'),
+            'meta_description' => $request->input('meta_description'),
+            'meta_keywords' => $request->input('meta_keywords'),
+            'plans' => json_encode($dataPlans)
+        ]);
         $style->save();
 
         return redirect()->route('styles.index')
@@ -61,7 +98,11 @@ class StyleController extends Controller
      */
     public function edit(Style $style)
     {
-        return view('admin.style.edit', ['style'=>$style]);
+        $plans = json_decode($style->plans);
+        return view('admin.style.edit', [
+            'style'=>$style,
+            'plans'=>$plans
+        ]);
     }
 
     /**
@@ -73,13 +114,59 @@ class StyleController extends Controller
      */
     public function update(StylesRequest $request, Style $style)
     {
-        $inputs = $request->except(['_method', '_token']);
+        if( $request->input('added-plan') ){
+            $dataPlans = [];
+            $count = 0;
+            foreach ( $request->input('added-plan') as $plan ){
+                $dataPlans[$count]['title'] = Input::get('plan_title.'.$count);
+                $dataPlans[$count]['url'] = Input::get('plan_url.'.$count);
+                $dataPlans[$count]['img_alt'] = Input::get('plan_img_alt.'.$count);
 
-        if(!$request->has('in_filter'))
-            $inputs['in_filter'] = 0;
+                $image = Input::file('plan_img.'.$count);
+                if($image){
+                    $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
 
-        $style->fill($inputs);
+                    $path = storage_path('app/public/styles/' . $filename);
+                    $pathThumb = storage_path('app/public/styles/thumb/' . $filename);
+
+                    $img = Image::make($image->getRealPath())->save($path, 100);
+
+                    $imgThumb = Image::make($image->getRealPath());
+                    $imgThumb->resize(300, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    $imgThumb->save($pathThumb);
+
+                    Storage::delete('public/styles/'.Input::get('plan_img_old.'.$count));
+                    Storage::delete('public/styles/thumb/'.Input::get('plan_img_old.'.$count));
+
+                    $dataPlans[$count]['img'] = $filename;
+                }else{
+                    $dataPlans[$count]['img'] = Input::get('plan_img_old.'.$count);
+                }
+
+                $count ++;
+            }
+        }
+
+        $style->name = $request->input('name');
+        $style->short_name = $request->input('short_name');
+        $style->description = $request->input('description');
+        $style->in_filter = $request->input('in_filter') == 1 ? 1 : 0;
+        $style->meta_title = $request->input('meta_title');
+        $style->meta_description = $request->input('meta_description');
+        $style->meta_keywords = $request->input('meta_keywords');
+        $style->plans = json_encode($dataPlans);
+
         $style->update();
+
+        if( strlen($request->input('deleted_img')) ){
+            $deletedImages = explode(",", substr($request->input('deleted_img'), 0, -1));
+            foreach ( $deletedImages as $img ){
+                Storage::delete('public/styles/'.$img);
+                Storage::delete('public/styles/thumb/'.$img);
+            }
+        }
 
         return redirect()->route('styles.index')
             ->with('message', [
@@ -98,6 +185,13 @@ class StyleController extends Controller
      */
     public function destroy(Style $style)
     {
+        $plans = json_decode($style->plans);
+        if(count($plans)){
+            foreach ($plans as $plan){
+                Storage::delete('public/styles/'.$plan->img);
+                Storage::delete('public/styles/thumb/'.$plan->img);
+            }
+        }
         $style->delete();
 
         return redirect()->route('styles.index')

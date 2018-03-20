@@ -6,6 +6,8 @@
 
 @section('content')
     <div class="box box-default">
+        <div class="box-header with-border">
+        </div>
         @include('admin.collection._form')
     </div>
 @endsection
