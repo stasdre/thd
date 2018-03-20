@@ -11,7 +11,7 @@
     <li role="presentation"><a href="#construction" aria-controls="construction" role="tab" data-toggle="tab">Construction</a></li>
     <li role="presentation"><a href="#ceiling" aria-controls="ceiling" role="tab" data-toggle="tab">Ceiling</a></li>
     <li role="presentation"><a href="#roof" aria-controls="roof" role="tab" data-toggle="tab">Roof</a></li>
-    <li role="presentation"><a href="#insulation" aria-controls="insulation" role="tab" data-toggle="tab">Insulation</a></li>
+    <!--<li role="presentation"><a href="#insulation" aria-controls="insulation" role="tab" data-toggle="tab">Insulation</a></li>-->
     <li role="presentation"><a href="#garage-tab" aria-controls="garage-tab" role="tab" data-toggle="tab">Garage</a></li>
     <li role="presentation"><a href="#arch" aria-controls="arch" role="tab" data-toggle="tab">Styles/Collections</a></li>
 </ul>
@@ -477,7 +477,7 @@
         </div>
 -->
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="insulation">
+    <!--<div role="tabpanel" class="tab-pane fade" id="insulation">
         <div class="form-group">
             {{ Form::label('ext_wall', 'Exterior Wall', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-3">
@@ -511,7 +511,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <div role="tabpanel" class="tab-pane fade" id="garage-tab">
         <div class="form-group">
             {{ Form::label('car', 'Car', ['class' => 'col-sm-2 control-label']) }}
