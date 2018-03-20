@@ -130,6 +130,19 @@
                     $("#id").val(data.id);
                     $("#title").val(data.title);
                     $("#description").val(data.description);
+
+                    if(data.first_image == 1){
+                        $("#first_image").prop('checked', true);
+                    }else{
+                        $("#first_image").prop('checked', false);
+                    }
+
+                    if(data.for_search == 1){
+                        $("#for_search").prop('checked', true);
+                    }else{
+                        $("#for_search").prop('checked', false);
+                    }
+
                 },
                 error: function(){
                     $("#spin_load").hide();
@@ -147,7 +160,7 @@
                 method: 'put',
                 url: url.replace('image_id', id),
                 dataType: 'json',
-                data: {title: $("#title").val(), description: $("#description").val()},
+                data: {title: $("#title").val(), description: $("#description").val(), first_image: $("#first_image").prop('checked') ? 1 : 0, for_search: $("#for_search").prop('checked') ? 1 : 0},
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
@@ -225,15 +238,33 @@
                     {{ Form::open(['class' => 'form-horizontal']) }}
                     {{ Form::hidden('id', null, ['id'=>'id']) }}
                     <div class="form-group">
-                        {{ Form::label('title', 'Title', ['class' => 'col-sm-2 control-label']) }}
+                        {{ Form::label('title', 'Image Name', ['class' => 'col-sm-3 control-label']) }}
                         <div class="col-sm-6">
-                            {{ Form::text('title', null, ['class'=>'form-control', 'placeholder'=>'Title']) }}
+                            {{ Form::text('title', null, ['class'=>'form-control', 'placeholder'=>'Enter image name here']) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        {{ Form::label('description', 'Description', ['class' => 'col-sm-2 control-label']) }}
-                        <div class="col-sm-10">
+                        {{ Form::label('description', 'Description', ['class' => 'col-sm-3 control-label']) }}
+                        <div class="col-sm-9">
                             {{ Form::textarea('description', null, ['class'=>'form-control']) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="first_image" id="first_image" value="1"> First image in the slideshow
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="for_search" id="for_search" value="1"> Search results page
+                                </label>
+                            </div>
                         </div>
                     </div>
                     {!! Form::close() !!}

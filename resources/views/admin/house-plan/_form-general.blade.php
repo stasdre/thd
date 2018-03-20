@@ -11,7 +11,7 @@
     <li role="presentation"><a href="#construction" aria-controls="construction" role="tab" data-toggle="tab">Construction</a></li>
     <li role="presentation"><a href="#ceiling" aria-controls="ceiling" role="tab" data-toggle="tab">Ceiling</a></li>
     <li role="presentation"><a href="#roof" aria-controls="roof" role="tab" data-toggle="tab">Roof</a></li>
-    <li role="presentation"><a href="#insulation" aria-controls="insulation" role="tab" data-toggle="tab">Insulation</a></li>
+    <!--<li role="presentation"><a href="#insulation" aria-controls="insulation" role="tab" data-toggle="tab">Insulation</a></li>-->
     <li role="presentation"><a href="#garage-tab" aria-controls="garage-tab" role="tab" data-toggle="tab">Garage</a></li>
     <li role="presentation"><a href="#arch" aria-controls="arch" role="tab" data-toggle="tab">Styles/Collections</a></li>
 </ul>
@@ -183,25 +183,52 @@
         <div class="form-group">
             {{ Form::label('stories', 'Stories', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-2">
-                {!! Form::select('stories', ['1', '2', '3', '4'], null, ['class' => 'form-control']) !!}
+                {!! Form::select('stories', ['1', '1.5', '2', '3', '4'], null, ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group">
-            {{ Form::label('width', 'Width', ['class' => 'col-sm-2 control-label']) }}
-            <div class="col-sm-3">
-                {{ Form::text('width', null, ['class'=>'form-control', 'placeholder'=>'Width']) }}
+            {{ Form::label('width_ft', 'Width', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-2">
+                <div class="input-group">
+                    {{ Form::text('width_ft', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                    <span class="input-group-addon">ft.</span>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="input-group">
+                    {{ Form::text('width_in', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                    <span class="input-group-addon">in.</span>
+                </div>
             </div>
         </div>
         <div class="form-group">
-            {{ Form::label('depth', 'Depth', ['class' => 'col-sm-2 control-label']) }}
-            <div class="col-sm-3">
-                {{ Form::text('depth', null, ['class'=>'form-control', 'placeholder'=>'Depth']) }}
+            {{ Form::label('depth_ft', 'Depth', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-2">
+                <div class="input-group">
+                    {{ Form::text('depth_ft', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                    <span class="input-group-addon">ft.</span>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="input-group">
+                    {{ Form::text('depth_in', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                    <span class="input-group-addon">in.</span>
+                </div>
             </div>
         </div>
         <div class="form-group">
-            {{ Form::label('height', 'Height', ['class' => 'col-sm-2 control-label']) }}
-            <div class="col-sm-3">
-                {{ Form::text('height', null, ['class'=>'form-control', 'placeholder'=>'Height']) }}
+            {{ Form::label('height_ft', 'Height', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-2">
+                <div class="input-group">
+                    {{ Form::text('height_ft', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                    <span class="input-group-addon">ft.</span>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="input-group">
+                    {{ Form::text('height_in', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                    <span class="input-group-addon">in.</span>
+                </div>
             </div>
         </div>
     </div>
@@ -369,8 +396,27 @@
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            {{ Form::label('celing_3_floor', '3rd Floor', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-2">
+                <div class="input-group">
+                    {{ Form::text('celing_3_floor', null, ['class'=>'form-control']) }}
+                    <span class="input-group-addon">ft.</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            {{ Form::label('celing_lower_floor', 'Lower Level', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-2">
+                <div class="input-group">
+                    {{ Form::text('celing_lower_floor', null, ['class'=>'form-control']) }}
+                    <span class="input-group-addon">ft.</span>
+                </div>
+            </div>
+        </div>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="roof">
+<!--
         <h3 class="text-center">Roof Load</h3>
         <div class="form-group">
             {{ Form::label('live', 'Live', ['class' => 'col-sm-2 control-label']) }}
@@ -390,6 +436,7 @@
                 {{ Form::text('max_wind', null, ['class'=>'form-control']) }}
             </div>
         </div>
+-->
         <h3 class="text-center">Roof Pitch</h3>
         <div class="form-group">
             {{ Form::label('primary', 'Primary', ['class' => 'col-sm-2 control-label']) }}
@@ -403,6 +450,7 @@
                 {{ Form::text('secondary', null, ['class'=>'form-control']) }}
             </div>
         </div>
+<!--
         <div class="form-group">
             {{ Form::label('ternary', 'Ternary', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-3">
@@ -427,8 +475,9 @@
                 {{ Form::text('porch', null, ['class'=>'form-control']) }}
             </div>
         </div>
+-->
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="insulation">
+    <!--<div role="tabpanel" class="tab-pane fade" id="insulation">
         <div class="form-group">
             {{ Form::label('ext_wall', 'Exterior Wall', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-3">
@@ -462,18 +511,18 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <div role="tabpanel" class="tab-pane fade" id="garage-tab">
         <div class="form-group">
             {{ Form::label('car', 'Car', ['class' => 'col-sm-2 control-label']) }}
-            <div class="col-sm-3">
-                {!! Form::select('car', ['1', '2', '3'], null, ['class' => 'form-control']) !!}
+            <div class="col-sm-2">
+                {{ Form::text('car', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
             </div>
         </div>
         <div class="form-group">
             {{ Form::label('car_location', 'Location', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-3">
-                {!! Form::select('car_location', ['1', '2', '3'], null, ['class' => 'form-control']) !!}
+                {!! Form::select('car_location', [''=>'--Select--', '1'=>'front entry', '2'=>'rear entry', '3'=>'side entry'], null, ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group">
@@ -502,21 +551,6 @@
                 <div class="checkbox">
                     <label>
                         {{ Form::checkbox('car_options[]', 'none') }} None
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        {{ Form::checkbox('car_options[]', 'oversized') }} Oversized
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        {{ Form::checkbox('car_options[]', 'rear') }} Rear-entry
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        {{ Form::checkbox('car_options[]', 'side') }} Side-entry
                     </label>
                 </div>
                 <div class="checkbox">
