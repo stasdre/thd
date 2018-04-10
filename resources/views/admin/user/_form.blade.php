@@ -25,9 +25,9 @@
     <hr>
     <h4>Enter Contact</h4>
     <div class="form-group">
-        {{ Form::label('first_name', 'First Name', ['class' => 'col-sm-2 control-label']) }}
+        {{ Form::label('name', 'First Name', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-4">
-            {{ Form::text('first_name', null, ['class'=>'form-control', 'placeholder'=>'First Name']) }}
+            {{ Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'First Name']) }}
         </div>
     </div>
     <div class="form-group">
@@ -36,7 +36,7 @@
             {{ Form::text('last_name', null, ['class'=>'form-control', 'placeholder'=>'Last Name']) }}
         </div>
     </div>
-    <div class="form-group hidden" id="company-input">
+    <div class="form-group {{ old('role_user') == 3 || old('role_user') == 4 ? '' : 'hidden' }}" id="company-input">
         {{ Form::label('company', 'Company', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-4">
             {{ Form::text('company', null, ['class'=>'form-control', 'placeholder'=>'Company']) }}
@@ -117,7 +117,8 @@
     $(function(){
        $("#role-select").on('change', function(){
           if( $(this).val() == '3' || $(this).val() == '4' ){
-              $("#company-input").removeClass('hidden');
+              $("#company-input").removeClass('hidden')
+              $("#company").val('');
           }else{
               $("#company-input").addClass('hidden');
           }

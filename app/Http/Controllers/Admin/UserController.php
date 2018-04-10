@@ -5,9 +5,11 @@ namespace Thd\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Thd\Http\Controllers\Controller;
+use Thd\Http\Requests\UserRequest;
 use Thd\Role;
 
 use PragmaRX\Countries\Package\Countries;
+use Thd\User;
 
 class UserController extends Controller
 {
@@ -52,9 +54,24 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        $inputs = $request->except('_token', 'role_user');
+        $inputs['password'] = bcrypt(str_random(8));
+        dump($inputs);
+
+        $user = new User();
+        $user->fill($inputs);
+        $user->save();
+
+        $user->roles()->attach($request->input('role_user'));
+
+        return redirect()->route('user.index')
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$user->name.' was added',
+                'autoHide'=>1]);
     }
 
     /**
