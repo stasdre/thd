@@ -125,3 +125,19 @@ Breadcrumbs::register('about-david', function ($breadcrumbs) {
     $breadcrumbs->parent('dashboard');
     $breadcrumbs->push('About David E. Wiggins', route('about-david.edit'));
 });
+
+// Users
+Breadcrumbs::register('user', function ($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push('Users', route('user.index'));
+});
+
+Breadcrumbs::register('user-create', function ($breadcrumbs) {
+    $breadcrumbs->parent('user');
+    $breadcrumbs->push('Create New User', route('user.create'));
+});
+
+Breadcrumbs::register('user-edit', function ($breadcrumbs, $user) {
+    $breadcrumbs->parent('user');
+    $breadcrumbs->push('Edit '.$user->name, route('user.edit', ['collection'=>$user->id]));
+});

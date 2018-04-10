@@ -63,6 +63,7 @@ Route::prefix('admin-thd')->group(function(){
         Route::post('about-david/update', 'Admin\AboutDavidController@update')->name('about-david.update');
 
         Route::resource('user', 'Admin\UserController', ['except'=>['show']]);
+        Route::get('user/data', 'Admin\UserController@anyData')->name('user.data');
 
         Route::post('admin-thd/get-state', 'Admin\DashboardController@getCountryState')->name('getCountryState');
     });

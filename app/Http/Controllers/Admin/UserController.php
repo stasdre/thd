@@ -10,6 +10,7 @@ use Thd\Role;
 
 use PragmaRX\Countries\Package\Countries;
 use Thd\User;
+use Yajra\Datatables\Datatables;
 
 class UserController extends Controller
 {
@@ -20,7 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.user.index');
     }
 
     /**
@@ -118,4 +119,26 @@ class UserController extends Controller
     {
         //
     }
+
+    /**
+     * Process datatables ajax request.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function anyData()
+    {
+        $users = User::with('roles')->select('users.*');
+        return Datatables::of($users)
+            ->addColumn('actions', function($user){
+                return '<a class="btn btn-info btn-sm" href="'.route('user.edit', ['user'=>$user->id]).'" role="button">Edit</a> <form style="display: inline-block" action="'.route('user.destroy', ['user'=>$user->id]).'" method="POST"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'"><button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
+            })
+            ->addColumn('role', function (User $user) {
+                return $user->roles->map(function($role) {
+                    return $role->display_name;
+                })->implode('<br>');
+            })
+            ->rawColumns(['role', 'actions'])
+            ->make(true);
+    }
+
 }
