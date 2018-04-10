@@ -77,19 +77,13 @@
     <div class="form-group">
         {{ Form::label('country', 'Country', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-4">
-            {!! Form::select('country', $roles, 5, ['class' => 'form-control', 'id' => 'country-select']) !!}
+            {!! Form::select('country', $countries, 'USA', ['class' => 'form-control', 'id' => 'country-select']) !!}
         </div>
     </div>
     <div class="form-group">
         {{ Form::label('state', 'State', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-4">
-            {!! Form::select('state', $roles, 5, ['class' => 'form-control', 'id' => 'state-select']) !!}
-        </div>
-    </div>
-    <div class="form-group">
-        {{ Form::label('other_state', 'State', ['class' => 'col-sm-2 control-label']) }}
-        <div class="col-sm-4">
-            {{ Form::text('other_state', null, ['class'=>'form-control', 'placeholder'=>'State']) }}
+            {!! Form::select('state', $states, null, ['class' => 'form-control', 'id' => 'state-select']) !!}
         </div>
     </div>
     <div class="form-group">
@@ -110,13 +104,6 @@
             {{ Form::text('address_2', null, ['class'=>'form-control', 'placeholder'=>'Address Line 2']) }}
         </div>
     </div>
-    <div class="form-group">
-        {{ Form::label('email', 'Email', ['class' => 'col-sm-2 control-label']) }}
-        <div class="col-sm-4">
-            {{ Form::text('email', null, ['class'=>'form-control', 'placeholder'=>'Email']) }}
-        </div>
-    </div>
-
 </div>
 <div class="box-footer">
     {{ link_to_route('styles.index', 'Cancel', [], ['class'=>'btn btn-default', 'role'=>'button']) }}
@@ -134,6 +121,28 @@
           }else{
               $("#company-input").addClass('hidden');
           }
+       });
+
+       $('#country-select').on('change', function(){
+          $.ajax({
+              dataType: 'json',
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+              type: 'post',
+              data: {country: $("#country-select").val()},
+              url: '{{ route('getCountryState') }}',
+              beforeSend: function(){
+                  $("#state-select").prop('disabled', true);
+                  $("#state-select").empty();
+              },
+              success: function(data){
+                $.each( data, function( key, value ) {
+                    $("#state-select").append('<option value="'+key+'">'+value+'</option>');
+                });
+                  $("#state-select").prop('disabled', false);
+              }
+          })
        });
     });
 </script>

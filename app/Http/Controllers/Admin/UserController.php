@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Thd\Http\Controllers\Controller;
 use Thd\Role;
 
+use PragmaRX\Countries\Package\Countries;
+
 class UserController extends Controller
 {
     /**
@@ -35,8 +37,12 @@ class UserController extends Controller
             unset($roles[2]);
         }
 
+        $countries = new Countries();
+
         return view('admin.user.create',[
-            'roles' => $roles
+            'roles' => $roles,
+            'countries' => $countries->all()->sortBy('name.common')->pluck('name.common', 'iso_a3'),
+            'states' => $countries->where('cca3', 'USA')->first()->hydrateStates()->states->pluck('name', 'postal')
         ]);
     }
 
