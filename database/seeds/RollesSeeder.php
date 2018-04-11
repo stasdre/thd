@@ -25,6 +25,27 @@ class RollesSeeder extends Seeder
                 'display_name'=>'User Administrator',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'id'=>3,
+                'name'=>'designer',
+                'display_name'=>'Designers Administration',
+                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'id'=>4,
+                'name'=>'designer_partner',
+                'display_name'=>'Design Partner Administration',
+                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'id'=>5,
+                'name'=>'customer',
+                'display_name'=>'Customer',
+                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ]
         ]);
 
