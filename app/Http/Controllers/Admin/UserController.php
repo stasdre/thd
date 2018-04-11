@@ -75,16 +75,6 @@ class UserController extends Controller
                 'autoHide'=>1]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -92,9 +82,28 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $userAuth = Auth::user();
+        $roles = Role::orderBy('display_name')->pluck('display_name', 'id')->toArray();
+
+        if(!$userAuth->hasRole('owner')){
+            unset($roles[1]);
+        }elseif(!$userAuth->hasRole('admin')){
+            unset($roles[2]);
+        }
+
+        $user->load('roles');
+
+        $countries = new Countries();
+
+        return view('admin.user.edit', [
+            'user'=>$user,
+            'roles' => $roles,
+            'selected_role' => $user->roles[0]->id,
+            'countries' => $countries->all()->sortBy('name.common')->pluck('name.common', 'iso_a3'),
+            'states' => $countries->where('cca3', old('country') ? old('country') : $user->country)->first()->hydrateStates()->states->pluck('name', 'postal')
+        ]);
     }
 
     /**
@@ -104,9 +113,22 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, User $user)
     {
-        //
+        $inputs = $request->except('_token', 'role_user');
+
+        $user->fill($inputs);
+        $user->update();
+
+        $user->roles()->sync([$request->input('role_user')]);
+
+        return redirect()->route('user.index')
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$user->name.' was updated',
+                'autoHide'=>1]);
+
     }
 
     /**
@@ -115,9 +137,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('user.index')
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$user->name.' was deleted',
+                'autoHide'=>1]);
     }
 
     /**

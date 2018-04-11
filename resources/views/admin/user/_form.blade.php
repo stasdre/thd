@@ -19,7 +19,7 @@
     <div class="form-group">
         {{ Form::label('role_user', 'User Role', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-4">
-            {!! Form::select('role_user', $roles, 5, ['class' => 'form-control', 'id' => 'role-select']) !!}
+            {!! Form::select('role_user', $roles, isset($selected_role) ? $selected_role : 5, ['class' => 'form-control', 'id' => 'role-select']) !!}
         </div>
     </div>
     <hr>
@@ -36,12 +36,22 @@
             {{ Form::text('last_name', null, ['class'=>'form-control', 'placeholder'=>'Last Name']) }}
         </div>
     </div>
-    <div class="form-group {{ old('role_user') == 3 || old('role_user') == 4 ? '' : 'hidden' }}" id="company-input">
-        {{ Form::label('company', 'Company', ['class' => 'col-sm-2 control-label']) }}
-        <div class="col-sm-4">
-            {{ Form::text('company', null, ['class'=>'form-control', 'placeholder'=>'Company']) }}
+    @if( old('role_user') )
+        <div class="form-group {{ ( old('role_user') == 3 || old('role_user') == 4 ) ? '' : 'hidden' }}" id="company-input">
+            {{ Form::label('company', 'Company', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-4">
+                {{ Form::text('company', null, ['class'=>'form-control', 'placeholder'=>'Company']) }}
+            </div>
         </div>
-    </div>
+    @elseif( isset($selected_role) )
+        <div class="form-group {{ ( $selected_role == 3 || $selected_role == 4 ) ? '' : 'hidden' }}" id="company-input">
+            {{ Form::label('company', 'Company', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-4">
+                {{ Form::text('company', null, ['class'=>'form-control', 'placeholder'=>'Company']) }}
+            </div>
+        </div>
+    @endif
+
     <div class="form-group">
         {{ Form::label('phone', 'Phone', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-4">
