@@ -29,4 +29,14 @@ class Plan extends Model
     {
         return $this->hasMany('Thd\PlanImage');
     }
+
+    public function getLabelAttribute()
+    {
+        return "{$this->id}:{$this->name}";
+    }
+
+    public function getValueAttribute()
+    {
+        return "{$this->id}";
+    }
 }

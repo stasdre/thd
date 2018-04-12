@@ -12,6 +12,7 @@ use Thd\Http\Controllers\Controller;
 use Thd\Http\Requests\PlansRequest;
 use Thd\Style;
 use Thd\Plan;
+use Thd\User;
 
 class HousePlansController extends Controller
 {
@@ -34,10 +35,14 @@ class HousePlansController extends Controller
     {
         $styles = Style::orderBy('name')->get();
         $collections = Collection::orderBy('name')->get();
+        $designAdmin = User::withRole('designer')->get()->pluck('full_name_width_email', 'id');
+        $designPartner = User::withRole('designer_partner')->get()->pluck('full_name_width_email', 'id');
 
         return view('admin.house-plan.create')
             ->with('styles', $styles)
-            ->with('collections', $collections);
+            ->with('collections', $collections)
+            ->with('designAdmin', $designAdmin)
+            ->with('designPartner', $designPartner);
     }
 
     /**
@@ -168,5 +173,24 @@ class HousePlansController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getPlanID($str)
+    {
+        $plans = Plan::where('name', 'like', '%'.$str.'%')
+            ->orWhere('id', 'like', '%'.$str.'%')
+            ->orWhere('plan_number', 'like', '%'.$str.'%')
+            ->get();
+        $responseData = [];
+        if($plans){
+            foreach ($plans as $plan){
+                $responseData[] = [
+                    'id' => $plan->plan_number,
+                    'label' => $plan->plan_number.':'.$plan->name,
+                    'value' => $plan->plan_number
+                ];
+            }
+        }
+        return response()->json($responseData);
     }
 }
