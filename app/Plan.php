@@ -70,4 +70,15 @@ class Plan extends Model
     {
         return "{$this->id}";
     }
+
+    public function getDesignerPartnerAttribute()
+    {
+        return $this->designer == 'designer_partner' ? $this->designer_id : '';
+    }
+
+    public function getDesignerAdminAttribute()
+    {
+        return $this->designer == 'designer' ? $this->designer_id : '';
+    }
+
 }

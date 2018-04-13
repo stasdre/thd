@@ -53,7 +53,7 @@ class HousePlansController extends Controller
      */
     public function store(PlansRequest $request)
     {
-        $dataPlan = $inputs = $request->except('_method', '_token', 'style_id', 'collection_id');
+        $dataPlan = $request->except('_method', '_token', 'style_id', 'collection_id');
         $dataPlan['designer_id'] = $request->input('designer') == 'designer' ? $request->input('designer_admin') : $request->input('designer_partner');
         $stylesData = $request->get('style_id');
         $collectionsData = $request->get('collection_id');
@@ -117,13 +117,15 @@ class HousePlansController extends Controller
     {
         $styles = Style::orderBy('name')->get();
         $collections = Collection::orderBy('name')->get();
+        $designAdmin = User::withRole('designer')->get()->pluck('full_name_width_email', 'id');
+        $designPartner = User::withRole('designer_partner')->get()->pluck('full_name_width_email', 'id');
 
-        //$house_plan->loadMissing('styles');
-        //print_r($house_plan->styles);
         return view('admin.house-plan.edit', [
             'plan'=>$house_plan,
             'styles'=>$styles,
-            'collections'=>$collections
+            'collections'=>$collections,
+            'designAdmin' => $designAdmin,
+            'designPartner' => $designPartner
         ]);
     }
 
@@ -136,13 +138,26 @@ class HousePlansController extends Controller
      */
     public function update(PlansRequest $request, Plan $house_plan)
     {
-        $inputs = $request->except(['_method', '_token', 'style_id', 'collection_id']);
+        $dataPlan = $request->except('_method', '_token', 'style_id', 'collection_id');
+        $dataPlan['designer_id'] = $request->input('designer') == 'designer' ? $request->input('designer_admin') : $request->input('designer_partner');
+        $stylesData = $request->get('style_id');
+        $collectionsData = $request->get('collection_id');
 
-        //$house_plan->fill($inputs);
-        $house_plan->update();
+        try {
+            DB::beginTransaction();
 
-        //$house_plan->styles()->sync($request->input('style_id'));
-        //$house_plan->collections()->sync($request->input('collection_id'));
+            $house_plan->fill($dataPlan);
+            $house_plan->update();
+
+            $house_plan->styles()->sync(array_flatten($stylesData));
+            $house_plan->collections()->sync(array_flatten($collectionsData));
+
+            DB::commit();
+        }catch(\Exception $e){
+            DB::rollback();
+
+            throw $e;
+        }
 
 
         if( $request->input('redirect') == 'next' ){

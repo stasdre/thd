@@ -46,6 +46,24 @@
                     </div>
                 </div>
             </div>
+        @elseif( isset($plan->designer) )
+            <div id="designer-select" {!! ($plan->designer == 'designer_partner') ? 'style="display: none;"' : '' !!}>
+                <div class="form-group {{ $errors->has('designer_admin') ? 'has-error' : '' }}">
+                    {{ Form::label('designer_admin', 'Designer', ['class' => 'col-sm-2 control-label']) }}
+                    <div class="col-sm-6">
+                        {!! Form::select('designer_admin', $designAdmin, null, ['class' => 'form-control', 'placeholder' => 'Select designer...']) !!}
+                    </div>
+                </div>
+            </div>
+
+            <div id="designer-partner-select" {!! ($plan->designer == 'designer') ? 'style="display: none;"' : '' !!}>
+                <div class="form-group {{ $errors->has('designer_partner') ? 'has-error' : '' }}">
+                    {{ Form::label('designer_partner', 'Designer Partner', ['class' => 'col-sm-2 control-label']) }}
+                    <div class="col-sm-6">
+                        {!! Form::select('designer_partner', $designPartner, null, ['class' => 'form-control', 'placeholder' => 'Select designer...']) !!}
+                    </div>
+                </div>
+            </div>
         @else
             <div id="designer-select">
                 <div class="form-group">
@@ -188,6 +206,26 @@
     <div role="tabpanel" class="tab-pane fade" id="similar">
         @if( old('similar') )
             @foreach( old('similar') as $n => $similar)
+                <div class="form-group {{ $errors->has('similar.'.$n) ? 'has-error' : '' }}">
+                    <div class="col-sm-offset-1 col-sm-2">
+                        <div class="input-group">
+                            <span class="input-group-addon">#{{ $loop->iteration }}</span>
+                            <div class="ui-widget">
+                                {{ Form::text('similar['.$n.']', null, ['class'=>'form-control ui-autocomplete-input', 'autocomplete'=>'off']) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        @if($n == 0)
+                            <i id="similar-add-icon" class="fa fa-plus-circle fa-lg click-icon green-icon"></i>
+                        @else
+                            <i class="fa fa-minus-circle fa-lg similar-rem-icon click-icon red-icon"></i>
+                        @endif
+                    </div>
+                </div>
+            @endforeach
+        @elseif( isset($plan->similar) )
+            @foreach( $plan->similar as $n => $similar)
                 <div class="form-group {{ $errors->has('similar.'.$n) ? 'has-error' : '' }}">
                     <div class="col-sm-offset-1 col-sm-2">
                         <div class="input-group">
@@ -357,6 +395,28 @@
         <div id="custom-sq">
             @if( old('custom_desc_sq') )
                 @foreach( old('custom_desc_sq') as $n => $custom )
+                    <div class="form-group">
+                        <input type="hidden" name="custom_desc_sq[{{$n}}]" value="1">
+                        <div class="col-sm-offset-1 col-sm-2 {{ $errors->has('custom_desc.'.$n) ? 'has-error' : '' }}">
+                            <div class="input-group">
+                                <span class="input-group-addon">#{{$loop->iteration}}</span>
+                                {{ Form::text('custom__sq_ft[custom_desc]['.$n.']', null, ['class'=>'form-control']) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-2 {{ $errors->has('custom_sq.'.$n) ? 'has-error' : '' }}">
+                            {{ Form::text('custom__sq_ft[custom_sq]['.$n.']', null, ['class'=>'form-control']) }}
+                        </div>
+                        <div class="col-sm-2">
+                            @if( $n == 0 )
+                                <i id="custom-add-icon" class="fa fa-plus-circle fa-lg click-icon green-icon"></i>
+                            @else
+                                <i class="fa fa-minus-circle fa-lg custom-rem-icon click-icon red-icon"></i>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+            @elseif( isset($plan->custom__sq_ft['custom_sq']) )
+                @foreach( $plan->custom__sq_ft['custom_sq'] as $n => $custom )
                     <div class="form-group">
                         <input type="hidden" name="custom_desc_sq[{{$n}}]" value="1">
                         <div class="col-sm-offset-1 col-sm-2 {{ $errors->has('custom_desc.'.$n) ? 'has-error' : '' }}">
@@ -566,7 +626,11 @@
             <div class="form-group {{ $errors->has('style_id.'.$style->id) ? 'has-error' : '' }}">
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('style_id['.$style->id.']', $style->id) }} {{ $style->short_name }}
+                        @if( isset($plan) )
+                            {{ Form::checkbox('style_id['.$style->id.']', $style->id, $plan->styles->contains($style->id)) }} {{ $style->short_name }}
+                        @else
+                            {{ Form::checkbox('style_id['.$style->id.']', $style->id) }} {{ $style->short_name }}
+                        @endif
                     </label>
                 </div>
             </div>
@@ -591,10 +655,14 @@
                     <div class="col-sm-offset-2 col-sm-3">
                 @endif
 
-                <div class="form-group {{ $errors->has('collection_id.'.$style->id) ? 'has-error' : '' }}">
+                <div class="form-group {{ $errors->has('collection_id.'.$collection->id) ? 'has-error' : '' }}">
                     <div class="checkbox">
                         <label>
-                            {{ Form::checkbox('collection_id['.$collection->id.']', $collection->id) }} {{ $collection->short_name }}
+                            @if( isset($plan) )
+                                {{ Form::checkbox('collection_id['.$collection->id.']', $collection->id, $plan->collections->contains($collection->id)) }} {{ $collection->short_name }}
+                            @else
+                                {{ Form::checkbox('collection_id['.$collection->id.']', $collection->id) }} {{ $collection->short_name }}
+                            @endif
                         </label>
                     </div>
                 </div>
