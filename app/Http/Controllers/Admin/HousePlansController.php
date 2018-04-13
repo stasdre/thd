@@ -53,23 +53,21 @@ class HousePlansController extends Controller
      */
     public function store(PlansRequest $request)
     {
-        $dataPlan = $request->except(['_token', 'style_id', 'collection_id']);
+        $dataPlan = $inputs = $request->except('_method', '_token', 'style_id', 'collection_id');
+        $dataPlan['designer_id'] = $request->input('designer') == 'designer' ? $request->input('designer_admin') : $request->input('designer_partner');
         $stylesData = $request->get('style_id');
         $collectionsData = $request->get('collection_id');
 
         try {
             DB::beginTransaction();
 
-            $plan = new Plan([
-                'name' => $request->input('name'),
-                'plan_number' => $request->input('plan_number')
-            ]);
+            $plan = new Plan();
             $plan->user()->associate(Auth::user());
-            //$plan->fill($dataPlan);
+            $plan->fill($dataPlan);
             $plan->save();
 
-//            $plan->styles()->attach(array_flatten($stylesData));
-//            $plan->collections()->attach(array_flatten($collectionsData));
+            $plan->styles()->attach(array_flatten($stylesData));
+            $plan->collections()->attach(array_flatten($collectionsData));
 
             DB::commit();
         }catch(\Exception $e){

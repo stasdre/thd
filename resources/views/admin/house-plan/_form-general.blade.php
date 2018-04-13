@@ -94,93 +94,93 @@
         </div>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="details">
-        <div class="form-group {{ $errors->has('type_structure') ? 'has-error' : '' }}">
-            {{ Form::label('type_structure', 'Type of Structure', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('details.type_structure') ? 'has-error' : '' }}">
+            {{ Form::label('details[type_structure]', 'Type of Structure', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-6">
-                {!! Form::select('type_structure', ['single'=>'Single', 'duplex'=>'Duplex', 'multifamily'=>'Multifamily', 'garage'=>'Garage'], null, ['class' => 'form-control', 'placeholder' => 'Select a Structure...']) !!}
+                {!! Form::select('details[type_structure]', ['single'=>'Single', 'duplex'=>'Duplex', 'multifamily'=>'Multifamily', 'garage'=>'Garage'], null, ['class' => 'form-control', 'placeholder' => 'Select a Structure...']) !!}
             </div>
         </div>
 
-        <div class="form-group {{ $errors->has('copyright') ? 'has-error' : '' }}">
-            {{ Form::label('copyright', 'Copyright date', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('details.copyright') ? 'has-error' : '' }}">
+            {{ Form::label("details[copyright]", 'Copyright date', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-2">
                 <div class="input-group">
-                    {{ Form::text('copyright', null, ['class'=>'form-control datepicker', 'placeholder'=>'Copyright date']) }}
+                    {{ Form::text("details[copyright]", null, ['class'=>'form-control datepicker', 'placeholder'=>'Copyright date']) }}
                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                 </div>
             </div>
         </div>
 
-        <div class="form-group {{ $errors->has('bonus_access') ? 'has-error' : '' }}">
-            {{ Form::label('bonus_access', 'Bonus Access', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('details.bonus_access') ? 'has-error' : '' }}">
+            {{ Form::label('details[bonus_access]', 'Bonus Access', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-6">
-                {!! Form::select('bonus_access', ['Option 1', 'Option 2'], null, ['class' => 'form-control', 'placeholder' => 'Select a Bonus Access...']) !!}
+                {!! Form::select('details[bonus_access]', ['Option 1', 'Option 2'], null, ['class' => 'form-control', 'placeholder' => 'Select a Bonus Access...']) !!}
             </div>
         </div>
 
-        <div class="form-group {{ $errors->has('lot_char') ? 'has-error' : '' }}">
+        <div class="form-group {{ $errors->has('details.lot_char') ? 'has-error' : '' }}">
             {{ Form::label('', 'Lot Characteristics', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-6">
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('lot_char[]', 'corner') }} Sulted for corner lot
+                        {{ Form::checkbox('details[lot_char][]', 'corner') }} Sulted for corner lot
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('lot_char[]', 'narrow') }} Sulted for narrow lot
+                        {{ Form::checkbox('details[lot_char][]', 'narrow') }} Sulted for narrow lot
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('lot_char[]', 'sloping') }} Sulted for sloping lot
+                        {{ Form::checkbox('details[lot_char][]', 'sloping') }} Sulted for sloping lot
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('lot_char[]', 'view') }} Sulted for view lot
+                        {{ Form::checkbox('details[lot_char][]', 'view') }} Sulted for view lot
                     </label>
                 </div>
             </div>
         </div>
 
-        <div class="form-group {{ $errors->has('lot_siope') ? 'has-error' : '' }}">
-            {{ Form::label('lot_siope', 'Lot Siope', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('details.lot_siope') ? 'has-error' : '' }}">
+            {{ Form::label('details[lot_siope]', 'Lot Siope', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-6">
-                {!! Form::select('lot_siope', ['1'=>'1', '2'=>'2', '3'=>'3'], null, ['class' => 'form-control', 'placeholder' => 'Select a Lot Siope...']) !!}
+                {!! Form::select('details[lot_siope]', ['1'=>'1', '2'=>'2', '3'=>'3'], null, ['class' => 'form-control', 'placeholder' => 'Select a Lot Siope...']) !!}
             </div>
         </div>
 
     </div>
     <div role="tabpanel" class="tab-pane fade" id="rooms">
-        <div class="form-group {{ $errors->has('r_master') ? 'has-error' : '' }}">
-            {{ Form::label('r_master', 'Master', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('rooms.r_master') ? 'has-error' : '' }}">
+            {{ Form::label('rooms[r_master]', 'Master', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-2">
                 <div class="input-group">
-                    {!! Form::select('r_master', ['1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4'], null, ['class' => 'form-control', 'placeholder' => 'Select a Master...']) !!}
+                    {!! Form::select('rooms[r_master]', ['1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4'], null, ['class' => 'form-control', 'placeholder' => 'Select a Master...']) !!}
                     <span class="input-group-addon"> Floor</span>
                 </div>
             </div>
         </div>
 
-        <div class="form-group {{ $errors->has('r_bedrooms') ? 'has-error' : '' }}">
-            {{ Form::label('r_bedrooms', 'Bedrooms', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('rooms.r_bedrooms') ? 'has-error' : '' }}">
+            {{ Form::label('rooms[r_bedrooms]', 'Bedrooms', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-2">
-                {!! Form::select('r_bedrooms', ['1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4'], null, ['class' => 'form-control', 'placeholder' => 'Select a Bedrooms...']) !!}
+                {!! Form::select('rooms[r_bedrooms]', ['1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4'], null, ['class' => 'form-control', 'placeholder' => 'Select a Bedrooms...']) !!}
             </div>
         </div>
 
-        <div class="form-group {{ $errors->has('r_full_baths') ? 'has-error' : '' }}">
-            {{ Form::label('r_full_baths', 'Full Baths', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('rooms.r_full_baths') ? 'has-error' : '' }}">
+            {{ Form::label('rooms[r_full_baths]', 'Full Baths', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-2">
-                {!! Form::select('r_full_baths', ['1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4'], null, ['class' => 'form-control', 'placeholder' => 'Select a Full Baths...']) !!}
+                {!! Form::select('rooms[r_full_baths]', ['1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4'], null, ['class' => 'form-control', 'placeholder' => 'Select a Full Baths...']) !!}
             </div>
         </div>
 
-        <div class="form-group {{ $errors->has('r_half_baths') ? 'has-error' : '' }}">
-            {{ Form::label('r_half_baths', 'Half Baths', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('rooms.r_half_baths') ? 'has-error' : '' }}">
+            {{ Form::label('rooms[r_half_baths]', 'Half Baths', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-2">
-                {!! Form::select('r_half_baths', ['1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4'], null, ['class' => 'form-control', 'placeholder' => 'Select a Half Baths...']) !!}
+                {!! Form::select('rooms[r_half_baths]', ['1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4'], null, ['class' => 'form-control', 'placeholder' => 'Select a Half Baths...']) !!}
             </div>
         </div>
 
@@ -223,53 +223,53 @@
         @endif
     </div>
     <div role="tabpanel" class="tab-pane fade" id="dimensions">
-        <div class="form-group {{ $errors->has('stories') ? 'has-error' : '' }}">
-            {{ Form::label('stories', 'Stories', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('dimensions.stories') ? 'has-error' : '' }}">
+            {{ Form::label('dimensions[stories]', 'Stories', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-2">
-                {!! Form::select('stories', ['1'=>'1', '1.5'=>'1.5', '2'=>'2', '3'=>'3', '4'=>'4'], null, ['class' => 'form-control', 'placeholder' => 'Select a Stories...']) !!}
+                {!! Form::select('dimensions[stories]', ['1'=>'1', '1.5'=>'1.5', '2'=>'2', '3'=>'3', '4'=>'4'], null, ['class' => 'form-control', 'placeholder' => 'Select a Stories...']) !!}
             </div>
         </div>
         <div class="form-group">
-            {{ Form::label('width_ft', 'Width', ['class' => 'col-sm-2 control-label']) }}
+            {{ Form::label('dimensions[width_ft]', 'Width', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-2">
-                <div class="input-group {{ $errors->has('width_ft') ? 'has-error' : '' }}">
-                    {{ Form::text('width_ft', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                <div class="input-group {{ $errors->has('dimensions.width_ft') ? 'has-error' : '' }}">
+                    {{ Form::text('dimensions[width_ft]', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
                     <span class="input-group-addon">ft.</span>
                 </div>
             </div>
             <div class="col-sm-2">
-                <div class="input-group {{ $errors->has('width_in') ? 'has-error' : '' }}">
-                    {{ Form::text('width_in', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                <div class="input-group {{ $errors->has('dimensions.width_in') ? 'has-error' : '' }}">
+                    {{ Form::text('dimensions[width_in]', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
                     <span class="input-group-addon">in.</span>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            {{ Form::label('depth_ft', 'Depth', ['class' => 'col-sm-2 control-label']) }}
+            {{ Form::label('dimensions[depth_ft]', 'Depth', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-2">
-                <div class="input-group {{ $errors->has('depth_ft') ? 'has-error' : '' }}">
-                    {{ Form::text('depth_ft', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                <div class="input-group {{ $errors->has('dimensions.depth_ft') ? 'has-error' : '' }}">
+                    {{ Form::text('dimensions[depth_ft]', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
                     <span class="input-group-addon">ft.</span>
                 </div>
             </div>
             <div class="col-sm-2">
-                <div class="input-group {{ $errors->has('depth_in') ? 'has-error' : '' }}">
-                    {{ Form::text('depth_in', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                <div class="input-group {{ $errors->has('dimensions.depth_in') ? 'has-error' : '' }}">
+                    {{ Form::text('dimensions[depth_in]', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
                     <span class="input-group-addon">in.</span>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            {{ Form::label('height_ft', 'Height', ['class' => 'col-sm-2 control-label']) }}
+            {{ Form::label('dimensions[height_ft]', 'Height', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-2">
-                <div class="input-group {{ $errors->has('height_ft') ? 'has-error' : '' }}">
-                    {{ Form::text('height_ft', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                <div class="input-group {{ $errors->has('dimensions.height_ft') ? 'has-error' : '' }}">
+                    {{ Form::text('dimensions[height_ft]', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
                     <span class="input-group-addon">ft.</span>
                 </div>
             </div>
             <div class="col-sm-2">
-                <div class="input-group {{ $errors->has('height_in') ? 'has-error' : '' }}">
-                    {{ Form::text('height_in', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                <div class="input-group {{ $errors->has('dimensions.height_in') ? 'has-error' : '' }}">
+                    {{ Form::text('dimensions[height_in]', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
                     <span class="input-group-addon">in.</span>
                 </div>
             </div>
@@ -277,78 +277,78 @@
     </div>
     <div role="tabpanel" class="tab-pane fade" id="feet">
         <div class="col-sm-push-1  col-sm-5 col-md-4">
-            <div class="form-group {{ $errors->has('str_total') ? 'has-error' : '' }}">
-                {{ Form::label('str_total', 'Structure Total', ['class' => 'col-sm-4 control-label']) }}
+            <div class="form-group {{ $errors->has('square_ft.str_total') ? 'has-error' : '' }}">
+                {{ Form::label('square_ft[str_total]', 'Structure Total', ['class' => 'col-sm-4 control-label']) }}
                 <div class="col-sm-4 col-md-6">
-                    {{ Form::text('str_total', null, ['class'=>'form-control']) }}
+                    {{ Form::text('square_ft[str_total]', null, ['class'=>'form-control']) }}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('unit_total') ? 'has-error' : '' }}">
-                {{ Form::label('unit_total', 'Unit Total', ['class' => 'col-sm-4 control-label']) }}
+            <div class="form-group {{ $errors->has('square_ft.unit_total') ? 'has-error' : '' }}">
+                {{ Form::label('square_ft[unit_total]', 'Unit Total', ['class' => 'col-sm-4 control-label']) }}
                 <div class="col-sm-4 col-md-6">
-                    {{ Form::text('unit_total', null, ['class'=>'form-control']) }}
+                    {{ Form::text('square_ft[unit_total]', null, ['class'=>'form-control']) }}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('1_floor') ? 'has-error' : '' }}">
-                {{ Form::label('1_floor', '1st Floor', ['class' => 'col-sm-4 control-label']) }}
+            <div class="form-group {{ $errors->has('square_ft.1_floor') ? 'has-error' : '' }}">
+                {{ Form::label('square_ft[1_floor]', '1st Floor', ['class' => 'col-sm-4 control-label']) }}
                 <div class="col-sm-4 col-md-6">
-                    {{ Form::text('1_floor', null, ['class'=>'form-control']) }}
+                    {{ Form::text('square_ft[1_floor]', null, ['class'=>'form-control']) }}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('2_floor') ? 'has-error' : '' }}">
-                {{ Form::label('2_floor', '2nd Floor', ['class' => 'col-sm-4 control-label']) }}
+            <div class="form-group {{ $errors->has('square_ft.2_floor') ? 'has-error' : '' }}">
+                {{ Form::label('square_ft[2_floor]', '2nd Floor', ['class' => 'col-sm-4 control-label']) }}
                 <div class="col-sm-4 col-md-6">
-                    {{ Form::text('2_floor', null, ['class'=>'form-control']) }}
+                    {{ Form::text('square_ft[2_floor]', null, ['class'=>'form-control']) }}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('3_floor') ? 'has-error' : '' }}">
-                {{ Form::label('3_floor', '3nd Floor', ['class' => 'col-sm-4 control-label']) }}
+            <div class="form-group {{ $errors->has('square_ft.3_floor') ? 'has-error' : '' }}">
+                {{ Form::label('square_ft[3_floor]', '3nd Floor', ['class' => 'col-sm-4 control-label']) }}
                 <div class="col-sm-4 col-md-6">
-                    {{ Form::text('3_floor', null, ['class'=>'form-control']) }}
+                    {{ Form::text('square_ft[3_floor]', null, ['class'=>'form-control']) }}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('lower_floor') ? 'has-error' : '' }}">
-                {{ Form::label('lower_floor', 'Lower Floor', ['class' => 'col-sm-4 control-label']) }}
+            <div class="form-group {{ $errors->has('square_ft.lower_floor') ? 'has-error' : '' }}">
+                {{ Form::label('square_ft[lower_floor]', 'Lower Floor', ['class' => 'col-sm-4 control-label']) }}
                 <div class="col-sm-4 col-md-6">
-                    {{ Form::text('lower_floor', null, ['class'=>'form-control']) }}
+                    {{ Form::text('square_ft[lower_floor]', null, ['class'=>'form-control']) }}
                 </div>
             </div>
         </div>
         <div class="col-sm-7 col-md-8 col-sm-pull-1 col-md-pull-0">
-            <div class="form-group {{ $errors->has('bonus') ? 'has-error' : '' }}">
-                {{ Form::label('bonus', 'Bonus', ['class' => 'col-sm-2 control-label']) }}
+            <div class="form-group {{ $errors->has('square_ft.bonus') ? 'has-error' : '' }}">
+                {{ Form::label('square_ft[bonus]', 'Bonus', ['class' => 'col-sm-2 control-label']) }}
                 <div class="col-sm-3">
-                    {{ Form::text('bonus', null, ['class'=>'form-control']) }}
+                    {{ Form::text('square_ft[bonus]', null, ['class'=>'form-control']) }}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('garage') ? 'has-error' : '' }}">
-                {{ Form::label('garage', 'Garage', ['class' => 'col-sm-2 control-label']) }}
+            <div class="form-group {{ $errors->has('square_ft.garage') ? 'has-error' : '' }}">
+                {{ Form::label('square_ft[garage]', 'Garage', ['class' => 'col-sm-2 control-label']) }}
                 <div class="col-sm-3">
-                    {{ Form::text('garage', null, ['class'=>'form-control']) }}
+                    {{ Form::text('square_ft[garage]', null, ['class'=>'form-control']) }}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('storage') ? 'has-error' : '' }}">
-                {{ Form::label('storage', 'Storage', ['class' => 'col-sm-2 control-label']) }}
+            <div class="form-group {{ $errors->has('square_ft.storage') ? 'has-error' : '' }}">
+                {{ Form::label('square_ft[storage]', 'Storage', ['class' => 'col-sm-2 control-label']) }}
                 <div class="col-sm-3">
-                    {{ Form::text('storage', null, ['class'=>'form-control']) }}
+                    {{ Form::text('square_ft[storage]', null, ['class'=>'form-control']) }}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('porch') ? 'has-error' : '' }}">
-                {{ Form::label('porch', 'Porch', ['class' => 'col-sm-2 control-label']) }}
+            <div class="form-group {{ $errors->has('square_ft.porch') ? 'has-error' : '' }}">
+                {{ Form::label('square_ft[porch]', 'Porch', ['class' => 'col-sm-2 control-label']) }}
                 <div class="col-sm-3">
-                    {{ Form::text('porch', null, ['class'=>'form-control']) }}
+                    {{ Form::text('square_ft[porch]', null, ['class'=>'form-control']) }}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('deck') ? 'has-error' : '' }}">
-                {{ Form::label('deck', 'Deck', ['class' => 'col-sm-2 control-label']) }}
+            <div class="form-group {{ $errors->has('square_ft.deck') ? 'has-error' : '' }}">
+                {{ Form::label('square_ft[deck]', 'Deck', ['class' => 'col-sm-2 control-label']) }}
                 <div class="col-sm-3">
-                    {{ Form::text('deck', null, ['class'=>'form-control']) }}
+                    {{ Form::text('square_ft[deck]', null, ['class'=>'form-control']) }}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('patio') ? 'has-error' : '' }}">
-                {{ Form::label('patio', 'Patio', ['class' => 'col-sm-2 control-label']) }}
+            <div class="form-group {{ $errors->has('square_ft.patio') ? 'has-error' : '' }}">
+                {{ Form::label('square_ft[patio]', 'Patio', ['class' => 'col-sm-2 control-label']) }}
                 <div class="col-sm-3">
-                    {{ Form::text('patio', null, ['class'=>'form-control']) }}
+                    {{ Form::text('square_ft[patio]', null, ['class'=>'form-control']) }}
                 </div>
             </div>
         </div>
@@ -362,11 +362,11 @@
                         <div class="col-sm-offset-1 col-sm-2 {{ $errors->has('custom_desc.'.$n) ? 'has-error' : '' }}">
                             <div class="input-group">
                                 <span class="input-group-addon">#{{$loop->iteration}}</span>
-                                {{ Form::text('custom_desc['.$n.']', null, ['class'=>'form-control']) }}
+                                {{ Form::text('custom__sq_ft[custom_desc]['.$n.']', null, ['class'=>'form-control']) }}
                             </div>
                         </div>
                         <div class="col-sm-2 {{ $errors->has('custom_sq.'.$n) ? 'has-error' : '' }}">
-                            {{ Form::text('custom_sq['.$n.']', null, ['class'=>'form-control']) }}
+                            {{ Form::text('custom__sq_ft[custom_sq]['.$n.']', null, ['class'=>'form-control']) }}
                         </div>
                         <div class="col-sm-2">
                             @if( $n == 0 )
@@ -383,11 +383,11 @@
                     <div class="col-sm-offset-1 col-sm-2">
                         <div class="input-group">
                             <span class="input-group-addon">#1</span>
-                            {{ Form::text('custom_desc[]', null, ['class'=>'form-control']) }}
+                            {{ Form::text('custom__sq_ft[custom_desc][]', null, ['class'=>'form-control']) }}
                         </div>
                     </div>
                     <div class="col-sm-2">
-                        {{ Form::text('custom_sq[]', null, ['class'=>'form-control']) }}
+                        {{ Form::text('custom__sq_ft[custom_sq][]', null, ['class'=>'form-control']) }}
                     </div>
                     <div class="col-sm-2">
                         <i id="custom-add-icon" class="fa fa-plus-circle fa-lg click-icon green-icon"></i>
@@ -397,87 +397,87 @@
         </div>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="construction">
-        <div class="form-group {{ $errors->has('roof_frame') ? 'has-error' : '' }}">
-            {{ Form::label('roof_frame', 'Roof Frame', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('construction.roof_frame') ? 'has-error' : '' }}">
+            {{ Form::label('construction[roof_frame]', 'Roof Frame', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-4">
-                {!! Form::select('roof_frame', ['stick'=>'Stick', 'truss'=>'Truss'], null, ['class' => 'form-control', 'placeholder' => 'Select a Roof Frame...']) !!}
+                {!! Form::select('construction[roof_frame]', ['stick'=>'Stick', 'truss'=>'Truss'], null, ['class' => 'form-control', 'placeholder' => 'Select a Roof Frame...']) !!}
             </div>
         </div>
-        <div class="form-group {{ $errors->has('ext_walls') ? 'has-error' : '' }}">
-            {{ Form::label('ext_walls', 'Ext. Walls', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('construction.ext_walls') ? 'has-error' : '' }}">
+            {{ Form::label('construction[ext_walls]', 'Ext. Walls', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-4">
-                {!! Form::select('ext_walls', ['block'=>'Block', '2x4'=>'2x4', '2x6'=>'2x6'], null, ['class' => 'form-control', 'placeholder' => 'Select a Roof Frame...']) !!}
+                {!! Form::select('construction[ext_walls]', ['block'=>'Block', '2x4'=>'2x4', '2x6'=>'2x6'], null, ['class' => 'form-control', 'placeholder' => 'Select a Roof Frame...']) !!}
             </div>
         </div>
-        <div class="form-group {{ $errors->has('found_type') ? 'has-error' : '' }}">
+        <div class="form-group {{ $errors->has('construction.found_type') ? 'has-error' : '' }}">
             {{ Form::label('', 'Foundation Type', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-6">
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('found_type[]', 'basement') }} Basement
+                        {{ Form::checkbox('construction[found_type][]', 'basement') }} Basement
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('found_type[]', 'crawlspace') }} Crawlspace
+                        {{ Form::checkbox('construction[found_type][]', 'crawlspace') }} Crawlspace
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('found_type[]', 'daylight') }} Daylight basement
+                        {{ Form::checkbox('construction[found_type][]', 'daylight') }} Daylight basement
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('found_type[]', 'pier') }} Pier
+                        {{ Form::checkbox('construction[found_type][]', 'pier') }} Pier
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('found_type[]', 'slab') }} Slab
+                        {{ Form::checkbox('construction[found_type][]', 'slab') }} Slab
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('found_type[]', 'walkout') }} Walkout basement
+                        {{ Form::checkbox('construction[found_type][]', 'walkout') }} Walkout basement
                     </label>
                 </div>
             </div>
         </div>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="ceiling">
-        <div class="form-group {{ $errors->has('celing_1_floor') ? 'has-error' : '' }}">
-            {{ Form::label('celing_1_floor', '1st Floor', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('ceiling.celing_1_floor') ? 'has-error' : '' }}">
+            {{ Form::label('ceiling[celing_1_floor]', '1st Floor', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-2">
                 <div class="input-group">
-                    {{ Form::text('celing_1_floor', null, ['class'=>'form-control']) }}
+                    {{ Form::text('ceiling[celing_1_floor]', null, ['class'=>'form-control']) }}
                     <span class="input-group-addon">ft.</span>
                 </div>
             </div>
         </div>
-        <div class="form-group {{ $errors->has('celing_2_floor') ? 'has-error' : '' }}">
-            {{ Form::label('celing_2_floor', '2nd Floor', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('ceiling.celing_2_floor') ? 'has-error' : '' }}">
+            {{ Form::label('ceiling[celing_2_floor]', '2nd Floor', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-2">
                 <div class="input-group">
-                    {{ Form::text('celing_2_floor', null, ['class'=>'form-control']) }}
+                    {{ Form::text('ceiling[celing_2_floor]', null, ['class'=>'form-control']) }}
                     <span class="input-group-addon">ft.</span>
                 </div>
             </div>
         </div>
-        <div class="form-group {{ $errors->has('celing_3_floor') ? 'has-error' : '' }}">
-            {{ Form::label('celing_3_floor', '3rd Floor', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('ceiling.celing_3_floor') ? 'has-error' : '' }}">
+            {{ Form::label('ceiling[celing_3_floor]', '3rd Floor', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-2">
                 <div class="input-group">
-                    {{ Form::text('celing_3_floor', null, ['class'=>'form-control']) }}
+                    {{ Form::text('ceiling[celing_3_floor]', null, ['class'=>'form-control']) }}
                     <span class="input-group-addon">ft.</span>
                 </div>
             </div>
         </div>
-        <div class="form-group {{ $errors->has('celing_lower_floor') ? 'has-error' : '' }}">
-            {{ Form::label('celing_lower_floor', 'Lower Level', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('ceiling.celing_lower_floor') ? 'has-error' : '' }}">
+            {{ Form::label('ceiling[celing_lower_floor]', 'Lower Level', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-2">
                 <div class="input-group">
-                    {{ Form::text('celing_lower_floor', null, ['class'=>'form-control']) }}
+                    {{ Form::text('ceiling[celing_lower_floor]', null, ['class'=>'form-control']) }}
                     <span class="input-group-addon">ft.</span>
                 </div>
             </div>
@@ -485,68 +485,68 @@
     </div>
     <div role="tabpanel" class="tab-pane fade" id="roof">
         <h3 class="text-center">Roof Pitch</h3>
-        <div class="form-group {{ $errors->has('primary') ? 'has-error' : '' }}">
-            {{ Form::label('primary', 'Primary', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('roof.primary') ? 'has-error' : '' }}">
+            {{ Form::label('roof[primary]', 'Primary', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-3">
-                {{ Form::text('primary', null, ['class'=>'form-control']) }}
+                {{ Form::text('roof[primary]', null, ['class'=>'form-control']) }}
             </div>
         </div>
-        <div class="form-group {{ $errors->has('secondary') ? 'has-error' : '' }}">
-            {{ Form::label('secondary', 'Secondary', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('roof.secondary') ? 'has-error' : '' }}">
+            {{ Form::label('roof[secondary]', 'Secondary', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-3">
-                {{ Form::text('secondary', null, ['class'=>'form-control']) }}
+                {{ Form::text('roof[secondary]', null, ['class'=>'form-control']) }}
             </div>
         </div>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="garage-tab">
-        <div class="form-group {{ $errors->has('car') ? 'has-error' : '' }}">
-            {{ Form::label('car', 'Car', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('garage.car') ? 'has-error' : '' }}">
+            {{ Form::label('garage[car]', 'Car', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-2">
-                {{ Form::text('car', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
+                {{ Form::text('garage[car]', null, ['class'=>'form-control', 'placeholder'=>'0']) }}
             </div>
         </div>
-        <div class="form-group {{ $errors->has('car_location') ? 'has-error' : '' }}">
-            {{ Form::label('car_location', 'Location', ['class' => 'col-sm-2 control-label']) }}
+        <div class="form-group {{ $errors->has('garage.car_location') ? 'has-error' : '' }}">
+            {{ Form::label('garage[car_location]', 'Location', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-3">
-                {!! Form::select('car_location', ['front'=>'front entry', 'rear'=>'rear entry', 'side'=>'side entry'], null, ['class' => 'form-control', 'placeholder' => 'Select Location...']) !!}
+                {!! Form::select('garage[car_location]', ['front'=>'front entry', 'rear'=>'rear entry', 'side'=>'side entry'], null, ['class' => 'form-control', 'placeholder' => 'Select Location...']) !!}
             </div>
         </div>
-        <div class="form-group {{ $errors->has('car_options') ? 'has-error' : '' }}">
+        <div class="form-group {{ $errors->has('garage.car_options') ? 'has-error' : '' }}">
             {{ Form::label('', 'Options', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-6">
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('car_options[]', 'attached') }} Attached
+                        {{ Form::checkbox('garage[car_options][]', 'attached') }} Attached
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('car_options[]', 'carport') }} Carport
+                        {{ Form::checkbox('garage[car_options][]', 'carport') }} Carport
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('car_options[]', 'detached') }} Detached
+                        {{ Form::checkbox('garage[car_options][]', 'detached') }} Detached
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('car_options[]', 'drive-under') }} Drive-under
+                        {{ Form::checkbox('garage[car_options][]', 'drive-under') }} Drive-under
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('car_options[]', 'none') }} None
+                        {{ Form::checkbox('garage[car_options][]', 'none') }} None
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('car_options[]', 'tandem') }} Tandem
+                        {{ Form::checkbox('garage[car_options][]', 'tandem') }} Tandem
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('car_options[]', 'living_space') }} Width Living Space
+                        {{ Form::checkbox('garage[car_options][]', 'living_space') }} Width Living Space
                     </label>
                 </div>
             </div>
@@ -632,8 +632,8 @@
         $("#custom-add-icon").on('click', function(){
             var elementsCount = +$('#custom-sq .form-group').length + 1;
             var html = '<div class="form-group"><input type="hidden" name="custom_desc_sq[]" value="1">' +
-                '<div class="col-sm-offset-1 col-sm-2"><div class="input-group"><span class="input-group-addon">#' +elementsCount+ '</span><input class="form-control" name="custom_desc[]" type="text"></div></div>' +
-                '<div class="col-sm-2"><input class="form-control" name="custom_sq[]" type="text"></div>' +
+                '<div class="col-sm-offset-1 col-sm-2"><div class="input-group"><span class="input-group-addon">#' +elementsCount+ '</span><input class="form-control" name="custom__sq_ft[custom_desc][]" type="text"></div></div>' +
+                '<div class="col-sm-2"><input class="form-control" name="custom__sq_ft[custom_sq][]" type="text"></div>' +
                 '<div class="col-sm-2"><i class="fa fa-minus-circle fa-lg custom-rem-icon click-icon red-icon"></i></div>' +
                 '</div>';
            $("#custom-sq").append(html);
@@ -667,7 +667,7 @@
             });
         });
 
-        $(document).on('focus', 'input:text[name="similar[]"]', function(){
+        $(document).on('focus', 'input:text[name^="similar[]"]', function(){
             $(this).autocomplete({
                 source: function( request, response ) {
                     var url = '{{ route('getPlanID', ['str'=>'replace_str']) }}';

@@ -6,6 +6,37 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plan extends Model
 {
+    protected $fillable = [
+        'name',
+        'plan_number',
+        'designer',
+        'designer_id',
+        'admin_note',
+        'details',
+        'rooms',
+        'similar',
+        'dimensions',
+        'square_ft',
+        'custom__sq_ft',
+        'construction',
+        'ceiling',
+        'roof',
+        'garage'
+    ];
+
+    protected $casts = [
+        'details' => 'array',
+        'rooms' => 'array',
+        'similar' => 'array',
+        'dimensions' => 'array',
+        'square_ft' => 'array',
+        'custom__sq_ft' => 'array',
+        'construction' => 'array',
+        'ceiling' => 'array',
+        'roof' => 'array',
+        'garage' => 'array',
+    ];
+
     protected $guarded = [];
     /**
      * Get the user that owns the house plan.

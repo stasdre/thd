@@ -32,60 +32,60 @@ class PlansRequest extends FormRequest
                 $validate['designer_partner'] = 'required_if:designer,designer_partner';
                 $validate['plan_number'] = 'required|integer|unique:plans,plan_number';
                 $validate['name'] = 'required|max:100';
-                $validate['type_structure'] = 'required|in:single,duplex,multifamily,garage';
-                $validate['copyright'] = 'required|date_format:Y-m-d';
-                $validate['lot_char'] = 'array|in:corner,narrow,sloping,view';
-                $validate['lot_siope'] = 'nullable|in:1,2,3';
-                $validate['r_master'] = 'nullable|in:1,2,3';
-                $validate['r_bedrooms'] = 'nullable|in:1,2,3';
-                $validate['r_full_baths'] = 'nullable|in:1,2,3';
-                $validate['r_half_baths'] = 'nullable|in:1,2,3';
+
+                $validate['details.type_structure'] = 'required|in:single,duplex,multifamily,garage';
+                $validate['details.copyright'] = 'required|date_format:Y-m-d';
+                $validate['details.lot_char'] = 'array|in:corner,narrow,sloping,view';
+                $validate['details.lot_siope'] = 'nullable|in:1,2,3';
+
+                $validate['rooms.r_master'] = 'nullable|in:1,2,3,4';
+                $validate['rooms.r_bedrooms'] = 'nullable|in:1,2,3,4';
+                $validate['rooms.r_full_baths'] = 'nullable|in:1,2,3,4';
+                $validate['rooms.r_half_baths'] = 'nullable|in:1,2,3,4';
 
                 if( count($this->input('similar')) >= 1 && $this->input('similar')[0] != null ){
                     $validate['similar.*'] = 'exists:plans,plan_number';
                 }
 
-                $validate['stories'] = 'nullable|in:1,1.5,2,3,4';
+                $validate['dimensions.stories'] = 'nullable|in:1,1.5,2,3,4';
+                $validate['dimensions.width_ft'] = 'required|numeric';
+                $validate['dimensions.width_in'] = 'nullable|numeric';
+                $validate['dimensions.depth_ft'] = 'required|numeric';
+                $validate['dimensions.depth_in'] = 'nullable|numeric';
+                $validate['dimensions.height_ft'] = 'required|numeric';
+                $validate['dimensions.height_in'] = 'nullable|numeric';
 
-                $validate['width_ft'] = 'required|numeric';
-                $validate['width_in'] = 'nullable|numeric';
-                $validate['depth_ft'] = 'required|numeric';
-                $validate['depth_in'] = 'nullable|numeric';
-                $validate['height_ft'] = 'required|numeric';
-                $validate['height_in'] = 'nullable|numeric';
+                $validate['square_ft.str_total'] = 'nullable|numeric';
+                $validate['square_ft.unit_total'] = 'nullable|numeric';
+                $validate['square_ft.1_floor'] = 'nullable|numeric';
+                $validate['square_ft.2_floor'] = 'nullable|numeric';
+                $validate['square_ft.3_floor'] = 'nullable|numeric';
+                $validate['square_ft.lower_floor'] = 'nullable|numeric';
+                $validate['square_ft.bonus'] = 'nullable|numeric';
+                $validate['square_ft.garage'] = 'nullable|numeric';
+                $validate['square_ft.storage'] = 'nullable|numeric';
+                $validate['square_ft.porch'] = 'nullable|numeric';
+                $validate['square_ft.deck'] = 'nullable|numeric';
+                $validate['square_ft.patio'] = 'nullable|numeric';
 
-                $validate['str_total'] = 'nullable|numeric';
-                $validate['unit_total'] = 'nullable|numeric';
-                $validate['1_floor'] = 'nullable|numeric';
-                $validate['2_floor'] = 'nullable|numeric';
-                $validate['3_floor'] = 'nullable|numeric';
-                $validate['lower_floor'] = 'nullable|numeric';
+                $validate['custom__sq_ft.custom_desc.*'] = 'required_with:custom_sq.*|max:100';
+                $validate['custom__sq_ft.custom_sq.*'] = 'required_with:custom_desc.*|nullable|numeric';
 
-                $validate['bonus'] = 'nullable|numeric';
-                $validate['garage'] = 'nullable|numeric';
-                $validate['storage'] = 'nullable|numeric';
-                $validate['porch'] = 'nullable|numeric';
-                $validate['deck'] = 'nullable|numeric';
-                $validate['patio'] = 'nullable|numeric';
+                $validate['construction.roof_frame'] = 'nullable|in:stick,truss';
+                $validate['construction.ext_walls'] = 'nullable|in:block,2x4,2x6';
+                $validate['construction.found_type'] = 'array|in:basement,crawlspace,daylight,pier,slab,walkout';
 
-                $validate['custom_desc.*'] = 'required_with:custom_sq.*|max:100';
-                $validate['custom_sq.*'] = 'required_with:custom_desc.*|nullable|numeric';
+                $validate['ceiling.celing_1_floor'] = 'nullable|numeric';
+                $validate['ceiling.celing_2_floor'] = 'nullable|numeric';
+                $validate['ceiling.celing_3_floor'] = 'nullable|numeric';
+                $validate['ceiling.celing_lower_floor'] = 'nullable|numeric';
 
-                $validate['roof_frame'] = 'nullable|in:stick,truss';
-                $validate['ext_walls'] = 'nullable|in:block,2x4,2x6';
-                $validate['found_type'] = 'array|in:basement,crawlspace,daylight,pier,slab,walkout';
+                $validate['roof.primary'] = 'nullable|numeric';
+                $validate['roof.secondary'] = 'nullable|numeric';
 
-                $validate['celing_1_floor'] = 'nullable|numeric';
-                $validate['celing_2_floor'] = 'nullable|numeric';
-                $validate['celing_3_floor'] = 'nullable|numeric';
-                $validate['celing_lower_floor'] = 'nullable|numeric';
-
-                $validate['primary'] = 'nullable|numeric';
-                $validate['secondary'] = 'nullable|numeric';
-
-                $validate['car'] = 'nullable|integer';
-                $validate['car_location'] = 'nullable|in:front,rear,side';
-                $validate['car_options'] = 'array|in:attached,carport,detached,drive-under,none,tandem,living_space';
+                $validate['garage.car'] = 'nullable|integer';
+                $validate['garage.car_location'] = 'nullable|in:front,rear,side';
+                $validate['garage.car_options'] = 'array|in:attached,carport,detached,drive-under,none,tandem,living_space';
 
                 $validate['style_id.*'] = 'sometimes|exists:styles,id';
                 $validate['collection_id.*'] = 'sometimes|exists:collections,id';
