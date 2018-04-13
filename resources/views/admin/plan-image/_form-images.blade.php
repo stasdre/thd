@@ -15,6 +15,7 @@
 
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane fade in active" id="slideshow">
+        <img class="img-responsive galery_loader" style="margin: 0 auto; display: none" src="/img/load_horizontal.gif">
         <div id="file_upload" class="dropzone needsclick dz-clickable">
             <div class="dz-message needsclick">
                 Drop files here or click to upload.<br>
@@ -105,7 +106,13 @@
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        url: '{!! route('plan-images.sort', ['id' => $plan->id]) !!}'
+                        url: '{!! route('plan-images.sort', ['id' => $plan->id]) !!}',
+                        beforeSend: function(){
+                            $(".galery_loader").show();
+                        },
+                        success: function(){
+                            $(".galery_loader").hide();
+                        }
                     });
                 }
             });
@@ -123,10 +130,10 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 beforeSend: function(){
-                    $("#spin_load").show();
+                    $(".galery_loader").show();
                 },
                 success: function(data){
-                    $("#spin_load").hide();
+
                     $("#id").val(data.id);
                     $("#title").val(data.title);
                     $("#description").val(data.description);
@@ -143,12 +150,14 @@
                         $("#for_search").prop('checked', false);
                     }
 
+                    $(".galery_loader").hide();
+
+                    $('.modal').modal('show');
                 },
                 error: function(){
-                    $("#spin_load").hide();
+                    $(".galery_loader").hide();
                 }
             });
-            $('.modal').modal('show');
         });
 
         $(document).on('click', '#save_image_data', function(){
@@ -192,7 +201,11 @@
                     type: 'delete',
                     url: '{{ route('plan-images.destroy', ['image'=>'']) }}' + '/' + id,
                     dataType: 'json',
+                    beforeSend: function(){
+                        $('.galery_loader').show();
+                    },
                     success: function(data){
+                        $('.galery_loader').hide();
                         if(data == 'success'){
                             element.parent('.dz-preview').remove();
                         }

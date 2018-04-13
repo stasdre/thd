@@ -59,7 +59,7 @@ class PlanImageController extends Controller
         $img = Image::make($image->getRealPath())->save($path, 100);
 
         $imgThumb = Image::make($image->getRealPath());
-        $imgThumb->resize(160, null, function ($constraint) {
+        $imgThumb->resize(null, 250, function ($constraint) {
             $constraint->aspectRatio();
         });
         $imgThumb->save($pathThumb);
@@ -108,6 +108,12 @@ class PlanImageController extends Controller
         {
             return response()->json(['error'=>$validation->errors()->first()], 400);
         }
+
+        if($input['first_image'] == 1)
+            PlanImage::where('plan_id', '=', $image->plan_id)->update(['first_image'=>0]);
+
+        if($input['for_search'] == 1)
+            PlanImage::where('plan_id', '=', $image->plan_id)->update(['for_search'=>0]);
 
         $image->title = $input['title'];
         $image->description = $input['description'];
