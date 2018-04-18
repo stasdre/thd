@@ -61,6 +61,11 @@ class Plan extends Model
         return $this->belongsToMany('Thd\Kitchen', 'kitchen_plan');
     }
 
+    public function beds()
+    {
+        return $this->belongsToMany('Thd\Bed', 'bed_plan');
+    }
+
     public function images()
     {
         return $this->hasMany('Thd\PlanImage');

@@ -42,7 +42,7 @@
                 <div class="form-group">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="bed_id[]" value="{{ $bed->id }}"> {{ $bed->name }}
+                            {{ Form::checkbox('bed_id[]', $bed->id, $plan->beds->contains($bed->id)) }} {{ $bed->name }}
                         </label>
                     </div>
                 </div>
