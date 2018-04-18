@@ -3,34 +3,16 @@
 namespace Thd\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Thd\Http\Controllers\Controller;
+use Thd\PlanImageFirst;
+use Thd\Plan;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
-use Thd\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
-use Thd\Plan;
-use Thd\PlanImage;
 
-
-class PlanImageController extends Controller
+class PlanImagesFirstController extends Controller
 {
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Plan $plan)
-    {
-        $planImages = $plan->images()->orderBy('sort_number', 'asc')->get();
-        $planImagesFirst = $plan->images_first()->orderBy('sort_number', 'asc')->get();
-        return view('admin.plan-image.create', [
-            'plan' => $plan,
-            'planImages' => $planImages ? $planImages : [],
-            'planImagesFirst' => $planImagesFirst ? $planImagesFirst : []
-        ]);
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -67,7 +49,7 @@ class PlanImageController extends Controller
         $imgThumb->save($pathThumb);
 
         if( $img &&  $imgThumb ) {
-            $imagePlan = new PlanImage([
+            $imagePlan = new PlanImageFirst([
                 'file_name' => $filename,
                 'sort_number' => $request->input('sort_number')
             ]);
@@ -85,7 +67,7 @@ class PlanImageController extends Controller
      * @param  int  $id
      * @return \Thd\PlanImage  $image
      */
-    public function edit(PlanImage $image)
+    public function edit(PlanImageFirst $image)
     {
         return response()->json($image);
     }
@@ -97,7 +79,7 @@ class PlanImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PlanImage $image)
+    public function update(Request $request, PlanImageFirst $image)
     {
         $input = $request->all();
 
@@ -111,16 +93,8 @@ class PlanImageController extends Controller
             return response()->json(['error'=>$validation->errors()->first()], 400);
         }
 
-        if($input['first_image'] == 1)
-            PlanImage::where('plan_id', '=', $image->plan_id)->update(['first_image'=>0]);
-
-        if($input['for_search'] == 1)
-            PlanImage::where('plan_id', '=', $image->plan_id)->update(['for_search'=>0]);
-
         $image->title = $input['title'];
         $image->description = $input['description'];
-        $image->first_image = $input['first_image'] == 1 ? 1 : 0;
-        $image->for_search = $input['for_search'] == 1 ? 1 : 0;
 
         if($image->update()){
             return response()->json('success', 200);
@@ -128,6 +102,23 @@ class PlanImageController extends Controller
             return response()->json(['error'=>'Data not updated'], 400);
         }
 
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(PlanImageFirst $image)
+    {
+        Storage::delete('public/plans/'.$image->plan_id.'/thumb/'.$image->file_name);
+        Storage::delete('public/plans/'.$image->plan_id.'/'.$image->file_name);
+        if($image->delete()){
+            return response()->json('success', 200);
+        }else{
+            return response()->json(['error'=>'Image not deleted'], 400);
+        }
     }
 
     public function sort(Request $request)
@@ -145,26 +136,9 @@ class PlanImageController extends Controller
         }
 
         foreach ($request->input('sortable_id') as $key=>$image){
-            PlanImage::where('id', $image)->update(['sort_number'=>$key]);
+            PlanImageFirst::where('id', $image)->update(['sort_number'=>$key]);
         }
 
         return response()->json(['success'], 200);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PlanImage $image)
-    {
-        Storage::delete('public/plans/'.$image->plan_id.'/thumb/'.$image->file_name);
-        Storage::delete('public/plans/'.$image->plan_id.'/'.$image->file_name);
-        if($image->delete()){
-            return response()->json('success', 200);
-        }else{
-            return response()->json(['error'=>'Image not deleted'], 400);
-        }
     }
 }
