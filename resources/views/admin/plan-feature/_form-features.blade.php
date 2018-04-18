@@ -71,7 +71,7 @@
                 <div class="form-group">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="room_interior_id[]" value="{{ $roomInterior->id }}"> {{ $roomInterior->name }}
+                            {{ Form::checkbox('room_interior_id[]', $roomInterior->id, $plan->roomsInterior->contains($roomInterior->id)) }} {{ $roomInterior->name }}
                         </label>
                     </div>
                 </div>

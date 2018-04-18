@@ -47,10 +47,12 @@ class PlanFeaturesController extends Controller
         $validatedData = $request->validate([
             'kitchen_id' => 'nullable|array|exists:kitchens,id',
             'bed_id' => 'nullable|array|exists:beds,id',
+            'room_interior_id' => 'nullable|array|exists:room_interiors,id',
         ]);
 
         $plan->kitchens()->sync(array_flatten($request->input('kitchen_id')));
         $plan->beds()->sync(array_flatten($request->input('bed_id')));
+        $plan->roomsInterior()->sync(array_flatten($request->input('room_interior_id')));
 
         if( $request->input('redirect') == 'next' ){
             return redirect()->route('plan-desc.create', ['id'=>$plan->id])
