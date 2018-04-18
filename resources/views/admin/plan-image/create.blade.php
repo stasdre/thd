@@ -18,7 +18,7 @@
             </div>
             <div class="col-sm-3">
                 <a role="button" href="{{ route('house-plan.index') }}" class="btn btn-warning">Save & Close</a>
-                <a role="button" href="{{ route('plan-features.create', [$plan->id]) }}" class="btn btn-success">Save & Next step</a>
+                <a role="button" href="{{ route('plan-features.edit', [$plan->id]) }}" class="btn btn-success">Save & Next step</a>
             </div>
         </div>
     </div>

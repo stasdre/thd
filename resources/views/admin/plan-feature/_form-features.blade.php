@@ -1,3 +1,5 @@
+<input type="hidden" name="redirect" id="redirect" value="next">
+
 <div class="row">
     <h3 class="text-center">Kitchen</h3>
     @php
@@ -11,7 +13,7 @@
                 <div class="form-group">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="kitchen_id[]" value="{{ $kitchen->id }}"> {{ $kitchen->name }}
+                            {{ Form::checkbox('kitchen_id[]', $kitchen->id, $plan->kitchens->contains($kitchen->id)) }} {{ $kitchen->name }}
                         </label>
                     </div>
                 </div>
@@ -114,3 +116,17 @@
         @endif
     @endforeach
 </div>
+
+@push('scripts')
+<script>
+    $("#feature-submit-close, #feature-submit-next").on('click', function(e){
+        e.preventDefault();
+        if( $(this).prop('id') == 'feature-submit-close' )
+            $('#redirect').val('close');
+        else
+            $('#redirect').val('next');
+
+        $('#plans-feature').submit();
+    })
+</script>
+@endpush

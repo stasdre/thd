@@ -15,14 +15,12 @@ use Thd\RoomInterior;
 class PlanFeaturesController extends Controller
 {
     /**
-     * Show the form for creating a new resource.
+     * Show the form for editing the specified resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function edit(Plan $plan)
     {
-        $plan = Plan::findOrFail($id);
-
         $kitchens = Kitchen::orderBy('name')->get();
         $beds = Bed::orderBy('name')->get();
         $roomsInteriors = RoomInterior::orderBy('name')->get();
@@ -35,5 +33,37 @@ class PlanFeaturesController extends Controller
             'roomsInteriors'=>$roomsInteriors,
             'porchExterirors'=>$porchExterirors
         ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Plan $plan)
+    {
+        $validatedData = $request->validate([
+            'kitchen_id' => 'nullable|array|exists:kitchens,id',
+        ]);
+
+        $plan->kitchens()->sync(array_flatten($request->input('kitchen_id')));
+
+        if( $request->input('redirect') == 'next' ){
+            return redirect()->route('plan-desc.create', ['id'=>$plan->id])
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>$plan->name.' was updated',
+                    'autoHide'=>1]);
+        }else{
+            return redirect()->route('house-plan.index')
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>$plan->name.' was updated',
+                    'autoHide'=>1]);
+        }
     }
 }
