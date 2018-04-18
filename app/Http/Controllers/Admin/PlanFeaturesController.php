@@ -48,11 +48,13 @@ class PlanFeaturesController extends Controller
             'kitchen_id' => 'nullable|array|exists:kitchens,id',
             'bed_id' => 'nullable|array|exists:beds,id',
             'room_interior_id' => 'nullable|array|exists:room_interiors,id',
+            'porch_exter_id' => 'nullable|array|exists:porch_exteriors,id',
         ]);
 
         $plan->kitchens()->sync(array_flatten($request->input('kitchen_id')));
         $plan->beds()->sync(array_flatten($request->input('bed_id')));
         $plan->roomsInterior()->sync(array_flatten($request->input('room_interior_id')));
+        $plan->porchExteriors()->sync(array_flatten($request->input('porch_exter_id')));
 
         if( $request->input('redirect') == 'next' ){
             return redirect()->route('plan-desc.create', ['id'=>$plan->id])

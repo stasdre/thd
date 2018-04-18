@@ -71,6 +71,11 @@ class Plan extends Model
         return $this->belongsToMany('Thd\RoomInterior', 'room_interiors_plan');
     }
 
+    public function porchExteriors()
+    {
+        return $this->belongsToMany('Thd\PorchExterior', 'porch_exteriors_plan');
+    }
+
     public function images()
     {
         return $this->hasMany('Thd\PlanImage');

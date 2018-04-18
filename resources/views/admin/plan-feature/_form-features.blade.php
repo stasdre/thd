@@ -101,7 +101,7 @@
                 <div class="form-group">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="porch_exter_id[]" value="{{ $porchExteriror->id }}"> {{ $porchExteriror->name }}
+                            {{ Form::checkbox('porch_exter_id[]', $porchExteriror->id, $plan->porchExteriors->contains($porchExteriror->id)) }} {{ $porchExteriror->name }}
                         </label>
                     </div>
                 </div>
