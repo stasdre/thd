@@ -45,7 +45,8 @@ Route::prefix('admin-thd')->group(function(){
         Route::get('plan-features/edit/{plan}', 'Admin\PlanFeaturesController@edit')->where('plan', '[0-9]+')->name('plan-features.edit');
         Route::post('plan-features/update/{plan}', 'Admin\PlanFeaturesController@update')->where('plan', '[0-9]+')->name('plan-features.update');
 
-        Route::get('plan-desc/create/{id}', 'Admin\PlanDescriptionController@create')->where('id', '[0-9]+')->name('plan-desc.create');
+        Route::get('plan-desc/edit/{plan}', 'Admin\PlanDescriptionController@edit')->where('plan', '[0-9]+')->name('plan-desc.edit');
+        Route::post('plan-desc/update/{plan}', 'Admin\PlanDescriptionController@update')->where('plan', '[0-9]+')->name('plan-desc.update');
 
     });
     Route::middleware(['auth', 'role:owner|admin'])->group(function(){

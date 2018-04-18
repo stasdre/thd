@@ -57,7 +57,7 @@ class PlanFeaturesController extends Controller
         $plan->porchExteriors()->sync(array_flatten($request->input('porch_exter_id')));
 
         if( $request->input('redirect') == 'next' ){
-            return redirect()->route('plan-desc.create', ['id'=>$plan->id])
+            return redirect()->route('plan-desc.edit', ['plan'=>$plan->id])
                 ->with('message', [
                     'type'=>'success',
                     'title'=>'Success!',

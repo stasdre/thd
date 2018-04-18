@@ -1,3 +1,5 @@
+<input type="hidden" name="redirect" id="redirect" value="next">
+
 <div class="form-group">
     {{ Form::label('short_description', 'Short Description', ['class' => 'col-sm-2 control-label']) }}
     <div class="col-sm-10">
@@ -26,4 +28,18 @@
 
 @push('tinymce')
 <script src="{{ asset('js/admin/tinymce.js') }}"></script>
+@endpush
+
+@push('scripts')
+<script>
+    $("#desc-submit-close, #desc-submit-next").on('click', function(e){
+        e.preventDefault();
+        if( $(this).prop('id') == 'desc-submit-close' )
+            $('#redirect').val('close');
+        else
+            $('#redirect').val('next');
+
+        $('#plan-desc').submit();
+    })
+</script>
 @endpush
