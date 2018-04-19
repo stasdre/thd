@@ -21,10 +21,10 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-6">
                 <label class="radio-inline">
-                    {!! Form::radio('designer', 'designer', true) !!} Designers Administration
+                    {!! Form::radio('designer', 'designer', true) !!} David Wiggins Admin
                 </label>
                 <label class="radio-inline">
-                    {!! Form::radio('designer', 'designer_partner') !!} Design Partner Administration
+                    {!! Form::radio('designer', 'designer_partner') !!} Design Partner Admin
                 </label>
             </div>
         </div>
