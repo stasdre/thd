@@ -48,6 +48,9 @@ Route::prefix('admin-thd')->group(function(){
         Route::get('plan-desc/edit/{plan}', 'Admin\PlanDescriptionController@edit')->where('plan', '[0-9]+')->name('plan-desc.edit');
         Route::post('plan-desc/update/{plan}', 'Admin\PlanDescriptionController@update')->where('plan', '[0-9]+')->name('plan-desc.update');
 
+        Route::get('house-plan/publish/{plan}', 'Admin\HousePlansController@publish')->where('plan', '[0-9]+')->name('house-plan.publish');
+        Route::get('house-plan/unpublish/{plan}', 'Admin\HousePlansController@unpublish')->where('plan', '[0-9]+')->name('house-plan.unpublish');
+
     });
     Route::middleware(['auth', 'role:owner|admin'])->group(function(){
         Route::resource('styles', 'Admin\StyleController', ['except'=>['show']]);

@@ -7,7 +7,7 @@
 @section('content')
     <div class="box box-default">
         <div class="box-header with-border">
-            @include('admin._plans_menu', ['active'=>'desc', 'plan'=>$plan->id])
+            @include('admin._plans_menu', ['active'=>'desc', 'plan'=>$plan])
         </div>
         <div class="box-body">
             {!! Form::model($plan, ['route' => ['plan-desc.update', $plan->id], 'class' => 'form-horizontal', 'id'=>'plan-desc', 'method' => 'post']) !!}

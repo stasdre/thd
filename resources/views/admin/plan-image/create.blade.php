@@ -7,7 +7,7 @@
 @section('content')
     <div class="box box-default">
         <div class="box-header with-border">
-            @include('admin._plans_menu', ['active'=>'graphics', 'plan'=>$plan->id])
+            @include('admin._plans_menu', ['active'=>'graphics', 'plan'=>$plan])
         </div>
         <div class="box-body">
             @include('admin.plan-image._form-images')

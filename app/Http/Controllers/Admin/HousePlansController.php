@@ -206,4 +206,30 @@ class HousePlansController extends Controller
         }
         return response()->json($responseData);
     }
+
+    public function publish(Plan $plan)
+    {
+        $plan->is_active = 1;
+        $plan->update();
+
+        return redirect()->back()
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$plan->name.' was published',
+                'autoHide'=>1]);
+    }
+
+    public function unpublish(Plan $plan)
+    {
+        $plan->is_active = 0;
+        $plan->update();
+
+        return redirect()->back()
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$plan->name.' was published',
+                'autoHide'=>1]);
+    }
 }
