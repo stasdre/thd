@@ -86,6 +86,11 @@ class Plan extends Model
         return $this->hasMany('Thd\PlanImageFirst');
     }
 
+    public function packages()
+    {
+        return $this->belongsToMany('Thd\Package');
+    }
+
     public function getLabelAttribute()
     {
         return "{$this->id}:{$this->name}";

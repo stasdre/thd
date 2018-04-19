@@ -4,7 +4,7 @@
         <li role="presentation" class="{{ $active == 'graphics' ? 'active' : '' }}"><a href="{{ route('plan-images.create', [$plan]) }}">Graphics</a></li>
         <li role="presentation" class="{{ $active == 'features' ? 'active' : '' }}"><a href="{{ route('plan-features.edit', [$plan]) }}">Key Features</a></li>
         <li role="presentation" class="{{ $active == 'desc' ? 'active' : '' }}"><a href="{{ route('plan-desc.edit', [$plan]) }}">Plan Description</a></li>
-        <li role="presentation" class="{{ $active == 'pricing' ? 'active' : '' }}"><a href="{{ route('plan-packages.create', [$plan]) }}">Pricing Options</a></li>
+        <li role="presentation" class="{{ $active == 'pricing' ? 'active' : '' }}"><a href="{{ route('plan-packages.edit', [$plan]) }}">Pricing Options</a></li>
         <li role="presentation" class=""><a href="#">Preview Plan Page</a></li>
     @else
         <li role="presentation" class="active"><a href="{{ route('house-plan.create') }}">Plan Detail</a></li>

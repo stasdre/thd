@@ -41,7 +41,7 @@ class PlanDescriptionController extends Controller
         $plan->update();
 
         if( $request->input('redirect') == 'next' ){
-            return redirect()->route('plan-packages.create', ['plan'=>$plan->id])
+            return redirect()->route('plan-packages.edit', ['plan'=>$plan->id])
                 ->with('message', [
                     'type'=>'success',
                     'title'=>'Success!',

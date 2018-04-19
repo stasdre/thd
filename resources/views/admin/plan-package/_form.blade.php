@@ -1,3 +1,5 @@
+<input type="hidden" name="redirect" id="redirect" value="next">
+
 <div class="nav-tabs-custom">
     <ul class="nav nav-tabs">
         <li class="active"><a href="#packages" data-toggle="tab">Packages</a></li>
@@ -9,9 +11,9 @@
             <div class="form-group">
                 @foreach($packages as $package)
                     <div class="checkbox">
-                        <label>{{ Form::checkbox('package[]', $package->id, false, ['class'=>'use-package']) }} Use {{ $package->name }}</label>
+                        <label>{{ Form::checkbox('package[]', $package->id, $plan->packages->contains($package->id), ['class'=>'use-package']) }} Use {{ $package->name }}</label>
                     </div>
-                    <div id="package_files_{{ $package->id }}" class="row plan-packages" style="display: none">
+                    <div id="package_files_{{ $package->id }}" class="row plan-packages" {!! !$plan->packages->contains($package->id) ? 'style="display: none"' : '' !!}>
                         <div class="col-sm-4">
                             <div class="input-group input-group-sm package-price">
                                 <input class="form-control" type="text">
@@ -85,5 +87,15 @@
     $(document).on('click', '.rem-package-file', function(){
         $(this).closest('.row').remove();
     });
+
+    $("#plans-submit-close, #plans-submit-next").on('click', function(e){
+        e.preventDefault();
+        if( $(this).prop('id') == 'plans-submit-close' )
+            $('#redirect').val('close');
+        else
+            $('#redirect').val('next');
+
+        $('#plans-form').submit();
+    })
 </script>
 @endpush

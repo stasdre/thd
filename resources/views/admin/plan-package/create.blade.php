@@ -10,7 +10,7 @@
             @include('admin._plans_menu', ['active'=>'pricing', 'plan'=>$plan->id])
         </div>
         <div class="box-body">
-            {!! Form::open(['route' => ['plan-packages.store', $plan->id], 'class' => 'form-horizontal', 'method' => 'post']) !!}
+            {!! Form::open(['route' => ['plan-packages.update', $plan->id], 'class' => 'form-horizontal', 'id'=>'plans-form', 'method' => 'post']) !!}
                 @include('admin.plan-package._form')
             {!! Form::close() !!}
         </div>

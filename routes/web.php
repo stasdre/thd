@@ -39,8 +39,8 @@ Route::prefix('admin-thd')->group(function(){
         Route::delete('plan-images-first/{image}', 'Admin\PlanImagesFirstController@destroy')->where('image', '[0-9]+')->name('plan-images-first.destroy');
         Route::post('plan-images-first-sotr/{id}', 'Admin\PlanImagesFirstController@sort')->where('id', '[0-9]+')->name('plan-images-first.sort');
 
-        Route::get('plan-packages/create/{plan}', 'Admin\PlanPackageController@create')->where('plan', '[0-9]+')->name('plan-packages.create');
-        Route::post('plan-packages/store/{plan}', 'Admin\PlanInformationController@store')->where('id', '[0-9]+')->name('plan-packages.store');
+        Route::get('plan-packages/edit/{plan}', 'Admin\PlanPackageController@edit')->where('plan', '[0-9]+')->name('plan-packages.edit');
+        Route::post('plan-packages/update/{plan}', 'Admin\PlanPackageController@update')->where('id', '[0-9]+')->name('plan-packages.update');
 
         Route::get('plan-features/edit/{plan}', 'Admin\PlanFeaturesController@edit')->where('plan', '[0-9]+')->name('plan-features.edit');
         Route::post('plan-features/update/{plan}', 'Admin\PlanFeaturesController@update')->where('plan', '[0-9]+')->name('plan-features.update');
