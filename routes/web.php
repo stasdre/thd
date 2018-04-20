@@ -20,7 +20,8 @@ Route::prefix('admin-thd')->group(function(){
     Route::middleware(['auth', 'role:owner|admin|manager'])->group(function(){
         Route::get('/', 'Admin\DashboardController@index')->name('dashboard');
 
-        Route::resource('house-plan', 'Admin\HousePlansController');
+        Route::resource('house-plan', 'Admin\HousePlansController', ['except'=>['show']]);
+        Route::get('house-plan/data', 'Admin\HousePlansController@anyData')->name('house-plan.data');
         Route::get('house-plan/getid/{str}', 'Admin\HousePlansController@getPlanID')->name('getPlanID');
 
         Route::get('plan-info/create/{id}', 'Admin\PlanInformationController@create')->where('id', '[0-9]+')->name('plan-info.create');

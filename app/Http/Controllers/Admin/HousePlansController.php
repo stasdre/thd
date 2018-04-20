@@ -13,6 +13,7 @@ use Thd\Http\Requests\PlansRequest;
 use Thd\Style;
 use Thd\Plan;
 use Thd\User;
+use Yajra\Datatables\Datatables;
 
 class HousePlansController extends Controller
 {
@@ -262,5 +263,27 @@ class HousePlansController extends Controller
                 'title'=>'Success!',
                 'message'=>$plan->name.' was published',
                 'autoHide'=>1]);
+    }
+
+    /**
+     * Process datatables ajax request.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function anyData()
+    {
+        $plans = Plan::select(['id', 'plan_number', 'name', 'is_active', 'created_at', 'updated_at']);
+        return Datatables::of($plans)
+            ->addColumn('actions', function($plan){
+                $pudlish = $plan->is_active == 1 ? '<a class="btn btn-warning btn-sm" href="'.route('house-plan.unpublish', ['plan'=>$plan->id]).'" role="button">Unpublish</a>' : '<a class="btn btn-success btn-sm" href="'.route('house-plan.publish', ['plan'=>$plan->id]).'" role="button">Publish</a>';
+                return '<a class="btn btn-info btn-sm" href="'.route('house-plan.edit', ['house-plan'=>$plan->id]).'" role="button">Edit</a> '.$pudlish.' <form style="display: inline-block" action="'.route('house-plan.destroy', ['house-plan'=>$plan->id]).'" method="POST"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'"><button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
+            })
+            ->editColumn('is_active', function($plan){
+                if($plan->is_active == 1)
+                    return '<i style="color: green;" class="fa fa-check" aria-hidden="true"></i>';
+                return '';
+            })
+            ->rawColumns(['is_active', 'actions'])
+            ->make(true);
     }
 }
