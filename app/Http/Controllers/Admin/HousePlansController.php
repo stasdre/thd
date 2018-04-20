@@ -215,9 +215,18 @@ class HousePlansController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Plan $house_plan)
     {
-        //
+        $house_plan->delete();
+
+        Storage::deleteDirectory('public/plans/'.$house_plan->id);
+
+        return redirect()->route('house-plan.index')
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$house_plan->name.' was deleted',
+                'autoHide'=>1]);
     }
 
     public function getPlanID($str)
