@@ -98,6 +98,11 @@ class Plan extends Model
         return $this->hasMany('Thd\PlanImageBasement');
     }
 
+    public function images_bonus()
+    {
+        return $this->hasMany('Thd\PlanImageBonus');
+    }
+
     public function packages()
     {
         return $this->belongsToMany('Thd\Package');
