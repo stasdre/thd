@@ -98,12 +98,70 @@
             </div>
         </div>
 
-        <div class="form-group">
-            {{ Form::label('youtube_url', 'YouTube URL', ['class' => 'col-sm-2 control-label']) }}
-            <div class="col-sm-6">
-                {{ Form::text('youtube_url', null, ['class'=>'form-control', 'placeholder'=>'Plan Name']) }}
+        <div class="form-group {{ $errors->has('youtube') ? 'has-error' : '' }}">
+            <div class="col-sm-offset-2 col-sm-6">
+                <label class="radio-inline">
+                    {!! Form::radio('youtube', 'link', true) !!} YouTube URL
+                </label>
+                <label class="radio-inline">
+                    {!! Form::radio('youtube', 'file') !!} Video File
+                </label>
             </div>
         </div>
+        @if( old('designer') )
+            <div class="form-group {{ $errors->has('youtube_url') ? 'has-error' : '' }}" id="youtube-link" {!! old('youtube') == 'file' ? 'style="display: none;"' : '' !!}>
+                {{ Form::label('youtube_url', 'YouTube URL', ['class' => 'col-sm-2 control-label']) }}
+                <div class="col-sm-6">
+                    {{ Form::text('youtube_url', null, ['class'=>'form-control', 'placeholder'=>'Plan Name']) }}
+                </div>
+            </div>
+            <div class="form-group {{ $errors->has('video_file') ? 'has-error' : '' }}" id="video-file" {!! old('youtube') == 'link' ? 'style="display: none;"' : '' !!}>
+                {{ Form::label('video_file', 'Video File', ['class' => 'col-sm-2 control-label']) }}
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <input class="form-control" name="video_file" type="file">
+                        <span class="input-group-addon"><i class="fa fa-file" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+        @elseif( isset($plan->youtube) )
+            <div class="form-group {{ $errors->has('youtube_url') ? 'has-error' : '' }}" id="youtube-link" {!! $plan->youtube == 'file' ? 'style="display: none;"' : '' !!}>
+                {{ Form::label('youtube_url', 'YouTube URL', ['class' => 'col-sm-2 control-label']) }}
+                <div class="col-sm-6">
+                    {{ Form::text('youtube_url', null, ['class'=>'form-control', 'placeholder'=>'Plan Name']) }}
+                </div>
+            </div>
+            <div class="form-group {{ $errors->has('video_file') ? 'has-error' : '' }}" id="video-file" {!! $plan->youtube == 'link' ? 'style="display: none;"' : '' !!}>
+                {{ Form::label('video_file', 'Video File', ['class' => 'col-sm-2 control-label']) }}
+                <div class="col-sm-6">
+                    <div id="current_video_file" {!! !$plan->video_file ? 'style="display: none;"' : '' !!}>
+                        <input type="hidden" name="video_file_old" value="{{ $plan->video_file }}">
+                        <a href="{{ '/storage/plans/'.$plan->id.'/'.$plan->video_file }}">{{ $plan->video_file }}</a> <span><i id="video_file_change" class="fa fa-minus-circle fa-lg click-icon red-icon"></i></span>
+                    </div>
+                    <div id="new_video_file" class="input-group" {!! $plan->video_file ? 'style="display: none;"' : '' !!}>
+                        <input class="form-control" name="video_file" type="file">
+                        <span class="input-group-addon"><i class="fa fa-file" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+        @else
+            <div class="form-group" id="youtube-link">
+                {{ Form::label('youtube_url', 'YouTube URL', ['class' => 'col-sm-2 control-label']) }}
+                <div class="col-sm-6">
+                    {{ Form::text('youtube_url', null, ['class'=>'form-control', 'placeholder'=>'Plan Name']) }}
+                </div>
+            </div>
+            <div class="form-group" id="video-file" style="display: none;">
+                {{ Form::label('video_file', 'Video File', ['class' => 'col-sm-2 control-label']) }}
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <input class="form-control" name="video_file" type="file">
+                        <span class="input-group-addon"><i class="fa fa-file" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <div class="form-group">
             {{ Form::label('admin_note', 'Admin note', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-6">
@@ -693,6 +751,16 @@
            }
         });
 
+        $('input:radio[name="youtube"]').on('click', function(){
+            if( $(this).prop('checked') == true && $(this).val() == 'link' ){
+                $("#video-file").hide();
+                $("#youtube-link").show();
+            }else{
+                $("#youtube-link").hide();
+                $("#video-file").show();
+            }
+        });
+
         $( ".datepicker" ).datepicker({
             dateFormat: "yy-mm-dd"
         });
@@ -766,7 +834,12 @@
                 $('#redirect').val('next');
 
             $('#plans-form').submit();
-        })
+        });
+
+        $("#video_file_change").on('click', function(){
+            $("#current_video_file").hide();
+            $("#new_video_file").show();
+        });
     });
 </script>
 @endpush

@@ -10,7 +10,7 @@
             @include('admin._plans_menu', ['active'=>'details', 'plan'=>$plan])
         </div>
         <div class="box-body">
-            {{ Form::model($plan, ['route' => ['house-plan.update', $plan->id], 'class' => 'form-horizontal', 'method' => 'PATCH', 'id'=>'plans-form']) }}
+            {{ Form::model($plan, ['route' => ['house-plan.update', $plan->id], 'class' => 'form-horizontal', 'method' => 'PATCH', 'id'=>'plans-form', 'files' => true]) }}
                 @include('admin.house-plan._form-general')
             {!! Form::close() !!}
         </div>

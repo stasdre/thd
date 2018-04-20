@@ -21,7 +21,9 @@ class Plan extends Model
         'construction',
         'ceiling',
         'roof',
-        'garage'
+        'garage',
+        'youtube_url',
+        'video_file'
     ];
 
     protected $casts = [
@@ -111,4 +113,8 @@ class Plan extends Model
         return $this->designer == 'designer' ? $this->designer_id : '';
     }
 
+    public function getYoutubeAttribute()
+    {
+        return $this->video_file ? 'file' : 'link';
+    }
 }

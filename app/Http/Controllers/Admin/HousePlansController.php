@@ -66,8 +66,8 @@ class HousePlansController extends Controller
             $plan->fill($dataPlan);
             $plan->save();
 
-            $plan->styles()->attach(array_flatten($stylesData));
-            $plan->collections()->attach(array_flatten($collectionsData));
+            $plan->styles()->attach($stylesData);
+            $plan->collections()->attach($collectionsData);
 
             DB::commit();
         }catch(\Exception $e){
@@ -78,6 +78,18 @@ class HousePlansController extends Controller
 
         Storage::makeDirectory('public/plans/'.$plan->id);
         Storage::makeDirectory('public/plans/' . $plan->id . '/thumb');
+
+        if($request->input('youtube') == 'file'){
+            $file = $request->file('video_file');
+            $filename  = str_random(40) . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/plans/' . $plan->id, $filename);
+            $plan->video_file = $filename;
+        }else{
+            $plan->youtube_url = $request->input('youtube_url');
+        }
+
+        $plan->update();
+
 
         if( $request->input('redirect') == 'next' ){
             return redirect()->route('plan-images.create', ['id'=>$plan->id])
@@ -149,8 +161,8 @@ class HousePlansController extends Controller
             $house_plan->fill($dataPlan);
             $house_plan->update();
 
-            $house_plan->styles()->sync(array_flatten($stylesData));
-            $house_plan->collections()->sync(array_flatten($collectionsData));
+            $house_plan->styles()->sync($stylesData);
+            $house_plan->collections()->sync($collectionsData);
 
             DB::commit();
         }catch(\Exception $e){
@@ -159,6 +171,25 @@ class HousePlansController extends Controller
             throw $e;
         }
 
+        if($request->input('youtube') == 'file'){
+            if($file = $request->file('video_file')){
+                $file = $request->file('video_file');
+                $filename  = str_random(40) . '.' . $file->getClientOriginalExtension();
+                $file->storeAs('public/plans/' . $house_plan->id, $filename);
+                Storage::delete('public/plans/'.$house_plan->id.'/'.$request->input('video_file_old'));
+                $house_plan->video_file = $filename;
+                $house_plan->youtube_url = '';
+
+            }
+        }else{
+            $house_plan->youtube_url = $request->input('youtube_url');
+            if($house_plan->video_file){
+                Storage::delete('public/plans/'.$house_plan->id.'/'.$house_plan->video_file);
+            }
+            $house_plan->video_file = '';
+        }
+
+        $house_plan->update();
 
         if( $request->input('redirect') == 'next' ){
             return redirect()->route('plan-images.create', ['id'=>$house_plan->id])
