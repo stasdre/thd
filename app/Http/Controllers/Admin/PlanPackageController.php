@@ -6,17 +6,20 @@ use Illuminate\Http\Request;
 use Thd\Http\Controllers\Controller;
 use Thd\Package;
 use Thd\Plan;
+use Thd\PlanPackageData;
+use Illuminate\Support\Facades\DB;
 
 class PlanPackageController extends Controller
 {
     /**
-     * Show the form for creating a new resource.
+     * Show the form for editing the specified resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Plan $plan)
+    public function edit(Plan $plan)
     {
         $packages = Package::all();
+
         return view('admin.plan-package.create', [
             'plan' => $plan,
             'packages' => $packages
@@ -24,13 +27,19 @@ class PlanPackageController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Plan $plan)
+    public function update(Request $request, Plan $plan)
     {
+        $request->validate([
+            'package' => 'nullable|array|exists:packages,id',
+        ]);
+
+        $plan->packages()->sync(array_flatten($request->input('package')));
+
         return redirect()->route('house-plan.index')
             ->with('message', [
                 'type'=>'success',

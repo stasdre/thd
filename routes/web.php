@@ -20,7 +20,9 @@ Route::prefix('admin-thd')->group(function(){
     Route::middleware(['auth', 'role:owner|admin|manager'])->group(function(){
         Route::get('/', 'Admin\DashboardController@index')->name('dashboard');
 
-        Route::resource('house-plan', 'Admin\HousePlansController');
+        Route::resource('house-plan', 'Admin\HousePlansController', ['except'=>['show']]);
+        Route::get('house-plan/data', 'Admin\HousePlansController@anyData')->name('house-plan.data');
+        Route::get('house-plan/getid/{str}', 'Admin\HousePlansController@getPlanID')->name('getPlanID');
 
         Route::get('plan-info/create/{id}', 'Admin\PlanInformationController@create')->where('id', '[0-9]+')->name('plan-info.create');
         Route::post('plan-info/store/{id}', 'Admin\PlanInformationController@store')->where('id', '[0-9]+')->name('plan-info.store');
@@ -32,12 +34,41 @@ Route::prefix('admin-thd')->group(function(){
         Route::delete('plan-images/{image}', 'Admin\PlanImageController@destroy')->where('image', '[0-9]+')->name('plan-images.destroy');
         Route::post('plan-images-sotr/{id}', 'Admin\PlanImageController@sort')->where('id', '[0-9]+')->name('plan-images.sort');
 
-        Route::get('plan-packages/create/{plan}', 'Admin\PlanPackageController@create')->where('plan', '[0-9]+')->name('plan-packages.create');
-        Route::post('plan-packages/store/{plan}', 'Admin\PlanInformationController@store')->where('id', '[0-9]+')->name('plan-packages.store');
+        Route::post('plan-images-first/{plan}', 'Admin\PlanImagesFirstController@store')->where('id', '[0-9]+')->name('plan-images-first.store');
+        Route::get('plan-images-first/{image}/edit', 'Admin\PlanImagesFirstController@edit')->where('image', '[0-9]+')->name('plan-images-first.edit');
+        Route::put('plan-images-first/{image}', 'Admin\PlanImagesFirstController@update')->where('image', '[0-9]+')->name('plan-images-first.update');
+        Route::delete('plan-images-first/{image}', 'Admin\PlanImagesFirstController@destroy')->where('image', '[0-9]+')->name('plan-images-first.destroy');
+        Route::post('plan-images-first-sotr/{id}', 'Admin\PlanImagesFirstController@sort')->where('id', '[0-9]+')->name('plan-images-first.sort');
 
-        Route::get('plan-features/create/{id}', 'Admin\PlanFeaturesController@create')->where('id', '[0-9]+')->name('plan-features.create');
+        Route::post('plan-images-second/{plan}', 'Admin\PlanImagesSecondController@store')->where('id', '[0-9]+')->name('plan-images-second.store');
+        Route::get('plan-images-second/{image}/edit', 'Admin\PlanImagesSecondController@edit')->where('image', '[0-9]+')->name('plan-images-second.edit');
+        Route::put('plan-images-second/{image}', 'Admin\PlanImagesSecondController@update')->where('image', '[0-9]+')->name('plan-images-second.update');
+        Route::delete('plan-images-second/{image}', 'Admin\PlanImagesSecondController@destroy')->where('image', '[0-9]+')->name('plan-images-second.destroy');
+        Route::post('plan-images-second-sotr/{id}', 'Admin\PlanImagesSecondController@sort')->where('id', '[0-9]+')->name('plan-images-second.sort');
 
-        Route::get('plan-desc/create/{id}', 'Admin\PlanDescriptionController@create')->where('id', '[0-9]+')->name('plan-desc.create');
+        Route::post('plan-images-basement/{plan}', 'Admin\PlanImagesBasementController@store')->where('id', '[0-9]+')->name('plan-images-basement.store');
+        Route::get('plan-images-basement/{image}/edit', 'Admin\PlanImagesBasementController@edit')->where('image', '[0-9]+')->name('plan-images-basement.edit');
+        Route::put('plan-images-basement/{image}', 'Admin\PlanImagesBasementController@update')->where('image', '[0-9]+')->name('plan-images-basement.update');
+        Route::delete('plan-images-basement/{image}', 'Admin\PlanImagesBasementController@destroy')->where('image', '[0-9]+')->name('plan-images-basement.destroy');
+        Route::post('plan-images-basement-sotr/{id}', 'Admin\PlanImagesBasementController@sort')->where('id', '[0-9]+')->name('plan-images-basement.sort');
+
+        Route::post('plan-images-bonus/{plan}', 'Admin\PlanImagesBonusController@store')->where('id', '[0-9]+')->name('plan-images-bonus.store');
+        Route::get('plan-images-bonus/{image}/edit', 'Admin\PlanImagesBonusController@edit')->where('image', '[0-9]+')->name('plan-images-bonus.edit');
+        Route::put('plan-images-bonus/{image}', 'Admin\PlanImagesBonusController@update')->where('image', '[0-9]+')->name('plan-images-bonus.update');
+        Route::delete('plan-images-bonus/{image}', 'Admin\PlanImagesBonusController@destroy')->where('image', '[0-9]+')->name('plan-images-bonus.destroy');
+        Route::post('plan-images-bonus-sotr/{id}', 'Admin\PlanImagesBonusController@sort')->where('id', '[0-9]+')->name('plan-images-bonus.sort');
+
+        Route::get('plan-packages/edit/{plan}', 'Admin\PlanPackageController@edit')->where('plan', '[0-9]+')->name('plan-packages.edit');
+        Route::post('plan-packages/update/{plan}', 'Admin\PlanPackageController@update')->where('id', '[0-9]+')->name('plan-packages.update');
+
+        Route::get('plan-features/edit/{plan}', 'Admin\PlanFeaturesController@edit')->where('plan', '[0-9]+')->name('plan-features.edit');
+        Route::post('plan-features/update/{plan}', 'Admin\PlanFeaturesController@update')->where('plan', '[0-9]+')->name('plan-features.update');
+
+        Route::get('plan-desc/edit/{plan}', 'Admin\PlanDescriptionController@edit')->where('plan', '[0-9]+')->name('plan-desc.edit');
+        Route::post('plan-desc/update/{plan}', 'Admin\PlanDescriptionController@update')->where('plan', '[0-9]+')->name('plan-desc.update');
+
+        Route::get('house-plan/publish/{plan}', 'Admin\HousePlansController@publish')->where('plan', '[0-9]+')->name('house-plan.publish');
+        Route::get('house-plan/unpublish/{plan}', 'Admin\HousePlansController@unpublish')->where('plan', '[0-9]+')->name('house-plan.unpublish');
 
     });
     Route::middleware(['auth', 'role:owner|admin'])->group(function(){

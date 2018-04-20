@@ -53,4 +53,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('Thd\Plan');
     }
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->name} {$this->last_name}";
+    }
+
+    public function getFullNameWidthEmailAttribute()
+    {
+        return "{$this->name} {$this->last_name} ({$this->email})";
+    }
 }

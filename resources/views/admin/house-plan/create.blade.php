@@ -10,7 +10,7 @@
             @include('admin._plans_menu')
         </div>
         <div class="box-body">
-            {!! Form::open(['route' => 'house-plan.store', 'class' => 'form-horizontal', 'id'=>'plans-form', 'method' => 'post']) !!}
+            {!! Form::open(['route' => 'house-plan.store', 'class' => 'form-horizontal', 'id'=>'plans-form', 'method' => 'post', 'files' => true]) !!}
                 @include('admin.house-plan._form-general')
             {!! Form::close() !!}
         </div>

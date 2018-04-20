@@ -1,3 +1,5 @@
+<input type="hidden" name="redirect" id="redirect" value="next">
+
 <div class="row">
     <h3 class="text-center">Kitchen</h3>
     @php
@@ -11,7 +13,7 @@
                 <div class="form-group">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="kitchen_id[]" value="{{ $kitchen->id }}"> {{ $kitchen->name }}
+                            {{ Form::checkbox('kitchen_id[]', $kitchen->id, $plan->kitchens->contains($kitchen->id)) }} {{ $kitchen->name }}
                         </label>
                     </div>
                 </div>
@@ -40,7 +42,7 @@
                 <div class="form-group">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="bed_id[]" value="{{ $bed->id }}"> {{ $bed->name }}
+                            {{ Form::checkbox('bed_id[]', $bed->id, $plan->beds->contains($bed->id)) }} {{ $bed->name }}
                         </label>
                     </div>
                 </div>
@@ -69,7 +71,7 @@
                 <div class="form-group">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="room_interior_id[]" value="{{ $roomInterior->id }}"> {{ $roomInterior->name }}
+                            {{ Form::checkbox('room_interior_id[]', $roomInterior->id, $plan->roomsInterior->contains($roomInterior->id)) }} {{ $roomInterior->name }}
                         </label>
                     </div>
                 </div>
@@ -99,7 +101,7 @@
                 <div class="form-group">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="porch_exter_id[]" value="{{ $porchExteriror->id }}"> {{ $porchExteriror->name }}
+                            {{ Form::checkbox('porch_exter_id[]', $porchExteriror->id, $plan->porchExteriors->contains($porchExteriror->id)) }} {{ $porchExteriror->name }}
                         </label>
                     </div>
                 </div>
@@ -114,3 +116,17 @@
         @endif
     @endforeach
 </div>
+
+@push('scripts')
+<script>
+    $("#feature-submit-close, #feature-submit-next").on('click', function(e){
+        e.preventDefault();
+        if( $(this).prop('id') == 'feature-submit-close' )
+            $('#redirect').val('close');
+        else
+            $('#redirect').val('next');
+
+        $('#plans-feature').submit();
+    })
+</script>
+@endpush
