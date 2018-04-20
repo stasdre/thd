@@ -228,6 +228,7 @@
                     $(".galery_loader").show();
                     $("#image_content .form-group:eq(2)").removeClass('hidden');
                     $("#image_content .form-group:eq(3)").removeClass('hidden');
+                    $("#image_content .form-group:eq(4)").removeClass('hidden');
                     $("#image_data_form").prop('action', saveUrl.replace('image_id', id[2]));
                 },
                 success: function(data){
@@ -246,6 +247,12 @@
                         $("#for_search").prop('checked', true);
                     }else{
                         $("#for_search").prop('checked', false);
+                    }
+
+                    if(data.camera_icon == 1){
+                        $("#camera_icon").prop('checked', true);
+                    }else{
+                        $("#camera_icon").prop('checked', false);
                     }
 
                     $(".galery_loader").hide();
@@ -273,6 +280,7 @@
                     $(".galery_loader").show();
                     $("#image_content .form-group:eq(2)").addClass('hidden');
                     $("#image_content .form-group:eq(3)").addClass('hidden');
+                    $("#image_content .form-group:eq(4)").addClass('hidden');
                     $("#image_data_form").prop('action', saveUrl.replace('image_id', id[2]));
                 },
                 success: function(data){
@@ -298,7 +306,7 @@
                 method: 'put',
                 url: $("#image_data_form").prop('action'),
                 dataType: 'json',
-                data: {title: $("#title").val(), description: $("#description").val(), first_image: $("#first_image").prop('checked') ? 1 : 0, for_search: $("#for_search").prop('checked') ? 1 : 0},
+                data: {title: $("#title").val(), description: $("#description").val(), first_image: $("#first_image").prop('checked') ? 1 : 0, for_search: $("#for_search").prop('checked') ? 1 : 0, camera_icon: $("#camera_icon").prop('checked') ? 1 : 0},
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
@@ -370,6 +378,15 @@
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" name="for_search" id="for_search" value="1"> Search results page
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="camera_icon" id="camera_icon" value="1"> Camera Icon
                                 </label>
                             </div>
                         </div>

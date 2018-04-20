@@ -121,6 +121,7 @@ class PlanImageController extends Controller
         $image->description = $input['description'];
         $image->first_image = $input['first_image'] == 1 ? 1 : 0;
         $image->for_search = $input['for_search'] == 1 ? 1 : 0;
+        $image->camera_icon = $input['camera_icon'] == 1 ? 1 : 0;
 
         if($image->update()){
             return response()->json('success', 200);
