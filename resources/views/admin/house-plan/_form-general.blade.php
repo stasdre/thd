@@ -199,29 +199,29 @@
             <div class="col-sm-6">
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('details[lot_char][]', 'corner') }} Sulted for corner lot
+                        {{ Form::checkbox('details[lot_char][]', 'corner') }} Suited for corner lot
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('details[lot_char][]', 'narrow') }} Sulted for narrow lot
+                        {{ Form::checkbox('details[lot_char][]', 'narrow') }} Suited for narrow lot
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('details[lot_char][]', 'sloping') }} Sulted for sloping lot
+                        {{ Form::checkbox('details[lot_char][]', 'sloping') }} Suited for sloping lot
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('details[lot_char][]', 'view') }} Sulted for view lot
+                        {{ Form::checkbox('details[lot_char][]', 'view') }} Suited for view lot
                     </label>
                 </div>
             </div>
         </div>
 
         <div class="form-group {{ $errors->has('details.lot_siope') ? 'has-error' : '' }}">
-            {{ Form::label('details[lot_siope]', 'Lot Siope', ['class' => 'col-sm-2 control-label']) }}
+            {{ Form::label('details[lot_siope]', 'Lot Slope', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-6">
                 {!! Form::select('details[lot_siope]', ['1'=>'1', '2'=>'2', '3'=>'3'], null, ['class' => 'form-control', 'placeholder' => 'Select a Lot Siope...']) !!}
             </div>
