@@ -38,7 +38,9 @@
     <div role="tabpanel" class="tab-pane fade" id="first-floor-tab">
         @include('admin.plan-image._first-floor')
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="second-floor-tab"></div>
+    <div role="tabpanel" class="tab-pane fade" id="second-floor-tab">
+        @include('admin.plan-image._second-floor')
+    </div>
     <div role="tabpanel" class="tab-pane fade" id="basement-floor-tab"></div>
     <div role="tabpanel" class="tab-pane fade" id="bonus-floor-tab"></div>
 </div>
@@ -211,6 +213,63 @@
                     });
                 }
             });
+
+            $("#file_upload_second").dropzone({
+                url: "{!! route('plan-images-second.store', ['id' => $plan->id]) !!}",
+                method: 'post',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                sending: function(file, xhr, formData) {
+                    $(file.previewElement).addClass('sending');
+                    formData.append("sort_number", $(".sending").length);
+                },
+                previewTemplate: document.querySelector('#dropzone_tmpl').innerHTML,
+                previewsContainer: '#files_sortable_second',
+                acceptedFiles: 'image/*',
+                thumbnailWidth: 160,
+                thumbnailHeight: 160,
+                success: function(file, data){
+                    if(data.file_name){
+                        file.previewElement.querySelector("img").src = "/storage/plans/" +data.plan_id+ "/thumb/" + data.file_name;
+                        $(file.previewElement).find('.imag_container').addClass('downloaded_without_check_2');
+                        $(file.previewElement).addClass('file_sortable');
+                        $(file.previewElement).prop('id', 'sortable_id_' + data.id);
+                        $(file.previewElement).find('.imag_container').prop('id', 'image_id_' + data.id);
+                    }
+                }
+            });
+            $( "#files_sortable_second" ).sortable({
+                tolerance: 'pointer',
+                revert: 'invalid',
+                placeholder: 'dz-preview dz-processing dz-image-preview dz-success dz-complete placeholder',
+                //placeholder: 'file_sortable',
+                items: '.file_sortable',
+                forceHelperSize: true,
+                helper: 'clone',
+                stop: function(event, ui) {
+                    //event.preventDefault();
+                },
+                update: function (event, ui) {
+                    var data = $(this).sortable('serialize');
+
+                    // POST to server using $.post or $.ajax
+                    $.ajax({
+                        data: data,
+                        type: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: '{!! route('plan-images-second.sort', ['id' => $plan->id]) !!}',
+                        beforeSend: function(){
+                            $(".galery_loader").show();
+                        },
+                        success: function(){
+                            $(".galery_loader").hide();
+                        }
+                    });
+                }
+            });
         });
 
         $(document).on('click', '.downloaded', function () {
@@ -265,9 +324,16 @@
             });
         });
 
-        $(document).on('click', '.downloaded_without_check', function () {
-            var url = '{{ route('plan-images-first.edit', ['id'=>'image_id']) }}';
-            var saveUrl = '{{ route('plan-images-first.update', ['id'=>'image_id']) }}';
+        $(document).on('click', '.downloaded_without_check, .downloaded_without_check_2', function () {
+
+            if($(this).hasClass('downloaded_without_check')){
+                var url = '{{ route('plan-images-first.edit', ['id'=>'image_id']) }}';
+                var saveUrl = '{{ route('plan-images-first.update', ['id'=>'image_id']) }}';
+            }else if($(this).hasClass('downloaded_without_check_2')){
+                var url = '{{ route('plan-images-second.edit', ['id'=>'image_id']) }}';
+                var saveUrl = '{{ route('plan-images-second.update', ['id'=>'image_id']) }}';
+            }
+
             var id = $(this).prop('id').split('_');
             $.ajax({
                 method: 'get',
@@ -334,6 +400,11 @@
         $(document).on('click', '.remov_image_first', function(event){
             event.preventDefault();
             removeFile($(this), '{{ route('plan-images-first.destroy', ['image'=>'']) }}' + '/' + $(this).siblings('.imag_container').prop('id').replace('image_id_', ''));
+        });
+
+        $(document).on('click', '.remov_image_second', function(event){
+            event.preventDefault();
+            removeFile($(this), '{{ route('plan-images-second.destroy', ['image'=>'']) }}' + '/' + $(this).siblings('.imag_container').prop('id').replace('image_id_', ''));
         });
     </script>
 
