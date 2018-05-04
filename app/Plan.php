@@ -105,7 +105,7 @@ class Plan extends Model
 
     public function packages()
     {
-        return $this->belongsToMany('Thd\Package');
+        return $this->belongsToMany('Thd\Package')->withPivot('id', 'price', 'files');
     }
 
     public function getLabelAttribute()
