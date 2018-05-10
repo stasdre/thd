@@ -38,14 +38,35 @@
             </div>
         </div>
         <!-- /.tab-pane -->
-        <div class="tab-pane" id="options">
-            The European languages are members of the same family. Their separate existence is a myth.
-            For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-            in their grammar, their pronunciation and their most common words. Everyone realizes why a
-            new common language would be desirable: one could refuse to pay expensive translators. To
-            achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-            words. If several languages coalesce, the grammar of the resulting language is more simple
-            and regular than that of the individual languages.
+        <div class="tab-pane" id="options" style="padding-left: 50px;">
+            <img class="img-responsive galery_loader" style="margin: 0 auto; display: none" src="/img/load_horizontal.gif">
+            <div class="form-group">
+                @foreach($foundations as $n => $option)
+                    <div class="checkbox">
+                        <label>{{ Form::checkbox('foundation['.$option->id.']', $option->id, $plan->foundationOptions->contains($option->id), ['class'=>'use-foundation']) }} Use {{ $option->name }}</label>
+                    </div>
+                    @if(old('foundation'))
+                        <div id="foundation_files_{{ $option->id }}" class="row plan-foundations" {!! !old('foundation.'.$option->id) ? 'style="display: none"' : '' !!}>
+                    @else
+                        <div id="foundation_files_{{ $option->id }}" class="row plan-foundations" {!! !$plan->foundationOptions->contains($option->id) ? 'style="display: none"' : '' !!}>
+                    @endif
+                        <div class="col-sm-4">
+                            <div class="input-group input-group-sm foundation-price {{ $errors->has('foundation_price.'.$option->id.'.'.$n) ? 'has-error' : '' }}">
+                                @if(old('foundation_price'))
+                                    {{ Form::text('foundation_price['.$option->id.']', old('foundation_price.'.$option->id.'.'.$n), ['class'=>'form-control']) }}
+                                @else
+                                    {{ Form::text('foundation_price['.$option->id.']', $plan->foundationOptions->contains($option->id) ? $plan->foundationOptions->find($option->id)->pivot->price : '', ['class'=>'form-control']) }}
+                                @endif
+                                <span class="input-group-addon">$</span>
+                            </div>
+                            <div class="files-fields">
+                                <div id="files-foundation-{{ $option->id }}" class="dropzone needsclick dz-clickable">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
         <!-- /.tab-pane -->
         <div class="tab-pane" id="addons">
@@ -132,6 +153,55 @@
         });
     @endforeach
 
+    @foreach($foundations as $n => $option)
+        var foundation{{ $option->id }} = new Dropzone("#files-foundation-{{ $option->id }}", {
+            url: '{{ route('plan-foundation.upload', ['plan'=>$plan->id, 'foundation'=>$option->id]) }}',
+            addRemoveLinks: true,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+                @if($plan->foundationOptions->contains($option->id) && json_decode($plan->foundationOptions->find($option->id)->pivot->files))
+                init:function() {
+                    var myDropzone = this;
+                            @foreach(json_decode($plan->foundationOptions->find($option->id)->pivot->files) as $file)
+                            @php
+                                $exet = explode(".", $file);
+                            @endphp
+                    var file = {name: '{{ $file }}', size: {{ Storage::size('foundation/'.$plan->id.'/'.$file) }} };
+                    myDropzone.options.addedfile.call(myDropzone, file);
+                    myDropzone.options.thumbnail.call(myDropzone, file, '/img/files-type/{{ $exet[1] }}.png');
+                    myDropzone.emit("complete", file);
+                    myDropzone.files.push( file );
+                    file.previewElement.classList.add('dz-file-preview');
+                    file.previewElement.classList.add('dz-success');
+                    file.previewElement.classList.add('dz-processing');
+                    $(file.previewElement).attr('data-url','/admin-thd/plan-foundation/file-download/{{ $plan->id }}/{{ $option->id }}/{{ $file }}');
+                    @endforeach
+                }
+                @endif
+        });
+        foundation{{ $option->id }}.on('addedfile', function(file){
+            var ext = file.name.split('.').pop();
+
+            $(file.previewElement).find(".dz-image img").attr("src", "/img/files-type/"+ext+".png");
+        });
+
+        foundation{{ $option->id }}.on('removedfile', function(file){
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                method: 'DELETE',
+                url: '/admin-thd/plan-foundation/file-destroy/{{ $plan->id }}/{{ $option->id }}/'+$(file.previewElement).find('[data-dz-name]').html(),
+            });
+        });
+
+        foundation{{ $option->id }}.on('success', function(file, response){
+            $(file.previewElement).find('[data-dz-name]').html(response.file_name);
+            $(file.previewElement).attr('data-url','/admin-thd/plan-foundation/file-download/'+response.plan_id+'/'+response.package_id+'/'+response.file_name);
+        });
+    @endforeach
+
     $(document).on('click', '.dz-preview', function(){
         window.open($(this).data('url'));
     });
@@ -155,9 +225,23 @@
                 $('#package_files_'+pacakgeID).show();
             }else{
                 if(confirm('Warning!!! Files for this package will be deleted!')){
-                    console.log(window['package'+pacakgeID]);
                     window['package'+pacakgeID].removeAllFiles(true);
                     $('#package_files_'+pacakgeID).hide();
+                }else{
+                    $(this).prop('checked', true);
+                }
+            }
+        });
+
+        $('.use-foundation').on('click', function(){
+            var pacakgeID = $(this).val();
+
+            if($(this).prop('checked') === true){
+                $('#foundation_files_'+pacakgeID).show();
+            }else{
+                if(confirm('Warning!!! Files for this package will be deleted!')){
+                    window['foundation'+pacakgeID].removeAllFiles(true);
+                    $('#foundation_files_'+pacakgeID).hide();
                 }else{
                     $(this).prop('checked', true);
                 }
