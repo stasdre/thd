@@ -18425,6 +18425,16 @@ div.FixedHeader_Cloned table {
   width: 100px;
 }
 
+.foundation-price {
+  padding-bottom: 10px;
+  width: 100px;
+}
+
+.addon-price {
+  padding-bottom: 10px;
+  width: 100px;
+}
+
 .ui-autocomplete-loading {
   background: white url("/img/ui-anim_basic_16x16.gif") right center no-repeat;
 }

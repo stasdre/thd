@@ -60,6 +60,17 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::get('plan-packages/edit/{plan}', 'Admin\PlanPackageController@edit')->where('plan', '[0-9]+')->name('plan-packages.edit');
         Route::post('plan-packages/update/{plan}', 'Admin\PlanPackageController@update')->where('id', '[0-9]+')->name('plan-packages.update');
+        Route::post('plan-packages/file-upload/{plan}/{package}', 'Admin\PlanPackageController@upload')->name('plan-packages.upload');
+        Route::delete('plan-packages/file-destroy/{plan}/{package}/{filename}', 'Admin\PlanPackageController@destroy')->name('plan-packages.destroy');
+        Route::get('plan-packages/file-download/{plan}/{package}/{filename}', 'Admin\PlanPackageController@download')->name('plan-packages.download');
+
+        Route::post('plan-foundation/file-upload/{plan}/{foundation}', 'Admin\PlanFoundationController@upload')->name('plan-foundation.upload');
+        Route::delete('plan-foundation/file-destroy/{plan}/{foundation}/{filename}', 'Admin\PlanFoundationController@destroy')->name('plan-foundation.destroy');
+        Route::get('plan-foundation/file-download/{plan}/{foundation}/{filename}', 'Admin\PlanFoundationController@download')->name('plan-foundation.download');
+
+        Route::post('plan-addon/file-upload/{plan}/{addon}', 'Admin\PlanAddonController@upload')->name('plan-addon.upload');
+        Route::delete('plan-addon/file-destroy/{plan}/{addon}/{filename}', 'Admin\PlanAddonController@destroy')->name('plan-addon.destroy');
+        Route::get('plan-addon/file-download/{plan}/{addon}/{filename}', 'Admin\PlanAddonController@download')->name('plan-addon.download');
 
         Route::get('plan-features/edit/{plan}', 'Admin\PlanFeaturesController@edit')->where('plan', '[0-9]+')->name('plan-features.edit');
         Route::post('plan-features/update/{plan}', 'Admin\PlanFeaturesController@update')->where('plan', '[0-9]+')->name('plan-features.update');
