@@ -68,6 +68,10 @@ Route::prefix('admin-thd')->group(function(){
         Route::delete('plan-foundation/file-destroy/{plan}/{foundation}/{filename}', 'Admin\PlanFoundationController@destroy')->name('plan-foundation.destroy');
         Route::get('plan-foundation/file-download/{plan}/{foundation}/{filename}', 'Admin\PlanFoundationController@download')->name('plan-foundation.download');
 
+        Route::post('plan-addon/file-upload/{plan}/{addon}', 'Admin\PlanAddonController@upload')->name('plan-addon.upload');
+        Route::delete('plan-addon/file-destroy/{plan}/{addon}/{filename}', 'Admin\PlanAddonController@destroy')->name('plan-addon.destroy');
+        Route::get('plan-addon/file-download/{plan}/{addon}/{filename}', 'Admin\PlanAddonController@download')->name('plan-addon.download');
+
         Route::get('plan-features/edit/{plan}', 'Admin\PlanFeaturesController@edit')->where('plan', '[0-9]+')->name('plan-features.edit');
         Route::post('plan-features/update/{plan}', 'Admin\PlanFeaturesController@update')->where('plan', '[0-9]+')->name('plan-features.update');
 

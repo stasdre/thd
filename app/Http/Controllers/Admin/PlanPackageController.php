@@ -3,6 +3,7 @@
 namespace Thd\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Thd\Addon;
 use Thd\FoundationOption;
 use Thd\Http\Controllers\Controller;
 use Thd\Package;
@@ -21,11 +22,13 @@ class PlanPackageController extends Controller
     {
         $packages = Package::all();
         $foundations = FoundationOption::all();
+        $addons = Addon::all();
 
         return view('admin.plan-package.create', [
             'plan' => $plan,
             'packages' => $packages,
-            'foundations' => $foundations
+            'foundations' => $foundations,
+            'addons' => $addons
         ]);
     }
 
@@ -42,6 +45,8 @@ class PlanPackageController extends Controller
             'package_price.*' => 'required_with:package.*|nullable|numeric',
             'foundation.*' => 'nullable|exists:foundation_options,id',
             'foundation_price.*' => 'required_with:foundation.*|nullable|numeric',
+            'addon.*' => 'nullable|exists:addons,id',
+            'addon_price.*' => 'required_with:addon.*|nullable|numeric',
         ]);
 
         try {
@@ -69,8 +74,20 @@ class PlanPackageController extends Controller
                 }
             }
 
+            $plansAddonData = [];
+            if($request->input('addon')){
+                foreach ($request->input('addon') as $addon){
+                    if($request->input('addon_price')[$addon]){
+                        $plansAddonData[$addon] = [
+                            'price' => $request->input('addon_price')[$addon]
+                        ];
+                    }
+                }
+            }
+
             $plan->packages()->sync($plansData);
             $plan->foundationOptions()->sync($plansFoundationData);
+            $plan->addons()->sync($plansAddonData);
 
             DB::commit();
         }catch(\Exception $e){

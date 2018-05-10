@@ -69,14 +69,35 @@
             </div>
         </div>
         <!-- /.tab-pane -->
-        <div class="tab-pane" id="addons">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-            It has survived not only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-            sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-            like Aldus PageMaker including versions of Lorem Ipsum.
+        <div class="tab-pane" id="addons" style="padding-left: 50px;">
+            <img class="img-responsive galery_loader" style="margin: 0 auto; display: none" src="/img/load_horizontal.gif">
+            <div class="form-group">
+                @foreach($addons as $n => $addon)
+                    <div class="checkbox">
+                        <label>{{ Form::checkbox('addon['.$addon->id.']', $addon->id, $plan->addons->contains($addon->id), ['class'=>'use-addon']) }} Use {{ $addon->name }}</label>
+                    </div>
+                    @if(old('addon'))
+                        <div id="addon_files_{{ $addon->id }}" class="row plan-addon" {!! !old('addon.'.$addon->id) ? 'style="display: none"' : '' !!}>
+                    @else
+                        <div id="addon_files_{{ $addon->id }}" class="row plan-addon" {!! !$plan->addons->contains($addon->id) ? 'style="display: none"' : '' !!}>
+                    @endif
+                    <div class="col-sm-4">
+                        <div class="input-group input-group-sm addon-price {{ $errors->has('addon_price.'.$addon->id.'.'.$n) ? 'has-error' : '' }}">
+                            @if(old('addon_price'))
+                                {{ Form::text('addon_price['.$addon->id.']', old('addon_price.'.$addon->id.'.'.$n), ['class'=>'form-control']) }}
+                            @else
+                                {{ Form::text('addon_price['.$addon->id.']', $plan->addons->contains($addon->id) ? $plan->addons->find($addon->id)->pivot->price : '', ['class'=>'form-control']) }}
+                            @endif
+                            <span class="input-group-addon">$</span>
+                        </div>
+                        <div class="files-fields">
+                            <div id="files-addon-{{ $addon->id }}" class="dropzone needsclick dz-clickable">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
         </div>
         <!-- /.tab-pane -->
     </div>
@@ -108,6 +129,8 @@
         var package{{ $package->id }} = new Dropzone("#files-package-{{ $package->id }}", {
             url: '{{ route('plan-packages.upload', ['plan'=>$plan->id, 'package'=>$package->id]) }}',
             addRemoveLinks: true,
+            autoProcessQueue: true,
+            parallelUploads: 1,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -157,6 +180,8 @@
         var foundation{{ $option->id }} = new Dropzone("#files-foundation-{{ $option->id }}", {
             url: '{{ route('plan-foundation.upload', ['plan'=>$plan->id, 'foundation'=>$option->id]) }}',
             addRemoveLinks: true,
+            autoProcessQueue: true,
+            parallelUploads: 1,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -202,6 +227,57 @@
         });
     @endforeach
 
+    @foreach($addons as $n => $addon)
+        var addon{{ $addon->id }} = new Dropzone("#files-addon-{{ $addon->id }}", {
+            url: '{{ route('plan-addon.upload', ['plan'=>$plan->id, 'addon'=>$addon->id]) }}',
+            addRemoveLinks: true,
+            autoProcessQueue: true,
+            parallelUploads: 1,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+                @if($plan->addons->contains($addon->id) && json_decode($plan->addons->find($addon->id)->pivot->files))
+                init:function() {
+                    var myDropzone = this;
+                            @foreach(json_decode($plan->addons->find($addon->id)->pivot->files) as $file)
+                            @php
+                                $exet = explode(".", $file);
+                            @endphp
+                    var file = {name: '{{ $file }}', size: {{ Storage::size('addon/'.$plan->id.'/'.$file) }} };
+                    myDropzone.options.addedfile.call(myDropzone, file);
+                    myDropzone.options.thumbnail.call(myDropzone, file, '/img/files-type/{{ $exet[1] }}.png');
+                    myDropzone.emit("complete", file);
+                    myDropzone.files.push( file );
+                    file.previewElement.classList.add('dz-file-preview');
+                    file.previewElement.classList.add('dz-success');
+                    file.previewElement.classList.add('dz-processing');
+                    $(file.previewElement).attr('data-url','/admin-thd/plan-addon/file-download/{{ $plan->id }}/{{ $addon->id }}/{{ $file }}');
+                    @endforeach
+                }
+                @endif
+        });
+    addon{{ $addon->id }}.on('addedfile', function(file){
+        var ext = file.name.split('.').pop();
+
+        $(file.previewElement).find(".dz-image img").attr("src", "/img/files-type/"+ext+".png");
+    });
+
+    addon{{ $addon->id }}.on('removedfile', function(file){
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            method: 'DELETE',
+            url: '/admin-thd/plan-addon/file-destroy/{{ $plan->id }}/{{ $addon->id }}/'+$(file.previewElement).find('[data-dz-name]').html(),
+        });
+    });
+
+    addon{{ $addon->id }}.on('success', function(file, response){
+        $(file.previewElement).find('[data-dz-name]').html(response.file_name);
+        $(file.previewElement).attr('data-url','/admin-thd/plan-addon/file-download/'+response.plan_id+'/'+response.package_id+'/'+response.file_name);
+    });
+    @endforeach
+
     $(document).on('click', '.dz-preview', function(){
         window.open($(this).data('url'));
     });
@@ -242,6 +318,21 @@
                 if(confirm('Warning!!! Files for this package will be deleted!')){
                     window['foundation'+pacakgeID].removeAllFiles(true);
                     $('#foundation_files_'+pacakgeID).hide();
+                }else{
+                    $(this).prop('checked', true);
+                }
+            }
+        });
+
+        $('.use-addon').on('click', function(){
+            var pacakgeID = $(this).val();
+
+            if($(this).prop('checked') === true){
+                $('#addon_files_'+pacakgeID).show();
+            }else{
+                if(confirm('Warning!!! Files for this package will be deleted!')){
+                    window['addon'+pacakgeID].removeAllFiles(true);
+                    $('#addon_files_'+pacakgeID).hide();
                 }else{
                     $(this).prop('checked', true);
                 }
