@@ -401,7 +401,7 @@
     <div class="container">
         <h1 class="text-center font-futura">AMERICA’S FAVORITE HOUSE PLANS!</h1>
 
-        <img src="/images/plan-full.jpg" alt="" class="img-fluid d-block w-100"> </div>
+        <img src="/images/plan-full.jpg" alt="" class="img-fluid d-block w-100">
     </div>
 @endsection
 
