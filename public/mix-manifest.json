@@ -4,5 +4,6 @@
     "/js/admin/datatables.js": "/js/admin/datatables.js",
     "/js/app.js": "/js/app.js",
     "/css/style.css": "/css/style.css",
-    "/css/admin/app.css": "/css/admin/app.css"
+    "/css/admin/app.css": "/css/admin/app.css",
+    "/js/bootstrap-slider.min.js": "/js/bootstrap-slider.min.js"
 }

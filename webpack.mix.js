@@ -21,3 +21,8 @@ mix.js('resources/assets/js/admin/tinymce.js', 'public/js/admin')
     .copy('node_modules/tinymce/skins', 'public/js/admin/skins');
 
 mix.js('resources/assets/js/admin/datatables.js', 'public/js/admin');
+
+mix.copy(
+    'node_modules/bootstrap-slider/dist/bootstrap-slider.min.js',
+    'public/js'
+);

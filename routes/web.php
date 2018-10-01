@@ -110,3 +110,5 @@ Route::prefix('admin-thd')->group(function(){
         Route::post('admin-thd/get-state', 'Admin\DashboardController@getCountryState')->name('getCountryState');
     });
 });
+
+Route::get('search/', 'SearchController@index')->name('search');
