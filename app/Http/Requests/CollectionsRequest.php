@@ -26,6 +26,7 @@ class CollectionsRequest extends FormRequest
         if($this->method() == 'PATCH'){
             return [
                 'name' => 'required|max:100',
+                'slug' => 'required|unique:collections,slug,'.$this->route('collection')->id.',id|alpha_dash|max:190',
                 'short_name' => 'required|max:50',
                 'description' => 'required',
                 'in_filter' => 'boolean',
@@ -37,6 +38,7 @@ class CollectionsRequest extends FormRequest
         }else{
             return [
                 'name' => 'required|max:100',
+                'slug' => 'required|unique:collections,slug|alpha_dash|max:190',
                 'short_name' => 'required|max:50',
                 'description' => 'required',
                 'in_filter' => 'boolean',

@@ -42,8 +42,9 @@ class CollectionController extends Controller
      */
     public function store(CollectionsRequest $request)
     {
+        $dataPlans = [];
+
         if( $request->input('added-plan') ){
-            $dataPlans = [];
             $count = 0;
             foreach ( $request->input('added-plan') as $plan ){
                 $dataPlans[$count]['title'] = Input::get('plan_title.'.$count);
@@ -72,6 +73,7 @@ class CollectionController extends Controller
 
         $collection = new Collection([
             'name' => $request->input('name'),
+            'slug' => $request->input('slug'),
             'short_name' => $request->input('short_name'),
             'description' => $request->input('description'),
             'in_filter' => $request->input('in_filter') == 1 ? 1 : 0,
@@ -114,8 +116,9 @@ class CollectionController extends Controller
      */
     public function update(CollectionsRequest $request, Collection $collection)
     {
+        $dataPlans = [];
+        
         if( $request->input('added-plan') ){
-            $dataPlans = [];
             $count = 0;
             foreach ( $request->input('added-plan') as $plan ){
                 $dataPlans[$count]['title'] = Input::get('plan_title.'.$count);
