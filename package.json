@@ -10,17 +10,17 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "cross-env": "^5.1",
+        "cross-env": "^5.2.0",
         "laravel-mix": "^1.0",
-        "lodash": "^4.17.4"
+        "lodash": "^4.17.11"
     },
     "dependencies": {
-        "admin-lte": "^2.4.2",
+        "admin-lte": "^2.4.8",
         "bootstrap": "^3.3.7",
         "bootstrap-slider": "^10.2.1",
         "datatables-bootstrap3-plugin": "^0.5.0",
-        "datatables.net-dt": "^1.10.16",
-        "dropzone": "^5.2.0",
-        "tinymce": "^4.7.4"
+        "datatables.net-dt": "^1.10.19",
+        "dropzone": "^5.5.1",
+        "tinymce": "^4.8.3"
     }
 }
