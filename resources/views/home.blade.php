@@ -302,28 +302,15 @@
                 <div class="row">
                     <div class="col-md-6">
                         <ul class="list-unstyled text-primary text-center">
-                            <li>Cottage House Plans</li>
-                            <li>Country Home Plans</li>
-                            <li>Craftsman House Plans</li>
-                            <li>European House Plans</li>
-                            <li>Farmhouse Plans</li>
-                            <li>French Country House Plans</li>
-                            <li>Mediterranean  House Plans</li>
-                            <li>Modern House Plans</li>
-                            <li>Ranch House Plans</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="list-unstyled text-primary text-center">
-                            <li>Cottage House Plans</li>
-                            <li>Country Home Plans</li>
-                            <li>Craftsman House Plans</li>
-                            <li>European House Plans</li>
-                            <li>Farmhouse Plans</li>
-                            <li>French Country House Plans</li>
-                            <li>Mediterranean  House Plans</li>
-                            <li>Modern House Plans</li>
-                            <li>Ranch House Plans</li>
+                            @foreach ($styles as $style)
+                                <li><a href="{{ route('style.slug', $style->slug) }}">{{ $style->short_name }}</a></li>
+                                @if( ($loop->iteration % round(($loop->count/2)) == 0) && (!$loop->last) )
+                                    </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                    <ul class="list-unstyled text-primary text-center">
+                                @endif
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -334,28 +321,15 @@
                 <div class="row">
                     <div class="col-md-6">
                         <ul class="list-unstyled text-primary text-center">
-                            <li>Cottage House Plans</li>
-                            <li>Country Home Plans</li>
-                            <li>Craftsman House Plans</li>
-                            <li>European House Plans</li>
-                            <li>Farmhouse Plans</li>
-                            <li>French Country House Plans</li>
-                            <li>Mediterranean  House Plans</li>
-                            <li>Modern House Plans</li>
-                            <li>Ranch House Plans</li>
+                            @foreach ($collections as $collection)
+                                <li><a href="{{ route('collection.slug', $collection->slug) }}">{{ $collection->short_name }}</a></li>
+                                @if( ($loop->iteration % round(($loop->count/2)) == 0) && (!$loop->last) )
                         </ul>
                     </div>
                     <div class="col-md-6">
                         <ul class="list-unstyled text-primary text-center">
-                            <li>Cottage House Plans</li>
-                            <li>Country Home Plans</li>
-                            <li>Craftsman House Plans</li>
-                            <li>European House Plans</li>
-                            <li>Farmhouse Plans</li>
-                            <li>French Country House Plans</li>
-                            <li>Mediterranean  House Plans</li>
-                            <li>Modern House Plans</li>
-                            <li>Ranch House Plans</li>
+                            @endif
+                            @endforeach
                         </ul>
                     </div>
                 </div>

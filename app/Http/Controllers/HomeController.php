@@ -18,13 +18,15 @@ class HomeController extends Controller
     public function index()
     {
         $gallery = Gallery::all();
-        $styles = Style::where('in_filter', 1)->orderBy('short_name', 'asc')->get();
-        $collections = Collection::where('in_filter', 1)->orderBy('short_name', 'asc')->get();
+        $styles = Style::where('in_filter', 1)->orderBy('short_name', 'asc')->limit(18)->get();
+        $collections = Collection::where('in_filter', 1)->orderBy('short_name', 'asc')->limit(18)->get();
         $aboutData = AboutDavid::find(1);
 
         return view('home', [
             'gallery'=>$gallery,
-            'aboutData'=>$aboutData
+            'aboutData'=>$aboutData,
+            'styles'=>$styles,
+            'collections'=>$collections
         ]);
     }
 }
