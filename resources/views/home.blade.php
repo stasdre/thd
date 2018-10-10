@@ -314,7 +314,7 @@
                         </ul>
                     </div>
                 </div>
-                <p class="text-right mb-0"><a href="#" class="text-primary font-weight-bold">View ALL Architectural Styles &gt;</a></p>
+                <p class="text-right mb-0"><a href="{{ route('styles') }}" class="text-primary font-weight-bold">View ALL Architectural Styles &gt;</a></p>
             </div>
             <div class="col-md-6">
                 <h4 class="text-primary text-center font-weight-bold"> Browse by Specialty Collection</h4>
@@ -333,7 +333,7 @@
                         </ul>
                     </div>
                 </div>
-                <p class="text-right mb-0"><a href="#" class="text-primary font-weight-bold">View ALL Specialty Collections &gt;</a></p>
+                <p class="text-right mb-0"><a href="{{ route('collections') }}" class="text-primary font-weight-bold">View ALL Specialty Collections &gt;</a></p>
             </div>
         </div>
     </div>

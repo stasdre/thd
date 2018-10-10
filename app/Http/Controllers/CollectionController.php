@@ -28,4 +28,11 @@ class CollectionController extends Controller
         //$plans->load('images');
         return view('collection.slug', ['collection'=>$collection, 'plans'=>$plans]);
     }
+
+    public function all()
+    {
+        $collections = Collection::orderBy('name', 'asc')->get();
+
+        return view('collection.all', ['collections'=>$collections]);
+    }
 }

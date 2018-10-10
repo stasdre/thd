@@ -28,4 +28,11 @@ class StyleController extends Controller
 
         return view('style.slug', ['style'=>$style, 'plans'=>$plans]);
     }
+
+    public function all()
+    {
+        $styles = Style::orderBy('name', 'asc')->get();
+
+        return view('style.all', ['styles'=>$styles]);
+    }
 }

@@ -112,5 +112,9 @@ Route::prefix('admin-thd')->group(function(){
 });
 
 Route::get('search/', 'SearchController@index')->name('search');
+
 Route::get('collection/{slug}', 'CollectionController@slug')->name('collection.slug');
 Route::get('style/{slug}', 'StyleController@slug')->name('style.slug');
+
+Route::get('collections/', 'CollectionController@all')->name('collections');
+Route::get('styles/', 'StyleController@all')->name('styles');
