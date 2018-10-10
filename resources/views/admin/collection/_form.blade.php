@@ -20,6 +20,16 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    {{ Form::label('slug', 'Slug', ['class' => 'col-sm-2 control-label']) }}
+                    <div class="col-sm-10">
+                        @if(Route::currentRouteName() == 'collections.edit')
+                            {{ Form::text('slug', null, ['class'=>'form-control', 'placeholder'=>'Slug', 'readonly']) }}
+                        @else
+                            {{ Form::text('slug', null, ['class'=>'form-control', 'placeholder'=>'Slug']) }}
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group">
                     {{ Form::label('short_name', 'Short Name', ['class' => 'col-sm-2 control-label']) }}
                     <div class="col-sm-10">
                         {{ Form::text('short_name', null, ['class'=>'form-control', 'placeholder'=>'Collection Short Name']) }}
@@ -174,6 +184,12 @@
         $(".added-plan").each(function(){
             $(this).find('.plan-counter').text('Plan ' + (plansCounter++));
         });
+    });
+
+    $(document).on('focus', '#slug', function(){
+        var str = $('#name').val().trim().replace(/[^a-z0-9-]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+
+        $(this).val(str.toLowerCase());
     });
 </script>
 @endpush

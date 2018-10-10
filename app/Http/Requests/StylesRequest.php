@@ -26,6 +26,7 @@ class StylesRequest extends FormRequest
         if($this->method() == 'PATCH'){
             return [
                 'name' => 'required|max:100',
+                'slug' => 'required|unique:styles,slug,'.$this->route('style')->id.',id|alpha_dash|max:190',
                 'short_name' => 'required|max:50',
                 'description' => 'required',
                 'in_filter' => 'boolean',
@@ -37,6 +38,7 @@ class StylesRequest extends FormRequest
         }else{
             return [
                 'name' => 'required|max:100',
+                'slug' => 'required|unique:styles,slug|alpha_dash|max:190',
                 'short_name' => 'required|max:50',
                 'description' => 'required',
                 'in_filter' => 'boolean',
