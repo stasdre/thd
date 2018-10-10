@@ -5,6 +5,7 @@ namespace Thd\Http\Controllers;
 use Illuminate\Http\Request;
 use Thd\Collection;
 use Illuminate\Support\Facades\Validator;
+use Thd\Plan;
 
 class CollectionController extends Controller
 {
@@ -19,6 +20,12 @@ class CollectionController extends Controller
         }
 
         $collection = Collection::where('slug', $slug)->firstOrFail();
-        return view('collection.slug', ['collection'=>$collection]);
+        $plans = Plan::whereHas('collections' ,function($query) use($collection){
+            $query->where('collection_id', '=', $collection->id);
+        })->with(['images' => function($query){
+            $query->where('first_image', '=', 1);
+        }])->orderBy('created_at', 'desc')->paginate(12);
+        //$plans->load('images');
+        return view('collection.slug', ['collection'=>$collection, 'plans'=>$plans]);
     }
 }
