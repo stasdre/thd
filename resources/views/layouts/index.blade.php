@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/icons/favicon.ico') }}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -28,13 +27,18 @@
                 <ul class="d-sm-flex d-none justify-content-around text-center mb-0 p-0">
                     <li class="list-inline-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#link"><img src="{{ asset('images/icons/icon-search.png') }}" alt="search"> House Plans</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Advanced Search</a></li>
-                            <li><a href="#">Architectural Styles</a></li>
-                            <li><a href="#">Specialty Collections</a></li>
+                            <li><a href="{{ route('search') }}">Advanced Search</a></li>
+                            <li><a href="{{ route('styles') }}">Architectural Styles</a></li>
+                            <li><a href="{{ route('collections') }}">Specialty Collections</a></li>
                         </ul>
                     </li>
                     <li class="list-inline-item"><a href="#link">Reviews</a></li>
-                    <li class="list-inline-item"><a href="#link">Builders</a></li>
+                    <li class="list-inline-item"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#link">Builders</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Preferred Building Program</a></li>
+                            <li><a href="#">Find a Home Builder</a></li>
+                        </ul>
+                    </li>
                     <li class="list-inline-item"><a href="#link">Home Inspiration</a></li>
                     <li class="list-inline-item"><a href="#link">About</a></li>
                 </ul>
@@ -54,7 +58,7 @@
             </div>
         </div>
     </header>
-    @yield('carousel')
+@yield('carousel')
     <main>
         @yield('content')
     </main>
@@ -63,30 +67,47 @@
             <div class="col-sm-4">
                 <h3 class="font-weight-bold mb-3">SEARCH OUR HOUSE PLANS</h3>
                 <ul class="list-inline text-center">
-                    <li><a href="#">Advanced Search</a></li>
-                    <li><a href="#">Best-Selling House Plans</a></li>
-                    <li><a href="#">Architectural Styles</a></li>
-                    <li><a href="#">Specialty Collections</a></li>
-                    <li><a href="#">Craftsman House Plans</a></li>
-                    <li><a href="#">Recent Home Builds</a></li>
-                    <li><a href="#">Customer Reviews</a></li>
-                    <li><a href="#">Shipping, Returns, and Exchanges</a></li>
+                    <li><a href="{{ route('search') }}">Advanced Search</a></li>
+                    <li><a href="">Best-Selling House Plans</a></li>
+                    <li><a href="{{ route('styles') }}">Architectural Styles</a></li>
+                    <li><a href="{{ route('collections') }}">Specialty Collections</a></li>
+                    <li><a href="">Craftsman House Plans</a></li>
+                    <li><a href="">Recent Home Builds</a></li>
+                    <li><a href="">Customer Reviews</a></li>
+                    <li><a href="">Shipping, Returns, and Exchanges</a></li>
                 </ul>
             </div>
             <div class="col-sm-4">
                 <h3 class="font-weight-bold mb-3">CONTACT US</h3>
                 <ul class="list-inline text-center">
-                    <li><a href="#">Live Chat</a></li>
-                    <li><a href="#">Email</a></li>
-                    <li><a href="#">832-521-5820</a></li>
-                    <li><a href="#">E-Newsletter Signup</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Use</a></li>
-                    <li><a href="#">Advertise with Us</a></li>
+                    <li><a href="">Live Chat</a></li>
+                    <li><a href="">Email</a></li>
+                    <li><a href="">832-521-5820</a></li>
+                    <li><a href="">E-Newsletter Signup</a></li>
+                    <li><a href="">Privacy Policy</a></li>
+                    <li><a href="">Terms of Use</a></li>
+                    <li><a href="">Advertise with Us</a></li>
                 </ul>
             </div>
             <div class="col-sm-4">
                 <h3 class="font-weight-bold mb-3">ARCHITECT PREFERRED</h3>
+            </div>
+            <div class="copyright">
+                <div class="social-icons">
+                    <ul class="list-inline">
+
+
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                        </ul>
+                </div>
+                <div class="col-md-12">
+                    <p> © {{ date("Y") }} David Wiggins Architect House Plans®, LLC. All rights reserved. All house plans and images on David Wiggins Architect House Plans® website are protected under Federal and International Copyright Law. Reproductions of the illustrations or working drawings by any means is strictly prohibited. No part of this electronic publication may be reproduced, stored or transmitted in any form by any means without prior written permission of David Wiggins Architect House Plans®, LLC. </p>
+                </div>
             </div>
         </div>
     </footer>
@@ -95,14 +116,12 @@
 <!-- Mobile Content -->
 <div class="d-block d-md-none">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-block">
-        <button class="navbar-toggler p-0 border-0 d-inline-block" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="d-inline-block align-middle" href="#"><img src="{{ asset('images/icons/logo.png') }}" alt="" class="img-fluid mr-2" style="max-width:160px;"></a>
-        <a href="#" class="d-inline-block text-center text-white small align-middle" style="font-size:10px"><i class="fa fa-search d-block" style="font-size:16px;"></i> Search</a>
-        <a href="#" class="d-inline-block text-center text-white small align-middle" style="font-size:10px"><i class="fa fa-phone d-block" style="font-size:16px;"></i> Contact</a>
-        <a href="#" class="d-inline-block text-center text-white small align-middle" style="font-size:10px"><i class="fa fa-user d-block" style="font-size:16px;"></i> Account</a>
-        <a href="#" class="d-inline-block text-center text-white small align-middle" style="font-size:10px"><i class="fa fa-shopping-cart d-block" style="font-size:16px;"></i> Cart</a>
+        <button class="navbar-toggler p-0 border-0 d-inline-block" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"> <i class="fa fa-bars menu_icons"></i></button>
+        <a class="d-inline-block align-middle" href="{{ route('home') }}"><img src="{{ asset('images/icons/logo.png') }}" alt="" class="img-fluid mr-2" style="max-width:160px;"></a>
+        <span class="icon_menus_sp pull-right"><a href="{{ route('search') }}" class="d-inline-block text-center text-white small align-middle mobile-right text-right" style="font-size:9px; margin-left:43px;"><i class="fa fa-search d-block" style="font-size:22px;"></i> Search</a>
+    <a href="#" class="d-inline-block text-center text-white small align-middle mobile-right text-right" style="font-size:9px"><i class="fa fa-phone d-block" style="font-size:22px;"></i> Contact</a>
+    <a href="{{ route('login') }}" class="d-inline-block text-center text-white small align-middle mobile-right text-right" style="font-size:9px"><i class="fa fa-user d-block" style="font-size:22px;"></i> Login</a>
+    <a href="#" class="d-inline-block text-center text-white small align-middle mobile-right text-right" style="font-size:9px"><i class="fa fa-shopping-cart d-block" style="font-size:22px;"></i> Cart</a></span>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active"> <a class="nav-link" href="{{ route('home') }}">Home</a> </li>
@@ -114,107 +133,54 @@
             </form>
         </div>
     </nav>
-    @yield('mobile-americans')
-    <div class="search-wrap p-2 text-center bg-white">
-        <form class="form-main-search text-center">
-            <div class="row no-gutters">
-                <div class="col-6">
-                    <div class="form-group">
-                        <input type="text" placeholder="Plan Number" >
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <input type="text" placeholder="Min sq. ft." >
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <input type="text" placeholder="Max sq. ft." >
-                    </div>
-                </div>
-            </div>
-            <div class="row no-gutters">
-                <div class="col-6">
-                    <div class="form-group">
-                        <div class="select-custom-wrap select-custom-wrap-lg">
-                            <select name="select-custom-style" class="select-custom" >
-                                <option value="hide">Styles \ Collections</option>
-                                <option value="Collection1">Collection1</option>
-                                <option value="Collection2">Collection2</option>
-                                <option value="Collection3">Collection3</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <div class="select-custom-wrap select-custom-wrap-sm">
-                            <select name="select-custom-beds" class="select-custom">
-                                <option value="hide">Beds</option>
-                                <option value="Bed1">1</option>
-                                <option value="Bed2">2</option>
-                                <option value="Bed3">3</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <div class="select-custom-wrap select-custom-wrap-sm">
-                            <select name="select-custom-baths" class="select-custom"  >
-                                <option value="hide">Baths</option>
-                                <option value="Bath1">1</option>
-                                <option value="Bath2">2</option>
-                                <option value="Bath3">3</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row no-gutters">
-                <div class="col-sm">
-                    <div class="form-group px-5">
-                        <button type="submit" class="btn btn-block btn-primary rounded-0 text-uppercase" >Search House Plans</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="text-center text-uppercase lead font-weight-normal align-middle py-2"> <a href="#" class="align-middle text-primary">Live Chat</a> | <a href="#" class="align-middle text-primary">Email</a> | <a href="#" class="align-middle text-secondary">xxx-xxx-xxxx</a> </div>
-    @yield('mobile-new')
-    <div class="container">
-        @yield('mobile-content')
-    </div>
+    @yield('mobile-content')
     <footer class="py-3 mt-4">
         <div class="row no-gutters">
             <div class="col-sm-4">
                 <h3 class="font-weight-bold mb-3">SEARCH OUR HOUSE PLANS</h3>
                 <ul class="list-inline text-center">
-                    <li><a href="#">Advanced Search</a></li>
-                    <li><a href="#">Best-Selling House Plans</a></li>
-                    <li><a href="#">Architectural Styles</a></li>
-                    <li><a href="#">Specialty Collections</a></li>
-                    <li><a href="#">Craftsman House Plans</a></li>
-                    <li><a href="#">Recent Home Builds</a></li>
-                    <li><a href="#">Customer Reviews</a></li>
-                    <li><a href="#">Shipping, Returns, and Exchanges</a></li>
+                    <li><a href="{{ route('search') }}">Advanced Search</a></li>
+                    <li><a href="">Best-Selling House Plans</a></li>
+                    <li><a href="{{ route('styles') }}">Architectural Styles</a></li>
+                    <li><a href="{{ route('collections') }}">Specialty Collections</a></li>
+                    <li><a href="">Craftsman House Plans</a></li>
+                    <li><a href="">Recent Home Builds</a></li>
+                    <li><a href="">Customer Reviews</a></li>
+                    <li><a href="">Shipping, Returns, and Exchanges</a></li>
                 </ul>
             </div>
             <div class="col-sm-4">
                 <h3 class="font-weight-bold mb-3">CONTACT US</h3>
                 <ul class="list-inline text-center">
-                    <li><a href="#">Live Chat</a></li>
-                    <li><a href="#">Email</a></li>
-                    <li><a href="#">832-521-5820</a></li>
-                    <li><a href="#">E-Newsletter Signup</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Use</a></li>
-                    <li><a href="#">Advertise with Us</a></li>
+                    <li><a href="">Live Chat</a></li>
+                    <li><a href="">Email</a></li>
+                    <li><a href="">832-521-5820</a></li>
+                    <li><a href="">E-Newsletter Signup</a></li>
+                    <li><a href="">Privacy Policy</a></li>
+                    <li><a href="">Terms of Use</a></li>
+                    <li><a href="">Advertise with Us</a></li>
                 </ul>
             </div>
             <div class="col-sm-4">
                 <h3 class="font-weight-bold mb-3 d-none d-md-block">ARCHITECT PREFERRED</h3>
+            </div>
+            <div class="copyright">
+                <div class="social-icons">
+                    <ul class="list-inline">
+
+
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                        </ul>
+                </div>
+
+                <div class="col-md-12">
+                    <p> © {{ date("Y") }} David Wiggins Architect House Plans®, LLC. All rights reserved. All house plans and images on David Wiggins Architect House Plans® website are protected under Federal and International Copyright Law. Reproductions of the illustrations or working drawings by any means is strictly prohibited. No part of this electronic publication may be reproduced, stored or transmitted in any form by any means without prior written permission of David Wiggins Architect House Plans®, LLC. </p>
+                </div>
             </div>
         </div>
     </footer>

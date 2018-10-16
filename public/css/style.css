@@ -162,8 +162,13 @@ body {
   content: "\F27C";
 }
 
-.text-primary {
+.text-primary,
+.text-primary a {
   color: #224195 !important;
+}
+
+.text-primary a:hover {
+  color: #0062cc !important;
 }
 
 h1.font-futura {
@@ -450,7 +455,7 @@ footer li > a:active {
 
 .newsletter .input-group {
   float: right;
-  max-width: 180px;
+  max-width: 200px;
 }
 
 .newsletter p span {
@@ -650,7 +655,18 @@ footer li > a:active {
 .form-main-search .form-group {
   margin: 0;
   vertical-align: middle;
-  padding: 0 2px;
+  padding: 0 4px;
+}
+
+select.select-custom {
+  background-image: url("/images/icons/select_iconbg.png");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: inherit;
+  background-size: 33px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .form-main-search .select-custom-wrap.select-custom-wrap-lg .select {
@@ -687,12 +703,11 @@ header .btn {
 
 .caption-quote-wrap {
   position: absolute;
-  right: 20px;
-  bottom: 20px;
+  right: 0;
+  bottom: 0;
   max-width: 435px;
   background: rgba(255, 255, 255, 0.6);
   text-align: center;
-  padding-top: 1rem;
 }
 
 .caption-quote {
@@ -705,6 +720,7 @@ header .btn {
   font-size: 15px;
   color: #4d4d4f;
   font-weight: 600;
+  margin: 0;
 }
 
 .caption-name {
@@ -1042,15 +1058,38 @@ header .btn {
 
 .carousel-item .planinfo {
   position: absolute;
-  bottom: 5px;
+  bottom: 0px;
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.54);
+}
+
+.select-custom {
+  width: 100%;
+  height: 40px;
+  min-width: initial;
+  padding: 0 0 0 10px;
+  border: none;
+  background: #3a3a3a;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.search-wrap.px-5 {
+  padding-left: 0rem !important;
+  padding-right: 0rem !important;
+}
+
+.advan_opts.btn {
+  padding: .375rem 0rem;
 }
 
 .carousel-item .planinfo img {
-  max-width: 45px;
+  /*max-width: 45px;*/
 }
 
 .carousel-item .planinfo h5 {
-  font-size: 18px;
+  font-size: 26px;
   font-family: 'FuturaPT';
 }
 
@@ -1060,6 +1099,43 @@ header .btn {
 
 .plan-full .plan-caption.mw-315 {
   max-width: 315px;
+}
+
+@media (max-width: 1199px) {
+  header .text-small {
+    font-size: 9px;
+  }
+
+  header .form-control {
+    padding: 6px 4px !important;
+    font-size: 10.5px !important;
+  }
+
+  h1.font-futura {
+    font-size: 27px;
+  }
+
+  .select-custom {
+    font-size: 11px;
+  }
+
+  select.select-custom {
+    background-size: 24px;
+    padding: 0 0 0 7px;
+  }
+
+  .form-main-search input {
+    padding: 0 0 0 9px;
+    font-size: 11px;
+  }
+
+  .plan-cta .plan-caption p {
+    display: none;
+  }
+
+  .plan-grid p.text-truncate {
+    display: none;
+  }
 }
 
 @media (max-width: 767px) {
@@ -1124,8 +1200,8 @@ ul.paging .btn-sm {
 }
 
 .plan-list .media.planinfo {
-  bottom: 5px;
-  left: 5px;
+  bottom: 0;
+  left: 0;
 }
 
 .plan-list .media.planinfo h5 {
@@ -1233,19 +1309,88 @@ ul.paging .btn-sm {
   font-size: 13px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 820px) {
+  .caption-quote-wrap {
+    display: none;
+  }
+
+  .d-none {
+    display: none !important;
+  }
+
+  .d-block {
+    display: block !important;
+  }
+}
+
+@media (max-width: 768px) {
   .d-block.d-md-none .plan-grid {
     max-width: 275px;
     margin: 0 auto 2rem;
   }
 
+  .social-icons .fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 23px !important;
+    text-rendering: auto;
+    border: 1px solid #fff;
+    padding: 12px;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale !important;
+  }
+
+  .navbar-toggler:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    margin-left: -9px !important;
+  }
+
+  .mobile-right,
+  .navbar .mobile-right {
+    margin-left: 5px !important;
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+
+  .home-mobile {
+    margin-top: 10px;
+    margin-bottom: 18px;
+  }
+
+  .home-mobile.px-5 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .lead {
+    margin-top: -12px;
+  }
+
+  .bg-secondary {
+    display: block;
+  }
+
+  .search-wrap {
+    margin-top: -5px;
+  }
+
+  .advanced-search {
+    background-color: #2e3192;
+    border-color: #2e3192;
+    font-size: 14px;
+    margin-bottom: -11px;
+  }
+
   .plan-list .media.planinfo.top {
-    top: 5px;
-    bottom: auto;
+    padding: 2px;
+    background: rgba(0, 0, 0, 0.3);
   }
 
   .home-about p {
-    font-size: 12px;
+    font-size: 13.5px;
     color: #0f0e0e;
   }
 
@@ -1263,5 +1408,101 @@ ul.paging .btn-sm {
   .form-main-search button {
     font-size: 14px;
   }
+}
+
+.copyright {
+  border-top: 1px solid #fff;
+  padding: 10px;
+}
+
+.social-icons .fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 45px;
+  text-rendering: auto;
+  border: 1px solid #fff;
+  padding: 14px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header .dropdown-menu {
+  min-width: 14rem;
+}
+
+p.caption-quote-small {
+  font-size: 18px;
+  font-weight: 600;
+  /*color: #4d4d4f;*/
+  color: #2e3192;
+  margin: 0;
+}
+
+.caption-quote-wrap {
+  padding: 4px 8px;
+}
+
+.newsletter p span {
+  color: #224195 !important;
+}
+
+.caption-quote.custom_capt {
+  font-size: 27px;
+}
+
+i.fa.fa-bars.menu_icons {
+  vertical-align: middle;
+  font-size: 24px;
+}
+
+@media (max-width: 369px) {
+  nav.navbar {
+    HEIGHT: 84PX;
+  }
+}
+
+@media (max-width: 355px) {
+  .col .list-unstyled li {
+    font-size: 12px;
+  }
+}
+
+.newsletter .border-secondary {
+  border-width: 2px;
+}
+
+.container .py-2.pd_bottom_0 {
+  padding-bottom: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .padd_bottom_10 {
+    padding-bottom: 10px;
+  }
+
+  .br_none_sm br {
+    display: none;
+  }
+
+  .newsletter p,
+  .newsletter .form-control {
+    font-size: 9px;
+  }
+
+  h1.font-futura {
+    font-size: 32px;
+    font-weight: normal;
+  }
+
+  p.m-0.font-weight-light {
+    font-size: 11px;
+  }
+}
+
+.list-inline-item .dropdown-toggle::after {
+  display: none;
 }
 
