@@ -49,7 +49,7 @@ class AboutDavidController extends Controller
             $pathThumb = storage_path('app/public/about/' . $filename);
 
             $imgThumb = Image::make($file->getRealPath());
-            $imgThumb->resize(636, null, function ($constraint) {
+            $imgThumb->resize(479, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $imgThumb->save($pathThumb);
