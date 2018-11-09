@@ -12,7 +12,7 @@
                     @endisset
                     <div class="card-body">
                         <h5 class="card-title">Plan {{$plan->plan_number}}</h5>
-                        <a href="#" class="btn btn-primary">View</a>
+                        <a href="{{ route('plan.view', $plan->id) }}" class="btn btn-primary">View</a>
                     </div>
                 </div>
             </div>
