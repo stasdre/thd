@@ -178,7 +178,8 @@ return [
         Thd\Providers\RouteServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+		Thd\Providers\AgentServiceProvider::class
     ],
 
     /*

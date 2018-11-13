@@ -118,3 +118,4 @@ Route::get('style/{slug}', 'StyleController@slug')->name('style.slug');
 
 Route::get('collections/', 'CollectionController@all')->name('collections');
 Route::get('styles/', 'StyleController@all')->name('styles');
+Route::get('plan','PlanController@index')->name('plan');
