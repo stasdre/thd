@@ -270,7 +270,7 @@
  });
 
  $('.slider-nav-thumbnails').slick({
- 	slidesToShow: 7,
+ 	slidesToShow: 4,
  	slidesToScroll: 1,
 	centerMode: true,
  	asNavFor: '.slider',

@@ -30,4 +30,7 @@ class PlanController extends Controller
             //'packages'=>$packages
         ]);
     }
+	public function modifyplan(){
+		return view('modify-plan');
+    }
 }

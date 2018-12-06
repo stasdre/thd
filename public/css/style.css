@@ -1602,7 +1602,7 @@ ul.paging .btn-sm {
 
   p.mb-1.font-weight-semi-bold {
     text-align: center;
-    font-size: 21px;
+    font-size: 13px;
   }
 
   .xs-text-center {
@@ -2228,10 +2228,6 @@ ul.list-style-none li {
     /*top: 51px;*/
   }
 
-  .xs-display {
-    width: 47px;
-  }
-
   .xs-float_setting {
     float: left;
     width: 320px;
@@ -2240,6 +2236,22 @@ ul.list-style-none li {
   .house_planh5 {
     font-size: 16px;
   }
+  .custom_nav .navbar-toggler {
+    	font-size: 1rem !important;
+	}
+	.custom_nav .img-fluid{
+		max-width: 140px !important;
+	}
+	.custom_nav .xs-display {
+		width: 31px;
+		font-size: 8px !important;
+	}
+	.navbar-toggler-icon {
+   		width: 1em !important;
+	}
+	.container {
+   	 padding: 0;
+	}
 }
 
 .width_100 {
@@ -2252,3 +2264,6 @@ ul.list-style-none li {
   color: #000 !important;
 }
 
+#modification_form .select-styled{
+	border: 1px solid #ced4da;
+}

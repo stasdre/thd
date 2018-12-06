@@ -2,7 +2,7 @@
 @section('content')
   <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0 bg-white px-0">
-        <li class="breadcrumb-item"><a href="Home-Page.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
         <li class="breadcrumb-item">Plan Page</li>
       </ol>
     </nav>
@@ -101,9 +101,9 @@
             <div><img src="images/banner/3.jpg" alt="Three" class="img-fluid"> </div>
             <div><img src="images/banner/4.jpg" alt="Four" class="img-fluid"> </div>
             <div><img src="images/banner/5.jpg" alt="Five" class="img-fluid"> </div>
-            <div><img src="images/banner/6.jpg" alt="Five" class="img-fluid"> </div>
-            <div><img src="images/banner/7.jpg" alt="Five" class="img-fluid"> </div>
-            <div><img src="images/banner/8.jpg" alt="Five" class="img-fluid"> </div>
+            <div><img src="images/banner/6.jpg" alt="Six" class="img-fluid"> </div>
+            <div><img src="images/banner/7.jpg" alt="Seven" class="img-fluid"> </div>
+            <div><img src="images/banner/8.jpg" alt="Eight" class="img-fluid"> </div>
           </div>
         </div>
         <div class="col xs-hide-portrait">
@@ -232,7 +232,7 @@
         <li class="nav-item xs-hide-portrait"> <a class="nav-link rounded-0 active" id="plandescription" data-toggle="tab" href="#planDescription" role="tab">Plan Description</a> </li>
         <li class="nav-item xs-hide-portrait"> <a class="nav-link rounded-0" id="planspecifications" data-toggle="tab" href="#planSpecifications" role="tab">Plan Specifications</a> </li>
         <li class="nav-item xs-hide-portrait"> <a class="nav-link rounded-0" id="planfeatures" data-toggle="tab" href="#planFeatures" role="tab">Plan <span class="d-sm-block d-md-inline">Features</span></a> </li>
-        <li class="nav-item border-right-xs"> <a class="nav-link rounded-0" id="modifyplan" target="_blank" href="modify-plan.html" >Modify <span class="xs-hide-portrait"> This Plan</span></a> </li>
+        <li class="nav-item border-right-xs"> <a class="nav-link rounded-0" id="modifyplan" target="_blank" href="modify-plan" >Modify <span class="xs-hide-portrait"> This Plan</span></a> </li>
         <li class="nav-item border-left-xs"> <a class="nav-link rounded-0" id="costbuild" data-toggle="tab" href="#costBuild" role="tab">Cost to <span class="d-sm-block d-md-inline">Build</span></a> </li>
         <li class="nav-item xs-hide-portrait"> <a class="nav-link rounded-0" id="customerreviews" data-toggle="tab" href="#customerReviews" role="tab">Customer Reviews</a> </li>
       </ul>
