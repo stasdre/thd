@@ -6,6 +6,21 @@
         <li class="breadcrumb-item">Plan Page</li>
       </ol>
     </nav>
+    
+    @if ($agent->isPhone())
+    <div class="plan-list my-1">
+      <div class="row no-gutters align-items-center py-2 px-2">
+        <div class="col-8">
+          <p class="plan-name font-weight-bold mb-0">4,839 sq ft | <span class="text-white">plan 2495</span></p>
+        </div>
+        <div class="col-4">
+          <ul class="list-inline mb-0 text-right">
+            <li class="list-inline-item"><a href=""><img src="images/icons/icon-favourite.png" alt=""></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    @endif
     <div class="bg-dark pb-2 position-relative padding-botton_0_xs">
       <div class="row no-gutters">
         <div class="col xs-hide-portrait"></div>
@@ -19,6 +34,10 @@
                   <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
                 </div>
               </div>
+              @if ($agent->isPhone())
+                <a href="#" class="position-absolute pinterest"><img src="images/icons/icon-pinterest.png" alt=""></a>
+              @endif
+
             </figure>
             <figure> <img src="images/banner/2.jpg" alt="One" class="img-fluid">
               <figcaption>Brand new modern luxury farmhouse with fabulous outdoor living spaces.</figcaption>
@@ -28,6 +47,9 @@
                   <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
                 </div>
               </div>
+              @if ($agent->isPhone())
+                <a href="#" class="position-absolute pinterest"><img src="images/icons/icon-pinterest.png" alt=""></a>
+              @endif
             </figure>
             <figure> <img src="images/banner/3.jpg" alt="One" class="img-fluid">
               <figcaption>Brand new modern luxury farmhouse with fabulous outdoor living spaces.</figcaption>
@@ -37,6 +59,10 @@
                   <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
                 </div>
               </div>
+              @if ($agent->isPhone())
+                <a href="#" class="position-absolute pinterest"><img src="images/icons/icon-pinterest.png" alt=""></a>
+              @endif
+
             </figure>
             <figure> <img src="images/banner/3.jpg" alt="One" class="img-fluid">
               <figcaption>Brand new modern luxury farmhouse with fabulous outdoor living spaces.</figcaption>
@@ -46,6 +72,9 @@
                   <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
                 </div>
               </div>
+              @if ($agent->isPhone())
+                <a href="#" class="position-absolute pinterest"><img src="images/icons/icon-pinterest.png" alt=""></a>
+              @endif
             </figure>
             <figure> <img src="images/banner/4.jpg" alt="One" class="img-fluid">
               <figcaption>Brand new modern luxury farmhouse with fabulous outdoor living spaces.</figcaption>
@@ -54,7 +83,11 @@
                   <h5 class="mb-0 text-white">plan <span class="text-secondary">4839</span></h5>
                   <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
                 </div>
-              </div>
+              </div> 
+              @if ($agent->isPhone())
+                <a href="#" class="position-absolute pinterest"><img src="images/icons/icon-pinterest.png" alt=""></a>
+              @endif
+
             </figure>
             <figure> <img src="images/banner/5.jpg" alt="One" class="img-fluid">
               <figcaption>Brand new modern luxury farmhouse with fabulous outdoor living spaces.</figcaption>
@@ -64,6 +97,10 @@
                   <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
                 </div>
               </div>
+              @if ($agent->isPhone())
+                <a href="#" class="position-absolute pinterest"><img src="images/icons/icon-pinterest.png" alt=""></a>
+              @endif
+
             </figure>
             <figure> <img src="images/banner/6.jpg" alt="One" class="img-fluid">
               <figcaption>Brand new modern luxury farmhouse with fabulous outdoor living spaces.</figcaption>
@@ -73,6 +110,10 @@
                   <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
                 </div>
               </div>
+              @if ($agent->isPhone())
+                <a href="#" class="position-absolute pinterest"><img src="images/icons/icon-pinterest.png" alt=""></a>
+              @endif
+
             </figure>
             <figure> <img src="images/banner/7.jpg" alt="One" class="img-fluid">
               <figcaption>Brand new modern luxury farmhouse with fabulous outdoor living spaces.</figcaption>
@@ -82,6 +123,10 @@
                   <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
                 </div>
               </div>
+              @if ($agent->isPhone())
+                <a href="#" class="position-absolute pinterest"><img src="images/icons/icon-pinterest.png" alt=""></a>
+              @endif
+
             </figure>
             <figure> <img src="images/banner/8.jpg" alt="One" class="img-fluid">
               <figcaption>Brand new modern luxury farmhouse with fabulous outdoor living spaces.</figcaption>
@@ -91,6 +136,10 @@
                   <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
                 </div>
               </div>
+              @if ($agent->isPhone())
+                <a href="#" class="position-absolute pinterest"><img src="images/icons/icon-pinterest.png" alt=""></a>
+              @endif
+
             </figure>
           </div>
           
@@ -158,7 +207,7 @@
       <div class="col py-1 border border-light font-weight-semi-bold">Depth <span class="d-block text-secondary">90'</span></div>
     </div>
           </div>
-          <a href="#" class="btn btn-primary text-uppercase rounded-0 mt-3">View Floor Plans</a> </div>
+          <a href="#" class="btn btn-primary text-uppercase rounded-0 mt-3 xs-hide-portrait">View Floor Plans</a> </div>
         
         
         <div class="col-lg-4 col-md-6 col-sm-7 form-white padd_top">

@@ -1132,7 +1132,7 @@ header .btn {
   }
 
   .plan-grid p.text-truncate {
-    display: none;
+    /*display: none;*/
   }
 
   .common_width {
@@ -1885,6 +1885,9 @@ ul.paging .btn-sm {
   .show-portrait-xs {
     display: inline;
   }
+  #myTabContent1 h6 {
+    font-size: .8rem;
+  }
 }
 
 .copyright {
@@ -1994,6 +1997,10 @@ i.fa.fa-bars.menu_icons {
 
   .navbar-collapse {
     top: 0px;
+  }
+  .select {
+    font-size: 13px;
+	font-weight:600;
   }
 }
 
@@ -2213,9 +2220,12 @@ ul.list-style-none li {
 }
 
 @media (max-width: 420px) {
-  /*.navbar-collapse {
-        top: 47px;
-    }*/
+  .slick-slider .planinfo img {
+		max-width: 39px;
+  }
+  .slick-slider .planinfo h5 {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 360px) {
@@ -2266,4 +2276,8 @@ ul.list-style-none li {
 
 #modification_form .select-styled{
 	border: 1px solid #ced4da;
+}
+.pinterest {
+    bottom: 10px;
+    right: 10px;
 }
