@@ -2160,7 +2160,9 @@ span.note.text-danger {
   margin-bottom: 1px;
   color: #6c757d;
 }
-
+.max-width {
+    max-width: 110px;
+}
 #modification_form .select-custom,
 .select-custom.white_back {
   background-color: #fff;

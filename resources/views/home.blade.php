@@ -140,7 +140,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-2 col-sm-3 common_width padd_bottom_10">
+					<div class="col-md-2 col-sm-3 common_width padd_bottom_10 max-width">
 						<div class="form-group">
 							<div class="select-custom-wrap select-custom-wrap-md">
 								<select name="select-custom-garages" class="select-custom " >
@@ -179,18 +179,20 @@
 				<p class="m-0 font-weight-light">Frequently Asked Questions</p>
 			</div>
 			<div class="col-sm-6">
+           		<p></p>
 				<h1 class="text-center font-futura p-0 m-0">FIND YOUR DREAM HOME!</h1>
 			</div>
 			<div class="col-sm-3 text-sm-right newsletter">
 				<p class="mb-1 font-weight-semi-bold"><span>SIGN UP FOR </span> E-PUBS + DISCOUNTS</p>
 				<div class="input-group input-group-sm">
-					<input type="text" class="form-control rounded-0 border-secondary" placeholder="Email Address">
+					<input type="text" class="form-control rounded-0 border-secondary font-weight-bold" placeholder="Email Address">
 					<div class="input-group-append">
-						<button class="btn btn-secondary rounded-0 text-uppercase text-dark font-weight-semi-bold" type="button">Sign Up</button>
+						<button class="btn btn-secondary rounded-0 text-uppercase text-dark font-weight-bold" type="button">Sign Up</button>
 					</div>
 				</div>
 			</div>
 		</div>
+        <p></p>
 		<p class="text-center pt-0 br_none_sm">Buying house plans on DavidWigginsHousePlans.com means you’re buying direct from America’s favorite residential<br> architect, David E. Wiggins! When purchasing online house plans from our site, be confident in knowing that our home plans<br> have been built in every state in the U.S. and many countries around the globe.  David’s home designs are also guaranteed to include full<br> architectural detailing that builders need to build safe and efficient houses  From craftsman home plans to small house plans to<br> modern floor plans, you’ll find easy to build and easy to customize house plans in a wide variety of styles and sizes.</p>
 		<div class="plan-full position-relative mb-3"> <img src="/images/plan-full.jpg" alt="" class="img-fluid" />
 			<div class="plan-caption position-absolute mw-315">
