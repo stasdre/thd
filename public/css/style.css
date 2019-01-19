@@ -1835,7 +1835,7 @@ ul.paging .btn-sm {
     HEIGHT: auto;
   }
 
-  main .btn.btn-primary.text-uppercase {
+  main .btn.btn-primary.text-uppercase:not(.enter_email) {
     margin-top: 10px !important;
     margin-bottom: 10px !important;
   }
@@ -2265,7 +2265,32 @@ ul.list-style-none li {
    	 padding: 0;
 	}
 }
+@media (max-width: 520px) {
+  h1.font-futura {
+    font-size: 16px;
+  }
+  .form-main-search input {
+    font-size: 13px;
+	}
+	h4.font-weight-bold.bigFont-xs{
+	 font-size: 24px;
+	}
+	p.lead {
+    font-size: 16px;
+	}
 
+}
+@media (max-width: 370px) {
+.form-main-search .col-6 {
+    min-width: 182px;
+}
+ .form-main-search .col {
+    min-width: 75px;
+}
+h4.font-weight-bold.bigFont-xs{
+	 font-size: 22px;
+}
+}
 .width_100 {
   width: 100%;
 }
@@ -2283,3 +2308,4 @@ ul.list-style-none li {
     bottom: 10px;
     right: 10px;
 }
+

@@ -373,7 +373,7 @@
 				<div class="row no-gutters">
 					<div class="col-6">
 						<div class="form-group">
-							<input type="text" placeholder="Enter Plan Name or #" >
+							<input type="text" placeholder="Plan Name or #" >
 						</div>
 					</div>
 					<div class="col">
@@ -458,21 +458,21 @@
 			</div>
 		</div>
 		<div class="container">
-			<h4 class="font-weight-bold text-center mb-0">NEW HOUSE PLANS</h4>
+			<h4 class="font-weight-bold text-center mb-0 bigFont-xs">NEW HOUSE PLANS</h4>
 			<p class="lead text-center font-weight-semi-bold mb-2 mt-1">by America’s leading architect </p>
 			<div class="bg-secondary w-75 mx-auto mb-3 pb-1"></div>
 			<div class="home-about">
-				<p>Buying house plans on David Wiggins House Plans means you’re buying direct from America’s favorite residential architect, David E. Wiggins!  When purchasing online house plans from our site, be confident in knowing that our home plans have been built in every state in the U.S. and many countries around the globe.  David’s home designs are also guaranteed to include full architectural detailing that builders need to build safe and efficient houses  From craftsman home plans to small house plans to modern floor plans, you’ll find easy to build and easy to customize house plans in a wide variety of styles and sizes. </p>
+				<p style="margin-bottom: 10px;">Buying house plans on David Wiggins House Plans means you’re buying direct from America’s favorite residential architect, David E. Wiggins!  When purchasing online house plans from our site, be confident in knowing that our home plans have been built in every state in the U.S. and many countries around the globe.  David’s home designs are also guaranteed to include full architectural detailing that builders need to build safe and efficient houses  From craftsman home plans to small house plans to modern floor plans, you’ll find easy to build and easy to customize house plans in a wide variety of styles and sizes. </p>
 			</div>
 			<h4 class="font-weight-bold text-center mb-2">SIGN UP AND SAVE</h4>
 			<div class="input-group input-group-sm mb-2 mx-auto w-75">
 				<input type="text" class="form-control rounded-0 border-secondary" placeholder="ENTER YOUR EMAIL ADDRESS">
 				<div class="input-group-append">
-					<button class="btn btn-primary rounded-0 text-uppercase text-white font-weight-semi-bold px-3" type="button">&gt;</button>
+					<button class="btn btn-primary rounded-0 text-uppercase text-white font-weight-semi-bold px-3 enter_email" type="button">&gt;</button>
 				</div>
 			</div>
 			<img src="/images/plan-4.jpg" alt="New House Plans" class="img-fluid w-100 my-2">
-			<h4 class="font-weight-bold text-center mb-0">BEST-SELLING HOUSE PLANS</h4>
+			<h4 class="font-weight-bold text-center mb-0 bigFont-xs">BEST-SELLING HOUSE PLANS</h4>
 			<p class="lead text-center font-weight-semi-bold mt-1">America’s most popular designs</p>
 			<h5 class="font-weight-bold text-center text-primary">Browse Our Architectural Styles</h5>
 			<div class="row">
