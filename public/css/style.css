@@ -1124,7 +1124,9 @@ header .btn {
 
   .form-main-search input {
     padding: 0 0 0 9px;
-    font-size: 11px;
+    font-size: 14px;
+	text-align:center;
+	font-weight: normal;
   }
 
   .plan-cta .plan-caption p {
@@ -1423,6 +1425,9 @@ ul.paging .btn-sm {
   .col-md-3.text-right.text-xs-center.custom_reversePlan {
     min-height: 58px;
   }
+	.form-main-search .row {
+		padding-bottom: 8px;
+	}
 }
 
 @media (max-width: 768px) {
@@ -1518,6 +1523,9 @@ ul.paging .btn-sm {
         -ms-flex: 33.33%;
             flex: 33.33%;
   }
+  .form-main-search .row {
+		padding-bottom: 4px;
+	}
 }
 
 @media (max-width: 767px) {
