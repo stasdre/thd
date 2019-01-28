@@ -46,12 +46,34 @@
                 </li>
                 <li class="treeview">
                     <a href="#">
+                        <i class="fa fa-desktop"></i>
+                        <span>Home page (Desktop)</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ route('gallery.index') }}"><i class="fa fa-photo"></i>Gallery</a></li>
+                        <li><a href="{{route('home-page.desktop-dream')}}">DREAM HOME Text</a></li>
+                        <li><a href="#">Best plans</a></li>
+                        <li><a href="#">Favorite plans</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-mobile"></i>
+                        <span>Home page (Mobile)</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
                         <i class="fa fa-cogs"></i>
                         <span>Site Settings</span>
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ route('gallery.index') }}"><i class="fa fa-photo"></i> Home Page Gallery</a></li>
+
                         <li><a href="{{ route('about-david.edit') }}"><i class="fa fa-pencil-square-o"></i> About David E.</a></li>
                     </ul>
                 </li>
