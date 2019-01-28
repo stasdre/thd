@@ -8,10 +8,6 @@ use Thd\Plan;
 
 class PlanController extends Controller
 {
-     public function index()
-     {
-		return view('plan');
-    }
 
     public function view(Request $request, $id)
     {
@@ -19,18 +15,38 @@ class PlanController extends Controller
             ->with('packages')
             ->with('foundationOptions')
             ->with('addons')
+            ->with(['images' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }])
+            ->with('roomsInterior')
+            ->with('porchExteriors')
+            ->with('beds')
+            ->with('kitchens')
+            ->with('styles')
+            ->with(['images_first' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }])
+            ->with(['images_second' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }])
+            ->with(['images_basement' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }])
+            ->with(['images_bonus' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }])
             ->firstOrFail();
 
         /*$packages = Package::whereHas('plans', function($query) use ($plan){
             $query->where('plan_id', '=', $plan->id);
         })->get();*/
 
-        return view('plan.view', [
+        return view('plan.plan', [
             'plan'=>$plan,
             //'packages'=>$packages
         ]);
     }
 	public function modifyplan(){
-		return view('modify-plan');
+		return view('plan.modify-plan');
     }
 }

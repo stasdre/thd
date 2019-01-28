@@ -25,7 +25,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
             </button>
-           		<a class="d-inline-block align-middle" href="#"><img src="images/icons/logo.png" alt="" class="img-fluid mr-2" style="max-width:160px;"></a>
+           		<a class="d-inline-block align-middle" href="#"><img src="{{asset('images/icons/logo.png')}}" alt="" class="img-fluid mr-2" style="max-width:160px;"></a>
             </span>
             <span class="float-right">
                <a href="#" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-search d-block" style="font-size:16px;"></i> Search</a>
@@ -34,7 +34,7 @@
                <a href="#" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-shopping-cart d-block" style="font-size:16px;"></i> Cart</a>
      		</span>
         </div>
-        <a href="#" class="d-none d-md-block"><img src="images/icons/logo.png" alt="" class="img-fluid"></a> 
+        <a href="#" class="d-none d-md-block"><img src="{{asset('images/icons/logo.png')}}" alt="" class="img-fluid"></a>
      </div>
       <div class="col-md-7 col-sm-6 text-center z-index-xs width-sm-100">
         <ul class="list-inline text-center mb-4 toplinks  d-none d-md-block">
@@ -47,7 +47,7 @@
 			
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="mb-0 p-0 width_100">
-			  <li class="list-inline-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#link"><img src="images/icons/icon-search.png" alt="search"> House Plans</a>
+			  <li class="list-inline-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#link"><img src="{{asset('images/icons/icon-search.png')}}" alt="search"> House Plans</a>
 				<ul class="dropdown-menu">
 				 <li><a href="{{ route('search') }}">Advanced Search</a></li>
                  <li><a href="{{ route('styles') }}">Architectural Styles</a></li>
@@ -147,7 +147,7 @@
       <div class="col-md-3 col-sm-3 px-xs-0 width-sm-100">
       	<div class="navbar-expand-lg navbar-dark bg-dark custom_nav">
             <span class="float-left">
-<button class="navbar-toggler p-0 border-0 d-inline-block" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>           		<a class="d-inline-block align-middle" href="#"><img src="images/icons/logo.png" alt="" class="img-fluid mr-2" style="max-width:160px;"></a>
+<button class="navbar-toggler p-0 border-0 d-inline-block" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>           		<a class="d-inline-block align-middle" href="#"><img src="{{asset('images/icons/logo.png')}}" alt="" class="img-fluid mr-2" style="max-width:160px;"></a>
             </span>
            <span class="float-right">
                <a href="#" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-search d-block" style="font-size:16px;"></i> Search</a>
@@ -156,13 +156,13 @@
                <a href="#" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-shopping-cart d-block" style="font-size:16px;"></i> Cart</a>
      	   </span>
         </div>
-        <a href="#" class="d-none d-md-block"><img src="images/icons/logo.png" alt="" class="img-fluid"></a> 
+        <a href="#" class="d-none d-md-block"><img src="{{asset('images/icons/logo.png')}}" alt="" class="img-fluid"></a>
      </div>
       <div class="col-md-7 col-sm-6 text-center z-index-xs width-sm-100">
 		<nav class="navbar navbar-dark navbar-expand-lg">
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 			<ul class="mb-0 p-0 width_100">
-			  <li class="list-inline-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#link"><img src="images/icons/icon-search.png" alt="search"> House Plans</a>
+			  <li class="list-inline-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#link"><img src="{{asset('images/icons/icon-search.png')}}" alt="search"> House Plans</a>
 				<ul class="dropdown-menu">
 				  <li><a href="{{ route('search') }}">Advanced Search</a></li>
                   <li><a href="{{ route('styles') }}">Architectural Styles</a></li>
