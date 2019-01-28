@@ -118,6 +118,5 @@ Route::get('style/{slug}', 'StyleController@slug')->name('style.slug');
 
 Route::get('collections/', 'CollectionController@all')->name('collections');
 Route::get('styles/', 'StyleController@all')->name('styles');
-Route::get('plan','PlanController@index')->name('plan');
 Route::get('plan/{id}', 'PlanController@view')->name('plan.view')->where('id', '[0-9]+');
-Route::get('modify-plan','PlanController@modifyplan')->name('modify-plan');
+Route::get('modify-plan/{id}','PlanController@modifyplan')->name('modify-plan')->where('id', '[0-9]+');
