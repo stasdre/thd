@@ -131,6 +131,10 @@ $(document).ready(function () {
             $list.hide();
         });
     });
+
+    $("#reverse_plan").on('click', function(e){
+        $('.flipped-container').find('img').toggleClass('flipped');
+    })
 });
 
 /***/ }),

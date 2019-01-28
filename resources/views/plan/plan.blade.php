@@ -381,7 +381,7 @@ ensure you stay in budget, economy, standard and premium.</p>
                             <h6 class="font-weight-bold mb-0" style="line-height: 40px;color:#000">Download Sample Construction Plans</h6>
                         </a>
                 	</div>
-                    <div class="col-md-3 text-right text-xs-center custom_reversePlan"><button type="button" class="btn btn-dark rounded-0">Reverse plan</button></div>                
+                    <div class="col-md-3 text-right text-xs-center custom_reversePlan"><button type="button" class="btn btn-dark rounded-0" id="reverse_plan">Reverse plan</button></div>
                 </div>
                <div class="row only_under_767" >
                 	<div class="col-md-12">
@@ -389,7 +389,7 @@ ensure you stay in budget, economy, standard and premium.</p>
 			   		</div>
                </div>
             	<div class="row">
-                	<div class="col-md-12">
+                	<div class="col-md-12 flipped-container">
                         @foreach($plan->images_first  as $image)
                  		    <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="" class="img-fluid mx-auto d-block">
                         @endforeach
@@ -400,7 +400,7 @@ ensure you stay in budget, economy, standard and premium.</p>
         </div>
         <div class="tab-pane fade" id="second" role="tabpanel">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 flipped-container">
                     @foreach($plan->images_second  as $image)
                         <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="" class="img-fluid mx-auto d-block">
                     @endforeach
@@ -409,7 +409,7 @@ ensure you stay in budget, economy, standard and premium.</p>
         </div>
         <div class="tab-pane fade" id="basement" role="tabpanel">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 flipped-container">
                     @foreach($plan->images_basement  as $image)
                         <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="" class="img-fluid mx-auto d-block">
                     @endforeach
@@ -418,7 +418,7 @@ ensure you stay in budget, economy, standard and premium.</p>
         </div>
         <div class="tab-pane fade" id="bonus" role="tabpanel">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 flipped-container">
                     @foreach($plan->images_bonus  as $image)
                         <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="" class="img-fluid mx-auto d-block">
                     @endforeach
