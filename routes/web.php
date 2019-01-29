@@ -110,6 +110,7 @@ Route::prefix('admin-thd')->group(function(){
         Route::post('admin-thd/get-state', 'Admin\DashboardController@getCountryState')->name('getCountryState');
 
         Route::get('home-page/desktop-dream', 'Admin\HomePageController@desktopDream')->name('home-page.desktop-dream');
+        Route::post('home-page/desktop-dream', 'Admin\HomePageController@desktopDream')->name('home-page.desktop-dream.post');
     });
 });
 

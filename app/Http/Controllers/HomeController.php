@@ -7,6 +7,7 @@ use Thd\AboutDavid;
 use Thd\Collection;
 use Thd\Gallery;
 use Thd\Style;
+use Thd\TextContent;
 
 class HomeController extends Controller
 {
@@ -21,12 +22,14 @@ class HomeController extends Controller
         $styles = Style::where('in_filter', 1)->orderBy('short_name', 'asc')->limit(18)->get();
         $collections = Collection::where('in_filter', 1)->orderBy('short_name', 'asc')->limit(18)->get();
         $aboutData = AboutDavid::find(1);
+        $descDesctop = TextContent::find(1);
 
         return view('home', [
             'gallery'=>$gallery,
             'aboutData'=>$aboutData,
             'styles'=>$styles,
-            'collections'=>$collections
+            'collections'=>$collections,
+            'descDesctop'=>$descDesctop
         ]);
     }
 }
