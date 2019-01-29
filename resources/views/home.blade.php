@@ -194,41 +194,49 @@
 		</div>
         <p></p>
 		<div class="text-center pt-0 br_none_sm">{!! $descDesctop->description !!}</div>
-		<div class="plan-full position-relative mb-3"> <img src="/images/plan-full.jpg" alt="" class="img-fluid" />
-			<div class="plan-caption position-absolute mw-315">
-				<h3 class="font-weight-bold">America’s Favorite Homes</h3>
-				<p>View America’s favorite house plans from leading architect David E. Wiggins</p>
-				<a href="#" class="btn btn-dark rounded-0">Click Here</a> </div>
-			<div class="plan-name position-absolute"><span>CHERRY CREEK /</span> HOUSE PLAN 2495</div>
-		</div>
+		@if($deckBest->main_file)
+			<div class="plan-full position-relative mb-3"> <img src="{{asset('/storage/home-page/'.$deckBest->main_file)}}" alt="" class="img-fluid" />
+				<div class="plan-caption position-absolute mw-315">
+					<h3 class="font-weight-bold">{{$deckBest->main_title}}</h3>
+					<p>{{$deckBest->main_desc}}</p>
+					<a href="{{$deckBest->main_link}}" class="btn btn-dark rounded-0">Click Here</a> </div>
+				<div class="plan-name position-absolute">{{$deckBest->main_plan}}</div>
+			</div>
+		@endif
 		<div class="row">
+			@if($deckBest->first_file)
 			<div class="col-sm-4">
-				<div class="plan-cta position-relative mb-2"> <img src="/images/plan-cta-1.jpg" alt="" class="img-fluid" />
+				<div class="plan-cta @if($deckBest->first_type == 'light') white @endif position-relative mb-2"> <img src="{{asset('/storage/home-page/'.$deckBest->first_file)}}" alt="" class="img-fluid" />
 					<div class="plan-caption position-absolute">
-						<h3>Recent Blogs</h3>
-						<p>Stay up-to-date with the latest home design trends</p>
-						<a href="#" class="btn btn-dark rounded-0">Click Here</a> </div>
-					<div class="plan-name position-absolute">HOUSE PLAN 2495</div>
+						<h3>{{ $deckBest->first_title }}</h3>
+						<p>{{ $deckBest->first_desc }}</p>
+						<a href="{{ $deckBest->first_link }}" class="btn btn-dark rounded-0">Click Here</a> </div>
+					<div class="plan-name position-absolute">{{ $deckBest->first_plan }}</div>
 				</div>
 			</div>
-			<div class="col-sm-4">
-				<div class="plan-cta white position-relative mb-2"> <img src="/images/plan-cta-2.jpg" alt="" class="img-fluid" />
-					<div class="plan-caption position-absolute">
-						<h3 class="font-weight-bold">Customer Reviews</h3>
-						<p>Read reviews by our builders and customers</p>
-						<a href="#" class="btn btn-dark rounded-0">Click Here</a> </div>
-					<div class="plan-name position-absolute">HOUSE PLAN 1698</div>
+			@endif
+			@if($deckBest->second_file)
+				<div class="col-sm-4">
+					<div class="plan-cta @if($deckBest->second_type == 'light') white @endif position-relative mb-2"> <img src="{{asset('/storage/home-page/'.$deckBest->second_file)}}" alt="" class="img-fluid" />
+						<div class="plan-caption position-absolute">
+							<h3>{{ $deckBest->second_title }}</h3>
+							<p>{{ $deckBest->second_desc }}</p>
+							<a href="{{ $deckBest->second_link }}" class="btn btn-dark rounded-0">Click Here</a> </div>
+						<div class="plan-name position-absolute">{{ $deckBest->second_plan }}</div>
+					</div>
 				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="plan-cta position-relative mb-2"> <img src="/images/plan-cta-3.jpg" alt="" class="img-fluid" />
-					<div class="plan-caption position-absolute">
-						<h3>Recent Home Builds</h3>
-						<p>View products our customers love!</p>
-						<a href="#" class="btn btn-dark rounded-0">Click Here</a> </div>
-					<div class="plan-name position-absolute">HOUSE PLAN 2466</div>
+			@endif
+			@if($deckBest->third_file)
+				<div class="col-sm-4">
+					<div class="plan-cta @if($deckBest->third_type == 'light') white @endif position-relative mb-2"> <img src="{{asset('/storage/home-page/'.$deckBest->third_file)}}" alt="" class="img-fluid" />
+						<div class="plan-caption position-absolute">
+							<h3>{{ $deckBest->third_title }}</h3>
+							<p>{{ $deckBest->third_desc }}</p>
+							<a href="{{ $deckBest->third_link }}" class="btn btn-dark rounded-0">Click Here</a> </div>
+						<div class="plan-name position-absolute">{{ $deckBest->third_plan }}</div>
+					</div>
 				</div>
-			</div>
+			@endif
 		</div>
 		<h1 class="text-center font-futura mb-2">AMERICA’S FAVORITE HOUSE PLANS!</h1>
 		<div class="row text-center">

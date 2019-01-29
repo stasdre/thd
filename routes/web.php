@@ -111,6 +111,10 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::get('home-page/desktop-dream', 'Admin\HomePageController@desktopDream')->name('home-page.desktop-dream');
         Route::post('home-page/desktop-dream', 'Admin\HomePageController@desktopDream')->name('home-page.desktop-dream.post');
+
+        Route::get('home-page/desktop-best', 'Admin\HomePageController@desktopBest')->name('home-page.desktop-best');
+        Route::post('home-page/desktop-best', 'Admin\HomePageController@desktopBest')->name('home-page.desktop-best.post');
+
     });
 });
 

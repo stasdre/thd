@@ -53,7 +53,7 @@
                     <ul class="treeview-menu">
                         <li><a href="{{ route('gallery.index') }}"><i class="fa fa-photo"></i>Gallery</a></li>
                         <li><a href="{{route('home-page.desktop-dream')}}">DREAM HOME Text</a></li>
-                        <li><a href="#">Best plans</a></li>
+                        <li><a href="{{ route('home-page.desktop-best') }}">Best plans</a></li>
                         <li><a href="#">Favorite plans</a></li>
                     </ul>
                 </li>
