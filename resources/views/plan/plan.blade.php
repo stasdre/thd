@@ -75,12 +75,12 @@
       </div>
       <div class="position-absolute social-share xs-hide-portrait">
         <ul class="list-unstyled m-0 text-center">
-          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+          <li><a href="#" data-network="facebook"><i class="fa fa-facebook"></i></a></li>
+          {{--<li><a href="#" data-network="facebook"><i class="fa fa-youtube"></i></a></li>--}}
           <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-          <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-          <li><a href="#"><i class="fa fa-houzz"></i></a></li>
-          <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+          <li><a href="#" data-network="googleplus"><i class="fa fa-google-plus"></i></a></li>
+          <li><a href="#" ><i class="fa fa-houzz"></i></a></li>
+          <li><a href="#" data-network="pinterest"><i class="fa fa-pinterest-p"></i></a></li>
         </ul>
       </div>
     </div>
