@@ -5,6 +5,7 @@ namespace Thd\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Thd\DesktopBest;
+use Thd\DesktopFavorite;
 use Thd\Http\Controllers\Controller;
 use Thd\TextContent;
 use Validator;
@@ -171,6 +172,134 @@ class HomePageController extends Controller
             }
         }else{
             return view('admin.home-page.desktop-best')->with('data', $data);
+        }
+    }
+
+    public function desktopFavorite(Request $request)
+    {
+        $data = DesktopFavorite::findOrFail(1);
+
+        if($request->isMethod('post')){
+            $validator = Validator::make($request->all(), [
+                'first_title' => 'max:190',
+                'second_title' => 'max:190',
+                'third_title' => 'max:190',
+                'fourth_title' => 'max:190',
+                'first_link_text' => 'max:190',
+                'second_link_text' => 'max:190',
+                'third_link_text' => 'max:190',
+                'fourth_link_text' => 'max:190',
+                'first_link' => 'max:190',
+                'second_link' => 'max:190',
+                'third_link' => 'max:190',
+                'fourth_link' => 'max:190',
+                'first_file' => 'mimetypes:image/jpeg,image/png,image/bmp,image/gif',
+                'second_file' => 'mimetypes:image/jpeg,image/png,image/bmp,image/gif',
+                'third_file' => 'mimetypes:image/jpeg,image/png,image/bmp,image/gif',
+                'fourth_file' => 'mimetypes:image/jpeg,image/png,image/bmp,image/gif'
+            ]);
+
+            if ($validator->fails()) {
+                return redirect(route('home-page.desktop-favorite'))
+                    ->withErrors($validator)
+                    ->withInput();
+            }else {
+
+                if($request->file('first_file')){
+                    $image = $request->file('first_file');
+                    $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
+                    $path = storage_path('app/public/home-page/' . $filename);
+
+                    $img = Image::make($image->getRealPath());
+                    $img->resize(270, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    $img->save($path, 90);
+
+                    Storage::delete('public/home-page/'.$data->main_file);
+
+                    $data->first_file = $filename;
+                }
+
+                if($request->file('second_file')){
+                    $image = $request->file('second_file');
+                    $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
+                    $path = storage_path('app/public/home-page/' . $filename);
+
+                    $img = Image::make($image->getRealPath());
+                    $img->resize(270, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    $img->save($path, 90);
+
+                    Storage::delete('public/home-page/'.$data->main_file);
+
+                    $data->second_file = $filename;
+                }
+
+                if($request->file('third_file')){
+                    $image = $request->file('third_file');
+                    $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
+                    $path = storage_path('app/public/home-page/' . $filename);
+
+                    $img = Image::make($image->getRealPath());
+                    $img->resize(270, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    $img->save($path, 90);
+
+                    Storage::delete('public/home-page/'.$data->main_file);
+
+                    $data->third_file = $filename;
+                }
+
+                if($request->file('fourth_file')){
+                    $image = $request->file('fourth_file');
+                    $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
+                    $path = storage_path('app/public/home-page/' . $filename);
+
+                    $img = Image::make($image->getRealPath());
+                    $img->resize(270, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    $img->save($path, 90);
+
+                    Storage::delete('public/home-page/'.$data->main_file);
+
+                    $data->fourth_file = $filename;
+                }
+
+                $data->first_title = $request->input('first_title');
+                $data->first_desc = $request->input('first_desc');
+                $data->first_link_text = $request->input('first_link_text');
+                $data->first_link = $request->input('first_link');
+
+                $data->second_title = $request->input('second_title');
+                $data->second_desc = $request->input('second_desc');
+                $data->second_link_text = $request->input('second_link_text');
+                $data->second_link = $request->input('second_link');
+
+                $data->third_title = $request->input('third_title');
+                $data->third_desc = $request->input('third_desc');
+                $data->third_link_text = $request->input('third_link_text');
+                $data->third_link = $request->input('third_link');
+
+                $data->fourth_title = $request->input('fourth_title');
+                $data->fourth_desc = $request->input('fourth_desc');
+                $data->fourth_link_text = $request->input('fourth_link_text');
+                $data->fourth_link = $request->input('fourth_link');
+
+                $data->update();
+
+                return redirect()->route('home-page.desktop-favorite')
+                    ->with('message', [
+                        'type'=>'success',
+                        'title'=>'Success!',
+                        'message'=>'Data was updated',
+                        'autoHide'=>1]);
+            }
+        }else{
+            return view('admin.home-page.desktop-favorite')->with('data', $data);
         }
     }
 }

@@ -179,34 +179,42 @@
 		</div>
 		<h1 class="text-center font-futura mb-2">AMERICA’S FAVORITE HOUSE PLANS!</h1>
 		<div class="row text-center">
+			@if($deskFavor->first_file)
 			<div class="col-sm-3">
-				<div class="plan-grid"> <a href="#"> <img src="/images/plan-1.jpg" alt="New House Plans" class="img-fluid" />
-						<p class="plan-name text-truncate"><strong>New House Plans</strong></p>
-						<p class="plan-meta text-truncate">dell’ Azienda Agricola House Plan 4839</p>
-						<p class="shop-link home">Shop New House Plans</p>
+				<div class="plan-grid"> <a href="{{$deskFavor->first_link}}"> <img src="{{asset('/storage/home-page/'.$deskFavor->first_file)}}" alt="{{$deskFavor->first_title}}" class="img-fluid" />
+						<p class="plan-name text-truncate"><strong>{{$deskFavor->first_title}}</strong></p>
+						<p class="plan-meta text-truncate">{{$deskFavor->first_desc}}</p>
+						<p class="shop-link home">{{$deskFavor->first_link_text}}</p>
 					</a> </div>
 			</div>
-			<div class="col-sm-3">
-				<div class="plan-grid"> <a href="#"> <img src="/images/plan-2.jpg" alt="New House Plans" class="img-fluid" />
-						<p class="plan-name text-truncate"><strong>Craftsman House Plans</strong></p>
-						<p class="plan-meta text-truncate">L’attesa di Vita House Plan 2091</p>
-						<p class="shop-link home">Shop Craftsman House Plans</p>
-					</a> </div>
-			</div>
-			<div class="col-sm-3">
-				<div class="plan-grid"> <a href="#"> <img src="/images/plan-3.jpg" alt="New House Plans" class="img-fluid" />
-						<p class="plan-name text-truncate"><strong>Farmhouses with Modern Amenities</strong></p>
-						<p class="plan-meta text-truncate">Wyndsong Farm House Plan 2575</p>
-						<p class="shop-link home">Shop Farmhouse Floor Plans</p>
-					</a> </div>
-			</div>
-			<div class="col-sm-3">
-				<div class="plan-grid"> <a href="#"> <img src="/images/plan-4.jpg" alt="New House Plans" class="img-fluid" />
-						<p class="plan-name text-truncate"><strong>Homes with Outdoor Living Spaces</strong></p>
-						<p class="plan-meta text-truncate">Pleasant Forest House Plan 3230</p>
-						<p class="shop-link home">Shop Outdoor Living Spaces</p>
-					</a> </div>
-			</div>
+			@endif
+			@if($deskFavor->second_file)
+				<div class="col-sm-3">
+					<div class="plan-grid"> <a href="{{$deskFavor->second_link}}"> <img src="{{asset('/storage/home-page/'.$deskFavor->second_file)}}" alt="{{$deskFavor->second_title}}" class="img-fluid" />
+							<p class="plan-name text-truncate"><strong>{{$deskFavor->second_title}}</strong></p>
+							<p class="plan-meta text-truncate">{{$deskFavor->second_desc}}</p>
+							<p class="shop-link home">{{$deskFavor->second_link_text}}</p>
+						</a> </div>
+				</div>
+			@endif
+			@if($deskFavor->third_file)
+				<div class="col-sm-3">
+					<div class="plan-grid"> <a href="{{$deskFavor->third_link}}"> <img src="{{asset('/storage/home-page/'.$deskFavor->third_file)}}" alt="{{$deskFavor->third_title}}" class="img-fluid" />
+							<p class="plan-name text-truncate"><strong>{{$deskFavor->third_title}}</strong></p>
+							<p class="plan-meta text-truncate">{{$deskFavor->third_desc}}</p>
+							<p class="shop-link home">{{$deskFavor->third_link_text}}</p>
+						</a> </div>
+				</div>
+			@endif
+			@if($deskFavor->fourth_file)
+				<div class="col-sm-3">
+					<div class="plan-grid"> <a href="{{$deskFavor->fourth_link}}"> <img src="{{asset('/storage/home-page/'.$deskFavor->fourth_file)}}" alt="{{$deskFavor->fourth_title}}" class="img-fluid" />
+							<p class="plan-name text-truncate"><strong>{{$deskFavor->fourth_title}}</strong></p>
+							<p class="plan-meta text-truncate">{{$deskFavor->fourth_desc}}</p>
+							<p class="shop-link home">{{$deskFavor->fourth_link_text}}</p>
+						</a> </div>
+				</div>
+			@endif
 		</div>
 		<div class="bg-secondary py-3 px-5 text-center home-about">
 			<div class="row align-items-center">

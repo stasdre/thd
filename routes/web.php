@@ -115,6 +115,8 @@ Route::prefix('admin-thd')->group(function(){
         Route::get('home-page/desktop-best', 'Admin\HomePageController@desktopBest')->name('home-page.desktop-best');
         Route::post('home-page/desktop-best', 'Admin\HomePageController@desktopBest')->name('home-page.desktop-best.post');
 
+        Route::get('home-page/desktop-favorite', 'Admin\HomePageController@desktopFavorite')->name('home-page.desktop-favorite');
+        Route::post('home-page/desktop-favorite', 'Admin\HomePageController@desktopFavorite')->name('home-page.desktop-favorite.post');
     });
 });
 

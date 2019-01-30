@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Thd\AboutDavid;
 use Thd\Collection;
 use Thd\DesktopBest;
+use Thd\DesktopFavorite;
 use Thd\Gallery;
 use Thd\Style;
 use Thd\TextContent;
@@ -25,6 +26,7 @@ class HomeController extends Controller
         $aboutData = AboutDavid::find(1);
         $descDesctop = TextContent::find(1);
         $deckBest = DesktopBest::find(1);
+        $deskFavor = DesktopFavorite::find(1);
 
         return view('home', [
             'gallery'=>$gallery,
@@ -32,7 +34,8 @@ class HomeController extends Controller
             'styles'=>$styles,
             'collections'=>$collections,
             'descDesctop'=>$descDesctop,
-            'deckBest'=>$deckBest
+            'deckBest'=>$deckBest,
+            'deskFavor'=>$deskFavor
         ]);
     }
 }
