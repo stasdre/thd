@@ -3,86 +3,25 @@
 @section('carousel')
     <div id="banner" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#banner" data-slide-to="0" class="active"></li>
-            <li data-target="#banner" data-slide-to="1"></li>
-            <li data-target="#banner" data-slide-to="2"></li>
-            <li data-target="#banner" data-slide-to="3"></li>
-            <li data-target="#banner" data-slide-to="4"></li>
-            <li data-target="#banner" data-slide-to="5"></li>
+			@foreach($gallery as $img)
+	            <li data-target="#banner" data-slide-to="{{$loop->index}}" @if($loop->index == 0)class="active"@endif></li>
+			@endforeach
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active"> <img class="d-block w-100" src="/images/banner/1.jpg" alt="First slide">
-                <div class="caption-quote-wrap">
-                    <div class="caption-quote"> "FAMILIES LOVE THIS COZY CRAFTSMAN COTTAGE WITH FABULOUS WRAPAROUND PORCH" </div>
-                    <p class="caption-quote-author">DAVID E. WIGGINS</p>
-                </div>
-                <div class="media planinfo text-left"> <img class="mr-1 align-self-end" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h5 class="mb-0 text-white">plan <span class="text-secondary">4839</span></h5>
-                        <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item"> <img class="d-block w-100" src="/images/banner/Slide-2-Preferred-Builders.jpg" alt="Second slide">
-                <div class="caption-quote-wrap">
-                    <div class="caption-quote custom_capt"> BUILDER PREFERRED PROGRAM </div>
-                    <p class="caption-quote-small"> DESIGNED + CUSTOMIZED FOR BUILDERS </p>
-                </div>
-                <div class="media planinfo text-left"> <img class="mr-1 align-self-end" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h5 class="mb-0 text-white">plan <span class="text-secondary">1848</span></h5>
-                        <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item"> <img class="d-block w-100" src="/images/banner/Slide-3-Instant-PDF-House-Plans.jpg" alt="Second slide">
-                <div class="caption-quote-wrap">
-                    <div class="caption-quote custom_capt"> INSTANT PDF HOUSE PLANS </div>
-                    <p class="caption-quote-small"> DOWNLOAD YOUR PLANS IMMEDIATELY </p>
-                </div>
-                <div class="media planinfo text-left"> <img class="mr-1 align-self-end" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h5 class="mb-0 text-white">plan <span class="text-secondary">2575</span></h5>
-                        <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item"> <img class="d-block w-100" src="/images/banner/Slide-4-House-Plans-with-Photos.jpg" alt="Second slide">
-                <div class="caption-quote-wrap">
-                    <div class="caption-quote custom_capt"> HOUSE PLANS WITH PHOTOS </div>
-                    <p class="caption-quote-small"> RECENTLY ADDED TO OUR WEBSITE </p>
-                </div>
-                <div class="media planinfo text-left"> <img class="mr-1 align-self-end" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h5 class="mb-0 text-white">plan <span class="text-secondary">2106</span></h5>
-                        <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item"> <img class="d-block w-100" src="/images/banner/Slide-5-Best-Selling.jpg" alt="Second slide">
-                <div class="caption-quote-wrap">
-                    <div class="caption-quote custom_capt"> TOP SELLING HOUSE PLANS </div>
-                    <p class="caption-quote-small"> CONSUMER APPROVED, BUILDER PREFERRED</p>
-                </div>
-                <div class="media planinfo text-left"> <img class="mr-1 align-self-end" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h5 class="mb-0 text-white">plan <span class="text-secondary">2091</span></h5>
-                        <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item"> <img class="d-block w-100" src="/images/banner/Slide-6-Outdoor-Living.jpg" alt="Second slide">
-                <div class="caption-quote-wrap">
-                    <div class="caption-quote custom_capt"> OUTDOOR LIVING AREAS </div>
-                    <p class="caption-quote-small"> FOR YEAR-ROUND ENTERTAINING </p>
-                </div>
-                <div class="media planinfo text-left"> <img class="mr-1 align-self-end" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h5 class="mb-0 text-white">plan <span class="text-secondary">3230</span></h5>
-                        <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
-                    </div>
-                </div>
-            </div>
+			@foreach($gallery as $img)
+				<div class="carousel-item @if($loop->index == 0) active @endif"> <img class="d-block w-100" src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}">
+					<div class="caption-quote-wrap">
+						<div class="caption-quote @if(!$img->quote) custom_capt @endif">{{$img->description}}</div>
+						<p class="@if($img->quote==1) caption-quote-author @else caption-quote-small @endif">{{$img->caption}}</p>
+					</div>
+					<div class="media planinfo text-left"> <img class="mr-1 align-self-end" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
+						<div class="media-body">
+							<h5 class="mb-0 text-white">plan <span class="text-secondary">{{$img->plan}}</span></h5>
+							<h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
+						</div>
+					</div>
+				</div>
+			@endforeach
         </div>
         <a class="carousel-control-prev" href="#banner" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#banner" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
     </div>

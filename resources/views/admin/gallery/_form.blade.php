@@ -11,6 +11,12 @@
         </div>
     </div>
     <div class="form-group">
+        {{ Form::label('plan', 'Plan', ['class' => 'col-sm-2 control-label']) }}
+        <div class="col-sm-10">
+            {{ Form::text('plan', null, ['class'=>'form-control', 'placeholder'=>'Plan']) }}
+        </div>
+    </div>
+    <div class="form-group">
         {{ Form::label('url', 'URL', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-10">
             {{ Form::text('url', null, ['class'=>'form-control', 'placeholder'=>'URL']) }}
@@ -19,11 +25,28 @@
     <div class="form-group">
         {{ Form::label('description', 'Description', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-10">
-            {{ Form::textarea('description', null, ['class'=>'form-control tinymce-editor']) }}
+            {{ Form::textarea('description', null, ['class'=>'form-control']) }}
         </div>
     </div>
     <div class="form-group">
-        {{ Form::label('file', 'Image/Video (min. 2400x1092 px)', ['class' => 'col-sm-3 control-label']) }}
+        {{ Form::label('caption', 'Caption', ['class' => 'col-sm-2 control-label']) }}
+        <div class="col-sm-10">
+            {{ Form::text('caption', null, ['class'=>'form-control', 'placeholder'=>'Caption']) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ Form::label('quote', 'Quote ?', ['class' => 'col-sm-2 control-label']) }}
+        <div class="col-sm-6">
+            <div class="checkbox">
+                <label>
+                    {{ Form::checkbox('quote', 1) }}
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('file', 'Image/Video (min. 2400x1092 px)', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-5">
             <div class="input-group input-group-sm">
                 @if(isset($gallery->file))
