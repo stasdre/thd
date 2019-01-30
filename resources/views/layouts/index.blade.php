@@ -25,7 +25,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
             </button>
-           		<a class="d-inline-block align-middle" href="#"><img src="{{asset('images/icons/logo.png')}}" alt="" class="img-fluid mr-2" style="max-width:160px;"></a>
+           		<a class="d-inline-block align-middle" href="{{route('home')}}"><img src="{{asset('images/icons/logo.png')}}" alt="" class="img-fluid mr-2" style="max-width:160px;"></a>
             </span>
             <span class="float-right">
                <a href="#" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-search d-block" style="font-size:16px;"></i> Search</a>
@@ -34,7 +34,7 @@
                <a href="#" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-shopping-cart d-block" style="font-size:16px;"></i> Cart</a>
      		</span>
         </div>
-        <a href="#" class="d-none d-md-block"><img src="{{asset('images/icons/logo.png')}}" alt="" class="img-fluid"></a>
+        <a href="{{route('home')}}" class="d-none d-md-block"><img src="{{asset('images/icons/logo.png')}}" alt="" class="img-fluid"></a>
      </div>
       <div class="col-md-7 col-sm-6 text-center z-index-xs width-sm-100">
         <ul class="list-inline text-center mb-4 toplinks  d-none d-md-block">
@@ -156,7 +156,7 @@
                <a href="#" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-shopping-cart d-block" style="font-size:16px;"></i> Cart</a>
      	   </span>
         </div>
-        <a href="#" class="d-none d-md-block"><img src="{{asset('images/icons/logo.png')}}" alt="" class="img-fluid"></a>
+        <a href="{{route('home')}}" class="d-none d-md-block"><img src="{{asset('images/icons/logo.png')}}" alt="" class="img-fluid"></a>
      </div>
       <div class="col-md-7 col-sm-6 text-center z-index-xs width-sm-100">
 		<nav class="navbar navbar-dark navbar-expand-lg">
