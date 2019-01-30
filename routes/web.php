@@ -121,6 +121,8 @@ Route::prefix('admin-thd')->group(function(){
         Route::get('home-page/mobile-dream', 'Admin\HomePageController@mobileDream')->name('home-page.mobile-dream');
         Route::post('home-page/mobile-dream', 'Admin\HomePageController@mobileDream')->name('home-page.mobile-dream.post');
 
+        Route::resource('mobile-favorite', 'Admin\MobileFavoriteController', ['except'=>['show']]);
+        Route::get('mobile-favorite/data', 'Admin\MobileFavoriteController@anyData')->name('mobile-favorite.data');
     });
 });
 
