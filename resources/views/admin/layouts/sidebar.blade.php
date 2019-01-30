@@ -74,7 +74,7 @@
                     </a>
                     <ul class="treeview-menu">
 
-                        <li><a href="{{ route('about-david.edit') }}"><i class="fa fa-pencil-square-o"></i> About David E.</a></li>
+                        <li><a href="{{ route('about-david.edit') }}"><i class="fa fa-pencil-square-o"></i> Home Page.</a></li>
                     </ul>
                 </li>
             @endrole

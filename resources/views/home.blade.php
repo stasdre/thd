@@ -274,10 +274,9 @@
 					<div class="bg-dark py-3 px-4 mh-1">
 						<h4 class="font-weight-bold text-white text-uppercase text-center">Why Buy From Us?</h4>
 						<p class="text-center text-white font-weight-semi-bold mb-4">Complete Architectural Details | Free Product Ideas Best Price Guarantee</p>
-						<p class="text-white">DavidWigginsHousePlans.com offers high quality, ready-to-build house plans designed by the country’s favorite residential architect, David E. Wiggins, and leading architects and designers around the country.  Find home plans in every architectural size and style that come with free modification estimates, free product recommendations and free shipping!</p>
-						<p class="text-white">Be confident when purchasing online house plans from our site as our house plans meet the strict standards of the IRC (International Residential Code) and have the full architectural detailing builders prefer.</p>
-						<p class="text-white">Many of our home plans have photos from customers that show how the same design was built by different clients customized to fit individual needs, budgets, and building lots.  David’s plans also come with a 100% satisfaction exchange policy.</p>
-						<p class="text-white">As you take your first step in building your new home by finding your perfect house plan, know that we’re here to assist you and answer all of your questions along the way. Feel free to contact us by live chat, email or phone <br>at (XXX) XXX-XXXX.  We’d be happy to help in any way that we can!</p>
+						<div class="text-white">
+							{!! $aboutData->why_text !!}
+						</div>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -285,15 +284,17 @@
 						<div class="bg-secondary py-3 mb-2" style="background:#77787b !important">
 							<h4 class="font-weight-bold text-white text-uppercase text-center">Best Price Guarantee</h4>
 							<div class="px-3">
-								<p class="text-white">David Wiggins House Plans guarantees the lowest prices available online. If you happen to find a better price and you meet the qualifications below, we’ll give you the difference plus an additional 5% discount. This price guarantee also includes pricing for modification estimates.</p>
-								<p class="text-white mb-0">To receive the best price guarantee offer: 1) The lower price must be for the exact same house plan purchased; 2) The plan package must be the exact same plan package and options found elsewhere on the web; 3) A link showing the lower price must be sent; 4) Price applies to total price of purchase excluding shipping, taxes, and other charges that may apply; 5) Claims must be made within 4 days from purchase date.</p>
+								<div class="text-white mb-0">
+									{!! $aboutData->best_text !!}
+								</div>
 							</div>
 						</div>
 						<div class="bg-secondary py-3" style="background:#c6c8ca !important">
 							<h4 class="font-weight-bold text-dark text-uppercase text-center">FREE Modification/Change Estimates</h4>
 							<div class="px-3">
-								<p class="text-dark">Did you find a great home plan, but there’s a few changes you’d like to make? David Wiggins House Plans offers modification services to design the perfect house plan for you and your family.</p>
-								<p class="text-dark mb-0">Modifications can include just about anything you want including adding or removing windows, making rooms bigger or smaller, expanding porches and decks and raising and lowering ceiling heights. Just click on “Customize this Home Plan” on any plan page to get your free modification estimate!</p>
+								<div class="text-dark">
+									{!! $aboutData->free_text !!}
+								</div>
 							</div>
 						</div>
 
