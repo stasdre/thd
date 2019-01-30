@@ -117,6 +117,10 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::get('home-page/desktop-favorite', 'Admin\HomePageController@desktopFavorite')->name('home-page.desktop-favorite');
         Route::post('home-page/desktop-favorite', 'Admin\HomePageController@desktopFavorite')->name('home-page.desktop-favorite.post');
+
+        Route::get('home-page/mobile-dream', 'Admin\HomePageController@mobileDream')->name('home-page.mobile-dream');
+        Route::post('home-page/mobile-dream', 'Admin\HomePageController@mobileDream')->name('home-page.mobile-dream.post');
+
     });
 });
 

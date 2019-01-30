@@ -28,6 +28,8 @@ class HomeController extends Controller
         $deckBest = DesktopBest::find(1);
         $deskFavor = DesktopFavorite::find(1);
 
+        $deskMob = TextContent::find(2);
+
         return view('home', [
             'gallery'=>$gallery,
             'aboutData'=>$aboutData,
@@ -35,7 +37,8 @@ class HomeController extends Controller
             'collections'=>$collections,
             'descDesctop'=>$descDesctop,
             'deckBest'=>$deckBest,
-            'deskFavor'=>$deskFavor
+            'deskFavor'=>$deskFavor,
+            'deskMob'=>$deskMob
         ]);
     }
 }

@@ -418,7 +418,9 @@
 			<p class="lead text-center font-weight-semi-bold mb-2 mt-1">by America’s leading architect </p>
 			<div class="bg-secondary w-75 mx-auto mb-3 pb-1"></div>
 			<div class="home-about">
-				<p style="margin-bottom: 10px;">Buying house plans on David Wiggins House Plans means you’re buying direct from America’s favorite residential architect, David E. Wiggins!  When purchasing online house plans from our site, be confident in knowing that our home plans have been built in every state in the U.S. and many countries around the globe.  David’s home designs are also guaranteed to include full architectural detailing that builders need to build safe and efficient houses  From craftsman home plans to small house plans to modern floor plans, you’ll find easy to build and easy to customize house plans in a wide variety of styles and sizes. </p>
+				<div style="margin-bottom: 10px;">
+					{!! $deskMob->description !!}
+				</div>
 			</div>
 			<h4 class="font-weight-bold text-center mb-2">SIGN UP AND SAVE</h4>
 			<div class="input-group input-group-sm mb-2 mx-auto w-75">

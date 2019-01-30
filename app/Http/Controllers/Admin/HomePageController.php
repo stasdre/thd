@@ -302,4 +302,26 @@ class HomePageController extends Controller
             return view('admin.home-page.desktop-favorite')->with('data', $data);
         }
     }
+
+    public function mobileDream(Request $request)
+    {
+        $data = TextContent::findOrFail(2);
+
+        if($request->isMethod('post')){
+
+            $data->description = $request->input('description');
+            $data->update();
+
+            return redirect()->route('home-page.mobile-dream')
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>'Data was updated',
+                    'autoHide'=>1]);
+
+        }else{
+            return view('admin.home-page.mobile-dream')->with('data', $data);
+        }
+    }
+
 }
