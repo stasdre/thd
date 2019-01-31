@@ -66,6 +66,10 @@ class AboutDavidController extends Controller
         $data->description = $request->input('description');
         $data->url = $request->input('url');
 
+        $data->why_text = $request->input('why_text');
+        $data->best_text = $request->input('best_text');
+        $data->free_text = $request->input('free_text');
+
         $data->update();
 
         return redirect()->route('about-david.edit')

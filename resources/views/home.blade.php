@@ -3,86 +3,25 @@
 @section('carousel')
     <div id="banner" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#banner" data-slide-to="0" class="active"></li>
-            <li data-target="#banner" data-slide-to="1"></li>
-            <li data-target="#banner" data-slide-to="2"></li>
-            <li data-target="#banner" data-slide-to="3"></li>
-            <li data-target="#banner" data-slide-to="4"></li>
-            <li data-target="#banner" data-slide-to="5"></li>
+			@foreach($gallery as $img)
+	            <li data-target="#banner" data-slide-to="{{$loop->index}}" @if($loop->index == 0)class="active"@endif></li>
+			@endforeach
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active"> <img class="d-block w-100" src="/images/banner/1.jpg" alt="First slide">
-                <div class="caption-quote-wrap">
-                    <div class="caption-quote"> "FAMILIES LOVE THIS COZY CRAFTSMAN COTTAGE WITH FABULOUS WRAPAROUND PORCH" </div>
-                    <p class="caption-quote-author">DAVID E. WIGGINS</p>
-                </div>
-                <div class="media planinfo text-left"> <img class="mr-1 align-self-end" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h5 class="mb-0 text-white">plan <span class="text-secondary">4839</span></h5>
-                        <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item"> <img class="d-block w-100" src="/images/banner/Slide-2-Preferred-Builders.jpg" alt="Second slide">
-                <div class="caption-quote-wrap">
-                    <div class="caption-quote custom_capt"> BUILDER PREFERRED PROGRAM </div>
-                    <p class="caption-quote-small"> DESIGNED + CUSTOMIZED FOR BUILDERS </p>
-                </div>
-                <div class="media planinfo text-left"> <img class="mr-1 align-self-end" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h5 class="mb-0 text-white">plan <span class="text-secondary">1848</span></h5>
-                        <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item"> <img class="d-block w-100" src="/images/banner/Slide-3-Instant-PDF-House-Plans.jpg" alt="Second slide">
-                <div class="caption-quote-wrap">
-                    <div class="caption-quote custom_capt"> INSTANT PDF HOUSE PLANS </div>
-                    <p class="caption-quote-small"> DOWNLOAD YOUR PLANS IMMEDIATELY </p>
-                </div>
-                <div class="media planinfo text-left"> <img class="mr-1 align-self-end" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h5 class="mb-0 text-white">plan <span class="text-secondary">2575</span></h5>
-                        <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item"> <img class="d-block w-100" src="/images/banner/Slide-4-House-Plans-with-Photos.jpg" alt="Second slide">
-                <div class="caption-quote-wrap">
-                    <div class="caption-quote custom_capt"> HOUSE PLANS WITH PHOTOS </div>
-                    <p class="caption-quote-small"> RECENTLY ADDED TO OUR WEBSITE </p>
-                </div>
-                <div class="media planinfo text-left"> <img class="mr-1 align-self-end" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h5 class="mb-0 text-white">plan <span class="text-secondary">2106</span></h5>
-                        <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item"> <img class="d-block w-100" src="/images/banner/Slide-5-Best-Selling.jpg" alt="Second slide">
-                <div class="caption-quote-wrap">
-                    <div class="caption-quote custom_capt"> TOP SELLING HOUSE PLANS </div>
-                    <p class="caption-quote-small"> CONSUMER APPROVED, BUILDER PREFERRED</p>
-                </div>
-                <div class="media planinfo text-left"> <img class="mr-1 align-self-end" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h5 class="mb-0 text-white">plan <span class="text-secondary">2091</span></h5>
-                        <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item"> <img class="d-block w-100" src="/images/banner/Slide-6-Outdoor-Living.jpg" alt="Second slide">
-                <div class="caption-quote-wrap">
-                    <div class="caption-quote custom_capt"> OUTDOOR LIVING AREAS </div>
-                    <p class="caption-quote-small"> FOR YEAR-ROUND ENTERTAINING </p>
-                </div>
-                <div class="media planinfo text-left"> <img class="mr-1 align-self-end" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h5 class="mb-0 text-white">plan <span class="text-secondary">3230</span></h5>
-                        <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
-                    </div>
-                </div>
-            </div>
+			@foreach($gallery as $img)
+				<div class="carousel-item @if($loop->index == 0) active @endif"> <img class="d-block w-100" src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}">
+					<div class="caption-quote-wrap">
+						<div class="caption-quote @if(!$img->quote) custom_capt @endif">{{$img->description}}</div>
+						<p class="@if($img->quote==1) caption-quote-author @else caption-quote-small @endif">{{$img->caption}}</p>
+					</div>
+					<div class="media planinfo text-left"> <img class="mr-1 align-self-end" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
+						<div class="media-body">
+							<h5 class="mb-0 text-white">plan <span class="text-secondary">{{$img->plan}}</span></h5>
+							<h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
+						</div>
+					</div>
+				</div>
+			@endforeach
         </div>
         <a class="carousel-control-prev" href="#banner" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#banner" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
     </div>
@@ -180,7 +119,7 @@
 			</div>
 			<div class="col-sm-6">
            		<p></p>
-				<h1 class="text-center font-futura p-0 m-0">FIND YOUR DREAM HOME!</h1>
+				<h1 class="text-center font-futura p-0 m-0">{{$descDesctop->title}}</h1>
 			</div>
 			<div class="col-sm-3 text-sm-right newsletter">
 				<p class="mb-1 font-weight-semi-bold"><span>SIGN UP FOR </span> E-PUBS + DISCOUNTS</p>
@@ -193,73 +132,89 @@
 			</div>
 		</div>
         <p></p>
-		<p class="text-center pt-0 br_none_sm">Buying house plans on DavidWigginsHousePlans.com means you’re buying direct from America’s favorite residential<br> architect, David E. Wiggins! When purchasing online house plans from our site, be confident in knowing that our home plans<br> have been built in every state in the U.S. and many countries around the globe.  David’s home designs are also guaranteed to include full<br> architectural detailing that builders need to build safe and efficient houses  From craftsman home plans to small house plans to<br> modern floor plans, you’ll find easy to build and easy to customize house plans in a wide variety of styles and sizes.</p>
-		<div class="plan-full position-relative mb-3"> <img src="/images/plan-full.jpg" alt="" class="img-fluid" />
-			<div class="plan-caption position-absolute mw-315">
-				<h3 class="font-weight-bold">America’s Favorite Homes</h3>
-				<p>View America’s favorite house plans from leading architect David E. Wiggins</p>
-				<a href="#" class="btn btn-dark rounded-0">Click Here</a> </div>
-			<div class="plan-name position-absolute"><span>CHERRY CREEK /</span> HOUSE PLAN 2495</div>
-		</div>
+		<div class="text-center pt-0 br_none_sm">{!! $descDesctop->description !!}</div>
+		@if($deckBest->main_file)
+			<div class="plan-full position-relative mb-3"> <img src="{{asset('/storage/home-page/'.$deckBest->main_file)}}" alt="" class="img-fluid" />
+				<div class="plan-caption position-absolute mw-315">
+					<h3 class="font-weight-bold">{{$deckBest->main_title}}</h3>
+					<p>{{$deckBest->main_desc}}</p>
+					<a href="{{$deckBest->main_link}}" class="btn btn-dark rounded-0">Click Here</a> </div>
+				<div class="plan-name position-absolute">{{$deckBest->main_plan}}</div>
+			</div>
+		@endif
 		<div class="row">
+			@if($deckBest->first_file)
 			<div class="col-sm-4">
-				<div class="plan-cta position-relative mb-2"> <img src="/images/plan-cta-1.jpg" alt="" class="img-fluid" />
+				<div class="plan-cta @if($deckBest->first_type == 'light') white @endif position-relative mb-2"> <img src="{{asset('/storage/home-page/'.$deckBest->first_file)}}" alt="" class="img-fluid" />
 					<div class="plan-caption position-absolute">
-						<h3>Recent Blogs</h3>
-						<p>Stay up-to-date with the latest home design trends</p>
-						<a href="#" class="btn btn-dark rounded-0">Click Here</a> </div>
-					<div class="plan-name position-absolute">HOUSE PLAN 2495</div>
+						<h3>{{ $deckBest->first_title }}</h3>
+						<p>{{ $deckBest->first_desc }}</p>
+						<a href="{{ $deckBest->first_link }}" class="btn btn-dark rounded-0">Click Here</a> </div>
+					<div class="plan-name position-absolute">{{ $deckBest->first_plan }}</div>
 				</div>
 			</div>
-			<div class="col-sm-4">
-				<div class="plan-cta white position-relative mb-2"> <img src="/images/plan-cta-2.jpg" alt="" class="img-fluid" />
-					<div class="plan-caption position-absolute">
-						<h3 class="font-weight-bold">Customer Reviews</h3>
-						<p>Read reviews by our builders and customers</p>
-						<a href="#" class="btn btn-dark rounded-0">Click Here</a> </div>
-					<div class="plan-name position-absolute">HOUSE PLAN 1698</div>
+			@endif
+			@if($deckBest->second_file)
+				<div class="col-sm-4">
+					<div class="plan-cta @if($deckBest->second_type == 'light') white @endif position-relative mb-2"> <img src="{{asset('/storage/home-page/'.$deckBest->second_file)}}" alt="" class="img-fluid" />
+						<div class="plan-caption position-absolute">
+							<h3>{{ $deckBest->second_title }}</h3>
+							<p>{{ $deckBest->second_desc }}</p>
+							<a href="{{ $deckBest->second_link }}" class="btn btn-dark rounded-0">Click Here</a> </div>
+						<div class="plan-name position-absolute">{{ $deckBest->second_plan }}</div>
+					</div>
 				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="plan-cta position-relative mb-2"> <img src="/images/plan-cta-3.jpg" alt="" class="img-fluid" />
-					<div class="plan-caption position-absolute">
-						<h3>Recent Home Builds</h3>
-						<p>View products our customers love!</p>
-						<a href="#" class="btn btn-dark rounded-0">Click Here</a> </div>
-					<div class="plan-name position-absolute">HOUSE PLAN 2466</div>
+			@endif
+			@if($deckBest->third_file)
+				<div class="col-sm-4">
+					<div class="plan-cta @if($deckBest->third_type == 'light') white @endif position-relative mb-2"> <img src="{{asset('/storage/home-page/'.$deckBest->third_file)}}" alt="" class="img-fluid" />
+						<div class="plan-caption position-absolute">
+							<h3>{{ $deckBest->third_title }}</h3>
+							<p>{{ $deckBest->third_desc }}</p>
+							<a href="{{ $deckBest->third_link }}" class="btn btn-dark rounded-0">Click Here</a> </div>
+						<div class="plan-name position-absolute">{{ $deckBest->third_plan }}</div>
+					</div>
 				</div>
-			</div>
+			@endif
 		</div>
 		<h1 class="text-center font-futura mb-2">AMERICA’S FAVORITE HOUSE PLANS!</h1>
 		<div class="row text-center">
+			@if($deskFavor->first_file)
 			<div class="col-sm-3">
-				<div class="plan-grid"> <a href="#"> <img src="/images/plan-1.jpg" alt="New House Plans" class="img-fluid" />
-						<p class="plan-name text-truncate"><strong>New House Plans</strong></p>
-						<p class="plan-meta text-truncate">dell’ Azienda Agricola House Plan 4839</p>
-						<p class="shop-link home">Shop New House Plans</p>
+				<div class="plan-grid"> <a href="{{$deskFavor->first_link}}"> <img src="{{asset('/storage/home-page/'.$deskFavor->first_file)}}" alt="{{$deskFavor->first_title}}" class="img-fluid" />
+						<p class="plan-name text-truncate"><strong>{{$deskFavor->first_title}}</strong></p>
+						<p class="plan-meta text-truncate">{{$deskFavor->first_desc}}</p>
+						<p class="shop-link home">{{$deskFavor->first_link_text}}</p>
 					</a> </div>
 			</div>
-			<div class="col-sm-3">
-				<div class="plan-grid"> <a href="#"> <img src="/images/plan-2.jpg" alt="New House Plans" class="img-fluid" />
-						<p class="plan-name text-truncate"><strong>Craftsman House Plans</strong></p>
-						<p class="plan-meta text-truncate">L’attesa di Vita House Plan 2091</p>
-						<p class="shop-link home">Shop Craftsman House Plans</p>
-					</a> </div>
-			</div>
-			<div class="col-sm-3">
-				<div class="plan-grid"> <a href="#"> <img src="/images/plan-3.jpg" alt="New House Plans" class="img-fluid" />
-						<p class="plan-name text-truncate"><strong>Farmhouses with Modern Amenities</strong></p>
-						<p class="plan-meta text-truncate">Wyndsong Farm House Plan 2575</p>
-						<p class="shop-link home">Shop Farmhouse Floor Plans</p>
-					</a> </div>
-			</div>
-			<div class="col-sm-3">
-				<div class="plan-grid"> <a href="#"> <img src="/images/plan-4.jpg" alt="New House Plans" class="img-fluid" />
-						<p class="plan-name text-truncate"><strong>Homes with Outdoor Living Spaces</strong></p>
-						<p class="plan-meta text-truncate">Pleasant Forest House Plan 3230</p>
-						<p class="shop-link home">Shop Outdoor Living Spaces</p>
-					</a> </div>
-			</div>
+			@endif
+			@if($deskFavor->second_file)
+				<div class="col-sm-3">
+					<div class="plan-grid"> <a href="{{$deskFavor->second_link}}"> <img src="{{asset('/storage/home-page/'.$deskFavor->second_file)}}" alt="{{$deskFavor->second_title}}" class="img-fluid" />
+							<p class="plan-name text-truncate"><strong>{{$deskFavor->second_title}}</strong></p>
+							<p class="plan-meta text-truncate">{{$deskFavor->second_desc}}</p>
+							<p class="shop-link home">{{$deskFavor->second_link_text}}</p>
+						</a> </div>
+				</div>
+			@endif
+			@if($deskFavor->third_file)
+				<div class="col-sm-3">
+					<div class="plan-grid"> <a href="{{$deskFavor->third_link}}"> <img src="{{asset('/storage/home-page/'.$deskFavor->third_file)}}" alt="{{$deskFavor->third_title}}" class="img-fluid" />
+							<p class="plan-name text-truncate"><strong>{{$deskFavor->third_title}}</strong></p>
+							<p class="plan-meta text-truncate">{{$deskFavor->third_desc}}</p>
+							<p class="shop-link home">{{$deskFavor->third_link_text}}</p>
+						</a> </div>
+				</div>
+			@endif
+			@if($deskFavor->fourth_file)
+				<div class="col-sm-3">
+					<div class="plan-grid"> <a href="{{$deskFavor->fourth_link}}"> <img src="{{asset('/storage/home-page/'.$deskFavor->fourth_file)}}" alt="{{$deskFavor->fourth_title}}" class="img-fluid" />
+							<p class="plan-name text-truncate"><strong>{{$deskFavor->fourth_title}}</strong></p>
+							<p class="plan-meta text-truncate">{{$deskFavor->fourth_desc}}</p>
+							<p class="shop-link home">{{$deskFavor->fourth_link_text}}</p>
+						</a> </div>
+				</div>
+			@endif
 		</div>
 		<div class="bg-secondary py-3 px-5 text-center home-about">
 			<div class="row align-items-center">
@@ -319,10 +274,9 @@
 					<div class="bg-dark py-3 px-4 mh-1">
 						<h4 class="font-weight-bold text-white text-uppercase text-center">Why Buy From Us?</h4>
 						<p class="text-center text-white font-weight-semi-bold mb-4">Complete Architectural Details | Free Product Ideas Best Price Guarantee</p>
-						<p class="text-white">DavidWigginsHousePlans.com offers high quality, ready-to-build house plans designed by the country’s favorite residential architect, David E. Wiggins, and leading architects and designers around the country.  Find home plans in every architectural size and style that come with free modification estimates, free product recommendations and free shipping!</p>
-						<p class="text-white">Be confident when purchasing online house plans from our site as our house plans meet the strict standards of the IRC (International Residential Code) and have the full architectural detailing builders prefer.</p>
-						<p class="text-white">Many of our home plans have photos from customers that show how the same design was built by different clients customized to fit individual needs, budgets, and building lots.  David’s plans also come with a 100% satisfaction exchange policy.</p>
-						<p class="text-white">As you take your first step in building your new home by finding your perfect house plan, know that we’re here to assist you and answer all of your questions along the way. Feel free to contact us by live chat, email or phone <br>at (XXX) XXX-XXXX.  We’d be happy to help in any way that we can!</p>
+						<div class="text-white">
+							{!! $aboutData->why_text !!}
+						</div>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -330,15 +284,17 @@
 						<div class="bg-secondary py-3 mb-2" style="background:#77787b !important">
 							<h4 class="font-weight-bold text-white text-uppercase text-center">Best Price Guarantee</h4>
 							<div class="px-3">
-								<p class="text-white">David Wiggins House Plans guarantees the lowest prices available online. If you happen to find a better price and you meet the qualifications below, we’ll give you the difference plus an additional 5% discount. This price guarantee also includes pricing for modification estimates.</p>
-								<p class="text-white mb-0">To receive the best price guarantee offer: 1) The lower price must be for the exact same house plan purchased; 2) The plan package must be the exact same plan package and options found elsewhere on the web; 3) A link showing the lower price must be sent; 4) Price applies to total price of purchase excluding shipping, taxes, and other charges that may apply; 5) Claims must be made within 4 days from purchase date.</p>
+								<div class="text-white mb-0">
+									{!! $aboutData->best_text !!}
+								</div>
 							</div>
 						</div>
 						<div class="bg-secondary py-3" style="background:#c6c8ca !important">
 							<h4 class="font-weight-bold text-dark text-uppercase text-center">FREE Modification/Change Estimates</h4>
 							<div class="px-3">
-								<p class="text-dark">Did you find a great home plan, but there’s a few changes you’d like to make? David Wiggins House Plans offers modification services to design the perfect house plan for you and your family.</p>
-								<p class="text-dark mb-0">Modifications can include just about anything you want including adding or removing windows, making rooms bigger or smaller, expanding porches and decks and raising and lowering ceiling heights. Just click on “Customize this Home Plan” on any plan page to get your free modification estimate!</p>
+								<div class="text-dark">
+									{!! $aboutData->free_text !!}
+								</div>
 							</div>
 						</div>
 
@@ -355,12 +311,12 @@
 			<div class="position-relative">
 				<div id="modalplan48" class="carousel slide" data-ride="carousel" data-interval="1800">
 					<div class="carousel-inner">
-						<div class="carousel-item active"> <img src="/images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
-						<div class="carousel-item"> <img src="/images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
-						<div class="carousel-item"> <img src="/images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
+						@foreach($favorMob as $img)
+						<div class="carousel-item @if($loop->index == 0) active @endif"> <img src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}" class="img-fluid d-block w-100"> </div>
+						@endforeach
 					</div>
 					<a class="carousel-control-prev" href="#modalplan48" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#modalplan48" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
-				<div class="media planinfo text-left top position-absolute"> <img class="mr-1 align-self-center" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
+				<div class="media planinfo text-left top position-absolute"> <img class="mr-1 align-self-center" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
 					<div class="media-body">
 						<h5 class="mb-0 text-white">plan <span class="text-secondary">4839</span></h5>
 						<h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
@@ -444,12 +400,12 @@
 			<div class="position-relative">
 				<div id="modalplan" class="carousel slide" data-ride="carousel" data-interval="1800">
 					<div class="carousel-inner">
-						<div class="carousel-item active"> <img src="/images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
-						<div class="carousel-item"> <img src="/images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
-						<div class="carousel-item"> <img src="/images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
+						@foreach($newMob as $img)
+							<div class="carousel-item @if($loop->index == 0) active @endif"> <img src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}" class="img-fluid d-block w-100"> </div>
+						@endforeach
 					</div>
 					<a class="carousel-control-prev" href="#modalplan48" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#modalplan48" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
-				<div class="media planinfo text-left top position-absolute"> <img class="mr-1 align-self-center" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
+				<div class="media planinfo text-left top position-absolute"> <img class="mr-1 align-self-center" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
 					<div class="media-body">
 						<h5 class="mb-0 text-white">plan <span class="text-secondary">4839</span></h5>
 						<h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
@@ -462,7 +418,9 @@
 			<p class="lead text-center font-weight-semi-bold mb-2 mt-1">by America’s leading architect </p>
 			<div class="bg-secondary w-75 mx-auto mb-3 pb-1"></div>
 			<div class="home-about">
-				<p style="margin-bottom: 10px;">Buying house plans on David Wiggins House Plans means you’re buying direct from America’s favorite residential architect, David E. Wiggins!  When purchasing online house plans from our site, be confident in knowing that our home plans have been built in every state in the U.S. and many countries around the globe.  David’s home designs are also guaranteed to include full architectural detailing that builders need to build safe and efficient houses  From craftsman home plans to small house plans to modern floor plans, you’ll find easy to build and easy to customize house plans in a wide variety of styles and sizes. </p>
+				<div style="margin-bottom: 10px;">
+					{!! $deskMob->description !!}
+				</div>
 			</div>
 			<h4 class="font-weight-bold text-center mb-2">SIGN UP AND SAVE</h4>
 			<div class="input-group input-group-sm mb-2 mx-auto w-75">
@@ -471,7 +429,7 @@
 					<button class="btn btn-primary rounded-0 text-uppercase text-white font-weight-semi-bold px-3 enter_email" type="button">&gt;</button>
 				</div>
 			</div>
-			<img src="/images/plan-4.jpg" alt="New House Plans" class="img-fluid w-100 my-2">
+			<img src="{{asset('/storage/home-page/'.$bestMob->file)}}" alt="{{$bestMob->name}}" class="img-fluid w-100 my-2">
 			<h4 class="font-weight-bold text-center mb-0 bigFont-xs">BEST-SELLING HOUSE PLANS</h4>
 			<p class="lead text-center font-weight-semi-bold mt-1">America’s most popular designs</p>
 			<h5 class="font-weight-bold text-center text-primary">Browse Our Architectural Styles</h5>
@@ -507,16 +465,17 @@
 			<div class="home-about">
 				<h4 class="text-center font-weight-bold mb-3">Why Buy From Us?</h4>
 				<p class="text-center">Complete Architectural Details | Free Product Ideas </br> Best Price Guarantee</p>
-				<p>DavidWigginsHousePlans.com offers high quality, ready-to-build house plans designed by the country’s favorite residential architect, David E. Wiggins, and leading architects and designers around the country.  Find home plans in every architectural size and style that come with free modification estimates, free product recommendations and free shipping!
-					Be confident when purchasing online house plans from our site as our house plans meet the strict standards of the IRC (International Residential Code) and have the full architectural detailing builders prefer.</p>
-				<p>Many of our home plans have photos from customers that show how the same design was built by different clients customized to fit individual needs, budgets, and building lots.  David’s plans also come with a 100% satisfaction exchange policy.</p>
-				<p>As you take your first step in building your new home by finding your perfect house plan, know that we’re here to assist you and answer all of your questions along the way. Feel free to contact us by live chat, email or phone at (XXX) XXX-XXXX.  We’d be happy to help in any way that we can!</p>
+				<div>
+					{!! $aboutData->why_text !!}
+				</div>
 				<h4 class="text-center font-weight-bold mb-3">Best Price Guarantee</h4>
-				<p>David Wiggins House Plans guarantees the lowest prices available online. If you happen to find a better price and you meet the qualifications below, we’ll give you the difference plus an additional 5% discount. This price guarantee also includes pricing for modification estimates.</p>
-				<p>To receive the best price guarantee offer: 1) The lower price must be for the exact same house plan purchased; 2) The plan package must be the exact same plan package and options found elsewhere on the web; 3) A link showing the lower price must be sent; 4) Price applies to total price of purchase excluding shipping, taxes, and other charges that may apply; 5) Claims must be made within 4 days from purchase date.</p>
+				<div>
+					{!! $aboutData->best_text !!}
+				</div>
 				<h4 class="text-center font-weight-bold mb-3">FREE Modification Estimates</h4>
-				<p>Did you find a great home plan, but there’s a few changes you’d like to make? David Wiggins House Plans offers modification services to design the perfect house plan for you and your family.</p>
-				<p>Modifications can include just about anything you want including adding or removing windows, making rooms bigger or smaller, expanding porches and decks and raising and lowering ceiling heights. Just click on “Customize this Home Plan” on any plan page to get your free modification estimate!</p>
+				<div>
+					{!! $aboutData->free_text !!}
+				</div>
 			</div>
 		</div>
 	@endsection

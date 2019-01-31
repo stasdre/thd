@@ -1,7 +1,7 @@
-@if(Route::currentRouteName() == 'gallery.edit')
-    {{ Form::model($gallery, ['route' => ['gallery.update', $gallery->id], 'class' => 'form-horizontal', 'method' => 'PATCH', 'enctype'=>'multipart/form-data']) }}
+@if(Route::currentRouteName() == 'mobile-new.edit')
+    {{ Form::model($gallery, ['route' => ['mobile-new.update', $gallery->id], 'class' => 'form-horizontal', 'method' => 'PATCH', 'enctype'=>'multipart/form-data']) }}
 @else
-    {!! Form::open(['route' => 'gallery.store', 'class' => 'form-horizontal', 'method' => 'post', 'enctype'=>'multipart/form-data']) !!}
+    {!! Form::open(['route' => 'mobile-new.store', 'class' => 'form-horizontal', 'method' => 'post', 'enctype'=>'multipart/form-data']) !!}
 @endif
 <div class="box-body">
     <div class="form-group">
@@ -23,30 +23,7 @@
         </div>
     </div>
     <div class="form-group">
-        {{ Form::label('description', 'Description', ['class' => 'col-sm-2 control-label']) }}
-        <div class="col-sm-10">
-            {{ Form::textarea('description', null, ['class'=>'form-control']) }}
-        </div>
-    </div>
-    <div class="form-group">
-        {{ Form::label('caption', 'Caption', ['class' => 'col-sm-2 control-label']) }}
-        <div class="col-sm-10">
-            {{ Form::text('caption', null, ['class'=>'form-control', 'placeholder'=>'Caption']) }}
-        </div>
-    </div>
-    <div class="form-group">
-        {{ Form::label('quote', 'Quote ?', ['class' => 'col-sm-2 control-label']) }}
-        <div class="col-sm-6">
-            <div class="checkbox">
-                <label>
-                    {{ Form::checkbox('quote', 1) }}
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        {{ Form::label('file', 'Image/Video (min. 2400x1092 px)', ['class' => 'col-sm-2 control-label']) }}
+        {{ Form::label('file', 'Image', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-5">
             <div class="input-group input-group-sm">
                 @if(isset($gallery->file))
@@ -63,7 +40,7 @@
 </div>
 <!-- /.box-body -->
 <div class="box-footer">
-    {{ link_to_route('gallery.index', 'Cancel', [], ['class'=>'btn btn-default', 'role'=>'button']) }}
+    {{ link_to_route('mobile-new.index', 'Cancel', [], ['class'=>'btn btn-default', 'role'=>'button']) }}
     {{ Form::button('Save', ['class'=>'btn btn-success pull-right', 'type'=>'submit']) }}
 </div>
 <!-- /.box-footer -->
@@ -71,11 +48,11 @@
 @push('scripts')
 <script>
     $(function(){
-       $("#delete-file").on('click', function(e){
-           e.preventDefault();
-           $("#file-name").hide();
-           $(".file-input").removeClass('hidden');
-       });
+        $("#delete-file").on('click', function(e){
+            e.preventDefault();
+            $("#file-name").hide();
+            $(".file-input").removeClass('hidden');
+        });
     });
 </script>
 @endpush

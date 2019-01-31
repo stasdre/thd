@@ -2,9 +2,9 @@
     <!-- Logo -->
     <a href="{{route('dashboard')}}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini">THD</span>
+        <span class="logo-mini">DWHP</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg">THD - Admin</span>
+        <span class="logo-lg">DWHP - Admin</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

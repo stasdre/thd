@@ -42,6 +42,9 @@ class GalleryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:190',
+            'url' => 'max:190',
+            'caption' => 'max:190',
+            'plan' => 'max:190',
             'file' => 'required|mimetypes:image/jpeg,image/png,image/bmp,image/gif,video/mp4,video/ogg'
         ]);
 
@@ -60,7 +63,10 @@ class GalleryController extends Controller
             'name' => $request->input('name'),
             'url' => $request->input('url'),
             'description' => $request->input('description'),
-            'file' => $filename
+            'file' => $filename,
+            'caption' => $request->input('caption'),
+            'plan' => $request->input('plan'),
+            'quote' => $request->input('quote') == 1 ? 1 : 0
         ]);
         $gallery->save();
 
@@ -94,6 +100,9 @@ class GalleryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:190',
+            'url' => 'max:190',
+            'caption' => 'max:190',
+            'plan' => 'max:190',
             'file' => 'mimetypes:image/jpeg,image/png,image/bmp,image/gif,video/mp4,video/ogg'
         ]);
 
@@ -116,6 +125,9 @@ class GalleryController extends Controller
         $gallery->name = $request->input('name');
         $gallery->url = $request->input('url');
         $gallery->description = $request->input('description');
+        $gallery->caption = $request->input('caption');
+        $gallery->plan = $request->input('plan');
+        $gallery->quote = $request->input('quote') == 1 ? 1: 0;
 
         $gallery->update();
 

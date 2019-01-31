@@ -108,6 +108,27 @@ Route::prefix('admin-thd')->group(function(){
         Route::get('user/data', 'Admin\UserController@anyData')->name('user.data');
 
         Route::post('admin-thd/get-state', 'Admin\DashboardController@getCountryState')->name('getCountryState');
+
+        Route::get('home-page/desktop-dream', 'Admin\HomePageController@desktopDream')->name('home-page.desktop-dream');
+        Route::post('home-page/desktop-dream', 'Admin\HomePageController@desktopDream')->name('home-page.desktop-dream.post');
+
+        Route::get('home-page/desktop-best', 'Admin\HomePageController@desktopBest')->name('home-page.desktop-best');
+        Route::post('home-page/desktop-best', 'Admin\HomePageController@desktopBest')->name('home-page.desktop-best.post');
+
+        Route::get('home-page/desktop-favorite', 'Admin\HomePageController@desktopFavorite')->name('home-page.desktop-favorite');
+        Route::post('home-page/desktop-favorite', 'Admin\HomePageController@desktopFavorite')->name('home-page.desktop-favorite.post');
+
+        Route::get('home-page/mobile-dream', 'Admin\HomePageController@mobileDream')->name('home-page.mobile-dream');
+        Route::post('home-page/mobile-dream', 'Admin\HomePageController@mobileDream')->name('home-page.mobile-dream.post');
+
+        Route::resource('mobile-favorite', 'Admin\MobileFavoriteController', ['except'=>['show']]);
+        Route::get('mobile-favorite/data', 'Admin\MobileFavoriteController@anyData')->name('mobile-favorite.data');
+
+        Route::resource('mobile-new', 'Admin\MobileNewController', ['except'=>['show']]);
+        Route::get('mobile-new/data', 'Admin\MobileNewController@anyData')->name('mobile-new.data');
+
+        Route::get('home-page/mobile-best', 'Admin\HomePageController@mobileBest')->name('home-page.mobile-best');
+        Route::post('home-page/mobile-best', 'Admin\HomePageController@mobileBest')->name('home-page.mobile-best.post');
     });
 });
 
