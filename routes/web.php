@@ -123,6 +123,9 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::resource('mobile-favorite', 'Admin\MobileFavoriteController', ['except'=>['show']]);
         Route::get('mobile-favorite/data', 'Admin\MobileFavoriteController@anyData')->name('mobile-favorite.data');
+
+        Route::resource('mobile-new', 'Admin\MobileNewController', ['except'=>['show']]);
+        Route::get('mobile-new/data', 'Admin\MobileNewController@anyData')->name('mobile-new.data');
     });
 });
 

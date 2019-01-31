@@ -9,6 +9,7 @@ use Thd\DesktopBest;
 use Thd\DesktopFavorite;
 use Thd\Gallery;
 use Thd\MobileFavorite;
+use Thd\MobileNew;
 use Thd\Style;
 use Thd\TextContent;
 
@@ -31,6 +32,7 @@ class HomeController extends Controller
 
         $deskMob = TextContent::find(2);
         $favorMob = MobileFavorite::all();
+        $newMob = MobileNew::all();
 
         return view('home', [
             'gallery'=>$gallery,
@@ -41,7 +43,8 @@ class HomeController extends Controller
             'deckBest'=>$deckBest,
             'deskFavor'=>$deskFavor,
             'deskMob'=>$deskMob,
-            'favorMob'=>$favorMob
+            'favorMob'=>$favorMob,
+            'newMob'=>$newMob
         ]);
     }
 }
