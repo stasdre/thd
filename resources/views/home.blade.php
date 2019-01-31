@@ -429,7 +429,7 @@
 					<button class="btn btn-primary rounded-0 text-uppercase text-white font-weight-semi-bold px-3 enter_email" type="button">&gt;</button>
 				</div>
 			</div>
-			<img src="/images/plan-4.jpg" alt="New House Plans" class="img-fluid w-100 my-2">
+			<img src="{{asset('/storage/home-page/'.$bestMob->file)}}" alt="{{$bestMob->name}}" class="img-fluid w-100 my-2">
 			<h4 class="font-weight-bold text-center mb-0 bigFont-xs">BEST-SELLING HOUSE PLANS</h4>
 			<p class="lead text-center font-weight-semi-bold mt-1">America’s most popular designs</p>
 			<h5 class="font-weight-bold text-center text-primary">Browse Our Architectural Styles</h5>

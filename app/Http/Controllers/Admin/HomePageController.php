@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Thd\DesktopBest;
 use Thd\DesktopFavorite;
 use Thd\Http\Controllers\Controller;
+use Thd\MobileBest;
 use Thd\TextContent;
 use Validator;
 use Intervention\Image\Facades\Image;
@@ -324,4 +325,51 @@ class HomePageController extends Controller
         }
     }
 
+    public function mobileBest(Request $request)
+    {
+        $data = MobileBest::findOrFail(1);
+
+        if($request->isMethod('post')){
+            $validator = Validator::make($request->all(), [
+                'name' => 'max:190',
+                'url' => 'max:190',
+                'file' => 'mimetypes:image/jpeg,image/jpg,image/png,image/bmp,image/gif',
+            ]);
+
+            if ($validator->fails()) {
+                return redirect(route('home-page.mobile-best'))
+                    ->withErrors($validator)
+                    ->withInput();
+            }else {
+                if($request->file('file')){
+                    $image = $request->file('file');
+                    $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
+                    $path = storage_path('app/public/home-page/' . $filename);
+
+                    $img = Image::make($image->getRealPath());
+                    $img->resize(277, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    $img->save($path, 90);
+
+                    Storage::delete('public/home-page/'.$data->file);
+
+                    $data->file = $filename;
+                }
+
+                $data->name = $request->input('name');
+                $data->url = $request->input('url');
+                $data->update();
+
+                return redirect()->route('home-page.mobile-best')
+                    ->with('message', [
+                        'type'=>'success',
+                        'title'=>'Success!',
+                        'message'=>'Data was updated',
+                        'autoHide'=>1]);
+            }
+        }else{
+            return view('admin.home-page.mobile-best')->with('data', $data);
+        }
+    }
 }

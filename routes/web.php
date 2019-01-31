@@ -126,6 +126,9 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::resource('mobile-new', 'Admin\MobileNewController', ['except'=>['show']]);
         Route::get('mobile-new/data', 'Admin\MobileNewController@anyData')->name('mobile-new.data');
+
+        Route::get('home-page/mobile-best', 'Admin\HomePageController@mobileBest')->name('home-page.mobile-best');
+        Route::post('home-page/mobile-best', 'Admin\HomePageController@mobileBest')->name('home-page.mobile-best.post');
     });
 });
 

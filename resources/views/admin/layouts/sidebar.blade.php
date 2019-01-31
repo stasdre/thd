@@ -66,7 +66,7 @@
                     <ul class="treeview-menu">
                         <li><a href="{{route('mobile-favorite.index')}}">Favorite plans</a></li>
                         <li><a href="{{route('mobile-new.index')}}">New plans</a></li>
-                        <li><a href="#">Best plan</a></li>
+                        <li><a href="{{route('home-page.mobile-best')}}">Best plan</a></li>
                         <li><a href="{{route('home-page.mobile-dream')}}">DREAM HOME Text</a></li>
                     </ul>
                 </li>
