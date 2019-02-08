@@ -33,7 +33,8 @@ class StylesRequest extends FormRequest
                 'plan_title.*' => 'required_with:plan_img|max:100',
                 'plan_url.*' => 'required_with:plan_img|max:190',
                 'plan_img.*' => 'image|max:3000|dimensions:min_width=300,min_height=300',
-                'plan_img_alt.*' => 'max:190'
+                'plan_img_alt.*' => 'max:190',
+                'image' => 'mimetypes:image/jpeg,image/png,image/bmp,image/gif'
             ];
         }else{
             return [
@@ -45,7 +46,8 @@ class StylesRequest extends FormRequest
                 'plan_title.*' => 'required_with:plan_img|max:100',
                 'plan_url.*' => 'required_with:plan_img|max:190',
                 'plan_img.*' => 'required_with:plan_title|image|max:3000|dimensions:min_width=300,min_height=300',
-                'plan_img_alt.*' => 'max:190'
+                'plan_img_alt.*' => 'max:190',
+                'image' => 'mimetypes:image/jpeg,image/png,image/bmp,image/gif'
             ];
         }
     }

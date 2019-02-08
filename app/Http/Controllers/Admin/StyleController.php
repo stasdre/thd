@@ -3,6 +3,7 @@
 namespace Thd\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\Input;
+use Thd\Asp;
 use Thd\Http\Requests\StylesRequest;
 use Thd\Style;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use Thd\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Yajra\Datatables\Datatables;
+use Validator;
 
 class StyleController extends Controller
 {
@@ -21,7 +23,9 @@ class StyleController extends Controller
      */
     public function index()
     {
-        return view('admin.style.index');
+        $data = Asp::findOrFail(1);
+
+        return view('admin.style.index')->with('data', $data);
     }
 
     /**
@@ -71,6 +75,20 @@ class StyleController extends Controller
             }
         }
 
+        if($request->file('image')){
+            $image = $request->file('image');
+            $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
+            $path = storage_path('app/public/styles/' . $filename);
+
+            $img = Image::make($image->getRealPath());
+            $img->resize(500, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save($path, 90);
+
+            //Storage::delete('public/home-page/'.$data->image);
+        }
+
         $style = new Style([
             'name' => $request->input('name'),
             'slug' => $request->input('slug'),
@@ -80,7 +98,9 @@ class StyleController extends Controller
             'meta_title' => $request->input('meta_title'),
             'meta_description' => $request->input('meta_description'),
             'meta_keywords' => $request->input('meta_keywords'),
-            'plans' => json_encode($dataPlans)
+            'plans' => json_encode($dataPlans),
+            'image' => $filename ? $filename : '',
+            'plan' => $request->input('plan')
         ]);
         $style->save();
 
@@ -151,6 +171,22 @@ class StyleController extends Controller
             }
         }
 
+        if($request->file('image')){
+            $image = $request->file('image');
+            $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
+            $path = storage_path('app/public/styles/' . $filename);
+
+            $img = Image::make($image->getRealPath());
+            $img->resize(500, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save($path, 90);
+
+            Storage::delete('public/styles/'.$style->image);
+
+            $style->image = $filename;
+        }
+
         $style->name = $request->input('name');
         $style->short_name = $request->input('short_name');
         $style->description = $request->input('description');
@@ -159,6 +195,7 @@ class StyleController extends Controller
         $style->meta_description = $request->input('meta_description');
         $style->meta_keywords = $request->input('meta_keywords');
         $style->plans = json_encode($dataPlans);
+        $style->plan = $request->input('plan');
 
         $style->update();
 
@@ -194,6 +231,11 @@ class StyleController extends Controller
                 Storage::delete('public/styles/thumb/'.$plan->img);
             }
         }
+
+        if($style->image){
+            Storage::delete('public/styles/'.$style->image);
+        }
+
         $style->delete();
 
         return redirect()->route('styles.index')
@@ -223,5 +265,49 @@ class StyleController extends Controller
             })
             ->rawColumns(['in_filter', 'actions'])
             ->make(true);
+    }
+
+    public function storeData(Request $request)
+    {
+        $data = Asp::findOrFail(1);
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:190',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('styles.index'))
+                ->withErrors($validator)
+                ->withInput();
+        }else{
+
+            if($request->file('image')){
+                $image = $request->file('image');
+                $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
+                $path = storage_path('app/public/styles/' . $filename);
+
+                $img = Image::make($image->getRealPath());
+                $img->resize(1200, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $img->save($path, 90);
+
+                Storage::delete('public/styles/'.$data->image);
+
+                $data->image = $filename;
+            }
+
+            $data->title = $request->input('title');
+            $data->subtitle = $request->input('subtitle');
+            $data->desc = $request->input('desc');
+            $data->update();
+
+            return redirect()->route('styles.index')
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>'Data was updated',
+                    'autoHide'=>1]);
+        }
     }
 }

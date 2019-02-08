@@ -3,6 +3,7 @@
 namespace Thd\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Thd\Asp;
 use Thd\Style;
 use Illuminate\Support\Facades\Validator;
 use Thd\Plan;
@@ -31,8 +32,12 @@ class StyleController extends Controller
 
     public function all()
     {
+        $styleData = Asp::find(1);
         $styles = Style::orderBy('name', 'asc')->get();
 
-        return view('style.all', ['styles'=>$styles]);
+        return view('style.all', [
+            'styles'=>$styles,
+            'styleData'=>$styleData
+        ]);
     }
 }

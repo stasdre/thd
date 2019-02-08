@@ -3,6 +3,7 @@
 namespace Thd\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Thd\Asp;
 use Thd\Collection;
 use Illuminate\Support\Facades\Validator;
 use Thd\Plan;
@@ -31,8 +32,12 @@ class CollectionController extends Controller
 
     public function all()
     {
+        $collectionData = Asp::find(2);
         $collections = Collection::orderBy('name', 'asc')->get();
 
-        return view('collection.all', ['collections'=>$collections]);
+        return view('collection.all', [
+            'collections'=>$collections,
+            'collectionData'=>$collectionData
+        ]);
     }
 }
