@@ -85,6 +85,7 @@ Route::prefix('admin-thd')->group(function(){
     Route::middleware(['auth', 'role:owner|admin'])->group(function(){
         Route::resource('styles', 'Admin\StyleController', ['except'=>['show']]);
         Route::get('styles/data', 'Admin\StyleController@anyData')->name('styles.data');
+        Route::post('styles/store-data', 'Admin\StyleController@storeData')->name('styles.storeData');
 
         Route::resource('collections', 'Admin\CollectionController', ['except'=>['show']]);
         Route::get('collections/data', 'Admin\CollectionController@anyData')->name('collections.data');

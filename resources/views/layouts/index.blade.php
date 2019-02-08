@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/screen.css') }}" rel="stylesheet">
     <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5c4f43d3058f100011a5b1b2&product=custom-share-buttons"></script>
 </head>
 
