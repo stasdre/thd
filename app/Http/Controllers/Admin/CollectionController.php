@@ -3,6 +3,7 @@
 namespace Thd\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Thd\Asp;
 use Thd\Collection;
 use Thd\Http\Controllers\Controller;
 use Thd\Http\Requests\CollectionsRequest;
@@ -11,6 +12,7 @@ use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Validator;
 
 class CollectionController extends Controller
 {
@@ -21,7 +23,8 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        return view('admin.collection.index');
+        $data = Asp::findOrFail(2);
+        return view('admin.collection.index')->with('data', $data);
     }
 
     /**
@@ -71,6 +74,20 @@ class CollectionController extends Controller
             }
         }
 
+        if($request->file('image')){
+            $image = $request->file('image');
+            $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
+            $path = storage_path('app/public/collections/' . $filename);
+
+            $img = Image::make($image->getRealPath());
+            $img->resize(500, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save($path, 90);
+
+            //Storage::delete('public/home-page/'.$data->image);
+        }
+
         $collection = new Collection([
             'name' => $request->input('name'),
             'slug' => $request->input('slug'),
@@ -80,7 +97,9 @@ class CollectionController extends Controller
             'meta_title' => $request->input('meta_title'),
             'meta_description' => $request->input('meta_description'),
             'meta_keywords' => $request->input('meta_keywords'),
-            'plans' => json_encode($dataPlans)
+            'plans' => json_encode($dataPlans),
+            'image' => $filename ? $filename : '',
+            'plan' => $request->input('plan')
         ]);
         $collection->save();
 
@@ -152,6 +171,22 @@ class CollectionController extends Controller
             }
         }
 
+        if($request->file('image')){
+            $image = $request->file('image');
+            $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
+            $path = storage_path('app/public/collections/' . $filename);
+
+            $img = Image::make($image->getRealPath());
+            $img->resize(500, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save($path, 90);
+
+            Storage::delete('public/collections/'.$collection->image);
+
+            $collection->image = $filename;
+        }
+
         $collection->name = $request->input('name');
         $collection->short_name = $request->input('short_name');
         $collection->description = $request->input('description');
@@ -160,6 +195,7 @@ class CollectionController extends Controller
         $collection->meta_description = $request->input('meta_description');
         $collection->meta_keywords = $request->input('meta_keywords');
         $collection->plans = json_encode($dataPlans);
+        $collection->plan = $request->input('plan');
 
         $collection->update();
 
@@ -195,6 +231,10 @@ class CollectionController extends Controller
             }
         }
 
+        if($collection->image){
+            Storage::delete('public/collections/'.$collection->image);
+        }
+
         $collection->delete();
 
         return redirect()->route('collections.index')
@@ -224,5 +264,49 @@ class CollectionController extends Controller
             })
             ->rawColumns(['in_filter', 'actions'])
             ->make(true);
+    }
+
+    public function storeData(Request $request)
+    {
+        $data = Asp::findOrFail(2);
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:190',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('collections.index'))
+                ->withErrors($validator)
+                ->withInput();
+        }else{
+
+            if($request->file('image')){
+                $image = $request->file('image');
+                $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
+                $path = storage_path('app/public/collections/' . $filename);
+
+                $img = Image::make($image->getRealPath());
+                $img->resize(1200, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $img->save($path, 90);
+
+                Storage::delete('public/collections/'.$data->image);
+
+                $data->image = $filename;
+            }
+
+            $data->title = $request->input('title');
+            $data->subtitle = $request->input('subtitle');
+            $data->desc = $request->input('desc');
+            $data->update();
+
+            return redirect()->route('collections.index')
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>'Data was updated',
+                    'autoHide'=>1]);
+        }
     }
 }

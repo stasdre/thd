@@ -8,7 +8,7 @@
         <ul class="nav nav-tabs">
             <li class="active"><a href="#main" data-toggle="tab">Main</a></li>
             <li><a href="#meta" data-toggle="tab">Meta Data</a></li>
-            <li><a href="#plans" data-toggle="tab">Plans</a></li>
+            {{--<li><a href="#plans" data-toggle="tab">Plans</a></li>--}}
         </ul>
 
         <div class="tab-content">
@@ -36,9 +36,30 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    {{ Form::label('plan', 'Plan', ['class' => 'col-sm-2 control-label']) }}
+                    <div class="col-sm-10">
+                        {{ Form::text('plan', null, ['class'=>'form-control', 'placeholder'=>'Plan']) }}
+                    </div>
+                </div>
+                <div class="form-group">
                     {{ Form::label('description', 'Description', ['class' => 'col-sm-2 control-label']) }}
                     <div class="col-sm-10">
                         {{ Form::textarea('description', null, ['class'=>'form-control tinymce-editor']) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ Form::label('image', 'Image', ['class' => 'col-sm-2 control-label']) }}
+                    <div class="col-sm-5">
+                        <div class="input-group input-group-sm">
+                            @if(isset($collection->image))
+                                <input class="form-control file-input hidden" type="file" name="image">
+                                <span class="input-group-addon file-input hidden"> <i class="fa fa-file" aria-hidden="true"></i></span>
+                                <p class="file-name">/styles/{{ $collection->image }} <a href="#" class="delete-file" style="margin-left: 15px; color: red;"><i class="fa fa-ban"></i></a></p>
+                            @else
+                                <input class="form-control" type="file" name="image">
+                                <span class="input-group-addon"><i class="fa fa-file" aria-hidden="true"></i></span>
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">

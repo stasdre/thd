@@ -62,7 +62,7 @@
                     <div class="features">
                         <ul class="list-unstyled text-primary">
                             @foreach(\Thd\Style::orderBy('name', 'ASC')->get() as $style)
-                            <li><a href="{{$style->slug}}">{{$style->name}}</a></li>
+                            <li><a href="{{ route('style.slug', $style->slug)}}">{{$style->name}}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -78,7 +78,7 @@
                     <div class="features">
                         <ul class="list-unstyled text-primary">
                             @foreach(\Thd\Collection::orderBy('name', 'ASC')->get() as $collection)
-                                <li><a href="{{$collection->slug}}">{{$collection->name}}</a></li>
+                                <li><a href="{{route('collection.slug', $collection->slug)}}">{{$collection->name}}</a></li>
                             @endforeach
                         </ul>
                     </div>

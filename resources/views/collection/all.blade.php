@@ -3,11 +3,11 @@
 @section('content')
     <div class="plan-full position-relative d-none d-sm-block" style="width: 100%;">
         <div class="mobile-off">
-            <img src="images/plan-specialty.jpg" alt="" class="img-fluid" />
+            <img src="{{asset('storage/collections/'.$collectionData->image)}}" alt="" class="img-fluid" />
             <div class="plan-caption position-absolute top center">
-                <h3 class="font-weight-semi-bold text-white pt-2 px-2 pb-1">Search Our Specialty Collections</h3>
+                <h3 class="font-weight-semi-bold text-white pt-2 px-2 pb-1">{{ $collectionData->title }}</h3>
             </div>
-            <div class="plan-name position-absolute"><span>'L'Attesa di Vita /</span> HOUSE PLAN 2091</div>
+            <div class="plan-name position-absolute">{{ $collectionData->subtitle }}</div>
         </div>
         <div class="desktop-off">
             <h5 class="center font-weight-bold no-margin"> Specialty Collections</h5>
@@ -16,7 +16,7 @@
     <div class="py-2 px-sm-5 mx-sm-3">
 
         <div>
-            House Plans in our specialty collections allow you to narrow your home plan search to find the perfect house designs to accommodate any preference or budget.  Whether you’re looking for <a href="#">small house plans, energy efficient home plans, floor plans with in-law suites,</a> <span class="mobile-off" id="content-scroll">bonus spaces, outdoor living areas or plans with walkout basements, quickly and easily produce search results with quality home plans that meet the strict standards of the IRC (International Residential Code) and have the full architectural detailing builders prefer.  Home plans in each collection represents the very best in residential architecture from leading architects and designers throughout the US and Canada.  If you need help finding your dream home, please <a href="#">live chat</a>, <a href="#">email</a> or <a href="#">call us</a> at XXX-XXX-XXXX and let our home plan experts assist you in making the right choice! </span>
+            {!! $collectionData->desc !!}
             <div class="desktop-off read_more" id="read_more"><span class="read-more-link-wrapper">Read More </span></div>
             <div style="display : none;" id="read_less" class="read_less"><span class="read-less-link-wrapper">Read Less </span></div>
             <!-- <p class="no-margin">House Plans in our specialty collections allow you to narrow your home plan search to find the perfect house designs to accommodate any preference or budget.  Whether you’re looking for <a href="#">small house plans, energy efficient home plans, floor plans with in-law suites,</a> bonus spaces, outdoor living areas or <h5 class="desktop-off read_more"><span>Read More</span></h5><span class="mobile-off">  plans with walkout basements, quickly and easily produce search results with quality home plans that meet the strict standards of the IRC (International Residential Code) and have the full architectural detailing builders prefer.  Home plans in each collection represents the very best in residential architecture from leading architects and designers throughout the US and Canada.  If you need help finding your dream home, please <a href="#">live chat</a>, <a href="#">email</a> or <a href="#">call us</a> at XXX-XXX-XXXX and let our home plan experts assist you in making the right choice!</span></span></p>-->
@@ -48,32 +48,26 @@
         <div class="row ">
 
             <!-- SideBar Left -->
-            @include('layouts.search-sidebar')
-            <!-- SideBar Left -->
+        @include('layouts.search-sidebar')
+        <!-- SideBar Left -->
 
             <!-- Content Right -->
             <div class="col-md-7 col-lg-9 order-md-2 order-1">
 
                 <div class="row text-center">
-                    <div class="col-sm-4 col-md-6 col-lg-4">
-                        <div class="plan-grid position-relative"> <a href="#"> <img src="images/plan-1.jpg" alt="New House Plans" class="img-fluid w-100 mobile-grid-img" />
-                                <p class="shop-link no-margin-mobile">Beach House Plans</p>
-                                <div class="plan-name position-absolute">plan 2495</div>
-                            </a> </div>
-                    </div>
-                    <div class="col-sm-4 col-md-6 col-lg-4">
-                        <div class="plan-grid position-relative"> <a href="#"> <img src="images/plan-1.jpg" alt="New House Plans" class="img-fluid w-100 mobile-grid-img" />
-                                <p class="shop-link no-margin-mobile">Beach House Plans</p>
-                                <div class="plan-name position-absolute">plan 2495</div>
-                            </a> </div>
-                    </div>
-                    <div class="col-sm-4 col-md-6 col-lg-4">
-                        <div class="plan-grid position-relative"> <a href="#"> <img src="images/plan-1.jpg" alt="New House Plans" class="img-fluid w-100 mobile-grid-img" />
-                                <p class="shop-link no-margin-mobile">Beach House Plans</p>
-                                <div class="plan-name position-absolute">plan 2495</div>
-                            </a> </div>
-                    </div>
-
+                    @foreach($collections as $collection)
+                        <div class="col-sm-4 col-md-6 col-lg-4">
+                            <div class="plan-grid position-relative"> <a href="{{ route('collection.slug', $collection->slug) }}">
+                                    @if($collection->image)
+                                        <img src="{{asset('storage/collections/'.$collection->image)}}" alt="{{ $collection->name }}" class="img-fluid w-100 mobile-grid-img" />
+                                    @else
+                                        <img src="{{asset('images/plan-1.jpg')}}" alt="{{ $collection->name }}" class="img-fluid w-100 mobile-grid-img" />
+                                    @endif
+                                    <p class="shop-link no-margin-mobile">{{ $collection->name }}</p>
+                                    <div class="plan-name position-absolute">plan {{ $collection->plan }}</div>
+                                </a> </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
             <!-- Content Right -->
