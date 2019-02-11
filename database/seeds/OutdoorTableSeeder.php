@@ -38,27 +38,22 @@ class OutdoorTableSeeder extends Seeder
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name'=>'Grill Deck Sundeck',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
-                'name'=>'Loft Balcony',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
                 'name'=>'Outdoor Fireplace',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name'=>'Outdoor Kitchen Grill',
+                'name'=>'Outdoor Kitchen',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name'=>'Screened Porch Sunroom',
+                'name'=>'Screened Porch',
+                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'name'=>'Sunroom',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
