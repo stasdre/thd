@@ -29,12 +29,12 @@ class PlanDescriptionController extends Controller
     public function update(Request $request, Plan $plan)
     {
         $request->validate([
-            'short_description' => 'required',
-            'description' => 'required',
+            'page_title'=>'required|max:70',
             'meta_title' => 'required',
+            'description' => 'required|max:155',
         ]);
 
-        $plan->short_description = $request->input('short_description');
+        $plan->page_title = $request->input('page_title');
         $plan->description = $request->input('description');
         $plan->meta_title = $request->input('meta_title');
         $plan->meta_description = $request->input('meta_description');
