@@ -3,8 +3,10 @@
 namespace Thd\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Thd\Garage;
 use Thd\Http\Controllers\Controller;
 
+use Thd\Outdoor;
 use Thd\Plan;
 use Thd\Kitchen;
 use Thd\Bed;
@@ -25,13 +27,17 @@ class PlanFeaturesController extends Controller
         $beds = Bed::orderBy('name')->get();
         $roomsInteriors = RoomInterior::orderBy('name')->get();
         $porchExterirors = PorchExterior::orderBy('name')->get();
+        $garages = Garage::orderBy('name')->get();
+        $outdoors = Outdoor::orderBy('name')->get();
 
         return view('admin.plan-feature.create',[
             'plan'=>$plan,
             'kitchens'=>$kitchens,
             'beds'=>$beds,
             'roomsInteriors'=>$roomsInteriors,
-            'porchExterirors'=>$porchExterirors
+            'porchExterirors'=>$porchExterirors,
+            'garages'=>$garages,
+            'outdoors'=>$outdoors
         ]);
     }
 
@@ -49,12 +55,16 @@ class PlanFeaturesController extends Controller
             'bed_id' => 'nullable|array|exists:beds,id',
             'room_interior_id' => 'nullable|array|exists:room_interiors,id',
             'porch_exter_id' => 'nullable|array|exists:porch_exteriors,id',
+            'garage_id' => 'nullable|array|exists:garages,id',
+            'outdoor_id' => 'nullable|array|exists:outdoors,id',
         ]);
 
         $plan->kitchens()->sync(array_flatten($request->input('kitchen_id')));
         $plan->beds()->sync(array_flatten($request->input('bed_id')));
         $plan->roomsInterior()->sync(array_flatten($request->input('room_interior_id')));
         $plan->porchExteriors()->sync(array_flatten($request->input('porch_exter_id')));
+        $plan->garages()->sync(array_flatten($request->input('garage_id')));
+        $plan->outdoors()->sync(array_flatten($request->input('outdoor_id')));
 
         if( $request->input('redirect') == 'next' ){
             return redirect()->route('plan-desc.edit', ['plan'=>$plan->id])

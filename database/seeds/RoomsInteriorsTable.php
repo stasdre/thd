@@ -13,57 +13,17 @@ class RoomsInteriorsTable extends Seeder
     {
         DB::table('room_interiors')->insert([
             [
-                'name'=>'2 story/volume foyer',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
-                'name'=>'Arches',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
                 'name'=>'Bonus room',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name'=>'Dining room',
+                'name'=>'Office',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name'=>'Exercise room',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
-                'name'=>'Family room',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
-                'name'=>'Fireplace',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
-                'name'=>'Formal living room',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
-                'name'=>'Foyer',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
-                'name'=>'Flex Room',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
-                'name'=>'Den Office Study Computer',
+                'name'=>'Den',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -73,27 +33,27 @@ class RoomsInteriorsTable extends Seeder
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name'=>'Family Room Keeping Room',
+                'name'=>'Family Room',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name'=>'Great Room Living Room',
+                'name'=>'Great Room',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name'=>'Hobby Rec Room Game Room',
+                'name'=>'Living Room',
+                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'name'=>'Game Room',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'name'=>'Main Floor Laundry',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
-                'name'=>'Master Sitting Area',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -113,22 +73,12 @@ class RoomsInteriorsTable extends Seeder
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name'=>'Safe Room / Hidden Room',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
                 'name'=>'Storage Area',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name'=>'Unfinished Future Space',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
-                'name'=>'Upstairs Laundry',
+                'name'=>'Second Floor Laundry',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -144,11 +94,6 @@ class RoomsInteriorsTable extends Seeder
             ],
             [
                 'name'=>'Wine Cellar',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
-                'name'=>'Workshop',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],

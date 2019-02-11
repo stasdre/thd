@@ -28,12 +28,12 @@ class GaragesTableSeeder extends Seeder
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name'=>'Front Entry Garage',
+                'name'=>'Front Entry',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name'=>'Garage Under',
+                'name'=>'Drive Under',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -43,17 +43,7 @@ class GaragesTableSeeder extends Seeder
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name'=>'Oversized Garage',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
-                'name'=>'Rear Entry Garage',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
-                'name'=>'Rear Garage',
+                'name'=>'Rear Entry',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -63,17 +53,22 @@ class GaragesTableSeeder extends Seeder
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name'=>'Side Entry Garage',
+                'name'=>'Side Entry',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name'=>'Split Garage',
+                'name'=>'Workshop',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'name'=>'Tandem Garage',
+                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'name'=>'With Living Space',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],

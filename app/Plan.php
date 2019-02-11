@@ -142,4 +142,15 @@ class Plan extends Model
     {
         return $this->video_file ? 'file' : 'link';
     }
+
+    public function garages()
+    {
+        return $this->belongsToMany('Thd\Garage', 'garage_plan');
+    }
+
+    public function outdoors()
+    {
+        return $this->belongsToMany('Thd\Outdoor', 'outdoor_plan');
+    }
+
 }

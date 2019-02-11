@@ -18,11 +18,6 @@ class KitchenTableSeeder extends Seeder
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name'=>'Country kitchen',
-                'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
                 'name'=>'Kitchenette Wet Bar',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
