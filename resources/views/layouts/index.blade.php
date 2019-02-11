@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/screen.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5c4f43d3058f100011a5b1b2&product=custom-share-buttons"></script>
 </head>
 
@@ -40,7 +41,7 @@
      </div>
       <div class="col-md-7 col-sm-6 text-center z-index-xs width-sm-100">
         <ul class="list-inline text-center mb-4 toplinks  d-none d-md-block">
-          <li class="list-inline-item"><a href="mailto:#">Email</a></li>
+          <li class="list-inline-item"><a href="{{ route('contact-us') }}">Email</a></li>
           <li class="list-inline-item"><a href="#link">Chat</a></li>
           <li class="list-inline-item"><a href="tel:832-521-5820">832-521-5820</a></li>
         </ul>
@@ -208,7 +209,7 @@
                 <h3 class="font-weight-bold mb-3">CONTACT US</h3>
                 <ul class="list-inline text-center">
                     <li><a href="">Live Chat</a></li>
-                    <li><a href="">Email</a></li>
+                    <li><a href="{{ route('contact-us') }}">Email</a></li>
                     <li><a href="">832-521-5820</a></li>
                     <li><a href="">E-Newsletter Signup</a></li>
                     <li><a href="">Privacy Policy</a></li>
