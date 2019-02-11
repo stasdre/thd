@@ -146,6 +146,35 @@
     @endforeach
 </div>
 
+<div class="row">
+    <h3 class="text-center">Outdoor Spaces</h3>
+    @php
+        $outdoorsBreack = ceil(count($outdoors)/3);
+    @endphp
+    @foreach($outdoors as $outdoor)
+        @if ($loop->first)
+            <div class="col-sm-offset-2 col-sm-3">
+                @endif
+
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            {{ Form::checkbox('outdoor_id[]', $outdoor->id, $plan->outdoors->contains($outdoor->id)) }} {{ $outdoor->name }}
+                        </label>
+                    </div>
+                </div>
+
+                @if( ($loop->iteration % $outdoorsBreack) == 0  && !$loop->last)
+            </div>
+            <div class="col-sm-3">
+                @endif
+
+                @if ($loop->last)
+            </div>
+        @endif
+    @endforeach
+</div>
+
 @push('scripts')
 <script>
     $("#feature-submit-close, #feature-submit-next").on('click', function(e){

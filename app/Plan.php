@@ -147,4 +147,10 @@ class Plan extends Model
     {
         return $this->belongsToMany('Thd\Garage', 'garage_plan');
     }
+
+    public function outdoors()
+    {
+        return $this->belongsToMany('Thd\Outdoor', 'outdoor_plan');
+    }
+
 }
