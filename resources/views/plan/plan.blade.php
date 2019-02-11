@@ -1,5 +1,6 @@
 @extends('layouts.index')
-@section('title', 'Plan page')
+@section('title', $plan->meta_title)
+@section('description', $plan->meta_description)
 @section('content')
   <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0 bg-white px-0">
