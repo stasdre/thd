@@ -8,7 +8,7 @@ class PlanImageBonus extends Model
 {
     protected $table = 'plan_image_bonus';
 
-    protected $fillable = ['title', 'file_name', 'description', 'sort_number'];
+    protected $fillable = ['title', 'file_name', 'description', 'sort_number', 'alt_text'];
 
     public function plan()
     {

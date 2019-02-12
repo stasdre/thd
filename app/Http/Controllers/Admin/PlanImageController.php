@@ -48,7 +48,7 @@ class PlanImageController extends Controller
         $input = $request->all();
 
         $rules = array(
-            'file' => 'image|max:3000|dimensions:min_width=200,min_height=200',
+            'file' => 'image|max:3000|dimensions:min_width=1050',
             'sort_number' => 'integer'
         );
 
@@ -64,10 +64,14 @@ class PlanImageController extends Controller
         $path = storage_path('app/public/plans/' . $plan->id . '/' . $filename);
         $pathThumb = storage_path('app/public/plans/' . $plan->id . '/thumb/' . $filename);
 
-        $img = Image::make($image->getRealPath())->save($path, 100);
+        $img = Image::make($image->getRealPath());
+        $img->resize(1050, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $img->save($path, 100);
 
         $imgThumb = Image::make($image->getRealPath());
-        $imgThumb->resize(null, 250, function ($constraint) {
+        $imgThumb->resize(380, null, function ($constraint) {
             $constraint->aspectRatio();
         });
         $imgThumb->save($pathThumb);
@@ -124,6 +128,7 @@ class PlanImageController extends Controller
             PlanImage::where('plan_id', '=', $image->plan_id)->update(['for_search'=>0]);
 
         $image->title = $input['title'];
+        $image->alt_text = $input['alt_text'];
         $image->description = $input['description'];
         $image->first_image = $input['first_image'] == 1 ? 1 : 0;
         $image->for_search = $input['for_search'] == 1 ? 1 : 0;

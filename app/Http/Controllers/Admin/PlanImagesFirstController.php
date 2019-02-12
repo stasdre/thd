@@ -24,7 +24,7 @@ class PlanImagesFirstController extends Controller
         $input = $request->all();
 
         $rules = array(
-            'file' => 'image|max:3000|dimensions:min_width=200,min_height=200',
+            'file' => 'image|max:3000',
             'sort_number' => 'integer'
         );
 
@@ -40,10 +40,14 @@ class PlanImagesFirstController extends Controller
         $path = storage_path('app/public/plans/' . $plan->id . '/' . $filename);
         $pathThumb = storage_path('app/public/plans/' . $plan->id . '/thumb/' . $filename);
 
-        $img = Image::make($image->getRealPath())->save($path, 100);
+        $img = Image::make($image->getRealPath());
+        $img->resize(1200, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $img->save($path, 100);
 
         $imgThumb = Image::make($image->getRealPath());
-        $imgThumb->resize(null, 250, function ($constraint) {
+        $imgThumb->resize(380, null, function ($constraint) {
             $constraint->aspectRatio();
         });
         $imgThumb->save($pathThumb);
@@ -94,6 +98,7 @@ class PlanImagesFirstController extends Controller
         }
 
         $image->title = $input['title'];
+        $image->alt_text = $input['alt_text'];
         $image->description = $input['description'];
 
         if($image->update()){
