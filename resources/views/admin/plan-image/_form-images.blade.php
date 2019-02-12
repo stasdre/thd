@@ -413,6 +413,7 @@
 
                     $("#id").val(data.id);
                     $("#title").val(data.title);
+                    $("#alt_text").val(data.alt_text);
                     $("#description").val(data.description);
 
                     if(data.first_image == 1){
@@ -478,6 +479,7 @@
 
                     $("#id").val(data.id);
                     $("#title").val(data.title);
+                    $("#alt_text").val(data.alt_text);
                     $("#description").val(data.description);
 
                     $(".galery_loader").hide();
@@ -497,7 +499,7 @@
                 method: 'put',
                 url: $("#image_data_form").prop('action'),
                 dataType: 'json',
-                data: {title: $("#title").val(), description: $("#description").val(), first_image: $("#first_image").prop('checked') ? 1 : 0, for_search: $("#for_search").prop('checked') ? 1 : 0, camera_icon: $("#camera_icon").prop('checked') ? 1 : 0},
+                data: {alt_text: $("#alt_text").val(), title: $("#title").val(), description: $("#description").val(), first_image: $("#first_image").prop('checked') ? 1 : 0, for_search: $("#for_search").prop('checked') ? 1 : 0, camera_icon: $("#camera_icon").prop('checked') ? 1 : 0},
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
@@ -558,6 +560,12 @@
                 <div id="image_content">
                     {{ Form::open(['class' => 'form-horizontal', 'id'=>'image_data_form']) }}
                     {{ Form::hidden('id', null, ['id'=>'id']) }}
+                    <div class="form-group">
+                        {{ Form::label('alt_text', 'Image Alt Text', ['class' => 'col-sm-3 control-label']) }}
+                        <div class="col-sm-6">
+                            {{ Form::text('alt_text', null, ['class'=>'form-control', 'placeholder'=>'Image Alt Text']) }}
+                        </div>
+                    </div>
                     <div class="form-group">
                         {{ Form::label('title', 'Image Name', ['class' => 'col-sm-3 control-label']) }}
                         <div class="col-sm-6">

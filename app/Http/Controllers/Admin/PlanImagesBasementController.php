@@ -98,6 +98,7 @@ class PlanImagesBasementController extends Controller
         }
 
         $image->title = $input['title'];
+        $image->alt_text = $input['alt_text'];
         $image->description = $input['description'];
 
         if($image->update()){

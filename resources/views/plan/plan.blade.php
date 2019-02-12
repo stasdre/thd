@@ -29,7 +29,7 @@
         <div class="col-10 xs_portrait_width_100">
           <div class="slider">
             @foreach($plan->images as $image)
-                  <figure> <img src="{{ asset('storage/plans/'.$plan->id.'/'.$image->file_name) }}" alt="{{$image->title}}" class="img-fluid">
+                  <figure> <img src="{{ asset('storage/plans/'.$plan->id.'/'.$image->file_name) }}" alt="{{$image->alt_text}}" class="img-fluid">
                       @if($image->description)
                         <figcaption>{{$image->description}}</figcaption>
                       @endif
@@ -393,7 +393,7 @@ ensure you stay in budget, economy, standard and premium.</p>
             	<div class="row">
                 	<div class="col-md-12 flipped-container">
                         @foreach($plan->images_first  as $image)
-                 		    <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="" class="img-fluid mx-auto d-block">
+                 		    <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
                         @endforeach
                     </div>
                 </div>
@@ -404,7 +404,7 @@ ensure you stay in budget, economy, standard and premium.</p>
             <div class="row">
                 <div class="col-md-12 flipped-container">
                     @foreach($plan->images_second  as $image)
-                        <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="" class="img-fluid mx-auto d-block">
+                        <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
                     @endforeach
                 </div>
             </div>
@@ -413,7 +413,7 @@ ensure you stay in budget, economy, standard and premium.</p>
             <div class="row">
                 <div class="col-md-12 flipped-container">
                     @foreach($plan->images_basement  as $image)
-                        <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="" class="img-fluid mx-auto d-block">
+                        <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
                     @endforeach
                 </div>
             </div>
@@ -422,7 +422,7 @@ ensure you stay in budget, economy, standard and premium.</p>
             <div class="row">
                 <div class="col-md-12 flipped-container">
                     @foreach($plan->images_bonus  as $image)
-                        <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="" class="img-fluid mx-auto d-block">
+                        <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
                     @endforeach
                 </div>
             </div>
