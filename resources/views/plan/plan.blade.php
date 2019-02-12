@@ -229,7 +229,7 @@
                     @endforeach
                </ul>
                <ul class="spec_items float-left pl-0">
-                   @foreach($plan->porchExteriors as $porch)
+                   @foreach($plan->outdoors as $porch)
                        <li>~ {{$porch->name}}</li>
                    @endforeach
                 </ul>

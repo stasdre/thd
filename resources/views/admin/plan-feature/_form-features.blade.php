@@ -87,36 +87,6 @@
     @endforeach
 </div>
 
-
-<div class="row">
-    <h3 class="text-center">Porches & Exterior</h3>
-    @php
-        $porchExterirorsBreack = ceil(count($porchExterirors)/3);
-    @endphp
-    @foreach($porchExterirors as $porchExteriror)
-        @if ($loop->first)
-            <div class="col-sm-offset-2 col-sm-3">
-                @endif
-
-                <div class="form-group">
-                    <div class="checkbox">
-                        <label>
-                            {{ Form::checkbox('porch_exter_id[]', $porchExteriror->id, $plan->porchExteriors->contains($porchExteriror->id)) }} {{ $porchExteriror->name }}
-                        </label>
-                    </div>
-                </div>
-
-                @if( ($loop->iteration % $porchExterirorsBreack) == 0  && !$loop->last)
-            </div>
-            <div class="col-sm-3">
-                @endif
-
-                @if ($loop->last)
-            </div>
-        @endif
-    @endforeach
-</div>
-
 <div class="row">
     <h3 class="text-center">Garage Features</h3>
     @php

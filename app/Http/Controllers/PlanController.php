@@ -19,7 +19,7 @@ class PlanController extends Controller
                 $query->orderBy('sort_number', 'ASC');
             }])
             ->with('roomsInterior')
-            ->with('porchExteriors')
+            ->with('outdoors')
             ->with('beds')
             ->with('kitchens')
             ->with('styles')
