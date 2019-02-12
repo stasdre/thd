@@ -82,8 +82,8 @@ class PlansRequest extends FormRequest
         $validate['ceiling.celing_3_floor'] = 'nullable|numeric';
         $validate['ceiling.celing_lower_floor'] = 'nullable|numeric';
 
-        $validate['roof.primary'] = 'nullable|numeric';
-        $validate['roof.secondary'] = 'nullable|numeric';
+        $validate['roof.primary'] = 'nullable';
+        $validate['roof.secondary'] = 'nullable';
 
         $validate['garage.car'] = 'nullable|integer';
         $validate['garage.car_location'] = 'nullable|in:front,rear,side';
@@ -92,11 +92,7 @@ class PlansRequest extends FormRequest
         $validate['style_id.*'] = 'sometimes|exists:styles,id';
         $validate['collection_id.*'] = 'sometimes|exists:collections,id';
 
-        if($this->method() == 'POST'){
-            $validate['video_file'] = 'required_if:youtube,file|file';
-        }else {
-            $validate['video_file'] = 'required_without:video_file_old|file';
-        }
+        $validate['video_file'] = 'required_if:youtube,file|file';
 
         return $validate;
     }
