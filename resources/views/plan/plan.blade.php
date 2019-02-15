@@ -110,6 +110,8 @@
         
         
         <div class="col-lg-4 col-md-6 col-sm-7 form-white padd_top">
+            {!! Form::open(['route' => 'purchase', 'class' => 'form-horizontal', 'method' => 'post', 'files' => true]) !!}
+            <input type="hidden" name="plan_id" value="{{ $plan->id }}">
           <h5 class="text-uppercase font-weight-bold sm-font-1rem">SELECT THE RIGHT PACKAGE</h5>
           <p class=" d-sm-none">View ALL Available Options</p>
           <div class="row align-items-center no-gutters mb-1">
@@ -117,7 +119,7 @@
             <div class="col-9 text-left">
               <div class="form-group mb-0">
                 <div class="select-custom-wrap select-custom-wrap-lg">
-                  <select name="select-custom-style" class="select-custom white_back" >
+                  <select name="plan_package" class="select-custom white_back" >
                     <option value="hide">Choose Your Plan Package</option>
                       @foreach($plan->packages as $package)
                         <option value="{{$package->id}}" data-cost="{{$package->pivot->price }}">{{$package->name}} ({{$package->pivot->price }}$)</option>
@@ -132,7 +134,7 @@
             <div class="col-9 text-left">
               <div class="form-group mb-0">
                 <div class="select-custom-wrap select-custom-wrap-lg">
-                  <select name="select-custom-style" class="select-custom white_back" >
+                  <select name="plan_foundation" class="select-custom white_back" >
                     <option value="hide">Choose Your Foundation</option>
                       @foreach($plan->foundationOptions as $foundat)
                         <option value="{{$foundat->id}}" data-cost="{{$foundat->pivot->price}}">{{$foundat->name}} ({{$foundat->pivot->price}}$)</option>
@@ -147,7 +149,7 @@
             <div class="col-9 text-left">
               <div class="form-group mb-0">
                 <div class="select-custom-wrap select-custom-wrap-lg">
-                  <select name="select-custom-style" class="select-custom white_back" >
+                  <select name="plan_features" class="select-custom white_back" >
                     <option value="hide">Optional Features</option>
                       @foreach($plan->addons as $addon)
                         <option value="{{$addon->id}}" data-cost="{{$addon->pivot->price}}">{{$addon->name}} ({{$addon->pivot->price}}$)</option>
@@ -158,6 +160,7 @@
             </div>
           </div>
           <button type="submit" class="btn btn-primary text-uppercase rounded-0 mt-1 offset-1">PURCHASE PLANS</button>
+            {!! Form::close() !!}
         </div>
         <div class="col-lg-2 col-sm-5 padd_top pd-md-0"> <!--d-sm-none-->
           <div class="bg-secondary px-2 py-2 mb-1">

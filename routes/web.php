@@ -146,3 +146,6 @@ Route::get('modify-plan/{id}','PlanController@modifyplan')->name('modify-plan')-
 
 Route::get('contact-us/', 'ContactUsController@index')->name('contact-us');
 Route::post('contact-us/send', 'ContactUsController@send')->name('contact-us.send');
+
+Route::get('cart/', 'ShoppingCartController@index')->name('cart');
+Route::post('purchase/', 'ShoppingCartController@purchase')->name('purchase');
