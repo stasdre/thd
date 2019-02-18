@@ -134,6 +134,9 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::resource('shipping', 'Admin\ShippingController', ['except'=>['show']]);
         Route::get('shipping/data', 'Admin\ShippingController@anyData')->name('shipping.data');
+
+        Route::resource('promo', 'Admin\PromoController', ['except'=>['show']]);
+        Route::get('promo/data', 'Admin\PromoController@anyData')->name('promo.data');
     });
 });
 

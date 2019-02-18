@@ -27,6 +27,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="{{ route('shipping.index') }}"><i class="fa fa-address-card-o"></i> Shipping Methods</a></li>
+                        <li><a href="{{ route('promo.index') }}"><i class="fa fa-money"></i> Promo Codes</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
