@@ -12,8 +12,8 @@ class ShoppingCartController extends Controller
 
     public function index()
     {
-        dd(Cart::content());
-
+        //dd(Cart::content());
+        return view('shopping-cart.index');
     }
 
     public function purchase(Request $request)
