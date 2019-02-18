@@ -65,7 +65,7 @@ class PlanImageController extends Controller
         $pathThumb = storage_path('app/public/plans/' . $plan->id . '/thumb/' . $filename);
 
         $img = Image::make($image->getRealPath());
-        $img->resize(1050, null, function ($constraint) {
+        $img->resize(null, 465, function ($constraint) {
             $constraint->aspectRatio();
         });
         $img->save($path, 100);
