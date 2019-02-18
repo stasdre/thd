@@ -388,7 +388,7 @@
              <div class="mt-3"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold grey-button" type="button" style="width :100%;"> Advanced Search</button></div>
              <div class="mt-3"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold grey-button" type="button" style="width :100%;"> Search by Plan #<i class="fa fa-search" aria-hidden="true"></i></button></div>
           </div>
-       </div>
+       </div> 
        <div style="clear : both;"></div>
 		<div class="text-center text-uppercase lead font-weight-normal align-middle py-2 only_under_767 contact-method mf18"> <a href="#" class="align-middle text-primary">Live Chat</a> | <a href="#" class="align-middle text-primary">Email</a> | <a href="#" class="align-middle text-secondary">xxx-xxx-xxxx</a> </div>
 		
