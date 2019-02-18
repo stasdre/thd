@@ -131,6 +131,9 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::get('home-page/mobile-best', 'Admin\HomePageController@mobileBest')->name('home-page.mobile-best');
         Route::post('home-page/mobile-best', 'Admin\HomePageController@mobileBest')->name('home-page.mobile-best.post');
+
+        Route::resource('shipping', 'Admin\ShippingController', ['except'=>['show']]);
+        Route::get('shipping/data', 'Admin\ShippingController@anyData')->name('shipping.data');
     });
 });
 

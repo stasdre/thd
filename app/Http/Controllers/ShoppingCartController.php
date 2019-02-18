@@ -6,6 +6,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Thd\Plan;
+use Thd\Shipping;
 
 class ShoppingCartController extends Controller
 {
@@ -13,7 +14,18 @@ class ShoppingCartController extends Controller
     public function index()
     {
         //dd(Cart::content());
-        return view('shopping-cart.index');
+        $dataCart = [];
+
+        if(Cart::count()){
+            foreach (Cart::content() as $cart){
+
+            }
+        }
+
+        return view('shopping-cart.index', [
+            'cartData'=>$dataCart,
+            'shipping'=>Shipping::all()
+        ]);
     }
 
     public function purchase(Request $request)

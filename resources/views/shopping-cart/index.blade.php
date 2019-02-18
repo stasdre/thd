@@ -36,13 +36,9 @@
                         <tr>
                             <td class="shipping-values mobile-off"><span class="text-primary text-lg">Shipping</span>
                                 <select name="" id="" class="form-control d-inline-block w-50">
-                                    <option value="">Free Ground (in Contiguous US)</option>
-                                    <option value="">2nd Day $45</option>
-                                    <option value="">Next Day $60</option>
-                                    <option value="">Hawaii/Alaska $80 (PDF recommended)</option>
-                                    <option value="">Canada $60 (PDF recommended)</option>
-                                    <option value="">Canada Express $80</option>
-                                    <option value="">Int’l: Electronic (PDF/CAD only)</option>
+                                    @foreach($shipping as $ship)
+                                        <option value="{{$ship->id}}">{{$ship->name}}</option>
+                                    @endforeach
                                 </select>
 
 
