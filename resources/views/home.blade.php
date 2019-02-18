@@ -1,5 +1,45 @@
 @extends('layouts.index')
+@if ($agent->isDesktop())
+<div class="home-page-search mobile-off"> 
+  <h4 class="blue-text"> Search House Plans </h4>
+                  <TABLE class="home-search-new">
+<tr>
+<Th>Sq. Ft.</Th>
+<td> <input type="text" placeholder="min" size=5 class="center"> to <input type="text" placeholder="max" size=5 class="center"></td>
+</tr>
+<tr>
+<Th>Beds</Th>
+<td> <span class="min_icon"> <i class="fa fa-minus"> </i></span> 1 
+                        <span class="max_icon"><i class="fa fa-plus"></i></span></td>
+</tr>
+<tr>
+<Th>Baths</Th>
+<td> <span class="min_icon"> <i class="fa fa-minus"> </i></span> 1 
+                        <span class="max_icon"><i class="fa fa-plus"></i></span></td>
+</tr>
+<tr>
+<Th>Garages</Th>
+<td> <span class="min_icon"> <i class="fa fa-minus"> </i></span> 1 
+                        <span class="max_icon"><i class="fa fa-plus"></i></span></td>
+</tr>	
+<tr>
+<Th>Stories</Th>
+<td> <span class="min_icon"> <i class="fa fa-minus"> </i></span> 1 
+                        <span class="max_icon"><i class="fa fa-plus"></i></span></td>
+</tr>
 
+<tr>
+	<td colspan="2">
+    <div class="">  
+                	<button class="btn btn-primary rounded-0 text-white font-weight-semi-bold" type="button" style="width :100%;"> SEARCH</button>
+                  </div>
+                  <div class="text-center advanced_search_text mt-2" ><a href="" class="red-links" style="font-size:14px;"> ADVANCED SEARCH</a></div>
+    </td>
+</tr>
+
+</TABLE>
+   </div>
+   @endif
 @section('carousel')
     <div id="banner" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -219,10 +259,13 @@
 		<div class="bg-secondary py-3 px-5 text-center home-about">
 			<div class="row align-items-center">
 				<div class="col-sm-6"> <img src="{{ asset('/storage/about/'.$aboutData['photo']) }}" alt="David" class="img-fluid" /> </div>
-				<div class="col-sm-6">
+				<div class="col-sm-6"> 
 					<h4 class="font-weight-bold mb-3">{{ $aboutData['title'] }}</h4>
 					{!! $aboutData['description'] !!}
-					<p><a data-fancybox="" href="{{ $aboutData['url'] }}" class="btn btn-outline-dark rounded-0 px-5 font-weight-semi-bold">Watch the Video</a></p>
+					 <p class="text-center"><a data-fancybox="" href="{{ $aboutData['url'] }}" class=""><button class="btn btn-primary rounded-0 text-uppercase text-dark font-weight-semi-bold" type="button" style="color: white !important;padding: 9px 17px;font-size : 20px;">Watch the Video</button></a></p>
+                
+                    
+                    
 				</div>
 			</div>
 		</div>
@@ -306,7 +349,7 @@
 @endif
 @if ($agent->isMobile())
 	@section('content')
-		<h1 class="text-center font-futura">AMERICA’S FAVORITE HOUSE PLANS!</h1>
+		<h1 class="text-center font-futura">AMERICA’S FAVORITE HOUSE PLANS</h1>
 		<div class="plan-list my-1">
 			<div class="position-relative">
 				<div id="modalplan48" class="carousel slide" data-ride="carousel" data-interval="1800">
@@ -316,15 +359,14 @@
 						@endforeach
 					</div>
 					<a class="carousel-control-prev" href="#modalplan48" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#modalplan48" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
-				<div class="media planinfo text-left top position-absolute"> <img class="mr-1 align-self-center" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
+				<div class="media planinfo text-left top position-absolute mobile-planinfo"> <img class="mr-1 align-self-center logo-on-mobile" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
 					<div class="media-body">
 						<h5 class="mb-0 text-white">plan <span class="text-secondary">4839</span></h5>
 						<h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
 					</div>
-				</div>
+				</div>   
 			</div>
 		</div>
-<<<<<<< HEAD
 	<div class="text-center page-name mt-1 grey-border" style="padding-top : 20px !important">
       <div class="mobile-home-search"> 
             <div class="row" style="border-bottom: 2px solid #ddd;">
@@ -350,80 +392,6 @@
        <div style="clear : both;"></div>
 		<div class="text-center text-uppercase lead font-weight-normal align-middle py-2 only_under_767 contact-method mf18"> <a href="#" class="align-middle text-primary">Live Chat</a> | <a href="#" class="align-middle text-primary">Email</a> | <a href="#" class="align-middle text-secondary">xxx-xxx-xxxx</a> </div>
 		
-=======
-		<div class="search-wrap p-2 text-center bg-white">
-			<form class="form-main-search text-center">
-				<div class="row no-gutters">
-					<div class="col-6">
-						<div class="form-group">
-							<input type="text" placeholder="Plan Name or #" >
-						</div>
-					</div>
-					<div class="col">
-						<div class="form-group">
-							<input type="text" placeholder="Min sq. ft." >
-						</div>
-					</div>
-					<div class="col">
-						<div class="form-group">
-							<input type="text" placeholder="Max sq. ft." >
-						</div>
-					</div>
-				</div>
-				<div class="row no-gutters">
-					<div class="col-6">
-						<div class="form-group">
-							<div class="select-custom-wrap select-custom-wrap-lg">
-								<select name="select-custom-style" class="select-custom" >
-									<option value="hide">Styles \ Collections</option>
-									<option value="Collection1">Collection1</option>
-									<option value="Collection2">Collection2</option>
-									<option value="Collection3">Collection3</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="form-group">
-							<div class="select-custom-wrap select-custom-wrap-sm">
-								<select name="select-custom-beds" class="select-custom">
-									<option value="hide">Beds</option>
-									<option value="Bed1">1</option>
-									<option value="Bed2">2</option>
-									<option value="Bed3">3</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="form-group">
-							<div class="select-custom-wrap select-custom-wrap-sm">
-								<select name="select-custom-baths" class="select-custom"  >
-									<option value="hide">Baths</option>
-									<option value="Bath1">1</option>
-									<option value="Bath2">2</option>
-									<option value="Bath3">3</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row no-gutters">
-					<div class="col-sm">
-						<div class="form-group px-5">
-							<button type="submit" class="btn btn-block btn-primary rounded-0 text-uppercase" >Search House Plans</button>
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-		<div class="text-center text-uppercase lead font-weight-normal align-middle py-2"> <a href="#" class="align-middle text-primary">Live Chat</a> | <a href="#" class="align-middle text-primary">Email</a> | <a href="#" class="align-middle text-secondary">xxx-xxx-xxxx</a> </div>
-		<div class="col-sm">
-			<div class="form-group px-5">
-				<a href="{{ route('search') }}" class="btn btn-block btn-primary rounded-0 text-uppercase advanced-search" >Advanced Plan Search</a>
-			</div>
-		</div>
->>>>>>> origin/develop
 		<div class="plan-list my-1">
 			<div class="position-relative">
 				<div id="modalplan" class="carousel slide" data-ride="carousel" data-interval="1800">
@@ -433,7 +401,7 @@
 						@endforeach
 					</div>
 					<a class="carousel-control-prev" href="#modalplan48" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#modalplan48" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
-				<div class="media planinfo text-left top position-absolute"> <img class="mr-1 align-self-center" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
+				<div class="media planinfo text-left top position-absolute mobile-planinfo"> <img class="mr-1 align-self-center logo-on-mobile" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
 					<div class="media-body">
 						<h5 class="mb-0 text-white">plan <span class="text-secondary">4839</span></h5>
 						<h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
@@ -443,67 +411,79 @@
 		</div>
 		<div class="container">
 			<h4 class="font-weight-bold text-center mb-0 bigFont-xs">NEW HOUSE PLANS</h4>
-			<p class="lead text-center font-weight-semi-bold mb-2 mt-1">by America’s leading architect </p>
+			<p class="lead text-center font-weight-semi-bold mb-2 mt-1">by America’s Leading Architect </p>
 			<div class="bg-secondary w-75 mx-auto mb-3 pb-1"></div>
 			<div class="home-about">
 				<div style="margin-bottom: 10px;">
 					{!! $deskMob->description !!}
 				</div>
 			</div>
-			<h4 class="font-weight-bold text-center mb-2">SIGN UP AND SAVE</h4>
-			<div class="input-group input-group-sm mb-2 mx-auto w-75">
-				<input type="text" class="form-control rounded-0 border-secondary" placeholder="ENTER YOUR EMAIL ADDRESS">
-				<div class="input-group-append">
-					<button class="btn btn-primary rounded-0 text-uppercase text-white font-weight-semi-bold px-3 enter_email" type="button">&gt;</button>
+			<div class="sign_save"> 
+          		<input type="text" class="form-control rounded-0" placeholder="SIGN UP AND SAVE">
+          		<div class="input-group-append" style="display : inline-block;">
+           			 <button class="btn btn-primary rounded-0  font-weight-semi-bold" type="button"><i class="fa fa-chevron-right"></i></button>
+          		</div>
+        	</div>
+            
+            
+			<img src="{{asset('/storage/home-page/'.$bestMob->file)}}" alt="{{$bestMob->name}}" class="img-fluid w-100 my-2">
+			<h4 class="font-weight-bold text-center mb-0 mf18">BEST-SELLING HOUSE PLANS</h4>
+			<p class="text-center font-weight-semi-bold mt-1">America’s Most Popular Designs</p>
+            
+            <div class="bg-secondary home-mobile py-3 px-5 text-center home-about">
+				<div class="row align-items-center">
+					<div class="col-sm-6"> <img src="{{ asset('/storage/about/'.$aboutData['photo']) }}" alt="David" class="img-fluid" /> </div>
+					<div class="col-sm-6  no-padding">
+						<h4 class="font-weight-bold mb-3">{{ $aboutData['title'] }}</h4>
+						<div class="text-left">{!! $aboutData['description'] !!}</div>
+						 <p class="text-center"><a data-fancybox="" href="{{ $aboutData['url'] }}" class=""><button class="btn btn-primary rounded-0 text-uppercase text-dark font-weight-semi-bold" type="button" style="color: white !important;padding: 9px 17px;font-size : 20px;">Watch the Video</button></a></p>
+					</div>
 				</div>
 			</div>
-			<img src="{{asset('/storage/home-page/'.$bestMob->file)}}" alt="{{$bestMob->name}}" class="img-fluid w-100 my-2">
-			<h4 class="font-weight-bold text-center mb-0 bigFont-xs">BEST-SELLING HOUSE PLANS</h4>
-			<p class="lead text-center font-weight-semi-bold mt-1">America’s most popular designs</p>
-			<h5 class="font-weight-bold text-center text-primary">Browse Our Architectural Styles</h5>
+            
+			<h4 class="font-weight-bold text-center text-primary">Browse Our Architectural Styles</h4>
 			<div class="row">
-				<div class="col">
-					<ul class="list-unstyled text-primary">
+				<div class="col-12 col-md-6">
+					<ul class="list-unstyled text-primary text-center">
 						@foreach ($styles as $style)
 							<li><a href="{{ route('style.slug', $style->slug) }}">{{ $style->short_name }}</a></li>
 						@endforeach
 					</ul>
 				</div>
-				<div class="col">
-					<ul class="list-unstyled text-primary">
+ 			</div>
+			<p class="text-right mb-0 xs-text-center grey-text-mobile font-weight-bold"><a href="{{ route('styles') }}" class="d-block text-primary">View ALL Architectural Styles &gt;</a></p>
+                      <h4 class="font-weight-bold text-center text-primary"> Browse by Specialty Collection</h4>
+					<div class="row">
+						<div class="col-12 col-md-6">
+					<ul class="list-unstyled text-primary text-center">
 						@foreach ($collections as $collection)
 							<li><a href="{{ route('collection.slug', $collection->slug) }}">{{ $collection->short_name }}</a></li>
 						@endforeach
 					</ul>
 				</div>
-			</div>
-			<p class="text-center font-weight-bold"><a href="{{ route('styles') }}" class="d-block text-primary">View ALL Architectural Styles &gt;</a><a href="{{ route('collections') }}" class="d-block text-primary mt-1">View ALL Specialty Collections &gt;</a></p>
-
-			<div class="bg-secondary home-mobile py-3 px-5 text-center home-about">
-				<div class="row align-items-center">
-					<div class="col-sm-6"> <img src="{{ asset('/storage/about/'.$aboutData['photo']) }}" alt="David" class="img-fluid" /> </div>
-					<div class="col-sm-6">
-						<h4 class="font-weight-bold mb-3">{{ $aboutData['title'] }}</h4>
-						{!! $aboutData['description'] !!}
-						<p><a data-fancybox="" href="{{ $aboutData['url'] }}" class="btn btn-outline-dark rounded-0 px-5 font-weight-semi-bold">Watch the Video</a></p>
-					</div>
-				</div>
-			</div>
-
-			<div class="home-about">
+                        </div>
+            </div>
+           <p class="text-right mb-0 xs-text-center grey-text-mobile font-weight-bold"> <a href="{{ route('collections') }}" class="d-block text-primary mt-1">View ALL Specialty Collections &gt;</a></p>
+			<div class="home-about col-12">
+           <div class="bg-dark py-3 px-4 mh-1 px-xs-0 bg-grey hp_sec-margin">
 				<h4 class="text-center font-weight-bold mb-3">Why Buy From Us?</h4>
-				<p class="text-center">Complete Architectural Details | Free Product Ideas </br> Best Price Guarantee</p>
+				
 				<div>
 					{!! $aboutData->why_text !!}
 				</div>
+                </div>
+                  <div class="bg-dark py-3 px-4 mh-1 px-xs-0 bg-grey hp_sec-margin">
 				<h4 class="text-center font-weight-bold mb-3">Best Price Guarantee</h4>
 				<div>
 					{!! $aboutData->best_text !!}
 				</div>
+                </div>
+                  <div class="bg-dark py-3 px-4 mh-1 px-xs-0 bg-grey hp_sec-margin">
 				<h4 class="text-center font-weight-bold mb-3">FREE Modification Estimates</h4>
 				<div>
 					{!! $aboutData->free_text !!}
 				</div>
+                </div>
 			</div>
 		</div>
 	@endsection
