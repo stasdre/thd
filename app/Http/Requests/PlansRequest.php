@@ -29,9 +29,9 @@ class PlansRequest extends FormRequest
         $validate['designer_partner'] = 'required_if:designer,designer_partner';
 
         if($this->method() == 'POST')
-            $validate['plan_number'] = 'required|integer|unique:plans,plan_number';
+            $validate['plan_number'] = 'required|digits:4|unique:plans,plan_number';
         else
-            $validate['plan_number'] = 'required|integer|unique:plans,plan_number,'.$this->route('house_plan')->id.',id';
+            $validate['plan_number'] = 'required|digits:4|unique:plans,plan_number,'.$this->route('house_plan')->id.',id';
 
         $validate['name'] = 'required|max:100';
 

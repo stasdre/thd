@@ -7,7 +7,7 @@
                         <li role="presentation" class="{{ $active == 'features' ? 'active' : '' }}"><a href="{{ route('plan-features.edit', [$plan->id]) }}">Key Features</a></li>
                         <li role="presentation" class="{{ $active == 'desc' ? 'active' : '' }}"><a href="{{ route('plan-desc.edit', [$plan->id]) }}">Plan Description</a></li>
                         <li role="presentation" class="{{ $active == 'pricing' ? 'active' : '' }}"><a href="{{ route('plan-packages.edit', [$plan->id]) }}">Pricing Options</a></li>
-                        <li role="presentation" class=""><a href="#">Preview Plan Page</a></li>
+                        <li role="presentation" class=""><a target="_blank" href="{{ route('plan.view', $plan->plan_number) }}">Preview Plan Page</a></li>
                     @else
                         <li role="presentation" class="active"><a href="{{ route('house-plan.create') }}">Plan Detail</a></li>
                         <li role="presentation" class="disabled"><a href="#">Graphics</a></li>
