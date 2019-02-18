@@ -13,7 +13,7 @@
     <div class="plan-list my-1">
       <div class="row no-gutters align-items-center py-2 px-2">
         <div class="col-8">
-          <p class="plan-name font-weight-bold mb-0">{{$plan->square_ft['str_total']}} sq ft | <span class="text-white">plan {{$plan->id}}</span></p>
+          <p class="plan-name font-weight-bold mb-0">{{$plan->square_ft['str_total']}} sq ft | <span class="text-white">plan {{$plan->plan_number}}</span></p>
         </div>
         <div class="col-4">
           <ul class="list-inline mb-0 text-right">
@@ -35,7 +35,7 @@
                       @endif
                       <div class="media planinfo text-left"> <img class="mr-1 align-self-end" src="{{asset('images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
                           <div class="media-body">
-                              <h5 class="mb-0 text-white">plan <span class="text-secondary">{{$plan->id}}</span></h5>
+                              <h5 class="mb-0 text-white">plan <span class="text-secondary">{{$plan->plan_number}}</span></h5>
                               <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
                           </div>
                       </div>
@@ -180,13 +180,13 @@
         <li class="nav-item xs-hide-portrait"> <a class="nav-link rounded-0 active" id="plandescription" data-toggle="tab" href="#planDescription" role="tab">Plan Description</a> </li>
         <li class="nav-item xs-hide-portrait"> <a class="nav-link rounded-0" id="planspecifications" data-toggle="tab" href="#planSpecifications" role="tab">Plan Specifications</a> </li>
         <li class="nav-item xs-hide-portrait"> <a class="nav-link rounded-0" id="planfeatures" data-toggle="tab" href="#planFeatures" role="tab">Plan <span class="d-sm-block d-md-inline">Features</span></a> </li>
-        <li class="nav-item border-right-xs"> <a class="nav-link rounded-0" id="modifyplan" target="_blank" href="{{route('modify-plan', $plan->id)}}" >Modify <span class="xs-hide-portrait"> This Plan</span></a> </li>
+        <li class="nav-item border-right-xs"> <a class="nav-link rounded-0" id="modifyplan" target="_blank" href="{{route('modify-plan', $plan->plan_number)}}" >Modify <span class="xs-hide-portrait"> This Plan</span></a> </li>
         <li class="nav-item border-left-xs"> <a class="nav-link rounded-0" id="costbuild" data-toggle="tab" href="#costBuild" role="tab">Cost to <span class="d-sm-block d-md-inline">Build</span></a> </li>
         <li class="nav-item xs-hide-portrait"> <a class="nav-link rounded-0" id="customerreviews" data-toggle="tab" href="#customerReviews" role="tab">Customer Reviews</a> </li>
       </ul>
       <div class="tab-content bg-secondary px-5 py-3 mt-2" id="myTabContent">
         <div class="tab-pane fade show active" id="planDescription" role="tabpanel">
-          <h6 class="font-weight-bold">dell’Azienda Agricola: House Plan {{$plan->id}}</h6>
+          <h6 class="font-weight-bold">dell’Azienda Agricola: House Plan {{$plan->plan_number}}</h6>
           <div class="margin_bt0-xs">{!! $plan->short_description !!} <a href="#" data-toggle="collapse" data-target="#readMore" class="read_more"> READ MORE...</a>. <div id="readMore" class="collapse in">{!! $plan->description !!}</div></div>
         </div>
         <div class="tab-pane fade" id="planSpecifications" role="tabpanel">

@@ -13,7 +13,6 @@
             <table class="table table-bordered table-striped" id="plans-table">
                 <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Plan Number</th>
                     <th>Name</th>
                     <th>Published</th>
@@ -40,7 +39,6 @@
             serverSide: true,
             ajax: '{!! route('house-plan.data') !!}',
             columns: [
-                { data: 'id', name: 'id', className: "dt-center" },
                 { data: 'plan_number', name: 'plan_number', className: "dt-center" },
                 { data: 'name', name: 'name' },
                 { data: 'is_active', name: 'is_active', orderable: false, searchable: false, className: "dt-center" },
