@@ -93,17 +93,17 @@
           <h5 class="text-uppercase font-weight-bold sm-font-1rem xs-hide-portrait">HOUSE PLAN DETAILS</h5>
           <div class="py-2 px-5 font-weight-bold">
            <div class="row text-center no-gutters">
-      <div class="col py-1 border border-light font-weight-semi-bold">Sq. Ft. <span class="d-block text-secondary">{{$plan->square_ft['str_total']}}</span></div>
-      <div class="col py-1 border border-light font-weight-semi-bold bg-secondary">1st Fl <span class="d-block text-white">{{$plan->square_ft['1_floor']}}</span></div>
-      <div class="col py-1 border border-light font-weight-semi-bold">2nd Fl <span class="d-block text-secondary">{{$plan->square_ft['2_floor']}}</span></div>
-      <div class="col py-1 border border-light font-weight-semi-bold bg-secondary">Garages <span class="d-block text-white">{{$plan->garage['car']}} car</span></div>
+               <div class="col py-1 border border-light font-weight-semi-bold">Sq. Ft. <span class="d-block text-secondary"><b>{{$plan->square_ft['str_total']}}</b></span></div>
+      <div class="col py-1 border border-light font-weight-semi-bold bg-secondary">1st Fl <span class="d-block text-white"><b>{{$plan->square_ft['1_floor']}}</b></span></div>
+      <div class="col py-1 border border-light font-weight-semi-bold">2nd Fl <span class="d-block text-secondary"><b>{{$plan->square_ft['2_floor']}}</b></span></div>
+      <div class="col py-1 border border-light font-weight-semi-bold bg-secondary">Garages <span class="d-block text-white"><b>{{$plan->garage['car']}} car</b></span></div>
     </div>
            
     <div class="row text-center no-gutters">
-      <div class="col py-1 border border-light font-weight-semi-bold bg-secondary">Beds <span class="d-block text-white">{{$plan->rooms['r_bedrooms']}}</span></div>
-      <div class="col py-1 border border-light font-weight-semi-bold">Baths <span class="d-block text-secondary">{{$plan->rooms['r_full_baths']}}</span></div>
-      <div class="col py-1 border border-light font-weight-semi-bold bg-secondary">Width <span class="d-block text-white">{{$plan->dimensions['width_ft']}}' {{$plan->dimensions['width_in']}}"</span></div>
-      <div class="col py-1 border border-light font-weight-semi-bold">Depth <span class="d-block text-secondary">{{$plan->dimensions['depth_ft']}}' {{$plan->dimensions['depth_in']}}"</span></div>
+      <div class="col py-1 border border-light font-weight-semi-bold bg-secondary">Beds <span class="d-block text-white"><b>{{$plan->rooms['r_bedrooms']}}</b></span></div>
+      <div class="col py-1 border border-light font-weight-semi-bold">Baths <span class="d-block text-secondary"><b>{{$plan->rooms['r_full_baths']}}</b></span></div>
+      <div class="col py-1 border border-light font-weight-semi-bold bg-secondary">Width <span class="d-block text-white"><b>{{$plan->dimensions['width_ft']}}' {{$plan->dimensions['width_in']}}"</b></span></div>
+      <div class="col py-1 border border-light font-weight-semi-bold">Depth <span class="d-block text-secondary"><b>{{$plan->dimensions['depth_ft']}}' {{$plan->dimensions['depth_in']}}"</b></span></div>
     </div>
           </div>
           <a href="#floorPlan" class="btn btn-primary text-uppercase rounded-0 mt-3 xs-hide-portrait">View Floor Plans</a> </div>

@@ -57,18 +57,18 @@ class PlansRequest extends FormRequest
         $validate['dimensions.height_ft'] = 'required|numeric';
         $validate['dimensions.height_in'] = 'nullable|numeric';
 
-        $validate['square_ft.str_total'] = 'nullable|numeric';
-        $validate['square_ft.unit_total'] = 'nullable|numeric';
-        $validate['square_ft.1_floor'] = 'nullable|numeric';
-        $validate['square_ft.2_floor'] = 'nullable|numeric';
-        $validate['square_ft.3_floor'] = 'nullable|numeric';
-        $validate['square_ft.lower_floor'] = 'nullable|numeric';
-        $validate['square_ft.bonus'] = 'nullable|numeric';
-        $validate['square_ft.garage'] = 'nullable|numeric';
-        $validate['square_ft.storage'] = 'nullable|numeric';
-        $validate['square_ft.porch'] = 'nullable|numeric';
-        $validate['square_ft.deck'] = 'nullable|numeric';
-        $validate['square_ft.patio'] = 'nullable|numeric';
+        $validate['square_ft.str_total'] = 'nullable';
+        $validate['square_ft.unit_total'] = 'nullable';
+        $validate['square_ft.1_floor'] = 'nullable';
+        $validate['square_ft.2_floor'] = 'nullable';
+        $validate['square_ft.3_floor'] = 'nullable';
+        $validate['square_ft.lower_floor'] = 'nullable';
+        $validate['square_ft.bonus'] = 'nullable';
+        $validate['square_ft.garage'] = 'nullable';
+        $validate['square_ft.storage'] = 'nullable';
+        $validate['square_ft.porch'] = 'nullable';
+        $validate['square_ft.deck'] = 'nullable';
+        $validate['square_ft.patio'] = 'nullable';
 
         $validate['custom__sq_ft.custom_desc.*'] = 'required_with:custom_sq.*|max:100';
         $validate['custom__sq_ft.custom_sq.*'] = 'required_with:custom_desc.*|nullable|numeric';
