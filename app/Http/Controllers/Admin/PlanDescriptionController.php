@@ -31,7 +31,7 @@ class PlanDescriptionController extends Controller
         $request->validate([
             'page_title'=>'required|max:70',
             'meta_title' => 'required',
-            'description' => 'required|max:155',
+            'meta_description' => 'required|max:155',
         ]);
 
         $plan->page_title = $request->input('page_title');
