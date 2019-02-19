@@ -76,7 +76,7 @@
                             <div class="input-group input-group-sm">
                                 <input type="text" class="form-control rounded-0 border-secondary promo-code-mobile" placeholder="Enter promo code">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary rounded-0 text-dark font-weight-semi-bold" type="button">APPLY</button>
+                                    <button class="btn btn-primary rounded-0 text-dark font-weight-semi-bold" type="button" v-on:click="promo">APPLY</button>
                                 </div>
                             </div>
                         </div>
@@ -163,6 +163,7 @@
     @else
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
     @endif
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     var app = new Vue({
         el: '#shoppingCart',
@@ -181,6 +182,11 @@
                     else
                         this.shippCost = 'FREE';
                 }
+            },
+            promo: function(e){
+                e.preventDefault();
+                axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+                    .then(response => (console.log(response)));
             }
         }
     })

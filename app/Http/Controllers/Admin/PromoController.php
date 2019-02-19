@@ -40,7 +40,8 @@ class PromoController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'value' => 'required|alpha_num',
-            'level' => 'required|in:cost,percent'
+            'level' => 'required|in:cost,percent',
+            'code' => 'required'
         ]);
 
         $inputs = $request->except('_token');
@@ -80,7 +81,8 @@ class PromoController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'value' => 'required|alpha_num',
-            'level' => 'required|in:cost,percent'
+            'level' => 'required|in:cost,percent',
+            'code' => 'required'
         ]);
 
         $inputs = $request->except(['_method', '_token']);
@@ -121,7 +123,7 @@ class PromoController extends Controller
      */
     public function anyData()
     {
-        $promos = Promo::select(['id', 'name', 'value', 'level', 'created_at', 'updated_at']);
+        $promos = Promo::select(['id', 'name', 'value', 'level', 'code', 'created_at', 'updated_at']);
         return Datatables::of($promos)
             ->addColumn('actions', function($promo){
                 return '<a class="btn btn-info btn-sm" href="'.route('promo.edit', $promo->id).'" role="button">Edit</a> <form style="display: inline-block" action="'.route('promo.destroy', $promo->id).'" method="POST"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'"><button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';

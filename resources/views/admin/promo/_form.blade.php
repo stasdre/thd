@@ -11,6 +11,12 @@
         </div>
     </div>
     <div class="form-group">
+        {{ Form::label('code', 'Code', ['class' => 'col-sm-2 control-label']) }}
+        <div class="col-sm-4">
+            {{ Form::text('code', null, ['class'=>'form-control', 'placeholder'=>'Enter Code']) }}
+        </div>
+    </div>
+    <div class="form-group">
         {{ Form::label('value', 'Value', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-1">
             {{ Form::text('value', null, ['class'=>'form-control', 'placeholder'=>'0.00']) }}

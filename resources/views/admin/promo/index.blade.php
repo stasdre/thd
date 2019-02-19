@@ -14,6 +14,7 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Value</th>
+                    <th>Code</th>
                     <th>Created At</th>
                     <th>Updated At</th>
                     <th>Actions</th>
@@ -30,7 +31,6 @@
 @push('datatables')
 <script src="{{ asset('js/admin/datatables.js') }}"></script>
 @endpush
-
 @push('scripts')
 <script>
     $(function() {
@@ -43,6 +43,7 @@
                 { data: 'id', name: 'id', className: "dt-center" },
                 { data: 'name', name: 'name' },
                 { data: 'value', name: 'value' },
+                { data: 'code', name: 'code' },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'updated_at', name: 'updated_at' },
                 { data: 'actions', name: 'actions', orderable: false, searchable: false, className: "dt-center" }
