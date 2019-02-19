@@ -18,12 +18,12 @@ class ShoppingCartController extends Controller
 
         if(Cart::count()){
             foreach (Cart::content() as $cart){
-
+                $dataCart[] = Plan::find($cart->id);
             }
         }
 
         return view('shopping-cart.index', [
-            'cartData'=>$dataCart,
+            'plansData'=>$dataCart,
             'shipping'=>Shipping::all()
         ]);
     }
