@@ -186,7 +186,7 @@
       </ul>
       <div class="tab-content bg-secondary px-5 py-3 mt-2" id="myTabContent">
         <div class="tab-pane fade show active" id="planDescription" role="tabpanel">
-          <h6 class="font-weight-bold">{{$plan->name}} {{$plan->plan_number}}</h6>
+          <h6 class="font-weight-bold">{{$plan->name}} House Plan {{$plan->plan_number}}</h6>
           <div class="margin_bt0-xs">{!! $plan->short_description !!} <a href="#" data-toggle="collapse" data-target="#readMore" class="read_more"> READ MORE...</a>. <div id="readMore" class="collapse in">{!! $plan->description !!}</div></div>
         </div>
         <div class="tab-pane fade" id="planSpecifications" role="tabpanel">
