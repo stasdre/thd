@@ -10,7 +10,7 @@
     </nav>
     
     @if ($agent->isPhone())
-    <div class="plan-list my-1">
+    <div class="plan-list my-1"  style="margin-bottom : 0 !important;padding-bottom : 5px;">
       <div class="row no-gutters align-items-center py-2 px-2">
         <div class="col-8">
           <p class="plan-name font-weight-bold mb-0">{{$plan->square_ft['str_total']}} sq ft | <span class="text-white">plan {{$plan->plan_number}}</span></p>
@@ -88,7 +88,7 @@
     </div>
     <div class="px-4 position-relative padding-botton_0_xs">
       
-      <div class="row text-center align-items-center mt-4 mb-4">
+      <div class="row text-center align-items-center mt-4 mb-4 mtrim-bottom">
         <div class="col-lg-6 col-sm-12 border-right_3 plan_details">
           <h5 class="text-uppercase font-weight-bold sm-font-1rem xs-hide-portrait">HOUSE PLAN DETAILS</h5>
           <div class="py-2 px-5 font-weight-bold">
@@ -107,8 +107,7 @@
     </div>
           </div>
           <a href="#floorPlan" class="btn btn-primary text-uppercase rounded-0 mt-3 xs-hide-portrait">View Floor Plans</a> </div>
-        
-        
+        @if ($agent->isDesktop() || $agent->isTablet())
         <div class="col-lg-4 col-md-6 col-sm-7 form-white padd_top">
           <h5 class="text-uppercase font-weight-bold sm-font-1rem">SELECT THE RIGHT PACKAGE</h5>
           <p class=" d-sm-none">View ALL Available Options</p>
@@ -159,6 +158,7 @@
           </div>
           <button type="submit" class="btn btn-primary text-uppercase rounded-0 mt-1 offset-1">PURCHASE PLANS</button>
         </div>
+       
         <div class="col-lg-2 col-sm-5 padd_top pd-md-0"> <!--d-sm-none-->
           <div class="bg-secondary px-2 py-2 mb-1">
             <h5 class="text-primary">Get Your Plans in Minutes</h5>
@@ -172,9 +172,40 @@
             <h5 class="text-primary">Important Info Before You Buy</h5>
             <!--<p class="small m-0">The PDF Plan Package offers Immediate delivery of your House Plans!</p>-->
           </div>
-        </div>
+        </div> @endif
       </div>
     </div>
+     @if ($agent->isMobile())
+     	<div class="tab-content bg-secondary px-5 py-3 mt-2" id="myTabContent" style="margin-top : 0 !important;">
+        <div class="tab-pane fade show active" id="planDescription" role="tabpanel">
+          <h6 class="font-weight-bold">{{$plan->name}} House Plan {{$plan->plan_number}}</h6>
+          <div class="margin_bt0-xs">{!! $plan->short_description !!} <a href="#" data-toggle="collapse" data-target="#readMore" class="read_more"> READ MORE...</a>. <div id="readMore" class="collapse in">{!! $plan->description !!}</div></div>
+        </div>
+        <div class="tab-pane fade" id="modifyPlan" role="tabpanel">Modify This Plan</div>
+        <div class="tab-pane fade" id="costBuild" role="tabpanel">
+        	<div class="row">
+            	<div class="col-lg-2 text-center">
+                	<h5 class="font-weight-bold mt-3">$29.95</h5> 
+                    <h6>For a Single Plan</h6>
+                    <a href="#" class="btn btn-primary text-uppercase rounded-0 mt-0">ORDER NOW</a>
+                </div>
+                <div class="col-lg-8 text-center">
+                	<h5 class="font-weight-bold">Find Out the Cost-to-Build this Home! </h5>
+                    <p><b>Quickly + Instantly</b> calculate the cost-to-build this home. This report will estimate the costs based
+ on your building location, materials and  labor. You can select the construction quality levels to 
+ensure you stay in budget, economy, standard and premium.</p>
+			<p><a href="#" class="text-primary font-weight-bold free_videoLink">View a FREE demo </a></p>
+            <span class="note text-danger">Note: The Home-Cost Instant Cost-to-Build Estimator purchase is non-refundable.</span>
+                </div>
+                <div class="col-lg-2 text-center">
+                	<h5 class="font-weight-bold mt-3">$49.95</h5> 
+                    <h6>For Unlimited Plan</h6>
+                    <a href="#" class="btn btn-primary text-uppercase rounded-0 mt-0">ORDER NOW</a>
+                </div>
+            </div>
+        </div>
+      </div>
+     @endif
     <div class="">
       <ul class="nav nav-pills plan-nav nav-justified text-uppercase mt-2" id="planDetails" role="tablist">
         <li class="nav-item xs-hide-portrait"> <a class="nav-link rounded-0 active" id="plandescription" data-toggle="tab" href="#planDescription" role="tab">Plan Description</a> </li>
@@ -184,6 +215,7 @@
         <li class="nav-item border-left-xs"> <a class="nav-link rounded-0" id="costbuild" data-toggle="tab" href="#costBuild" role="tab">Cost to <span class="d-sm-block d-md-inline">Build</span></a> </li>
         <li class="nav-item xs-hide-portrait"> <a class="nav-link rounded-0" id="customerreviews" data-toggle="tab" href="#customerReviews" role="tab">Customer Reviews</a> </li>
       </ul>
+      @if ($agent->isDesktop() || $agent->isTablet())
       <div class="tab-content bg-secondary px-5 py-3 mt-2" id="myTabContent">
         <div class="tab-pane fade show active" id="planDescription" role="tabpanel">
           <h6 class="font-weight-bold">{{$plan->name}} House Plan {{$plan->plan_number}}</h6>
@@ -299,6 +331,7 @@ ensure you stay in budget, economy, standard and premium.</p>
         
         </div>
       </div>    
+      @endif
       <ul class="nav nav-pills nav-justified text-uppercase mt-2 xs-hide-portrait" id="floorPlan" role="tablist">
         <li class="nav-item"> <a class="nav-link rounded-0 active" id="first-floor" data-toggle="tab" href="#first" role="tab">First Floor Plan</a> </li>
         <li class="nav-item"> <a class="nav-link rounded-0" id="second-floor" data-toggle="tab" href="#second" role="tab">Second Floor Plan</a> </li>
@@ -376,7 +409,7 @@ ensure you stay in budget, economy, standard and premium.</p>
                      </div>       
                 </div>
                 </div>
-                <div class="row">
+                <!--<div class="row">
 					<div class="col-md-3 text-xs-center"><button type="button" class="btn btn-primary text-uppercase rounded-0">PURCHASE PLANS</button></div>
                     <div class="col-md-6 text-center">
                         <a download="first-floor-Plan.png" target="_blank" href="/images/floor-plan.jpg" title="ImageName">
@@ -384,14 +417,15 @@ ensure you stay in budget, economy, standard and premium.</p>
                         </a>
                 	</div>
                     <div class="col-md-3 text-right text-xs-center custom_reversePlan"><button type="button" class="btn btn-dark rounded-0" id="reverse_plan">Reverse plan</button></div>
-                </div>
+                </div>-->
                <div class="row only_under_767" >
                 	<div class="col-md-12">
-                    	<div class="text-center text-uppercase lead font-weight-normal align-middle py-2" style="background:#fff;font-size: 15px;"> <a href="#" class="align-middle text-primary">Live Chat</a> | <a href="#" class="align-middle text-primary">Email</a> | <a href="#" class="align-middle text-secondary">xxx-xxx-xxxx</a> </div>
+                    	<div class="text-center text-uppercase lead font-weight-normal align-middle py-2" style="font-size: 19px;"> <a href="#" class="align-middle text-primary">Live Chat</a> | <a href="#" class="align-middle text-primary">Email</a> | <a href="#" class="align-middle text-secondary">xxx-xxx-xxxx</a> </div>
 			   		</div>
                </div>
             	<div class="row">
                 	<div class="col-md-12 flipped-container">
+                    <div class="floor-plan-like"><i class="fa fa-heart"></i></div>
                         @foreach($plan->images_first  as $image)
                  		    <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
                         @endforeach
@@ -429,20 +463,85 @@ ensure you stay in budget, economy, standard and premium.</p>
         </div>
       </div>
     </div>
+    @if ($agent->isMobile()) 
+    <div class="col-lg-2 col-sm-5 padd_top pd-md-0 center plan-information"> <!--d-sm-none-->
+          <div class="bg-secondary px-2 py-2 mb-1 ">
+            <h5 class="text-primary">Get Your Plans in Minutes</h5>
+            <!--<p class="small m-0">The PDF Plan Package offers Immediate delivery of your House Plans!</p>-->
+          </div>
+          <div class="bg-secondary px-2 py-2 mb-1">
+            <h5 class="text-primary">What's Included with Your Plans</h5>
+            <!--<p class="small m-0">The PDF Plan Package offers Immediate delivery of your House Plans!</p>-->
+          </div>
+          <div class="bg-secondary px-2 py-2">
+            <h5 class="text-primary">Important Info Before You Buy</h5>
+            <!--<p class="small m-0">The PDF Plan Package offers Immediate delivery of your House Plans!</p>-->
+          </div>
+        </div>
+    <div class="col-lg-4 col-md-6 col-sm-7 form-white padd_top mobile-center">
+          <h5 class="text-uppercase font-weight-bold">SELECT THE RIGHT PACKAGE</h5>
+          <div class="row align-items-center no-gutters mb-1">
+            <div class="col-2 text-right font-weight-bold pr-2">1</div>
+            <div class="col-9 text-left">
+              <div class="form-group mb-0">
+                <div class="select-custom-wrap select-custom-wrap-lg">
+                  <select name="select-custom-style" class="select-custom white_back" >
+                    <option value="hide">Choose Your Plan Package</option>
+                      @foreach($plan->packages as $package)
+                        <option value="{{$package->id}}" data-cost="{{$package->pivot->price }}">{{$package->name}} ({{$package->pivot->price }}$)</option>
+                      @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row align-items-center no-gutters mb-1">
+            <div class="col-2 text-right font-weight-bold pr-2">2</div>
+            <div class="col-9 text-left">
+              <div class="form-group mb-0">
+                <div class="select-custom-wrap select-custom-wrap-lg">
+                  <select name="select-custom-style" class="select-custom white_back" >
+                    <option value="hide">Choose Your Foundation</option>
+                      @foreach($plan->foundationOptions as $foundat)
+                        <option value="{{$foundat->id}}" data-cost="{{$foundat->pivot->price}}">{{$foundat->name}} ({{$foundat->pivot->price}}$)</option>
+                      @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row align-items-center no-gutters mb-1">
+            <div class="col-2 text-right font-weight-bold pr-2">3</div>
+            <div class="col-9 text-left">
+              <div class="form-group mb-0">
+                <div class="select-custom-wrap select-custom-wrap-lg">
+                  <select name="select-custom-style" class="select-custom white_back" >
+                    <option value="hide">Optional Features</option>
+                      @foreach($plan->addons as $addon)
+                        <option value="{{$addon->id}}" data-cost="{{$addon->pivot->price}}">{{$addon->name}} ({{$addon->pivot->price}}$)</option>
+                      @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary text-uppercase rounded-0 mt-1 offset-1">PURCHASE PLANS</button>
+        </div>
+    @endif
     <div class="row text-center">
       <div class="col-md-6">
         <h5 class="font-weight-bold mt-3">View Similar House Plans</h5>
         <div class="row text-center">
           <div class="col-sm-6">
             <div class="plan-grid"> <a href="#"> <img src="{{asset('images/plan-1.jpg')}}" alt="New House Plans" class="img-fluid" />
-              <p class="plan-name text-truncate px-2">dell’ Azienda Agricola House Plan 4839</p>
-              <p class="plan-meta text-truncate px-2">4,839 s.f. | 4 beds | 3.5 baths</p>
+              <p class="plan-name px-2">dell’ Azienda Agricola House Plan 4839</p>
+              <p class="plan-meta px-2">4,839 s.f. | 4 beds | 3.5 baths</p>
               </a> </div>
           </div>
           <div class="col-sm-6">
             <div class="plan-grid"> <a href="#"> <img src="{{asset('images/plan-1.jpg')}}" alt="New House Plans" class="img-fluid" />
-              <p class="plan-name text-truncate px-2">dell’ Azienda Agricola House Plan 4839</p>
-              <p class="plan-meta text-truncate px-2">4,839 s.f. | 4 beds | 3.5 baths</p>
+              <p class="plan-name px-2">dell’ Azienda Agricola House Plan 4839</p>
+              <p class="plan-meta px-2">4,839 s.f. | 4 beds | 3.5 baths</p>
               </a> </div>
           </div>
         </div>

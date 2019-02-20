@@ -489,6 +489,7 @@ footer li > a:active {
 .form-white .select-styled {
   background-color: #fff;
   color: #262e2f;
+  font-weight : bold;
 }
 
 .form-white .select-styled:hover,
@@ -2222,6 +2223,18 @@ ul.paging .btn-sm {
 	padding : 7px !important;
 	margin-bottom : 10px;
 }
+.border-right_3.plan_details
+{
+	border :none !important;
+}
+.mtrim-bottom
+	{
+		margin-bottom : 0 !important;
+	}
+	.border-right_3.plan_details
+	{
+		padding-bottom : 0 !important;
+	}
 }
 .social-icons .fa {
   display: inline-block;
@@ -3620,3 +3633,30 @@ ul.HI_nav {
 	padding-left : 0;
 	padding-right : 0;
 }
+#myTabContent .read_more
+{
+	box-shadow: none;
+	background : none;
+
+}
+#myTabContent  a.read_more{
+	color : black !important;
+	}
+	.plan-information h5
+	{
+		font-size : 20px !important;
+	}
+	
+	.flipped-container
+	{
+		padding-left : 0 !important;
+		padding-right : 0 !important;
+	}
+	.floor-plan-like .fa-heart
+	{
+	 position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 24px;
+    color: grey;
+	}
