@@ -1,5 +1,8 @@
 @extends('layouts.index')
-@if ($agent->isDesktop())
+
+@section('carousel')
+    <div id="banner" class="carousel slide" data-ride="carousel">
+    @if ($agent->isDesktop()  || $agent->isTablet())
 <div class="home-page-search mobile-off"> 
   <h4 class="blue-text"> Search House Plans </h4>
                   <TABLE class="home-search-new">
@@ -40,8 +43,6 @@
 </TABLE>
    </div>
    @endif
-@section('carousel')
-    <div id="banner" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
 			@foreach($gallery as $img)
 	            <li data-target="#banner" data-slide-to="{{$loop->index}}" @if($loop->index == 0)class="active"@endif></li>
@@ -68,90 +69,7 @@
 @endsection
 @if ($agent->isDesktop() || $agent->isTablet())
 	@section('content')
-		<div class="search-wrap py-2 px-5 text-center">
-			<form class="form-main-search text-center">
-				<div class="row no-gutters">
-					<div class="col-md-2 col-sm-3 common_width padd_bottom_10">
-						<div class="form-group">
-							<div class="select-custom-wrap select-custom-wrap-lg">
-								<select name="select-custom-style" class="select-custom" >
-									<option value="hide">Styles \ Collections</option>
-									<option value="Collection1">Collection1</option>
-									<option value="Collection2">Collection2</option>
-									<option value="Collection3">Collection3</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-1 col-sm-3 common_width padd_bottom_10">
-						<div class="form-group">
-							<div class="select-custom-wrap select-custom-wrap-sm">
-								<select name="select-custom-beds" class="select-custom">
-									<option value="hide">Beds</option>
-									<option value="Bed1">1</option>
-									<option value="Bed2">2</option>
-									<option value="Bed3">3</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-1 col-sm-3 common_width padd_bottom_10">
-						<div class="form-group">
-							<div class="select-custom-wrap select-custom-wrap-sm">
-								<select name="select-custom-baths" class="select-custom"  >
-									<option value="hide">Baths</option>
-									<option value="Bath1">1</option>
-									<option value="Bath2">2</option>
-									<option value="Bath3">3</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-1 col-sm-3 common_width padd_bottom_10">
-						<div class="form-group">
-							<div class="select-custom-wrap select-custom-wrap-sm">
-								<select name="select-custom-stories" class="select-custom" >
-									<option value="hide">Stories</option>
-									<option value="Story1">Story1</option>
-									<option value="Story2">Story2</option>
-									<option value="Story3">Story3</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-2 col-sm-3 common_width padd_bottom_10 max-width">
-						<div class="form-group">
-							<div class="select-custom-wrap select-custom-wrap-md">
-								<select name="select-custom-garages" class="select-custom " >
-									<option value="hide">Garages</option>
-									<option value="Garage1">Garage1</option>
-									<option value="Garage2">Garage2</option>
-									<option value="Garage3">Garage3</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-1 col-sm-3 common_width">
-						<div class="form-group">
-							<input type="text" placeholder="Min sq. ft." >
-						</div>
-					</div>
-					<div class="col-md-1 col-sm-3 common_width">
-						<div class="form-group">
-							<input type="text" placeholder="Max sq. ft." >
-						</div>
-					</div>
-					<div class="col-md-1 col-sm-3 common_width">
-						<div class="form-group">
-							<button type="submit" class="btn btn-block btn-primary rounded-0" >Search</button>
-						</div>
-					</div>
-					<div class="col-md-2 col-sm-3 common_width comm_xs_btn">
-						<div class="form-group"> <a href="{{route('search')}}" class="btn btn-link text-uppercase text-white advan_opts">Advanced Options</a> </div>
-					</div>
-				</div>
-			</form>
-		</div>
+		
 		<div class="row align-items-center py-2 pd_bottom_0">
 			<div class="col-sm-3">
 				<h4 class="m-0 font-weight-bold"><a href="#" class="text-primary">FAQs</a></h4>

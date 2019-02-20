@@ -1645,15 +1645,7 @@ ul.paging .btn-sm {
   {
     font-size: 15px !important;
   }
-  .home-page-search {
-    position: absolute;
-    top: 67px !important;
-    background: white;
-    z-index: 10;
-    left: 53px !important;
-    opacity: .8;
-    padding: 5px;
-  }
+
   .home-search-new th {
     padding: 3px 0 !important;
   }
@@ -3304,10 +3296,10 @@ h5.read_more {
 .home-page-search
 {
   position: absolute;
-  top: 84px;
+  top: 6px;
   background: white;
   z-index: 10;
-  left: 130px;
+  left: 30px;
   opacity: .8;
   padding : 5px;
 }
