@@ -12,30 +12,36 @@
             @forelse ($plansData as $plan)
                 <div class="row">
                     <div class="col-sm-4">
-                        <div class="cart-grid text-center"> <img src="images/cart.jpg" alt="" class="img-fluid w-100">
-                            <p class="plan-name font-weight-bold m-0">dell’ Azienda Agricola House Plan 4839</p>
-                            <p class="plan-meta">4,839 s.f. | 4 beds | 3.5 baths</p>
+                        <div class="cart-grid text-center"> <img src="{{ asset('storage/plans/'.$plan->id.'/thumb/'.$plan->images[0]->file_name) }}" alt="{{$plan->images[0]->alt_text}}" class="img-fluid w-100">
+                            <p class="plan-name font-weight-bold m-0">{{ $plan->name }} House Plan {{ $plan->plan_number }}</p>
+                            <p class="plan-meta">{{$plan->square_ft['str_total']}} s.f. | {{$plan->rooms['r_bedrooms']}} beds | {{$plan->rooms['r_full_baths']}} baths</p>
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <h5 class="font-weight-bold">HOUSE PLAN 4839</h5>
+                        <h5 class="font-weight-bold">HOUSE PLAN {{ $plan->plan_number }}</h5>
                         <table class="table cart-table">
                             <tbody>
+                            @if($plan->packages[0])
                             <tr>
-                                <td><span class="text-primary text-lg">PDF Files-Single Build</span> <span class="mobile-display ">&nbsp;(Immediate delivery)</span></td>
-                                <td class="price">$1,895.00</td>
+                                <td><span class="text-primary text-lg">{{$plan->packages[0]->name}}</span></td>
+                                <td class="price">${{number_format($plan->packages[0]->pivot->price, 2, '.', ',')}}</td>
                                 <td style="border:1px solid white;" class="text-right"><a href="{{route('plan.view', $plan->plan_number)}}">edit</a></td>
                             </tr>
+                            @endif
+                            @if($plan->foundationOptions[0])
                             <tr>
-                                <td><span class="text-primary text-lg">Slab Foundation</span></td>
-                                <td class="price">$0.00</td>
+                                <td><span class="text-primary text-lg">{{$plan->foundationOptions[0]->name}}</span></td>
+                                <td class="price">${{number_format($plan->foundationOptions[0]->pivot->price, 2, '.', ',')}}</td>
                                 <td style="border:1px solid white;" class="text-right"><a href="{{route('plan.view', $plan->plan_number)}}">edit</a></td>
                             </tr>
+                            @endif
+                            @if($plan->addons[0])
                             <tr>
-                                <td><span class="text-primary text-lg">Full Reverse</span></td>
-                                <td class="price">$150.00</td>
+                                <td><span class="text-primary text-lg">{{$plan->addons[0]->name}}</span></td>
+                                <td class="price">${{number_format($plan->addons[0]->pivot->price, 2, '.', ',')}}</td>
                                 <td style="border:1px solid white;" class="text-right"><a href="{{route('plan.view', $plan->plan_number)}}">edit</a></td>
                             </tr>
+                            @endif
                             <tr>
                                 <td class="shipping-values mobile-off"><span class="text-primary text-lg">Shipping</span>
                                     <select name="" class="form-control d-inline-block w-50" v-on:change="calculate">
@@ -74,7 +80,7 @@
                     <form action="">
                         <div class="form-group text-left">
                             <div class="input-group input-group-sm">
-                                <input type="text" class="form-control rounded-0 border-secondary promo-code-mobile" placeholder="Enter promo code">
+                                <input type="text" v-model="promoData" class="form-control rounded-0 border-secondary promo-code-mobile" placeholder="Enter promo code">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary rounded-0 text-dark font-weight-semi-bold" type="button" v-on:click="promo">APPLY</button>
                                 </div>
@@ -95,7 +101,13 @@
 </div>
 
         <div class="container cart-actions-sec">
-            <div class="px-5 py-1 text-right cart-actions"> <a href="{{ route('register') }}" class="btn btn-dark rounded-0 text-uppercase font-weight-semi-bold sign-in-checkout">Sign in to Checkout</a> <a href="#" class="btn btn-primary rounded-0  font-weight-semi-bold guest-checkout">GUEST CHECKOUT</a> </div>
+            @auth
+                <div class="px-5 py-1 text-right cart-actions"> <a href="#" class="btn btn-primary rounded-0  font-weight-semi-bold guest-checkout">CHECKOUT</a> </div>
+            @endauth
+
+            @guest
+                <div class="px-5 py-1 text-right cart-actions"> <a href="{{ route('register') }}" class="btn btn-dark rounded-0 text-uppercase font-weight-semi-bold sign-in-checkout">Sign in to Checkout</a> <a href="#" class="btn btn-primary rounded-0  font-weight-semi-bold guest-checkout">GUEST CHECKOUT</a> </div>
+            @endguest
         </div>
     @endif
     <div class="page-name mt-3 mb-2 py-2 px-5 text-center">
@@ -170,22 +182,29 @@
         data: {
             total: {{ Cart::total() }},
             calc: parseFloat({{ Cart::total() }}),
-            shippCost: "FREE"
+            shippCost: "FREE",
+            cost: 0,
+            promoCost: 0,
+            promoType: '',
+            promoData: ''
         },
         methods: {
             calculate: function (e) {
                 if(e.target.options.selectedIndex > -1) {
-                    var cost = parseFloat(e.target.options[e.target.options.selectedIndex].dataset.cost);
-                    this.total = this.calc + cost;
-                    if(cost > 0)
-                        this.shippCost = '$'+cost;
+                    this.cost = parseFloat(e.target.options[e.target.options.selectedIndex].dataset.cost);
+                    this.total = this.calc + this.cost;
+                    if(this.cost > 0)
+                        this.shippCost = '$'+this.cost;
                     else
                         this.shippCost = 'FREE';
                 }
             },
             promo: function(e){
                 e.preventDefault();
-                axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+                axios.post('{{route('promo')}}',{
+                    code: this.promoData,
+                    shipp: this.cost
+                })
                     .then(response => (console.log(response)));
             }
         }
