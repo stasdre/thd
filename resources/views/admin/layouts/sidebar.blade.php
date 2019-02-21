@@ -21,6 +21,17 @@
             @role(['owner', 'admin'])
                 <li class="treeview">
                     <a href="#">
+                        <i class="fa fa-shopping-bag"></i>
+                        <span>E-commerce</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ route('shipping.index') }}"><i class="fa fa-address-card-o"></i> Shipping Methods</a></li>
+                        <li><a href="{{ route('promo.index') }}"><i class="fa fa-money"></i> Promo Codes</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
                         <i class="fa fa-users"></i>
                         <span>Customer Management</span>
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>

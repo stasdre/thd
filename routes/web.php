@@ -131,6 +131,12 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::get('home-page/mobile-best', 'Admin\HomePageController@mobileBest')->name('home-page.mobile-best');
         Route::post('home-page/mobile-best', 'Admin\HomePageController@mobileBest')->name('home-page.mobile-best.post');
+
+        Route::resource('shipping', 'Admin\ShippingController', ['except'=>['show']]);
+        Route::get('shipping/data', 'Admin\ShippingController@anyData')->name('shipping.data');
+
+        Route::resource('promo', 'Admin\PromoController', ['except'=>['show']]);
+        Route::get('promo/data', 'Admin\PromoController@anyData')->name('promo.data');
     });
 });
 
@@ -146,3 +152,7 @@ Route::get('modify-plan/{plan_number}','PlanController@modifyplan')->name('modif
 
 Route::get('contact-us/', 'ContactUsController@index')->name('contact-us');
 Route::post('contact-us/send', 'ContactUsController@send')->name('contact-us.send');
+
+Route::get('cart/', 'ShoppingCartController@index')->name('cart');
+Route::post('purchase/', 'ShoppingCartController@purchase')->name('purchase');
+Route::post('promo/', 'ShoppingCartController@promo')->name('promo');
