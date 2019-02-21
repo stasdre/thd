@@ -9,7 +9,7 @@
       </ol>
     </nav>
     
-    @if ($agent->isPhone())
+    @if($agent->isPhone())
     <div class="plan-list my-1"  style="margin-bottom : 0 !important;padding-bottom : 5px;">
       <div class="row no-gutters align-items-center py-2 px-2">
         <div class="col-8">
@@ -17,7 +17,7 @@
         </div>
         <div class="col-4">
           <ul class="list-inline mb-0 text-right">
-            <li class="list-inline-item"><a href=""><img src="{{asset('images/icons/icon-favourite.png')}}" alt=""></a></li>
+            <li class="list-inline-item"><a href=""><i class="fa fa-heart-o" style="color:white;font-size : 25px;"></i></a></li>
           </ul>
         </div>
       </div>
@@ -107,7 +107,7 @@
     </div>
           </div>
           <a href="#floorPlan" class="btn btn-primary text-uppercase rounded-0 mt-3 xs-hide-portrait">View Floor Plans</a> </div>
-        @if ($agent->isDesktop() || $agent->isTablet())
+        @if($agent->isDesktop() || $agent->isTablet())
         <div class="col-lg-4 col-md-6 col-sm-7 form-white padd_top">
             {!! Form::open(['route' => 'purchase', 'class' => 'form-horizontal', 'method' => 'post', 'files' => true]) !!}
             <input type="hidden" name="plan_id" value="{{ $plan->id }}">
@@ -346,9 +346,7 @@ ensure you stay in budget, economy, standard and premium.</p>
         	<div class="col-lg-10 m-auto">
             	<br/><br/>
                 <div class="row show-portrait-xs">
-                <div class="text-center px-5">
-                  <p><a href="#" class="btn btn-primary rounded-0 mt-3" data-toggle="collapse" data-target="#ViewallPlans" >View ALL plan details</a></p>
-                </div>
+                
                 <div class="row collapse in" id="ViewallPlans">
                     <div class="col-lg-12">
                             <div class="col-lg-12">
@@ -421,14 +419,13 @@ ensure you stay in budget, economy, standard and premium.</p>
                 	</div>
                     <div class="col-md-3 text-right text-xs-center custom_reversePlan"><button type="button" class="btn btn-dark rounded-0" id="reverse_plan">Reverse plan</button></div>
                 </div>-->
-               <div class="row only_under_767" >
-                	<div class="col-md-12">
-                    	<div class="text-center text-uppercase lead font-weight-normal align-middle py-2" style="font-size: 19px;"> <a href="#" class="align-middle text-primary">Live Chat</a> | <a href="#" class="align-middle text-primary">Email</a> | <a href="#" class="align-middle text-secondary">xxx-xxx-xxxx</a> </div>
-			   		</div>
-               </div>
-            	<div class="row">
+               
+               	   
+        </div>
+        
+        <div class="row mobile-off">
                 	<div class="col-md-12 flipped-container">
-                    <div class="floor-plan-like"><i class="fa fa-heart"></i></div>
+                 
                         @foreach($plan->images_first  as $image)
                  		    <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
                         @endforeach
@@ -437,7 +434,7 @@ ensure you stay in budget, economy, standard and premium.</p>
                 <br/><br/>
              </div>
         </div>
-        <div class="tab-pane fade" id="second" role="tabpanel">
+        <div class="tab-pane fade mobile-off" id="second" role="tabpanel">
             <div class="row">
                 <div class="col-md-12 flipped-container">
                     @foreach($plan->images_second  as $image)
@@ -446,7 +443,7 @@ ensure you stay in budget, economy, standard and premium.</p>
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="basement" role="tabpanel">
+        <div class="tab-pane fade mobile-off" id="basement" role="tabpanel">
             <div class="row">
                 <div class="col-md-12 flipped-container">
                     @foreach($plan->images_basement  as $image)
@@ -455,7 +452,7 @@ ensure you stay in budget, economy, standard and premium.</p>
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="bonus" role="tabpanel">
+        <div class="tab-pane fade mobile-off" id="bonus" role="tabpanel">
             <div class="row">
                 <div class="col-md-12 flipped-container">
                     @foreach($plan->images_bonus  as $image)
@@ -467,6 +464,79 @@ ensure you stay in budget, economy, standard and premium.</p>
       </div>
     </div>
     @if ($agent->isMobile()) 
+    <div class="text-center px-5">
+                  <p><a href="#" class="btn btn-primary rounded-0 mt-3" data-toggle="collapse" data-target="#ViewallPlans" >View ALL plan details</a></p>
+                </div>
+    <div class="row only_under_767" >
+                	<div class="col-md-12">
+                    	<div class="text-center text-uppercase lead font-weight-normal align-middle py-2" style="font-size: 19px;"> <a href="#" class="align-middle text-primary">Live Chat</a> | <a href="#" class="align-middle text-primary">Email</a> | <a href="#" class="align-middle text-secondary">xxx-xxx-xxxx</a> </div>
+			   		</div>
+               </div>
+    <div id="carouselPlan" class="carousel slide" data-ride="carousel" data-interval="false" >
+ 					 <div class="carousel-inner">
+   							 <div class="carousel-item active">
+  									<div class="slides row">
+                								<div class="col-md-12 flipped-container">
+                                                	   <img src="http://104.236.20.15:8080/storage/plans/14/Cq7pMtEk7KkvREbYcVWod8nLBmvxBZ1tUOVdsXeO.jpg" />
+                                                             @foreach($plan->images_first  as $image)
+                                                             <div class="floor-plan-like"><i class="fa fa-heart"></i></div>
+                                                                <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
+                                                          	 @endforeach
+                    </div>
+                     				
+                                    </div>
+                              </div>
+                              <div class="carousel-item">
+  									<div class="slides row">
+                								<div class="col-md-12 flipped-container">
+                    									   <img src="http://104.236.20.15:8080/storage/plans/14/Cq7pMtEk7KkvREbYcVWod8nLBmvxBZ1tUOVdsXeO.jpg" />
+                                                             @foreach($plan->images_second  as $image)
+                                                             <div class="floor-plan-like"><i class="fa fa-heart"></i></div>
+                        <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
+                    	@endforeach
+                    </div>
+                     				
+                                    </div>
+                              </div>
+                              <div class="carousel-item">
+  									<div class="slides row">
+                								<div class="col-md-12 flipped-container">
+                    									   <img src="http://104.236.20.15:8080/storage/plans/14/Cq7pMtEk7KkvREbYcVWod8nLBmvxBZ1tUOVdsXeO.jpg" />
+                                                              @foreach($plan->images_basement  as $image)
+                                                              <div class="floor-plan-like"><i class="fa fa-heart"></i></div>
+                        <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
+                    @endforeach
+                    </div>
+                     				
+                                    </div>
+                              </div>
+                              <div class="carousel-item">
+  									<div class="slides row">
+                								<div class="col-md-12 flipped-container">
+                    									   <img src="http://104.236.20.15:8080/storage/plans/14/Cq7pMtEk7KkvREbYcVWod8nLBmvxBZ1tUOVdsXeO.jpg" />
+                                                             @foreach($plan->images_bonus  as $image)
+                                                             <div class="floor-plan-like"><i class="fa fa-heart"></i></div>
+                        <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
+                    @endforeach
+                    </div>
+                     				
+                                    </div>
+                              </div>
+                              
+                              
+                                <a class="carousel-control-prev" href="#carouselPlan" role="button" data-slide="prev" style="left: 0;">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselPlan" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+                      </div>
+
+             </div>
+    
+    
     <div class="col-lg-2 col-sm-5 padd_top pd-md-0 center plan-information"> <!--d-sm-none-->
           <div class="bg-secondary px-2 py-2 mb-1 ">
             <h5 class="text-primary">Get Your Plans in Minutes</h5>

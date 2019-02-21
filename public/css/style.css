@@ -2099,8 +2099,8 @@ ul.paging .btn-sm {
   }
 .search_by_name
 {
-	font-size : 12pt;
-	font-weight: 600;
+	font-size : 13pt;
+	font-weight: bold;
     color: black;
 }
 .mobile-home-search .search-button1
@@ -2181,12 +2181,12 @@ ul.paging .btn-sm {
 	width :  30px; 
 }
 .max_icon i.fa {
-    padding: 7px 9px !important;
+    padding: 9px 11px !important;
     border: 1px solid black;
     font-size: 10px;
 }
 .min_icon i.fa {
-    padding: 7px 9px !important;
+    padding: 9px 11px !important;
     border: 1px solid silver;
     font-size: 10px;
     opacity: .6;
@@ -2234,6 +2234,10 @@ ul.paging .btn-sm {
 	.border-right_3.plan_details
 	{
 		padding-bottom : 0 !important;
+	}
+	#carouselPlan img
+	{
+		max-width : 100%;
 	}
 }
 .social-icons .fa {
@@ -2705,7 +2709,7 @@ ul.list-style-none li {
   }
   .min_icon i.fa
 	{
-	padding:7px 9px !important;
+	padding:9px 11px !important;
     border: 1px solid silver;
     font-size: 10px;
 	opacity : .6; 
@@ -2730,7 +2734,7 @@ color : black;
     font-size: 12px !important;
 }
 .mobile-home-search input {
-    width: 38.5px !important;
+    width: 41px !important;
     font-size: 13px;
 	}
 	.mobile-home-search  .col-4
@@ -2757,7 +2761,8 @@ color : black;
     margin-left: 4px !important;
 }
 .search_by_name {
-    font-size: 11pt;
+    font-size: 12pt;
+	font-weight : bold;
 }
 }
 								   
@@ -3340,10 +3345,10 @@ h5.read_more {
 }
 .mobile-home-search input
 {
-  width : 32px;
-  padding : 2px 0;
+  width : 45px;
+  padding : 5px 0;
 	border :none;
-	font-weight: 600;
+	font-weight: bold;
 	border-radius: unset !important;			  
 }
 .mobile-home-search i.fa {
@@ -3362,7 +3367,7 @@ h5.read_more {
   margin-left: 9px;
 }
 .min_icon {
-  margin-right: 7px;
+  margin-right: 6px;
 }
 .grey-button
 {
@@ -3660,3 +3665,11 @@ ul.HI_nav {
     font-size: 24px;
     color: grey;
 	}
+	#carouselPlan .carousel-control-prev-icon
+{
+  background-image : url("/images/icons/prev-grey.png")!important;
+}
+#carouselPlan .carousel-control-next-icon
+{
+  background-image : url("/images/icons/next-grey.png")!important;
+}
