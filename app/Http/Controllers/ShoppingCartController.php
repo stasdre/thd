@@ -97,7 +97,11 @@ class ShoppingCartController extends Controller
         $promo = Promo::where('code', '=', $request->input('code'))->first();
 
         if(isset($promo->id)){
-            return ['status'=>'ok'];
+            return [
+                'status'=>'ok',
+                'value'=>$promo->value,
+                'type'=>$promo->level
+            ];
         }else {
             return ['status'=>false];
         }

@@ -44,7 +44,7 @@
                             @endif
                             <tr>
                                 <td class="shipping-values mobile-off"><span class="text-primary text-lg">Shipping</span>
-                                    <select name="" class="form-control d-inline-block w-50" v-on:change="calculate">
+                                    <select name="" class="form-control d-inline-block w-50" v-on:change="changeShipp">
                                         @foreach($shipping as $ship)
                                             <option data-cost="{{$ship->cost}}" value="{{$ship->id}}">{{$ship->name}}</option>
                                         @endforeach
@@ -53,7 +53,7 @@
 
                                 </td>
                                 <td class="shipping-values desktop-off"><span class="text-primary text-lg">Shipping</span>
-                                    <select name="" class="form-control d-inline-block w-50" v-on:change="calculate">
+                                    <select name="" class="form-control d-inline-block w-50" v-on:change="changeShipp">
                                         @foreach($shipping as $ship)
                                             <option data-cost="{{$ship->cost}}" value="{{$ship->id}}">{{$ship->name}}</option>
                                         @endforeach
@@ -82,7 +82,7 @@
                             <div class="input-group input-group-sm">
                                 <input type="text" v-model="promoData" class="form-control rounded-0 border-secondary promo-code-mobile" placeholder="Enter promo code">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary rounded-0 text-dark font-weight-semi-bold" type="button" v-on:click="promo">APPLY</button>
+                                    <button class="btn btn-primary rounded-0 text-dark font-weight-semi-bold" type="button" v-on:click="promo"><i v-if="loading" class="fas fa-sync fa-spin"></i> APPLY</button>
                                 </div>
                             </div>
                         </div>
@@ -186,26 +186,49 @@
             cost: 0,
             promoCost: 0,
             promoType: '',
-            promoData: ''
+            promoData: '',
+            loading: false
         },
         methods: {
-            calculate: function (e) {
+            changeShipp: function(e){
                 if(e.target.options.selectedIndex > -1) {
                     this.cost = parseFloat(e.target.options[e.target.options.selectedIndex].dataset.cost);
-                    this.total = this.calc + this.cost;
-                    if(this.cost > 0)
-                        this.shippCost = '$'+this.cost;
-                    else
-                        this.shippCost = 'FREE';
+                    this.calculate();
                 }
+            },
+            calculate: function () {
+                if(this.promoType){
+                    if(this.promoType == 'percent'){
+                        var percent = (this.promoCost / 100) * this.calc;
+                        this.total = (this.calc + this.cost) - percent;
+                    }else if(this.promoType == 'cost'){
+                        this.total = (this.calc + this.cost) - this.promoCost;
+                    }
+                }else{
+                    this.total = this.calc + this.cost;
+                }
+
+                if(this.cost > 0)
+                    this.shippCost = '$'+this.cost;
+                else
+                    this.shippCost = 'FREE';
             },
             promo: function(e){
                 e.preventDefault();
+                this.loading = true;
                 axios.post('{{route('promo')}}',{
-                    code: this.promoData,
-                    shipp: this.cost
+                    code: this.promoData
                 })
-                    .then(response => (console.log(response)));
+                    .then(response => {
+                        if(response.data.status == 'ok'){
+                            this.promoCost = parseFloat(response.data.value);
+                            this.promoType = response.data.type;
+                            this.calculate();
+                        }
+                        this.loading = false;
+                    }, (error) => {
+                        this.loading = false;
+                    });
             }
         }
     })
