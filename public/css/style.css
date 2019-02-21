@@ -2235,6 +2235,10 @@ ul.paging .btn-sm {
 	{
 		padding-bottom : 0 !important;
 	}
+	#carouselPlan img
+	{
+		max-width : 100%;
+	}
 }
 .social-icons .fa {
   display: inline-block;
@@ -3661,3 +3665,11 @@ ul.HI_nav {
     font-size: 24px;
     color: grey;
 	}
+	#carouselPlan .carousel-control-prev-icon
+{
+  background-image : url("/images/icons/prev-grey.png")!important;
+}
+#carouselPlan .carousel-control-next-icon
+{
+  background-image : url("/images/icons/next-grey.png")!important;
+}
