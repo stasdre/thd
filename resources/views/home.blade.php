@@ -290,7 +290,7 @@
             <div class="row" style="border-bottom: 2px solid #ddd;">
           		<div class="col-2 search_by_name" style="padding-bottom : 25px;padding-left : 10px;">Sq ft </div>
                 <div class="col-4" style="padding-left : 0;"><input type="text" placeholder="min" size=5 class="center"><span class="small-font"> to </span><input type="text" placeholder="max" size=5 class="center"></div> 
-                <div class="col-2 Sborder-left search_by_name" style="padding-left : 12px;">Stories </div>
+                <div class="col-2 Sborder-left search_by_name" style="padding-left : 7px;">Stories </div>
                 <div class="col-4"><span class="min_icon"> <i class="fa fa-minus"> </i></span> 1 
                         <span class="max_icon"><i class="fa fa-plus"></i></span></div>
              </div>
@@ -298,7 +298,7 @@
           		<div class="col-2 pt-3 search_by_name" style="padding-left : 12px;">Beds</div>
                 <div class="col-4 pt-3 text-left" style="padding-left : 0;"> <span class="min_icon" style="margin-left : 4px !important;"> <i class="fa fa-minus"> </i></span> 1 
                         <span class="max_icon"><i class="fa fa-plus"></i></span></div>
-                <div class="col-2 Sborder-left pt-3 search_by_name" style="padding-left : 19px;">Baths</div>
+                <div class="col-2 Sborder-left pt-3 search_by_name" style="padding-left : 17px;">Baths</div>
                  <div class="col-4 pt-3"><span class="min_icon"> <i class="fa fa-minus"> </i></span> 1 
                         <span class="max_icon"><i class="fa fa-plus"></i></span></div>
              </div>
