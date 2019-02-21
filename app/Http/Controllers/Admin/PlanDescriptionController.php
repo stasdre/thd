@@ -36,6 +36,7 @@ class PlanDescriptionController extends Controller
 
         $plan->page_title = $request->input('page_title');
         $plan->description = $request->input('description');
+        $plan->short_desc = $request->input('short_desc');
         $plan->meta_title = $request->input('meta_title');
         $plan->meta_description = $request->input('meta_description');
         $plan->update();

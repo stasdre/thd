@@ -182,7 +182,11 @@
      	<div class="tab-content bg-secondary px-5 py-3 mt-2" id="myTabContent" style="margin-top : 0 !important;">
         <div class="tab-pane fade show active" id="planDescription" role="tabpanel">
           <h6 class="font-weight-bold">{{$plan->name}} House Plan {{$plan->plan_number}}</h6>
-          <div class="margin_bt0-xs">{!! $plan->short_description !!} <a href="#" data-toggle="collapse" data-target="#readMore" class="read_more"> READ MORE...</a>. <div id="readMore" class="collapse in">{!! $plan->description !!}</div></div>
+            @if($plan->short_desc)
+                <div class="margin_bt0-xs">{!! $plan->short_desc !!} <a href="#" data-toggle="collapse" data-target="#readMore" class="read_more"> READ MORE...</a>. <div id="readMore" class="collapse in">{!! $plan->description !!}</div></div>
+            @else
+                <div class="margin_bt0-xs">{!! $plan->description !!}</div>
+            @endif
         </div>
         <div class="tab-pane fade" id="modifyPlan" role="tabpanel">Modify This Plan</div>
         <div class="tab-pane fade" id="costBuild" role="tabpanel">
@@ -222,7 +226,12 @@ ensure you stay in budget, economy, standard and premium.</p>
       <div class="tab-content bg-secondary px-5 py-3 mt-2" id="myTabContent">
         <div class="tab-pane fade show active" id="planDescription" role="tabpanel">
           <h6 class="font-weight-bold">{{$plan->name}} House Plan {{$plan->plan_number}}</h6>
-          <div class="margin_bt0-xs">{!! $plan->short_description !!} <a href="#" data-toggle="collapse" data-target="#readMore" class="read_more"> READ MORE...</a>. <div id="readMore" class="collapse in">{!! $plan->description !!}</div></div>
+            @if($plan->short_desc)
+                <div class="margin_bt0-xs">{!! $plan->short_desc !!} <a href="#" data-toggle="collapse" data-target="#readMore" class="read_more"> READ MORE...</a>. <div id="readMore" class="collapse in">{!! $plan->description !!}</div></div>
+            @else
+                <div class="margin_bt0-xs">{!! $plan->description !!}</div>
+            @endif
+
         </div>
         <div class="tab-pane fade" id="planSpecifications" role="tabpanel">
         	<div class="row">

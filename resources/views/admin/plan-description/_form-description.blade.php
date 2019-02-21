@@ -19,6 +19,12 @@
     </div>
 </div>
 <div class="form-group">
+    {{ Form::label('short_desc', 'Short Description', ['class' => 'col-sm-2 control-label']) }}
+    <div class="col-sm-10">
+        {{ Form::textarea('short_desc', null, ['class'=>'form-control tinymce-editor']) }}
+    </div>
+</div>
+<div class="form-group">
     {{ Form::label('description', 'Description', ['class' => 'col-sm-2 control-label']) }}
     <div class="col-sm-10">
         {{ Form::textarea('description', null, ['class'=>'form-control tinymce-editor']) }}
