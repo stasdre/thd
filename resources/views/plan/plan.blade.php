@@ -241,6 +241,7 @@ ensure you stay in budget, economy, standard and premium.</p>
                         <li>Total Heated: <b>{{$plan->square_ft['str_total']}} s.f.</b></li>
                         <li>1st Floor: <b>{{$plan->square_ft['1_floor']}} s.f.</b></li>
                         <li>2nd Floor: <b>{{$plan->square_ft['2_floor']}} s.f.</b></li>
+                        <li>Stories: <b>{{$plan->dimensions['stories']}}</b></li>
                         <li>Porch: <b>{{$plan->square_ft['porch']}} s.f.</b></li>
                     </ul>
                 </div>
@@ -364,6 +365,7 @@ ensure you stay in budget, economy, standard and premium.</p>
                                     <li>Total Heated: <b>{{$plan->square_ft['str_total']}} s.f.</b></li>
                                     <li>1st Floor: <b>{{$plan->square_ft['1_floor']}} s.f.</b></li>
                                     <li>2nd Floor: <b>{{$plan->square_ft['2_floor']}} s.f.</b></li>
+                                    <li>Stories: <b>{{$plan->dimensions['stories']}}</b></li>
                                     <li>Porch: <b>{{$plan->square_ft['porch']}} s.f.</b></li>
                                 </ul>
                             </div>
