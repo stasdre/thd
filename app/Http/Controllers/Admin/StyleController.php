@@ -104,12 +104,21 @@ class StyleController extends Controller
         ]);
         $style->save();
 
-        return redirect()->route('styles.index')
+        if( $request->input('redirect') == 'next' ){
+            return redirect()->route('styles.edit', $style->id)
                 ->with('message', [
                     'type'=>'success',
                     'title'=>'Success!',
                     'message'=>$style->name.' was added',
                     'autoHide'=>1]);
+        }else{
+            return redirect()->route('styles.index')
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>$style->name.' was added',
+                    'autoHide'=>1]);
+        }
     }
 
     /**
