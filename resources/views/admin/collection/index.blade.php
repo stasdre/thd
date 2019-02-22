@@ -11,8 +11,8 @@
         </div>
         <div class="box-body">
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#styles" aria-controls="general" role="tab" data-toggle="tab">Styles</a></li>
-                <li role="presentation"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">Styles Details</a></li>
+                <li role="presentation" class="active"><a href="#styles" aria-controls="general" role="tab" data-toggle="tab">Collections</a></li>
+                <li role="presentation"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">Collection Details</a></li>
             </ul>
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade in active" id="styles">
@@ -23,6 +23,7 @@
                             <th>Name</th>
                             <th>Short name</th>
                             <th>In search</th>
+                            <th>Published</th>
                             <th>Created At</th>
                             <th>Updated At</th>
                             <th>Actions</th>
@@ -102,6 +103,7 @@
                 { data: 'name', name: 'name' },
                 { data: 'short_name', name: 'short_name' },
                 { data: 'in_filter', name: 'in_filter', orderable: false, searchable: false, className: "dt-center" },
+                { data: 'is_active', name: 'is_active', orderable: false, searchable: false, className: "dt-center" },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'updated_at', name: 'updated_at' },
                 { data: 'actions', name: 'actions', orderable: false, searchable: false, className: "dt-center" }

@@ -103,12 +103,21 @@ class CollectionController extends Controller
         ]);
         $collection->save();
 
-        return redirect()->route('collections.index')
-            ->with('message', [
-                'type'=>'success',
-                'title'=>'Success!',
-                'message'=>$collection->name.' was added',
-                'autoHide'=>1]);
+        if( $request->input('redirect') == 'next' ){
+            return redirect()->route('collections.edit', $collection->id)
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>$collection->name.' was added',
+                    'autoHide'=>1]);
+        }else{
+            return redirect()->route('collections.index')
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>$collection->name.' was added',
+                    'autoHide'=>1]);
+        }
     }
 
     /**
@@ -207,12 +216,21 @@ class CollectionController extends Controller
             }
         }
 
-        return redirect()->route('collections.index')
-            ->with('message', [
-                'type'=>'success',
-                'title'=>'Success!',
-                'message'=>$collection->name.' was updated',
-                'autoHide'=>1]);
+        if( $request->input('redirect') == 'next' ){
+            return redirect()->route('collections.edit', $collection->id)
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>$collection->name.' was updated',
+                    'autoHide'=>1]);
+        }else{
+            return redirect()->route('collections.index')
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>$collection->name.' was updated',
+                    'autoHide'=>1]);
+        }
     }
 
     /**
@@ -245,6 +263,32 @@ class CollectionController extends Controller
                 'autoHide'=>1]);
     }
 
+    public function publish(Collection $collection)
+    {
+        $collection->is_active = 1;
+        $collection->update();
+
+        return redirect()->back()
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$collection->name.' was published',
+                'autoHide'=>1]);
+    }
+
+    public function unpublish(Collection $collection)
+    {
+        $collection->is_active = 0;
+        $collection->update();
+
+        return redirect()->back()
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$collection->name.' was unpublished',
+                'autoHide'=>1]);
+    }
+
     /**
      * Process datatables ajax request.
      *
@@ -252,17 +296,24 @@ class CollectionController extends Controller
      */
     public function anyData()
     {
-        $collections = Collection::select(['id', 'name', 'short_name', 'in_filter', 'created_at', 'updated_at']);
+        $collections = Collection::select(['id', 'name', 'short_name', 'in_filter', 'is_active', 'created_at', 'updated_at']);
         return Datatables::of($collections)
             ->addColumn('actions', function($collection){
-                return '<a class="btn btn-info btn-sm" href="'.route('collections.edit', ['collection'=>$collection->id]).'" role="button">Edit</a> <form style="display: inline-block" action="'.route('collections.destroy', ['collection'=>$collection->id]).'" method="POST"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'"><button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
+                $pudlish = $collection->is_active == 1 ? '<a class="btn btn-warning btn-sm" href="'.route('collection.unpublish', ['plan'=>$collection->id]).'" role="button">Unpublish</a>' : '<a class="btn btn-success btn-sm" href="'.route('collection.publish', ['plan'=>$collection->id]).'" role="button">Publish</a>';
+
+                return '<a class="btn btn-info btn-sm" href="'.route('collections.edit', ['collection'=>$collection->id]).'" role="button">Edit</a> '.$pudlish.' <form style="display: inline-block" action="'.route('collections.destroy', ['collection'=>$collection->id]).'" method="POST"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'"><button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
             })
             ->editColumn('in_filter', function($collection){
                 if($collection->in_filter == 1)
                     return '<i style="color: green;" class="fa fa-check" aria-hidden="true"></i>';
                 return '';
             })
-            ->rawColumns(['in_filter', 'actions'])
+            ->editColumn('is_active', function($collection){
+                if($collection->is_active == 1)
+                    return '<i style="color: green;" class="fa fa-check" aria-hidden="true"></i>';
+                return '';
+            })
+            ->rawColumns(['in_filter', 'is_active', 'actions'])
             ->make(true);
     }
 

@@ -7,6 +7,7 @@ use Thd\Asp;
 use Thd\Collection;
 use Illuminate\Support\Facades\Validator;
 use Thd\Plan;
+use Illuminate\Support\Facades\Auth;
 
 class CollectionController extends Controller
 {
@@ -20,14 +21,21 @@ class CollectionController extends Controller
             return abort(404);
         }
 
-        $collection = Collection::where('slug', $slug)->firstOrFail();
-        $plans = Plan::whereHas('collections' ,function($query) use($collection){
-            $query->where('collection_id', '=', $collection->id);
+        $collection = Collection::where('slug', $slug);
+
+        if(!Auth::user() || Auth::user()->hasRole('customer'))
+            $collection->where('is_active', 1);
+
+        $dataCollect = $collection->firstOrFail();
+
+
+        $plans = Plan::whereHas('collections' ,function($query) use($dataCollect){
+            $query->where('collection_id', '=', $dataCollect->id);
         })->with(['images' => function($query){
             $query->where('first_image', '=', 1);
         }])->orderBy('created_at', 'desc')->paginate(12);
         //$plans->load('images');
-        return view('collection.slug', ['collection'=>$collection, 'plans'=>$plans]);
+        return view('collection.slug', ['collection'=>$dataCollect, 'plans'=>$plans]);
     }
 
     public function all()

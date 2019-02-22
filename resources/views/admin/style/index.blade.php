@@ -23,6 +23,7 @@
                             <th>Name</th>
                             <th>Short name</th>
                             <th>In search</th>
+                            <th>Published</th>
                             <th>Created At</th>
                             <th>Updated At</th>
                             <th>Actions</th>
@@ -102,6 +103,7 @@
                 { data: 'name', name: 'name' },
                 { data: 'short_name', name: 'short_name' },
                 { data: 'in_filter', name: 'in_filter', orderable: false, searchable: false, className: "dt-center" },
+                { data: 'is_active', name: 'is_active', orderable: false, searchable: false, className: "dt-center" },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'updated_at', name: 'updated_at' },
                 { data: 'actions', name: 'actions', orderable: false, searchable: false, className: "dt-center" }
