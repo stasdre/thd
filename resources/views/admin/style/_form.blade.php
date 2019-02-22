@@ -1,14 +1,12 @@
 <input type="hidden" name="redirect" id="redirect" value="next">
-@if(Route::currentRouteName() == 'styles.edit')
-    {{ Form::model($style, ['route' => ['styles.update', $style->id], 'class' => 'form-horizontal', 'method' => 'PATCH', 'files' => true]) }}
-@else
-
-@endif
 
 <ul class="nav nav-tabs">
     <li class="active"><a href="#main" data-toggle="tab">Main</a></li>
     <li><a href="#meta" data-toggle="tab">Meta Data</a></li>
     {{--<li><a href="#plans" data-toggle="tab">Plans</a></li>--}}
+    @isset($style)
+        <li><a target="_blank" href="{{route('style.slug', $style->slug)}}" >Preview Style Page</a></li>
+    @endisset
 </ul>
 
 <div class="tab-content">
