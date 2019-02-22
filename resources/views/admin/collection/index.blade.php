@@ -11,8 +11,8 @@
         </div>
         <div class="box-body">
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#styles" aria-controls="general" role="tab" data-toggle="tab">Styles</a></li>
-                <li role="presentation"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">Styles Details</a></li>
+                <li role="presentation" class="active"><a href="#styles" aria-controls="general" role="tab" data-toggle="tab">Collections</a></li>
+                <li role="presentation"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">Collection Details</a></li>
             </ul>
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade in active" id="styles">

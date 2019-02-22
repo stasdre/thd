@@ -103,12 +103,21 @@ class CollectionController extends Controller
         ]);
         $collection->save();
 
-        return redirect()->route('collections.index')
-            ->with('message', [
-                'type'=>'success',
-                'title'=>'Success!',
-                'message'=>$collection->name.' was added',
-                'autoHide'=>1]);
+        if( $request->input('redirect') == 'next' ){
+            return redirect()->route('collections.edit', $collection->id)
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>$collection->name.' was added',
+                    'autoHide'=>1]);
+        }else{
+            return redirect()->route('collections.index')
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>$collection->name.' was added',
+                    'autoHide'=>1]);
+        }
     }
 
     /**
@@ -207,12 +216,21 @@ class CollectionController extends Controller
             }
         }
 
-        return redirect()->route('collections.index')
-            ->with('message', [
-                'type'=>'success',
-                'title'=>'Success!',
-                'message'=>$collection->name.' was updated',
-                'autoHide'=>1]);
+        if( $request->input('redirect') == 'next' ){
+            return redirect()->route('collections.edit', $collection->id)
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>$collection->name.' was updated',
+                    'autoHide'=>1]);
+        }else{
+            return redirect()->route('collections.index')
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>$collection->name.' was updated',
+                    'autoHide'=>1]);
+        }
     }
 
     /**
