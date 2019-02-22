@@ -216,13 +216,21 @@ class StyleController extends Controller
             }
         }
 
-        return redirect()->route('styles.index')
-            ->with('message', [
-                'type'=>'success',
-                'title'=>'Success!',
-                'message'=>$style->name.' was updated',
-                'autoHide'=>1]);
-
+        if( $request->input('redirect') == 'next' ){
+            return redirect()->route('styles.edit', $style->id)
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>$style->name.' was updated',
+                    'autoHide'=>1]);
+        }else{
+            return redirect()->route('styles.index')
+                ->with('message', [
+                    'type'=>'success',
+                    'title'=>'Success!',
+                    'message'=>$style->name.' was updated',
+                    'autoHide'=>1]);
+        }
     }
 
     /**
