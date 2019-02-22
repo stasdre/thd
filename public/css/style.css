@@ -2136,6 +2136,10 @@ ul.paging .btn-sm {
 	width : 7%;
 	opacity : 1;
 }
+#carouselPlan .carousel-control-next,#carouselPlan .carousel-control-prev
+{
+	width : auto;
+}
 .carousel-control-next-icon, .carousel-control-prev-icon
 {
 	width: 25px;
