@@ -4,6 +4,9 @@
     <li class="active"><a href="#main" data-toggle="tab">Main</a></li>
     <li><a href="#meta" data-toggle="tab">Meta Data</a></li>
     {{--<li><a href="#plans" data-toggle="tab">Plans</a></li>--}}
+    @isset($collection)
+        <li><a target="_blank" href="{{route('collection.slug', $collection->slug)}}" >Preview Collection Page</a></li>
+    @endisset
 </ul>
 
 <div class="tab-content">
