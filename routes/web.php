@@ -93,6 +93,8 @@ Route::prefix('admin-thd')->group(function(){
         Route::resource('collections', 'Admin\CollectionController', ['except'=>['show']]);
         Route::get('collections/data', 'Admin\CollectionController@anyData')->name('collections.data');
         Route::post('collections/store-data', 'Admin\CollectionController@storeData')->name('collections.storeData');
+        Route::get('collections/publish/{collection}', 'Admin\CollectionController@publish')->where('collection', '[0-9]+')->name('collection.publish');
+        Route::get('collections/unpublish/{collection}', 'Admin\CollectionController@unpublish')->where('collection', '[0-9]+')->name('collection.unpublish');
 
         Route::resource('packages', 'Admin\PackageController', ['except'=>['show']]);
         Route::get('packages/data', 'Admin\PackageController@anyData')->name('packages.data');
