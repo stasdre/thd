@@ -2239,6 +2239,16 @@ ul.paging .btn-sm {
 	{
 		max-width : 100%;
 	}
+.carousel-control-prev
+{
+	left :0 !important;
+}
+.mobile-home-search  .max_icon {
+  margin-left: 8px !important;
+}
+.mobile-home-search .min_icon {
+  margin-right: 4px !important;
+}
 }
 .social-icons .fa {
   display: inline-block;
