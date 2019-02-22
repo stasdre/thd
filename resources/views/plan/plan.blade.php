@@ -488,7 +488,6 @@ ensure you stay in budget, economy, standard and premium.</p>
    							 <div class="carousel-item active">
   									<div class="slides row">
                 								<div class="col-md-12 flipped-container">
-                                                	   <img src="http://104.236.20.15:8080/storage/plans/14/Cq7pMtEk7KkvREbYcVWod8nLBmvxBZ1tUOVdsXeO.jpg" />
                                                              @foreach($plan->images_first  as $image)
                                                              <div class="floor-plan-like"><i class="fa fa-heart"></i></div>
                                                                 <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
@@ -500,7 +499,6 @@ ensure you stay in budget, economy, standard and premium.</p>
                               <div class="carousel-item">
   									<div class="slides row">
                 								<div class="col-md-12 flipped-container">
-                    									   <img src="http://104.236.20.15:8080/storage/plans/14/Cq7pMtEk7KkvREbYcVWod8nLBmvxBZ1tUOVdsXeO.jpg" />
                                                              @foreach($plan->images_second  as $image)
                                                              <div class="floor-plan-like"><i class="fa fa-heart"></i></div>
                         <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
@@ -509,10 +507,9 @@ ensure you stay in budget, economy, standard and premium.</p>
                      				
                                     </div>
                               </div>
-                              <div class="carousel-item">
+                              <div class="carousel-item"> 
   									<div class="slides row">
                 								<div class="col-md-12 flipped-container">
-                    									   <img src="http://104.236.20.15:8080/storage/plans/14/Cq7pMtEk7KkvREbYcVWod8nLBmvxBZ1tUOVdsXeO.jpg" />
                                                               @foreach($plan->images_basement  as $image)
                                                               <div class="floor-plan-like"><i class="fa fa-heart"></i></div>
                         <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
@@ -524,7 +521,6 @@ ensure you stay in budget, economy, standard and premium.</p>
                               <div class="carousel-item">
   									<div class="slides row">
                 								<div class="col-md-12 flipped-container">
-                    									   <img src="http://104.236.20.15:8080/storage/plans/14/Cq7pMtEk7KkvREbYcVWod8nLBmvxBZ1tUOVdsXeO.jpg" />
                                                              @foreach($plan->images_bonus  as $image)
                                                              <div class="floor-plan-like"><i class="fa fa-heart"></i></div>
                         <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
