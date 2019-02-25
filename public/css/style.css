@@ -1650,6 +1650,11 @@ ul.paging .btn-sm {
   .home-search-new th {
     padding: 3px 0 !important;
   }
+   .house-grid
+	{
+		width : auto !important;
+	}
+	
 }
 @media (max-width: 767px) {
 
@@ -1794,6 +1799,10 @@ ul.paging .btn-sm {
   {
     font-size: 13px !important;
   }
+ .sidebar-left
+	{
+		padding-left: 15px !important;
+	}
 }
 
 @media (max-width: 575px) {
@@ -2417,6 +2426,10 @@ i.fa.fa-bars.menu_icons {
   .home-search-new th {
     padding: 10px 0 !important;
   }
+  .house-grid
+	{
+		width : auto !important;
+	}
 }
 @media (max-width: 570px) and (min-width: 500px) {
   .plan-cta.position-relative.mb-2 {
@@ -3686,4 +3699,12 @@ ul.HI_nav {
 #carouselPlan .carousel-control-next-icon
 {
   background-image : url("/images/icons/next-grey.png")!important;
+}
+.house-grid
+{
+	width : 278px;
+}
+.sidebar-left
+{
+	padding-left : 0;
 }

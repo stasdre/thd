@@ -13,9 +13,9 @@
             <h5 class="center font-weight-bold no-margin"> Specialty Collections</h5>
         </div>
     </div>
-    <div class="py-2 px-sm-5 mx-sm-3">
+    <div class="py-2 mx-sm-3">
 
-        <div>
+        <div class="px-sm-5">
             {!! $collectionData->desc !!}
             <div class="desktop-off read_more" id="read_more"><span class="read-more-link-wrapper">Read More </span></div>
             <div style="display : none;" id="read_less" class="read_less"><span class="read-less-link-wrapper">Read Less </span></div>
@@ -57,7 +57,7 @@
                 <div class="row text-center">
                     @foreach($collections as $collection)
                         <div class="col-sm-4 col-md-6 col-lg-4">
-                            <div class="plan-grid position-relative"> <a href="{{ route('collection.slug', $collection->slug) }}">
+                            <div class="plan-grid position-relative house-grid"> <a href="{{ route('collection.slug', $collection->slug) }}">
                                     @if($collection->image)
                                         <img src="{{asset('storage/collections/'.$collection->image)}}" alt="{{ $collection->name }}" class="img-fluid w-100 mobile-grid-img" />
                                     @else
