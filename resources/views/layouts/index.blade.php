@@ -121,6 +121,15 @@
             </div>
             <div class="col-sm-4">
                 <h3 class="font-weight-bold mb-3">ARCHITECT PREFERRED</h3>
+                 <ul class="list-inline text-center">
+                    <li><a href="">Windows</a></li>
+                    <li><a href="">Garage Doors</a></li>
+                    <li><a href="">Appliances</a></li>
+                    <li><a href="">Flooring</a></li>
+                    <li><a href="">Manufactured Stone</a></li>
+                    <li><a href="">Roofing Material</a></li>
+                    <li><a href="">Entry & Patio Doors</a></li>
+                </ul>
             </div>
             <div class="copyright">
                 <div class="social-icons">
@@ -136,7 +145,7 @@
                         </ul>
                 </div>
                 <div class="col-md-12">
-                    <p> © {{ date("Y") }} David Wiggins Architect House Plans®, LLC. All rights reserved. All house plans and images on David Wiggins Architect House Plans® website are protected under Federal and International Copyright Law. Reproductions of the illustrations or working drawings by any means is strictly prohibited. No part of this electronic publication may be reproduced, stored or transmitted in any form by any means without prior written permission of David Wiggins Architect House Plans®, LLC. </p>
+                    <p> © {{ date("Y") }} David E. Wiggins Architect House Plans®, LLC. All rights reserved. All house plans and images on David E. Wiggins Architect House Plans® website are protected under Federal and International Copyright Law. Reproductions of the illustrations or working drawings by any means is strictly prohibited. No part of this electronic publication may be reproduced, stored or transmitted in any form by any means without prior written permission of David E. Wiggins Architect House Plans®, LLC. </p>
                 </div>
             </div>
         </div>
@@ -220,7 +229,16 @@
                 </ul>
             </div>
             <div class="col-sm-4">
-                <h3 class="font-weight-bold mb-3 d-none d-md-block">ARCHITECT PREFERRED</h3>
+                <h3 class="font-weight-bold mb-3 d-md-block">ARCHITECT PREFERRED</h3>
+                 <ul class="list-inline text-center">
+                    <li><a href="">Windows</a></li>
+                    <li><a href="">Garage Doors</a></li>
+                    <li><a href="">Appliances</a></li>
+                    <li><a href="">Flooring</a></li>
+                    <li><a href="">Manufactured Stone</a></li>
+                    <li><a href="">Roofing Material</a></li>
+                    <li><a href="">Entry & Patio Doors</a></li>
+                </ul>
             </div>
             <div class="copyright">
                 <div class="social-icons">
@@ -237,7 +255,7 @@
                 </div>
 
                 <div class="col-md-12">
-                    <p> © {{ date("Y") }} David Wiggins Architect House Plans®, LLC. All rights reserved. All house plans and images on David Wiggins Architect House Plans® website are protected under Federal and International Copyright Law. Reproductions of the illustrations or working drawings by any means is strictly prohibited. No part of this electronic publication may be reproduced, stored or transmitted in any form by any means without prior written permission of David Wiggins Architect House Plans®, LLC. </p>
+                    <p> © {{ date("Y") }} David E. Wiggins Architect House Plans®, LLC. All rights reserved. All house plans and images on David E. Wiggins Architect House Plans® website are protected under Federal and International Copyright Law. Reproductions of the illustrations or working drawings by any means is strictly prohibited. No part of this electronic publication may be reproduced, stored or transmitted in any form by any means without prior written permission of David E. Wiggins Architect House Plans®, LLC. </p>
                 </div>
             </div>
         </div>
