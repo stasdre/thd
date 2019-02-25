@@ -81,7 +81,7 @@ class StyleController extends Controller
             $path = storage_path('app/public/styles/' . $filename);
 
             $img = Image::make($image->getRealPath());
-            $img->resize(500, null, function ($constraint) {
+            $img->resize(null, 189, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $img->save($path, 90);
@@ -186,7 +186,7 @@ class StyleController extends Controller
             $path = storage_path('app/public/styles/' . $filename);
 
             $img = Image::make($image->getRealPath());
-            $img->resize(500, null, function ($constraint) {
+            $img->resize(null, 189, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $img->save($path, 90);
@@ -336,7 +336,7 @@ class StyleController extends Controller
                 $path = storage_path('app/public/styles/' . $filename);
 
                 $img = Image::make($image->getRealPath());
-                $img->resize(1200, null, function ($constraint) {
+                $img->resize(null, 276, function ($constraint) {
                     $constraint->aspectRatio();
                 });
                 $img->save($path, 90);

@@ -63,7 +63,7 @@ class CollectionController extends Controller
                 $img = Image::make($image->getRealPath())->save($path, 100);
 
                 $imgThumb = Image::make($image->getRealPath());
-                $imgThumb->resize(300, null, function ($constraint) {
+                $imgThumb->resize(null, 189, function ($constraint) {
                     $constraint->aspectRatio();
                 });
                 $imgThumb->save($pathThumb);
@@ -163,7 +163,7 @@ class CollectionController extends Controller
                     $img = Image::make($image->getRealPath())->save($path, 100);
 
                     $imgThumb = Image::make($image->getRealPath());
-                    $imgThumb->resize(300, null, function ($constraint) {
+                    $imgThumb->resize(null, 189, function ($constraint) {
                         $constraint->aspectRatio();
                     });
                     $imgThumb->save($pathThumb);
@@ -186,7 +186,7 @@ class CollectionController extends Controller
             $path = storage_path('app/public/collections/' . $filename);
 
             $img = Image::make($image->getRealPath());
-            $img->resize(500, null, function ($constraint) {
+            $img->resize(null, 189, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $img->save($path, 90);
@@ -337,7 +337,7 @@ class CollectionController extends Controller
                 $path = storage_path('app/public/collections/' . $filename);
 
                 $img = Image::make($image->getRealPath());
-                $img->resize(1200, null, function ($constraint) {
+                $img->resize(null, 276, function ($constraint) {
                     $constraint->aspectRatio();
                 });
                 $img->save($path, 90);
