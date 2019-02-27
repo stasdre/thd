@@ -1,3 +1,4 @@
+
 @extends('layouts.index')
 
 @section('carousel')
@@ -12,23 +13,23 @@
 </tr>
 <tr>
 <Th>Beds</Th>
-<td> <span class="min_icon"> <i class="fa fa-minus"> </i></span> 1 
-                        <span class="max_icon"><i class="fa fa-plus"></i></span></td>
+<td> <div><span class="min_icon qty-minus"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                        <span class="max_icon qty-plus"><i class="fa fa-plus"></i></span></div></td>
 </tr>
 <tr>
 <Th>Baths</Th>
-<td> <span class="min_icon"> <i class="fa fa-minus"> </i></span> 1 
-                        <span class="max_icon"><i class="fa fa-plus"></i></span></td>
+<td> <div><span class="min_icon qty-minus"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                        <span class="max_icon qty-plus"><i class="fa fa-plus"></i></span></div></td>
 </tr>
 <tr>
 <Th>Garages</Th>
-<td> <span class="min_icon"> <i class="fa fa-minus"> </i></span> 1 
-                        <span class="max_icon"><i class="fa fa-plus"></i></span></td>
+<td> <div><span class="min_icon qty-minus"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                        <span class="max_icon qty-plus"><i class="fa fa-plus"></i></span></div></td>
 </tr>	
 <tr>
 <Th>Stories</Th>
-<td> <span class="min_icon"> <i class="fa fa-minus"> </i></span> 1 
-                        <span class="max_icon"><i class="fa fa-plus"></i></span></td>
+<td> <div><span class="min_icon qty-minus"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                        <span class="max_icon qty-plus"><i class="fa fa-plus"></i></span></div></td>
 </tr>
 
 <tr>
@@ -290,23 +291,23 @@
             <div class="row" style="border-bottom: 2px solid #ddd;">
           		<div class="col-2 search_by_name" style="padding-bottom : 25px;padding-left : 10px;">Sq ft </div>
                 <div class="col-4" style="padding-left : 0;"><input type="text" placeholder="min" size=5 class="center"><span class="small-font"> to </span><input type="text" placeholder="max" size=5 class="center"></div> 
-                <div class="col-2 Sborder-left search_by_name" style="padding-left : 7px;">Stories </div>
-                <div class="col-4"><span class="min_icon"> <i class="fa fa-minus"> </i></span> 1 
-                        <span class="max_icon"><i class="fa fa-plus"></i></span></div>
+                <div class="col-2 Sborder-left search_by_name" style="padding-left : 4px;">Stories </div>
+                <div class="col-4"><span class="min_icon qty-minus"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                        <span class="max_icon qty-plus"><i class="fa fa-plus"></i></span></div>
              </div>
              <div class="row" style="margin-top : 0;">
           		<div class="col-2 pt-3 search_by_name" style="padding-left : 12px;">Beds</div>
-                <div class="col-4 pt-3 text-left" style="padding-left : 0;"> <span class="min_icon" style="margin-left : 4px !important;"> <i class="fa fa-minus"> </i></span> 1 
-                        <span class="max_icon"><i class="fa fa-plus"></i></span></div>
-                <div class="col-2 Sborder-left pt-3 search_by_name" style="padding-left : 17px;">Baths</div>
-                 <div class="col-4 pt-3"><span class="min_icon"> <i class="fa fa-minus"> </i></span> 1 
-                        <span class="max_icon"><i class="fa fa-plus"></i></span></div>
+                <div class="col-4 pt-3 text-left" style="padding-left : 0;"> <span class="min_icon qty-minus" style="margin-left : 4px !important;"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                        <span class="max_icon qty-plus"><i class="fa fa-plus"></i></span></div>
+                <div class="col-2 Sborder-left pt-3 search_by_name" style="padding-left : 13px;">Baths</div>
+                 <div class="col-4 pt-3"><span class="min_icon qty-minus"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty">  
+                        <span class="max_icon qty-plus"><i class="fa fa-plus"></i></span></div>
              </div>
              <div style="margin-top : 25px;"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold search-button1" type="button"> SEARCH</button></div>
              <div class="mt-3"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold grey-button" type="button" style="width :100%;"> Advanced Search</button></div>
              <div class="mt-3"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold grey-button" type="button" style="width :100%;"> Search by Plan #<i class="fa fa-search" aria-hidden="true"></i></button></div>
           </div>
-       </div> 
+       </div>  
        <div style="clear : both;"></div>
 		<div class="text-center text-uppercase lead font-weight-normal align-middle py-2 only_under_767 contact-method mf18"> <a href="#" class="align-middle text-primary">Live Chat</a> | <a href="#" class="align-middle text-primary">Email</a> | <a href="#" class="align-middle text-secondary">xxx-xxx-xxxx</a> </div>
 		

@@ -2262,6 +2262,14 @@ ul.paging .btn-sm {
 .mobile-home-search .min_icon {
   margin-right: 4px !important;
 }
+.mobile-home-search .col-4
+{
+	padding-right : 0;
+}
+.mobile-home-search .qty
+{
+	background : transparent;
+}
 }
 .social-icons .fa {
   display: inline-block;
@@ -2764,6 +2772,13 @@ color : black;
     width: 41px !important;
     font-size: 13px;
 	}
+	.mobile-home-search .qty
+	 {
+		width: 14px !important;
+		text-align: center;
+		border: none;
+		background : transparent;
+	}
 	.mobile-home-search  .col-4
 	{
 		padding-left : 0;
@@ -2781,8 +2796,8 @@ color : black;
 	font-size : 18px !important;
 }
 .mobile-home-search .min_icon {
-    margin-right: 4px !important;
-    margin-left: 14px !important;
+    margin-right: 2px !important;
+    margin-left: 12px !important;
 }
 .mobile-home-search .max_icon {
     margin-left: 4px !important;
@@ -3707,4 +3722,14 @@ ul.HI_nav {
 .sidebar-left
 {
 	padding-left : 0;
+}
+.qty
+{ 
+	width: 20px !important;
+    text-align: center;
+    border: none;
+}
+.min_icon ,.max_icon
+{
+ cursor : pointer;
 }
