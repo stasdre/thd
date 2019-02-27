@@ -314,28 +314,6 @@
  	$('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
  	$('.slider-nav-thumbnails .slick-slide').eq(mySlideNumber).addClass('slick-active');
 });
-
-var incrementPlus;
-var incrementMinus;
-
-var buttonPlus  = $(".qty-plus");
-var buttonMinus = $(".qty-minus");
-
-var incrementPlus = buttonPlus.click(function() {
-var $n = $(this)
-		.parent("div")
-		.find(".qty");
-	$n.val(Number($n.val())+1 );
-});
-var incrementMinus = buttonMinus.click(function() {
-		var $n = $(this)
-		.parent("div")
-		.find(".qty");
-	var amount = Number($n.val());
-	if (amount > 0) {
-		$n.val(amount-1);
-	}
-});
 </script>
 @stack('scripts')
 </body>
