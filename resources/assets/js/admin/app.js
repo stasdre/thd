@@ -23,3 +23,11 @@ let token = document.head.querySelector('meta[name="csrf-token"]');
 $(".thd-alerts-messages").fadeTo(3000, 500).slideUp(500, function(){
     $(".thd-alerts-messages").slideUp(500);
 });
+
+$(function(){
+    $(".delete-file").on('click', function(e){
+        e.preventDefault();
+        $(this).parent().parent().find(input[type="file"]).removeClass('hidden');
+        $(this).parent().hide();
+    });
+});
