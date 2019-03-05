@@ -281,14 +281,14 @@
 				<div class="media planinfo text-left top position-absolute mobile-planinfo"> <img class="mr-1 align-self-center logo-on-mobile" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
 					<div class="media-body">
 						<h5 class="mb-0 text-white">plan <span class="text-secondary">4839</span></h5>
-						<h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
+						<h5 class="m-0 text-white">davidwiggins</h5>
 					</div>
 				</div>   
 			</div>
 		</div>
 	<div class="text-center page-name mt-1 grey-border" style="padding-top : 20px !important">
       <div class="mobile-home-search"> 
-            <div class="row" style="border-bottom: 2px solid #ddd;">
+            <div class="row" style="border-bottom: 2px solid #ddd;margin-left: 4px;margin-right: 5px;">
           		<div class="col-2 search_by_name" style="padding-bottom : 25px;padding-left : 10px;">Sq ft </div>
                 <div class="col-4" style="padding-left : 0;"><input type="text" placeholder="min" size=5 class="center"><span class="small-font"> to </span><input type="text" placeholder="max" size=5 class="center"></div> 
                 <div class="col-2 Sborder-left search_by_name" style="padding-left : 4px;">Stories </div>
@@ -313,7 +313,7 @@
 		
 		<div class="plan-list my-1">
 			<div class="position-relative">
-				<div id="modalplan" class="carousel slide" data-ride="carousel" data-interval="1800">
+				<div id="modalplan" class="carousel slide" data-ride="carousel" data-interval="false">
 					<div class="carousel-inner">
 						@foreach($newMob as $img)
 							<div class="carousel-item @if($loop->index == 0) active @endif"> <img src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}" class="img-fluid d-block w-100"> </div>
@@ -323,7 +323,7 @@
 				<div class="media planinfo text-left top position-absolute mobile-planinfo"> <img class="mr-1 align-self-center logo-on-mobile" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
 					<div class="media-body">
 						<h5 class="mb-0 text-white">plan <span class="text-secondary">4839</span></h5>
-						<h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
+						<h5 class="m-0 text-white">davidwiggins</h5>
 					</div>
 				</div>
 			</div>
@@ -344,8 +344,16 @@
           		</div>
         	</div>
             
-            
+            <div class="position-relative"> 
+             
 			<img src="{{asset('/storage/home-page/'.$bestMob->file)}}" alt="{{$bestMob->name}}" class="img-fluid w-100 my-2">
+           <div class="media planinfo text-left top position-absolute mobile-planinfo" style="padding-top : 20px !important;font-family:FuturaPT;"> <img class="mr-1 align-self-center logo-on-mobile" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
+					<div class="media-body">
+						<h5 class="mb-0 text-white" style="font-size: 15px !important;">plan <span class="text-secondary">4839</span></h5>
+						<h5 class="m-0 text-white" style="font-size: 15px !important;">davidwiggins</h5>
+					</div>
+				</div>
+            </div>
 			<h4 class="font-weight-bold text-center mb-0 mf18">BEST-SELLING HOUSE PLANS</h4>
 			<p class="text-center font-weight-semi-bold mt-1">America’s Most Popular Designs</p>
             
