@@ -2108,7 +2108,7 @@ ul.paging .btn-sm {
   }
 .search_by_name
 {
-	font-size : 13pt;
+	font-size : 12.5pt;
 	font-weight: bold;
     color: black;
 }
@@ -2138,7 +2138,7 @@ ul.paging .btn-sm {
 }
 .media-body .text-secondary
 {
-	display : none;
+	/*display : none;*/
 }
 .carousel-control-next, .carousel-control-prev
 {
@@ -2264,6 +2264,7 @@ ul.paging .btn-sm {
 }
 .mobile-home-search .col-4
 {
+	    padding-left: 6px;
 	padding-right : 0;
 }
 .mobile-home-search .qty

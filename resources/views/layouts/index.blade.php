@@ -326,14 +326,19 @@ var $n = $(this)
 		.parent("div")
 		.find(".qty");
 	$n.val(Number($n.val())+1 );
+	$n.parent('div').find('.fa-minus').css({'opacity':1 , 'border' : '1px solid black','color' : 'black'});
 });
 var incrementMinus = buttonMinus.click(function() {
 		var $n = $(this)
 		.parent("div")
 		.find(".qty");
 	var amount = Number($n.val());
-	if (amount > 0) {
+	if (amount > 1) {
 		$n.val(amount-1);
+	}
+	if (amount == 2) 
+	{
+		$n.parent('div').find('.fa-minus').css({'opacity':0.6 , 'border' : '1px solid silver','color' : 'black'});
 	}
 });
 </script>
