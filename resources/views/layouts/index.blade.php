@@ -71,8 +71,15 @@
        </div>
       <div class="col-md-2 col-sm-3 xs-set-position d-none d-md-block">
         <ul class="list-inline text-center text-sm-right text-small text-uppercase mt-1 mb-3">
-          <li class="list-inline-item"><a href="{{ route('register') }}">Register</a></li>
-          <li class="list-inline-item"><a href="{{ route('login') }}">Login</a></li>
+            @auth
+                <li class="list-inline-item"><a href="{{ route('logout') }}">Logout</a></li>                
+            @endauth
+
+            @guest
+                <li class="list-inline-item"><a href="{{ route('register') }}">Register</a></li>
+                <li class="list-inline-item"><a href="{{ route('login') }}">Login</a></li>                  
+            @endguest
+            
           <li class="list-inline-item"><a href="{{route('cart')}}"><img src="{{ asset('images/icons/icon-cart.png') }}" alt="" class="img-fluid"></a></li>
         </ul>
         <div class="input-group input-group-sm mb-1 plan_name_search">
