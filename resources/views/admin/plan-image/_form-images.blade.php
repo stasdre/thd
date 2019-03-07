@@ -613,13 +613,13 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-9">
-                            <img src="" class="img-responsive" id="img__thumb" alt="">
+                            <div class="edit-img"><img src="" class="img-responsive" id="img__thumb" alt=""></div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <a href="" target="_blank" id="img_href"><img src="" class="img-responsive" id="img__origin" alt=""></a>
+                            <div class="edit-img"><a href="" target="_blank" id="img_href"><img src="" class="img-responsive" id="img__origin" alt=""></a></div>
                         </div>
                     </div>
 

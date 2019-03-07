@@ -17760,3 +17760,40 @@ div.FixedHeader_Cloned table {
   width: 100%;
 }
 
+.edit-img {
+  position: relative;
+}
+
+.edit-img:hover::before {
+  opacity: 1;
+}
+
+.edit-img::before {
+  font-family: "FontAwesome";
+  content: "\F044";
+  font-size: 1.5rem;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  vertical-align: middle;
+  font-weight: 900;
+  position: absolute;
+  left: 2%;
+  bottom: 10%;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
