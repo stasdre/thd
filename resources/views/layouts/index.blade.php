@@ -79,7 +79,7 @@
                 <li class="list-inline-item"><a href="{{ route('register') }}">Register</a></li>
                 <li class="list-inline-item"><a href="{{ route('login') }}">Login</a></li>                  
             @endguest
-            
+
           <li class="list-inline-item"><a href="{{route('cart')}}"><img src="{{ asset('images/icons/icon-cart.png') }}" alt="" class="img-fluid"></a></li>
         </ul>
         <div class="input-group input-group-sm mb-1 plan_name_search">
@@ -275,10 +275,6 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.4.1/slick.min.js"></script>
 <!-- Custom JS -->
 <script src="{{ asset('js/app.js') }}"></script>
-<<<<<<< HEAD
-@stack('scripts')
-=======
-
 <script>
     $('.mh-1').matchHeight({ property: 'min-height' });
     $('[data-fancybox]').fancybox({
@@ -351,6 +347,5 @@ var incrementMinus = buttonMinus.click(function() {
 });
 </script>
 @stack('scripts') 
->>>>>>> cff7e07ce38958379fe73eda7c0c5c1ecf660bb5
 </body>
 </html>
