@@ -272,18 +272,30 @@
 		<div class="plan-list my-1">
 			<div class="position-relative">
 				<div id="modalplan48" class="carousel slide" data-ride="carousel" data-interval="1800">
-					<div class="carousel-inner">
-						@foreach($favorMob as $img)
-						<div class="carousel-item @if($loop->index == 0) active @endif"> <img src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}" class="img-fluid d-block w-100"> </div>
-						@endforeach
+					     <ol class="carousel-indicators">
+			@foreach($gallery as $img)
+	            <li data-target="#banner" data-slide-to="{{$loop->index}}" @if($loop->index == 0)class="active"@endif></li>
+			@endforeach
+        </ol>
+        <div class="carousel-inner">
+			@foreach($gallery as $img)
+				<div class="carousel-item @if($loop->index == 0) active @endif"> <img class="d-block w-100" src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}">
+					<div class="caption-quote-wrap">
+						<div class="caption-quote @if(!$img->quote) custom_capt @endif">{{$img->description}}</div>
+						<p class="@if($img->quote==1) caption-quote-author @else caption-quote-small @endif">{{$img->caption}}</p>
 					</div>
-					<a class="carousel-control-prev" href="#modalplan48" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#modalplan48" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
-				<div class="media planinfo text-left top position-absolute mobile-planinfo"> <img class="mr-1 align-self-center logo-on-mobile" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
-					<div class="media-body">
-						<h5 class="mb-0 text-white">plan <span class="text-secondary">4839</span></h5>
-						<h5 class="m-0 text-white">davidwiggins</h5>
+					<div class="media planinfo text-left top position-absolute mobile-planinfo"> <img class="mr-1 align-self-end" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
+						<div class="media-body">
+							<h5 class="mb-0 text-white">plan <span class="text-secondary">{{$img->plan}}</span></h5>
+							<h5 class="m-0 text-white">davidwiggins</h5>
+						</div>
 					</div>
-				</div>   
+				</div>
+			@endforeach
+        </div>
+        <a class="carousel-control-prev" href="#banner" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#banner" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+					  </div>
+				   
 			</div>
 		</div>
 	<div class="text-center page-name mt-1 grey-border" style="padding-top : 20px !important">
