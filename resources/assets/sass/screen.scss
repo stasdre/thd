@@ -506,7 +506,7 @@ footer li > a:hover, footer li > a:focus, footer li > a:active {
 	padding: 0 4px;
 }
 select.select-custom {
-	background-image: url("../images/icons/select_iconbg.png");
+	background-image: url("/images/icons/select_iconbg.png");
 	background-position: right;
 	background-repeat: no-repeat;
 	background-size: inherit;
@@ -643,7 +643,7 @@ header .btn {
 	color: #fff;
 	font-size: 27px;
 	font-weight: 700;
-	text-transform: uppercase;
+	text-transform:capitalize;
 	padding: 15px;
 	line-height: 1;
 }
@@ -898,6 +898,7 @@ header .btn {
 .bg-white-xs.bg-lightGray-lg{background:#c6c8ca !important}
 .bg-white-xs.bg-darkGray-lg{background:#77787b !important}
 @media (max-width:1199px) {
+
 	header .text-small {
 		font-size: 9px;
 	}
@@ -951,6 +952,32 @@ header .btn {
 	}
 	.plan_name_search {
 		width: 156px;
+	}
+	.search-grid1 input
+	{
+
+		width: 40px !important;
+		padding: 0;
+		margin: 0 2px;
+	}
+	.min_icon
+	{
+		width: 40px !important;
+	}
+	.max_icon
+	{
+		width: 40px !important;
+	}
+	.optional
+	{
+		font-size: 8px;
+	}
+	.blackBanner {
+		padding: 10px 25px !important;
+	}
+	.text-size
+	{
+		font-size : 12px;
 	}
 }
 ul.paging .btn-sm, ul.paging .form-control {
@@ -1070,6 +1097,7 @@ ul.paging .btn-sm {
 	display: inline-block!important;
 }
 @media (max-width:820px) {
+
 	.width-sm-100{
 		max-width:100%;
 		flex:100%;
@@ -1147,6 +1175,46 @@ ul.paging .btn-sm {
 	}
 	.col-md-3.text-right.text-xs-center.custom_reversePlan {
 		min-height: 58px;
+	}
+	.search-grid1 input
+	{
+
+		width: 35px !important;
+		padding: 0;
+		margin: 0 2px;
+		text-align : center;
+	}
+	.min_icon
+	{
+		width: 35px !important;
+	}
+	.max_icon
+	{
+		width: 35px !important;
+	}
+	.with_padding
+	{
+		padding : 10px	 !important;
+	}
+	.blackBanner {
+		padding: 10px 25px !important;
+	}
+	.font-futura
+	{
+		font-size : 24px;
+	}
+
+	.blackBanner p
+	{
+		font-size : 11px;
+	}
+	.blackBanner .coupon_code
+	{
+		margin-top : 7px;
+	}
+	.plan-list .text-white
+	{
+		font-size : 13px !important;
 	}
 }
 @media (max-width:768px) {
@@ -1635,7 +1703,6 @@ i.fa.fa-bars.menu_icons {
 }
 .left.preferred.position-absolute .p2 {
 	font-size: 14px;
-
 }
 .navbar.navbar-expand-lg{
 	padding:0;
@@ -1705,7 +1772,7 @@ span.note.text-danger {
 #modification_form .select-custom, .select-custom.white_back{
 	background-color: #fff;
 	color: #000000;
-	background-image: url("../images/icons/select_iconbg.png");
+	background-image: url("/images/icons/select_iconbg_gray.png");
 }
 .select-custom.white_back{
 	border:2px solid #000;
@@ -1779,4 +1846,68 @@ ul.list-style-none li {
 	font-weight: 600;
 	text-decoration: none !important;
 	color: #000 !important;
+}
+/* NEW STYLE */
+.search-grid {
+	background: #fff;
+	border: 1px solid #000;
+	padding: .5rem .2rem .5rem 10px;
+	line-height : 40px;
+}
+.search-button
+{
+	text-align : center;
+	margin : 20px 0;
+}
+.with_padding
+{
+	padding  : 10px 50px;
+}
+.extra-height
+{
+	height : 10px;
+}
+.center
+{
+	text-align : center;
+}
+.search-grid1 i.fa {
+	display: inline-block;
+	border-radius: 60px;
+	box-shadow: 0px 0px 2px #888;
+	padding: 0.5em 0.6em;
+}
+.features ul
+{
+	list-style-type:none;
+	padding : 0;
+}
+.view_plans
+{
+	color :#224195 !important;
+}
+.search-grid3 , .search-grid4
+{
+	line-height : 30px;
+}
+.content-right
+{
+	margin-top : 14px;
+}
+.search-grid1 input
+{
+	line-height: 22px;
+	width: 36px;
+	padding: 0;
+	margin: 0 2px;
+	font-size: 12px;
+}
+.single-plan-title-edit
+{
+	padding : 2px !important;
+	font-size : 25px !important;
+}
+.ind_search_div
+{
+	margin-top : 30px;
 }

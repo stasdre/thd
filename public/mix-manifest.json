@@ -3,7 +3,7 @@
     "/js/admin/app.js": "/js/admin/app.js",
     "/js/admin/datatables.js": "/js/admin/datatables.js",
     "/js/app.js": "/js/app.js",
-    "/css/style.css": "/css/style.css",
+    "/css/main.css": "/css/main.css",
     "/css/admin/app.css": "/css/admin/app.css",
     "/js/bootstrap-slider.min.js": "/js/bootstrap-slider.min.js"
 }

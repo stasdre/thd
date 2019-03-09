@@ -12,10 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
-    <link href="{{ asset('css/screen.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-    <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5c4f43d3058f100011a5b1b2&product=custom-share-buttons"></script>
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -74,8 +71,15 @@
        </div>
       <div class="col-md-2 col-sm-3 xs-set-position d-none d-md-block">
         <ul class="list-inline text-center text-sm-right text-small text-uppercase mt-1 mb-3">
-          <li class="list-inline-item"><a href="{{ route('register') }}">Register</a></li>
-          <li class="list-inline-item"><a href="{{ route('login') }}">Login</a></li>
+            @auth
+                <li class="list-inline-item"><a href="{{ route('logout') }}">Logout</a></li>                
+            @endauth
+
+            @guest
+                <li class="list-inline-item"><a href="{{ route('register') }}">Register</a></li>
+                <li class="list-inline-item"><a href="{{ route('login') }}">Login</a></li>                  
+            @endguest
+
           <li class="list-inline-item"><a href="{{route('cart')}}"><img src="{{ asset('images/icons/icon-cart.png') }}" alt="" class="img-fluid"></a></li>
         </ul>
         <div class="input-group input-group-sm mb-1 plan_name_search">
@@ -268,9 +272,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.4.1/slick.min.js"></script>
 <!-- Custom JS -->
 <script src="{{ asset('js/app.js') }}"></script>
-
 <script>
     $('.mh-1').matchHeight({ property: 'min-height' });
     $('[data-fancybox]').fancybox({

@@ -17755,3 +17755,8 @@ div.FixedHeader_Cloned table {
   background: white url("/img/ui-anim_basic_16x16.gif") right center no-repeat;
 }
 
+.dropzone .biggest img {
+  display: block;
+  width: 100%;
+}
+
