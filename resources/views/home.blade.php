@@ -49,7 +49,7 @@
 	            <li data-target="#banner" data-slide-to="{{$loop->index}}" @if($loop->index == 0)class="active"@endif></li>
 			@endforeach
         </ol>
-        <div class="carousel-inner">
+        <div class="carousel-inner"> 
 			@foreach($gallery as $img)
 				<div class="carousel-item @if($loop->index == 0) active @endif"> <img class="d-block w-100" src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}">
 					<div class="caption-quote-wrap">
