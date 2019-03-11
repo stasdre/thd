@@ -271,10 +271,10 @@
 		<h1 class="text-center font-futura">AMERICA’S FAVORITE HOUSE PLANS</h1>
 		<div class="plan-list my-1">
 			<div class="position-relative">
-				<div id="modalplan48" class="carousel slide" data-ride="carousel" data-interval="1800">
+				<div id="favorite_plans" class="carousel slide" data-ride="carousel" data-interval="1800">
 					     <ol class="carousel-indicators">
 			@foreach($gallery as $img)
-	            <li data-target="#banner" data-slide-to="{{$loop->index}}" @if($loop->index == 0)class="active"@endif></li>
+	            <li data-target="#favorite_plans" data-slide-to="{{$loop->index}}" @if($loop->index == 0)class="active"@endif></li>
 			@endforeach
         </ol>
         <div class="carousel-inner">
@@ -293,7 +293,7 @@
 				</div>
 			@endforeach
         </div>
-        <a class="carousel-control-prev" href="#banner" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#banner" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+        <a class="carousel-control-prev" href="#favorite_plans" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#favorite_plans" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
 					  </div>
 				   
 			</div>
