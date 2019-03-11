@@ -8,7 +8,7 @@
             <div class="dz-preview dz-processing sending dz-image-preview file_sortable dz-complete" id="sortable_id_{{ $image->id }}">
                 <div class="imag_container downloaded_without_check" id="image_id_{{ $image->id }}">
                     <div class="dz-image biggest">
-                        <img data-dz-thumbnail alt="{{ $image->title or $image->file_name }}" src="{{ '/storage/plans/'.$image->plan_id.'/thumb/'.$image->file_name }}" />
+                        <img data-dz-thumbnail alt="{{ $image->title or $image->file_name }}" src="{{ '/storage/plans/'.$image->plan_id.'/thumb/'.$image->file_name }}?rnd={{rand()}}" />
                     </div>
                     <div class="dz-details">
                         <div class="dz-size" data-dz-size><strong>{{ round(Storage::size('public/plans/'.$image->plan_id.'/thumb/'.$image->file_name) / 1000, 2) }}</strong> KB</div>
