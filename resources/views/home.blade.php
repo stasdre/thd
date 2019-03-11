@@ -325,13 +325,13 @@
 		
 		<div class="plan-list my-1">
 			<div class="position-relative">
-				<div id="modalplan" class="carousel slide" data-ride="carousel" data-interval="false">
+				<div id="new_plans" class="carousel slide" data-ride="carousel" data-interval="false">
 					<div class="carousel-inner">
 						@foreach($newMob as $img)
 							<div class="carousel-item @if($loop->index == 0) active @endif"> <img src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}" class="img-fluid d-block w-100"> </div>
 						@endforeach
 					</div>
-					<a class="carousel-control-prev" href="#modalplan48" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#modalplan48" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
+					<a class="carousel-control-prev" href="#new_plans" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#new_plans" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
 				<div class="media planinfo text-left top position-absolute mobile-planinfo"> <img class="mr-1 align-self-center logo-on-mobile" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
 					<div class="media-body">
 						<h5 class="mb-0 text-white">plan <span class="text-secondary">4839</span></h5>
