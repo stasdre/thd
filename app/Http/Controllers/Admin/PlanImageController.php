@@ -180,6 +180,7 @@ class PlanImageController extends Controller
     public function destroy(PlanImage $image)
     {
         Storage::delete('public/plans/'.$image->plan_id.'/thumb/'.$image->file_name);
+        Storage::delete('public/plans/'.$image->plan_id.'/original/'.$image->file_name);
         Storage::delete('public/plans/'.$image->plan_id.'/'.$image->file_name);
         if($image->delete()){
             return response()->json('success', 200);
