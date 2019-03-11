@@ -11,6 +11,7 @@
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="{{asset('css/admin/doka.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin/app.css')}}">
     @stack('css')
 </head>
@@ -77,6 +78,7 @@
     </footer>
 </div>
 <!-- ./wrapper -->
+<script src="{{asset('js/admin/doka.min.js')}}"></script>
 <script src="{{asset('js/admin/app.js')}}"></script>
 @stack('tinymce')
 @stack('datatables')
