@@ -2,34 +2,34 @@
 @extends('layouts.index')
 
 @section('carousel')
-    <div id="banner" class="carousel slide" data-ride="carousel">
+    <div id="banner" class="carousel slide" data-ride="carousel" >
     @if ($agent->isDesktop()  || $agent->isTablet())
 <div class="home-page-search mobile-off"> 
   <h4 class="blue-text"> Search House Plans </h4>
                   <TABLE class="home-search-new">
 <tr>
 <Th>Sq. Ft.</Th>
-<td> <input type="text" placeholder="min" size=5 class="center"> to <input type="text" placeholder="max" size=5 class="center"></td>
+<td> <input type="text" placeholder="min" size=5 class="center" name="min"> to <input type="text" placeholder="max" size=5 class="center" name="max"></td>
 </tr>
 <tr>
 <Th>Beds</Th>
-<td> <div><span class="min_icon qty-minus"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
-                        <span class="max_icon qty-plus"><i class="fa fa-plus"></i></span></div></td>
+<td> <div><span class="min_icon  beds-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                        <span class="max_icon  beds-add"><i class="fa fa-plus"></i></span></div></td>
 </tr>
 <tr>
 <Th>Baths</Th>
-<td> <div><span class="min_icon qty-minus"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
-                        <span class="max_icon qty-plus"><i class="fa fa-plus"></i></span></div></td>
+<td> <div><span class="min_icon  baths-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                        <span class="max_icon  baths-add"><i class="fa fa-plus"></i></span></div></td>
 </tr>
 <tr>
 <Th>Garages</Th>
-<td> <div><span class="min_icon qty-minus"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
-                        <span class="max_icon qty-plus"><i class="fa fa-plus"></i></span></div></td>
+<td> <div><span class="min_icon garage-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                        <span class="max_icon garage-add"><i class="fa fa-plus"></i></span></div></td>
 </tr>	
 <tr>
 <Th>Stories</Th>
-<td> <div><span class="min_icon qty-minus"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
-                        <span class="max_icon qty-plus"><i class="fa fa-plus"></i></span></div></td>
+<td> <div><span class="min_icon  stories_reduce"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                        <span class="max_icon  stories_add"><i class="fa fa-plus"></i></span></div></td>
 </tr>
 
 <tr>
@@ -207,7 +207,7 @@
 							</ul>
 						</div>
 					</div>
-					<p class="text-right mb-0"><a href="{{ route('styles') }}" class="text-primary font-weight-bold">View ALL Architectural Styles &gt;</a></p>
+					<p class="text-right mb-0"><center><a href="{{ route('styles') }}" class="text-primary font-weight-bold text-center">View ALL Architectural Styles &gt;</a></center></p>
 				</div>
 				<div class="col-md-6">
 					<h4 class="text-primary text-center font-weight-bold"> Browse by Specialty Collection</h4>
@@ -226,7 +226,7 @@
 							</ul>
 						</div>
 					</div>
-					<p class="text-right mb-0"><a href="{{ route('collections') }}" class="text-primary font-weight-bold">View ALL Specialty Collections &gt;</a></p>
+					<p class="text-right mb-0"><center><a href="{{ route('collections') }}" class="text-primary font-weight-bold text-center">View ALL Specialty Collections &gt;</a></center></p>
 				</div>
 			</div>
 		</div>
@@ -271,7 +271,7 @@
 		<h1 class="text-center font-futura">AMERICA’S FAVORITE HOUSE PLANS</h1>
 		<div class="plan-list my-1">
 			<div class="position-relative">
-				<div id="favorite_plans" class="carousel slide" data-ride="carousel" data-interval="1800">
+				<div id="favorite_plans" class="carousel slide" data-ride="carousel" data-interval="6000">
 					     <ol class="carousel-indicators">
 			@foreach($gallery as $img)
 	            <li data-target="#favorite_plans" data-slide-to="{{$loop->index}}" @if($loop->index == 0)class="active"@endif></li>
@@ -279,7 +279,7 @@
         </ol>
         <div class="carousel-inner">
 			@foreach($gallery as $img)
-				<div class="carousel-item @if($loop->index == 0) active @endif"> <img class="d-block w-100" src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}">
+				<div class="carousel-item @if($loop->index == 0) active @endif"> <img class="d-block w-100" src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}" style="min-height : 210px !important;">
 					<div class="caption-quote-wrap">
 						<div class="caption-quote @if(!$img->quote) custom_capt @endif">{{$img->description}}</div>
 						<p class="@if($img->quote==1) caption-quote-author @else caption-quote-small @endif">{{$img->caption}}</p>
@@ -300,24 +300,24 @@
 		</div>
 	<div class="text-center page-name mt-1 grey-border" style="padding-top : 20px !important">
       <div class="mobile-home-search"> 
-            <div class="row" style="border-bottom: 2px solid #ddd;margin-left: 4px;margin-right: 5px;">
-          		<div class="col-2 search_by_name" style="padding-bottom : 25px;padding-left : 10px;">Sq ft </div>
-                <div class="col-4" style="padding-left : 0;"><input type="text" placeholder="min" size=5 class="center"><span class="small-font"> to </span><input type="text" placeholder="max" size=5 class="center"></div> 
-                <div class="col-2 Sborder-left search_by_name" style="padding-left : 4px;">Stories </div>
-                <div class="col-4"><span class="min_icon qty-minus"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
-                        <span class="max_icon qty-plus"><i class="fa fa-plus"></i></span></div>
+            <div class="row" style="border-bottom: 2px solid #696969;margin-left: 4px;margin-right: 5px;">
+          		<div class="col-2 search_by_name text-left" style="padding-bottom : 25px;padding-left : 2px;font-weight : normal">Sq ft </div>
+                <div class="col-4" style="padding-left : 0;"><input type="number" placeholder="min" size=5 class="center" style="margin-left : -15px;"><span class="small-font"> to </span><input type="number" placeholder="max" size=5 class="center"></div> 
+                <div class="col-2 Sborder-left search_by_name" style="padding-left : 4px;font-weight : normal;border-left: 2px solid #696969;">Stories </div>
+                <div class="col-4"><span class="min_icon stories_reduce-mobile"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                        <span class="max_icon stories-add-mobile"><i class="fa fa-plus"></i></span></div>
              </div>
              <div class="row" style="margin-top : 0;">
-          		<div class="col-2 pt-3 search_by_name" style="padding-left : 12px;">Beds</div>
-                <div class="col-4 pt-3 text-left" style="padding-left : 0;"> <span class="min_icon qty-minus" style="margin-left : 4px !important;"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
-                        <span class="max_icon qty-plus"><i class="fa fa-plus"></i></span></div>
-                <div class="col-2 Sborder-left pt-3 search_by_name" style="padding-left : 13px;">Baths</div>
-                 <div class="col-4 pt-3"><span class="min_icon qty-minus"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty">  
-                        <span class="max_icon qty-plus"><i class="fa fa-plus"></i></span></div>
+          		<div class="col-2 pt-3 search_by_name" style="font-weight : normal;">Beds</div>
+                <div class="col-4 pt-3 text-left" style="padding-left : 0;"> <span class="min_icon beds-remove-mobile" style="margin-left : 4px !important;"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                        <span class="max_icon beds-add-mobile"><i class="fa fa-plus"></i></span></div>
+                <div class="col-2 Sborder-left pt-3 search_by_name" style="padding-left : 13px;font-weight : normal;border-left: 2px solid #696969;">Baths</div>
+                 <div class="col-4 pt-3"><span class="min_icon baths-remove-mobile"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty">  
+                        <span class="max_icon baths-add-mobile"><i class="fa fa-plus"></i></span></div>
              </div>
              <div style="margin-top : 25px;"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold search-button1" type="button"> SEARCH</button></div>
-             <div class="mt-3"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold grey-button" type="button" style="width :100%;"> Advanced Search</button></div>
-             <div class="mt-3"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold grey-button" type="button" style="width :100%;"> Search by Plan #<i class="fa fa-search" aria-hidden="true"></i></button></div>
+             <div class="mt-3"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold grey-button" type="button" style="width :100%;padding : 6px 0;"> Advanced Search</button></div>
+             <div class="mt-3" style="margin-top : 30px !important;"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold grey-button" type="button" style="width :100%;padding : 6px 0;"> Search by Plan #<i class="fa fa-search" aria-hidden="true"></i></button></div>
           </div>
        </div>  
        <div style="clear : both;"></div>
@@ -427,3 +427,4 @@
 		</div>
 	@endsection
 @endif
+</div>
