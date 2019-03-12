@@ -13,3 +13,8 @@
   margin-right: auto;
   margin-left: auto;
 }
+
+.reverse-img{
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}

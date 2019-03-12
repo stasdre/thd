@@ -131,6 +131,10 @@ $(document).ready(function () {
             $list.hide();
         });
     });
+
+    $(".reverse_plan").on('click', function () {
+        $(this).parent().parent().parent().find("img").toggleClass('reverse-img');
+    });
 });
 
 $('.mh-1').matchHeight({ property: 'min-height' });

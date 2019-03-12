@@ -6237,3 +6237,8 @@ ul.HI_nav {
   margin-left: auto;
 }
 
+.reverse-img {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
