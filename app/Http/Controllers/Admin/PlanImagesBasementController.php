@@ -37,6 +37,11 @@ class PlanImagesBasementController extends Controller
         $image = $request->file('file');
         $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
 
+        if(!file_exists(storage_path('app/public/plans/' . $plan->id . '/original/'))){
+            Storage::makeDirectory('public/plans/' . $plan->id . '/original');
+        }
+
+        $pathOriginal = storage_path('app/public/plans/' . $plan->id . '/original/' . $filename);
         $path = storage_path('app/public/plans/' . $plan->id . '/' . $filename);
         $pathThumb = storage_path('app/public/plans/' . $plan->id . '/thumb/' . $filename);
 
@@ -51,6 +56,9 @@ class PlanImagesBasementController extends Controller
             $constraint->aspectRatio();
         });
         $imgThumb->save($pathThumb);
+
+        $imgOriginal = Image::make($image->getRealPath());
+        $imgOriginal->save($pathOriginal, 100);
 
         if( $img &&  $imgThumb ) {
             $imagePlan = new PlanImageBasement([
@@ -118,6 +126,7 @@ class PlanImagesBasementController extends Controller
     public function destroy(PlanImageBasement $image)
     {
         Storage::delete('public/plans/'.$image->plan_id.'/thumb/'.$image->file_name);
+        Storage::delete('public/plans/'.$image->plan_id.'/original/'.$image->file_name);        
         Storage::delete('public/plans/'.$image->plan_id.'/'.$image->file_name);
         if($image->delete()){
             return response()->json('success', 200);

@@ -79,6 +79,7 @@ class HousePlansController extends Controller
 
         Storage::makeDirectory('public/plans/'.$plan->id);
         Storage::makeDirectory('public/plans/' . $plan->id . '/thumb');
+        Storage::makeDirectory('public/plans/' . $plan->id . '/original');
 
         if($request->input('youtube') == 'file'){
             $file = $request->file('video_file');

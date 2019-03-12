@@ -18,7 +18,7 @@
                     <div class="dz-preview dz-processing sending dz-image-preview file_sortable dz-complete" id="sortable_id_{{ $image->id }}">
                         <div class="imag_container downloaded" id="image_id_{{ $image->id }}">
                             <div class="dz-image biggest">
-                                <img data-dz-thumbnail alt="{{ $image->title or $image->file_name }}" src="{{ '/storage/plans/'.$image->plan_id.'/thumb/'.$image->file_name }}" />
+                            <img data-dz-thumbnail alt="{{ $image->title or $image->file_name }}" src="{{ '/storage/plans/'.$image->plan_id.'/thumb/'.$image->file_name }}?rnd={{rand()}}" />
                             </div>
                             <div class="dz-details">
                                 <div class="dz-size" data-dz-size><strong>{{ round(Storage::size('public/plans/'.$image->plan_id.'/thumb/'.$image->file_name) / 1000, 2) }}</strong> KB</div>
@@ -415,10 +415,16 @@
                     $("#title").val(data.title);
                     $("#alt_text").val(data.alt_text);
                     $("#description").val(data.description);
-                    $("#img__thumb").prop('src', '/storage/plans/'+data.plan_id+'/thumb/'+data.file_name);
-                    $("#img__origin").prop('src', '/storage/plans/'+data.plan_id+'/'+data.file_name);
-                    $("#img_href").prop('href', '/storage/plans/'+data.plan_id+'/'+data.file_name);
+                    
+                    $("#img__thumb").prop('src', '/storage/plans/'+data.plan_id+'/thumb/'+data.file_name+'?rnd='+Math.random());
+                    $("#img__thumb").data('origin', '/storage/plans/'+data.plan_id+'/original/'+data.file_name);
 
+                    $("#img__origin").prop('src', '/storage/plans/'+data.plan_id+'/'+data.file_name+'?rnd='+Math.random());
+                    $("#img__origin").data('origin', '/storage/plans/'+data.plan_id+'/original/'+data.file_name);
+                    
+                    $("#img_href").prop('href', '/storage/plans/'+data.plan_id+'/'+data.file_name);
+                    $("#img_thumb_href").prop('href', '/storage/plans/'+data.plan_id+'/thumb/'+data.file_name);
+                    
                     if(data.first_image == 1){
                         $("#first_image").prop('checked', true);
                     }else{
@@ -484,9 +490,15 @@
                     $("#title").val(data.title);
                     $("#alt_text").val(data.alt_text);
                     $("#description").val(data.description);
-                    $("#img__thumb").prop('src', '/storage/plans/'+data.plan_id+'/thumb/'+data.file_name);
-                    $("#img__origin").prop('src', '/storage/plans/'+data.plan_id+'/'+data.file_name);
+                    
+                    $("#img__thumb").prop('src', '/storage/plans/'+data.plan_id+'/thumb/'+data.file_name+'?rnd='+Math.random());
+                    $("#img__thumb").data('origin', '/storage/plans/'+data.plan_id+'/original/'+data.file_name);
+
+                    $("#img__origin").prop('src', '/storage/plans/'+data.plan_id+'/'+data.file_name+'?rnd='+Math.random());
+                    $("#img__origin").data('origin', '/storage/plans/'+data.plan_id+'/original/'+data.file_name);
+                    
                     $("#img_href").prop('href', '/storage/plans/'+data.plan_id+'/'+data.file_name);
+                    $("#img_thumb_href").prop('href', '/storage/plans/'+data.plan_id+'/thumb/'+data.file_name);
 
                     $(".galery_loader").hide();
 
@@ -613,13 +625,13 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-9">
-                            <img src="" class="img-responsive" id="img__thumb" alt="">
+                            <div class="edit-img"><a href="" target="_blank" id="img_thumb_href"><img src="" data-origin="" class="img-responsive" id="img__thumb" alt=""></a></div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <a href="" target="_blank" id="img_href"><img src="" class="img-responsive" id="img__origin" alt=""></a>
+                            <div class="edit-img"><a href="" target="_blank" id="img_href"><img src="" data-origin="" class="img-responsive" id="img__origin" alt=""></a></div>
                         </div>
                     </div>
 
