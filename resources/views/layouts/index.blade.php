@@ -179,7 +179,10 @@
       <div class="col-md-7 col-sm-6 text-center z-index-xs width-sm-100">
 		<nav class="navbar navbar-dark navbar-expand-lg">
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-			<ul class="mb-0 p-0 width_100">
+			<ul class="mb-0 p-0 width_100" style="line-height: 35px;">
+            <li class="list-inline-item dropdown"><a href="#">Email</a></li>
+            <li class="list-inline-item dropdown"><a href="#">Live Chat</a></li>
+            <li class="list-inline-item dropdown"><a href="#">Phone</a></li>
 			  <li class="list-inline-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#link"><img src="{{asset('images/icons/icon-search.png')}}" alt="search"> House Plans</a>
 				<ul class="dropdown-menu">
 				  <li><a href="{{ route('search') }}">Advanced Search</a></li>
