@@ -8,27 +8,27 @@
                     <TABLE>
                         <tr>
                             <TD>Sq. Ft.</TD>
-                            <td> <input type="text" placeholder="min" size=5 class="center"> to <input type="text" placeholder="max" size=5 class="center"></td>
+                            <td> <input type="text" placeholder="min" size=5 class="center" name="min"> to <input type="text" placeholder="max" size=5 class="center" name="max"></td>
                         </tr>
                         <tr>
                             <TD>Beds</TD>
-                            <td> <span class="min_icon"> <i class="fa fa-minus"> </i></span> 1
-                                <span class="max_icon"><i class="fa fa-plus"></i></span></td>
+                            <td> <div><span class="min_icon beds-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                        <span class="max_icon beds-add"><i class="fa fa-plus"></i></span></div></td>
                         </tr>
                         <tr>
                             <TD>Baths</TD>
-                            <td> <span class="min_icon"> <i class="fa fa-minus"> </i></span> 1
-                                <span class="max_icon"><i class="fa fa-plus"></i></span></td>
+                          <td> <div><span class="min_icon  baths-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                        <span class="max_icon  baths-add"><i class="fa fa-plus"></i></span></div></td>
                         </tr>
                         <tr>
                             <TD>Garages</TD>
-                            <td> <span class="min_icon"> <i class="fa fa-minus"> </i></span> 1
-                                <span class="max_icon"><i class="fa fa-plus"></i></span></td>
+                           <td> <div><span class="min_icon   garage-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                        <span class="max_icon  garage-add"><i class="fa fa-plus"></i></span></div></td>
                         </tr>
                         <tr>
                             <TD>Stories</TD>
-                            <td> <span class="min_icon"> <i class="fa fa-minus"> </i></span> 1
-                                <span class="max_icon"><i class="fa fa-plus"></i></span></td>
+                          <td> <div><span class="min_icon  stories_reduce"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                        <span class="max_icon  stories_add"><i class="fa fa-plus"></i></span></div></td>
                         </tr>
                         <tr>
                             <TD>Width</TD>
@@ -62,7 +62,7 @@
                     <div class="features">
                         <ul class="list-unstyled text-primary">
                             @foreach(\Thd\Style::orderBy('name', 'ASC')->get() as $style)
-                            <li><a href="{{ route('style.slug', $style->slug)}}">{{$style->name}}</a></li>
+                            <li><b><a href="{{ route('style.slug', $style->slug)}}">{{$style->name}}</a></b></li>
                             @endforeach
                         </ul>
                     </div>
@@ -78,7 +78,7 @@
                     <div class="features">
                         <ul class="list-unstyled text-primary">
                             @foreach(\Thd\Collection::orderBy('name', 'ASC')->get() as $collection)
-                                <li><a href="{{route('collection.slug', $collection->slug)}}">{{$collection->name}}</a></li>
+                                <li><b><a href="{{route('collection.slug', $collection->slug)}}">{{$collection->name}}</a></b></li>
                             @endforeach
                         </ul>
                     </div>

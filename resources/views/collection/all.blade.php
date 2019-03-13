@@ -10,14 +10,14 @@
             <div class="plan-name position-absolute">{{ $collectionData->subtitle }}</div>
         </div>
         <div class="desktop-off">
-            <h5 class="center font-weight-bold no-margin"> Specialty Collections</h5>
+            <h5 class="center font-weight-bold no-margin mt-3"> Specialty Collections</h5>
         </div>
     </div>
     <div class="py-2 mx-sm-3">
 
-        <div class="px-sm-5">
+        <div class="px-sm-5 text-left col-12">
             {!! $collectionData->desc !!}
-            <div class="desktop-off read_more" id="read_more"><span class="read-more-link-wrapper">Read More </span></div>
+            <div class="desktop-off read_more" id="read_more" style="margin-top: -5px;"><span class="read-more-link-wrapper">Read More </span></div>
             <div style="display : none;" id="read_less" class="read_less"><span class="read-less-link-wrapper">Read Less </span></div>
             <!-- <p class="no-margin">House Plans in our specialty collections allow you to narrow your home plan search to find the perfect house designs to accommodate any preference or budget.  Whether you’re looking for <a href="#">small house plans, energy efficient home plans, floor plans with in-law suites,</a> bonus spaces, outdoor living areas or <h5 class="desktop-off read_more"><span>Read More</span></h5><span class="mobile-off">  plans with walkout basements, quickly and easily produce search results with quality home plans that meet the strict standards of the IRC (International Residential Code) and have the full architectural detailing builders prefer.  Home plans in each collection represents the very best in residential architecture from leading architects and designers throughout the US and Canada.  If you need help finding your dream home, please <a href="#">live chat</a>, <a href="#">email</a> or <a href="#">call us</a> at XXX-XXX-XXXX and let our home plan experts assist you in making the right choice!</span></span></p>-->
         </div>

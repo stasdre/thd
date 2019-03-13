@@ -10,12 +10,12 @@
             <div class="plan-name position-absolute">{{ $styleData->subtitle }}</div>
         </div>
         <div class="desktop-off">
-            <h5 class="center font-weight-bold no-margin"> Specialty Collections</h5>
+            <h5 class="center font-weight-bold no-margin mt-3">  Architectural Design Styles</h5>
         </div>
     </div>
     <div class="py-2 px-sm-5 mx-sm-3">
 
-        <div>
+        <div class="text-left col-12">
             {!! $styleData->desc !!}
             <div class="desktop-off read_more" id="read_more"><span class="read-more-link-wrapper">Read More </span></div>
             <div style="display : none;" id="read_less" class="read_less"><span class="read-less-link-wrapper">Read Less </span></div>
