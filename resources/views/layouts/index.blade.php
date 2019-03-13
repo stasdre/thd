@@ -169,7 +169,7 @@
             </span>
            <span class="float-right">
                <a href="#" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-search d-block" style="font-size:16px;"></i> Search</a>
-               <a href="#" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-phone d-block" style="font-size:16px;"></i> Contact</a> 
+               <a href="/contact-us" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="far fa-envelope d-block" style="font-size:16px;"></i> Contact</a> 
                <a href="#" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-user d-block" style="font-size:16px;"></i> Account</a> 
                <a href="{{route('cart')}}" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-shopping-cart d-block" style="font-size:16px;"></i> Cart</a>
      	   </span>
