@@ -284,7 +284,7 @@
 						<div class="caption-quote @if(!$img->quote) custom_capt @endif">{{$img->description}}</div>
 						<p class="@if($img->quote==1) caption-quote-author @else caption-quote-small @endif">{{$img->caption}}</p>
 					</div>
-					<div class="media planinfo text-left top position-absolute mobile-planinfo"> <img class="mr-1 align-self-end" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
+					<div class="media planinfo text-left top position-absolute mobile-planinfo" style="background: rgba(0, 0, 0, 0.3) !important;"> <img class="mr-1 align-self-end" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
 						<div class="media-body">
 							<h5 class="mb-0 text-white">plan <span class="text-secondary">{{$img->plan}}</span></h5>
 							<h5 class="m-0 text-white">davidwiggins</h5>
@@ -301,18 +301,19 @@
 	<div class="text-center page-name mt-1 grey-border" style="padding-top : 20px !important">
       <div class="mobile-home-search"> 
             <div class="row" style="border-bottom: 2px solid #696969;margin-left: 4px;margin-right: 5px;">
-          		<div class="col-2 search_by_name text-left" style="padding-bottom : 25px;padding-left : 2px;font-weight : normal">Sq ft </div>
+          		<div class="col-2 search_by_name text-left" style="padding-bottom : 25px;padding-left : 0px;font-weight : normal;text-align: right !important;
+    padding-right: 9px;">Sq. ft. </div>
                 <div class="col-4" style="padding-left : 0;"><input type="number" placeholder="min" size=5 class="center" style="margin-left : -15px;"><span class="small-font"> to </span><input type="number" placeholder="max" size=5 class="center"></div> 
-                <div class="col-2 Sborder-left search_by_name" style="padding-left : 4px;font-weight : normal;border-left: 2px solid #696969;">Stories </div>
-                <div class="col-4"><span class="min_icon stories_reduce-mobile"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+                <div class="col-2 Sborder-left search_by_name" style="padding-left :10px;font-weight : normal;border-left: 2px solid #696969;">Stories </div>
+                <div class="col-4" style="padding-left : 6px;"><span class="min_icon stories_reduce-mobile"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
                         <span class="max_icon stories-add-mobile"><i class="fa fa-plus"></i></span></div>
              </div>
              <div class="row" style="margin-top : 0;">
-          		<div class="col-2 pt-3 search_by_name" style="font-weight : normal;">Beds</div>
+          		<div class="col-2 pt-3 search_by_name" style="font-weight : normal;text-align: right;padding-right: 6px;">Beds</div>
                 <div class="col-4 pt-3 text-left" style="padding-left : 0;"> <span class="min_icon beds-remove-mobile" style="margin-left : 4px !important;"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
                         <span class="max_icon beds-add-mobile"><i class="fa fa-plus"></i></span></div>
-                <div class="col-2 Sborder-left pt-3 search_by_name" style="padding-left : 13px;font-weight : normal;border-left: 2px solid #696969;">Baths</div>
-                 <div class="col-4 pt-3"><span class="min_icon baths-remove-mobile"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty">  
+                <div class="col-2 Sborder-left pt-3 search_by_name" style="padding-left : 19px;font-weight : normal;border-left: 2px solid #696969;">Baths</div>
+                 <div class="col-4 pt-3" style="padding-left : 6px;"><span class="min_icon baths-remove-mobile"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty">  
                         <span class="max_icon baths-add-mobile"><i class="fa fa-plus"></i></span></div>
              </div>
              <div style="margin-top : 25px;"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold search-button1" type="button"> SEARCH</button></div>
