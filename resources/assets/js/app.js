@@ -162,3 +162,13 @@ $('.slider').on('beforeChange', function (event, slick, currentSlide, nextSlide)
 		}
 });
   
+  $("#read_more").click(function(){
+		$("#content-scroll").show();
+		$("#read_more").css('visibility' , 'hidden');   
+		$('#read_less').show();
+		});
+	$('#read_less').click(function(){
+		$("#content-scroll").hide();
+		$("#read_more").css('visibility' , 'visible');   
+		$('#read_less').hide();
+		});

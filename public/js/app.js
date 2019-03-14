@@ -238,6 +238,17 @@ $('.stories_reduce , .stories_reduce-mobile').click(function () {
     }
 });
 
+$("#read_more").click(function () {
+    $("#content-scroll").show();
+    $("#read_more").css('visibility', 'hidden');
+    $('#read_less').show();
+});
+$('#read_less').click(function () {
+    $("#content-scroll").hide();
+    $("#read_more").css('visibility', 'visible');
+    $('#read_less').hide();
+});
+
 /***/ }),
 /* 9 */
 /***/ (function(module, exports) {
