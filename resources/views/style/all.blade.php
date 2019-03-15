@@ -13,7 +13,7 @@
             <h5 class="center font-weight-bold no-margin mt-3">  Architectural Design Styles</h5>
         </div>
     </div>
-    <div class="py-2 px-sm-5 mx-sm-3">
+    <div class="py-2 px-sm-5 mx-sm-3 architectural-design">
 
         <div class="text-left col-12">
             {!! $styleData->desc !!}

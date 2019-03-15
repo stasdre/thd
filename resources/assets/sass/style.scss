@@ -2393,7 +2393,7 @@ i.fa.fa-bars.menu_icons {
   }
   .sidebar-heading
   {
-    font-size : 13px !important;
+    font-size : 15px !important;
   }
   .search-button button
   {
@@ -2439,6 +2439,15 @@ i.fa.fa-bars.menu_icons {
   {
     width : auto !important;
   }
+  .architectural-design , .speciality-collection
+  {
+  	    padding: 0 !important;
+   		 margin: 0 !important;
+  }
+  
+  .plan-grid .shop-link {
+    font-size: 16px;
+	}
 }
 @media (max-width: 570px) and (min-width: 500px) {
   .plan-cta.position-relative.mb-2 {
@@ -3312,7 +3321,7 @@ h5.read_more {
 }
 .blue-heading
 {
-  color: blue;
+  color: #2F358F;
   /* text-align: center; */
   font-weight: bold;
   padding: 20px 0;

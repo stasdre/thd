@@ -13,7 +13,7 @@
             <h5 class="center font-weight-bold no-margin mt-3"> Specialty Collections</h5>
         </div>
     </div>
-    <div class="py-2 mx-sm-3">
+    <div class="py-2 mx-sm-3 speciality-collection">
 
         <div class="px-sm-5 text-left col-12">
             {!! $collectionData->desc !!}
