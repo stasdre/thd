@@ -4829,16 +4829,16 @@ i.fa.fa-bars.menu_icons {
 
   .home-page-search {
     position: absolute;
-    top: 80px !important;
+    top: 10px !important;
     background: white;
     z-index: 10;
-    left: 80px !important;
+    left: 25px !important;
     opacity: .8;
     padding: 5px;
   }
 
   .home-search-new th {
-    padding: 10px 0 !important;
+    padding: 7px 0 !important;
   }
 
   .house-grid {
@@ -4853,6 +4853,17 @@ i.fa.fa-bars.menu_icons {
 
   .plan-grid .shop-link {
     font-size: 16px;
+  }
+
+  .home-page-search h4.blue-text {
+    display: none;
+  }
+
+  .home-main-text {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    word-spacing: 2px !important;
+    font-size: 13px;
   }
 }
 
