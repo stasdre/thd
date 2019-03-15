@@ -4,7 +4,7 @@
             <div class="plan-cta position-relative mb-2">
 
                 <div class="search-grid search-grid1">
-                    <div class="font-weight-bold sidebar-heading">Basic House Plan Search</div>
+                    <div class="font-weight-bold sidebar-heading">House Plan Search</div>
                     <TABLE>
                         <tr>
                             <TD>Sq. Ft.</TD>
