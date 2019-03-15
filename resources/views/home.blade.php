@@ -91,7 +91,7 @@
 			</div>
 		</div>
         <p></p>
-		<div class="text-center pt-0 br_none_sm" style="margin-left:18px;margin-right :18px; word-spacing: 2px;">{!! $descDesctop->description !!}</div>
+		<div class="text-center pt-0 br_none_sm home-main-text" style="margin-left:18px;margin-right :18px; word-spacing: 2px;">{!! $descDesctop->description !!}</div>
 		@if($deckBest->main_file)
 			<div class="plan-full position-relative mb-3"> <img src="{{asset('/storage/home-page/'.$deckBest->main_file)}}" alt="" class="img-fluid" />
 				<div class="plan-caption position-absolute mw-315">
