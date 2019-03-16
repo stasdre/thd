@@ -284,9 +284,9 @@
 						<div class="caption-quote @if(!$img->quote) custom_capt @endif">{{$img->description}}</div>
 						<p class="@if($img->quote==1) caption-quote-author @else caption-quote-small @endif">{{$img->caption}}</p>
 					</div>
-					<div class="media planinfo text-left top position-absolute mobile-planinfo" style="background: rgba(0, 0, 0, 0.3) !important;"> <img class="mr-1 align-self-end" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
+					<div class="media planinfo text-left top position-absolute mobile-planinfo" style="background: black !important;opacity : .6"> <img class="mr-1 align-self-end" src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
 						<div class="media-body">
-							<h5 class="mb-0 text-white">plan <span class="text-secondary">{{$img->plan}}</span></h5>
+							<h5 class="mb-0 text-white">plan <span class="text-white">{{$img->plan}}</span></h5>
 							<h5 class="m-0 text-white">davidwiggins</h5>
 						</div>
 					</div>
