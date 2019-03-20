@@ -69,6 +69,20 @@
                                 </div>
                             </div>
                         </div>
+                        @if(isset($data->image))
+                        <div class="form-group">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5">
+                                <div class="edit-img"><a href="{{asset('/storage/styles/'.$data->image)}}" target="_blank"><img src="{{asset('/storage/styles/'.$data->image)}}" data-origin="/storage/styles/original/{{$data->image}}" class="img-responsive" alt=""></a></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5">
+                                <div class="edit-img"><a href="{{asset('/storage/styles/thumb/'.$data->image)}}" target="_blank"><img src="{{asset('/storage/styles/thumb/'.$data->image)}}" data-origin="/storage/styles/original/{{$data->image}}" class="img-responsive" alt=""></a></div>
+                            </div>
+                        </div>
+                    @endif            
 
                     <div class="form-group">
                         <div class="col-sm-10">

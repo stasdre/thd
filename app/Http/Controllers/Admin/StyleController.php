@@ -87,7 +87,7 @@ class StyleController extends Controller
             $img->save($path, 90);
 
 
-            $pathThumb = storage_path('app/public/styles/thumb' . $filename);
+            $pathThumb = storage_path('app/public/styles/thumb/' . $filename);
 
             $imgThumb = Image::make($image->getRealPath());
             $imgThumb->resize(380, null, function ($constraint) {
@@ -209,8 +209,27 @@ class StyleController extends Controller
             $img->save($path, 90);
 
             Storage::delete('public/styles/'.$style->image);
+            Storage::delete('public/styles/thumb/'.$style->image);
+            Storage::delete('public/styles/original/'.$style->image);
 
             $style->image = $filename;
+
+            $pathThumb = storage_path('app/public/styles/thumb/' . $filename);
+
+            $imgThumb = Image::make($image->getRealPath());
+            $imgThumb->resize(380, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $imgThumb->save($pathThumb);
+    
+            if(!file_exists(storage_path('app/public/styles/original/'))){
+                Storage::makeDirectory('public/styles/original');
+            }
+
+            $pathOriginal = storage_path('app/public/styles/original/' . $filename);
+            $imgOriginal = Image::make($image->getRealPath());
+            $imgOriginal->save($pathOriginal, 100);    
+
         }
 
         $style->name = $request->input('name');
@@ -268,6 +287,8 @@ class StyleController extends Controller
 
         if($style->image){
             Storage::delete('public/styles/'.$style->image);
+            Storage::delete('public/styles/thumb/'.$style->image);
+            Storage::delete('public/styles/original/'.$style->image);
         }
 
         $style->delete();
@@ -359,7 +380,25 @@ class StyleController extends Controller
                 $img->save($path, 90);
 
                 Storage::delete('public/styles/'.$data->image);
+                Storage::delete('public/styles/thumb/'.$data->image);
+                Storage::delete('public/styles/original/'.$data->image);
 
+                $pathThumb = storage_path('app/public/styles/thumb/' . $filename);
+
+                $imgThumb = Image::make($image->getRealPath());
+                $imgThumb->resize(380, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $imgThumb->save($pathThumb);
+        
+                if(!file_exists(storage_path('app/public/styles/original/'))){
+                    Storage::makeDirectory('public/styles/original');
+                }
+    
+                $pathOriginal = storage_path('app/public/styles/original/' . $filename);
+                $imgOriginal = Image::make($image->getRealPath());
+                $imgOriginal->save($pathOriginal, 100);    
+    
                 $data->image = $filename;
             }
 
