@@ -52,7 +52,7 @@
                     @if(isset($collection->image))
                         <input class="form-control file-input hidden" type="file" name="image">
                         <span class="input-group-addon file-input hidden"> <i class="fa fa-file" aria-hidden="true"></i></span>
-                        <p class="file-name">/styles/{{ $collection->image }} <a href="#" class="delete-file" style="margin-left: 15px; color: red;"><i class="fa fa-ban"></i></a></p>
+                        <p class="file-name">/collections/{{ $collection->image }} <a href="#" class="delete-file" style="margin-left: 15px; color: red;"><i class="fa fa-ban"></i></a></p>
                     @else
                         <input class="form-control" type="file" name="image">
                         <span class="input-group-addon"><i class="fa fa-file" aria-hidden="true"></i></span>
@@ -60,6 +60,20 @@
                 </div>
             </div>
         </div>
+        @if(isset($collection->image))
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5">
+                    <div class="edit-img"><a href="{{asset('/storage/collections/'.$collection->image)}}" target="_blank"><img src="{{asset('/storage/collections/'.$collection->image)}}" data-origin="/storage/collections/original/{{$collection->image}}" class="img-responsive" alt=""></a></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5">
+                    <div class="edit-img"><a href="{{asset('/storage/collections/thumb/'.$collection->image)}}" target="_blank"><img src="{{asset('/storage/collections/thumb/'.$collection->image)}}" data-origin="/storage/collections/original/{{$collection->image}}" class="img-responsive" alt=""></a></div>
+                </div>
+            </div>
+        @endif
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">

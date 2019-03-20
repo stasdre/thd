@@ -85,6 +85,22 @@ class CollectionController extends Controller
             });
             $img->save($path, 90);
 
+            $pathThumb = storage_path('app/public/collections/thumb/' . $filename);
+
+            $imgThumb = Image::make($image->getRealPath());
+            $imgThumb->resize(380, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $imgThumb->save($pathThumb);
+    
+            if(!file_exists(storage_path('app/public/collections/original/'))){
+                Storage::makeDirectory('public/collections/original');
+            }
+
+            $pathOriginal = storage_path('app/public/collections/original/' . $filename);
+            $imgOriginal = Image::make($image->getRealPath());
+            $imgOriginal->save($pathOriginal, 100);    
+
             //Storage::delete('public/home-page/'.$data->image);
         }
 
@@ -192,8 +208,27 @@ class CollectionController extends Controller
             $img->save($path, 90);
 
             Storage::delete('public/collections/'.$collection->image);
+            Storage::delete('public/collections/thumb/'.$collection->image);
+            Storage::delete('public/collections/original/'.$collection->image);
 
             $collection->image = $filename;
+
+            $pathThumb = storage_path('app/public/collections/thumb/' . $filename);
+
+            $imgThumb = Image::make($image->getRealPath());
+            $imgThumb->resize(380, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $imgThumb->save($pathThumb);
+    
+            if(!file_exists(storage_path('app/public/collections/original/'))){
+                Storage::makeDirectory('public/collections/original');
+            }
+
+            $pathOriginal = storage_path('app/public/collections/original/' . $filename);
+            $imgOriginal = Image::make($image->getRealPath());
+            $imgOriginal->save($pathOriginal, 100);    
+
         }
 
         $collection->name = $request->input('name');
@@ -251,6 +286,8 @@ class CollectionController extends Controller
 
         if($collection->image){
             Storage::delete('public/collections/'.$collection->image);
+            Storage::delete('public/collections/thumb/'.$collection->image);
+            Storage::delete('public/collections/original/'.$collection->image);
         }
 
         $collection->delete();
@@ -343,8 +380,27 @@ class CollectionController extends Controller
                 $img->save($path, 90);
 
                 Storage::delete('public/collections/'.$data->image);
+                Storage::delete('public/collections/thumb/'.$data->image);
+                Storage::delete('public/collections/original/'.$data->image);
 
                 $data->image = $filename;
+
+                $pathThumb = storage_path('app/public/collections/thumb/' . $filename);
+
+                $imgThumb = Image::make($image->getRealPath());
+                $imgThumb->resize(380, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $imgThumb->save($pathThumb);
+        
+                if(!file_exists(storage_path('app/public/collections/original/'))){
+                    Storage::makeDirectory('public/collections/original');
+                }
+    
+                $pathOriginal = storage_path('app/public/collections/original/' . $filename);
+                $imgOriginal = Image::make($image->getRealPath());
+                $imgOriginal->save($pathOriginal, 100);    
+    
             }
 
             $data->title = $request->input('title');
