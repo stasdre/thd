@@ -4339,7 +4339,6 @@ ul.paging .btn-sm {
   }
 
   header.px-2.home {
-    padding: 0 !important;
     max-height: 160px;
   }
 
@@ -4669,6 +4668,10 @@ ul.paging .btn-sm {
 
   .mobile-home-search .qty {
     background: transparent;
+  }
+
+  .mobileHeader {
+    padding: 5px 0 !important;
   }
 }
 
@@ -6239,6 +6242,10 @@ ul.HI_nav {
 .min_icon,
 .max_icon {
   cursor: pointer;
+}
+
+.breadcrumb {
+  padding: 0 !important;
 }
 
 .form-group.has-error .form-control,
