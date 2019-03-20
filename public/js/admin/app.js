@@ -11823,8 +11823,8 @@ document.querySelector('body').addEventListener('click', function (e) {
         var elem = e.target;
         var img = elem.querySelector('img');
         var imgUrl = img.getAttribute('src');
-        var originUrl = $("#img__thumb").data('origin');
-
+        var originUrl = $(img).data('origin');
+        console.log(originUrl);
         doka.edit(originUrl).then(function (output) {
 
             var formData = new FormData();

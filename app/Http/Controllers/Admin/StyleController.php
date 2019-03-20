@@ -57,7 +57,7 @@ class StyleController extends Controller
 
                 $image = Input::file('plan_img.'.$count);
                 $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
-
+        
                 $path = storage_path('app/public/styles/' . $filename);
                 $pathThumb = storage_path('app/public/styles/thumb/' . $filename);
 
@@ -85,6 +85,23 @@ class StyleController extends Controller
                 $constraint->aspectRatio();
             });
             $img->save($path, 90);
+
+
+            $pathThumb = storage_path('app/public/styles/thumb' . $filename);
+
+            $imgThumb = Image::make($image->getRealPath());
+            $imgThumb->resize(380, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $imgThumb->save($pathThumb);
+    
+            if(!file_exists(storage_path('app/public/styles/original/'))){
+                Storage::makeDirectory('public/styles/original');
+            }
+
+            $pathOriginal = storage_path('app/public/styles/original/' . $filename);
+            $imgOriginal = Image::make($image->getRealPath());
+            $imgOriginal->save($pathOriginal, 100);    
 
             //Storage::delete('public/home-page/'.$data->image);
         }

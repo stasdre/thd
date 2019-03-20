@@ -82,8 +82,8 @@ document.querySelector('body').addEventListener('click', e=>{
         const elem = e.target;
         const img = elem.querySelector('img');
         const imgUrl = img.getAttribute('src');
-        const originUrl = $("#img__thumb").data('origin');
-
+        const originUrl = $(img).data('origin');
+        console.log(originUrl);
         doka.edit(originUrl).then(output => {
 
             let formData = new FormData();
