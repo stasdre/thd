@@ -77,10 +77,10 @@ class PlansRequest extends FormRequest
         $validate['construction.ext_walls'] = 'nullable|in:block,2x4,2x6';
         $validate['construction.found_type'] = 'array|in:basement,crawlspace,daylight,pier,slab,walkout';
 
-        $validate['ceiling.celing_1_floor'] = 'nullable|numeric';
-        $validate['ceiling.celing_2_floor'] = 'nullable|numeric';
-        $validate['ceiling.celing_3_floor'] = 'nullable|numeric';
-        $validate['ceiling.celing_lower_floor'] = 'nullable|numeric';
+        $validate['ceiling.celing_1_floor'] = 'nullable';
+        $validate['ceiling.celing_2_floor'] = 'nullable';
+        $validate['ceiling.celing_3_floor'] = 'nullable';
+        $validate['ceiling.celing_lower_floor'] = 'nullable';
 
         $validate['roof.primary'] = 'nullable';
         $validate['roof.secondary'] = 'nullable';
