@@ -160,7 +160,7 @@
 	
 <!-- Mobile Content -->
 <div class="d-block d-md-none">
-     <header class="px-2 home">
+     <header class="px-2 home mobileHeader">
     <div class="row align-items-center">
       <div class="col-md-3 col-sm-3 px-xs-0 width-sm-100">
       	<div class="navbar-expand-lg navbar-dark bg-dark custom_nav">

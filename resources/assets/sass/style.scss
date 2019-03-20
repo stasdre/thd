@@ -1950,8 +1950,7 @@ ul.paging .btn-sm {
   }
 
   header.px-2.home {
-    padding: 0 !important;
-    max-height: 160px;
+   max-height: 160px;
   }
 
   .border-right_3.plan_details {
@@ -2270,6 +2269,10 @@ ul.paging .btn-sm {
   .mobile-home-search .qty
   {
     background : transparent;
+  }
+  .mobileHeader
+  {
+  	padding : 5px 0 !important;
   }
 }
 .social-icons .fa {
@@ -3753,4 +3756,8 @@ ul.HI_nav {
 .min_icon ,.max_icon
 {
   cursor : pointer;
+}
+.breadcrumb
+{
+padding :0 !important;
 }
