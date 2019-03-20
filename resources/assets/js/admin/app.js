@@ -82,28 +82,29 @@ document.querySelector('body').addEventListener('click', e=>{
         const elem = e.target;
         const img = elem.querySelector('img');
         const imgUrl = img.getAttribute('src');
-        const originUrl = $("#img__thumb").data('origin');
-
-        doka.edit(originUrl).then(output => {
-
-            let formData = new FormData();
-            formData.append("image", output.file);
-            formData.append("src", imgUrl);
-
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", '/admin-thd/upload-image/', true);
-            xhr.setRequestHeader('X-CSRF-TOKEN', token.getAttribute('content'));
-            xhr.send(formData);
-
-            xhr.addEventListener('load', ()=>{
-                if(xhr.status == 200){
-                    let data = JSON.parse(xhr.responseText);
-                    if(data.success == 'ok'){
-                        img.setAttribute('src', imgUrl+'?rnd='+Math.random());
+        const originUrl = $(img).data('origin');
+        if(originUrl.length){
+            doka.edit(originUrl).then(output => {
+    
+                let formData = new FormData();
+                formData.append("image", output.file);
+                formData.append("src", imgUrl);
+    
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", '/admin-thd/upload-image/', true);
+                xhr.setRequestHeader('X-CSRF-TOKEN', token.getAttribute('content'));
+                xhr.send(formData);
+    
+                xhr.addEventListener('load', ()=>{
+                    if(xhr.status == 200){
+                        let data = JSON.parse(xhr.responseText);
+                        if(data.success == 'ok'){
+                            img.setAttribute('src', imgUrl+'?rnd='+Math.random());
+                        }
                     }
-                }
-            });
-        });        
+                });
+            });        
+        }
     }
 });
 

@@ -60,6 +60,20 @@
                 </div>
             </div>
         </div>
+        @if(isset($style->image))
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5">
+                    <div class="edit-img"><a href="{{asset('/storage/styles/'.$style->image)}}" target="_blank"><img src="{{asset('/storage/styles/'.$style->image)}}" data-origin="/storage/styles/original/{{$style->image}}" class="img-responsive" alt=""></a></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5">
+                    <div class="edit-img"><a href="{{asset('/storage/styles/thumb/'.$style->image)}}" target="_blank"><img src="{{asset('/storage/styles/thumb/'.$style->image)}}" data-origin="/storage/styles/original/{{$style->image}}" class="img-responsive" alt=""></a></div>
+                </div>
+            </div>
+        @endif
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
