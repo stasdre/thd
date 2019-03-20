@@ -21,12 +21,12 @@
                         @endif
                             <div class="col-sm-4">
                                 <div class="input-group input-group-sm package-price {{ $errors->has('package_price.'.$package->id.'.'.$n) ? 'has-error' : '' }}">
+                                    <span class="input-group-addon">$</span>
                                     @if(old('package_price'))
                                         {{ Form::text('package_price['.$package->id.']', old('package_price.'.$package->id.'.'.$n), ['class'=>'form-control']) }}
                                     @else
                                         {{ Form::text('package_price['.$package->id.']', $plan->packages->contains($package->id) ? $plan->packages->find($package->id)->pivot->price : '', ['class'=>'form-control']) }}
                                     @endif
-                                    <span class="input-group-addon">$</span>
                                 </div>
                                 <div class="files-fields">
                                     <div id="files-package-{{ $package->id }}" class="dropzone needsclick dz-clickable">
@@ -52,12 +52,12 @@
                     @endif
                         <div class="col-sm-4">
                             <div class="input-group input-group-sm foundation-price {{ $errors->has('foundation_price.'.$option->id.'.'.$n) ? 'has-error' : '' }}">
+                                <span class="input-group-addon">$</span>
                                 @if(old('foundation_price'))
                                     {{ Form::text('foundation_price['.$option->id.']', old('foundation_price.'.$option->id.'.'.$n), ['class'=>'form-control']) }}
                                 @else
                                     {{ Form::text('foundation_price['.$option->id.']', $plan->foundationOptions->contains($option->id) ? $plan->foundationOptions->find($option->id)->pivot->price : '', ['class'=>'form-control']) }}
                                 @endif
-                                <span class="input-group-addon">$</span>
                             </div>
                             <div class="files-fields">
                                 <div id="files-foundation-{{ $option->id }}" class="dropzone needsclick dz-clickable">
@@ -83,12 +83,12 @@
                     @endif
                     <div class="col-sm-4">
                         <div class="input-group input-group-sm addon-price {{ $errors->has('addon_price.'.$addon->id.'.'.$n) ? 'has-error' : '' }}">
+                            <span class="input-group-addon">$</span>
                             @if(old('addon_price'))
                                 {{ Form::text('addon_price['.$addon->id.']', old('addon_price.'.$addon->id.'.'.$n), ['class'=>'form-control']) }}
                             @else
                                 {{ Form::text('addon_price['.$addon->id.']', $plan->addons->contains($addon->id) ? $plan->addons->find($addon->id)->pivot->price : '', ['class'=>'form-control']) }}
                             @endif
-                            <span class="input-group-addon">$</span>
                         </div>
                         <div class="files-fields">
                             <div id="files-addon-{{ $addon->id }}" class="dropzone needsclick dz-clickable">
