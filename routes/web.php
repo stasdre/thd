@@ -143,6 +143,9 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::resource('promo', 'Admin\PromoController', ['except'=>['show']]);
         Route::get('promo/data', 'Admin\PromoController@anyData')->name('promo.data');
+
+        Route::resource('mobile-gallery', 'Admin\MobileGalleryController', ['except'=>['show']]);
+        Route::get('mobile-gallery/data', 'Admin\MobileGalleryController@anyData')->name('mobile-gallery.data');
     });
 });
 
