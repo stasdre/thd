@@ -13,6 +13,9 @@ use Thd\MobileFavorite;
 use Thd\MobileNew;
 use Thd\Style;
 use Thd\TextContent;
+use Jenssegers\Agent\Agent;
+use Thd\MobileGallery;
+
 
 class HomeController extends Controller
 {
@@ -23,7 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $gallery = Gallery::all();
+        $agent = new Agent();
+
         $styles = Style::where('in_filter', 1)->orderBy('short_name', 'asc')->limit(18)->get();
         $collections = Collection::where('in_filter', 1)->orderBy('short_name', 'asc')->limit(18)->get();
         $aboutData = AboutDavid::find(1);
@@ -31,10 +35,19 @@ class HomeController extends Controller
         $deckBest = DesktopBest::find(1);
         $deskFavor = DesktopFavorite::find(1);
 
-        $deskMob = TextContent::find(2);
-        $favorMob = MobileFavorite::all();
-        $newMob = MobileNew::all();
-        $bestMob = MobileBest::find(1);
+        if($agent->isMobile()){
+            $deskMob = TextContent::find(2);
+            $favorMob = MobileFavorite::all();
+            $newMob = MobileNew::all();
+            $bestMob = MobileBest::find(1);
+            $gallery = MobileGallery::all();
+        }else{
+            $deskMob = null;
+            $favorMob = null;
+            $newMob = null;
+            $bestMob = null;
+            $gallery = Gallery::all();
+        }
 
         return view('home', [
             'gallery'=>$gallery,
