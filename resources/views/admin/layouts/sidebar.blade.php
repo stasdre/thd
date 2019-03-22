@@ -75,6 +75,7 @@
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu">
+                        <li><a href="{{ route('mobile-gallery.index') }}"><i class="fa fa-photo"></i>Gallery</a></li>
                         <li><a href="{{route('mobile-favorite.index')}}">Favorite plans</a></li>
                         <li><a href="{{route('mobile-new.index')}}">New plans</a></li>
                         <li><a href="{{route('home-page.mobile-best')}}">Best plan</a></li>
