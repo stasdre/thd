@@ -532,32 +532,32 @@
             <div class="col-sm-6">
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('construction[found_type][]', 'basement') }} Basement
+                        {{ Form::checkbox('construction[found_type][]', 'Basement') }} Basement
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('construction[found_type][]', 'crawlspace') }} Crawlspace
+                        {{ Form::checkbox('construction[found_type][]', 'Crawlspace') }} Crawlspace
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('construction[found_type][]', 'daylight') }} Daylight basement
+                        {{ Form::checkbox('construction[found_type][]', 'Daylight basement') }} Daylight basement
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('construction[found_type][]', 'pier') }} Pier
+                        {{ Form::checkbox('construction[found_type][]', 'Pier') }} Pier
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('construction[found_type][]', 'slab') }} Slab
+                        {{ Form::checkbox('construction[found_type][]', 'Slab') }} Slab
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        {{ Form::checkbox('construction[found_type][]', 'walkout') }} Walkout basement
+                        {{ Form::checkbox('construction[found_type][]', 'Walkout basement') }} Walkout basement
                     </label>
                 </div>
             </div>
