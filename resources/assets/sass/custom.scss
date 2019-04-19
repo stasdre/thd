@@ -18,3 +18,17 @@
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
 }
+
+.plan2-dropdown-menu{
+  &.active{
+    display: block !important;
+  }
+}
+
+.slide-fade-enter-active, .slide-fade-leave-active {
+  transition: all .5s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
+}

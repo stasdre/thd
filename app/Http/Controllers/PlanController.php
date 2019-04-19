@@ -45,10 +45,50 @@ class PlanController extends Controller
         /*$packages = Package::whereHas('plans', function($query) use ($plan){
             $query->where('plan_id', '=', $plan->id);
         })->get();*/
+        $packages = [];
+        if($dataPlan->packages){
+            foreach($dataPlan->packages as $package){
+                $packages[] = [
+                    'id'=>$package->id,
+                    'name'=>$package->name,
+                    'price'=>$package->pivot->price,
+                    'desc'=>$package->short_desc,
+                    'default'=>$package->pivot->default
+                ];
+            }
+        }
+
+        $foundations = [];
+        if($dataPlan->foundationOptions){
+            foreach($dataPlan->foundationOptions as $foundation){
+                $foundations[] = [
+                    'id'=>$foundation->id,
+                    'name'=>$foundation->name,
+                    'price'=>$foundation->pivot->price,
+                    'desc'=>$foundation->short_desc,
+                    'default'=>$foundation->pivot->default
+                ];
+            }
+        }
+
+        $addons = [];
+        if($dataPlan->addons){
+            foreach($dataPlan->addons as $addon){
+                $addons[] = [
+                    'id'=>$addon->id,
+                    'name'=>$addon->name,
+                    'price'=>$addon->pivot->price,
+                    'desc'=>$addon->short_desc,
+                    'default'=> null
+                ];
+            }
+        }
 
         return view('plan.plan', [
             'plan'=>$dataPlan,
-            //'packages'=>$packages
+            'packages'=>json_encode($packages),
+            'foundations'=>json_encode($foundations),
+            'addons'=>json_encode($addons)
         ]);
     }
 	public function modifyplan(){

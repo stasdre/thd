@@ -47,6 +47,8 @@ class PlanPackageController extends Controller
             'foundation_price.*' => 'required_with:foundation.*|nullable|numeric',
             'addon.*' => 'nullable|exists:addons,id',
             'addon_price.*' => 'required_with:addon.*|nullable|numeric',
+            'default_package' => 'required',
+            'default_option' => 'required'
         ]);
 
         try {
@@ -57,7 +59,8 @@ class PlanPackageController extends Controller
                 foreach ($request->input('package') as $package){
                     if($request->input('package_price')[$package]){
                         $plansData[$package] = [
-                            'price' => $request->input('package_price')[$package]
+                            'price' => $request->input('package_price')[$package],
+                            'default' => $request->input('default_package') == $package ? 1 : 0
                         ];
                     }
                 }
@@ -68,7 +71,8 @@ class PlanPackageController extends Controller
                 foreach ($request->input('foundation') as $option){
                     if($request->input('foundation_price')[$option]){
                         $plansFoundationData[$option] = [
-                            'price' => $request->input('foundation_price')[$option]
+                            'price' => $request->input('foundation_price')[$option],
+                            'default' => $request->input('default_option') == $option ? 1 : 0
                         ];
                     }
                 }
