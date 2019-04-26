@@ -41,7 +41,7 @@ class CollectionController extends Controller
     public function all()
     {
         $collectionData = Asp::find(2);
-        $collections = Collection::orderBy('name', 'asc')->get();
+        $collections = Collection::orderBy('name', 'asc')->where('is_active', 1)->get();
 
         return view('collection.all', [
             'collections'=>$collections,

@@ -40,7 +40,7 @@ class StyleController extends Controller
     public function all()
     {
         $styleData = Asp::find(1);
-        $styles = Style::orderBy('name', 'asc')->get();
+        $styles = Style::orderBy('name', 'asc')->where('is_active', 1)->get();
 
         return view('style.all', [
             'styles'=>$styles,
