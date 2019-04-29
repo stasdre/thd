@@ -29,13 +29,8 @@ class CollectionController extends Controller
         $dataCollect = $collection->firstOrFail();
 
 
-        $plans = Plan::whereHas('collections' ,function($query) use($dataCollect){
-            $query->where('collection_id', '=', $dataCollect->id);
-        })->with(['images' => function($query){
-            $query->where('first_image', '=', 1);
-        }])->orderBy('created_at', 'desc')->paginate(12);
         //$plans->load('images');
-        return view('collection.slug', ['collection'=>$dataCollect, 'plans'=>$plans]);
+        return view('collection.slug', ['collection'=>$dataCollect]);
     }
 
     public function all()
