@@ -7447,6 +7447,10 @@ body #plan_page .font-size-15 {
   }
 }
 
+button#additional-options {
+  background-image: none !important;
+}
+
 .form-group.has-error .form-control,
 .form-group.has-error .input-group-addon {
   border-color: #dd4b39;
