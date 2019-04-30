@@ -28,15 +28,6 @@
                                         {{ Form::text('package_price['.$package->id.']', $plan->packages->contains($package->id) ? $plan->packages->find($package->id)->pivot->price : '', ['class'=>'form-control']) }}
                                     @endif
                                 </div>
-                                <div class="radio" style="margin-bottom:20px;">
-                                    <label>
-                                        @if(!$plan->packages->find($package->id))
-                                            <input type="radio" name="default_package" value="{{$package->id}}"> Use Default
-                                        @else
-                                            <input type="radio" name="default_package" value="{{$package->id}}" {{$plan->packages->find($package->id)->pivot->default ? 'checked' : ''}}> Use Default
-                                        @endif
-                                    </label>
-                                </div>
                                 <div class="files-fields">
                                     <div id="files-package-{{ $package->id }}" class="dropzone needsclick dz-clickable">
                                     </div>
@@ -67,15 +58,6 @@
                                 @else
                                     {{ Form::text('foundation_price['.$option->id.']', $plan->foundationOptions->contains($option->id) ? $plan->foundationOptions->find($option->id)->pivot->price : '', ['class'=>'form-control']) }}
                                 @endif
-                            </div>
-                            <div class="radio" style="margin-bottom:20px;">
-                                <label>
-                                    @if(!$plan->foundationOptions->find($option->id))
-                                        <input type="radio" name="default_option" value="{{$option->id}}"> Use Default
-                                    @else
-                                        <input type="radio" name="default_option" value="{{$option->id}}" {{$plan->foundationOptions->find($option->id)->pivot->default ? 'checked' : ''}}> Use Default
-                                    @endif
-                                </label>
                             </div>
                             <div class="files-fields">
                                 <div id="files-foundation-{{ $option->id }}" class="dropzone needsclick dz-clickable">

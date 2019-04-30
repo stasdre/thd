@@ -107,14 +107,14 @@
            <div class="option-wrapper">
        <div class="btn-group btn-block select-custom white_back" id="plan-">
                <button @click="viewPackages = !viewPackages"  class="btn btn-lg btn-block clearfix dropdown-plans option-button option-button1">
-               <span class="selected-plan-set pull-left font-size-ipad font-size-15"><strong>@{{activePackage.name}}</strong></span>
+               <span class="selected-plan-set pull-left font-size-ipad font-size-15"><strong>@{{checkedPackage.name ? checkedPackage.name : 'Choose Plan Package'}}</strong></span>
                 <span class="pull-right opt_select-styled">
                   <!-- <i class="fas fa-chevron-down"></i> -->
                 </span>
-              <span class="pull-right option-price"><span class="selected-plan-set-price font-size-ipad">$@{{activePackage.price}}</span></span>
+              <span class="pull-right option-price"><span class="selected-plan-set-price font-size-ipad">@{{checkedPackage.price ? '$'+checkedPackage.price : ''}}</span></span>
           </button>  
                 <ul class="plan2-dropdown-menu" :class="{active: viewPackages}">
-                    <li v-for="package in packages" :key="package.id" @click="setActivePackage(package.id)" :class="{selected: activePackage.id === package.id}">
+                    <li v-for="package in packages" :key="package.id" @click="setActivePackage(package)" :class="{selected: checkedPackage.id === package.id}">
                         <div class="clearfix">
                         <i class="fa fa-check pull-left"></i><span class="pull-left">@{{package.name}}</span> <span class="pull-right">$@{{package.price}}</span>
                           </div>
@@ -136,16 +136,16 @@
            <div class="option-wrapper">
  <div class="btn-group btn-block select-custom white_back" id="plan-">
   <button @click="viewOptions = !viewOptions" class="btn btn-lg btn-block clearfix dropdown-plans option-button option-button2">
-    <span class="selected-foundation selected-value pull-left font-size-ipad font-size-15"><strong>@{{activeOption.name}}</strong></span>
+    <span class="selected-foundation selected-value pull-left font-size-ipad font-size-15"><strong>@{{checkedOption.name ? checkedOption.name : 'Choose Foundation'}}</strong></span>
     <span class="pull-right opt_select-styled">
       <!-- <span class="caret caret-reversed"></span>
       <span class="caret"></span> -->
     </span>
-    <span class="pull-right option-price"><span class="selected-foundation-price font-size-ipad">+$@{{activeOption.price}}</span></span>
+    <span class="pull-right option-price"><span class="selected-foundation-price font-size-ipad">@{{checkedOption.price ? '+$'+checkedOption.price : ''}}</span></span>
   </button>
   <ul class="plan2-dropdown-menu" :class="{active: viewOptions}">
     
-      <li v-for="option in options" :key="option.id" @click="setActiveOption(option.id)" :class="{selected: activeOption.id === option.id}">
+      <li v-for="option in options" :key="option.id" @click="setActiveOption(option)" :class="{selected: checkedOption.id === option.id}">
           <div class="clearfix">
           <i class="fa fa-check pull-left"></i><span class="pull-left">@{{option.name}}</span> <span class="pull-right">+$@{{option.price}}</span>
             </div>
@@ -395,14 +395,14 @@ ensure you stay in budget, economy, standard and premium.</p>
            <div class="option-wrapper">
        <div class="btn-group btn-block select-custom white_back" id="plan-">
                <button @click="viewPackages = !viewPackages" class="btn btn-lg btn-block clearfix dropdown-plans option-button option-button1">
-                <span class="selected-plan-set font-size-ipad pull-left"><strong>@{{activePackage.name}}</strong></span>
+                <span class="selected-plan-set font-size-ipad pull-left"><strong>@{{checkedPackage.name ? checkedPackage.name : 'Choose Plan Package'}}</strong></span>
                 <span class="pull-right opt_select-styled">
                   <!-- <i class="fas fa-chevron-down"></i> -->
                 </span>
-          <span class="pull-right option-price"><span class="selected-plan-set-price font-size-ipad">$@{{activePackage.price}}</span></span>
+          <span class="pull-right option-price"><span class="selected-plan-set-price font-size-ipad">@{{checkedPackage.price ? '$'+checkedPackage.price : ''}}</span></span>
           </button>  
                 <ul class="plan2-dropdown-menu" :class="{active: viewPackages}">    
-                    <li v-for="package in packages" :key="package.id" @click="setActivePackage(package.id)" :class="{selected: activePackage.id === package.id}">
+                    <li v-for="package in packages" :key="package.id" @click="setActivePackage(package)" :class="{selected: checkedPackage.id === package.id}">
                         <div class="clearfix">
                         <i class="fa fa-check pull-left"></i><span class="pull-left">@{{package.name}}</span> <span class="pull-right">$@{{package.price}}</span>
                           </div>
@@ -424,16 +424,16 @@ ensure you stay in budget, economy, standard and premium.</p>
            <div class="option-wrapper">
  <div class="btn-group btn-block select-custom white_back" id="plan-">
   <button @click="viewOptions = !viewOptions" class="btn btn-lg btn-block clearfix dropdown-plans option-button option-button2">
-    <span class="selected-foundation font-size-ipad" class="selected-value pull-left"><strong>@{{activeOption.name}}</strong></span>
+    <span class="selected-foundation font-size-ipad" class="selected-value pull-left"><strong>@{{checkedOption.name ? checkedOption.name : 'Choose Foundation'}}</strong></span>
     <span class="pull-right opt_select-styled">
       <!-- <span class="caret caret-reversed"></span>
       <span class="caret"></span> -->
     </span>
-    <span class="pull-right option-price"><span class="selected-foundation-price font-size-ipad">+$@{{activeOption.price}}</span></span>
+    <span class="pull-right option-price"><span class="selected-foundation-price font-size-ipad">@{{checkedOption.price ? '+$'+checkedOption.price : ''}}</span></span>
   </button>
   <ul class="plan2-dropdown-menu" :class="{active: viewOptions}">
     
-      <li v-for="option in options" :key="option.id" @click="setActiveOption(option.id)" :class="{selected: activeOption.id === option.id}">
+      <li v-for="option in options" :key="option.id" @click="setActiveOption(option)" :class="{selected: checkedOption.id === option.id}">
           <div class="clearfix">
           <i class="fa fa-check pull-left"></i><span class="pull-left">@{{option.name}}</span> <span class="pull-right">+$@{{option.price}}</span>
             </div>
@@ -772,23 +772,21 @@ ensure you stay in budget, economy, standard and premium.</p>
         viewPackages: false,
         viewAddons: false,
         packages: {!!$packages!!},
+        checkedPackage: {
+          id: null,
+          name: '',
+          price: 0
+        },
         options: {!!$foundations!!},
+        checkedOption: {
+          id: null,
+          name: '',
+          price: 0
+        },
         addons: {!!$addons!!},
         checkedAddons: []
       },
       computed:{
-        activePackage(){
-          return this.packages.find(package => {
-            if(package.default === 1)
-              return package;
-          });
-        },
-        activeOption(){
-          return this.options.find(option => {
-            if(option.default === 1)
-              return option;
-          });
-        },
         activeAddons(){
           return this.addons.filter(addon => {
             if(this.checkedAddons.indexOf(addon.id)>=0)
@@ -803,28 +801,16 @@ ensure you stay in budget, economy, standard and premium.</p>
           return sum;
         },
         total(){
-          return this.activePackage.price+this.activeOption.price+this.totalAddons;
+          return this.checkedPackage.price+this.checkedOption.price+this.totalAddons;
         }
       },
       methods:{
-        setActivePackage(packageID){
-          this.packages = this.packages.map(package =>{
-            if(package.id === packageID)
-              package.default = 1;
-            else
-              package.default = 0;
-            return package;
-          });
+        setActivePackage(package){
+          this.checkedPackage = package;
           this.viewPackages = false;
         },
-        setActiveOption(optionID){
-          this.options = this.options.map(option =>{
-            if(option.id === optionID)
-              option.default = 1;
-            else
-              option.default = 0;
-            return option;
-          });
+        setActiveOption(option){
+          this.checkedOption = option;
           this.viewOptions = false;
         }
       }
@@ -838,23 +824,21 @@ ensure you stay in budget, economy, standard and premium.</p>
         viewPackages: false,
         viewAddons: false,
         packages: {!!$packages!!},
+        checkedPackage: {
+          id: null,
+          name: '',
+          price: 0
+        },
         options: {!!$foundations!!},
+        checkedOption: {
+          id: null,
+          name: '',
+          price: 0
+        },
         addons: {!!$addons!!},
         checkedAddons: []
       },
       computed:{
-        activePackage(){
-          return this.packages.find(package => {
-            if(package.default === 1)
-              return package;
-          });
-        },
-        activeOption(){
-          return this.options.find(option => {
-            if(option.default === 1)
-              return option;
-          });
-        },
         activeAddons(){
           return this.addons.filter(addon => {
             if(this.checkedAddons.indexOf(addon.id)>=0)
@@ -869,32 +853,19 @@ ensure you stay in budget, economy, standard and premium.</p>
           return sum;
         },
         total(){
-          return this.activePackage.price+this.activeOption.price+this.totalAddons;
+          return this.checkedPackage.price+this.checkedOption.price+this.totalAddons;
         }
       },
       methods:{
-        setActivePackage(packageID){
-          this.packages = this.packages.map(package =>{
-            if(package.id === packageID)
-              package.default = 1;
-            else
-              package.default = 0;
-            return package;
-          });
+        setActivePackage(package){
+          this.checkedPackage = package;
           this.viewPackages = false;
         },
-        setActiveOption(optionID){
-          this.options = this.options.map(option =>{
-            if(option.id === optionID)
-              option.default = 1;
-            else
-              option.default = 0;
-            return option;
-          });
+        setActiveOption(option){
+          this.checkedOption = option;
           this.viewOptions = false;
         }
       }
     })    
-
   </script>
 @endpush
