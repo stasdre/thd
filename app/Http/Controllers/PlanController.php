@@ -53,7 +53,6 @@ class PlanController extends Controller
                     'name'=>$package->name,
                     'price'=>$package->pivot->price,
                     'desc'=>$package->short_desc,
-                    'default'=>$package->pivot->default
                 ];
             }
         }
@@ -66,7 +65,6 @@ class PlanController extends Controller
                     'name'=>$foundation->name,
                     'price'=>$foundation->pivot->price,
                     'desc'=>$foundation->short_desc,
-                    'default'=>$foundation->pivot->default
                 ];
             }
         }
@@ -79,7 +77,6 @@ class PlanController extends Controller
                     'name'=>$addon->name,
                     'price'=>$addon->pivot->price,
                     'desc'=>$addon->short_desc,
-                    'default'=> null
                 ];
             }
         }
