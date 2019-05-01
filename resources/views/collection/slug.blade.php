@@ -128,9 +128,9 @@
                 </div>
                 <div class="form-group ml-2">
                     <label for="">Views:</label>
-                    <select name="" id="" class="form-control form-control-sm rounded-0">
-                    <option value="">24</option>
-                    <option value="">50</option>
+                    <select v-model="views" class="form-control form-control-sm rounded-0">
+                        <option value="24">24</option>
+                        <option value="50">50</option>
                     </select>
                 </div>
                 </form>
@@ -157,17 +157,17 @@
                 <div class="text-center text-sm-right search_pagination">
                 <ul class="list-inline m-0 paging">
                     <li class="list-inline-item">
-                    <button class="btn btn-sm btn-secondary rounded-0">&lt; Prev</button>
+                    <button class="btn btn-sm btn-secondary rounded-0" :disabled="current_page === 1" @click.prevent="prev">&lt; Prev</button>
                     </li>
                     <li class="list-inline-item text-secondary">Page</li>
                     <li class="list-inline-item">
-                    <input type="text" class="form-control rounded-0" value="1">
+                    <input type="text" class="form-control rounded-0" @keyup.enter="goToPage" v-model="current_page">
                     </li>
-                    <li class="list-inline-item"><span class="text-secondary">of</span> 182</li>
+                <li class="list-inline-item"><span class="text-secondary">of</span> @{{last_page}}</li>
                     <li class="list-inline-item">
-                    <button class="btn btn-sm btn-secondary rounded-0" @click.prevent="next">&gt; Next</button>
+                    <button class="btn btn-sm btn-secondary rounded-0" :disabled="current_page === last_page" @click.prevent="next">&gt; Next</button>
                     </li>
-                    <li class="list-inline-item ml-2"><strong><span class="text-primary">PLANS:</span> 2495</strong></li>
+                <li class="list-inline-item ml-2"><strong><span class="text-primary">PLANS:</span> @{{total}}</strong></li>
                 </ul>
                 </div>
             </div>
@@ -199,120 +199,42 @@
         <!-- Sorting on mobile -->
 
         <div class="row">
-            <div class="col-sm-4">
-            <div class="plan-list mt-3">
-                <div class="row align-items-center py-2 px-1">
-                <div class="col-8">
-                    <p class="plan-name font-weight-bold mb-0">4,839 sq ft | <span class="text-white">plan 2495</span></p>
-                </div>
-                <div class="col-4">
-                    <ul class="list-inline mb-0 text-right font-icons">
-                    <li class="list-inline-item icon-heart-mob"><a href=""><i class="fa fa-heart-o" style="color:white"></i><!--<img src="images/icons/icon-favourite.png" alt="">--></a></li>
-                    <li class="list-inline-item icon-search-mob"><a href=""><i class="fa fa-search" style="color:white"></i><!--<img src="images/icons/icon-search-w.png" alt="">--></a></li>
-                    </ul>
-                </div>
-                </div>
-                <div class="position-relative">
-                <div id="plan4839" class="carousel slide" data-ride="carousel" data-interval="false">
-                    <div class="carousel-inner">
-                    <div class="carousel-item active"> <img src="images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
-                    <div class="carousel-item"> <img src="images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
-                    <div class="carousel-item"> <img src="images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
+            <div class="col-sm-4" v-for="plan in plans" :key="plan.id">
+                <div class="plan-list mt-3">
+                    <div class="row align-items-center py-2 px-1">
+                    <div class="col-8">
+                    <p class="plan-name font-weight-bold mb-0">@{{plan.square_ft.str_total}} sq ft | <span class="text-white">plan @{{plan.plan_number}}</span></p>
                     </div>
-                    <a class="carousel-control-prev" href="#plan4839" role="button" data-slide="prev"> 
-                    <span class="carousel-control-prev-icon" aria-hidden="false"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#plan4839" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="false"></span> <span class="sr-only">Next</span> </a> </div>
-                <div class="media planinfo text-left position-absolute"> <img class="mr-1 align-self-center" src="images/icons/logo-placeholder.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                    <h5 class="mb-0 text-white">plan <span class="text-secondary">4839</span></h5>
-                    <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
+                    <div class="col-4">
+                        <ul class="list-inline mb-0 text-right font-icons">
+                        <li class="list-inline-item icon-heart-mob"><a href="#"><i class="far fa-heart" style="color:white"></i></a></li>
+                        <li class="list-inline-item icon-search-mob"><a href="#"><i class="fas fa-search" style="color:white"></i></a></li>
+                        </ul>
                     </div>
-                </div>
-                <a href="#" class="position-absolute icon-camera"><img src="images/icons/icon-camera.png" alt=""></a> <a href="#" class="position-absolute pinterest"><img src="images/icons/icon-pinterest.png" alt=""></a> </div>
-                <div class="row no-gutters plan-info">
-                <div class="col bg-light"> bed<strong class="d-block">4</strong> </div>
-                <div class="col"> bath<strong class="d-block">4</strong> </div>
-                <div class="col bg-light"> story<strong class="d-block">4</strong> </div>
-                <div class="col"> gar<strong class="d-block">4</strong> </div>
-                <div class="col bg-light"> width<span class="d-block">108’ 11</span> </div>
-                <div class="col"> depth<span class="d-block">90’ 11”</span> </div>
-                </div>
-            </div>
-            </div>
-            <div class="col-sm-4">
-            <div class="plan-list mt-3">
-                <div class="row align-items-center py-2 px-1">
-                <div class="col-8">
-                    <p class="plan-name font-weight-bold mb-0">4,839 sq ft | <span class="text-white">plan 2495</span></p>
-                </div>
-                <div class="col-4">
-                    <ul class="list-inline mb-0 text-right font-icons">
-                    <li class="list-inline-item icon-heart-mob"><a href=""><i class="fa fa-heart-o" style="color:white"></i><!--<img src="images/icons/icon-favourite.png" alt="">--></a></li>
-                    <li class="list-inline-item icon-search-mob"><a href=""><i class="fa fa-search" style="color:white"></i><!--<img src="images/icons/icon-search-w.png" alt="">--></a></li>
-                    </ul>
-                </div>
-                </div>
-                <div class="position-relative">
-                <div id="plan483" class="carousel slide" data-ride="carousel" data-interval="false">
-                    <div class="carousel-inner">
-                    <div class="carousel-item active"> <img src="images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
-                    <div class="carousel-item"> <img src="images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
-                    <div class="carousel-item"> <img src="images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
                     </div>
-                    <a class="carousel-control-prev" href="#plan4839" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#plan4839" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
-                <div class="media planinfo text-left position-absolute"> <img class="mr-1 align-self-center" src="images/icons/logo-placeholder.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                    <h5 class="mb-0 text-white">plan <span class="text-secondary">4839</span></h5>
-                    <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
+                    <div class="position-relative">
+                    <div :id="'plan'+plan.id" class="carousel slide" data-ride="carousel" data-interval="false">
+                        <div class="carousel-inner">
+                            <div class="carousel-item" :class="{ active: index === 0 }" v-for="(image, index) in plan.images" :key="image.id"> <img :src="'/storage/plans/'+plan.id+'/thumb/'+image.file_name" alt="" class="img-fluid d-block w-100"> </div>
+                        </div>
+                        <a class="carousel-control-prev" @click.prevent="" :href="'#plan'+plan.id" role="button" data-slide="prev"> 
+                        <span class="carousel-control-prev-icon" aria-hidden="false"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" @click.prevent="" :href="'#plan'+plan.id" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="false"></span> <span class="sr-only">Next</span> </a> </div>
+                    <div class="media planinfo text-left position-absolute"> <img class="mr-1 align-self-center" src="{{asset('images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
+                        <div class="media-body">
+                        <h5 class="mb-0 text-white">plan <span class="text-secondary">@{{plan.plan_number}}</span></h5>
+                        <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
+                        </div>
+                    </div>
+                <a href="#" class="position-absolute icon-camera"><img src="{{asset('images/icons/icon-camera.png')}}" alt=""></a> <a href="#" class="position-absolute pinterest"><img src="{{asset('images/icons/icon-pinterest.png')}}" alt=""></a> </div>
+                    <div class="row no-gutters plan-info">
+                    <div class="col bg-light"> bed<strong class="d-block">@{{plan.rooms.r_bedrooms}}</strong> </div>
+                    <div class="col"> bath<strong class="d-block">@{{plan.rooms.r_full_baths}}</strong> </div>
+                    <div class="col bg-light"> story<strong class="d-block">@{{plan.dimensions.stories}}</strong> </div>
+                    <div class="col"> gar<strong class="d-block">@{{plan.garage.car}}</strong> </div>
+                    <div class="col bg-light"> width<span class="d-block">@{{plan.dimensions.width_ft}}’ @{{plan.dimensions.width_in}}"</span> </div>
+                    <div class="col"> depth<span class="d-block">@{{plan.dimensions.depth_ft}}’ @{{plan.dimensions.depth_in}}”</span> </div>
                     </div>
                 </div>
-                <a href="#" class="position-absolute icon-camera"><img src="images/icons/icon-camera.png" alt=""></a> <a href="#" class="position-absolute pinterest"><img src="images/icons/icon-pinterest.png" alt=""></a> </div>
-                <div class="row no-gutters plan-info">
-                <div class="col bg-light"> bed<strong class="d-block">4</strong> </div>
-                <div class="col"> bath<strong class="d-block">4</strong> </div>
-                <div class="col bg-light"> story<strong class="d-block">4</strong> </div>
-                <div class="col"> gar<strong class="d-block">4</strong> </div>
-                <div class="col bg-light"> width<span class="d-block">108’ 11</span> </div>
-                <div class="col"> depth<span class="d-block">90’ 11”</span> </div>
-                </div>
-            </div>
-            </div>
-            <div class="col-sm-4">
-            <div class="plan-list mt-3">
-                <div class="row align-items-center py-2 px-1">
-                <div class="col-8">
-                    <p class="plan-name font-weight-bold mb-0">4,839 sq ft | <span class="text-white">plan 2495</span></p>
-                </div>
-                <div class="col-4">
-                <ul class="list-inline mb-0 text-right font-icons">
-                    <li class="list-inline-item icon-heart-mob"><a href=""><i class="fa fa-heart-o" style="color:white"></i><!--<img src="images/icons/icon-favourite.png" alt="">--></a></li>
-                    <li class="list-inline-item icon-search-mob"><a href=""><i class="fa fa-search" style="color:white"></i><!--<img src="images/icons/icon-search-w.png" alt="">--></a></li>
-                    </ul>
-                </div>
-                </div>
-                <div class="position-relative">
-                <div id="plan48" class="carousel slide" data-ride="carousel" data-interval="false">
-                    <div class="carousel-inner">
-                    <div class="carousel-item active"> <img src="images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
-                    <div class="carousel-item"> <img src="images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
-                    <div class="carousel-item"> <img src="images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#plan4839" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#plan4839" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
-                <div class="media planinfo text-left position-absolute"> <img class="mr-1 align-self-center" src="images/icons/logo-placeholder.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                    <h5 class="mb-0 text-white">plan <span class="text-secondary">4839</span></h5>
-                    <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
-                    </div>
-                </div>
-                <a href="#" class="position-absolute icon-camera"><img src="images/icons/icon-camera.png" alt=""></a> <a href="#" class="position-absolute pinterest"><img src="images/icons/icon-pinterest.png" alt=""></a> </div>
-                <div class="row no-gutters plan-info">
-                <div class="col bg-light"> bed<strong class="d-block">4</strong> </div>
-                <div class="col"> bath<strong class="d-block">4</strong> </div>
-                <div class="col bg-light"> story<strong class="d-block">4</strong> </div>
-                <div class="col"> gar<strong class="d-block">4</strong> </div>
-                <div class="col bg-light"> width<span class="d-block">108’ 11</span> </div>
-                <div class="col"> depth<span class="d-block">90’ 11”</span> </div>
-                </div>
-            </div>
             </div>
         </div>
     </div>
@@ -375,6 +297,7 @@
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 const routes = [
     { path: '/search/:id/:test' },
@@ -385,10 +308,48 @@ const router = new VueRouter({
 })
 var app = new Vue({
     router,
+    data: {
+        plans: [],
+        last_page: 1,
+        total: 0,
+        current_page: 1,
+        views: 24
+    },
     methods: {
         next(){
-            router.push('search/25/text');
+            if(this.current_page < this.last_page){
+                this.current_page++;
+                this.search();
+            }
+        },
+        prev(){
+            if(this.current_page > 1){
+                this.current_page--;
+                this.search();
+            }
+        },
+        goToPage(){
+            if(this.current_page <= this.last_page && this.current_page >= 1){
+                this.search();
+            }
+        },
+        search(){
+            axios.get('/search/result?page='+this.current_page+'&views='+this.views)
+            .then(response=> {
+                this.plans = response.data.data;
+                this.last_page = response.data.last_page;
+                this.total = response.data.total;
+                this.current_page = response.data.current_page;
+            });  
         }
+    },
+    watch: {
+        views: function(){
+            this.search();
+        }
+    },
+    created: function(){
+        this.search();
     }
 }).$mount('#plans_search');
 </script>
