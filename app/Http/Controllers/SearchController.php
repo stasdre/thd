@@ -18,6 +18,7 @@ class SearchController extends Controller
 
         $views = $request->get('views');
         $collection = $request->get('collection');
+        $style = $request->get('style');
 
         $order = $request->get('order') ? $request->get('order') : 'popular';
         // $ft_min = $request->get('ft_min');
@@ -36,6 +37,7 @@ class SearchController extends Controller
             'views' => 'required|in:24,50',
             'order' => 'nullable|in:popular,recent',
             'collection' => 'nullable|integer',
+            'style' => 'nullable|integer',
             // 'ft_min' => 'nullable|integer',
             // 'ft_max' => 'nullable|integer',
             // 'beds' => 'nullable|integer',
@@ -60,6 +62,12 @@ class SearchController extends Controller
         if(!empty($collection)){
             $plans->whereHas('collections', function($query) use ($collection){
                 $query->where('collection_id', '=', $collection);
+            });
+        }
+
+        if(!empty($style)){
+            $plans->whereHas('styles', function($query) use ($style){
+                $query->where('style_id', '=', $style);
             });
         }
 

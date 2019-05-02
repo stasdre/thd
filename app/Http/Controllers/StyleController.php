@@ -8,6 +8,7 @@ use Thd\Style;
 use Illuminate\Support\Facades\Validator;
 use Thd\Plan;
 use Illuminate\Support\Facades\Auth;
+use Thd\Collection;
 
 class StyleController extends Controller
 {
@@ -28,13 +29,10 @@ class StyleController extends Controller
 
         $dataStyle = $style->firstOrFail();
 
-        $plans = Plan::whereHas('styles', function($query) use($dataStyle){
-            $query->where('style_id', '=', $dataStyle->id);
-        })->with(['images' => function($query){
-            $query->where('first_image', '=', 1);
-        }])->orderBy('created_at', 'desc')->paginate(12);
+        $allCollections = Collection::orderBy('name', 'asc')->where('is_active', 1)->get();
+        $allStyles = Style::orderBy('name', 'asc')->where('is_active', 1)->get();
 
-        return view('style.slug', ['style'=>$dataStyle, 'plans'=>$plans]);
+        return view('style.slug', ['style'=>$dataStyle, 'allCollections'=>$allCollections, 'allStyles'=>$allStyles]);
     }
 
     public function all()
