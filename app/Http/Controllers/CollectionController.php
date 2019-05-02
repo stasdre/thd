@@ -8,6 +8,7 @@ use Thd\Collection;
 use Illuminate\Support\Facades\Validator;
 use Thd\Plan;
 use Illuminate\Support\Facades\Auth;
+use Thd\Style;
 
 class CollectionController extends Controller
 {
@@ -28,9 +29,10 @@ class CollectionController extends Controller
 
         $dataCollect = $collection->firstOrFail();
 
-
+        $allCollections = Collection::orderBy('name', 'asc')->where('is_active', 1)->get();
+        $allStyles = Style::orderBy('name', 'asc')->where('is_active', 1)->get();
         //$plans->load('images');
-        return view('collection.slug', ['collection'=>$dataCollect]);
+        return view('collection.slug', ['collection'=>$dataCollect, 'allCollections'=>$allCollections, 'allStyles'=>$allStyles]);
     }
 
     public function all()

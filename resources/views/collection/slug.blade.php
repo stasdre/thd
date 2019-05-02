@@ -247,13 +247,10 @@
                   <div class="search-grid search-grid3 text-center">
                       <h4 class="font-weight-bold">Architectural Styles </h4>
                       <div class="features">
-                          <ul class="list-unstyled text-primary">
-                               <li><a href="#">Cottage Home Designs</a></li>
-                              <li><a href="#">Country Home Plans</a></li>
-                              <li><a href="#">Craftsman House Plans</a></li>
-                              <li><a href="#">European House Plans</a></li>
-                              <li><a href="#">Farmhouse Plans</a></li>
-                              <li><a href="#">French Country House Plans</a></li>
+                        <ul class="list-unstyled text-primary">
+                            @foreach($allStyles as $item)
+                                <li><a href="{{route('style.slug', $item->slug)}}">{{$item->name}}</a></li>
+                            @endforeach
                         </ul>
                       </div>
           </div>
@@ -267,24 +264,9 @@
                       <h4 class="font-weight-bold">Specialty Collections </h4>
                       <div class="features">
                           <ul class="list-unstyled text-primary">
-                               <li><a href="#">Affordable House Plans</a></li>
-                               <li><a href="#">Best-Selling Home Plans</a></li>
-                               <li><a href="#">Builder-Friendly Plans</a></li>
-                               <li><a href="#">Duplex House Plans</a></li>
-                               <li><a href="#">Empty Nester House Plans</a></li>
-                               <li><a href="#">House Plans With Photos</a></li>
-                               <li><a href="#">In-law Suite Plans</a></li>
-                               <li><a href="#">Luxury House Plans</a></li>
-                               <li><a href="#">Narrow Lot House Plans</a></li>
-                               <li><a href="#">New House Plans</a></li>
-                               <li><a href="#">One-Story House Plans</a></li>
-                               <li><a href="#">Open Floor Plans</a></li>
-                               <li><a href="#">Outdoor Living House Plans</a></li>
-                               <li><a href="#">Small House Plans</a></li>
-                               <li><a href="#">Texas House Plans</a></li>
-                               <li><a href="#">Two Story House Plans</a></li>
-                               <li><a href="#">Vacation Homes</a></li>
-                               <li><a href="#">Walkout Basement Plans</a></li>
+                            @foreach($allCollections as $item)
+                                <li><a href="{{route('collection.slug', $item->slug)}}">{{$item->name}}</a></li>
+                            @endforeach
                         </ul>
                       </div>
           </div>
