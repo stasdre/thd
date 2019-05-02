@@ -7490,3 +7490,42 @@ button#additional-options {
   opacity: 0;
 }
 
+[v-cloak] {
+  display: none;
+}
+
+.search-results {
+  min-height: 500px;
+}
+
+.loading {
+  position: relative;
+}
+
+.loading::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  opacity: .3;
+  z-index: 100;
+}
+
+.loading-icon {
+  display: none;
+}
+
+.loading .loading-icon {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+

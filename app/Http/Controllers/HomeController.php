@@ -28,8 +28,8 @@ class HomeController extends Controller
     {
         $agent = new Agent();
 
-        $styles = Style::where('in_filter', 1)->orderBy('short_name', 'asc')->limit(18)->get();
-        $collections = Collection::where('in_filter', 1)->orderBy('short_name', 'asc')->limit(18)->get();
+        $styles = Style::where('in_filter', 1)->where('is_active', 1)->orderBy('short_name', 'asc')->limit(18)->get();
+        $collections = Collection::where('in_filter', 1)->where('is_active', 1)->orderBy('short_name', 'asc')->limit(18)->get();
         $aboutData = AboutDavid::find(1);
         $descDesctop = TextContent::find(1);
         $deckBest = DesktopBest::find(1);

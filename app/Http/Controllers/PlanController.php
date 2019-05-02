@@ -42,6 +42,9 @@ class PlanController extends Controller
 
         $dataPlan = $plan->firstOrFail();
 
+        $dataPlan->views += 1;
+        $dataPlan->update();
+
         /*$packages = Package::whereHas('plans', function($query) use ($plan){
             $query->where('plan_id', '=', $plan->id);
         })->get();*/

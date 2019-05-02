@@ -8,6 +8,7 @@ use Thd\Collection;
 use Illuminate\Support\Facades\Validator;
 use Thd\Plan;
 use Illuminate\Support\Facades\Auth;
+use Thd\Style;
 
 class CollectionController extends Controller
 {
@@ -28,20 +29,16 @@ class CollectionController extends Controller
 
         $dataCollect = $collection->firstOrFail();
 
-
-        $plans = Plan::whereHas('collections' ,function($query) use($dataCollect){
-            $query->where('collection_id', '=', $dataCollect->id);
-        })->with(['images' => function($query){
-            $query->where('first_image', '=', 1);
-        }])->orderBy('created_at', 'desc')->paginate(12);
+        $allCollections = Collection::orderBy('name', 'asc')->where('is_active', 1)->get();
+        $allStyles = Style::orderBy('name', 'asc')->where('is_active', 1)->get();
         //$plans->load('images');
-        return view('collection.slug', ['collection'=>$dataCollect, 'plans'=>$plans]);
+        return view('collection.slug', ['collection'=>$dataCollect, 'allCollections'=>$allCollections, 'allStyles'=>$allStyles]);
     }
 
     public function all()
     {
         $collectionData = Asp::find(2);
-        $collections = Collection::orderBy('name', 'asc')->get();
+        $collections = Collection::orderBy('name', 'asc')->where('is_active', 1)->get();
 
         return view('collection.all', [
             'collections'=>$collections,

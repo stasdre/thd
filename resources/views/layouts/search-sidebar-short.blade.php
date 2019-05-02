@@ -54,7 +54,7 @@
                     <div class="font-weight-bold sidebar-heading">Architectural Styles </div>
                     <div class="features">
                         <ul class="list-unstyled text-primary">
-                            @foreach(\Thd\Style::orderBy('name', 'ASC')->get() as $style)
+                            @foreach(\Thd\Style::orderBy('name', 'ASC')->where('is_active', 1)->get() as $style)
                                 <li><a href="{{ route('style.slug', $style->slug)}}">{{$style->name}}</a></li>
                             @endforeach
                         </ul>
@@ -70,7 +70,7 @@
                     <div class="font-weight-bold sidebar-heading">Specialty Collections </div>
                     <div class="features">
                         <ul class="list-unstyled text-primary">
-                            @foreach(\Thd\Collection::orderBy('name', 'ASC')->get() as $collection)
+                            @foreach(\Thd\Collection::orderBy('name', 'ASC')->where('is_active', 1)->get() as $collection)
                                 <li><a href="{{route('collection.slug', $collection->slug)}}">{{$collection->name}}</a></li>
                             @endforeach
                         </ul>
