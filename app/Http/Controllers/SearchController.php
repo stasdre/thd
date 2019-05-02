@@ -10,14 +10,16 @@ use Thd\Plan;
 class SearchController extends Controller
 {
     public function index(Request $request)
-    {
-    }
+    { }
 
     public function result(Request $request)
     {
         $input = $request->all();
 
         $views = $request->get('views');
+        $collection = $request->get('collection');
+
+        $order = $request->get('order') ? $request->get('order') : 'popular';
         // $ft_min = $request->get('ft_min');
         // $ft_max = $request->get('ft_max');
         // $beds = $request->get('beds');
@@ -32,6 +34,8 @@ class SearchController extends Controller
 
         $rules = [
             'views' => 'required|in:24,50',
+            'order' => 'nullable|in:popular,recent',
+            'collection' => 'nullable|integer',
             // 'ft_min' => 'nullable|integer',
             // 'ft_max' => 'nullable|integer',
             // 'beds' => 'nullable|integer',
@@ -48,10 +52,16 @@ class SearchController extends Controller
 
         $validation = Validator::make($input, $rules);
 
-        if($validation->fails()){
+        if ($validation->fails()) {
             return abort(404);
         }
         $plans = Plan::where('is_active', '=', 1);
+
+        if(!empty($collection)){
+            $plans->whereHas('collections', function($query) use ($collection){
+                $query->where('collection_id', '=', $collection);
+            });
+        }
 
         // if($ft_min)
         //     $plans->where('square_ft->str_total', '>=', $ft_min);
@@ -86,7 +96,16 @@ class SearchController extends Controller
         // if($d_max)
         //     $plans->where('dimensions->depth_ft', '<=', $d_max);
 
-        $dataPlans = $plans->with('images')->orderBy('created_at', 'desc')->paginate($views);
+        switch ($order) {
+            case 'popular':
+                $plans->orderBy('views', 'desc');
+                break;
+            case 'recent':
+                $plans->orderBy('created_at', 'desc');
+                break;
+        }
+
+        $dataPlans = $plans->with('images')->paginate($views);
         //return view('search.index', ['plans'=>$dataPlans]);
         return response()->json($dataPlans);
     }

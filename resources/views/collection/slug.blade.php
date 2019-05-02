@@ -114,16 +114,17 @@
       <br>
    </div>
    <div style="clear : both;"></div>
-   <div id="plans_search">
+   <div id="plans_search" class="search-results" v-cloak :class="{loading: isLoading}">
+        <i class="loading-icon fas fa-sync-alt fa-6x fa-spin"></i>
         <div class="page-name mt-3 py-2 px-2 mobile-off">
             <div class="row align-items-center">
             <div class="col-sm-3 col-md-5 col-lg-4">
                 <form action="" class="form-inline">
                 <div class="form-group">
                     <label for="">Sort:</label>
-                    <select name="" id="" class="form-control form-control-sm rounded-0">
-                    <option value="">Most Popular</option>
-                    <option value="">Most Recent</option>
+                    <select v-model="order" class="form-control form-control-sm rounded-0">
+                    <option value="popular">Most Popular</option>
+                    <option value="recent">Most Recent</option>
                     </select>
                 </div>
                 <div class="form-group ml-2">
@@ -185,7 +186,7 @@
                         <div class="col-6 navbar-light" style="text-align: right;padding-right: 0;">	
                         <span>Filter</span><span class="navbar-toggler-icon" style="height : 24px;"></span>
                         &nbsp;
-                            <span class="blue-text" style="font-size : 12px;">PLANS : </span><span>2495</span>
+                            <span class="blue-text" style="font-size : 12px;">PLANS : </span><span>@{{total}}</span>
                         </div>
                         
                 </div>
@@ -309,11 +310,13 @@ const router = new VueRouter({
 var app = new Vue({
     router,
     data: {
+        isLoading: false,
         plans: [],
         last_page: 1,
         total: 0,
         current_page: 1,
-        views: 24
+        views: 24,
+        order: 'popular'
     },
     methods: {
         next(){
@@ -334,17 +337,24 @@ var app = new Vue({
             }
         },
         search(){
-            axios.get('/search/result?page='+this.current_page+'&views='+this.views)
+            this.isLoading = true;
+            axios.get('/search/result?collection={{$collection->id}}&page='+this.current_page+'&views='+this.views+'&order='+this.order)
             .then(response=> {
                 this.plans = response.data.data;
                 this.last_page = response.data.last_page;
                 this.total = response.data.total;
                 this.current_page = response.data.current_page;
+            })
+            .then(()=>{
+                this.isLoading = false;
             });  
         }
     },
     watch: {
         views: function(){
+            this.search();
+        },
+        order: function(){
             this.search();
         }
     },

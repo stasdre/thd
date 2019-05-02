@@ -7486,3 +7486,7 @@ body #plan_page .font-size-15 {
   opacity: 0;
 }
 
+[v-cloak] {
+  display: none;
+}
+
