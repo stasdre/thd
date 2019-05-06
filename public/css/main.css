@@ -7529,3 +7529,11 @@ button#additional-options {
   z-index: 1000;
 }
 
+.slider_max_height_500 {
+  max-height: 500px;
+}
+
+.img_width_100_percent {
+  width: 100%;
+}
+
