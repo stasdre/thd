@@ -58,6 +58,12 @@ Route::prefix('admin-thd')->group(function(){
         Route::delete('plan-images-bonus/{image}', 'Admin\PlanImagesBonusController@destroy')->where('image', '[0-9]+')->name('plan-images-bonus.destroy');
         Route::post('plan-images-bonus-sotr/{id}', 'Admin\PlanImagesBonusController@sort')->where('id', '[0-9]+')->name('plan-images-bonus.sort');
 
+        Route::post('plan-images-car/{plan}', 'Admin\PlanImagesCarController@store')->where('id', '[0-9]+')->name('plan-images-car.store');
+        Route::get('plan-images-car/{image}/edit', 'Admin\PlanImagesCarController@edit')->where('image', '[0-9]+')->name('plan-images-car.edit');
+        Route::put('plan-images-car/{image}', 'Admin\PlanImagesCarController@update')->where('image', '[0-9]+')->name('plan-images-car.update');
+        Route::delete('plan-images-car/{image}', 'Admin\PlanImagesCarController@destroy')->where('image', '[0-9]+')->name('plan-images-car.destroy');
+        Route::post('plan-images-car-sotr/{id}', 'Admin\PlanImagesCarController@sort')->where('id', '[0-9]+')->name('plan-images-car.sort');
+
         Route::get('plan-packages/edit/{plan}', 'Admin\PlanPackageController@edit')->where('plan', '[0-9]+')->name('plan-packages.edit');
         Route::post('plan-packages/update/{plan}', 'Admin\PlanPackageController@update')->where('id', '[0-9]+')->name('plan-packages.update');
         Route::post('plan-packages/file-upload/{plan}/{package}', 'Admin\PlanPackageController@upload')->name('plan-packages.upload');

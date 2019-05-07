@@ -148,4 +148,8 @@ class Plan extends Model
         return $this->belongsToMany('Thd\Outdoor', 'outdoor_plan');
     }
 
+    public function images_cars()
+    {
+        return $this->hasMany('Thd\PlanImageCar');
+    }
 }
