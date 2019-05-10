@@ -4,6 +4,7 @@
     <li role="presentation"><a href="#second-floor-tab" aria-controls="second-floor-tab" role="tab" data-toggle="tab">Second floor plans</a></li>
     <li role="presentation"><a href="#basement-floor-tab" aria-controls="basement-floor-tab" role="tab" data-toggle="tab">Basement floor plans</a></li>
     <li role="presentation"><a href="#bonus-floor-tab" aria-controls="bonus-floor-tab" role="tab" data-toggle="tab">Bonus floor plans</a></li>
+    <li role="presentation"><a href="#car-option" aria-controls="car-option" role="tab" data-toggle="tab">3-Car Option</a></li>
 </ul>
 
 <div class="tab-content">
@@ -46,6 +47,9 @@
     </div>
     <div role="tabpanel" class="tab-pane fade" id="bonus-floor-tab">
         @include('admin.plan-image._bonus-floor')
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="car-option">
+        @include('admin.plan-image._car-option')
     </div>
 </div>
 
@@ -389,6 +393,63 @@
                 }
             });
 
+            $("#file_upload_car-option").dropzone({
+                url: "{!! route('plan-images-car.store', ['id' => $plan->id]) !!}",
+                method: 'post',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                sending: function(file, xhr, formData) {
+                    $(file.previewElement).addClass('sending');
+                    formData.append("sort_number", $(".sending").length);
+                },
+                previewTemplate: document.querySelector('#dropzone_tmpl').innerHTML,
+                previewsContainer: '#files_sortable_car-option',
+                acceptedFiles: 'image/*',
+                thumbnailWidth: 160,
+                thumbnailHeight: 160,
+                success: function(file, data){
+                    if(data.file_name){
+                        file.previewElement.querySelector("img").src = "/storage/plans/" +data.plan_id+ "/thumb/" + data.file_name;
+                        $(file.previewElement).find('.imag_container').addClass('downloaded_without_check_car-option');
+                        $(file.previewElement).addClass('file_sortable');
+                        $(file.previewElement).prop('id', 'sortable_id_' + data.id);
+                        $(file.previewElement).find('.imag_container').prop('id', 'image_id_' + data.id);
+                    }
+                }
+            });
+            $( "#files_sortable_car-option" ).sortable({
+                tolerance: 'pointer',
+                revert: 'invalid',
+                placeholder: 'dz-preview dz-processing dz-image-preview dz-success dz-complete placeholder',
+                //placeholder: 'file_sortable',
+                items: '.file_sortable',
+                forceHelperSize: true,
+                helper: 'clone',
+                stop: function(event, ui) {
+                    //event.preventDefault();
+                },
+                update: function (event, ui) {
+                    var data = $(this).sortable('serialize');
+
+                    // POST to server using $.post or $.ajax
+                    $.ajax({
+                        data: data,
+                        type: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: '{!! route('plan-images-car.sort', ['id' => $plan->id]) !!}',
+                        beforeSend: function(){
+                            $(".galery_loader").show();
+                        },
+                        success: function(){
+                            $(".galery_loader").hide();
+                        }
+                    });
+                }
+            });
+
         });
 
         $(document).on('click', '.downloaded', function () {
@@ -453,7 +514,7 @@
             });
         });
 
-        $(document).on('click', '.downloaded_without_check, .downloaded_without_check_2, .downloaded_without_check_basement, .downloaded_without_check_bonus', function () {
+        $(document).on('click', '.downloaded_without_check, .downloaded_without_check_2, .downloaded_without_check_basement, .downloaded_without_check_bonus, .downloaded_without_check_car-option', function () {
 
             if($(this).hasClass('downloaded_without_check')){
                 var url = '{{ route('plan-images-first.edit', ['id'=>'image_id']) }}';
@@ -467,6 +528,9 @@
             }else if($(this).hasClass('downloaded_without_check_bonus')){
                 var url = '{{ route('plan-images-bonus.edit', ['id'=>'image_id']) }}';
                 var saveUrl = '{{ route('plan-images-bonus.update', ['id'=>'image_id']) }}';
+            }else if($(this).hasClass('downloaded_without_check_car-option')){
+                var url = '{{ route('plan-images-car.edit', ['id'=>'image_id']) }}';
+                var saveUrl = '{{ route('plan-images-car.update', ['id'=>'image_id']) }}';
             }
 
             var id = $(this).prop('id').split('_');
@@ -560,6 +624,11 @@
         $(document).on('click', '.remov_image_bonus', function(event){
             event.preventDefault();
             removeFile($(this), '{{ route('plan-images-bonus.destroy', ['image'=>'']) }}' + '/' + $(this).siblings('.imag_container').prop('id').replace('image_id_', ''));
+        });
+
+        $(document).on('click', '.remov_image_car-option', function(event){
+            event.preventDefault();
+            removeFile($(this), '{{ route('plan-images-car.destroy', ['image'=>'']) }}' + '/' + $(this).siblings('.imag_container').prop('id').replace('image_id_', ''));
         });
     </script>
 
