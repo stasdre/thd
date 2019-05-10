@@ -366,6 +366,9 @@ ensure you stay in budget, economy, standard and premium.</p>
                     @foreach($plan->images_bonus  as $image)
                       <div class="carousel-item"> <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid d-block w-100"> </div>
                     @endforeach
+                    @foreach($plan->images_cars  as $image)
+                      <div class="carousel-item"> <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid d-block w-100"> </div>
+                    @endforeach
                   </div>
                   <a class="carousel-control-prev" href="#carouselPlan" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselPlan" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
                 
