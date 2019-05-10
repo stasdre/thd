@@ -607,120 +607,168 @@ ensure you stay in budget, economy, standard and premium.</p>
   </div>
   </div>    
   <ul class="nav nav-pills nav-justified text-uppercase mt-2 xs-hide-portrait" id="floorPlan" role="tablist">
-    <li class="nav-item"> <a class="nav-link rounded-0 active" id="first-floor" data-toggle="tab" href="#first" role="tab">First Floor Plan</a> </li>
-    <li class="nav-item"> <a class="nav-link rounded-0" id="second-floor" data-toggle="tab" href="#second" role="tab">Second Floor Plan</a> </li>
-    <li class="nav-item"> <a class="nav-link rounded-0" id="basement-floor" data-toggle="tab" href="#basement" role="tab">Basement Floor Plan</a> </li>
-    <li class="nav-item"> <a class="nav-link rounded-0" id="bonus-floor" data-toggle="tab" href="#bonus" role="tab">Bonus Floor Plan</a> </li>
+    @if($plan->images_first->count())
+      <li class="nav-item"> <a class="nav-link rounded-0 active" id="first-floor" data-toggle="tab" href="#first" role="tab">First Floor Plan</a> </li>
+    @endif
+    @if($plan->images_second->count())
+      <li class="nav-item"> <a class="nav-link rounded-0" id="second-floor" data-toggle="tab" href="#second" role="tab">Second Floor Plan</a> </li>
+    @endif
+    @if($plan->images_basement->count())
+      <li class="nav-item"> <a class="nav-link rounded-0" id="basement-floor" data-toggle="tab" href="#basement" role="tab">Basement Floor Plan</a> </li>
+    @endif
+    @if($plan->images_bonus->count())
+      <li class="nav-item"> <a class="nav-link rounded-0" id="bonus-floor" data-toggle="tab" href="#bonus" role="tab">Bonus Floor Plan</a> </li>
+    @endif
+    @if($plan->images_cars->count())
+      <li class="nav-item"> <a class="nav-link rounded-0" id="car-options" data-toggle="tab" href="#cars" role="tab">3-Car Option</a> </li>
+    @endif
   </ul>
 <div class="tab-content bg-secondary_new" id="myTabContent1">
-    <div class="tab-pane fade show active" id="first" role="tabpanel">
-      @foreach($plan->images_first  as $image)
-        <div class="col-lg-10 m-auto">
-            <br/><br/>
-            <div class="row show-portrait-xs">
-            
-            
-            </div>
-            <div class="row mobile-off">
-              <div class="col-md-3 text-xs-center"><button type="button" class="btn btn-primary text-uppercase rounded-0">PURCHASE PLANS</button></div>
-                <div class="col-md-6 text-center">
-                  <a download="first-floor-Plan.png" target="_blank" href="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" title="{{ $image->alt_text }}">
-                      <h6 class="font-weight-bold mb-0" style="line-height: 40px;color:#000">Download Sample Construction Plans</h6>
-                  </a>
+    @if($plan->images_first->count())
+      <div class="tab-pane fade show active" id="first" role="tabpanel">
+        @foreach($plan->images_first  as $image)
+          <div class="col-lg-10 m-auto">
+              <br/><br/>
+              <div class="row show-portrait-xs">
+              
+              
               </div>
-              <div class="col-md-3 text-right text-xs-center custom_reversePlan"><button type="button" class="btn btn-dark rounded-0 reverse_plan">Reverse plan</button></div>                
-            </div>
-            <div class="row mobile-off">
-                <div class="col-md-12">
-                  <div class="floor-plan-like-desktop"><i class="fa fa-heart"></i></div>
-                  <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
+              <div class="row mobile-off">
+                <div class="col-md-3 text-xs-center"><a href="#searchform_outer" class="btn btn-primary text-uppercase rounded-0">PURCHASE PLANS</a></div>
+                  <div class="col-md-6 text-center">
+                    <a download="first-floor-Plan.png" target="_blank" href="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" title="{{ $image->alt_text }}">
+                        <h6 class="font-weight-bold mb-0" style="line-height: 40px;color:#000">Download Sample Construction Plans</h6>
+                    </a>
                 </div>
-            </div>
-            <br/><br/>
-          </div>
-        @endforeach
-    </div>
-    <div class="tab-pane fade" id="second" role="tabpanel">
-        @foreach($plan->images_second  as $image)
-        <div class="col-lg-10 m-auto">
-            <br/><br/>
-            <div class="row show-portrait-xs">
-            
-            
-            </div>
-            <div class="row mobile-off">
-              <div class="col-md-3 text-xs-center"><button type="button" class="btn btn-primary text-uppercase rounded-0">PURCHASE PLANS</button></div>
-                <div class="col-md-6 text-center">
-                  <a download="first-floor-Plan.png" target="_blank" href="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" title="{{ $image->alt_text }}">
-                      <h6 class="font-weight-bold mb-0" style="line-height: 40px;color:#000">Download Sample Construction Plans</h6>
-                  </a>
+                <div class="col-md-3 text-right text-xs-center custom_reversePlan"><button type="button" class="btn btn-dark rounded-0 reverse_plan">Reverse plan</button></div>                
               </div>
-              <div class="col-md-3 text-right text-xs-center custom_reversePlan"><button type="button" class="btn btn-dark rounded-0 reverse_plan">Reverse plan</button></div>                
-            </div>
-            <div class="row mobile-off">
-                <div class="col-md-12">
-                  <div class="floor-plan-like-desktop"><i class="fa fa-heart"></i></div>
-                  <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
-                </div>
-            </div>
-            <br/><br/>
-          </div>
-        @endforeach
-    </div>
-    <div class="tab-pane fade" id="basement" role="tabpanel">
-        @foreach($plan->images_basement  as $image)
-        <div class="col-lg-10 m-auto">
-            <br/><br/>
-            <div class="row show-portrait-xs">
-            
-            
-            </div>
-            <div class="row mobile-off">
-              <div class="col-md-3 text-xs-center"><button type="button" class="btn btn-primary text-uppercase rounded-0">PURCHASE PLANS</button></div>
-                <div class="col-md-6 text-center">
-                  <a download="first-floor-Plan.png" target="_blank" href="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" title="{{ $image->alt_text }}">
-                      <h6 class="font-weight-bold mb-0" style="line-height: 40px;color:#000">Download Sample Construction Plans</h6>
-                  </a>
+              <div class="row mobile-off">
+                  <div class="col-md-12">
+                    <div class="floor-plan-like-desktop"><i class="fa fa-heart"></i></div>
+                    <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
+                  </div>
               </div>
-              <div class="col-md-3 text-right text-xs-center custom_reversePlan"><button type="button" class="btn btn-dark rounded-0 reverse_plan">Reverse plan</button></div>                
+              <br/><br/>
             </div>
-            <div class="row mobile-off">
-                <div class="col-md-12">
-                  <div class="floor-plan-like-desktop"><i class="fa fa-heart"></i></div>
-                  <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
-                </div>
-            </div>
-            <br/><br/>
-          </div>
-        @endforeach
-    </div>
-    <div class="tab-pane fade" id="bonus" role="tabpanel">
-        @foreach($plan->images_bonus  as $image)
-        <div class="col-lg-10 m-auto">
-            <br/><br/>
-            <div class="row show-portrait-xs">
-            
-            
-            </div>
-            <div class="row mobile-off">
-              <div class="col-md-3 text-xs-center"><button type="button" class="btn btn-primary text-uppercase rounded-0">PURCHASE PLANS</button></div>
-                <div class="col-md-6 text-center">
-                  <a download="first-floor-Plan.png" target="_blank" href="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" title="{{ $image->alt_text }}">
-                      <h6 class="font-weight-bold mb-0" style="line-height: 40px;color:#000">Download Sample Construction Plans</h6>
-                  </a>
+          @endforeach
+      </div>
+    @endif
+    @if($plan->images_second->count())
+      <div class="tab-pane fade" id="second" role="tabpanel">
+          @foreach($plan->images_second  as $image)
+          <div class="col-lg-10 m-auto">
+              <br/><br/>
+              <div class="row show-portrait-xs">
+              
+              
               </div>
-              <div class="col-md-3 text-right text-xs-center custom_reversePlan"><button type="button" class="btn btn-dark rounded-0 reverse_plan">Reverse plan</button></div>                
-            </div>
-            <div class="row mobile-off">
-                <div class="col-md-12">
-                  <div class="floor-plan-like-desktop"><i class="fa fa-heart"></i></div>
-                  <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
+              <div class="row mobile-off">
+                <div class="col-md-3 text-xs-center"><a href="#searchform_outer" class="btn btn-primary text-uppercase rounded-0">PURCHASE PLANS</a></div>
+                  <div class="col-md-6 text-center">
+                    <a download="first-floor-Plan.png" target="_blank" href="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" title="{{ $image->alt_text }}">
+                        <h6 class="font-weight-bold mb-0" style="line-height: 40px;color:#000">Download Sample Construction Plans</h6>
+                    </a>
                 </div>
+                <div class="col-md-3 text-right text-xs-center custom_reversePlan"><button type="button" class="btn btn-dark rounded-0 reverse_plan">Reverse plan</button></div>                
+              </div>
+              <div class="row mobile-off">
+                  <div class="col-md-12">
+                    <div class="floor-plan-like-desktop"><i class="fa fa-heart"></i></div>
+                    <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
+                  </div>
+              </div>
+              <br/><br/>
             </div>
-            <br/><br/>
-          </div>
-        @endforeach
-    </div>
+          @endforeach
+      </div>
+    @endif
+    @if($plan->images_basement->count())
+      <div class="tab-pane fade" id="basement" role="tabpanel">
+          @foreach($plan->images_basement  as $image)
+          <div class="col-lg-10 m-auto">
+              <br/><br/>
+              <div class="row show-portrait-xs">
+              
+              
+              </div>
+              <div class="row mobile-off">
+                <div class="col-md-3 text-xs-center"><a href="#searchform_outer" class="btn btn-primary text-uppercase rounded-0">PURCHASE PLANS</a></div>
+                  <div class="col-md-6 text-center">
+                    <a download="first-floor-Plan.png" target="_blank" href="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" title="{{ $image->alt_text }}">
+                        <h6 class="font-weight-bold mb-0" style="line-height: 40px;color:#000">Download Sample Construction Plans</h6>
+                    </a>
+                </div>
+                <div class="col-md-3 text-right text-xs-center custom_reversePlan"><button type="button" class="btn btn-dark rounded-0 reverse_plan">Reverse plan</button></div>                
+              </div>
+              <div class="row mobile-off">
+                  <div class="col-md-12">
+                    <div class="floor-plan-like-desktop"><i class="fa fa-heart"></i></div>
+                    <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
+                  </div>
+              </div>
+              <br/><br/>
+            </div>
+          @endforeach
+      </div>
+    @endif
+    @if($plan->images_bonus->count())
+      <div class="tab-pane fade" id="bonus" role="tabpanel">
+          @foreach($plan->images_bonus  as $image)
+          <div class="col-lg-10 m-auto">
+              <br/><br/>
+              <div class="row show-portrait-xs">
+              
+              
+              </div>
+              <div class="row mobile-off">
+                <div class="col-md-3 text-xs-center"><a href="#searchform_outer" class="btn btn-primary text-uppercase rounded-0">PURCHASE PLANS</a></div>
+                  <div class="col-md-6 text-center">
+                    <a download="first-floor-Plan.png" target="_blank" href="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" title="{{ $image->alt_text }}">
+                        <h6 class="font-weight-bold mb-0" style="line-height: 40px;color:#000">Download Sample Construction Plans</h6>
+                    </a>
+                </div>
+                <div class="col-md-3 text-right text-xs-center custom_reversePlan"><button type="button" class="btn btn-dark rounded-0 reverse_plan">Reverse plan</button></div>                
+              </div>
+              <div class="row mobile-off">
+                  <div class="col-md-12">
+                    <div class="floor-plan-like-desktop"><i class="fa fa-heart"></i></div>
+                    <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
+                  </div>
+              </div>
+              <br/><br/>
+            </div>
+          @endforeach
+      </div>
+    @endif
+    @if($plan->images_cars->count())
+      <div class="tab-pane fade" id="cars" role="tabpanel">
+          @foreach($plan->images_cars  as $image)
+          <div class="col-lg-10 m-auto">
+              <br/><br/>
+              <div class="row show-portrait-xs">
+              
+              
+              </div>
+              <div class="row mobile-off">
+                <div class="col-md-3 text-xs-center"><a href="#searchform_outer" class="btn btn-primary text-uppercase rounded-0">PURCHASE PLANS</a></div>
+                  <div class="col-md-6 text-center">
+                    <a download="first-floor-Plan.png" target="_blank" href="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" title="{{ $image->alt_text }}">
+                        <h6 class="font-weight-bold mb-0" style="line-height: 40px;color:#000">Download Sample Construction Plans</h6>
+                    </a>
+                </div>
+                <div class="col-md-3 text-right text-xs-center custom_reversePlan"><button type="button" class="btn btn-dark rounded-0 reverse_plan">Reverse plan</button></div>                
+              </div>
+              <div class="row mobile-off">
+                  <div class="col-md-12">
+                    <div class="floor-plan-like-desktop"><i class="fa fa-heart"></i></div>
+                    <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
+                  </div>
+              </div>
+              <br/><br/>
+            </div>
+          @endforeach
+      </div>
+    @endif
   </div>
 
 <div class="row text-center">

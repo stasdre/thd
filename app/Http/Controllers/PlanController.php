@@ -35,6 +35,9 @@ class PlanController extends Controller
             }])
             ->with(['images_bonus' => function($query){
                 $query->orderBy('sort_number', 'ASC');
+            }])
+            ->with(['images_cars' => function($query){
+                $query->orderBy('sort_number', 'ASC');
             }]);
 
         if(!Auth::user() || Auth::user()->hasRole('customer'))
