@@ -50,7 +50,7 @@ class PlanImageController extends Controller
         $input = $request->all();
 
         $rules = array(
-            'file' => 'image|max:3000|dimensions:min_width=1050',
+            'file' => 'image|max:3000|dimensions',
             'sort_number' => 'integer'
         );
 
