@@ -5,43 +5,45 @@
     <div id="banner" class="carousel slide" data-ride="carousel" >
     @if ($agent->isDesktop()  || $agent->isTablet())
 <div class="home-page-search mobile-off"> 
-  <h4 class="blue-text"> Search House Plans </h4>
+	<h4 class="blue-text"> Search House Plans </h4>
+	<form method="GET" action="{{ route('search') }}">
                   <TABLE class="home-search-new">
 <tr>
 <Th>Sq. Ft.</Th>
-<td> <input type="text" placeholder="min" size=5 class="center" name="min"> to <input type="text" placeholder="max" size=5 class="center" name="max"></td>
+<td> <input type="text" placeholder="min" size=5 class="center" name="sq_min"> to <input type="text" placeholder="max" size=5 class="center" name="sq_max"></td>
 </tr>
 <tr>
 <Th>Beds</Th>
-<td> <div><span class="min_icon  beds-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+<td> <div><span class="min_icon  beds-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="beds" value="1" class="qty"> 
                         <span class="max_icon  beds-add"><i class="fa fa-plus"></i></span></div></td>
 </tr>
 <tr>
 <Th>Baths</Th>
-<td> <div><span class="min_icon  baths-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+<td> <div><span class="min_icon  baths-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="baths" value="1" class="qty"> 
                         <span class="max_icon  baths-add"><i class="fa fa-plus"></i></span></div></td>
 </tr>
 <tr>
 <Th>Garages</Th>
-<td> <div><span class="min_icon garage-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+<td> <div><span class="min_icon garage-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="garages" value="1" class="qty"> 
                         <span class="max_icon garage-add"><i class="fa fa-plus"></i></span></div></td>
 </tr>	
 <tr>
 <Th>Stories</Th>
-<td> <div><span class="min_icon  stories_reduce"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+<td> <div><span class="min_icon  stories_reduce"> <i class="fa fa-minus"> </i></span> <input type="text" name="stories" value="1" class="qty"> 
                         <span class="max_icon  stories_add"><i class="fa fa-plus"></i></span></div></td>
 </tr>
 
 <tr>
 	<td colspan="2">
     <div class="">  
-                	<button class="btn btn-primary rounded-0 text-white font-weight-semi-bold" type="button" style="width :100%;"> SEARCH</button>
+                	<button class="btn btn-primary rounded-0 text-white font-weight-semi-bold" type="submit" style="width :100%;"> SEARCH</button>
                   </div>
-                  <div class="text-center advanced_search_text mt-2" ><a href="" class="red-links" style="font-size:14px;"> ADVANCED SEARCH</a></div>
+                  <div class="text-center advanced_search_text mt-2" ><a href="{{ route('advanced-search') }}" class="red-links" style="font-size:14px;"> ADVANCED SEARCH</a></div>
     </td>
 </tr>
 
 </TABLE>
+</form>
    </div>
    @endif
         <ol class="carousel-indicators">

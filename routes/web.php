@@ -156,6 +156,7 @@ Route::prefix('admin-thd')->group(function(){
 });
 
 Route::get('search/', 'SearchController@index')->name('search');
+Route::get('advanced-search/', 'SearchController@advanced')->name('advanced-search');
 Route::get('search/result', 'SearchController@result')->name('search-result');
 
 Route::get('collection/{slug}', 'CollectionController@slug')->name('collection.slug');
