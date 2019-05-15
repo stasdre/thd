@@ -8,6 +8,7 @@ services:
       dockerfile: app.dockerfile
     working_dir: /var/www
     volumes:
+      - "./php-custom.ini:/usr/local/etc/php/conf.d/custom.ini"
       - ./:/var/www
     environment:
       - "DB_PORT=3306"
