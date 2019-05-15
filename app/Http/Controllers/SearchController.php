@@ -35,6 +35,7 @@ class SearchController extends Controller
         $baths = $request->get('baths');
         $garages = $request->get('garages');
         $stories = $request->get('stories');
+        $txt = $request->get('txt');
 
         $rules = [
             'views' => 'required|in:24,50',
@@ -47,6 +48,7 @@ class SearchController extends Controller
             'baths' => 'nullable|numeric',
             'garages' => 'nullable|numeric',
             'stories' => 'nullable|numeric',
+            'txt' => 'nullable|string',
         ];
 
 
@@ -87,6 +89,13 @@ class SearchController extends Controller
         if($stories)
             $plans->where('dimensions->stories', '>=', $stories);
 
+        if($txt){
+            //$plans->where('name', 'like', '%'.$txt.'%');
+            $plans->where(function ($query) use($txt) {
+                $query->where('name', 'like', '%'.$txt.'%')
+                      ->orWhere('plan_number', 'like', '%'.$txt.'%');
+            });
+        }
 
         switch ($order) {
             case 'popular':

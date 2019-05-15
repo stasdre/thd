@@ -6,6 +6,7 @@
       <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
       <li class="breadcrumb-item"><a href="#">Plan Search</a></li>
       <li class="breadcrumb-item active" aria-current="page">Search Results — Filtered on: 
+        @if(request()->get('txt')) {{request()->get('txt')}}@endif
         @if(request()->get('stories')) {{request()->get('stories')}} stories, @endif
         @if(request()->get('beds')) {{request()->get('beds')}} bedrooms, @endif
         @if(request()->get('baths')) {{request()->get('baths')}} baths, @endif
@@ -157,6 +158,7 @@
             current_page: 1,
             views: 24,
             order: 'popular',
+            txt: '{{request()->get('txt')}}',
             sq_min: '{{request()->get('sq_min')}}',
             sq_max: '{{request()->get('sq_max')}}',
             beds: '{{request()->get('beds')}}',
@@ -189,6 +191,7 @@
                         page: this.current_page,
                         views: this.views,
                         order: this.order,
+                        txt: this.txt,
                         sq_min: this.sq_min,
                         sq_max: this.sq_max,
                         beds: this.beds,

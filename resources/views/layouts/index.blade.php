@@ -86,12 +86,12 @@
 
           <li class="list-inline-item"><a href="{{route('cart')}}"><img src="{{ asset('images/icons/icon-cart.png') }}" alt="" class="img-fluid"></a></li>
         </ul>
-        <div class="input-group input-group-sm mb-1 plan_name_search">
-          <input type="text" class="form-control rounded-0 border-secondary" placeholder="Plan Name, # or Topic">
-          <div class="input-group-append">
-            <button class="btn btn-primary rounded-0 text-uppercase text-dark font-weight-semi-bold" type="button">GO</button>
-          </div>
-        </div>
+        <form class="input-group input-group-sm mb-1 plan_name_search" method="GET" action="{{ route('search') }}">
+            <input type="text" name="txt" class="form-control rounded-0 border-secondary" placeholder="Plan Name, # or Topic">
+            <div class="input-group-append">
+                <button class="btn btn-primary rounded-0 text-uppercase text-dark font-weight-semi-bold" type="submit">GO</button>
+            </div>
+        </form>
       </div>
     </div>
   </header>
