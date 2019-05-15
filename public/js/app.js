@@ -315,6 +315,10 @@ $('.stories_reduce , .stories_reduce-mobile').click(function () {
     }
 });
 
+$(".features ul li.listname").click(function () {
+    $(this).next("div").slideToggle(1000);
+});
+
 /***/ }),
 /* 9 */
 /***/ (function(module, exports) {

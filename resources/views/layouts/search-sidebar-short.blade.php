@@ -5,41 +5,43 @@
 
                 <div class="search-grid search-grid1">
                     <div class="font-weight-bold sidebar-heading">House Plan Search</div>
+                    <form method="GET" action="{{ route('search') }}">
                     <TABLE>
                         <tr>
                             <TD>Sq. Ft.</TD>
-                            <td> <input type="text" placeholder="min" size=5 class="center"> to <input type="text" placeholder="max" size=5 class="center"></td>
+                            <td> <input type="text" placeholder="min" size=5 class="center" name="sq_min"> to <input type="text" placeholder="max" size=5 class="center" name="sq_max"></td>
                         </tr>
                         <tr>
-                            <TD>Beds</TD>
-                            <td> <span class="min_icon"> <i class="fa fa-minus"> </i></span> 1
-                                <span class="max_icon"><i class="fa fa-plus"></i></span></td>
+                            <Th>Beds</Th>
+                            <td> <div><span class="min_icon  beds-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="beds" value="1" class="qty"> 
+                                                    <span class="max_icon  beds-add"><i class="fa fa-plus"></i></span></div></td>
                         </tr>
                         <tr>
-                            <TD>Baths</TD>
-                            <td> <span class="min_icon"> <i class="fa fa-minus"> </i></span> 1
-                                <span class="max_icon"><i class="fa fa-plus"></i></span></td>
+                            <Th>Baths</Th>
+                            <td> <div><span class="min_icon  baths-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="baths" value="1" class="qty"> 
+                                                    <span class="max_icon  baths-add"><i class="fa fa-plus"></i></span></div></td>
                         </tr>
                         <tr>
-                            <TD>Stories</TD>
-                            <td> <span class="min_icon"> <i class="fa fa-minus"> </i></span> 1
-                                <span class="max_icon"><i class="fa fa-plus"></i></span></td>
+                            <Th>Stories</Th>
+                            <td> <div><span class="min_icon  stories_reduce"> <i class="fa fa-minus"> </i></span> <input type="text" name="stories" value="1" class="qty"> 
+                                                    <span class="max_icon  stories_add"><i class="fa fa-plus"></i></span></div></td>
                         </tr>
                         <tr>
-                            <TD>Garage</TD>
-                            <td> <span class="min_icon"> <i class="fa fa-minus"> </i></span> 1
-                                <span class="max_icon"><i class="fa fa-plus"></i></span></td>
-                        </tr>
+                            <Th>Garages</Th>
+                            <td> <div><span class="min_icon garage-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="garages" value="1" class="qty"> 
+                                                    <span class="max_icon garage-add"><i class="fa fa-plus"></i></span></div></td>
+                        </tr>	
                         <tr>
                             <td colspan="2">
                                 <div class="">
-                                    <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold" type="button" style="width :100%;"> SEARCH</button>
+                                    <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold" type="submit" style="width :100%;"> SEARCH</button>
                                 </div>
-                                <div class="text-right advanced_search_text" style="margin-top : -10px;"><a href="" class="red-links"> ADVANCED PLAN SEARCH</a></div>
+                                <div class="text-right advanced_search_text" style="margin-top : -10px;"><a href="{{ route('advanced-search') }}" class="red-links"> ADVANCED PLAN SEARCH</a></div>
                             </td>
                         </tr>
 
                     </TABLE>
+                    </form>
                 </div>
             </div>
         </div>

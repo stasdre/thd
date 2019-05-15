@@ -8,6 +8,7 @@
       <li class="breadcrumb-item active" aria-current="page">Search Results — Filtered on: 
         @if(request()->get('stories')) {{request()->get('stories')}} stories, @endif
         @if(request()->get('beds')) {{request()->get('beds')}} bedrooms, @endif
+        @if(request()->get('baths')) {{request()->get('baths')}} baths, @endif
         @if(request()->get('garages')) {{request()->get('garages')}} garages, @endif
         @if(request()->get('sq_min')) from {{request()->get('sq_min')}}' sq. ft., @endif
         @if(request()->get('sq_max')) to {{request()->get('sq_max')}}' sq. ft., @endif

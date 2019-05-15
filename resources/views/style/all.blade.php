@@ -25,7 +25,7 @@
         <div class="row mobile-off">
             <div class="col-sm-12 center">
                 <div class="py-2"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" type="button"> Quick Plan Search</button>
-                    <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" type="button" style="padding : 10px 34px;"> Advanced Plan Search</button>
+                    <a href="{{ route('advanced-search') }}" class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" style="padding : 10px 34px;"> Advanced Plan Search</a>
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
                 <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" type="button"> Quick <br>Plan Search</button>
             </div>
             <div class="col-6 col-sm-6 set-left center">
-                <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" type="button"> Advanced <br>Plan Search</button>
+                <a href="{{ route('advanced-search') }}" class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding"> Advanced <br>Plan Search</a>
             </div>
             <br>
         </div>

@@ -84,7 +84,7 @@
                       </div>
                   </div>
                   <div class="col-md-2 col-sm-3 common_width comm_xs_btn text-right">
-                      <div class="form-group"> <a href="http://104.236.20.15:8080/search" class="btn btn-link text-uppercase text-white advan_opts">Advanced Options</a> </div>
+                      <div class="form-group"> <a href="{{ route('advanced-search') }}" class="btn btn-link text-uppercase text-white advan_opts">Advanced Options</a> </div>
                   </div>
               </div>
           </form>
@@ -99,7 +99,7 @@
    <div class="row mobile-off">
        <div class="col-sm-12 center">
           <div><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" type="button" > Quick Plan Search</button>
-              <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" type="button" style="padding : 10px 34px;"> Advanced Plan Search</button>
+              <a href="{{ route('advanced-search') }}" class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" style="padding : 10px 34px;"> Advanced Plan Search</a>
           </div>
       </div>
    </div>
@@ -109,7 +109,7 @@
           <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" type="button"> Quick <br>Plan Search</button>
       </div>
       <div class="col-6 col-sm-6 set-left center">
-              <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" type="button"> Advanced <br>Plan Search</button>
+              <a href="{{ route('advanced-search') }}" class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding"> Advanced <br>Plan Search</a>
           </div>
       <br>
    </div>
