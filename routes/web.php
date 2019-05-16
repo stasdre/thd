@@ -156,6 +156,7 @@ Route::prefix('admin-thd')->group(function(){
 });
 
 Route::get('search/', 'SearchController@index')->name('search');
+Route::get('advanced-search/', 'SearchController@advanced')->name('advanced-search');
 Route::get('search/result', 'SearchController@result')->name('search-result');
 
 Route::get('collection/{slug}', 'CollectionController@slug')->name('collection.slug');
@@ -163,8 +164,10 @@ Route::get('style/{slug}', 'StyleController@slug')->name('style.slug');
 
 Route::get('collections/', 'CollectionController@all')->name('collections');
 Route::get('styles/', 'StyleController@all')->name('styles');
+
 Route::get('plan/{plan_number}', 'PlanController@view')->name('plan.view')->where('plan_number', '[0-9]+');
 Route::get('modify-plan/{plan_number}','PlanController@modifyplan')->name('modify-plan')->where('plan_number', '[0-9]+');
+Route::get('plan/all', 'PlanController@all')->name('plan.all');
 
 Route::get('contact-us/', 'ContactUsController@index')->name('contact-us');
 Route::post('contact-us/send', 'ContactUsController@send')->name('contact-us.send');

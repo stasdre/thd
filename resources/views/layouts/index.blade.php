@@ -34,7 +34,7 @@
            		<a class="d-inline-block align-middle" href="{{route('home')}}"><img src="{{asset('images/icons/logo.png')}}" alt="" class="img-fluid mr-2" style="max-width:160px;"></a>
             </span>
             <span class="float-right">
-               <a href="#" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-search d-block" style="font-size:16px;"></i> Search</a>
+               <a href="{{route('advanced-search')}}" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-search d-block" style="font-size:16px;"></i> Search</a>
                <a href="#" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-phone d-block" style="font-size:16px;"></i> Contact</a> 
                <a href="#" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-user d-block" style="font-size:16px;"></i> Account</a> 
                <a href="{{route('cart')}}" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-shopping-cart d-block" style="font-size:16px;"></i> Cart</a>
@@ -55,7 +55,7 @@
 			<ul class="mb-0 p-0 width_100">
 			  <li class="list-inline-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#link"><img src="{{asset('images/icons/icon-search.png')}}" alt="search"> House Plans</a>
 				<ul class="dropdown-menu">
-				 <li><a href="{{ route('search') }}">Advanced Search</a></li>
+				 <li><a href="{{ route('advanced-search') }}">Advanced Search</a></li>
                  <li><a href="{{ route('styles') }}">Architectural Styles</a></li>
                  <li><a href="{{ route('collections') }}">Specialty Collections</a></li>
 				</ul>
@@ -86,12 +86,12 @@
 
           <li class="list-inline-item"><a href="{{route('cart')}}"><img src="{{ asset('images/icons/icon-cart.png') }}" alt="" class="img-fluid"></a></li>
         </ul>
-        <div class="input-group input-group-sm mb-1 plan_name_search">
-          <input type="text" class="form-control rounded-0 border-secondary" placeholder="Plan Name, # or Topic">
-          <div class="input-group-append">
-            <button class="btn btn-primary rounded-0 text-uppercase text-dark font-weight-semi-bold" type="button">GO</button>
-          </div>
-        </div>
+        <form class="input-group input-group-sm mb-1 plan_name_search" method="GET" action="{{ route('search') }}">
+            <input type="text" name="txt" class="form-control rounded-0 border-secondary" placeholder="Plan Name, # or Topic">
+            <div class="input-group-append">
+                <button class="btn btn-primary rounded-0 text-uppercase text-dark font-weight-semi-bold" type="submit">GO</button>
+            </div>
+        </form>
       </div>
     </div>
   </header>

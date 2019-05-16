@@ -234,3 +234,7 @@ $('.stories_reduce , .stories_reduce-mobile').click(function () {
         $(this).parent("div").find(".fa-minus").css({ 'border': '1px solid silver', 'color': 'grey', 'opacity': .6 });
     }
 });
+
+$(".features ul li.listname").click(function(){
+    $(this).next("div").slideToggle(1000);
+});

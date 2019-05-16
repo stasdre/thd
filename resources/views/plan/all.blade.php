@@ -1,98 +1,9 @@
 @extends('layouts.index')
 
-@section('content')
-<div class="plan-full position-relative mobile-off"> <img src="{{ '/storage/collections/'.$collection->image }}" alt="{{$collection->name}}" class="img-fluid" />
-<div class="single-plan-title position-absolute single-plan-title-edit">{{ $collection->name }}</div>
-    <div class="plan-name position-absolute"><span>{{ $collection->short_name }} /</span> HOUSE PLAN {{ $collection->plan }}</div>
-  </div>
-  <div class="search-wrap light py-2 text-center px-5 mobile-off">
-    <form class="form-main-search text-center space_left">
-              <div class="row no-gutters">
-                  <div class="col-md-2 col-sm-3 common_width padd_bottom_10">
-                      <div class="form-group">
-                          <div class="select-custom-wrap select-custom-wrap-lg">
-                              <div class="select"><select name="select-custom-style" class="select-custom select-hidden">
-                                  <option value="hide">Styles \ Collections</option>
-                                  <option value="Collection1">Collection1</option>
-                                  <option value="Collection2">Collection2</option>
-                                  <option value="Collection3">Collection3</option>
-                              </select><div class="select-styled">Styles \ Collections</div><ul class="select-options"><li rel="hide">Styles \ Collections</li><li rel="Collection1">Collection1</li><li rel="Collection2">Collection2</li><li rel="Collection3">Collection3</li></ul></div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 col-sm-3 common_width padd_bottom_10">
-                      <div class="form-group">
-                          <div class="select-custom-wrap select-custom-wrap-sm">
-                              <div class="select"><select name="select-custom-beds" class="select-custom select-hidden">
-                                  <option value="hide">Beds</option>
-                                  <option value="Bed1">1</option>
-                                  <option value="Bed2">2</option>
-                                  <option value="Bed3">3</option>
-                              </select><div class="select-styled">Beds</div><ul class="select-options"><li rel="hide">Beds</li><li rel="Bed1">1</li><li rel="Bed2">2</li><li rel="Bed3">3</li></ul></div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 col-sm-3 common_width padd_bottom_10">
-                      <div class="form-group">
-                          <div class="select-custom-wrap select-custom-wrap-sm">
-                              <div class="select"><select name="select-custom-baths" class="select-custom select-hidden">
-                                  <option value="hide">Baths</option>
-                                  <option value="Bath1">1</option>
-                                  <option value="Bath2">2</option>
-                                  <option value="Bath3">3</option>
-                              </select><div class="select-styled">Baths</div><ul class="select-options"><li rel="hide">Baths</li><li rel="Bath1">1</li><li rel="Bath2">2</li><li rel="Bath3">3</li></ul></div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 col-sm-3 common_width padd_bottom_10">
-                      <div class="form-group">
-                          <div class="select-custom-wrap select-custom-wrap-sm">
-                              <div class="select"><select name="select-custom-stories" class="select-custom select-hidden">
-                                  <option value="hide">Stories</option>
-                                  <option value="Story1">Story1</option>
-                                  <option value="Story2">Story2</option>
-                                  <option value="Story3">Story3</option>
-                              </select><div class="select-styled">Stories</div><ul class="select-options"><li rel="hide">Stories</li><li rel="Story1">Story1</li><li rel="Story2">Story2</li><li rel="Story3">Story3</li></ul></div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-2 col-sm-3 common_width padd_bottom_10 max-width">
-                      <div class="form-group">
-                          <div class="select-custom-wrap select-custom-wrap-md">
-                              <div class="select"><select name="select-custom-garages" class="select-custom select-hidden">
-                                  <option value="hide">Garages</option>
-                                  <option value="Garage1">Garage1</option>
-                                  <option value="Garage2">Garage2</option>
-                                  <option value="Garage3">Garage3</option>
-                              </select><div class="select-styled">Garages</div><ul class="select-options"><li rel="hide">Garages</li><li rel="Garage1">Garage1</li><li rel="Garage2">Garage2</li><li rel="Garage3">Garage3</li></ul></div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 col-sm-3 common_width">
-                      <div class="form-group">
-                          <input type="text" placeholder="Min Sq Ft" class="center" style="font-size : 12px;padding :0;">
-                      </div>
-                  </div>
-                  <div class="col-md-1 col-sm-3 common_width">
-                      <div class="form-group">
-                          <input type="text" placeholder="Max Sq Ft" class="center" style="font-size : 12px;padding :0;">
-                      </div>
-                  </div>
-                  <div class="col-md-1 col-sm-3 common_width">
-                      <div class="form-group">
-                          <button type="submit" class="btn btn-block btn-primary rounded-0">Search</button>
-                      </div>
-                  </div>
-                  <div class="col-md-2 col-sm-3 common_width comm_xs_btn text-right">
-                      <div class="form-group"> <a href="{{ route('advanced-search') }}" class="btn btn-link text-uppercase text-white advan_opts">Advanced Options</a> </div>
-                  </div>
-              </div>
-          </form>
-  </div>
-  
+@section('content')  
   <div  style="color : #212529;" class="info_text py-2 px-sm-5 mx-sm-3">
-    {!! substr($collection->description, 0, 310) !!}
-  <span class="mobile-off" id="content-scroll">{!! substr($collection->description, 311) !!}</span>
+    Finding your perfect house plan has become a whole lot easier since builder-preferred, construction-ready home plans are now available online.  Spending months or even longer working with an architect to fine tune a whole house blueprint is no longer necessary  You can now easily and quickly
+  <span class="mobile-off" id="content-scroll">find house plans designed by best-selling architects by following a few easy search steps.  Before you begin searching house designs, make sure you’re purchasing house plans from a site like ours where the plans meet the strict standards of the IRC (International Residential Code) and guarantee the full architectural detailing your builder needs to construct a safe home.  You’ll also want to check with your local town building department to find out if there are any special engineering or structural details needed for permitting. All of our floor plans can be customized as well as modified to include any possible local engineering details for certain locations like California and Florida. After you’ve done this initial homework, you’ll simply determine the square footage range needed to coordinate with your budget, style of home you want and then your preferences for bedrooms, baths, number of stories and garages. If there are lot restrictions, you can also add width and depth parameters in your home plan search to narrow down your results. To have your questions answered by our team of house plan experts, simply <a href="#">email</a> or <a href="#">live chat</a>  us today!</span>
   </div>
   <div class="desktop-off read_more" id="read_more"><span class="read-more-link-wrapper">Read More </span></div>
   <div style="display : none;" id="read_less" class="read_less"><span class="read-less-link-wrapper">Read Less </span></div>
@@ -320,7 +231,7 @@ var app = new Vue({
         },
         search(){
             this.isLoading = true;
-            axios.get('/search/result?collection={{$collection->id}}&page='+this.current_page+'&views='+this.views+'&order='+this.order)
+            axios.get('/search/result?page='+this.current_page+'&views='+this.views+'&order='+this.order)
             .then(response=> {
                 this.plans = response.data.data;
                 this.last_page = response.data.last_page;
