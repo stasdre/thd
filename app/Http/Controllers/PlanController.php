@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Thd\Package;
 use Thd\Plan;
+use Thd\Collection;
+use Thd\Style;
 
 class PlanController extends Controller
 {
@@ -94,7 +96,15 @@ class PlanController extends Controller
             'addons'=>json_encode($addons)
         ]);
     }
-	public function modifyplan(){
+    
+    public function modifyplan(){
 		return view('plan.modify-plan');
+    }
+
+    public function all(){
+        $allCollections = Collection::orderBy('name', 'asc')->where('is_active', 1)->get();
+        $allStyles = Style::orderBy('name', 'asc')->where('is_active', 1)->get();
+
+        return view('plan.all', ['allCollections'=>$allCollections, 'allStyles'=>$allStyles]);
     }
 }

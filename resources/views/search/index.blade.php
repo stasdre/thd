@@ -4,7 +4,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb mb-0 bg-white px-0">
       <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-      <li class="breadcrumb-item"><a href="#">Plan Search</a></li>
+      <li class="breadcrumb-item"><a href="{{ route('plan.all') }}">Plan Search</a></li>
       <li class="breadcrumb-item active" aria-current="page">Search Results — Filtered on: 
         @if(request()->get('txt')) {{request()->get('txt')}}@endif
         @if(request()->get('stories')) {{request()->get('stories')}} stories, @endif
