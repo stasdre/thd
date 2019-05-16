@@ -47,6 +47,7 @@ class StyleController extends Controller
     public function store(StylesRequest $request)
     {
         $dataPlans = [];
+        $filename = '';
 
         if( $request->input('added-plan') ){
             $count = 0;

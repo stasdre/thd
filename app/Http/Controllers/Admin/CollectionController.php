@@ -46,6 +46,7 @@ class CollectionController extends Controller
     public function store(CollectionsRequest $request)
     {
         $dataPlans = [];
+        $filename = '';
 
         if( $request->input('added-plan') ){
             $count = 0;
