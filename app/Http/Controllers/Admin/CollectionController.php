@@ -277,7 +277,7 @@ class CollectionController extends Controller
     public function destroy(Collection $collection)
     {
         $plans = json_decode($collection->plans);
-        if(count($plans)){
+        if($plans){
             foreach ($plans as $plan){
                 Storage::delete('public/collections/'.$plan->img);
                 Storage::delete('public/collections/thumb/'.$plan->img);

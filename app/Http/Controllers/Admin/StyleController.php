@@ -278,7 +278,7 @@ class StyleController extends Controller
     public function destroy(Style $style)
     {
         $plans = json_decode($style->plans);
-        if(count($plans)){
+        if($plans){
             foreach ($plans as $plan){
                 Storage::delete('public/styles/'.$plan->img);
                 Storage::delete('public/styles/thumb/'.$plan->img);
