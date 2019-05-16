@@ -165,6 +165,10 @@
             baths: '{{request()->get('baths')}}',
             garages: '{{request()->get('garages')}}',
             stories: '{{request()->get('stories')}}',
+            width_min: '{{request()->get('width_min')}}',
+            width_max: '{{request()->get('width_max')}}',
+            depth_min: '{{request()->get('depth_min')}}',
+            depth_max: '{{request()->get('depth_max')}}',
         },
         methods: {
             next(){
@@ -197,7 +201,11 @@
                         beds: this.beds,
                         baths: this.baths,
                         garages: this.garages,
-                        stories: this.stories
+                        stories: this.stories,
+                        width_min: this.width_min,
+                        width_max: this.width_max,
+                        depth_min: this.depth_min,
+                        depth_max: this.depth_max,
                     }
                 })
                 .then(response=> {

@@ -36,6 +36,10 @@ class SearchController extends Controller
         $garages = $request->get('garages');
         $stories = $request->get('stories');
         $txt = $request->get('txt');
+        $width_min = $request->get('width_min');
+        $width_max = $request->get('width_max');
+        $depth_min = $request->get('depth_min');
+        $depth_max = $request->get('depth_max');
 
         $rules = [
             'views' => 'required|in:24,50',
@@ -49,6 +53,10 @@ class SearchController extends Controller
             'garages' => 'nullable|numeric',
             'stories' => 'nullable|numeric',
             'txt' => 'nullable|string',
+            'width_min' => 'nullable|numeric',
+            'width_max' => 'nullable|numeric',
+            'depth_min' => 'nullable|numeric',
+            'depth_max' => 'nullable|numeric',
         ];
 
 
@@ -90,12 +98,24 @@ class SearchController extends Controller
             $plans->where('dimensions->stories', '>=', $stories);
 
         if($txt){
-            //$plans->where('name', 'like', '%'.$txt.'%');
             $plans->where(function ($query) use($txt) {
                 $query->where('name', 'like', '%'.$txt.'%')
                       ->orWhere('plan_number', 'like', '%'.$txt.'%');
             });
         }
+
+        if($width_min)
+            $plans->where('dimensions->width_ft', '>=', $width_min);
+
+        if($width_max)
+            $plans->where('dimensions->width_ft', '<=', $width_max);
+
+
+        if($depth_min)
+            $plans->where('dimensions->depth_ft', '>=', $depth_min);
+
+        if($depth_max)
+            $plans->where('dimensions->depth_ft', '<=', $depth_max);
 
         switch ($order) {
             case 'popular':

@@ -33,12 +33,12 @@
                     </tr>
                     <tr>
                         <TD>Width</TD>
-                        <td> <input type="text" placeholder="min" size=5 class="center"> to <input type="text" placeholder="max" size=5 class="center"><span class="optional">Optional</span></td>
+                        <td> <input type="text" name="width_min" placeholder="min" size=5 class="center"> to <input type="text" name="width_max" placeholder="max" size=5 class="center"><span class="optional">Optional</span></td>
 
                     </tr>
                     <tr>
                         <TD>Depth</TD>
-                        <td> <input type="text" placeholder="min" size=5 class="center"> to <input type="text" placeholder="max" size=5 class="center"><span class="optional">Optional</span></td>
+                        <td> <input type="text" name="depth_min" placeholder="min" size=5 class="center"> to <input type="text" name="depth_max" placeholder="max" size=5 class="center"><span class="optional">Optional</span></td>
                     </tr>
                     <tr>
                         <td colspan="2">
