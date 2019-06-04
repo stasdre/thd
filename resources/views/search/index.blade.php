@@ -169,6 +169,13 @@
             width_max: '{{request()->get('width_max')}}',
             depth_min: '{{request()->get('depth_min')}}',
             depth_max: '{{request()->get('depth_max')}}',
+            bf: '{{request()->get('bf') ? implode(",", request()->get('bf')): ''}}',
+            kf: '{{request()->get('kf') ? implode(",", request()->get('kf')): ''}}',
+            rf: '{{request()->get('rf') ? implode(",", request()->get('rf')): ''}}',
+            gf: '{{request()->get('gf') ? implode(",", request()->get('gf')): ''}}',
+            ef: '{{request()->get('ef') ? implode(",", request()->get('ef')): ''}}',
+            styles: '{{request()->get('styles') ? implode(",", request()->get('styles')): ''}}',
+            collections: '{{request()->get('collections') ? implode(",", request()->get('collections')): ''}}'
         },
         methods: {
             next(){
@@ -206,6 +213,13 @@
                         width_max: this.width_max,
                         depth_min: this.depth_min,
                         depth_max: this.depth_max,
+                        bf: this.bf,
+                        kf: this.kf,
+                        rf: this.rf,
+                        gf: this.gf,
+                        ef: this.ef,
+                        styles: this.styles,
+                        collections: this.collections,
                     }
                 })
                 .then(response=> {
