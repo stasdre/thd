@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use Thd\Plan;
+use Thd\Bed;
+use Thd\Kitchen;
+use Thd\RoomInterior;
+use Thd\Garage;
+use Thd\Outdoor;
+use Thd\Collection;
+use Thd\Style;
 
 class SearchController extends Controller
 {
@@ -16,7 +23,25 @@ class SearchController extends Controller
 
     public function advanced(Request $request)
     { 
-        return view('search.advanced');
+        $beds = Bed::orderBy('name')->get();
+        $kitchens = Kitchen::orderBy('name')->get();
+        $roomsInteriors = RoomInterior::orderBy('name')->get();
+        $garages = Garage::orderBy('name')->get();
+        $outdoors = Outdoor::orderBy('name')->get();
+
+        $styles = Style::orderBy('name')->get();
+        $collections = Collection::orderBy('name')->get();
+
+
+        return view('search.advanced', [
+            'beds'=>$beds,
+            'kitchens'=>$kitchens,
+            'roomsInteriors'=>$roomsInteriors,
+            'garages'=>$garages,
+            'outdoors'=>$outdoors,
+            'styles'=>$styles,
+            'collections'=>$collections
+        ]);
     }
 
     public function result(Request $request)

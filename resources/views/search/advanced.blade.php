@@ -26,45 +26,46 @@
       <div class="plan-cta position-relative mb-2"> 
         <div class="search-grid search-grid1">
               <div class="font-weight-bold sidebar-heading">House Plan Search</div>
+              <form method="GET" action="{{ route('search') }}">
           <TABLE class="asp-basicsearch">
 <tr>
 <TD>Sq. Ft.</TD>
-<td> <input type="text" placeholder="min" size=5 class="center" name="min"> to <input type="text" placeholder="max" size=5 class="center" name="max"></td>
+<td> <input type="text" placeholder="min" size=5 class="center" name="sq_min"> to <input type="text" placeholder="max" size=5 class="center" name="sq_max"></td>
 </tr>
 <tr>
 <TD>Beds</TD>
-<td> <div><span class="min_icon  beds-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+<td> <div><span class="min_icon  beds-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="beds" value="1" class="qty"> 
                       <span class="max_icon  beds-add"><i class="fa fa-plus"></i></span></div></td>
 </tr>
 <tr>
 <TD>Baths</TD>
-<td> <div><span class="min_icon  baths-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+<td> <div><span class="min_icon  baths-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="baths" value="1" class="qty"> 
                       <span class="max_icon  baths-add"><i class="fa fa-plus"></i></span></div></td>
 </tr>
 </tr>
 <tr>
 <TD>Garages</TD>
-<td> <div><span class="min_icon   garage-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+<td> <div><span class="min_icon   garage-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="garages" value="1" class="qty"> 
                       <span class="max_icon  garage-add"><i class="fa fa-plus"></i></span></div></td>
 </tr>
 <tr>
 <TD>Stories</TD>
-<td> <div><span class="min_icon  stories_reduce"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
+<td> <div><span class="min_icon  stories_reduce"> <i class="fa fa-minus"> </i></span> <input type="text" name="stories" value="1" class="qty"> 
                       <span class="max_icon  stories_add"><i class="fa fa-plus"></i></span></div></td>
 </tr>
 <tr>
 <TD>Width</TD>
-<td class="values"> <input type="text" placeholder="min" size=5 class="center"> to <input type="text" placeholder="max" size=5 class="center"><span class="optional">Optional</span></td>
+<td class="values"> <input type="text" name="width_min" placeholder="min" size=5 class="center"> to <input type="text" placeholder="max" name="width_max" size=5 class="center"><span class="optional">Optional</span></td>
 
 </tr>
 <tr>
 <TD>Depth</TD>
-<td class="values"> <input type="text" placeholder="min" size=5 class="center"> to <input type="text" placeholder="max" size=5 class="center"><span class="optional">Optional</span></td>
+<td class="values"> <input type="text" name="depth_min" placeholder="min" size=5 class="center"> to <input type="text" name="depth_max" placeholder="max" size=5 class="center"><span class="optional">Optional</span></td>
 </tr>
 <tr>
 <td colspan="2">
   <div class="search-button">  
-                <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold" type="button"> View Search Results</button>
+                <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold" type="submit"> View Search Results</button>
                 </div>
   </td>
 </tr>
@@ -91,137 +92,58 @@
                           <li class="listname"><i class="fa fa-chevron-right"></i> Bedroom and Bathroom Features</li>
                           <div id="bed-bath" class="features-list">
                               <ul>
-                                    <li><input type="checkbox" name="" value="2 Master Suites">2 Master Suites</li>
-                                      <li><input type="checkbox" name="" value="Double Vanity Sink">Double Vanity Sink</li>
-                                      <li><input type="checkbox" name="" value="Guest Suite">Guest Suite</li>
-                                      <li><input type="checkbox" name="" value="His and Hers Master Closets">His and Hers Master Closets</li>
-                                      <li><input type="checkbox" name="" value="Separate Tub and Shower">Separate Tub and Shower</li>
-                                      <li><input type="checkbox" name="" value="Master Bedroom Main Floor
-">Master Bedroom Main Floor
-</li>
-                                      <li><input type="checkbox" name="" value="Master Bedroom Upstairs">Master Bedroom Upstairs</li>
-                                      <li><input type="checkbox" name="" value="In-Law Apt
-">In-Law Apt
-</li>
-                                      <li><input type="checkbox" name="" value="Split Bedrooms">Split Bedrooms</li>
-                                  </ul>
+                                  @foreach ($beds as $item)
+                                    <li><input type="checkbox" name="bf[]" value="{{$item->id}}">{{$item->name}}</li>  
+                                  @endforeach
+                              </ul>
                           </div>
                           <li class="listname"><i class="fa fa-chevron-right"></i> Kitchen Features</li>
                            <div id="bed-bath" class="features-list">
                             <ul>
-                                    <li><input type="checkbox" name="" value="Butler's Pantry">Butler's Pantry</li>
-                                      <li><input type="checkbox" name="" value="Country Kitchen">Country Kitchen</li>
-                                      <li><input type="checkbox" name="" value="Kitchen Island">Kitchen Island</li>
-                                      <li><input type="checkbox" name="" value="Nook / Breakfast Area">Nook / Breakfast Area</li>
-                                      <li><input type="checkbox" name="" value="Peninsula / Eating Bar">Peninsula / Eating Bar</li>
-                                      <li><input type="checkbox" name="" value="Walk-in Pantry">Walk-in Pantry</li>
-                                      </ul>
+                              @foreach ($kitchens as $item)                                  
+                                <li><input type="checkbox" name="kf[]" value="{{$item->id}}">{{$item->name}}</li>
+                              @endforeach
+                            </ul>
                           </div>
                           <li class="listname"><i class="fa fa-chevron-right"></i> Interior Design Features</li>
                            <div id="bed-bath" class="features-list">
                             <ul>
-                                    <li><input type="checkbox" name="" value="2 Story Volume">2 Story Volume</li>
-                                      <li><input type="checkbox" name="" value="Bonus Room">Bonus Room</li>
-                                      <li><input type="checkbox" name="" value="Dining Room">Dining Room</li>
-                                      <li><input type="checkbox" name="" value="Family Room">Family Room</li>
-                                      <li><input type="checkbox" name="" value="Fireplace">Fireplace</li>
-                                      <li><input type="checkbox" name="" value="Formal LR">Formal LR</li>
-                                      <li><input type="checkbox" name="" value="Foyer">Foyer</li>
-                                      <li><input type="checkbox" name="" value="Great Room">Great Room</li>
-                                      <li><input type="checkbox" name="" value="Home Office">Home Office</li>
-                                      <li><input type="checkbox" name="" value="Laundry 1st Fl">Laundry 1st Fl</li>
-                                      <li><input type="checkbox" name="" value="Laundry 2nd Fl">Laundry 2nd Fl</li>
-                                      <li><input type="checkbox" name="" value="Loft / Balcony">Loft / Balcony</li>
-                                      <li><input type="checkbox" name="" value="Mud Room">Mud Room</li>
-                                      <li><input type="checkbox" name="" value="Open Floor Plan">Open Floor Plan</li>
-                                      <li><input type="checkbox" name="" value="Rec Room">Rec Room</li>
-                                      <li><input type="checkbox" name="" value="Storage Space">Storage Space
-</li>
-                                      <li><input type="checkbox" name="" value="Unfinished Space">Unfinished Space</li>
-                                      <li><input type="checkbox" name="" value=" Vaulted Ceilings">Vaulted Ceilings</li>
-                                  </ul>
+                                @foreach ($roomsInteriors as $item)                                  
+                                  <li><input type="checkbox" name="rf[]" value="{{$item->id}}">{{$item->name}}</li>
+                                @endforeach
+                            </ul>
                           </div>
                           <li class="listname"><i class="fa fa-chevron-right"></i> Garage Features</li>
                            <div id="bed-bath" class="features-list">
                             <ul>
-                                    <li><input type="checkbox" name="" value="Attached">Attached</li>
-                                      <li><input type="checkbox" name="" value="Carport">Carport</li>
-                                      <li><input type="checkbox" name="" value="Detached">Detached</li>
-                                      <li><input type="checkbox" name="" value="Drive-under">Drive-under</li>
-                                      <li><input type="checkbox" name="" value="None">None</li>
-                                      <li><input type="checkbox" name="" value="Oversized">Oversized</li>
-                                      <li><input type="checkbox" name="" value="Rear-entry
-">Rear-entry
-</li>
-                                      <li><input type="checkbox" name="" value=" Side-entry
-">Side-entry
-</li>
-                                      <li><input type="checkbox" name="" value="Tandem
-">Tandem
-</li>
-                                  </ul>
+                                @foreach ($garages as $item)                                  
+                                  <li><input type="checkbox" name="gf[]" value="{{$item->id}}">{{$item->name}}</li>
+                                @endforeach
+                            </ul>
                           </div>
                           <li class="listname"><i class="fa fa-chevron-right"></i> Exterior Features</li>
                            <div id="bed-bath" class="features-list">
                             <ul>
-                                    <li><input type="checkbox" name="" value="Breezeway">Breezeway</li>
-                                      <li><input type="checkbox" name="" value="Front Porch">Front Porch</li>
-                                      <li><input type="checkbox" name="" value="Courtyard">Courtyard</li>
-                                      <li><input type="checkbox" name="" value="Outdoor Kitchen">Outdoor Kitchen</li>
-                                      <li><input type="checkbox" name="" value="Covered Front Porch">Covered Front Porch</li>
-                                      <li><input type="checkbox" name="" value="Rear Porch">Rear Porch</li>
-                                      <li><input type="checkbox" name="" value="Covered Rear Porch">Covered Rear Porch</li>
-                                      <li><input type="checkbox" name="" value="Screened Porch/Sunroom">Screened Porch/Sunroom</li>
-                                      <li><input type="checkbox" name="" value="Deck">Deck</li>
-                                      <li><input type="checkbox" name="" value="Wraparound Porch">Wraparound Porch</li>
-                                  </ul>
+                                @foreach ($outdoors as $item)                                  
+                                  <li><input type="checkbox" name="ef[]" value="{{$item->id}}">{{$item->name}}</li>
+                                @endforeach
+                            </ul>
                           </div>
                           <li class="listname"><i class="fa fa-chevron-right"></i> Architectural Styles</li>
                            <div id="bed-bath" class="features-list">
                               <ul>
-                                    <li><input type="checkbox" name="" value=" Cottage Home Design">Cottage Home Designs</li>
-                                      <li><input type="checkbox" name="" value="Country Home Plan">Country Home Plan</li>
-                                      <li><input type="checkbox" name="" value="Craftsman House Plan">Craftsman House Plan</li>
-                                      <li><input type="checkbox" name="" value="European House Plan">European House Plan</li>
-                                      <li><input type="checkbox" name="" value="Farmhouse Homes">Farmhouse Homes</li>
-                                      <li><input type="checkbox" name="" value=" French Country House Plan"> French Country House Plan</li>
-                                      <li><input type="checkbox" name="" value="Modern House Plans">Modern House Plans</li>
-                                      <li><input type="checkbox" name="" value="Ranch House Plans">Ranch House Plans</li>
-                                  </ul>
+                                  @foreach ($styles as $item)                                  
+                                    <li><input type="checkbox" name="styles[]" value="{{$item->id}}">{{$item->name}}</li>
+                                  @endforeach
+                              </ul>
                           </div>
                           <li class="listname"><i class="fa fa-chevron-right"></i> Specialty Home Collections</li>
                            <div id="bed-bath" class="features-list">
                             <ul>
-                                    <li><input type="checkbox" name="" value="Affordable House Plans
-">Affordable House Plans
-</li>
-                                      <li><input type="checkbox" name="" value="Best-Selling Home Plans">Best-Selling Home Plans</li>
-                                      <li><input type="checkbox" name="" value="Builder-Friendly Plans
-">Builder-Friendly Plans
-</li>
-                                      <li><input type="checkbox" name="" value="Duplex House Plans">Duplex House Plans</li>
-                                      <li><input type="checkbox" name="" value="Empty Nester House Plans
-">Empty Nester House Plans
-</li>
-                                      <li><input type="checkbox" name="" value="House Plans With Photos">House Plans With Photos</li>
-                                      <li><input type="checkbox" name="" value="In-law Suite Plans">In-law Suite Plans</li>
-                                      <li><input type="checkbox" name="" value="Luxury House Plans
-">Luxury House Plans
-</li>
-                                      <li><input type="checkbox" name="" value="Narrow Lot House Plans">Narrow Lot House Plans
-</li>
-                                      <li><input type="checkbox" name="" value="New House Plans
-">New House Plans
-</li>
-                                      <li><input type="checkbox" name="" value="One-Story House Plans">One-Story House Plans</li>
-                                      <li><input type="checkbox" name="" value="Open Floor Plans
-">Open Floor Plans
-</li>
-                                      <li><input type="checkbox" name="" value="Outdoor Living House Plans">Outdoor Living House Plans</li>
-                                      <li><input type="checkbox" name="" value="Small House Plans
-">Small House Plans
-</li>
-                               </ul>
+                                @foreach ($collections as $item)                                  
+                                  <li><input type="checkbox" name="collections[]" value="{{$item->id}}">{{$item->name}}</li>
+                                @endforeach
+                            </ul>
                           </div> 
                       </ul>
                   </div>
@@ -233,12 +155,12 @@
          <div class="col-sm-12">
               <div class="plan-cta position-relative mb-2"> 
          <div class="search-button">  
-                <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" type="button"> View Search Results</button>
+                <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" type="submit"> View Search Results</button>
                 </div> </div>
           
           </div>
        </div>
-       
+      </form>
        <div class="row">
               <div class="col-sm-12">
               <div class="plan-cta position-relative mb-2"> 
@@ -246,12 +168,9 @@
                       <h4 class="font-weight-bold sidebar-heading">Architectural Styles </h4>
                       <div class="features">
                           <ul class="list-unstyled text-primary">
-                               <li><a href="#">Cottage Home Designs</a></li>
-                              <li><a href="#">Country Home Plans</a></li>
-                              <li><a href="#">Craftsman House Plans</a></li>
-                              <li><a href="#">European House Plans</a></li>
-                              <li><a href="#">Farmhouse Plans</a></li>
-                              <li><a href="#">French Country House Plans</a></li>
+                              @foreach ($styles as $item)                                  
+                                <li><a href="{{ route('style.slug', $item->slug)}}">{{$item->name}}</a></li>
+                              @endforeach
                         </ul>
                       </div>
           </div>
@@ -265,24 +184,9 @@
                       <h4 class="font-weight-bold  sidebar-heading">Specialty Collections </h4>
                       <div class="features">
                           <ul class="list-unstyled text-primary">
-                               <li><a href="#">Affordable House Plans</a></li>
-                               <li><a href="#">Best-Selling Home Plans</a></li>
-                               <li><a href="#">Builder-Friendly Plans</a></li>
-                               <li><a href="#">Duplex House Plans</a></li>
-                               <li><a href="#">Empty Nester House Plans</a></li>
-                               <li><a href="#">House Plans With Photos</a></li>
-                               <li><a href="#">In-law Suite Plans</a></li>
-                               <li><a href="#">Luxury House Plans</a></li>
-                               <li><a href="#">Narrow Lot House Plans</a></li>
-                               <li><a href="#">New House Plans</a></li>
-                               <li><a href="#">One-Story House Plans</a></li>
-                               <li><a href="#">Open Floor Plans</a></li>
-                               <li><a href="#">Outdoor Living House Plans</a></li>
-                               <li><a href="#">Small House Plans</a></li>
-                               <li><a href="#">Texas House Plans</a></li>
-                               <li><a href="#">Two Story House Plans</a></li>
-                               <li><a href="#">Vacation Homes</a></li>
-                               <li><a href="#">Walkout Basement Plans</a></li>
+                              @foreach ($collections as $item)                                  
+                                <li><a href="{{ route('collection.slug', $item->slug)}}">{{$item->name}}</a></li>
+                              @endforeach
                         </ul>
                       </div>
           </div>
