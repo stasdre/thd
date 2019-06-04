@@ -213,6 +213,13 @@
                         width_max: this.width_max,
                         depth_min: this.depth_min,
                         depth_max: this.depth_max,
+                        bf: this.bf,
+                        kf: this.kf,
+                        rf: this.rf,
+                        gf: this.gf,
+                        ef: this.ef,
+                        styles: this.styles,
+                        collections: this.collections,
                     }
                 })
                 .then(response=> {
