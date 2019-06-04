@@ -32,6 +32,8 @@ class SearchController extends Controller
         $styles = Style::orderBy('name')->get();
         $collections = Collection::orderBy('name')->get();
 
+        $mostPlans = Plan::orderBy('views', 'desc')->limit(10)->with('images')->get();
+
 
         return view('search.advanced', [
             'beds'=>$beds,
@@ -40,7 +42,8 @@ class SearchController extends Controller
             'garages'=>$garages,
             'outdoors'=>$outdoors,
             'styles'=>$styles,
-            'collections'=>$collections
+            'collections'=>$collections,
+            'mostPlans'=>$mostPlans
         ]);
     }
 
