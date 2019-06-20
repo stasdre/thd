@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="plan-full position-relative mb-3 mobile-off">
-    <img src="images/new-banner.jpg" alt="" class="img-fluid" />
+    <img src="/images/new-banner.jpg" alt="" class="img-fluid" />
       <h2 class="font-futura search-title-asp">Advanced House Plans Search</h2>
   </div>
   <div class="plan-full position-relative mb-3 desktop-off">
-    <img src="images/house.jpg" alt="" class="img-fluid" />
+    <img src="/images/house.jpg" alt="" class="img-fluid" />
       <h2 class="font-futura search-title-asp-mobile">Advanced House Plans Search</h2>
   </div>
   <p class="br_none_sm top-content">Finding your perfect house plan has become a whole lot easier since builder-preferred, construction-ready home plans are now available online.  Spending months or even longer working with an architect to fine tune a whole house blueprint is no longer necessary  You can now easily and quickly
