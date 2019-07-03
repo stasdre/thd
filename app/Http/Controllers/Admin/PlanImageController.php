@@ -50,7 +50,7 @@ class PlanImageController extends Controller
         $input = $request->all();
 
         $rules = array(
-            'file' => 'image|max:3000',
+            'file' => 'image|max:20000',
             'sort_number' => 'integer'
         );
 
@@ -75,7 +75,7 @@ class PlanImageController extends Controller
         $img->resize(null, 465, function ($constraint) {
             $constraint->aspectRatio();
         });
-        $img->save($path, 100);
+        $img->save($path, 90);
 
         $imgThumb = Image::make($image->getRealPath());
         $imgThumb->resize(380, null, function ($constraint) {
