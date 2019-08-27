@@ -14,7 +14,7 @@
                 		<h4 class="font-weight-bold mt-3">Modification Request Form</h4>
                     	<p><a href="#" class="text-primary">Helpful tips to know before you submit your modifications </a></p>
                     </div>
-                    <form id="modification_form" action="" method="post">
+                    <form id="modification_form" action="{{ route('modify-plan-submit', $plan->plan_number) }}" method="post">
                     
                     <div class="form-group col-lg-6 pull-left">
                         <label for="FirstName">First Name:</label>
@@ -132,7 +132,7 @@
                       <div class="form-group col-lg-6 pull-left">
                         <div class="select-custom-wrap select-custom-wrap-lg">
                           <label for="have land">Do you have land?</label>
-                          <select name="select-custom-style" class="select-custom white_back">
+                          <select name="select-custom-style" class="select-custom">
                             <option value="hide">Select here</option>
                             <option value="Collection1">Yes</option>
                             <option value="Collection2">No</option>
@@ -144,7 +144,7 @@
                        <div class="form-group col-lg-6 pull-right">
                         <div class="select-custom-wrap select-custom-wrap-lg">
                           <label for="Framing Preference">Framing Preference</label>
-                          <select name="select-custom-style" class="select-custom white_back">
+                          <select name="select-custom-style" class="select-custom">
                             <option value="hide">Select here</option>
                             <option value="Collection1">2 x 4</option>
                             <option value="Collection2">2 X 8</option>
@@ -178,55 +178,59 @@
                  </form>
                 </div>
      			<div class="col-lg-4 col-sm-12">
-                    <h5 class="font-weight-bold mt-3">dell’Azienda Agricola | plan 4839</h5>
+           <h5 class="font-weight-bold mt-3">{{$plan->name}} | plan {{$plan->plan_number}}</h5>
                     <div class="plan-list mt-0">
                       <div class="row align-items-center py-2 px-1">
                         <div class="col-8">
-                          <p class="plan-name font-weight-bold mb-0">4,839 sq ft | <span class="text-white">plan 4839</span></p>
+                          <p class="plan-name font-weight-bold mb-0">{{$plan->square_ft['str_total']}} sq ft | <span class="text-white">plan {{$plan->plan_number}}</span></p>
                         </div>
                         <div class="col-4">
                           <ul class="list-inline mb-0 text-right">
-                            <li class="list-inline-item"><a href=""><img src="images/icons/icon-favourite.png" alt=""></a></li>
+                            <li class="list-inline-item"><a href=""><img src="/images/icons/icon-favourite.png" alt=""></a></li>
                             <li class="list-inline-item">
-                              <button type="button" class="btn btn-link p-0" data-toggle="modal" data-target="#quickView"><img src="images/icons/icon-search-w.png" alt=""></button>
+                              <button type="button" class="btn btn-link p-0" data-toggle="modal" data-target="#quickView"><img src="/images/icons/icon-search-w.png" alt=""></button>
                             </li>
                           </ul>
                         </div>
                       </div>
                       <div class="position-relative">
-                        <div id="plan4839" class="carousel slide" data-ride="carousel" data-interval="5000">
+                        <div id="plan{{$plan->plan_number}}" class="carousel slide" data-ride="carousel" data-interval="5000">
                           <div class="carousel-inner">
-                            <div class="carousel-item active"><img src="images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
-                            <div class="carousel-item"> <img src="images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
-                            <div class="carousel-item"> <img src="images/plan-1.jpg" alt="" class="img-fluid d-block w-100"> </div>
+                              @foreach ($plan->images as $img)                          
+                          <div class="carousel-item @if($loop->iteration == 1) active @endif"> <img src="/storage/plans/{{$plan->id}}/thumb/{{$img->file_name}}" alt="{{$plan->name}}" class="img-fluid d-block w-100"> </div>
+                              @endforeach          
                           </div>
-                          <a class="carousel-control-prev" href="#plan4839" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#plan4839" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
-                        <div class="media planinfo text-left position-absolute"> <img class="mr-1 align-self-center" src="images/icons/logo-placeholder.png" alt="Generic placeholder image">
+                          <a class="carousel-control-prev" href="#plan{{$plan->plan_number}}" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#plan{{$plan->plan_number}}" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
+                        <div class="media planinfo text-left position-absolute"> <img class="mr-1 align-self-center" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
                           <div class="media-body">
-                            <h5 class="mb-0 text-white">plan <span class="text-secondary">4839</span></h5>
+                            <h5 class="mb-0 text-white">plan <span class="text-secondary">{{$plan->plan_number}}</span></h5>
                             <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
                           </div>
                         </div>
-                        <a href="#" class="position-absolute icon-camera"><img src="images/icons/icon-camera.png" alt=""></a> <a href="#" class="position-absolute pinterest"><img src="images/icons/icon-pinterest.png" alt=""></a> </div>
+                        <a href="#" class="position-absolute icon-camera"><img src="/images/icons/icon-camera.png" alt=""></a> <a href="#" class="position-absolute pinterest"><img src="/images/icons/icon-pinterest.png" alt=""></a> </div>
                       <div class="row no-gutters plan-info">
-                        <div class="col bg-light"> bed<strong class="d-block">4</strong> </div>
-                        <div class="col"> bath<strong class="d-block">4</strong> </div>
-                        <div class="col bg-light"> story<strong class="d-block">4</strong> </div>
-                        <div class="col"> gar<strong class="d-block">4</strong> </div>
-                        <div class="col bg-light"> width<span class="d-block">108’ 11</span> </div>
-                        <div class="col"> depth<span class="d-block">90’ 11”</span> </div>
+                        <div class="col bg-light"> bed<strong class="d-block">{{$plan->rooms['r_bedrooms']}}</strong> </div>
+                        <div class="col"> bath<strong class="d-block">{{$plan->rooms['r_full_baths']}}</strong> </div>
+                        <div class="col bg-light"> story<strong class="d-block">{{$plan->dimensions['stories']}}</strong> </div>
+                        <div class="col"> gar<strong class="d-block">{{$plan->garage['car']}}</strong> </div>
+                        <div class="col bg-light"> width<span class="d-block">{{$plan->dimensions['width_ft']}}' {{$plan->dimensions['width_in']}}"</span> </div>
+                        <div class="col"> depth<span class="d-block">{{$plan->dimensions['depth_ft']}}' {{$plan->dimensions['depth_in']}}"</span> </div>
                       </div>
                     </div>
                     <p></p><p></p>
-                    <img src="images/first_floorPlan.png" class="img-fluid d-block w-100" alt="First Floor Plan">
-                    <p class="plan_download_link"><a download="first-floor-Plan.png" href="images/first_floorPlan.png" title="ImageName">
-                        Click to enlarge and download
-                    </a></p>
+                    @foreach($plan->images_first  as $image)
+                      <img src="{{asset('storage/plans/'.$plan->id.'/thumb/'.$image->file_name)}}" class="img-fluid d-block w-100" alt="First Floor Plan">
+                      <p class="plan_download_link"><a download="first-floor-Plan.png" href="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" title="{{$image->file_name}}">
+                          Click to enlarge and download
+                      </a></p>
+                    @endforeach  
                     <p></p><p></p>
-                    <img src="images/second_floorPlan.png" class="img-fluid d-block w-100" alt="Second Floor Plan">
-                    <p class="plan_download_link"><a download="second-floor-Plan.png" href="images/second_floorPlan.png" title="ImageName">
-                        Click to enlarge and download
-                    </a></p>
+                    @foreach($plan->images_second  as $image)
+                      <img src="{{asset('storage/plans/'.$plan->id.'/thumb/'.$image->file_name)}}" class="img-fluid d-block w-100" alt="Second Floor Plan">
+                      <p class="plan_download_link"><a download="first-floor-Plan.png" href="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" title="{{$image->file_name}}">
+                          Click to enlarge and download
+                      </a></p>
+                    @endforeach  
                     <p></p><p></p><p></p>
                   </div>
       		</div>

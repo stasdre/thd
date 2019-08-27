@@ -97,8 +97,40 @@ class PlanController extends Controller
         ]);
     }
     
-    public function modifyplan(){
-		return view('plan.modify-plan');
+    public function modifyplan(Request $request, $plan_number){
+
+        $plan = Plan::where('plan_number', $plan_number)
+            ->with(['images' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }])
+            ->with(['images_first' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }])
+            ->with(['images_second' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }])
+            ->with(['images_basement' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }])
+            ->with(['images_bonus' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }])
+            ->with(['images_cars' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }]);
+
+        if(!Auth::user() || Auth::user()->hasRole('customer'))
+            $plan->where('is_active', 1);
+
+        $dataPlan = $plan->firstOrFail();
+
+		return view('plan.modify-plan', [
+            'plan'=>$dataPlan
+        ]);
+    }
+
+    public function modifyplanpost(Request $request, $plan_number){
+
     }
 
     public function all(){

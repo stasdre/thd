@@ -271,7 +271,7 @@ ensure you stay in budget, economy, standard and premium.</p>
     <li class="nav-item xs-hide-portrait"> <a class="nav-link rounded-0 active" id="plandescription" data-toggle="tab" href="#planDescription" role="tab">Plan Description</a> </li>
     <li class="nav-item xs-hide-portrait"> <a class="nav-link rounded-0" id="planspecifications" data-toggle="tab" href="#planSpecifications" role="tab">Plan Specifications</a> </li>
     <li class="nav-item xs-hide-portrait"> <a class="nav-link rounded-0" id="planfeatures" data-toggle="tab" href="#planFeatures" role="tab">Plan <span class="d-sm-block d-md-inline">Features</span></a> </li>
-    <li class="nav-item border-right-xs"> <a class="nav-link rounded-0" id="modifyplan" target="_blank" href="modify-plan.html" >Modify <span class="xs-hide-portrait"> This Plan</span></a> </li>
+  <li class="nav-item border-right-xs"> <a class="nav-link rounded-0" id="modifyplan" target="_blank" href="{{ route('modify-plan', $plan->plan_number) }}" >Modify <span class="xs-hide-portrait"> This Plan</span></a> </li>
    
       <li class="nav-item desktop-off"> <a class="nav-link rounded-0" id="reverse" data-toggle="tab" href="#reverse" role="tab">Reverse</a> </li>
      <li class="nav-item border-left-xs mobile-off"> <a class="nav-link rounded-0" id="costbuild" data-toggle="tab" href="#costBuild" role="tab">Cost to <span class="d-sm-block d-md-inline">Build</span></a> </li>

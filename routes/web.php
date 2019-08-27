@@ -167,6 +167,7 @@ Route::get('styles/', 'StyleController@all')->name('styles');
 
 Route::get('plan/{plan_number}', 'PlanController@view')->name('plan.view')->where('plan_number', '[0-9]+');
 Route::get('modify-plan/{plan_number}','PlanController@modifyplan')->name('modify-plan')->where('plan_number', '[0-9]+');
+Route::post('modify-plan/{plan_number}','PlanController@modifyplanpost')->name('modify-plan-submit')->where('plan_number', '[0-9]+');
 Route::get('plan/all', 'PlanController@all')->name('plan.all');
 
 Route::get('contact-us/', 'ContactUsController@index')->name('contact-us');
