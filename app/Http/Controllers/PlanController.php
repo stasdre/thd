@@ -8,6 +8,8 @@ use Thd\Package;
 use Thd\Plan;
 use Thd\Collection;
 use Thd\Style;
+use Thd\State;
+use Validator;
 
 class PlanController extends Controller
 {
@@ -97,8 +99,64 @@ class PlanController extends Controller
         ]);
     }
     
-    public function modifyplan(){
-		return view('plan.modify-plan');
+    public function modifyplan(Request $request, $plan_number){
+
+        $plan = Plan::where('plan_number', $plan_number)
+            ->with(['images' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }])
+            ->with(['images_first' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }])
+            ->with(['images_second' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }])
+            ->with(['images_basement' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }])
+            ->with(['images_bonus' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }])
+            ->with(['images_cars' => function($query){
+                $query->orderBy('sort_number', 'ASC');
+            }]);
+
+        if(!Auth::user() || Auth::user()->hasRole('customer'))
+            $plan->where('is_active', 1);
+
+        $dataPlan = $plan->firstOrFail();
+
+		return view('plan.modify-plan', [
+            'plan'=>$dataPlan,
+            'states'=>State::orderBy('name')->pluck('name', 'abbr')->toArray()
+        ]);
+    }
+
+    public function modifyplanpost(Request $request, $plan_number){
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'phone'=>'required',
+            'state'=>'required',
+            'foundation'=>'required',
+            'builder'=>'required',
+            'framing'=>'required',
+            'message'=>'required',
+            'files'=>'required|file',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('modify-plan', $plan_number))
+                ->withErrors($validator)
+                ->withInput();
+        }else{
+            //-----send email-----//
+            return redirect()->route('modify-plan', $plan_number)->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>'Request was send']);
+        }
     }
 
     public function all(){
