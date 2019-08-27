@@ -33,7 +33,7 @@ class ShoppingCartController extends Controller
                     }]);
                 }
 
-                if($cart->options['plan_features']){
+                if(isset($cart->options['plan_features']) && !empty($cart->options['plan_features'])){
                     $plan->with(['addons' => function($query) use ($cart){
                         $query->where('addon_id', '=', $cart->options['plan_features']);
                     }]);
@@ -43,10 +43,10 @@ class ShoppingCartController extends Controller
                     $query->where('for_search', '=', 1);
                 }]);
 
-                $dataCart[] = $plan->first();
+                $dataCart[] = $plan->first()->toArray();
             }
         }
-        //dd($dataCart[0]->images);
+        //dd($dataCart);
         return view('shopping-cart.index', [
             'plansData'=>$dataCart,
             'shipping'=>Shipping::all()
@@ -89,7 +89,10 @@ class ShoppingCartController extends Controller
 
         Cart::add($plan->id, $plan->name, 1, $totalCost, $packages);
 
-        return redirect()->route('cart');
+        //return redirect()->route('cart');
+        return [
+            'status'=>'ok',
+        ];
     }
 
     public function promo(Request $request)
