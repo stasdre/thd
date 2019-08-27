@@ -12,144 +12,94 @@
             	<div class="col-lg-8 col-sm-12 px-0 form-white">
                 	<div class="text-center">
                 		<h4 class="font-weight-bold mt-3">Modification Request Form</h4>
-                    	<p><a href="#" class="text-primary">Helpful tips to know before you submit your modifications </a></p>
+                      <p><a href="#" class="text-primary">Helpful tips to know before you submit your modifications </a></p>
+                      @if (session()->has('message'))
+                        @component('partials.alert', ['type'=>session()->get('message')['type']])
+                            @slot('title')
+                                {{ session()->get('message')['title'] }}
+                            @endslot
+                            {{ session()->get('message')['message'] }}
+                        @endcomponent
+                      @endif
+                            
                     </div>
-                    <form id="modification_form" action="{{ route('modify-plan-submit', $plan->plan_number) }}" method="post">
                     
-                    <div class="form-group col-lg-6 pull-left">
-                        <label for="FirstName">First Name:</label>
-                        <input type="text" name="first_name" class="form-control">
+                    {!! Form::open(['route' => ['modify-plan-submit', $plan->plan_number], 'id' => 'modification_form', 'method' => 'post', 'files' => true]) !!}
+                    <div class="form-group {{ $errors->has('first_name') ? 'has-error' : '' }} col-lg-6 pull-left">
+                        {{ Form::label('first_name', 'First Name:') }}
+                        {{ Form::text('first_name', null, ['class'=>'form-control']) }}
                     </div>
-                    <div class="form-group col-lg-6 pull-right">
-                        <label for="LastName">Last Name:</label>
-                        <input type="text" name="last_name" class="form-control">
+                    <div class="form-group {{ $errors->has('last_name') ? 'has-error' : '' }} col-lg-6 pull-right">
+                        {{ Form::label('last_name', 'Last Name:') }}
+                        {{ Form::text('last_name', null, ['class'=>'form-control']) }}
                     </div>
-                    <div class="form-group col-lg-6 pull-left">
-                        <label for="email">Email:</label>
-                        <input type="email" name="email" class="form-control">
+                    <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }} col-lg-6 pull-left">
+                        {{ Form::label('email', 'Email:') }}
+                        {{ Form::email('email', null, ['class'=>'form-control']) }}
                     </div>
-                    <div class="form-group col-lg-6 pull-right">
-                        <label for="phone">Phone:</label>
-                        <input type="number" name="phone" class="form-control">
+                    <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }} col-lg-6 pull-right">
+                        {{ Form::label('phone', 'Phone:') }}
+                        {{ Form::text('phone', null, ['class'=>'form-control']) }}
                     </div>
-                    <div class="form-group col-lg-6 pull-left">
+                    <div class="form-group {{ $errors->has('state') ? 'has-error' : '' }} col-lg-6 pull-left">
                         <div class="select-custom-wrap select-custom-wrap-lg">
-                          <label for="State Building">State you are building in:</label>
-                          <select name="select-custom-style" class="select-custom">
-                            <option value="hide">Select here</option>
-                            <option value="Collection1">Alabama - AL</option>
-                            <option value="Collection1">Alaska - AK</option>
-                            <option value="Collection1">Arizona - AZ</option>
-                            <option value="Collection1">Arkansas - AR</option>
-                            <option value="Collection1">California - CA</option>
-                            <option value="Collection1">Colorado - CO</option>
-                            <option value="Collection1">Connecticut - CT</option>
-                            <option value="Collection1">Delaware - DE</option>
-                            <option value="Collection1">Florida - FL</option>
-                            <option value="Collection1">Georgia - GA</option>
-                            <option value="Collection1">Hawaii - HI</option>
-                            <option value="Collection1">Idaho - ID</option>
-                            <option value="Collection1">Illinois - IL</option>
-                            <option value="Collection1">Indiana - IN</option>
-                            <option value="Collection1">Iowa - IA</option>
-                            <option value="Collection1">Kansas - KS</option>
-                            <option value="Collection1">Kentucky - KY</option>
-                            <option value="Collection1">Louisiana - LA</option>
-                            <option value="Collection1">Maine - ME</option>
-                            <option value="Collection1">Maryland - MD</option>
-                            <option value="Collection1">Massachusetts - MA</option>
-                            <option value="Collection1">Michigan - MI</option>
-                            <option value="Collection1">Minnesota - MN</option>
-                            <option value="Collection1">Mississippi - MS</option>
-                            <option value="Collection1">Missouri - MO</option>
-                            <option value="Collection1">Montana - MT</option>
-                            <option value="Collection1">Nebraska - NE</option>
-                            <option value="Collection1">Nevada - NV</option>
-                            <option value="Collection1">New Hampshire - NH</option>
-                            <option value="Collection1">New Jersey - NJ</option>
-                            <option value="Collection1">New Mexico - NM</option>
-                            <option value="Collection1">New York - NY</option>
-                            <option value="Collection1">North Carolina - NC</option>
-                            <option value="Collection1">North Dakota - ND</option>
-                            <option value="Collection1">Ohio - OH</option>
-                            <option value="Collection1">Oklahoma - OK</option>
-                            <option value="Collection1">Oregon - OR</option>
-                            <option value="Collection1">Pennsylvania - PA</option>
-                            <option value="Collection1">Rhode Island - RI</option>
-                            <option value="Collection1">South Carolina - SC</option>
-                            <option value="Collection1">South Dakota - SD</option>
-                            <option value="Collection1">Tennessee - TN</option>
-                            <option value="Collection1">Texas - TX</option>
-                            <option value="Collection1">Utah - UT</option>
-                            <option value="Collection1">Vermont - VT</option>
-                            <option value="Collection1">Virginia - VA</option>
-                            <option value="Collection1">Washington - WA</option>
-                            <option value="Collection1">West Virginia - WV</option>
-                            <option value="Collection1">Wisconsin - WI</option>
-                            <option value="Collection1">Wyoming - WY</option>
-                            <option value="Collection1">Canada - CDN</option>
-                            <option value="Collection1">International - Int.</option>
-                          </select>
+                            {{ Form::label('state', 'State you are building in:') }}
+                            {{ Form::select('state', $states, null, ['class'=>'select-custom', 'placeholder'=>'Select here']) }}    
                         </div>
                       </div>
-                      <div class="form-group col-lg-6 pull-right">
+                      <div class="form-group {{ $errors->has('when') ? 'has-error' : '' }} col-lg-6 pull-right">
                         <div class="select-custom-wrap select-custom-wrap-lg">
-                          <label for="Build planning">When you are planning to build?</label>
-                          <select name="select-custom-style" class="select-custom">
-                         	<option value="hide">Select here</option>
-                            <option value="Collection1">0-3 months</option>
-                            <option value="Collection2">3-6 months</option>
-                            <option value="Collection3">6-9 months</option>
-                            <option value="Collection2">9-12 months</option>
-                            <option value="Collection3">12+ months</option>
-                          </select>
+                            {{ Form::label('when', 'When you are planning to build?:') }}
+                            {{ Form::select('when', [
+                              '0-3'=>'0-3 months', 
+                              '3-6'=>'3-6 months', 
+                              '6-9'=>'6-9 months', 
+                              '9-12'=>'9-12 months', 
+                              '12+'=>'12+ months', 
+                              ], null, ['class'=>'select-custom', 'placeholder'=>'Select here']) }}    
                         </div>
                       </div>
-                      <div class="form-group col-lg-6 pull-left">
+                      <div class="form-group {{ $errors->has('foundation') ? 'has-error' : '' }} col-lg-6 pull-left">
                         <div class="select-custom-wrap select-custom-wrap-lg">
-                          <label for="Foundation type">If you know, select foundation type</label>
-                          <select name="select-custom-style" class="select-custom">
-                            <option value="hide">Select here</option>
-                            <option value="Collection1">Slab</option>
-                            <option value="Collection2">Crawlspace</option>
-                            <option value="Collection2">Basement</option>
-                            <option value="Collection3">Walkout Basement</option>
-                            <option value="Collection2">Daylight Basement</option>
-                          </select>
+                            {{ Form::label('foundation', 'If you know, select foundation type:') }}
+                            {{ Form::select('foundation', [
+                              'slab'=>'Slab', 
+                              'crawlspace'=>'Crawlspace', 
+                              'basement'=>'Basement', 
+                              'walkout_basement'=>'Walkout Basement', 
+                              'daylight_basement'=>'Daylight Basement', 
+                              ], null, ['class'=>'select-custom', 'placeholder'=>'Select here']) }}    
                         </div>
                       </div>
-                       <div class="form-group col-lg-6 pull-right">
+                       <div class="form-group {{ $errors->has('builder') ? 'has-error' : '' }} col-lg-6 pull-right">
                         <div class="select-custom-wrap select-custom-wrap-lg">
-                          <label for="have builder">Do you have a builder</label>
-                          <select name="select-custom-style" class="select-custom">
-                            <option value="hide">Select here</option>
-                            <option value="Collection1">Yes</option>
-                            <option value="Collection2">No</option>
-                            <option value="Collection3">I'm a builder</option>
-                          </select>
+                            {{ Form::label('builder', 'Do you have a builder?:') }}
+                            {{ Form::select('builder', [
+                              'yes'=>'Yes', 
+                              'no'=>'No', 
+                              'builder'=>'I\'m a builder', 
+                              ], null, ['class'=>'select-custom', 'placeholder'=>'Select here']) }}    
                         </div>
                       </div>
-                      <div class="form-group col-lg-6 pull-left">
+                      <div class="form-group {{ $errors->has('land') ? 'has-error' : '' }} col-lg-6 pull-left">
                         <div class="select-custom-wrap select-custom-wrap-lg">
-                          <label for="have land">Do you have land?</label>
-                          <select name="select-custom-style" class="select-custom">
-                            <option value="hide">Select here</option>
-                            <option value="Collection1">Yes</option>
-                            <option value="Collection2">No</option>
-                            <option value="Collection1">In process of purchasing</option>
-                            <option value="Collection2">Have multiple lots</option>
-                          </select>
+                            {{ Form::label('land', 'Do you have land?:') }}
+                            {{ Form::select('land', [
+                              'yes'=>'Yes', 
+                              'no'=>'No', 
+                              'process'=>'In process of purchasing', 
+                              'multiple'=>'Have multiple lots', 
+                              ], null, ['class'=>'select-custom', 'placeholder'=>'Select here']) }}    
                         </div>
                       </div>
-                       <div class="form-group col-lg-6 pull-right">
+                       <div class="form-group {{ $errors->has('framing') ? 'has-error' : '' }} col-lg-6 pull-right">
                         <div class="select-custom-wrap select-custom-wrap-lg">
-                          <label for="Framing Preference">Framing Preference</label>
-                          <select name="select-custom-style" class="select-custom">
-                            <option value="hide">Select here</option>
-                            <option value="Collection1">2 x 4</option>
-                            <option value="Collection2">2 X 8</option>
-                            <option value="Collection3">8" block</option>
-                          </select>
+                            {{ Form::label('framing', 'Framing Preference:') }}
+                            {{ Form::select('framing', [
+                              '2x4'=>'2 x 4', 
+                              '2x8'=>'2 X 8', 
+                              'block'=>'8" block', 
+                              ], null, ['class'=>'select-custom', 'placeholder'=>'Select here']) }}    
                         </div>
                       </div>
                   
@@ -161,21 +111,21 @@
                         <li>~ If raising or lower ceilings, give specific heights</li>
                         <li>~ For basement changes indicate as many details as possible like  walkout, daylight or partial.</li>
                      </ul>
-                     <div class="form-group">
-                         <textarea class="form-control z-depth-1" id="modify_plan_changes" rows="3" placeholder="Type your plan modification changes here.."></textarea>
+                     <div class="form-group {{ $errors->has('message') ? 'has-error' : '' }}">
+                        {{ Form::textarea('message', null, ['class'=>'form-control z-depth-1', 'id'=>'modify_plan_changes', 'rows'=>"3", 'placeholder'=>"Type your plan modification changes here.."]) }}
                  	</div>
                  	<h6 class="font-weight-bold">Download plan by clicking floor plan image on right to send sketch of changes, if needed:</h6>
-                   <div class="custom-file col-sm-8">
-                      <input type="file" class="custom-file-input" id="customFile">
-                      <label class="custom-file-label" for="customFile">Upload files here </label>
+                   <div class="custom-file {{ $errors->has('files') ? 'has-error' : '' }} col-sm-8">
+                     {{Form::file('files', ['class'=>"custom-file-input", 'id'=>"customFile"])}}
+                     {{ Form::label('files', 'Upload files here', ['class'=>"custom-file-label"]) }}
                     </div>
                     <br/><p></p>
                     <div class="form-group">
-                         <input type="submit" name="submit_request" value="Submit your request" class="btn btn-danger"/>
+                         {{ Form::button('Submit your request', ['class'=>'btn btn-danger', 'type'=>'submit']) }}
                  	</div>
                  </div>
                  
-                 </form>
+                 {!! Form::close() !!}
                 </div>
      			<div class="col-lg-4 col-sm-12">
            <h5 class="font-weight-bold mt-3">{{$plan->name}} | plan {{$plan->plan_number}}</h5>

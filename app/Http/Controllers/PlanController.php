@@ -8,6 +8,8 @@ use Thd\Package;
 use Thd\Plan;
 use Thd\Collection;
 use Thd\Style;
+use Thd\State;
+use Validator;
 
 class PlanController extends Controller
 {
@@ -125,12 +127,36 @@ class PlanController extends Controller
         $dataPlan = $plan->firstOrFail();
 
 		return view('plan.modify-plan', [
-            'plan'=>$dataPlan
+            'plan'=>$dataPlan,
+            'states'=>State::orderBy('name')->pluck('name', 'abbr')->toArray()
         ]);
     }
 
     public function modifyplanpost(Request $request, $plan_number){
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'phone'=>'required',
+            'state'=>'required',
+            'foundation'=>'required',
+            'builder'=>'required',
+            'framing'=>'required',
+            'message'=>'required',
+            'files'=>'required|file',
+        ]);
 
+        if ($validator->fails()) {
+            return redirect(route('modify-plan', $plan_number))
+                ->withErrors($validator)
+                ->withInput();
+        }else{
+            //-----send email-----//
+            return redirect()->route('modify-plan', $plan_number)->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>'Request was send']);
+        }
     }
 
     public function all(){
