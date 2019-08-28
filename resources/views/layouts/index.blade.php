@@ -68,7 +68,7 @@
 				  <li><a href="#">Find a Home Builder</a></li>
 				</ul>
 			  </li>
-			  <li class="list-inline-item"><a href="#link">Home Inspiration</a></li>
+            <li class="list-inline-item"><a href="{{route('inspiration')}}">Home Inspiration</a></li>
 			  <li class="list-inline-item"><a href="#link">About</a></li>
 			</ul>
 		  	</div>
@@ -201,7 +201,7 @@
 				  <li><a href="#">Find a Home Builder</a></li>
 				</ul>
 			  </li>
-			  <li class="list-inline-item"><a href="#link">Home Inspiration</a></li>
+			  <li class="list-inline-item"><a href="{{route('inspiration')}}">Home Inspiration</a></li>
 			  <li class="list-inline-item"><a href="#link">About</a></li>
 			</ul>
 		  	</div>

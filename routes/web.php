@@ -176,3 +176,5 @@ Route::post('contact-us/send', 'ContactUsController@send')->name('contact-us.sen
 Route::get('cart/', 'ShoppingCartController@index')->name('cart');
 Route::post('purchase/', 'ShoppingCartController@purchase')->name('purchase');
 Route::post('promo/', 'ShoppingCartController@promo')->name('promo');
+
+Route::get('inspiration/', 'InspirationController@index')->name('inspiration');
