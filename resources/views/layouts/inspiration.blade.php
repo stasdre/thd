@@ -74,33 +74,33 @@
 				</div>
 				<div class="grey-nav-bar mobile-off">
 					<ul class="HI_nav">
-						<li><a href="">Home Advice</a></li>
-						<li><a href="">Kitchen</a></li>
-						<li><a href="">Bed + Bath</a> </li>
-						<li><a href="">Smart Home</a></li>
-						<li><a href="">Flooring</a></li>
-						<li><a href="">Windows</a> </li>
-						<li><a href="">Stone</a></li>
-						<li><a href="">Garages</a></li>
-						<li><a href="">Roofing</a></li>
-						<li><a href="">Exterior</a></li>
+						<li><a href="{{route('inspiration')}}">Home Advice</a></li>
+						<li><a href="{{route('inspiration.page', 'kitchen')}}">Kitchen</a></li>
+						<li><a href="{{route('inspiration.page', 'bed-bath')}}">Bed + Bath</a> </li>
+						<li><a href="{{route('inspiration.page', 'smart-home')}}">Smart Home</a></li>
+						<li><a href="{{route('inspiration.page', 'flooring')}}">Flooring</a></li>
+						<li><a href="{{route('inspiration.page', 'windows')}}">Windows</a> </li>
+						<li><a href="{{route('inspiration.page', 'stone')}}">Stone</a></li>
+						<li><a href="{{route('inspiration.page', 'garages')}}">Garages</a></li>
+						<li><a href="{{route('inspiration.page', 'roofing')}}">Roofing</a></li>
+						<li><a href="{{route('inspiration.page', 'exterior')}}">Exterior</a></li>
 						<li class=""><i class="fa fa-caret-down tablet_only"></i></li>
 					</ul>
 				</div>
 				<div class="grey-nav-bar mobile-grey-nav-bar desktop-off tablet-on">
 					<ul class="HI_nav">
-						<li><a href="">Home Advice</a></li>
-						<li><a href="">Kitchen</a></li>
-						<li><a href="">Bed + Bath</a> </li>
-						<li><a href="">Roofing</a></li>
+						<li><a href="{{route('inspiration')}}">Home Advice</a></li>
+						<li><a href="{{route('inspiration.page', 'kitchen')}}">Kitchen</a></li>
+						<li><a href="{{route('inspiration.page', 'bed-bath')}}">Bed + Bath</a> </li>
+						<li><a href="{{route('inspiration.page', 'roofing')}}">Roofing</a></li>
 					</ul>
 				</div>
 				<div class="grey-nav-bar mobile-grey-nav-bar desktop-off tablet-on">
 					<ul class="HI_nav">
-						<li><a href="">Flooring</a></li>
-						<li><a href="">Windows</a></li>
-						<li><a href="">Smart Home</a></li>
-						<li><a href="">Stone</a></li>
+						<li><a href="{{route('inspiration.page', 'flooring')}}">Flooring</a></li>
+						<li><a href="{{route('inspiration.page', 'windows')}}">Windows</a></li>
+						<li><a href="{{route('inspiration.page', 'smart-home')}}">Smart Home</a></li>
+						<li><a href="{{route('inspiration.page', 'stone')}}">Stone</a></li>
 						<li><i class="fa fa-caret-down"></i></li>
 
 					</ul>
