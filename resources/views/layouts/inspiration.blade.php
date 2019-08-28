@@ -30,7 +30,7 @@
 					</ul>
 					<ul class="d-sm-flex d-none justify-content-around text-center mb-0 p-0">
 						<li class="list-inline-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button"
-								aria-haspopup="true" aria-expanded="false" href="#link"><img src="images/icons/icon-search.png"
+								aria-haspopup="true" aria-expanded="false" href="#link"><img src="/images/icons/icon-search.png"
 									alt="search"> House Plans</a>
 							<ul class="dropdown-menu">
 								<li><a href="{{ route('advanced-search') }}">Advanced Search</a></li>
