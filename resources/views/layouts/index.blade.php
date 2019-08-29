@@ -41,10 +41,10 @@
                <a href="{{route('cart')}}" class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i class="fa fa-shopping-cart d-block" style="font-size:16px;"></i> Cart</a>
      		</span>
         </div>
-        <a href="{{route('home')}}" class="d-none d-md-block"><img src="{{asset('images/icons/logo.png')}}" alt="" class="img-fluid"></a>
+        <a href="{{route('home')}}" class="d-none d-lg-block"><img src="{{asset('images/icons/logo.png')}}" alt="" class="img-fluid"></a>
      </div>
       <div class="col-md-7 col-sm-6 text-center z-index-xs width-sm-100">
-        <ul class="list-inline text-center mb-4 toplinks  d-none d-md-block">
+        <ul class="list-inline text-center mb-4 toplinks  d-none d-lg-block">
           <li class="list-inline-item"><a href="{{ route('contact-us') }}">Email</a></li>
           <li class="list-inline-item"><a href="#link">Chat</a></li>
           <li class="list-inline-item"><a href="tel:832-521-5820">832-521-5820</a></li>
@@ -74,7 +74,7 @@
 		  	</div>
         </nav>
        </div>
-      <div class="col-md-2 col-sm-3 xs-set-position d-none d-md-block">
+      <div class="col-md-2 col-sm-3 xs-set-position d-none d-lg-block">
         <ul class="list-inline text-center text-sm-right text-small text-uppercase mt-1 mb-3">
             @auth
                 <li class="list-inline-item"><a href="{{ route('logout') }}">Logout</a></li>                

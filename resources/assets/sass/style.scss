@@ -1387,9 +1387,9 @@ ul.paging .btn-sm {
     display: none;
   }
 
-  .d-none {
-    display: none !important;
-  }
+  // .d-none {
+  //   display: none !important;
+  // }
 
   .d-block {
     display: block !important;
@@ -2397,11 +2397,11 @@ G.content-right
 }
 #carousel2 .carousel-control-prev-icon, #carousel3 .carousel-control-prev-icon
 {
-  background-image : url("/Projects/Tammy/DWHP/images/icons/dark-prev.png")!important;
+  background-image : url("/images/icons/dark-prev.png")!important;
 }
 #carousel2 .carousel-control-next-icon, #carousel3 .carousel-control-next-icon
 {
-  background-image : url("/Projects/Tammy/DWHP/images/icons/dark-next.png")!important;
+  background-image : url("/images/icons/dark-next.png")!important;
 }
 #carousel2 .carousel-control-next-icon, #carousel2 .carousel-control-prev-icon, #carousel3 .carousel-control-next-icon, #carousel3 .carousel-control-prev-icon {
     width: 25px;

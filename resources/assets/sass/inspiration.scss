@@ -1393,9 +1393,9 @@
       display: none;
     }
   
-    .d-none {
-      display: none !important;
-    }
+    // .d-none {
+    //   display: none !important;
+    // }
   
     .d-block {
       display: block !important;
@@ -1669,8 +1669,8 @@
   }
   .tablet-on .HI_nav li
   {
-             margin-left: 35PX;
-      MARGIN-RIGHT: 35PX;
+             margin-left: 15px;
+      margin-right: 15px;
   }
   .HI-davidhome
   {
@@ -2419,11 +2419,11 @@
   }
   #carousel2 .carousel-control-prev-icon, #carousel3 .carousel-control-prev-icon, #carousel4 .carousel-control-prev-icon
   {
-    background-image : url("/Projects/Tammy/DWHP/images/icons/dark-prev.png")!important;
+    background-image : url("/images/icons/dark-prev.png")!important;
   }
   #carousel2 .carousel-control-next-icon, #carousel3 .carousel-control-next-icon, #carousel4 .carousel-control-next-icon
   {
-    background-image : url("/Projects/Tammy/DWHP/images/icons/dark-next.png")!important;
+    background-image : url("/images/icons/dark-next.png")!important;
   }
   #carousel2 .carousel-control-next-icon, #carousel2 .carousel-control-prev-icon, #carousel3 .carousel-control-next-icon, #carousel3 .carousel-control-prev-icon, #carousel4 .carousel-control-next-icon, #carousel4 .carousel-control-prev-icon {
       width: 25px;
@@ -4701,7 +4701,7 @@
   }
   .pref_head
   {
-      background-image : url("/Projects/Tammy/DWHP/images/header1.png");
+      background-image : url("/images/header1.png");
       width: 100%;
       padding: 3%;
       background-repeat: no-repeat
@@ -4803,7 +4803,7 @@
   } 
   .pref_searchbtn
   {
-      background-image: url('/Projects/Tammy/DWHP/images/search_icon.png') !important;
+      background-image: url('/images/search_icon.png') !important;
       background-repeat: no-repeat !important;
       width: 100%;
       background-position-x: 16% !important;

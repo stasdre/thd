@@ -7,7 +7,7 @@
 <div class="">
     <div class="row">
         <div class="col-lg-3 col-md-12 col-sm-4 col-xs-12 sidebar_background_roof top-row">
-            <div class="row">
+            <div class="row align-items-sm-center">
                 <div class="col-lg-12 col-md-4 col-sm-12">
                     <div class="roof_side_1 ipad-off"><img src="/images/amarr_sidebar01.png"></div>
                     <div class="roof_side_logo center full-width"><img src="/images/amarr_logo.png">
@@ -18,10 +18,10 @@
                         <p class="font_mob">Made in the US, Amarr offers high quality garage doors
                             that are durable and safe in every style and color to find the perfect
                             garage door that compliments your new home.</p>
-                        <div class="sidebar_link">
-                            <div class="side_link"><a class="blue-text font_mob" href="#">View
+                        <div class="sidebar_link row">
+                            <div class="side_link col-sm-6 col-lg-12"><a class="blue-text font_mob" href="#">View
                                     Brochure <span>></span></a></div>
-                            <div class="side_link"><a class="blue-text font_mob" href="#">Dealer
+                            <div class="side_link col-sm-6 col-lg-12"><a class="blue-text font_mob" href="#">Dealer
                                     locator <span>></span></a></div>
                         </div>
                     </div>
@@ -71,25 +71,25 @@
             yourself to discuss your home building joys and challenges.</p>
     </div>
     <div class="row py-3 center mobile-off insipiration_below_slider_outer">
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/windows-project-2.png"></div>
             <div class="p_title center">GAF Roofing</div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fas fa fa-chevron-right"></i></a></div>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/roofing-product-2.png"></div>
             <div class="p_title center">Benjamin Moore Paint</div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fa fa-chevron-right"></i></a></div>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style="" class=""><img src="/images/benjamin_moore_paint.png"></div>
             <div class="p_title center">Clopay Garage Doors</div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fa fa-chevron-right"></i></a></div>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/roofing-product-4.png"></div>
             <div class="p_title center">Coronado Stone </div>
             <div><a href="" class="HP_links">View All Products <i
@@ -161,25 +161,25 @@
     </div> <!-- crousel -->
 
     <div class="row py-3 center mobile-off insipiration_below_slider_outer">
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/roofing-product-5.png"></div>
             <div class="p_title center">KitchenAid</div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fas fa fa-chevron-right"></i></a></div>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/roofing-product-6.png"></div>
             <div class="p_title center">Royal Building Products</div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fa fa-chevron-right"></i></a></div>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style="" class=""><img src="/images/roofing-product-7.png"></div>
             <div class="p_title center">Moen Faucets</div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fa fa-chevron-right"></i></a></div>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/roofing-product-8.png"></div>
             <div class="p_title center">Amercan Standard</div>
             <div><a href="" class="HP_links">View All Products <i

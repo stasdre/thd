@@ -7,7 +7,7 @@
 <div class="">
     <div class="row">
         <div class="col-lg-3 col-md-12 col-sm-4 col-xs-12 sidebar_background top-row">
-            <div class="row">
+            <div class="row align-items-sm-center">
                 <div class="col-lg-12 col-md-4 col-sm-12">
                     <div class="ipad-off"><a
                             href="https://www.jeld-wen.com/en-us/products/windows/custom-wood"><img
@@ -19,10 +19,10 @@
                         <p class="font_mob">Windows that inspire and set your home
                             apart with brilliant design and powerful performance in both custom wood
                             and vinyl maintenance free options.</p>
-                        <div class="sidebar_link">
-                            <div class="blue-text side_link"><b><a href="#" class="font_mob">View
+                        <div class="sidebar_link row">
+                            <div class="blue-text side_link col-sm-6 col-lg-12"><b><a href="#" class="font_mob">View
                                         Brochure <span>></span></a></b></div>
-                            <div class="blue-text side_link"><b><a href="#" class="font_mob">Dealer
+                            <div class="blue-text side_link col-sm-6 col-lg-12"><b><a href="#" class="font_mob">Dealer
                                         locator <span>></span></a></b></div>
                         </div>
                     </div>
@@ -78,27 +78,27 @@
             yourself to discuss your home building joys and challenges.</p>
     </div>
     <div class="row py-3 center mobile-off insipiration_below_slider_outer">
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/windows-project-1.png"></div>
             <div class="p_title center">KitchenAid</div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fas fa fa-chevron-right"></i></a></div>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/windows-project-2.png"></div>
             <div class="p_title center">GAF Roofing </div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fa fa-chevron-right"></i></a></div>
 
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style="" class=""><img src="/images/windows-project-3.png"></div>
             <div class="p_title center">Clopay Garage Doors</div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fa fa-chevron-right"></i></a></div>
 
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/windows-project-4.png"></div>
             <div class="p_title center">Coronado Stone</div>
             <div><a href="" class="HP_links">View All Products <i
@@ -169,27 +169,27 @@
     </div> <!-- crousel -->
 
     <div class="row py-3 center mobile-off insipiration_below_slider_outer">
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/windows-project-5.png"></div>
             <div class="p_title center">KraftMaid Cabinetry </div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fas fa fa-chevron-right"></i></a></div>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/windows-project-6.png"></div>
             <div class="p_title center">Royal Building Products</div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fa fa-chevron-right"></i></a></div>
 
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style="" class=""><img src="/images/windows-project-7.png"></div>
             <div class="p_title center">Moen Faucets</div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fa fa-chevron-right"></i></a></div>
 
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/windows-project-8.png"></div>
 
 

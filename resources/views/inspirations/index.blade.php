@@ -401,27 +401,27 @@
     <h3 class="blue-text" style="font-size : 24px;"> INNOVATIVE PRODUCTS TO DESIGN FUNCTIONAL AND BEAUTIFUL
     LIVING SPACES </h3>
     <div class="row py-3 HI-slidearea">
-    <div class="col-3">
+    <div class="col-6 col-lg-3">
         <div style=""><img src="/images/jeld-wen.jpg"></div>
         <div class="p_title center">Jeld-Wen Windows </div>
         <div><a href="" class="HP_links">View All Products <i class="fas fa fa-chevron-right newfa"></i></a>
         </div>
     </div>
-    <div class="col-3">
+    <div class="col-6 col-lg-3">
         <div style=""><img src="/images/gaf-roofing.png"></div>
         <div class="p_title center">GAF Roofing
         </div>
         <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
 
     </div>
-    <div class="col-3">
+    <div class="col-6 col-lg-3">
         <div style="" class=""><img src="/images/clopay.png"></div>
         <div class="p_title center">Clopay Garage Doors
         </div>
         <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
 
     </div>
-    <div class="col-3">
+    <div class="col-6 col-lg-3">
         <div style=""><img src="/images/coronado.png"></div>
 
 
@@ -433,7 +433,7 @@
     </div>
 
     <div class="row py-3 HI-slidearea">
-    <div class="col-3">
+    <div class="col-6 col-lg-3">
         <div style=""><img src="/images/kraft-maid.jpg"></div>
         <div class="p_title center">KraftMaid Cabinetry
 
@@ -441,19 +441,19 @@
         <div><a href="" class="HP_links">View All Products <i class="fas fa fa-chevron-right"></i>
         </a></div>
     </div>
-    <div class="col-3">
+    <div class="col-6 col-lg-3">
         <div style=""><img src="/images/royal-building.png"></div>
         <div class="p_title center">Royal Building Products</div>
         <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
 
     </div>
-    <div class="col-3">
+    <div class="col-6 col-lg-3">
         <div style="" class=""><img src="/images/meon.png"></div>
         <div class="p_title center">Moen Faucets</div>
         <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
 
     </div>
-    <div class="col-3">
+    <div class="col-6 col-lg-3">
         <div style=""><img src="/images/amercan.png"></div>
 
 

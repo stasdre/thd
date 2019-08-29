@@ -7,7 +7,7 @@
 <div class="">
     <div class="row">
         <div class="col-lg-3 col-md-12 col-sm-4 col-xs-12 sidebar_background_exterior top-row">
-            <div class="row">
+            <div class="row align-items-sm-center">
                 <div class="col-lg-12 col-md-4 col-sm-12">
                     <div class="exterior_side-img ipad-off"><img src="/images/bath_sidebar01.png">
                     </div>
@@ -20,10 +20,10 @@
                             developing innovative bathroom products including high performance
                             toilets, faucets, bathtubs and showers to complete your bathroom design.
                         </p>
-                        <div class="sidebar_link">
-                            <div class="blue-text side_link"><b><a href="#" class="font_mob">View
+                        <div class="sidebar_link row">
+                            <div class="blue-text side_link col-sm-6 col-lg-12"><b><a href="#" class="font_mob">View
                                         all products <span>></span></a></b></div>
-                            <div class="blue-text side_link"><b><a href="#" class="font_mob">Dealer
+                            <div class="blue-text side_link col-sm-6 col-lg-12"><b><a href="#" class="font_mob">Dealer
                                         locator <span>></span></a></b></div>
                         </div>
                     </div>
@@ -76,27 +76,27 @@
             yourself to discuss your home building joys and challenges.</p>
     </div>
     <div class="row py-3 center mobile-off insipiration_below_slider_outer">
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/roofing-product-1.png"></div>
             <div class="p_title center">Jeld-Wen Windows</div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fas fa fa-chevron-right"></i></a></div>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/KraftMaid-Cabinetry.png"></div>
             <div class="p_title center">KraftMaid Cabinetry </div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fa fa-chevron-right"></i></a></div>
 
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style="" class=""><img src="/images/Clopay-Garage-Doors.png"></div>
             <div class="p_title center">Clopay Garage Doors</div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fa fa-chevron-right"></i></a></div>
 
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/stone-product-4.png"></div>
             <div class="p_title center">GAF Roofing</div>
             <div><a href="" class="HP_links">View All Products <i
@@ -169,27 +169,27 @@
     </div> <!-- crousel -->
 
     <div class="row py-3 center mobile-off insipiration_below_slider_outer">
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/Kitchen-Aid.png"></div>
             <div class="p_title center">KitchenAid</div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fas fa fa-chevron-right"></i></a></div>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/stone-product-6.png"></div>
             <div class="p_title center">Royal Building Products</div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fa fa-chevron-right"></i></a></div>
 
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style="" class=""><img src="/images/Moen-Faucets.png"></div>
             <div class="p_title center">Moen Faucets</div>
             <div><a href="" class="HP_links">View All Products <i
                         class="fa fa-chevron-right"></i></a></div>
 
         </div>
-        <div class="col-3">
+        <div class="col-6 col-lg-3">
             <div style=""><img src="/images/Coronado-Stone.png"></div>
             <div class="p_title center">Coronado Stone </div>
             <div><a href="" class="HP_links">View All Products <i
