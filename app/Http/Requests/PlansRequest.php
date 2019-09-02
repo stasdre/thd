@@ -46,7 +46,7 @@ class PlansRequest extends FormRequest
         $validate['rooms.r_half_baths'] = 'nullable|in:1,2,3,4';
 
         if( count($this->input('similar')) >= 1 && $this->input('similar')[0] != null ){
-            $validate['similar.*'] = 'exists:plans,id';
+            $validate['similar.*'] = 'exists:plans,plan_number';
         }
 
         $validate['dimensions.stories'] = 'nullable|in:1,1.5,2,3,4';
