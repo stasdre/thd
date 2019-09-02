@@ -59,7 +59,7 @@
                         <div class="col-sm-4 col-md-6 col-lg-4">
                             <div class="plan-grid position-relative house-grid"> <a href="{{ route('collection.slug', $collection->slug) }}">
                                     @if($collection->image)
-                                        <img src="{{asset('storage/collections/'.$collection->image)}}" alt="{{ $collection->name }}" class="img-fluid w-100 mobile-grid-img" />
+                                        <img src="{{asset('storage/collections/thumb/'.$collection->image)}}" alt="{{ $collection->name }}" class="img-fluid w-100 mobile-grid-img" />
                                     @else
                                         <img src="{{asset('images/plan-1.jpg')}}" alt="{{ $collection->name }}" class="img-fluid w-100 mobile-grid-img" />
                                     @endif

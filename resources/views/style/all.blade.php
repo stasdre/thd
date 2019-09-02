@@ -59,7 +59,7 @@
                         <div class="col-sm-4 col-md-6 col-lg-4">
                             <div class="plan-grid position-relative"> <a href="{{ route('style.slug', $style->slug) }}">
                                     @if($style->image)
-                                        <img src="{{asset('storage/styles/'.$style->image)}}" alt="{{ $style->name }}" class="img-fluid w-100 mobile-grid-img" />
+                                        <img src="{{asset('storage/styles/thumb/'.$style->image)}}" alt="{{ $style->name }}" class="img-fluid w-100 mobile-grid-img" />
                                     @else
                                         <img src="{{asset('images/plan-1.jpg')}}" alt="{{ $style->name }}" class="img-fluid w-100 mobile-grid-img" />
                                     @endif
