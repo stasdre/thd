@@ -152,6 +152,9 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::resource('mobile-gallery', 'Admin\MobileGalleryController', ['except'=>['show']]);
         Route::get('mobile-gallery/data', 'Admin\MobileGalleryController@anyData')->name('mobile-gallery.data');
+
+        Route::resource('inspiration', 'Admin\InspirationController', ['except'=>['show']]);
+        Route::get('inspiration/data', 'Admin\InspirationController@anyData')->name('inspiration.data');
     });
 });
 
