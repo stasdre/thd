@@ -29,7 +29,7 @@ class InspirationController extends Controller
     public function create()
     {
         $order = Inspiration::select('order')->orderBy('order', 'desc')->first();
-        return view('admin.inspiration.create', ['order' => $order + 1]);
+        return view('admin.inspiration.create', ['order' => $order->order ? $order->order + 1 : 1]);
     }
 
     /**

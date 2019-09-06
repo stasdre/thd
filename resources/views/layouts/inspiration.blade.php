@@ -98,50 +98,48 @@
 					<h2 class="blue-text"> Home Inspiration</h2>
 					<h5 class="HI-subheading mobile-off">FROM DAVID WIGGINS HOUSE PLANS</h5>
 				</div>
-				<div class="grey-nav-bar d-none d-lg-block">
-					<ul class="HI_nav">
-						<li><a href="{{route('inspiration')}}">Home Advice</a></li>
-						<li><a href="{{route('inspiration.page', 'kitchen')}}">Kitchen</a></li>
-						<li><a href="{{route('inspiration.page', 'bed-bath')}}">Bed + Bath</a> </li>
-						<li><a href="{{route('inspiration.page', 'smart-home')}}">Smart Home</a></li>
-						<li><a href="{{route('inspiration.page', 'flooring')}}">Flooring</a></li>
-						<li><a href="{{route('inspiration.page', 'windows')}}">Windows</a> </li>
-						<li><a href="{{route('inspiration.page', 'stone')}}">Stone</a></li>
-						<li><a href="{{route('inspiration.page', 'garages')}}">Garages</a></li>
-						<li><a href="{{route('inspiration.page', 'roofing')}}">Roofing</a></li>
-						<li><a href="{{route('inspiration.page', 'exterior')}}">Exterior</a></li>
-						<li class=""><i class="fa fa-caret-down tablet_only"></i></li>
-					</ul>
-				</div>
-				<div class="grey-nav-bar d-none d-md-block d-lg-none">
-					<ul class="HI_nav">
-						<li><a href="{{route('inspiration')}}">Home Advice</a></li>
-						<li><a href="{{route('inspiration.page', 'kitchen')}}">Kitchen</a></li>
-						<li><a href="{{route('inspiration.page', 'bed-bath')}}">Bed + Bath</a> </li>
-						<li><a href="{{route('inspiration.page', 'flooring')}}">Flooring</a></li>
-						<li><a href="{{route('inspiration.page', 'windows')}}">Windows</a> </li>
-						<li><a href="{{route('inspiration.page', 'stone')}}">Stone</a></li>
-						<li><a href="{{route('inspiration.page', 'roofing')}}">Roofing</a></li>
-						<li><i class="fa fa-caret-down"></i></li>
-					</ul>
-				</div>
-				<div class="grey-nav-bar mobile-grey-nav-bar d-none d-sm-block d-md-none">
-					<ul class="HI_nav">
-						<li><a href="{{route('inspiration')}}">Home Advice</a></li>
-						<li><a href="{{route('inspiration.page', 'kitchen')}}">Kitchen</a></li>
-						<li><a href="{{route('inspiration.page', 'bed-bath')}}">Bed + Bath</a> </li>
-						<li><a href="{{route('inspiration.page', 'roofing')}}">Roofing</a></li>
-					</ul>
-				</div>
-				<div class="grey-nav-bar mobile-grey-nav-bar d-none d-sm-block d-md-none">
-					<ul class="HI_nav">
-						<li><a href="{{route('inspiration.page', 'flooring')}}">Flooring</a></li>
-						<li><a href="{{route('inspiration.page', 'windows')}}">Windows</a></li>
-						<li><a href="{{route('inspiration.page', 'smart-home')}}">Smart Home</a></li>
-						<li><a href="{{route('inspiration.page', 'stone')}}">Stone</a></li>
-						<li><i class="fa fa-caret-down"></i></li>
-					</ul>
-				</div>
+				@isset ($menu)					
+					<div class="grey-nav-bar d-none d-lg-block">
+						<ul class="HI_nav">
+							<li><a href="{{route('inspiration')}}">Home Advice</a></li>
+							@foreach ($menu as $item)	
+								@break($loop->iteration == 10)
+								<li><a href="{{route('inspiration.page', $item->link)}}">{{$item->name}}</a></li>
+							@endforeach
+							<li class=""><i class="fa fa-caret-down tablet_only"></i></li>
+						</ul>
+					</div>
+					<div class="grey-nav-bar d-none d-md-block d-lg-none">
+						<ul class="HI_nav">
+							<li><a href="{{route('inspiration')}}">Home Advice</a></li>
+							@foreach ($menu as $item)	
+								@break($loop->iteration == 7)
+								<li><a href="{{route('inspiration.page', $item->link)}}">{{$item->name}}</a></li>
+							@endforeach
+							<li><i class="fa fa-caret-down"></i></li>
+						</ul>
+					</div>
+					<div class="grey-nav-bar mobile-grey-nav-bar d-none d-sm-block d-md-none">
+						<ul class="HI_nav">
+							<li><a href="{{route('inspiration')}}">Home Advice</a></li>
+							@foreach ($menu as $item)	
+								@break($loop->iteration == 4)
+								<li><a href="{{route('inspiration.page', $item->link)}}">{{$item->name}}</a></li>
+							@endforeach
+						</ul>
+					</div>
+					<div class="grey-nav-bar mobile-grey-nav-bar d-none d-sm-block d-md-none">
+						<ul class="HI_nav">
+							@foreach ($menu as $item)	
+								@break($loop->iteration == 7)
+								@continue($loop->iteration <= 3)
+								<li><a href="{{route('inspiration.page', $item->link)}}">{{$item->name}}</a></li>
+							@endforeach
+							<li><i class="fa fa-caret-down"></i></li>
+						</ul>
+					</div>
+				@endisset
+
 				<div class="main-container">
 						@yield('content')
 				</div>

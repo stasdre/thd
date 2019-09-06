@@ -181,4 +181,4 @@ Route::post('purchase/', 'ShoppingCartController@purchase')->name('purchase');
 Route::post('promo/', 'ShoppingCartController@promo')->name('promo');
 
 Route::get('inspiration/', 'InspirationController@index')->name('inspiration');
-Route::get('inspiration/{page}', 'InspirationController@pages')->name('inspiration.page');
+Route::get('inspiration/{link}', 'InspirationController@pages')->name('inspiration.page');
