@@ -17,14 +17,18 @@
             {{ Form::label('in_menu', 'Show in inspiration menu', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-4">
                 <div class="checkbox">
-                    <label>{{ Form::checkbox('in_menu', 1, false) }}</label>
+                    <label>{{ Form::checkbox('in_menu', 1) }}</label>
                 </div>
             </div>
         </div>
         <div class="form-group">
             {{ Form::label('link', 'Link', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-4">
-                {{ Form::text('link', null, ['class'=>'form-control', 'placeholder'=>'Link', 'id'=>'slug']) }}
+                @if(Route::currentRouteName() == 'inspiration.edit')
+                    {{ Form::text('link', null, ['class'=>'form-control', 'placeholder'=>'Link', 'id'=>'slug', 'readonly']) }}
+                @else
+                    {{ Form::text('link', null, ['class'=>'form-control', 'placeholder'=>'Link', 'id'=>'slug']) }}
+                @endif
             </div>
         </div>
         <div class="form-group">
@@ -42,7 +46,7 @@
         <div class="form-group">
             {{ Form::label('order', 'Order', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-4">
-                {{ Form::text('order', old('order') ? old('order') : $order, ['class'=>'form-control', 'placeholder'=>'Order']) }}
+                {{ Form::text('order', old('order') ? old('order') : isset($order) ? $order : null, ['class'=>'form-control', 'placeholder'=>'Order']) }}
             </div>
         </div>        
     </fieldset>
@@ -50,14 +54,26 @@
     <legend>Company:</legend>        
         <div class="form-group">
             {{ Form::label('img_above_logo', 'Image above logo', ['class' => 'col-sm-2 control-label']) }}
-            <div class="col-sm-4">
-                {{ Form::file('img_above_logo', ['class'=>'form-control']) }}
+            <div class="col-sm-4 input-file">
+                @if(isset($inspiration->img_above_logo))
+                    {{ Form::file('img_above_logo', ['class'=>'form-control hidden']) }}
+                    <p class="file-name">/inspiration/{{ $inspiration->img_above_logo }} <a href="#" class="delete-file" style="margin-left: 15px; color: red;"><i class="fa fa-ban"></i></a></p>
+                    <div class="edit-img"><a href="{{asset('/storage/inspiration/'.$inspiration->img_above_logo)}}" target="_blank"><img src="{{asset('/storage/inspiration/'.$inspiration->img_above_logo)}}" data-origin="/storage/inspiration/original/{{$inspiration->img_above_logo}}" class="img-responsive" alt=""></a></div>                    
+                @else
+                    {{ Form::file('img_above_logo', ['class'=>'form-control']) }}
+                @endif
             </div>
         </div>
         <div class="form-group">
             {{ Form::label('logo_img', 'Logo image', ['class' => 'col-sm-2 control-label']) }}
-            <div class="col-sm-4">
-                {{ Form::file('logo_img', ['class'=>'form-control']) }}
+            <div class="col-sm-4 input-file">
+                @if(isset($inspiration->logo_img))
+                    {{ Form::file('logo_img', ['class'=>'form-control hidden']) }}
+                    <p class="file-name">/inspiration/{{ $inspiration->logo_img }} <a href="#" class="delete-file" style="margin-left: 15px; color: red;"><i class="fa fa-ban"></i></a></p>
+                    <div class="edit-img"><a href="{{asset('/storage/inspiration/'.$inspiration->logo_img)}}" target="_blank"><img src="{{asset('/storage/inspiration/'.$inspiration->logo_img)}}" data-origin="/storage/inspiration/original/{{$inspiration->logo_img}}" class="img-responsive" alt=""></a></div>                    
+                @else
+                    {{ Form::file('logo_img', ['class'=>'form-control']) }}
+                @endif
             </div>
         </div>
         <div class="form-group">
@@ -83,8 +99,14 @@
         <legend>Images:</legend>    
         <div class="form-group">
             {{ Form::label('main_img', 'Main image', ['class' => 'col-sm-2 control-label']) }}
-            <div class="col-sm-4">
-                {{ Form::file('main_img', ['class'=>'form-control']) }}
+            <div class="col-sm-4 input-file">
+                @if(isset($inspiration->main_img))
+                    {{ Form::file('main_img', ['class'=>'form-control hidden']) }}
+                    <p class="file-name">/inspiration/{{ $inspiration->main_img }} <a href="#" class="delete-file" style="margin-left: 15px; color: red;"><i class="fa fa-ban"></i></a></p>
+                    <div class="edit-img"><a href="{{asset('/storage/inspiration/'.$inspiration->main_img)}}" target="_blank"><img src="{{asset('/storage/inspiration/'.$inspiration->main_img)}}" data-origin="/storage/inspiration/original/{{$inspiration->main_img}}" class="img-responsive" alt=""></a></div>                    
+                @else
+                    {{ Form::file('main_img', ['class'=>'form-control']) }}
+                @endif
             </div>
         </div>        
         <div class="form-group">
@@ -95,8 +117,14 @@
         </div>
         <div class="form-group">
             {{ Form::label('first_img', 'First image', ['class' => 'col-sm-2 control-label']) }}
-            <div class="col-sm-4">
-                {{ Form::file('first_img', ['class'=>'form-control']) }}
+            <div class="col-sm-4 input-file">
+                @if(isset($inspiration->first_img))
+                    {{ Form::file('first_img', ['class'=>'form-control hidden']) }}
+                    <p class="file-name">/inspiration/{{ $inspiration->first_img }} <a href="#" class="delete-file" style="margin-left: 15px; color: red;"><i class="fa fa-ban"></i></a></p>
+                    <div class="edit-img"><a href="{{asset('/storage/inspiration/'.$inspiration->first_img)}}" target="_blank"><img src="{{asset('/storage/inspiration/'.$inspiration->first_img)}}" data-origin="/storage/inspiration/original/{{$inspiration->first_img}}" class="img-responsive" alt=""></a></div>                    
+                @else
+                    {{ Form::file('first_img', ['class'=>'form-control']) }}
+                @endif                
             </div>
         </div>        
         <div class="form-group">
@@ -107,8 +135,14 @@
         </div>
         <div class="form-group">
             {{ Form::label('second_img', 'Second image', ['class' => 'col-sm-2 control-label']) }}
-            <div class="col-sm-4">
-                {{ Form::file('second_img', ['class'=>'form-control']) }}
+            <div class="col-sm-4 input-file">
+                @if(isset($inspiration->second_img))
+                    {{ Form::file('second_img', ['class'=>'form-control hidden']) }}
+                    <p class="file-name">/inspiration/{{ $inspiration->second_img }} <a href="#" class="delete-file" style="margin-left: 15px; color: red;"><i class="fa fa-ban"></i></a></p>
+                    <div class="edit-img"><a href="{{asset('/storage/inspiration/'.$inspiration->second_img)}}" target="_blank"><img src="{{asset('/storage/inspiration/'.$inspiration->second_img)}}" data-origin="/storage/inspiration/original/{{$inspiration->second_img}}" class="img-responsive" alt=""></a></div>                    
+                @else
+                    {{ Form::file('second_img', ['class'=>'form-control']) }}
+                @endif                                
             </div>
         </div>        
         <div class="form-group">
@@ -119,8 +153,14 @@
         </div>
         <div class="form-group">
             {{ Form::label('third_img', 'Third image', ['class' => 'col-sm-2 control-label']) }}
-            <div class="col-sm-4">
-                {{ Form::file('third_img', ['class'=>'form-control']) }}
+            <div class="col-sm-4 input-file">
+                @if(isset($inspiration->third_img))
+                    {{ Form::file('third_img', ['class'=>'form-control hidden']) }}
+                    <p class="file-name">/inspiration/{{ $inspiration->third_img }} <a href="#" class="delete-file" style="margin-left: 15px; color: red;"><i class="fa fa-ban"></i></a></p>
+                    <div class="edit-img"><a href="{{asset('/storage/inspiration/'.$inspiration->third_img)}}" target="_blank"><img src="{{asset('/storage/inspiration/'.$inspiration->third_img)}}" data-origin="/storage/inspiration/original/{{$inspiration->third_img}}" class="img-responsive" alt=""></a></div>                    
+                @else
+                    {{ Form::file('third_img', ['class'=>'form-control']) }}
+                @endif                                                
             </div>
         </div>        
         <div class="form-group">
@@ -148,10 +188,17 @@
 
 @push('scripts')
 <script>
-        $(document).on('focus', '#slug', function(){
+    $(document).on('focus', '#slug', function(){
         var str = $('#name').val().trim().replace(/[^a-z0-9-]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
        $(this).val(str.toLowerCase());
+    });
+
+    $(".delete-file").on('click', function(e){
+            e.preventDefault();
+            $(this).parent('.file-name').hide();
+            $(this).parent('.file-name').parent('.input-file').find(".file-input").removeClass('hidden');
+            $(this).parent('.file-name').parent('.input-file').find(".edit-img").addClass('hidden');
     });
 </script>
 @endpush

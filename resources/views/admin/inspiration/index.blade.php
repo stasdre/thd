@@ -11,7 +11,6 @@
             <table class="table table-bordered table-striped" id="inspiration-table">
                 <thead>
                 <tr>
-                    <th>Logo</th>
                     <th>Name</th>
                     <th>Link</th>
                     <th>Order</th>
@@ -35,10 +34,9 @@
             autoWidth: false,
             processing: true,
             serverSide: true,
-            order: [ 3, 'asc' ],
+            order: [ 2, 'asc' ],
             ajax: '{!! route('inspiration.data') !!}',
             columns: [
-                { data: 'logo_img', name: 'logo_img', orderable: false, searchable: false },
                 { data: 'name', name: 'name' },
                 { data: 'link', name: 'link' },
                 { data: 'order', name: 'order', searchable: false },
