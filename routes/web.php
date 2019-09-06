@@ -152,6 +152,9 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::resource('mobile-gallery', 'Admin\MobileGalleryController', ['except'=>['show']]);
         Route::get('mobile-gallery/data', 'Admin\MobileGalleryController@anyData')->name('mobile-gallery.data');
+
+        Route::resource('inspiration', 'Admin\InspirationController', ['except'=>['show']]);
+        Route::get('inspiration/data', 'Admin\InspirationController@anyData')->name('inspiration.data');
     });
 });
 
@@ -178,4 +181,4 @@ Route::post('purchase/', 'ShoppingCartController@purchase')->name('purchase');
 Route::post('promo/', 'ShoppingCartController@promo')->name('promo');
 
 Route::get('inspiration/', 'InspirationController@index')->name('inspiration');
-Route::get('inspiration/{page}', 'InspirationController@pages')->name('inspiration.page');
+Route::get('inspiration/{link}', 'InspirationController@pages')->name('inspiration.page');

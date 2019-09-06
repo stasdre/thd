@@ -7,6 +7,9 @@
             <li>
                 <a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
             </li>
+            <li>
+                <a href="{{ route('inspiration.index') }}"><i class="fa fa-magic"></i> <span>Inspiration pages</span></a>
+            </li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-cubes"></i>
