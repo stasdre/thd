@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Thd\Http\Controllers\Controller;
 use Thd\Http\Requests\InspirationRequest;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\Storage;
 
 class InspirationController extends Controller
 {
@@ -156,7 +157,50 @@ class InspirationController extends Controller
      */
     public function destroy(Inspiration $inspiration)
     {
-        //
+        if($inspiration->img_above_logo){
+            Storage::delete('public/inspiration/'.$inspiration->img_above_logo);
+            Storage::delete('public/inspiration/thumb/'.$inspiration->img_above_logo);
+            Storage::delete('public/inspiration/original/'.$inspiration->img_above_logo);
+        }
+
+        if($inspiration->logo_img){
+            Storage::delete('public/inspiration/'.$inspiration->logo_img);
+            Storage::delete('public/inspiration/thumb/'.$inspiration->logo_img);
+            Storage::delete('public/inspiration/original/'.$inspiration->logo_img);
+        }
+
+        if($inspiration->main_img){
+            Storage::delete('public/inspiration/'.$inspiration->main_img);
+            Storage::delete('public/inspiration/thumb/'.$inspiration->main_img);
+            Storage::delete('public/inspiration/original/'.$inspiration->main_img);
+        }
+
+        if($inspiration->first_img){
+            Storage::delete('public/inspiration/'.$inspiration->first_img);
+            Storage::delete('public/inspiration/thumb/'.$inspiration->first_img);
+            Storage::delete('public/inspiration/original/'.$inspiration->first_img);
+        }
+
+        if($inspiration->second_img){
+            Storage::delete('public/inspiration/'.$inspiration->second_img);
+            Storage::delete('public/inspiration/thumb/'.$inspiration->second_img);
+            Storage::delete('public/inspiration/original/'.$inspiration->second_img);
+        }
+
+        if($inspiration->third_img){
+            Storage::delete('public/inspiration/'.$inspiration->third_img);
+            Storage::delete('public/inspiration/thumb/'.$inspiration->third_img);
+            Storage::delete('public/inspiration/original/'.$inspiration->third_img);
+        }
+
+        $inspiration->delete();
+
+        return redirect()->route('inspiration.index')
+            ->with('message', [
+                'type'=>'success',
+                'title'=>'Success!',
+                'message'=>$inspiration->name.' was deleted',
+                'autoHide'=>1]);
     }
 
     /**
@@ -166,7 +210,7 @@ class InspirationController extends Controller
      */
     public function anyData()
     {
-        $inspirations = Inspiration::select(['logo_img', 'name', 'link', 'order', 'created_at', 'updated_at']);
+        $inspirations = Inspiration::select(['logo_img', 'name', 'link', 'order', 'created_at', 'updated_at', 'id']);
         return Datatables::of($inspirations)
             ->addColumn('actions', function ($inspiration) {
                 return '<a class="btn btn-info btn-sm" href="' . route('inspiration.edit', $inspiration->id) . '" role="button">Edit</a> <form style="display: inline-block" action="' . route('inspiration.destroy', $inspiration->id) . '" method="POST"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="' . csrf_token() . '"><button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
