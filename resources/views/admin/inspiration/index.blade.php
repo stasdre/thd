@@ -14,6 +14,7 @@
                     <th>Name</th>
                     <th>Link</th>
                     <th>Order</th>
+                    <th>In Menu</th>
                     <th>Created At</th>
                     <th>Updated At</th>
                     <th>Actions</th>
@@ -37,11 +38,12 @@
             order: [ 2, 'asc' ],
             ajax: '{!! route('inspiration.data') !!}',
             columns: [
-                { data: 'name', name: 'name' },
-                { data: 'link', name: 'link' },
-                { data: 'order', name: 'order', searchable: false },
-                { data: 'created_at', name: 'created_at' },
-                { data: 'updated_at', name: 'updated_at' },
+                { data: 'name', name: 'name', className: "dt-center" },
+                { data: 'link', name: 'link', className: "dt-center" },
+                { data: 'order', name: 'order', searchable: false, className: "dt-center" },
+                { data: 'in_menu', name: 'in_menu', searchable: false, className: "dt-center" },
+                { data: 'created_at', name: 'created_at', className: "dt-center" },
+                { data: 'updated_at', name: 'updated_at', className: "dt-center" },
                 { data: 'actions', name: 'actions', orderable: false, searchable: false, className: "dt-center" }
             ]
         });

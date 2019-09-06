@@ -322,12 +322,20 @@ class InspirationController extends Controller
      */
     public function anyData()
     {
-        $inspirations = Inspiration::select(['name', 'link', 'order', 'created_at', 'updated_at', 'id']);
+        $inspirations = Inspiration::select(['name', 'link', 'order', 'in_menu', 'created_at', 'updated_at', 'id']);
         return Datatables::of($inspirations)
             ->addColumn('actions', function ($inspiration) {
                 return '<a class="btn btn-info btn-sm" href="' . route('inspiration.edit', $inspiration->id) . '" role="button">Edit</a> <form style="display: inline-block" action="' . route('inspiration.destroy', $inspiration->id) . '" method="POST"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="' . csrf_token() . '"><button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
             })
-            ->rawColumns(['actions'])
+            ->editColumn('link', function($inspiration){
+                return '<a target="_blank" href="'.asset("inspiration/".$inspiration->link).'">'.asset("inspiration/".$inspiration->link).'</a>';
+            })
+            ->editColumn('in_menu', function($inspiration){
+                if($inspiration->in_menu == 1)
+                    return '<i style="color: green;" class="fa fa-check" aria-hidden="true"></i>';
+                return '<i style="color: red;" class="fa fa-ban"></i>';
+            })
+            ->rawColumns(['link', 'in_menu', 'actions'])
             ->make(true);
     }
 }
