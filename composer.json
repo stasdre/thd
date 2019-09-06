@@ -33,7 +33,10 @@
         ],
         "psr-4": {
             "Thd\\": "app/"
-        }
+        },
+        "files":[
+            "app/helpers/FileUploader.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

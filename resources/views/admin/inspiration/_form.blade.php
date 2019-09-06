@@ -10,7 +10,7 @@
         <div class="form-group">
             {{ Form::label('name', 'Name', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-4">
-                {{ Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Name']) }}
+                {{ Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Name', 'id'=>'name']) }}
             </div>
         </div>
         <div class="form-group">
@@ -24,7 +24,7 @@
         <div class="form-group">
             {{ Form::label('link', 'Link', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-4">
-                {{ Form::text('link', null, ['class'=>'form-control', 'placeholder'=>'Link']) }}
+                {{ Form::text('link', null, ['class'=>'form-control', 'placeholder'=>'Link', 'id'=>'slug']) }}
             </div>
         </div>
         <div class="form-group">
@@ -42,7 +42,7 @@
         <div class="form-group">
             {{ Form::label('order', 'Order', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-4">
-                {{ Form::text('order', null, ['class'=>'form-control', 'placeholder'=>'Order']) }}
+                {{ Form::text('order', old('order') ? old('order') : $order, ['class'=>'form-control', 'placeholder'=>'Order']) }}
             </div>
         </div>        
     </fieldset>
@@ -144,4 +144,14 @@
 
 @push('tinymce')
 <script src="{{ asset('js/admin/tinymce.js') }}"></script>
+@endpush
+
+@push('scripts')
+<script>
+        $(document).on('focus', '#slug', function(){
+        var str = $('#name').val().trim().replace(/[^a-z0-9-]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+
+       $(this).val(str.toLowerCase());
+    });
+</script>
 @endpush

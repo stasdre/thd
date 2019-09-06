@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Inspiration extends Model
 {
-    //
+    protected $guarded = [];
 }
