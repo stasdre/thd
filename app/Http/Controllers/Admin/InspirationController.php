@@ -41,7 +41,7 @@ class InspirationController extends Controller
     public function store(InspirationRequest $request)
     {
         $dataRequest = $request->except(['_token']);
-
+        
         if ($request->file('img_above_logo')) {
             $img_above_logo = uploadFile($request->file('img_above_logo'), [
                 'dir' => 'inspiration',
@@ -135,7 +135,8 @@ class InspirationController extends Controller
     public function edit(Inspiration $inspiration)
     {
         return view('admin.inspiration.edit', [
-            'inspiration'=>$inspiration
+            'inspiration'=>$inspiration,
+            'order'=>$inspiration->order
         ]);
     }
 
@@ -146,10 +147,10 @@ class InspirationController extends Controller
      * @param  \Thd\Inspiration  $inspiration
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inspiration $inspiration)
+    public function update(InspirationRequest $request, Inspiration $inspiration)
     {
-        $dataRequest = $request->except(['_token', '_method']);
-        
+        $dataRequest = $request->except(['_token', '_method', 'produts']);
+        dd($request);
         if ($request->file('img_above_logo')) {
             $img_above_logo = uploadFile($request->file('img_above_logo'), [
                 'dir' => 'inspiration',

@@ -42,6 +42,9 @@ class InspirationRequest extends FormRequest
         $rules['third_img'] = 'nullable|image|dimensions:min_width=235,min_height=235';
         $rules['third_img_link'] = 'nullable|required_with:third_img|max:191';
         $rules['order'] = 'integer';
+        $rules['products.*.product_img'] = 'nullable|array|image|dimensions:min_width=230,min_height=230';
+        $rules['products.*.title'] = 'max:100|array|required_with:products.*.product_img';
+        $rules['products.*.link'] = 'max:191|array|required_with:products.*.product_img';
 
         return $rules;
     }

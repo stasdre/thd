@@ -172,6 +172,32 @@
     </fieldset>       
     <fieldset>
         <legend>Products</legend>
+        <button type="button" id="add_new_product" class="btn btn-success">+ Add product</button>
+        <div class="product__container">
+            @if (old('products'))
+                @foreach (old('products') as $item)
+                <div class="form-group">
+                        {{ Form::label('products[][product_img]', 'Image', ['class' => 'col-sm-2 control-label']) }}
+                        <div class="col-sm-4 input-file">
+                            {{ Form::file('products[][product_img]', ['class'=>'form-control']) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('products[][title]', 'Title', ['class' => 'col-sm-2 control-label']) }}
+                        <div class="col-sm-4">
+                            {{ Form::text('products[][title]', isset($item['title']) ? isset($item['title']) : null, ['class'=>'form-control', 'placeholder'=>'Title']) }}
+                        </div>
+                    </div>                        
+                    <div class="form-group">
+                        {{ Form::label('products[][link]', 'Link', ['class' => 'col-sm-2 control-label']) }}
+                        <div class="col-sm-4">
+                            {{ Form::text('products[][link]', isset($item['link']) ? isset($item['link ']) : null, ['class'=>'form-control', 'placeholder'=>'Link']) }}
+                        </div>
+                    </div>
+                    <hr/>                                        
+                @endforeach
+            @endif
+        </div>
     </fieldset>              
 </div>
 
@@ -200,5 +226,39 @@
             $(this).parent('.file-name').parent('.input-file').find(".file-input").removeClass('hidden');
             $(this).parent('.file-name').parent('.input-file').find(".edit-img").addClass('hidden');
     });
+
+    $(document).on('click', '#add_new_product', function(e){
+        e.preventDefault();
+        var container = $(".product__container");
+        var tpl = $("#new_product_tpl");
+        container.append(tpl.html());
+    })
+</script>
+<script id="new_product_tpl" type="text/template">
+    <div class="form-group">
+        {{ Form::label('products[][product_img]', 'Image', ['class' => 'col-sm-2 control-label']) }}
+        <div class="col-sm-4 input-file">
+            @if(isset($inspiration->products))
+                {{ Form::file('products[][product_img]', ['class'=>'form-control hidden']) }}
+                <p class="file-name">/inspiration/{{ $inspiration->third_img }} <a href="#" class="delete-file" style="margin-left: 15px; color: red;"><i class="fa fa-ban"></i></a></p>
+                <div class="edit-img"><a href="{{asset('/storage/inspiration/'.$inspiration->third_img)}}" target="_blank"><img src="{{asset('/storage/inspiration/'.$inspiration->third_img)}}" data-origin="/storage/inspiration/original/{{$inspiration->third_img}}" class="img-responsive" alt=""></a></div>                    
+            @else
+                {{ Form::file('products[][product_img]', ['class'=>'form-control']) }}
+            @endif                                                
+        </div>
+    </div>
+    <div class="form-group">
+        {{ Form::label('products[][title]', 'Title', ['class' => 'col-sm-2 control-label']) }}
+        <div class="col-sm-4">
+            {{ Form::text('products[][title]', null, ['class'=>'form-control', 'placeholder'=>'Title']) }}
+        </div>
+    </div>                        
+    <div class="form-group">
+        {{ Form::label('products[][link]', 'Link', ['class' => 'col-sm-2 control-label']) }}
+        <div class="col-sm-4">
+            {{ Form::text('products[][link]', null, ['class'=>'form-control', 'placeholder'=>'Link']) }}
+        </div>
+    </div>
+    <hr/>                        
 </script>
 @endpush
