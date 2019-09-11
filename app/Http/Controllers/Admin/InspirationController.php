@@ -370,6 +370,14 @@ class InspirationController extends Controller
             Storage::delete('public/inspiration/original/' . $inspiration->third_img);
         }
 
+        if($inspiration->products){
+            foreach($inspiration->products as $product){
+                Storage::delete('public/inspiration/' . $product->product_img);
+                Storage::delete('public/inspiration/thumb/' . $product->product_img);
+                Storage::delete('public/inspiration/original/' . $product->product_img);    
+            }
+        }
+
         $inspiration->delete();
 
         return redirect()->route('inspiration.index')
