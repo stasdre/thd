@@ -175,27 +175,56 @@
         <button type="button" id="add_new_product" class="btn btn-success">+ Add product</button>
         <div class="product__container">
             @if (old('products'))
-                @foreach (old('products') as $item)
-                <div class="form-group">
-                        {{ Form::label('products[][product_img]', 'Image', ['class' => 'col-sm-2 control-label']) }}
+                @foreach (old('products') as $key=>$item)
+                    <div class="form-group">
+                        {{ Form::label('products['.$key.'][product_img]', 'Image', ['class' => 'col-sm-2 control-label']) }}
                         <div class="col-sm-4 input-file">
-                            {{ Form::file('products[][product_img]', ['class'=>'form-control']) }}
+                            {{ Form::file('products['.$key.'][product_img]', ['class'=>'form-control']) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        {{ Form::label('products[][title]', 'Title', ['class' => 'col-sm-2 control-label']) }}
+                        {{ Form::label('products['.$key.'][title]', 'Title', ['class' => 'col-sm-2 control-label']) }}
                         <div class="col-sm-4">
-                            {{ Form::text('products[][title]', isset($item['title']) ? isset($item['title']) : null, ['class'=>'form-control', 'placeholder'=>'Title']) }}
+                            {{ Form::text('products['.$key.'][title]', isset($item['title']) ? $item['title'] : null, ['class'=>'form-control', 'placeholder'=>'Title']) }}
                         </div>
                     </div>                        
                     <div class="form-group">
-                        {{ Form::label('products[][link]', 'Link', ['class' => 'col-sm-2 control-label']) }}
+                        {{ Form::label('products['.$key.'][link]', 'Link', ['class' => 'col-sm-2 control-label']) }}
                         <div class="col-sm-4">
-                            {{ Form::text('products[][link]', isset($item['link']) ? isset($item['link ']) : null, ['class'=>'form-control', 'placeholder'=>'Link']) }}
+                            {{ Form::text('products['.$key.'][link]', isset($item['link']) ? $item['link '] : null, ['class'=>'form-control', 'placeholder'=>'Link']) }}
                         </div>
                     </div>
                     <hr/>                                        
                 @endforeach
+            @elseif(isset($inspiration->products))
+                @foreach ($inspiration->products as $key=>$item)
+                    <div class="form-group">
+                        <input type="hidden" name="products[{{$key}}][old_img]" value="{{ $item->product_img }}">
+                        {{ Form::label('products['.$key.'][product_img]', 'Image', ['class' => 'col-sm-2 control-label']) }}
+                        <div class="col-sm-4 input-file">
+                            @if(isset($item->product_img))
+                                {{ Form::file('products['.$key.'][product_img]', ['class'=>'form-control hidden']) }}
+                                <p class="file-name">/inspiration/{{ $item->product_img }} <a href="#" class="delete-file" style="margin-left: 15px; color: red;"><i class="fa fa-ban"></i></a></p>
+                                <div class="edit-img"><a href="{{asset('/storage/inspiration/'.$item->product_img)}}" target="_blank"><img src="{{asset('/storage/inspiration/'.$item->product_img)}}" data-origin="/storage/inspiration/original/{{$item->product_img}}" class="img-responsive" alt=""></a></div>                    
+                            @else
+                                {{ Form::file('products['.$key.'][product_img]', ['class'=>'form-control']) }}
+                            @endif                                                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('products['.$key.'][title]', 'Title', ['class' => 'col-sm-2 control-label']) }}
+                        <div class="col-sm-4">
+                            {{ Form::text('products['.$key.'][title]', isset($item->title) ? $item->title : null, ['class'=>'form-control', 'placeholder'=>'Title']) }}
+                        </div>
+                    </div>                        
+                    <div class="form-group">
+                        {{ Form::label('products['.$key.'][link]', 'Link', ['class' => 'col-sm-2 control-label']) }}
+                        <div class="col-sm-4">
+                            {{ Form::text('products['.$key.'][link]', isset($item->link) ? $item->link : null, ['class'=>'form-control', 'placeholder'=>'Link']) }}
+                        </div>
+                    </div>
+                    <hr/>                                        
+                @endforeach    
             @endif
         </div>
     </fieldset>              
@@ -227,36 +256,32 @@
             $(this).parent('.file-name').parent('.input-file').find(".edit-img").addClass('hidden');
     });
 
+    var iterator = {{$lastProducts}};
     $(document).on('click', '#add_new_product', function(e){
         e.preventDefault();
         var container = $(".product__container");
         var tpl = $("#new_product_tpl");
-        container.append(tpl.html());
+        container.append(tpl.html().replace(/#iterator#/g, iterator));
+        iterator++;
     })
 </script>
 <script id="new_product_tpl" type="text/template">
     <div class="form-group">
-        {{ Form::label('products[][product_img]', 'Image', ['class' => 'col-sm-2 control-label']) }}
+        <label class="col-sm-2 control-label">Image</label>
         <div class="col-sm-4 input-file">
-            @if(isset($inspiration->products))
-                {{ Form::file('products[][product_img]', ['class'=>'form-control hidden']) }}
-                <p class="file-name">/inspiration/{{ $inspiration->third_img }} <a href="#" class="delete-file" style="margin-left: 15px; color: red;"><i class="fa fa-ban"></i></a></p>
-                <div class="edit-img"><a href="{{asset('/storage/inspiration/'.$inspiration->third_img)}}" target="_blank"><img src="{{asset('/storage/inspiration/'.$inspiration->third_img)}}" data-origin="/storage/inspiration/original/{{$inspiration->third_img}}" class="img-responsive" alt=""></a></div>                    
-            @else
-                {{ Form::file('products[][product_img]', ['class'=>'form-control']) }}
-            @endif                                                
+            <input type="file" class="form-control" name="products[#iterator#][product_img]" >
         </div>
     </div>
     <div class="form-group">
-        {{ Form::label('products[][title]', 'Title', ['class' => 'col-sm-2 control-label']) }}
+        <label class="col-sm-2 control-label">Title</label>
         <div class="col-sm-4">
-            {{ Form::text('products[][title]', null, ['class'=>'form-control', 'placeholder'=>'Title']) }}
+            <input type="text" class="form-control" name="products[#iterator#][title]" placeholder="Title">
         </div>
     </div>                        
     <div class="form-group">
-        {{ Form::label('products[][link]', 'Link', ['class' => 'col-sm-2 control-label']) }}
+        <label class="col-sm-2 control-label">Link</label>
         <div class="col-sm-4">
-            {{ Form::text('products[][link]', null, ['class'=>'form-control', 'placeholder'=>'Link']) }}
+            <input type="text" class="form-control" name="products[#iterator#][link]" placeholder="Link">
         </div>
     </div>
     <hr/>                        
