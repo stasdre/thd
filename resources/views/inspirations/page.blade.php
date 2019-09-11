@@ -60,42 +60,72 @@
             <div class="center view_product mobile-off grey-text">Click any image to view product
             </div>
             <div class="row">
-                <div class="col-4 images_width slider_img_padding pedding-right7">
-                    <div class="kitchen_maid_img2">
-                        @if ($data->first_img)
-                            @if ($data->first_img_link)                        
-                                <a target="_blank" href="{{$data->first_img_link}}" target="_blank"><img
-                                    src="{{asset('storage/inspiration/'.$data->first_img)}}" /></a>
-                            @else
-                                <img src="{{asset('storage/inspiration/'.$data->first_img)}}" />
-                            @endif                    
-                        @endif        
+                @if(!$data->third_img)
+                    <div class="col-6 images_width_50 slider_img_padding">
+                        <div class="kitchen_maid_img2">
+                            @if ($data->first_img)
+                                @if ($data->first_img_link)                        
+                                    <a target="_blank" href="{{$data->first_img_link}}" target="_blank"><img
+                                        src="{{asset('storage/inspiration/'.$data->first_img)}}" /></a>
+                                @else
+                                    <img src="{{asset('storage/inspiration/'.$data->first_img)}}" />
+                                @endif                    
+                            @endif        
+                        </div>
                     </div>
-                </div>
-                <div class="col-4 images_width slider_img_padding pedding-left12">
-                    <div class="kitchen_maid_img3">
-                        @if ($data->second_img)
-                            @if ($data->second_img_link)                        
-                                <a target="_blank" href="{{$data->second_img_link}}" target="_blank"><img
-                                    src="{{asset('storage/inspiration/'.$data->second_img)}}" /></a>
-                            @else
-                                <img src="{{asset('storage/inspiration/'.$data->second_img)}}" />
-                            @endif                    
-                        @endif        
+                    <div class="col-6 images_width_50 slider_img_padding">
+                        <div class="kitchen_maid_img3">
+                            @if ($data->second_img)
+                                @if ($data->second_img_link)                        
+                                    <a target="_blank" href="{{$data->second_img_link}}" target="_blank"><img
+                                        src="{{asset('storage/inspiration/'.$data->second_img)}}" /></a>
+                                @else
+                                    <img src="{{asset('storage/inspiration/'.$data->second_img)}}" />
+                                @endif                    
+                            @endif        
+                        </div>
                     </div>
-                </div>
-                <div class="col-4 images_width slider_img_padding peddingcustomize pedding-left7">
-                    <div class="kitchen_maid_img4">
-                        @if ($data->third_img)
-                            @if ($data->third_img_link)                        
-                                <a target="_blank" href="{{$data->third_img_link}}" target="_blank"><img
-                                    src="{{asset('storage/inspiration/'.$data->third_img)}}" /></a>
-                            @else
-                                <img src="{{asset('storage/inspiration/'.$data->third_img)}}" />
-                            @endif                    
-                        @endif        
+
+                @else
+                    <div class="col-4 images_width slider_img_padding pedding-right7">
+                        <div class="kitchen_maid_img2">
+                            @if ($data->first_img)
+                                @if ($data->first_img_link)                        
+                                    <a target="_blank" href="{{$data->first_img_link}}" target="_blank"><img
+                                        src="{{asset('storage/inspiration/'.$data->first_img)}}" /></a>
+                                @else
+                                    <img src="{{asset('storage/inspiration/'.$data->first_img)}}" />
+                                @endif                    
+                            @endif        
+                        </div>
                     </div>
-                </div>
+                    <div class="col-4 images_width slider_img_padding pedding-left12">
+                        <div class="kitchen_maid_img3">
+                            @if ($data->second_img)
+                                @if ($data->second_img_link)                        
+                                    <a target="_blank" href="{{$data->second_img_link}}" target="_blank"><img
+                                        src="{{asset('storage/inspiration/'.$data->second_img)}}" /></a>
+                                @else
+                                    <img src="{{asset('storage/inspiration/'.$data->second_img)}}" />
+                                @endif                    
+                            @endif        
+                        </div>
+                    </div>
+                @endif
+                @if($data->third_img)
+                    <div class="col-4 images_width slider_img_padding peddingcustomize pedding-left7">
+                        <div class="kitchen_maid_img4">
+                            @if ($data->third_img)
+                                @if ($data->third_img_link)                        
+                                    <a target="_blank" href="{{$data->third_img_link}}" target="_blank"><img
+                                        src="{{asset('storage/inspiration/'.$data->third_img)}}" /></a>
+                                @else
+                                    <img src="{{asset('storage/inspiration/'.$data->third_img)}}" />
+                                @endif                    
+                            @endif        
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
 

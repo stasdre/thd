@@ -38,13 +38,13 @@ class InspirationRequest extends FormRequest
         $rules['logo_img'] = 'nullable|image';
         $rules['brochure_link'] = 'nullable|max:191';
         $rules['locator_link'] = 'nullable|max:191';
-        $rules['main_img'] = 'nullable|image|dimensions:min_width=750,min_height=380';
+        $rules['main_img'] = 'nullable|image|dimensions:min_width=700,min_height=300';
         $rules['main_img_link'] = 'nullable|required_with:main_img|max:191';
-        $rules['first_img'] = 'nullable|image|dimensions:min_width=235,min_height=235';
+        $rules['first_img'] = 'nullable|image|dimensions:min_width=230,min_height=230';
         $rules['first_img_link'] = 'nullable|required_with:first_img|max:191';
-        $rules['second_img'] = 'nullable|image|dimensions:min_width=235,min_height=235';
+        $rules['second_img'] = 'nullable|image|dimensions:min_width=230,min_height=230';
         $rules['second_img_link'] = 'nullable|required_with:second_img|max:191';
-        $rules['third_img'] = 'nullable|image|dimensions:min_width=235,min_height=235';
+        $rules['third_img'] = 'nullable|image|dimensions:min_width=230,min_height=230';
         $rules['third_img_link'] = 'nullable|required_with:third_img|max:191';
         $rules['order'] = 'integer';
         $rules['products.*.product_img'] = 'nullable|image|dimensions:min_width=230,min_height=230';
