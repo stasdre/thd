@@ -29,7 +29,7 @@ class InspirationController extends Controller
     public function create()
     {
         $order = Inspiration::select('order')->orderBy('order', 'desc')->first();
-        return view('admin.inspiration.create', ['order' => isset($order->order) ? $order->order + 1 : 1]);
+        return view('admin.inspiration.create', ['order' => isset($order->order) ? $order->order + 1 : 1, 'lastProducts' => 0]);
     }
 
     /**
@@ -40,8 +40,8 @@ class InspirationController extends Controller
      */
     public function store(InspirationRequest $request)
     {
-        $dataRequest = $request->except(['_token']);
-
+        $dataRequest = $request->except(['_token', 'products']);
+        
         if ($request->file('img_above_logo')) {
             $img_above_logo = uploadFile($request->file('img_above_logo'), [
                 'dir' => 'inspiration',
@@ -113,6 +113,28 @@ class InspirationController extends Controller
             ]);
             $dataRequest['third_img'] = $third_img;
         }
+
+        $products = [];
+        if ($request->products) {
+            $count = 1;
+            foreach ($request->products as $product) {
+                if ($product['product_img']) {
+                    $img = uploadFile($product['product_img'], [
+                        'dir' => 'inspiration',
+                        'width' => null,
+                        'height' => 230,
+                        'quality' => 90,
+                        'thumb_width' => null,
+                        'thumb_height' => 230
+                    ]);
+                    $products[$count]['product_img'] = $img;
+                    $products[$count]['title'] = $product['title'];
+                    $products[$count]['link'] = $product['link'];
+                    $count++;
+                }
+            }
+        }
+        $dataRequest['products'] = json_encode($products);
 
         $inspiration = new Inspiration($dataRequest);
         $inspiration->save();
@@ -135,7 +157,9 @@ class InspirationController extends Controller
     public function edit(Inspiration $inspiration)
     {
         return view('admin.inspiration.edit', [
-            'inspiration'=>$inspiration
+            'inspiration' => $inspiration,
+            'order' => $inspiration->order,
+            'lastProducts' => $inspiration->last_count_products
         ]);
     }
 
@@ -146,9 +170,9 @@ class InspirationController extends Controller
      * @param  \Thd\Inspiration  $inspiration
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inspiration $inspiration)
+    public function update(InspirationRequest $request, Inspiration $inspiration)
     {
-        $dataRequest = $request->except(['_token', '_method']);
+        $dataRequest = $request->except(['_token', '_method', 'produts']);
         
         if ($request->file('img_above_logo')) {
             $img_above_logo = uploadFile($request->file('img_above_logo'), [
@@ -161,9 +185,9 @@ class InspirationController extends Controller
             ]);
             $dataRequest['img_above_logo'] = $img_above_logo;
 
-            Storage::delete('public/inspiration/'.$inspiration->img_above_logo);
-            Storage::delete('public/inspiration/thumb/'.$inspiration->img_above_logo);
-            Storage::delete('public/inspiration/original/'.$inspiration->img_above_logo);
+            Storage::delete('public/inspiration/' . $inspiration->img_above_logo);
+            Storage::delete('public/inspiration/thumb/' . $inspiration->img_above_logo);
+            Storage::delete('public/inspiration/original/' . $inspiration->img_above_logo);
         }
 
         if ($request->file('logo_img')) {
@@ -177,9 +201,9 @@ class InspirationController extends Controller
             ]);
             $dataRequest['logo_img'] = $logo_img;
 
-            Storage::delete('public/inspiration/'.$inspiration->logo_img);
-            Storage::delete('public/inspiration/thumb/'.$inspiration->logo_img);
-            Storage::delete('public/inspiration/original/'.$inspiration->logo_img);
+            Storage::delete('public/inspiration/' . $inspiration->logo_img);
+            Storage::delete('public/inspiration/thumb/' . $inspiration->logo_img);
+            Storage::delete('public/inspiration/original/' . $inspiration->logo_img);
         }
 
         if ($request->file('main_img')) {
@@ -193,9 +217,9 @@ class InspirationController extends Controller
             ]);
             $dataRequest['main_img'] = $main_img;
 
-            Storage::delete('public/inspiration/'.$inspiration->main_img);
-            Storage::delete('public/inspiration/thumb/'.$inspiration->main_img);
-            Storage::delete('public/inspiration/original/'.$inspiration->main_img);
+            Storage::delete('public/inspiration/' . $inspiration->main_img);
+            Storage::delete('public/inspiration/thumb/' . $inspiration->main_img);
+            Storage::delete('public/inspiration/original/' . $inspiration->main_img);
         }
 
         if ($request->file('first_img')) {
@@ -209,9 +233,9 @@ class InspirationController extends Controller
             ]);
             $dataRequest['first_img'] = $first_img;
 
-            Storage::delete('public/inspiration/'.$inspiration->first_img);
-            Storage::delete('public/inspiration/thumb/'.$inspiration->first_img);
-            Storage::delete('public/inspiration/original/'.$inspiration->first_img);
+            Storage::delete('public/inspiration/' . $inspiration->first_img);
+            Storage::delete('public/inspiration/thumb/' . $inspiration->first_img);
+            Storage::delete('public/inspiration/original/' . $inspiration->first_img);
         }
 
         if ($request->file('second_img')) {
@@ -225,9 +249,9 @@ class InspirationController extends Controller
             ]);
             $dataRequest['second_img'] = $second_img;
 
-            Storage::delete('public/inspiration/'.$inspiration->second_img);
-            Storage::delete('public/inspiration/thumb/'.$inspiration->second_img);
-            Storage::delete('public/inspiration/original/'.$inspiration->second_img);
+            Storage::delete('public/inspiration/' . $inspiration->second_img);
+            Storage::delete('public/inspiration/thumb/' . $inspiration->second_img);
+            Storage::delete('public/inspiration/original/' . $inspiration->second_img);
         }
 
         if ($request->file('third_img')) {
@@ -241,14 +265,55 @@ class InspirationController extends Controller
             ]);
             $dataRequest['third_img'] = $third_img;
 
-            Storage::delete('public/inspiration/'.$inspiration->third_img);
-            Storage::delete('public/inspiration/thumb/'.$inspiration->third_img);
-            Storage::delete('public/inspiration/original/'.$inspiration->third_img);
+            Storage::delete('public/inspiration/' . $inspiration->third_img);
+            Storage::delete('public/inspiration/thumb/' . $inspiration->third_img);
+            Storage::delete('public/inspiration/original/' . $inspiration->third_img);
         }
 
         if (!$request->input('in_menu')) {
             $dataRequest['in_menu'] = 0;
         }
+
+        $products = [];
+        if ($request->products) {
+            $count = 1;
+            foreach ($request->products as $product) {
+                if (isset($product['product_img']) || isset($product['old_img'])) {
+                    if(isset($product['product_img'])){
+                        $img = uploadFile($product['product_img'], [
+                            'dir' => 'inspiration',
+                            'width' => null,
+                            'height' => 230,
+                            'quality' => 90,
+                            'thumb_width' => null,
+                            'thumb_height' => 230
+                        ]);
+
+                        if(isset($product['old_img'])){
+                            Storage::delete('public/inspiration/' . $product['old_img']);
+                            Storage::delete('public/inspiration/thumb/' . $product['old_img']);
+                            Storage::delete('public/inspiration/original/' . $product['old_img']);            
+                        }
+
+                        $products[$count]['product_img'] = $img;
+                    }else{
+                        $products[$count]['product_img'] = $product['old_img'];
+                    }
+
+                    $products[$count]['title'] = $product['title'];
+                    $products[$count]['link'] = $product['link'];
+
+                    if(isset($product['old_img']) && $product['title'] == '' && $product['link'] == ''){
+                        Storage::delete('public/inspiration/' . $product['old_img']);
+                        Storage::delete('public/inspiration/thumb/' . $product['old_img']);
+                        Storage::delete('public/inspiration/original/' . $product['old_img']);            
+                        unset($products[$count]);
+                    }
+                    $count++;
+                }                
+            }
+        }
+        $dataRequest['products'] = json_encode($products);
 
         $inspiration->update($dataRequest);
 
@@ -258,7 +323,7 @@ class InspirationController extends Controller
                 'title' => 'Success!',
                 'message' => $inspiration->name . ' was updated',
                 'autoHide' => 1
-            ]);        
+            ]);
     }
 
     /**
@@ -269,50 +334,59 @@ class InspirationController extends Controller
      */
     public function destroy(Inspiration $inspiration)
     {
-        if($inspiration->img_above_logo){
-            Storage::delete('public/inspiration/'.$inspiration->img_above_logo);
-            Storage::delete('public/inspiration/thumb/'.$inspiration->img_above_logo);
-            Storage::delete('public/inspiration/original/'.$inspiration->img_above_logo);
+        if ($inspiration->img_above_logo) {
+            Storage::delete('public/inspiration/' . $inspiration->img_above_logo);
+            Storage::delete('public/inspiration/thumb/' . $inspiration->img_above_logo);
+            Storage::delete('public/inspiration/original/' . $inspiration->img_above_logo);
         }
 
-        if($inspiration->logo_img){
-            Storage::delete('public/inspiration/'.$inspiration->logo_img);
-            Storage::delete('public/inspiration/thumb/'.$inspiration->logo_img);
-            Storage::delete('public/inspiration/original/'.$inspiration->logo_img);
+        if ($inspiration->logo_img) {
+            Storage::delete('public/inspiration/' . $inspiration->logo_img);
+            Storage::delete('public/inspiration/thumb/' . $inspiration->logo_img);
+            Storage::delete('public/inspiration/original/' . $inspiration->logo_img);
         }
 
-        if($inspiration->main_img){
-            Storage::delete('public/inspiration/'.$inspiration->main_img);
-            Storage::delete('public/inspiration/thumb/'.$inspiration->main_img);
-            Storage::delete('public/inspiration/original/'.$inspiration->main_img);
+        if ($inspiration->main_img) {
+            Storage::delete('public/inspiration/' . $inspiration->main_img);
+            Storage::delete('public/inspiration/thumb/' . $inspiration->main_img);
+            Storage::delete('public/inspiration/original/' . $inspiration->main_img);
         }
 
-        if($inspiration->first_img){
-            Storage::delete('public/inspiration/'.$inspiration->first_img);
-            Storage::delete('public/inspiration/thumb/'.$inspiration->first_img);
-            Storage::delete('public/inspiration/original/'.$inspiration->first_img);
+        if ($inspiration->first_img) {
+            Storage::delete('public/inspiration/' . $inspiration->first_img);
+            Storage::delete('public/inspiration/thumb/' . $inspiration->first_img);
+            Storage::delete('public/inspiration/original/' . $inspiration->first_img);
         }
 
-        if($inspiration->second_img){
-            Storage::delete('public/inspiration/'.$inspiration->second_img);
-            Storage::delete('public/inspiration/thumb/'.$inspiration->second_img);
-            Storage::delete('public/inspiration/original/'.$inspiration->second_img);
+        if ($inspiration->second_img) {
+            Storage::delete('public/inspiration/' . $inspiration->second_img);
+            Storage::delete('public/inspiration/thumb/' . $inspiration->second_img);
+            Storage::delete('public/inspiration/original/' . $inspiration->second_img);
         }
 
-        if($inspiration->third_img){
-            Storage::delete('public/inspiration/'.$inspiration->third_img);
-            Storage::delete('public/inspiration/thumb/'.$inspiration->third_img);
-            Storage::delete('public/inspiration/original/'.$inspiration->third_img);
+        if ($inspiration->third_img) {
+            Storage::delete('public/inspiration/' . $inspiration->third_img);
+            Storage::delete('public/inspiration/thumb/' . $inspiration->third_img);
+            Storage::delete('public/inspiration/original/' . $inspiration->third_img);
+        }
+
+        if($inspiration->products){
+            foreach($inspiration->products as $product){
+                Storage::delete('public/inspiration/' . $product->product_img);
+                Storage::delete('public/inspiration/thumb/' . $product->product_img);
+                Storage::delete('public/inspiration/original/' . $product->product_img);    
+            }
         }
 
         $inspiration->delete();
 
         return redirect()->route('inspiration.index')
             ->with('message', [
-                'type'=>'success',
-                'title'=>'Success!',
-                'message'=>$inspiration->name.' was deleted',
-                'autoHide'=>1]);
+                'type' => 'success',
+                'title' => 'Success!',
+                'message' => $inspiration->name . ' was deleted',
+                'autoHide' => 1
+            ]);
     }
 
     /**
@@ -327,11 +401,11 @@ class InspirationController extends Controller
             ->addColumn('actions', function ($inspiration) {
                 return '<a class="btn btn-info btn-sm" href="' . route('inspiration.edit', $inspiration->id) . '" role="button">Edit</a> <form style="display: inline-block" action="' . route('inspiration.destroy', $inspiration->id) . '" method="POST"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="' . csrf_token() . '"><button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
             })
-            ->editColumn('link', function($inspiration){
-                return '<a target="_blank" href="'.asset("inspiration/".$inspiration->link).'">'.asset("inspiration/".$inspiration->link).'</a>';
+            ->editColumn('link', function ($inspiration) {
+                return '<a target="_blank" href="' . asset("inspiration/" . $inspiration->link) . '">' . asset("inspiration/" . $inspiration->link) . '</a>';
             })
-            ->editColumn('in_menu', function($inspiration){
-                if($inspiration->in_menu == 1)
+            ->editColumn('in_menu', function ($inspiration) {
+                if ($inspiration->in_menu == 1)
                     return '<i style="color: green;" class="fa fa-check" aria-hidden="true"></i>';
                 return '<i style="color: red;" class="fa fa-ban"></i>';
             })

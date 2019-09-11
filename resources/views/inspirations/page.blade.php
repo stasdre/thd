@@ -105,189 +105,95 @@
     <div class="pro_dsc">
         {!!$data->desc!!}
     </div>
+
     <div class="row py-3 center mobile-off insipiration_below_slider_outer">
-        <div class="col-6 col-lg-3">
-            <div style=""><img src="/images/kitchen-project-1.png"></div>
-            <div class="p_title center">Jeld-Wen Windows</div>
-            <div><a href="" class="HP_links">View All Products <i
-                        class="fas fa fa-chevron-right"></i></a></div>
-        </div>
-        <div class="col-6 col-lg-3">
-            <div style=""><img src="/images/kitchen-project-2.png"></div>
-            <div class="p_title center">GAF Roofing </div>
-            <div><a href="" class="HP_links">View All Products <i
-                        class="fa fa-chevron-right"></i></a></div>
-
-        </div>
-        <div class="col-6 col-lg-3">
-            <div style="" class=""><img src="/images/kitchen-project-3.png"></div>
-            <div class="p_title center">Clopay Garage Doors</div>
-            <div><a href="" class="HP_links">View All Products <i
-                        class="fa fa-chevron-right"></i></a></div>
-
-        </div>
-        <div class="col-6 col-lg-3">
-            <div style=""><img src="/images/kitchen-project-4.png"></div>
-            <div class="p_title center">Coronado Stone</div>
-            <div><a href="" class="HP_links">View All Products <i
-                        class="fa fa-chevron-right"></i></a></div>
-        </div>
-
+        @isset ($data->products)            
+            @foreach ($data->products as $product)
+                <div class="col-6 col-lg-3">
+                <div style=""><img src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
+                <div class="p_title center">{{$product->title}}</div>
+                <div><a href="{{$product->link}}" class="HP_links">View All Products <i
+                                class="fas fa fa-chevron-right"></i></a></div>
+                </div>
+        
+                @break($loop->iteration === 4)
+            @endforeach
+        @endisset
     </div>
 
     <!-- Crousel -->
     <div id="carousel2" class="carousel slide font_16 desktop-off" data-ride="carousel"
         data-interval="false">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="slides row center">
-                    <div class="col-12">
-                        <div style=""><img src="/images/kitchen-project-1.png"></div>
-                        <div class="p_title center font_16">Jeld-Wen Windows </div>
-                        <div><a href="" class="HP_links font_16">View All Products <i
-                                    class="fas fa fa-chevron-right"></i></a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="slides row center">
-                    <div class="col-12">
-                        <div style=""><img src="/images/windows-project-2.png"></div>
-                        <div class="p_title center font_16">KraftMaid Cabinetry </div>
-                        <div><a href="" class="HP_links font_16">View All Products <i
-                                    class="fa fa-chevron-right"></i></a></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="slides row center">
-                    <div class="col-12">
-                        <div style="" class=""><img src="/images/windows-project-3.png"></div>
-                        <div class="p_title center font_16">Clopay Garage Doors
+            @isset ($data->products)            
+                @foreach ($data->products as $product)            
+                    <div class="carousel-item @if($loop->iteration === 1) active @endif">
+                        <div class="slides row center">
+                            <div class="col-12">
+                                <div style=""><img src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
+                                <div class="p_title center font_16">{{$product->title}} </div>
+                                <div><a href="{{$product->link}}" class="HP_links font_16">View All Products <i
+                                            class="fas fa fa-chevron-right"></i></a></div>
+                            </div>
                         </div>
-                        <div><a href="" class="HP_links font_16">View All Products <i
-                                    class="fa fa-chevron-right"></i></a></div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="slides row center">
-                    <div class="col-12">
-                        <div style=""><img src="/images/windows-project-4.png"></div>
-                        <div class="p_title center font_16">Coronado Stone </div>
-                        <div><a href="" class="HP_links font_16">View All Products <i
-                                    class="fas fa fa-chevron-right"></i>
-                            </a></div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-            <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel2" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+                    </div>            
+                    @break($loop->iteration === 4)
+                @endforeach
+                <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel2" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            @endisset
         </div>
     </div> <!-- crousel -->
 
     <div class="row py-3 center mobile-off insipiration_below_slider_outer">
-        <div class="col-6 col-lg-3">
-            <div style=""><img src="/images/kitchen-project-5.png"></div>
-            <div class="p_title center">KitchenAid</div>
-            <div><a href="" class="HP_links">View All Products <i
-                        class="fas fa fa-chevron-right"></i></a></div>
-        </div>
-        <div class="col-6 col-lg-3">
-            <div style=""><img src="/images/kitchen-project-6.png"></div>
-            <div class="p_title center">Royal Building Products</div>
-            <div><a href="" class="HP_links">View All Products <i
-                        class="fa fa-chevron-right"></i></a></div>
+            @isset ($data->products)            
+            @foreach ($data->products as $product)
+                @continue($loop->iteration < 5)
 
-        </div>
-        <div class="col-6 col-lg-3">
-            <div style="" class=""><img src="/images/kitchen-project-7.png"></div>
-            <div class="p_title center">Moen Faucets</div>
-            <div><a href="" class="HP_links">View All Products <i
-                        class="fa fa-chevron-right"></i></a></div>
-
-        </div>
-        <div class="col-6 col-lg-3">
-            <div style=""><img src="/images/kitchen-project-8.png"></div>
-
-
-            <div class="p_title center">Amercan Standard</div>
-            <div><a href="" class="HP_links">View All Products <i
-                        class="fa fa-chevron-right"></i></a></div>
-        </div>
-
+                <div class="col-6 col-lg-3">
+                <div style=""><img src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
+                <div class="p_title center">{{$product->title}}</div>
+                <div><a href="{{$product->link}}" class="HP_links">View All Products <i
+                                class="fas fa fa-chevron-right"></i></a></div>
+                </div>
+        
+            @endforeach
+        @endisset
     </div>
 
     <!-- Crousel -->
     <div id="carousel3" class="carousel slide desktop-off" data-ride="carousel"
         data-interval="false">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="slides row center">
-                    <div class="col-12">
-                        <div style=""><img src="/images/windows-project-5.png"></div>
-                        <div class="p_title center font_16">KitchenAid </div>
-                        <div><a href="" class="HP_links font_16">View All Products <i
-                                    class="fas fa fa-chevron-right"></i></a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="slides row center">
-                    <div class="col-12">
-                        <div style=""><img src="/images/windows-project-6.png"></div>
-                        <div class="p_title center font_16">Royal Building Products </div>
-                        <div><a href="" class="HP_links font_16">View All Products <i
-                                    class="fa fa-chevron-right"></i></a></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="slides row center">
-                    <div class="col-12">
-                        <div style="" class=""><img src="/images/windows-project-7.png"></div>
-                        <div class="p_title center font_16">Moen Faucets
+            @isset ($data->products)            
+                @foreach ($data->products as $product)            
+                    @continue($loop->iteration < 5)
+                    <div class="carousel-item @if($loop->iteration === 5) active @endif">
+                        <div class="slides row center">
+                            <div class="col-12">
+                                <div style=""><img src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
+                                <div class="p_title center font_16">{{$product->title}} </div>
+                                <div><a href="{{$product->link}}" class="HP_links font_16">View All Products <i
+                                            class="fas fa fa-chevron-right"></i></a></div>
+                            </div>
                         </div>
-                        <div><a href="" class="HP_links font_16">View All Products <i
-                                    class="fa fa-chevron-right"></i></a></div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="slides row center">
-                    <div class="col-12">
-                        <div style=""><img src="/images/windows-project-8.png"></div>
-                        <div class="p_title center font_16">Amercan Standard </div>
-                        <div><a href="" class="HP_links font_16">View All Products <i
-                                    class="fas fa fa-chevron-right"></i>
-                            </a></div>
-                    </div>
-                </div>
-            </div>
-
-
-            <a class="carousel-control-prev" href="#carousel3" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel3" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+                    </div>            
+                @endforeach
+                <a class="carousel-control-prev" href="#carousel3" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel3" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            @endisset
         </div>
     </div> <!-- crousel -->
 
