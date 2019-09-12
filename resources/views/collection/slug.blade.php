@@ -1,11 +1,23 @@
 @extends('layouts.index')
 
 @section('content')
-<div class="plan-full position-relative mobile-off"> <img src="{{ '/storage/collections/'.$collection->image }}" alt="{{$collection->name}}" class="img-fluid" />
-<div class="single-plan-title position-absolute single-plan-title-edit">{{ $collection->name }}</div>
-    <div class="plan-name position-absolute"><span>{{ $collection->short_name }} /</span> HOUSE PLAN {{ $collection->plan }}</div>
-  </div>
-  <div class="search-wrap light py-2 text-center px-5 mobile-off">
+<div class="row align-items-center style-desc-container">
+    <div class="col-sm-7">
+        <h1 class="text-center h3 font-weight-bold">{{ $collection->name }}</h1>
+        <div class="sidebar-box">
+            <div class="sidebar-box__text">{!! $collection->description !!}</div>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-3 style-desc-container__border"></div>
+            <div class="col-auto"><a class="style-desc-container__link" href="#">Read More</a></div>
+            <div class="col-3 style-desc-container__border"></div>
+        </div>
+    </div>
+    <div class="col-sm-5 style-desc-container__img">
+        <img src="{{ '/storage/collections/'.$collection->image }}" alt="{{$collection->name}}" class="img-fluid d-block" />        
+    </div>
+</div>    
+<div class="search-wrap light py-2 text-center px-5 mobile-off">
     <form class="form-main-search text-center space_left">
               <div class="row no-gutters">
                   <div class="col-md-2 col-sm-3 common_width padd_bottom_10">
@@ -89,13 +101,6 @@
               </div>
           </form>
   </div>
-  
-  <div  style="color : #212529;" class="info_text py-2 px-sm-5 mx-sm-3">
-    {!! substr($collection->description, 0, 310) !!}
-  <span class="mobile-off" id="content-scroll">{!! substr($collection->description, 311) !!}</span>
-  </div>
-  <div class="desktop-off read_more" id="read_more"><span class="read-more-link-wrapper">Read More </span></div>
-  <div style="display : none;" id="read_less" class="read_less"><span class="read-less-link-wrapper">Read Less </span></div>
    <div class="row mobile-off">
        <div class="col-sm-12 center">
           <div><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" type="button" > Quick Plan Search</button>

@@ -75,3 +75,28 @@
 .img_width_100_percent{
   width: 100%;
 }
+
+.style-desc-container{
+  margin-top: 35px; 
+  margin-bottom:20px;
+}
+
+.style-desc-container__border{
+  border: .5px #2f358f solid;
+}
+
+.style-desc-container__link{
+  color:#2f358f
+}
+
+.style-desc-container__img{
+  max-height:235px; 
+  overflow:hidden;
+}
+
+.sidebar-box {
+  max-height: 165px;
+  overflow: hidden;
+  line-height: 23px; 
+  margin-bottom:15px;
+}
