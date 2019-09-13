@@ -45,7 +45,7 @@
     <div class="col xs-hide-portrait">
       <ul class="list-unstyled single-plan-actions text-center">
         <li><a href="#" class="text-secondary"><img src="{{asset('images/icons/icon-heart.png')}}" alt="" class="img-fluid"></a></li>
-        <li><a href="#" class="text-secondary"><img src="{{asset('images/icons/icon-print.png')}}" alt="" class="img-fluid"></a></li>
+        <li><a href="javascript:window.print()" class="text-secondary"><img src="{{asset('images/icons/icon-print.png')}}" alt="" class="img-fluid"></a></li>
         <li><a href="#" class="text-secondary"><img src="{{asset('images/icons/icon-share.png')}}" alt="" class="img-fluid"></a></li>
       </ul>
     </div>
