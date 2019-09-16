@@ -12,12 +12,12 @@
                 <div class="col-lg-12 col-md-4 col-sm-12">
                     <div class="kitchen_maid_side ipad-off">
                         @if($data->img_above_logo)
-                            <img src="{{asset('storage/inspiration/'.$data->img_above_logo)}}">
+                            <img class="img-fluid" src="{{asset('storage/inspiration/'.$data->img_above_logo)}}">
                         @endif
                     </div>
                     <div class="center top35">
                         @if($data->logo_img)
-                    <img src="{{asset('storage/inspiration/'.$data->logo_img)}}">
+                    <img class="img-fluid" src="{{asset('storage/inspiration/'.$data->logo_img)}}">
                         @endif
                     </div>
                 </div>
@@ -50,10 +50,10 @@
             <div class="fullcls kitchen_maid_img1">
                 @if ($data->main_img)
                     @if ($data->main_img_link)                        
-                        <a target="_blank" href="{{$data->main_img_link}}" target="_blank"><img
+                        <a target="_blank" href="{{$data->main_img_link}}" target="_blank"><img class="img-fluid"
                             src="{{asset('storage/inspiration/'.$data->main_img)}}" /></a>
                     @else
-                        <img src="{{asset('storage/inspiration/'.$data->main_img)}}" />
+                        <img class="img-fluid" src="{{asset('storage/inspiration/'.$data->main_img)}}" />
                     @endif                    
                 @endif
             </div>
@@ -65,10 +65,10 @@
                         <div class="kitchen_maid_img2">
                             @if ($data->first_img)
                                 @if ($data->first_img_link)                        
-                                    <a target="_blank" href="{{$data->first_img_link}}" target="_blank"><img
+                                    <a target="_blank" href="{{$data->first_img_link}}" target="_blank"><img class="img-fluid"
                                         src="{{asset('storage/inspiration/'.$data->first_img)}}" /></a>
                                 @else
-                                    <img src="{{asset('storage/inspiration/'.$data->first_img)}}" />
+                                    <img class="img-fluid" src="{{asset('storage/inspiration/'.$data->first_img)}}" />
                                 @endif                    
                             @endif        
                         </div>
@@ -77,10 +77,10 @@
                         <div class="kitchen_maid_img3">
                             @if ($data->second_img)
                                 @if ($data->second_img_link)                        
-                                    <a target="_blank" href="{{$data->second_img_link}}" target="_blank"><img
+                                    <a target="_blank" href="{{$data->second_img_link}}" target="_blank"><img class="img-fluid"
                                         src="{{asset('storage/inspiration/'.$data->second_img)}}" /></a>
                                 @else
-                                    <img src="{{asset('storage/inspiration/'.$data->second_img)}}" />
+                                    <img class="img-fluid" src="{{asset('storage/inspiration/'.$data->second_img)}}" />
                                 @endif                    
                             @endif        
                         </div>
@@ -91,10 +91,10 @@
                         <div class="kitchen_maid_img2">
                             @if ($data->first_img)
                                 @if ($data->first_img_link)                        
-                                    <a target="_blank" href="{{$data->first_img_link}}" target="_blank"><img
+                                    <a target="_blank" href="{{$data->first_img_link}}" target="_blank"><img class="img-fluid"
                                         src="{{asset('storage/inspiration/'.$data->first_img)}}" /></a>
                                 @else
-                                    <img src="{{asset('storage/inspiration/'.$data->first_img)}}" />
+                                    <img class="img-fluid" src="{{asset('storage/inspiration/'.$data->first_img)}}" />
                                 @endif                    
                             @endif        
                         </div>
@@ -103,10 +103,10 @@
                         <div class="kitchen_maid_img3">
                             @if ($data->second_img)
                                 @if ($data->second_img_link)                        
-                                    <a target="_blank" href="{{$data->second_img_link}}" target="_blank"><img
+                                    <a target="_blank" href="{{$data->second_img_link}}" target="_blank"><img class="img-fluid"
                                         src="{{asset('storage/inspiration/'.$data->second_img)}}" /></a>
                                 @else
-                                    <img src="{{asset('storage/inspiration/'.$data->second_img)}}" />
+                                    <img class="img-fluid" src="{{asset('storage/inspiration/'.$data->second_img)}}" />
                                 @endif                    
                             @endif        
                         </div>
@@ -117,10 +117,10 @@
                         <div class="kitchen_maid_img4">
                             @if ($data->third_img)
                                 @if ($data->third_img_link)                        
-                                    <a target="_blank" href="{{$data->third_img_link}}" target="_blank"><img
+                                    <a target="_blank" href="{{$data->third_img_link}}" target="_blank"><img class="img-fluid"
                                         src="{{asset('storage/inspiration/'.$data->third_img)}}" /></a>
                                 @else
-                                    <img src="{{asset('storage/inspiration/'.$data->third_img)}}" />
+                                    <img class="img-fluid" src="{{asset('storage/inspiration/'.$data->third_img)}}" />
                                 @endif                    
                             @endif        
                         </div>
@@ -140,7 +140,7 @@
         @isset ($data->products)            
             @foreach ($data->products as $product)
                 <div class="col-6 col-lg-3">
-                <div style=""><img src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
+                <div style=""><img class="img-fluid" src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
                 <div class="p_title center">{{$product->title}}</div>
                 <div><a href="{{$product->link}}" class="HP_links">View All Products <i
                                 class="fas fa fa-chevron-right"></i></a></div>
@@ -160,7 +160,7 @@
                     <div class="carousel-item @if($loop->iteration === 1) active @endif">
                         <div class="slides row center">
                             <div class="col-12">
-                                <div style=""><img src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
+                                <div style=""><img class="img-fluid" src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
                                 <div class="p_title center font_16">{{$product->title}} </div>
                                 <div><a href="{{$product->link}}" class="HP_links font_16">View All Products <i
                                             class="fas fa fa-chevron-right"></i></a></div>
@@ -187,7 +187,7 @@
                 @continue($loop->iteration < 5)
 
                 <div class="col-6 col-lg-3">
-                <div style=""><img src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
+                <div style=""><img class="img-fluid" src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
                 <div class="p_title center">{{$product->title}}</div>
                 <div><a href="{{$product->link}}" class="HP_links">View All Products <i
                                 class="fas fa fa-chevron-right"></i></a></div>
@@ -207,7 +207,7 @@
                     <div class="carousel-item @if($loop->iteration === 5) active @endif">
                         <div class="slides row center">
                             <div class="col-12">
-                                <div style=""><img src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
+                                <div style=""><img class="img-fluid" src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
                                 <div class="p_title center font_16">{{$product->title}} </div>
                                 <div><a href="{{$product->link}}" class="HP_links font_16">View All Products <i
                                             class="fas fa fa-chevron-right"></i></a></div>
