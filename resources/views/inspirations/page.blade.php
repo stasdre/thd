@@ -24,7 +24,7 @@
                 <div class="col-lg-12 col-md-8 col-sm-12">
                     <div class="center sidebar_text exterior_sidebar_text">
                         {!!$data->short_desc!!}
-                        <div class="sidebar_link row">
+                        <div class="row">
                             <div class="blue-text side_link col-sm-6 col-lg-12"><b>
                                 @if ($data->brochure_link)                                    
                                     <a target="_blank" href="{{$data->brochure_link}}" class="font_mob">View
