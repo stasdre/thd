@@ -12,7 +12,13 @@
                 <div class="col-lg-12 col-md-4 col-sm-12">
                     <div class="kitchen_maid_side ipad-off">
                         @if($data->img_above_logo)
-                            <img class="img-fluid" src="{{asset('storage/inspiration/'.$data->img_above_logo)}}">
+                            @if($data->img_above_logo_link)
+                                <a target="_blank" href="{{$data->img_above_logo_link}}" target="_blank">
+                                    <img class="img-fluid" src="{{asset('storage/inspiration/'.$data->img_above_logo)}}">
+                                </a>
+                            @else
+                                <img class="img-fluid" src="{{asset('storage/inspiration/'.$data->img_above_logo)}}">
+                            @endif
                         @endif
                     </div>
                     <div class="center top35">

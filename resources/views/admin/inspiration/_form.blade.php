@@ -65,6 +65,12 @@
             </div>
         </div>
         <div class="form-group">
+            {{ Form::label('img_above_logo_link', 'Above image link', ['class' => 'col-sm-2 control-label']) }}
+            <div class="col-sm-4">
+                {{ Form::text('img_above_logo_link', null, ['class'=>'form-control', 'placeholder'=>'Above image link']) }}
+            </div>
+        </div>
+        <div class="form-group">
             {{ Form::label('logo_img', 'Logo image', ['class' => 'col-sm-2 control-label']) }}
             <div class="col-sm-4 input-file">
                 @if(isset($inspiration->logo_img))

@@ -35,6 +35,7 @@ class InspirationRequest extends FormRequest
         
         $rules['title'] = 'required|max:100';
         $rules['img_above_logo'] = 'nullable|image|dimensions:min_width=230,min_height=230';
+        $rules['img_above_logo_link'] = 'nullable|max:191';
         $rules['logo_img'] = 'nullable|image';
         $rules['brochure_link'] = 'nullable|max:191';
         $rules['locator_link'] = 'nullable|max:191';
