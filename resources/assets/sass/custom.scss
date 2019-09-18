@@ -100,3 +100,15 @@
   line-height: 23px; 
   margin-bottom:15px;
 }
+
+.placeholder-black::after{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.2;
+}

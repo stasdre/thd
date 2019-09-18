@@ -151,7 +151,7 @@
                               @endforeach          
                           </div>
                           <a class="carousel-control-prev" href="#plan{{$plan->plan_number}}" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#plan{{$plan->plan_number}}" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
-                        <div class="media planinfo text-left position-absolute"> <img class="mr-1 align-self-center" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
+                        <div class="media planinfo text-left position-absolute placeholder-black"> <img class="mr-1 align-self-center" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
                           <div class="media-body">
                             <h5 class="mb-0 text-white">plan <span class="text-secondary">{{$plan->plan_number}}</span></h5>
                             <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
