@@ -134,9 +134,6 @@ class PlanImageController extends Controller
         if($input['first_image'] == 1)
             PlanImage::where('plan_id', '=', $image->plan_id)->update(['first_image'=>0]);
 
-        if($input['for_search'] == 1)
-            PlanImage::where('plan_id', '=', $image->plan_id)->update(['for_search'=>0]);
-
         $image->title = $input['title'];
         $image->alt_text = $input['alt_text'];
         $image->description = $input['description'];

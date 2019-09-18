@@ -206,7 +206,9 @@ class SearchController extends Controller
                 break;
         }
 
-        $dataPlans = $plans->with('images')->paginate($views);
+        $dataPlans = $plans->with(['images'=>function($query){
+            $query->where('for_search', 1);
+        }])->paginate($views);
         //return view('search.index', ['plans'=>$dataPlans]);
         return response()->json($dataPlans);
     }
