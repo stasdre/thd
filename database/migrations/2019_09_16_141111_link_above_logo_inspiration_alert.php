@@ -14,7 +14,7 @@ class LinkAboveLogoInspirationAlert extends Migration
     public function up()
     {
         Schema::table('inspirations', function (Blueprint $table) {
-            $table->string('img_above_logo_link', 191)->nullable(0);
+            $table->string('img_above_logo_link', 191)->nullable();
         });                        
     }
 
