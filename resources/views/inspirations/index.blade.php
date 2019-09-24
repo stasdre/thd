@@ -11,16 +11,15 @@
     <div class="carousel-item active">
         <div class="slides row center david-home">
         <div class="col-12 col-md-6">
-            <div class="blue-bg">
+            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
             <h1 class="HI-davidhomeheading"> DAVID’S HOME</h1>
-            <P class="HI-davidhome"
-                style="margin: 15px 35px 15px 35px;text-align: center;letter-spacing: 1px;word-spacing: 5px;">
+            <p class="HI-davidhome text-center">
                 View the stunningly designed spaces of David & Liz Wiggins’ personal home + discover
-                their favorite home products!</P>
-            <img src="/images/owner.jpg">
+                their favorite home products!</p>
+            <div><img class="img-fluid" src="/images/owner.jpg"></div>
             </div>
         </div>
-        <div class="col-12 col-md-6 image-sec" style="padding-right : 0;text-align: right;">
+        <div class="col-12 col-md-6 image-sec">
             <img src="/images/home1.png">
         </div>
         </div>
@@ -29,30 +28,18 @@
     <div class="carousel-item ">
         <div class="slides row center david-home">
         <div class="col-12 col-md-6">
-            <div class="blue-bg">
-            <P class="HI-davidhome mobile-off" style="line-height:35px; margin-top:40px;">From an architect's
-                perspective, the way natural light flows into<br> a home is everything which is<br> why David
-                chose Jeld-Wen's<br> stunning, reliable and energy<br> efficient windows.</P>
-            <p class="desktop-off HI-davidhome py-3" style="margin : 2px 17px !important;">From an architect’s
-                <br>
-
-                perspective, maximizing natural<br>
-
-                light is a key design element,<br>
-
-                which is why David chose<br>
-
-                Jeld-Wen's stunning, reliable<br>
-
-                and energy efficient windows.</p>
-            <div class="con2">
-                <img src="/images/jw.png">
+            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
+            <p class="HI-davidhome text-center">From an architect's
+                perspective, the way natural light flows into a home is everything which is why David
+                chose Jeld-Wen's stunning, reliable and energy efficient windows.</p>
+            <div><img class="img-fluid" src="/images/jw.png"></div>
+            <div>
                 <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
                     class="bottom-text-right"> Product locator</span></div>
             </div>
             </div>
         </div>
-        <div class="col-12 col-md-6 image-sec" style="padding-right : 0;text-align: right;">
+        <div class="col-12 col-md-6 image-sec">
             <img src="/images/home2.png">
         </div>
         </div>
@@ -61,29 +48,19 @@
     <div class="carousel-item">
         <div class="slides row center david-home">
         <div class="col-12 col-md-6">
-            <div class="blue-bg">
-            <P class="HI-davidhome mobile-off" style="margin-top : 60px !important;">LIz Wiggins chose
-                KitchenAid premium appliances with their signature, gorgeous design and cutting-edge technology
-                for cooking and entertaining ease.</P>
-            <p class="HI-davidhome desktop-off" style="margin: 60px 21px !important;">LIz Wiggins chose
-                KitchenAid<br>
-
-                premium appliances with their<br>
-
-                signature, gorgeous design and<br>
-
-                cutting-edge technology for<br>
-
-                cooking and entertaining ease.</p>
-            <div class="con2">
-                <img src="/images/KA.png" class="KA">
-                <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                    class="bottom-text-right"> Product locator</span></div>
-            </div>
+            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
+                <p class="HI-davidhome text-center">LIz Wiggins chose
+                    KitchenAid premium appliances with their signature, gorgeous design and cutting-edge technology
+                    for cooking and entertaining ease.</p>
+                    <div><img class="img-fluid" src="/images/KA.png"></div>
+                <div>
+                    <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
+                        class="bottom-text-right"> Product locator</span></div>
+                </div>
             </div>
         </div>
 
-        <div class="col-12 col-md-6 image-sec" style="padding-right : 0;text-align: right;">
+        <div class="col-12 col-md-6 image-sec">
             <img src="/images/home3.png">
 
         </div>
@@ -93,19 +70,19 @@
     <div class="carousel-item">
         <div class="slides row center david-home">
         <div class="col-12 col-md-6">
-            <div class="blue-bg">
-            <P class="HI-davidhome" style="margin-top:30px;padding-left:10px;">With more than 30 designer
-                colors and its energy savings and protection from hail,<br> wind and rain, Mueller was chosen
-                for gorgeous<br> metal roofing accents.</P>
-            <div class="con2">
-                <img src="/images/mbrc.png">
-                <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                    class="bottom-text-right"> Product locator</span></div>
-            </div>
+            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
+                <p class="HI-davidhome text-center">With more than 30 designer
+                    colors and its energy savings and protection from hail, wind and rain, Mueller was chosen
+                    for gorgeous metal roofing accents.</p>
+                <div><img class="img-fluid" src="/images/mbrc.png"></div>
+                <div>
+                    <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
+                        class="bottom-text-right"> Product locator</span></div>
+                </div>
             </div>
         </div>
 
-        <div class="col-12 col-md-6 image-sec" style="padding-right : 0;text-align: right;">
+        <div class="col-12 col-md-6 image-sec">
             <img src="/images/home4.png">
 
         </div>
@@ -116,19 +93,19 @@
     <div class="carousel-item">
         <div class="slides row center david-home">
         <div class="col-12 col-md-6">
-            <div class="blue-bg">
-            <P class="HI-davidhome" style="margin-top: 30px;">Sherwin Williams' Color Visualizer tool was
-                critical in helping David and Liz find<br> the perfect exterior and<br> interior paint solutions
-                for<br> their new home.</P>
-            <div class="con2">
-                <img src="/images/sw.png">
-                <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                    class="bottom-text-right"> Product locator</span></div>
-            </div>
+            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
+                <p class="HI-davidhome text-center">Sherwin Williams' Color Visualizer tool was
+                    critical in helping David and Liz find the perfect exterior and interior paint solutions
+                    for their new home.</p>
+                    <div><img class="img-fluid" src="/images/sw.png"></div>
+                <div>
+                    <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
+                        class="bottom-text-right"> Product locator</span></div>
+                </div>
             </div>
         </div>
 
-        <div class="col-12 col-md-6 image-sec" style="padding-right : 0;text-align: right;">
+        <div class="col-12 col-md-6 image-sec">
             <img src="/images/home5.png">
 
         </div>
@@ -139,19 +116,19 @@
     <div class="carousel-item">
         <div class="slides row center david-home">
         <div class="col-12 col-md-6">
-            <div class="blue-bg">
-            <P class="HI-davidhome" style="margin-top:30px;">David & Liz chose durable<br> and versatile Royal
-                Building<br> Products Trim & Moulding<br> to make a beautiful design<br> statement without the
-                concern<br> of rotting, warping or splitting.</P>
-            <div class="con2">
-                <img src="/images/rbp.png">
-                <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                    class="bottom-text-right"> Product locator</span></div>
-            </div>
+            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
+                <p class="HI-davidhome text-center">David & Liz chose durable and versatile Royal
+                    Building Products Trim & Moulding to make a beautiful design statement without the
+                    concern of rotting, warping or splitting.</p>
+                    <div><img class="img-fluid" src="/images/rbp.png"></div>
+                <div>
+                    <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
+                        class="bottom-text-right"> Product locator</span></div>
+                </div>
             </div>
         </div>
 
-        <div class="col-12 col-md-6 image-sec" style="padding-right : 0;text-align: right;">
+        <div class="col-12 col-md-6 image-sec">
             <img src="/images/home6.png">
 
         </div>
@@ -161,42 +138,25 @@
     <div class="carousel-item">
         <div class="slides row center david-home">
         <div class="col-12 col-md-6">
-            <div class="blue-bg">
-            <P class="HI-davidhome mobile-off" style="margin: 30px 50px 8px 50px;">An architect views a roof
-                and roofline as 50% of a home's<br> curb appeal which is why David<br> chose GAF Timberline
-                Roofing<br> Shingles, the #1-selling shingles<br> in North America for both<br> performance and
-                value.</P>
-
-            <p class="desktop-off HI-davidhome" style="margin: 2px 19px !important;">An architect views a roof
-                and <br>
-
-                roofline as 50% of a home's<br>
-
-                curb appeal which is why David<br>
-
-                chose GAF Timberline Roofing<br>
-
-                Shingles, the #1-selling shingles<br>
-
-                in North America for both<br>
-
-                performance and value.</p>
-            <div class="con2">
-
-
-                <img src="/images/gaf.png">
-                <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                    class="bottom-text-right"> Product locator</span></div>
-            </div>
+            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
+                <p class="HI-davidhome text-center">An architect views a roof
+                    and roofline as 50% of a home's curb appeal which is why David chose GAF Timberline
+                    Roofing Shingles, the #1-selling shingles in North America for both performance and
+                    value.</p>
+                <div><img class="img-fluid" src="/images/gaf.png"></div>
+                <div>
+                    <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
+                        class="bottom-text-right"> Product locator</span></div>
+                </div>
             </div>
         </div>
 
-        <div class="col-12 col-md-6 image-sec" style="padding-right : 0;text-align: right;">
+        <div class="col-12 col-md-6 image-sec">
             <img src="/images/home7.png">
 
         </div>
         </div>
-    </div>
+    </div> 
 
     <a class="carousel-control-prev" href="#carouselmain" role="button" data-slide="prev"
         style="left: 510px;">
