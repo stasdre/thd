@@ -67,69 +67,64 @@
             </div>
             <div class="row">
                 @if(!$data->third_img)
-                    <div class="col-6 images_width_50 slider_img_padding">
-                        <div class="kitchen_maid_img2">
-                            @if ($data->first_img)
-                                @if ($data->first_img_link)                        
-                                    <a target="_blank" href="{{$data->first_img_link}}" target="_blank"><img class="img-fluid"
-                                        src="{{asset('storage/inspiration/'.$data->first_img)}}" /></a>
-                                @else
-                                    <img class="img-fluid" src="{{asset('storage/inspiration/'.$data->first_img)}}" />
-                                @endif                    
-                            @endif        
-                        </div>
+                    <div class="col-6">
+                        @if ($data->first_img)
+                            @if ($data->first_img_link)                        
+                                <a target="_blank" href="{{$data->first_img_link}}" target="_blank">
+                                    <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->first_img)}}" /></div>
+                                </a>
+                            @else
+                                <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->first_img)}}" /></div>
+                            @endif                    
+                        @endif        
                     </div>
-                    <div class="col-6 images_width_50 slider_img_padding">
-                        <div class="kitchen_maid_img3">
-                            @if ($data->second_img)
-                                @if ($data->second_img_link)                        
-                                    <a target="_blank" href="{{$data->second_img_link}}" target="_blank"><img class="img-fluid"
-                                        src="{{asset('storage/inspiration/'.$data->second_img)}}" /></a>
-                                @else
-                                    <img class="img-fluid" src="{{asset('storage/inspiration/'.$data->second_img)}}" />
-                                @endif                    
-                            @endif        
-                        </div>
+                    <div class="col-6">
+                        @if ($data->second_img)
+                            @if ($data->second_img_link)                        
+                                <a target="_blank" href="{{$data->second_img_link}}" target="_blank">
+                                    <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->second_img)}}" /></div>
+                                </a>
+                            @else
+                                <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->second_img)}}" /></div>
+                            @endif                    
+                        @endif        
                     </div>
 
                 @else
-                    <div class="col-4 images_width slider_img_padding pedding-right7">
-                        <div class="kitchen_maid_img2">
-                            @if ($data->first_img)
-                                @if ($data->first_img_link)                        
-                                    <a target="_blank" href="{{$data->first_img_link}}" target="_blank"><img class="img-fluid"
-                                        src="{{asset('storage/inspiration/'.$data->first_img)}}" /></a>
-                                @else
-                                    <img class="img-fluid" src="{{asset('storage/inspiration/'.$data->first_img)}}" />
-                                @endif                    
-                            @endif        
-                        </div>
+                    <div class="col-4">
+                        @if ($data->first_img)
+                            @if ($data->first_img_link)                        
+                                <a target="_blank" href="{{$data->first_img_link}}" target="_blank">
+                                    <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->first_img)}}" /></div>
+                                </a>
+                            @else
+                                <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->first_img)}}" /></div>
+                            @endif                    
+                        @endif        
                     </div>
-                    <div class="col-4 images_width slider_img_padding pedding-left12">
-                        <div class="kitchen_maid_img3">
-                            @if ($data->second_img)
-                                @if ($data->second_img_link)                        
-                                    <a target="_blank" href="{{$data->second_img_link}}" target="_blank"><img class="img-fluid"
-                                        src="{{asset('storage/inspiration/'.$data->second_img)}}" /></a>
-                                @else
-                                    <img class="img-fluid" src="{{asset('storage/inspiration/'.$data->second_img)}}" />
-                                @endif                    
-                            @endif        
-                        </div>
+                    <div class="col-4">
+                        @if ($data->second_img)
+                            @if ($data->second_img_link)                        
+                                <a target="_blank" href="{{$data->second_img_link}}" target="_blank">
+                                    <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->second_img)}}" /></div>
+                                </a>
+                            @else
+                                <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->second_img)}}" /></div>
+                            @endif                    
+                        @endif        
                     </div>
                 @endif
                 @if($data->third_img)
-                    <div class="col-4 images_width slider_img_padding peddingcustomize pedding-left7">
-                        <div class="kitchen_maid_img4">
-                            @if ($data->third_img)
-                                @if ($data->third_img_link)                        
-                                    <a target="_blank" href="{{$data->third_img_link}}" target="_blank"><img class="img-fluid"
-                                        src="{{asset('storage/inspiration/'.$data->third_img)}}" /></a>
-                                @else
-                                    <img class="img-fluid" src="{{asset('storage/inspiration/'.$data->third_img)}}" />
-                                @endif                    
-                            @endif        
-                        </div>
+                    <div class="col-4">
+                        @if ($data->third_img)
+                            @if ($data->third_img_link)                        
+                                <a target="_blank" href="{{$data->third_img_link}}" target="_blank">
+                                    <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->third_img)}}" /></div>
+                                </a>
+                            @else
+                                <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->third_img)}}" /></div>
+                            @endif                    
+                        @endif        
                     </div>
                 @endif
             </div>
@@ -146,7 +141,7 @@
         @isset ($data->products)            
             @foreach ($data->products as $product)
                 <div class="col-6 col-lg-3">
-                <div style=""><img class="img-fluid" src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
+                <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
                 <div class="p_title center">{{$product->title}}</div>
                 <div><a href="{{$product->link}}" class="HP_links">View All Products <i
                                 class="fas fa fa-chevron-right"></i></a></div>
@@ -166,7 +161,7 @@
                     <div class="carousel-item @if($loop->iteration === 1) active @endif">
                         <div class="slides row center">
                             <div class="col-12">
-                                <div style=""><img class="img-fluid" src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
+                                <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
                                 <div class="p_title center font_16">{{$product->title}} </div>
                                 <div><a href="{{$product->link}}" class="HP_links font_16">View All Products <i
                                             class="fas fa fa-chevron-right"></i></a></div>
@@ -193,7 +188,7 @@
                 @continue($loop->iteration < 5)
 
                 <div class="col-6 col-lg-3">
-                <div style=""><img class="img-fluid" src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
+                <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
                 <div class="p_title center">{{$product->title}}</div>
                 <div><a href="{{$product->link}}" class="HP_links">View All Products <i
                                 class="fas fa fa-chevron-right"></i></a></div>
@@ -213,7 +208,7 @@
                     <div class="carousel-item @if($loop->iteration === 5) active @endif">
                         <div class="slides row center">
                             <div class="col-12">
-                                <div style=""><img class="img-fluid" src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
+                                <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$product->product_img)}}"></div>
                                 <div class="p_title center font_16">{{$product->title}} </div>
                                 <div><a href="{{$product->link}}" class="HP_links font_16">View All Products <i
                                             class="fas fa fa-chevron-right"></i></a></div>
