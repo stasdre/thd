@@ -71,10 +71,10 @@
                         @if ($data->first_img)
                             @if ($data->first_img_link)                        
                                 <a target="_blank" href="{{$data->first_img_link}}" target="_blank">
-                                    <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->first_img)}}" /></div>
+                                    <div class="embed-responsive embed-responsive-4by3"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->first_img)}}" /></div>
                                 </a>
                             @else
-                                <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->first_img)}}" /></div>
+                                <div class="embed-responsive embed-responsive-4by3"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->first_img)}}" /></div>
                             @endif                    
                         @endif        
                     </div>
@@ -82,10 +82,10 @@
                         @if ($data->second_img)
                             @if ($data->second_img_link)                        
                                 <a target="_blank" href="{{$data->second_img_link}}" target="_blank">
-                                    <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->second_img)}}" /></div>
+                                    <div class="embed-responsive embed-responsive-4by3"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->second_img)}}" /></div>
                                 </a>
                             @else
-                                <div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->second_img)}}" /></div>
+                                <div class="embed-responsive embed-responsive-4by3"><img class="embed-responsive-item" src="{{asset('storage/inspiration/'.$data->second_img)}}" /></div>
                             @endif                    
                         @endif        
                     </div>
