@@ -8,155 +8,46 @@
 
 <div id="carouselmain" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-    <div class="carousel-item active">
-        <div class="slides row center david-home">
-        <div class="col-12 col-md-6">
-            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
-            <h1 class="HI-davidhomeheading"> DAVID’S HOME</h1>
-            <p class="HI-davidhome text-center">
-                View the stunningly designed spaces of David & Liz Wiggins’ personal home + discover
-                their favorite home products!</p>
-            <div><img class="img-fluid" src="/images/owner.jpg"></div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 image-sec">
-            <img src="/images/home1.png">
-        </div>
-        </div>
-    </div>
-
-    <div class="carousel-item ">
-        <div class="slides row center david-home">
-        <div class="col-12 col-md-6">
-            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
-            <p class="HI-davidhome text-center">From an architect's
-                perspective, the way natural light flows into a home is everything which is why David
-                chose Jeld-Wen's stunning, reliable and energy efficient windows.</p>
-            <div><img class="img-fluid" src="/images/jw.png"></div>
-            <div>
-                <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                    class="bottom-text-right"> Product locator</span></div>
-            </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 image-sec">
-            <img src="/images/home2.png">
-        </div>
-        </div>
-    </div>
-
-    <div class="carousel-item">
-        <div class="slides row center david-home">
-        <div class="col-12 col-md-6">
-            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
-                <p class="HI-davidhome text-center">LIz Wiggins chose
-                    KitchenAid premium appliances with their signature, gorgeous design and cutting-edge technology
-                    for cooking and entertaining ease.</p>
-                    <div><img class="img-fluid" src="/images/KA.png"></div>
-                <div>
-                    <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                        class="bottom-text-right"> Product locator</span></div>
+    @foreach ($sliders as $slider)        
+        <div class="carousel-item @if($loop->iteration === 1) active @endif">
+            <div class="slides row center david-home">
+            <div class="col-12 col-md-6">
+                <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
+                    @if ($slider->title)                
+                        <h1 class="HI-davidhomeheading">{{$slider->title}}</h1>
+                    @endif
+                    <div class="HI-davidhome text-center">
+                        {!!$slider->desc!!}
+                    </div>
+                    <div>
+                        @if ($slider->logo_img)                    
+                            <img class="img-fluid" src="{{asset('storage/inspiration-slider/'.$slider->logo_img)}}">
+                        @endif
+                    </div>
+                    <div>
+                        @if ($slider->brochure_link || $slider->locator_link)                            
+                            <div class="bottom-text"> 
+                                @if ($slider->brochure_link)                                    
+                                    <a href="{{$slider->brochure_link}}"><span style="color:#fff;" class="bottom-text-left">View brochure</span></a> | 
+                                @endif
+                                @if ($slider->locator_link)                                
+                                    <a href="{{$slider->locator_link}}"><span style="color:#fff;" class="bottom-text-right">Product locator</span></a>
+                                @endif
+                            </div>
+                        @endif
+                    </div>            
                 </div>
             </div>
-        </div>
-
-        <div class="col-12 col-md-6 image-sec">
-            <img src="/images/home3.png">
-
-        </div>
-        </div>
-    </div>
-
-    <div class="carousel-item">
-        <div class="slides row center david-home">
-        <div class="col-12 col-md-6">
-            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
-                <p class="HI-davidhome text-center">With more than 30 designer
-                    colors and its energy savings and protection from hail, wind and rain, Mueller was chosen
-                    for gorgeous metal roofing accents.</p>
-                <div><img class="img-fluid" src="/images/mbrc.png"></div>
-                <div>
-                    <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                        class="bottom-text-right"> Product locator</span></div>
+            <div class="col-12 col-md-6">
+                @if ($slider->slider_img)    
+                <div class="inspiration-slider embed-responsive embed-responsive-4by3"> 
+                    <img class="embed-responsive-item" src="{{asset('storage/inspiration-slider/'.$slider->slider_img)}}">
                 </div>
+                @endif
+            </div>
             </div>
         </div>
-
-        <div class="col-12 col-md-6 image-sec">
-            <img src="/images/home4.png">
-
-        </div>
-        </div>
-    </div>
-
-
-    <div class="carousel-item">
-        <div class="slides row center david-home">
-        <div class="col-12 col-md-6">
-            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
-                <p class="HI-davidhome text-center">Sherwin Williams' Color Visualizer tool was
-                    critical in helping David and Liz find the perfect exterior and interior paint solutions
-                    for their new home.</p>
-                    <div><img class="img-fluid" src="/images/sw.png"></div>
-                <div>
-                    <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                        class="bottom-text-right"> Product locator</span></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-6 image-sec">
-            <img src="/images/home5.png">
-
-        </div>
-        </div>
-    </div>
-
-
-    <div class="carousel-item">
-        <div class="slides row center david-home">
-        <div class="col-12 col-md-6">
-            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
-                <p class="HI-davidhome text-center">David & Liz chose durable and versatile Royal
-                    Building Products Trim & Moulding to make a beautiful design statement without the
-                    concern of rotting, warping or splitting.</p>
-                    <div><img class="img-fluid" src="/images/rbp.png"></div>
-                <div>
-                    <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                        class="bottom-text-right"> Product locator</span></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-6 image-sec">
-            <img src="/images/home6.png">
-
-        </div>
-        </div>
-    </div>
-
-    <div class="carousel-item">
-        <div class="slides row center david-home">
-        <div class="col-12 col-md-6">
-            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
-                <p class="HI-davidhome text-center">An architect views a roof
-                    and roofline as 50% of a home's curb appeal which is why David chose GAF Timberline
-                    Roofing Shingles, the #1-selling shingles in North America for both performance and
-                    value.</p>
-                <div><img class="img-fluid" src="/images/gaf.png"></div>
-                <div>
-                    <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                        class="bottom-text-right"> Product locator</span></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-6 image-sec">
-            <img src="/images/home7.png">
-
-        </div>
-        </div>
-    </div> 
+    @endforeach
 
     <a class="carousel-control-prev" href="#carouselmain" role="button" data-slide="prev"
         style="left: 510px;">
@@ -184,71 +75,52 @@
         type="button">Go</button>
     </div>
 </div>
-<div class="row HI-secC py-2 mobile-off">
+<div class="row HI-secC py-2">
     <div class="col-12 col-md-6 center">
-    <img src="/images/HP-imageA.jpg" class="full-image">
-    <div class="py-2">
-        <h5 style="margin-bottom :0;" class="f14 mobile-off info-title"> HOW THE WIGGINS CREATED THEIR DREAM
-        HOME</h5>
-        <h5 style="margin-bottom :0;" class="desktop-off title info-title"> THE WIGGINS CREATE THEIR DREAM HOME
-        </h5>
-        <div class="author_title">DAVID & LIZ</div>
-        <div class="author_info">Best-Selling Architect David Wiggins and his wife open up about
-        the joy and challenges of building a new home.
+        <div class="inspiration-slider embed-responsive embed-responsive-4by3">         
+            <img src="{{asset('storage/inspiration-blocks/'.$blocks->img_l_t)}}" class="embed-responsive-item">
         </div>
-        <div><a href="" class="HP_links">WATCH VIDEO <i class="fa fa-chevron-right"></i></a></div>
+    <div class="py-2">
+        @if ($blocks->first_title_l_t)            
+            <h5 style="margin-bottom :0;" class="f14 info-title">{{$blocks->first_title_l_t}}</h5>
+        @endif
+        @if ($blocks->title_l_t)    
+            <div class="author_title">{{$blocks->title_l_t}}</div>
+        @endif
+        @if ($blocks->desc_l_t)            
+            <div class="author_info">
+                {!!$blocks->desc_l_t!!}
+            </div>
+        @endif
+        @if ($blocks->link_l_t && $blocks->link_name_l_t)            
+            <div><a href="{{$blocks->link_l_t}}" class="HP_links">{{$blocks->link_name_l_t}}<i class="fa fa-chevron-right"></i></a></div>
+        @endif
     </div>
 
     </div>
     <div class="col-12 col-md-6 center">
-    <img src="/images/HP-imageB.jpg" class="full-image">
-    <div class="py-2">
-        <h5 style="margin-bottom :0;" class="f14 info-title">BEHIND THE DESIGN</h5>
-        <div class="author_title">A HOME BLOG JOURNAL</div>
-        <div class="author_info">Find out where David’s inspiration comes from, see our <br>latest house plans
-        and great product ideas.</div>
-        <div><a href="" class="HP_links">READ NOW <i class="fa fa-chevron-right"></i></a></div>
-    </div>
-
+        <div class="inspiration-slider embed-responsive embed-responsive-4by3">         
+                <img src="{{asset('storage/inspiration-blocks/'.$blocks->img_r_t)}}" class="embed-responsive-item">
+        </div>        
+        <div class="py-2">
+                @if ($blocks->first_title_r_t)            
+                <h5 style="margin-bottom :0;" class="f14 info-title">{{$blocks->first_title_r_t}}</h5>
+            @endif
+            @if ($blocks->title_r_t)    
+                <div class="author_title">{{$blocks->title_r_t}}</div>
+            @endif
+            @if ($blocks->desc_r_t)            
+                <div class="author_info">
+                    {!!$blocks->desc_r_t!!}
+                </div>
+            @endif
+            @if ($blocks->link_name_r_t && $blocks->link_r_t)            
+                <div><a href="{{$blocks->link_r_t}}" class="HP_links">{{$blocks->link_name_r_t}}<i class="fa fa-chevron-right"></i></a></div>
+            @endif
+        </div>
     </div>
 
 </div>
-
-
-
-<div class="row HI-secC py-2 desktop-off">
-    <div class="col-12 col-md-6 center">
-    <img src="/images/HP-imageA.jpg" class="full-image">
-    <div class="py-2">
-        <h5 style="margin-bottom :0;" class="f14 mobile-off info-title"> HOW THE WIGGINS CREATED THEIR DREAM
-        HOME</h5>
-        <h5 style="margin-bottom :0;" class="desktop-off title info-title"> THE WIGGINS CREATE THEIR DREAM HOME
-        </h5>
-        <div class="author_title">DAVID & LIZ</div>
-        <div class="author_info">Best-Selling Architect David Wiggins and his wife open up about
-        the joy and challenges of building a new home.
-        </div>
-        <div><a href="" class="HP_links">WATCH VIDEO <i class="fa fa-chevron-right"></i></a></div>
-    </div>
-
-    </div>
-    <div class="col-12 col-md-6 center">
-    <img src="/images/HP-imageB.jpg" class="full-image">
-    <div class="py-2">
-        <h5 style="margin-bottom :0;" class="f14 info-title">BEHIND THE DESIGN</h5>
-        <div class="author_title">A HOME BLOG JOURNAL</div>
-        <div class="author_info">Find out where David’s inspiration comes from, see our latest house plans and
-        great product ideas.</div>
-        <div><a href="" class="HP_links">READ NOW <i class="fa fa-chevron-right"></i></a></div>
-    </div>
-
-    </div>
-
-</div>
-
-
-
-
 
 <hr>
 <div class="desktop-off center HI-slider-text">
@@ -262,89 +134,23 @@
     discuss your home building joys and challenges.</p>
     <div id="carousel2" class="carousel slide" data-ride="carousel" data-interval="false">
     <div class="carousel-inner">
-        <div class="carousel-item active">
-        <div class="slides row center">
-            <div class="col-12">
-            <div style=""><img src="/images/jeld-wen.jpg"></div>
-            <div class="p_title center">Jeld-Wen Windows </div>
-            <div><a href="" class="HP_links">View All Products <i class="fas fa fa-chevron-right"></i></a>
-            </div>
-            </div>
-        </div>
-        </div>
-        <div class="carousel-item">
-        <div class="slides row center">
-            <div class="col-12">
-            <div style=""><img src="/images/gaf-roofing.png"></div>
-            <div class="p_title center">GAF Roofing </div>
-            <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-            </div>
-        </div>
-        </div>
-
-        <div class="carousel-item">
-        <div class="slides row center">
-            <div class="col-12">
-            <div style="" class=""><img src="/images/clopay.png"></div>
-            <div class="p_title center">Clopay Garage Doors
-            </div>
-            <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-
-            </div>
-        </div>
-        </div>
-        <div class="carousel-item">
-        <div class="slides row center">
-            <div class="col-12">
-            <div style=""><img src="/images/kraft-maid.jpg"></div>
-            <div class="p_title center">KraftMaid Cabinetry </div>
-            <div><a href="" class="HP_links">View All Products <i class="fas fa fa-chevron-right"></i>
-                </a></div>
-            </div>
-        </div>
-        </div>
-        <div class="carousel-item">
-        <div class="slides row center">
-            <div class="col-12">
-            <div style=""><img src="/images/royal-building.png"></div>
-            <div class="p_title center">Royal Building Products</div>
-            <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-
-            </div>
-        </div>
-        </div>
-        <div class="carousel-item">
-        <div class="slides row center">
-            <div class="col-12">
-            <div style=""><img src="/images/royal-building.png"></div>
-            <div class="p_title center">Royal Building Products</div>
-            <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-
-            </div>
-        </div>
-        </div>
-        <div class="carousel-item">
-        <div class="slides row center">
-            <div class="col-12">
-            <div style="" class=""><img src="/images/meon.png"></div>
-            <div class="p_title center">Moen Faucets</div>
-            <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-
-            </div>
-        </div>
-        </div>
-        <div class="carousel-item">
-        <div class="slides row center">
-            <div class="col-12">
-            <div style=""><img src="/images/amercan.png"></div>
-
-
-            <div class="p_title center">Amercan Standard</div>
-            <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-            </div>
-
-        </div>
-        </div>
+        @foreach ($products as $product)
+            <div class="carousel-item @if($loop->iteration === 1) active @endif">
+                <div class="slides row center">
+                    <div class="col-12">
+                        <div class="embed-responsive embed-responsive-1by1">
+                            <img class="embed-responsive-item" src="{{asset('storage/inspiration-products/'.$product->img)}}">
+                        </div>
+                        <div class="p_title center">{{$product->name}}</div>
+                        <div>
+                            @if ($product->link_name && $product->link)                        
+                                <a href="{{$product->link}}" class="HP_links">{{$product->link_name}} <i class="fas fa fa-chevron-right newfa"></i></a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        @endforeach
 
         <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -361,104 +167,67 @@
     <h3 class="blue-text" style="font-size : 24px;"> INNOVATIVE PRODUCTS TO DESIGN FUNCTIONAL AND BEAUTIFUL
     LIVING SPACES </h3>
     <div class="row py-3 HI-slidearea">
-    <div class="col-6 col-lg-3">
-        <div style=""><img src="/images/jeld-wen.jpg"></div>
-        <div class="p_title center">Jeld-Wen Windows </div>
-        <div><a href="" class="HP_links">View All Products <i class="fas fa fa-chevron-right newfa"></i></a>
-        </div>
-    </div>
-    <div class="col-6 col-lg-3">
-        <div style=""><img src="/images/gaf-roofing.png"></div>
-        <div class="p_title center">GAF Roofing
-        </div>
-        <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
+        @foreach ($products as $product)
+            @if ($loop->iteration % 5 === 0)
+                </div><div class="row py-3 HI-slidearea">
+            @endif
 
-    </div>
-    <div class="col-6 col-lg-3">
-        <div style="" class=""><img src="/images/clopay.png"></div>
-        <div class="p_title center">Clopay Garage Doors
-        </div>
-        <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-
-    </div>
-    <div class="col-6 col-lg-3">
-        <div style=""><img src="/images/coronado.png"></div>
-
-
-        <div class="p_title center">Coronado Stone
-        </div>
-        <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-    </div>
-
-    </div>
-
-    <div class="row py-3 HI-slidearea">
-    <div class="col-6 col-lg-3">
-        <div style=""><img src="/images/kraft-maid.jpg"></div>
-        <div class="p_title center">KraftMaid Cabinetry
-
-        </div>
-        <div><a href="" class="HP_links">View All Products <i class="fas fa fa-chevron-right"></i>
-        </a></div>
-    </div>
-    <div class="col-6 col-lg-3">
-        <div style=""><img src="/images/royal-building.png"></div>
-        <div class="p_title center">Royal Building Products</div>
-        <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-
-    </div>
-    <div class="col-6 col-lg-3">
-        <div style="" class=""><img src="/images/meon.png"></div>
-        <div class="p_title center">Moen Faucets</div>
-        <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-
-    </div>
-    <div class="col-6 col-lg-3">
-        <div style=""><img src="/images/amercan.png"></div>
-
-
-        <div class="p_title center">Amercan Standard</div>
-        <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-    </div>
-
-    </div>
-
-</div>
-<div class="row py-3 HI-secE mobile-off">
-    <div class="col-12 col-md-6 center">
-    <img src="/images/home10.png" class="full-image">
-    <div class="py-2">
-        <h5 class="author_title" style="margin-bottom : 0;"> DAVID’S WEEKLY E-PUB</h5>
-        <div class="author_info">New plans, promotions and great home product recommendations</div>
-        <div><a href="" class="HP_links">SIGN UP NOW <i class="fa fa-chevron-right"></i></a></div>
-    </div>
-    </div>
-    <div class="col-12 col-md-6 center">
-    <img src="/images/home11.png" class="full-image">
-    <div class="py-2">
-        <h5 class="author_title" style="margin-bottom : 0;"> HOUZZ </h5>
-        <div class="author_info">See photographs of our customer’s favorite house plans</div>
-        <div><a href="" class="HP_links">VIEW NOW <i class="fa fa-chevron-right"></i></a></div>
-    </div>
+            <div class="col-6 col-lg-3">
+                <div class="embed-responsive embed-responsive-1by1">
+                    <img class="embed-responsive-item" src="{{asset('storage/inspiration-products/'.$product->img)}}">
+                </div>
+                <div class="p_title center">{{$product->name}}</div>
+                <div>
+                    @if ($product->link_name && $product->link)                        
+                        <a href="{{$product->link}}" class="HP_links">{{$product->link_name}} <i class="fas fa fa-chevron-right newfa"></i></a>
+                    @endif
+                </div>
+            </div>        
+        @endforeach
     </div>
 </div>
-<div class="row py-3 HI-secE desktop-off">
+<div class="row py-3 HI-secE">
     <div class="col-12 col-md-6 center">
-    <img src="/images/home11.png" class="full-image">
-    <div class="py-2">
-        <h5 class="author_title" style="margin-bottom : 0;"> DAVID’S WEEKLY E-PUB</h5>
-        <div class="author_info">New Plans, promotions and great home product recommendations</div>
-        <div><a href="" class="HP_links">SIGN UP NOW<i class="fa fa-chevron-right"></i></a></div>
-    </div>
+        <div class="inspiration-slider embed-responsive embed-responsive-4by3">         
+                <img src="{{asset('storage/inspiration-blocks/'.$blocks->img_b_l)}}" class="embed-responsive-item">
+        </div>        
+        <div class="py-2">
+                @if ($blocks->first_title_b_l)            
+                <h5 style="margin-bottom :0;" class="f14 info-title">{{$blocks->first_title_b_l}}</h5>
+            @endif
+            @if ($blocks->title_b_l)    
+                <div class="author_title">{{$blocks->title_b_l}}</div>
+            @endif
+            @if ($blocks->desc_b_l)            
+                <div class="author_info">
+                    {!!$blocks->desc_b_l!!}
+                </div>
+            @endif
+            @if ($blocks->link_b_l && $blocks->link_name_b_l)            
+                <div><a href="{{$blocks->link_b_l}}" class="HP_links">{{$blocks->link_name_b_l}}<i class="fa fa-chevron-right"></i></a></div>
+            @endif
+        </div>
     </div>
     <div class="col-12 col-md-6 center">
-    <img src="/images/home10.png" class="full-image">
-    <div class="py-2">
-        <h5 class="author_title" style="margin-bottom : 0;"> HOUZZ </h5>
-        <div class="author_info">Recent home builds of our customers favorite homes </div>
-        <div><a href="" class="HP_links">VIEW NOW <i class="fa fa-chevron-right"></i></a></div>
-    </div>
+        <div class="inspiration-slider embed-responsive embed-responsive-4by3">         
+                <img src="{{asset('storage/inspiration-blocks/'.$blocks->img_b_r)}}" class="embed-responsive-item">
+        </div>        
+        <div class="py-2">
+                @if ($blocks->first_title_b_r)            
+                <h5 style="margin-bottom :0;" class="f14 info-title">{{$blocks->first_title_b_r}}</h5>
+            @endif
+            @if ($blocks->title_b_r)    
+                <div class="author_title">{{$blocks->title_b_r}}</div>
+            @endif
+            @if ($blocks->desc_b_r)            
+                <div class="author_info">
+                    {!!$blocks->desc_b_r!!}
+                </div>
+            @endif
+            @if ($blocks->link_name_b_r && $blocks->link_b_r)            
+                <div><a href="{{$blocks->link_b_r}}" class="HP_links">{{$blocks->link_name_b_r}}<i class="fa fa-chevron-right"></i></a></div>
+            @endif
+        </div>    
     </div>
 </div>
-
 @endsection

@@ -4,6 +4,9 @@ namespace Thd\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Thd\Inspiration;
+use Thd\InspirationBloks;
+use Thd\InspirationProduct;
+use Thd\InspirationSlider;
 
 class InspirationController extends Controller
 {
@@ -15,7 +18,16 @@ class InspirationController extends Controller
 
     public function index()
     {
-        return view('inspirations.index', ['menu' => $this->_getMenuItems()]);
+        $dataSlider = InspirationSlider::select()->orderBy('order', 'asc')->get();
+        $dataBlocks = InspirationBloks::find(1);
+        $dataProducts = InspirationProduct::all();
+        
+        return view('inspirations.index', [
+            'menu' => $this->_getMenuItems(), 
+            'sliders' => $dataSlider, 
+            'blocks' => $dataBlocks,
+            'products'=>$dataProducts
+        ]);
     }
 
     public function pages($link)

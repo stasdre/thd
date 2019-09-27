@@ -155,6 +155,15 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::resource('inspiration', 'Admin\InspirationController', ['except'=>['show']]);
         Route::get('inspiration/data', 'Admin\InspirationController@anyData')->name('inspiration.data');
+
+        Route::resource('inspiration-slider', 'Admin\InspirationSliderController', ['except'=>['show']]);
+        Route::get('inspiration-slider/data', 'Admin\InspirationSliderController@anyData')->name('inspiration-slider.data');
+
+        Route::get('inspiration-blocks/edit', 'Admin\InspirationBlocksController@edit')->name('inspiration-blocks.edit');
+        Route::post('inspiration-blocks/update', 'Admin\InspirationBlocksController@update')->name('inspiration-blocks.update');
+
+        Route::resource('inspiration-products', 'Admin\InspirationProductsController', ['except'=>['show']]);
+        Route::get('inspiration-products/data', 'Admin\InspirationProductsController@anyData')->name('inspiration-products.data');
     });
 });
 
