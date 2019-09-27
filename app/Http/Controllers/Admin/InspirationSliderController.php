@@ -5,6 +5,7 @@ namespace Thd\Http\Controllers\Admin;
 use Thd\InspirationSlider;
 use Illuminate\Http\Request;
 use Thd\Http\Controllers\Controller;
+use Yajra\Datatables\Datatables;
 
 class InspirationSliderController extends Controller
 {
@@ -71,5 +72,21 @@ class InspirationSliderController extends Controller
     public function destroy(InspirationSlider $inspirationSlider)
     {
         //
+    }
+
+    /**
+     * Process datatables ajax request.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function anyData()
+    {
+        $inspirationSliders = InspirationSlider::select(['name', 'order', 'created_at', 'updated_at', 'id']);
+        return Datatables::of($inspirationSliders)
+            ->addColumn('actions', function ($inspirationSlider) {
+                return '<a class="btn btn-info btn-sm" href="' . route('inspiration-slider.edit', $inspirationSlider->id) . '" role="button">Edit</a> <form style="display: inline-block" action="' . route('inspiration-slider.destroy', $inspirationSlider->id) . '" method="POST"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="' . csrf_token() . '"><button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
+            })
+            ->rawColumns(['actions'])
+            ->make(true);
     }
 }
