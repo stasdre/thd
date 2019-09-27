@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Thd\Http\Controllers\Controller;
 use Validator;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\Storage;
 
 class InspirationProductsController extends Controller
 {
@@ -79,17 +80,6 @@ class InspirationProductsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \Thd\InspirationProduct  $inspirationProduct
-     * @return \Illuminate\Http\Response
-     */
-    public function show(InspirationProduct $inspirationProduct)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \Thd\InspirationProduct  $inspirationProduct
@@ -97,7 +87,10 @@ class InspirationProductsController extends Controller
      */
     public function edit(InspirationProduct $inspirationProduct)
     {
-        //
+        return view('admin.inspiration-products.edit', [
+            'inspirationProduct' => $inspirationProduct,
+            'order' => $inspirationProduct->order
+        ]);                
     }
 
     /**
@@ -109,7 +102,46 @@ class InspirationProductsController extends Controller
      */
     public function update(Request $request, InspirationProduct $inspirationProduct)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:100',
+            'link_name'=>'required_with:link',
+            'link'=>'required_with:link_name',
+            'img' => 'nullable|image|dimensions:min_width=230,min_height=225',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('inspiration-products.edit', $inspirationProduct->id))
+                ->withErrors($validator)
+                ->withInput();
+        }         
+        
+        $dataRequest = $request->except(['_token', '_method']);
+
+        if ($request->file('img')) {
+            $img = uploadFile($request->file('img'), [
+                'dir' => 'inspiration-products',
+                'width' => 230,
+                'height' => null,
+                'quality' => 90,
+                'thumb_width' => 230,
+                'thumb_height' => null
+            ]);
+            $dataRequest['img'] = $img;
+
+            Storage::delete('public/inspiration-products/' . $inspirationProduct->img);
+            Storage::delete('public/inspiration-products/thumb/' . $inspirationProduct->img);
+            Storage::delete('public/inspiration-products/original/' . $inspirationProduct->img);
+        }  
+        
+        $inspirationProduct->update($dataRequest);
+
+        return redirect()->route('inspiration-products.index')
+            ->with('message', [
+                'type' => 'success',
+                'title' => 'Success!',
+                'message' => $inspirationProduct->name . ' was updated',
+                'autoHide' => 1
+            ]);        
     }
 
     /**
