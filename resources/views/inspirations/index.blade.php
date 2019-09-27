@@ -134,89 +134,23 @@
     discuss your home building joys and challenges.</p>
     <div id="carousel2" class="carousel slide" data-ride="carousel" data-interval="false">
     <div class="carousel-inner">
-        <div class="carousel-item active">
-        <div class="slides row center">
-            <div class="col-12">
-            <div style=""><img src="/images/jeld-wen.jpg"></div>
-            <div class="p_title center">Jeld-Wen Windows </div>
-            <div><a href="" class="HP_links">View All Products <i class="fas fa fa-chevron-right"></i></a>
-            </div>
-            </div>
-        </div>
-        </div>
-        <div class="carousel-item">
-        <div class="slides row center">
-            <div class="col-12">
-            <div style=""><img src="/images/gaf-roofing.png"></div>
-            <div class="p_title center">GAF Roofing </div>
-            <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-            </div>
-        </div>
-        </div>
-
-        <div class="carousel-item">
-        <div class="slides row center">
-            <div class="col-12">
-            <div style="" class=""><img src="/images/clopay.png"></div>
-            <div class="p_title center">Clopay Garage Doors
-            </div>
-            <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-
-            </div>
-        </div>
-        </div>
-        <div class="carousel-item">
-        <div class="slides row center">
-            <div class="col-12">
-            <div style=""><img src="/images/kraft-maid.jpg"></div>
-            <div class="p_title center">KraftMaid Cabinetry </div>
-            <div><a href="" class="HP_links">View All Products <i class="fas fa fa-chevron-right"></i>
-                </a></div>
-            </div>
-        </div>
-        </div>
-        <div class="carousel-item">
-        <div class="slides row center">
-            <div class="col-12">
-            <div style=""><img src="/images/royal-building.png"></div>
-            <div class="p_title center">Royal Building Products</div>
-            <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-
-            </div>
-        </div>
-        </div>
-        <div class="carousel-item">
-        <div class="slides row center">
-            <div class="col-12">
-            <div style=""><img src="/images/royal-building.png"></div>
-            <div class="p_title center">Royal Building Products</div>
-            <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-
-            </div>
-        </div>
-        </div>
-        <div class="carousel-item">
-        <div class="slides row center">
-            <div class="col-12">
-            <div style="" class=""><img src="/images/meon.png"></div>
-            <div class="p_title center">Moen Faucets</div>
-            <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-
-            </div>
-        </div>
-        </div>
-        <div class="carousel-item">
-        <div class="slides row center">
-            <div class="col-12">
-            <div style=""><img src="/images/amercan.png"></div>
-
-
-            <div class="p_title center">Amercan Standard</div>
-            <div><a href="" class="HP_links">View All Products <i class="fa fa-chevron-right"></i></a></div>
-            </div>
-
-        </div>
-        </div>
+        @foreach ($products as $product)
+            <div class="carousel-item @if($loop->iteration === 1) active @endif">
+                <div class="slides row center">
+                    <div class="col-12">
+                        <div class="embed-responsive embed-responsive-1by1">
+                            <img class="embed-responsive-item" src="{{asset('storage/inspiration-products/'.$product->img)}}">
+                        </div>
+                        <div class="p_title center">{{$product->name}}</div>
+                        <div>
+                            @if ($product->link_name && $product->link)                        
+                                <a href="{{$product->link}}" class="HP_links">{{$product->link_name}} <i class="fas fa fa-chevron-right newfa"></i></a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        @endforeach
 
         <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
