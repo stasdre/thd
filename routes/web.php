@@ -155,6 +155,9 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::resource('inspiration', 'Admin\InspirationController', ['except'=>['show']]);
         Route::get('inspiration/data', 'Admin\InspirationController@anyData')->name('inspiration.data');
+
+        Route::resource('inspiration-slider', 'Admin\InspirationSliderController', ['except'=>['show']]);
+        Route::get('inspiration-slider/data', 'Admin\InspirationSliderController@anyData')->name('inspiration-slider.data');
     });
 });
 

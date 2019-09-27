@@ -15,7 +15,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('inspiration.index') }}"><i class="fa fa-file-o"></i> <span>Pages</span></a></li>
-                    <li><a href="#"><i class="fa fa-sliders"></i> <span>Home page slider</span></a></li>
+                    <li><a href="{{route('inspiration-slider.index')}}"><i class="fa fa-sliders"></i> <span>Home page slider</span></a></li>
                     <li><a href="#"><i class="fa fa-th-large"></i> <span>Home page blocks</span></a></li>
                     <li><a href="#"><i class="fa fa-tasks"></i> <span>Home page products</span></a></li>
                 </ul>
