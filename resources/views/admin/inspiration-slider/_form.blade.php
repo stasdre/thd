@@ -77,3 +77,14 @@
 @push('tinymce')
 <script src="{{ asset('js/admin/tinymce.js') }}"></script>
 @endpush
+
+@push('scripts')
+<script>
+$(".delete-file").on('click', function(e){
+    e.preventDefault();
+    $(this).parent('.file-name').hide();
+    $(this).parent('.file-name').parent('.input-file').find(".file-input").removeClass('hidden');
+    $(this).parent('.file-name').parent('.input-file').find(".edit-img").addClass('hidden');
+});
+</script>
+@endpush

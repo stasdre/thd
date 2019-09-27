@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Thd\Http\Controllers\Controller;
 use Yajra\Datatables\Datatables;
 use Validator;
+use Illuminate\Support\Facades\Storage;
 
 class InspirationSliderController extends Controller
 {
@@ -97,7 +98,10 @@ class InspirationSliderController extends Controller
      */
     public function edit(InspirationSlider $inspirationSlider)
     {
-        //
+        return view('admin.inspiration-slider.edit', [
+            'inspirationSlider' => $inspirationSlider,
+            'order' => $inspirationSlider->order
+        ]);        
     }
 
     /**
@@ -109,7 +113,61 @@ class InspirationSliderController extends Controller
      */
     public function update(Request $request, InspirationSlider $inspirationSlider)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:190',
+            'desc' => 'required',
+            'slider_img' => 'nullable|image|dimensions:min_width=500,min_height=400',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('inspiration-slider.edit', $inspirationSlider->id))
+                ->withErrors($validator)
+                ->withInput();
+        }  
+        
+        $dataRequest = $request->except(['_token', '_method']);
+
+        if ($request->file('logo_img')) {
+            $logo_img = uploadFile($request->file('logo_img'), [
+                'dir' => 'inspiration-slider',
+                'width' => 210,
+                'height' => null,
+                'quality' => 90,
+                'thumb_width' => 210,
+                'thumb_height' => null
+            ]);
+            $dataRequest['logo_img'] = $logo_img;
+
+            Storage::delete('public/inspiration-slider/' . $inspirationSlider->logo_img);
+            Storage::delete('public/inspiration-slider/thumb/' . $inspirationSlider->logo_img);
+            Storage::delete('public/inspiration-slider/original/' . $inspirationSlider->logo_img);
+        }
+
+        if ($request->file('slider_img')) {
+            $slider_img = uploadFile($request->file('slider_img'), [
+                'dir' => 'inspiration-slider',
+                'width' => 500,
+                'height' => null,
+                'quality' => 90,
+                'thumb_width' => 210,
+                'thumb_height' => null
+            ]);
+            $dataRequest['slider_img'] = $slider_img;
+
+            Storage::delete('public/inspiration-slider/' . $inspirationSlider->slider_img);
+            Storage::delete('public/inspiration-slider/thumb/' . $inspirationSlider->slider_img);
+            Storage::delete('public/inspiration-slider/original/' . $inspirationSlider->slider_img);
+        }
+
+        $inspirationSlider->update($dataRequest);
+
+        return redirect()->route('inspiration-slider.index')
+            ->with('message', [
+                'type' => 'success',
+                'title' => 'Success!',
+                'message' => $inspirationSlider->name . ' was updated',
+                'autoHide' => 1
+            ]);
     }
 
     /**
