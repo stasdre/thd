@@ -4,6 +4,7 @@ namespace Thd\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Thd\Inspiration;
+use Thd\InspirationSlider;
 
 class InspirationController extends Controller
 {
@@ -15,7 +16,8 @@ class InspirationController extends Controller
 
     public function index()
     {
-        return view('inspirations.index', ['menu' => $this->_getMenuItems()]);
+        $dataSlider = InspirationSlider::select()->orderBy('order', 'asc')->get();
+        return view('inspirations.index', ['menu' => $this->_getMenuItems(), 'sliders'=>$dataSlider]);
     }
 
     public function pages($link)

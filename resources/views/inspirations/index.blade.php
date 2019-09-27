@@ -8,155 +8,46 @@
 
 <div id="carouselmain" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-    <div class="carousel-item active">
-        <div class="slides row center david-home">
-        <div class="col-12 col-md-6">
-            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
-            <h1 class="HI-davidhomeheading"> DAVID’S HOME</h1>
-            <p class="HI-davidhome text-center">
-                View the stunningly designed spaces of David & Liz Wiggins’ personal home + discover
-                their favorite home products!</p>
-            <div><img class="img-fluid" src="/images/owner.jpg"></div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 image-sec">
-            <img src="/images/home1.png">
-        </div>
-        </div>
-    </div>
-
-    <div class="carousel-item ">
-        <div class="slides row center david-home">
-        <div class="col-12 col-md-6">
-            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
-            <p class="HI-davidhome text-center">From an architect's
-                perspective, the way natural light flows into a home is everything which is why David
-                chose Jeld-Wen's stunning, reliable and energy efficient windows.</p>
-            <div><img class="img-fluid" src="/images/jw.png"></div>
-            <div>
-                <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                    class="bottom-text-right"> Product locator</span></div>
-            </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 image-sec">
-            <img src="/images/home2.png">
-        </div>
-        </div>
-    </div>
-
-    <div class="carousel-item">
-        <div class="slides row center david-home">
-        <div class="col-12 col-md-6">
-            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
-                <p class="HI-davidhome text-center">LIz Wiggins chose
-                    KitchenAid premium appliances with their signature, gorgeous design and cutting-edge technology
-                    for cooking and entertaining ease.</p>
-                    <div><img class="img-fluid" src="/images/KA.png"></div>
-                <div>
-                    <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                        class="bottom-text-right"> Product locator</span></div>
+    @foreach ($sliders as $slider)        
+        <div class="carousel-item @if($loop->iteration === 1) active @endif">
+            <div class="slides row center david-home">
+            <div class="col-12 col-md-6">
+                <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
+                    @if ($slider->title)                
+                        <h1 class="HI-davidhomeheading">{{$slider->title}}</h1>
+                    @endif
+                    <div class="HI-davidhome text-center">
+                        {!!$slider->desc!!}
+                    </div>
+                    <div>
+                        @if ($slider->logo_img)                    
+                            <img class="img-fluid" src="{{asset('storage/inspiration-slider/'.$slider->logo_img)}}">
+                        @endif
+                    </div>
+                    <div>
+                        @if ($slider->brochure_link || $slider->locator_link)                            
+                            <div class="bottom-text"> 
+                                @if ($slider->brochure_link)                                    
+                                    <a href="{{$slider->brochure_link}}"><span style="color:#fff;" class="bottom-text-left">View brochure</span></a> | 
+                                @endif
+                                @if ($slider->locator_link)                                
+                                    <a href="{{$slider->locator_link}}"><span style="color:#fff;" class="bottom-text-right">Product locator</span></a>
+                                @endif
+                            </div>
+                        @endif
+                    </div>            
                 </div>
             </div>
-        </div>
-
-        <div class="col-12 col-md-6 image-sec">
-            <img src="/images/home3.png">
-
-        </div>
-        </div>
-    </div>
-
-    <div class="carousel-item">
-        <div class="slides row center david-home">
-        <div class="col-12 col-md-6">
-            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
-                <p class="HI-davidhome text-center">With more than 30 designer
-                    colors and its energy savings and protection from hail, wind and rain, Mueller was chosen
-                    for gorgeous metal roofing accents.</p>
-                <div><img class="img-fluid" src="/images/mbrc.png"></div>
-                <div>
-                    <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                        class="bottom-text-right"> Product locator</span></div>
+            <div class="col-12 col-md-6">
+                @if ($slider->slider_img)    
+                <div class="inspiration-slider embed-responsive embed-responsive-4by3"> 
+                    <img class="embed-responsive-item" src="{{asset('storage/inspiration-slider/'.$slider->slider_img)}}">
                 </div>
+                @endif
+            </div>
             </div>
         </div>
-
-        <div class="col-12 col-md-6 image-sec">
-            <img src="/images/home4.png">
-
-        </div>
-        </div>
-    </div>
-
-
-    <div class="carousel-item">
-        <div class="slides row center david-home">
-        <div class="col-12 col-md-6">
-            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
-                <p class="HI-davidhome text-center">Sherwin Williams' Color Visualizer tool was
-                    critical in helping David and Liz find the perfect exterior and interior paint solutions
-                    for their new home.</p>
-                    <div><img class="img-fluid" src="/images/sw.png"></div>
-                <div>
-                    <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                        class="bottom-text-right"> Product locator</span></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-6 image-sec">
-            <img src="/images/home5.png">
-
-        </div>
-        </div>
-    </div>
-
-
-    <div class="carousel-item">
-        <div class="slides row center david-home">
-        <div class="col-12 col-md-6">
-            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
-                <p class="HI-davidhome text-center">David & Liz chose durable and versatile Royal
-                    Building Products Trim & Moulding to make a beautiful design statement without the
-                    concern of rotting, warping or splitting.</p>
-                    <div><img class="img-fluid" src="/images/rbp.png"></div>
-                <div>
-                    <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                        class="bottom-text-right"> Product locator</span></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-6 image-sec">
-            <img src="/images/home6.png">
-
-        </div>
-        </div>
-    </div>
-
-    <div class="carousel-item">
-        <div class="slides row center david-home">
-        <div class="col-12 col-md-6">
-            <div class="d-flex flex-column justify-content-between align-items-center blue-bg">
-                <p class="HI-davidhome text-center">An architect views a roof
-                    and roofline as 50% of a home's curb appeal which is why David chose GAF Timberline
-                    Roofing Shingles, the #1-selling shingles in North America for both performance and
-                    value.</p>
-                <div><img class="img-fluid" src="/images/gaf.png"></div>
-                <div>
-                    <div class="bottom-text"> <span class="bottom-text-left">View brochure </span> | <span
-                        class="bottom-text-right"> Product locator</span></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-6 image-sec">
-            <img src="/images/home7.png">
-
-        </div>
-        </div>
-    </div> 
+    @endforeach
 
     <a class="carousel-control-prev" href="#carouselmain" role="button" data-slide="prev"
         style="left: 510px;">
