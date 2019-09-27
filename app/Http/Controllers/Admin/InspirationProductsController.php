@@ -152,7 +152,21 @@ class InspirationProductsController extends Controller
      */
     public function destroy(InspirationProduct $inspirationProduct)
     {
-        //
+        if ($inspirationProduct->img) {
+            Storage::delete('public/inspiration-products/' . $inspirationProduct->img);
+            Storage::delete('public/inspiration-products/thumb/' . $inspirationProduct->img);
+            Storage::delete('public/inspiration-products/original/' . $inspirationProduct->img);
+        }    
+        
+        $inspirationProduct->delete();
+
+        return redirect()->route('inspiration-products.index')
+            ->with('message', [
+                'type' => 'success',
+                'title' => 'Success!',
+                'message' => $inspirationProduct->name . ' was deleted',
+                'autoHide' => 1
+            ]);                
     }
 
     /**
