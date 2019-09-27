@@ -219,7 +219,7 @@
 
 <div class="tab-content bg-secondary px-5 py-3 desktop-off" id="myTabContent">
 <div class="tab-pane fade show active" id="" role="tabpanel">
-      <h6 class="font-weight-bold">{{$plan->name}}: House Plan {{$plan->plan_number}}</h6>
+      <h1 class="h6 font-weight-bold">{{$plan->name}}: House Plan {{$plan->plan_number}}</h1>
       <p class="margin_bt0-xs">{!! substr($plan->description, 0, 355) !!}<span class="mobile-off" id="content-scroll">{!! substr($plan->description, 356) !!}</span></p>
       <div class="desktop-off read_more" id="read_more"><span class="read-more-link-wrapper">Read More </span></div>
 <div style="display : none;" id="read_less" class="read_less"><span class="read-less-link-wrapper">Read Less </span></div>
@@ -495,7 +495,7 @@ ensure you stay in budget, economy, standard and premium.</p>
 
   <div class="tab-content px-5 py-3 mt-2 mobile-off" id="myTabContent" style="background-color: #d0d2d4 !important;">
     <div class="tab-pane fade show active" id="planDescription" role="tabpanel">
-      <h6 class="font-weight-bold">{{$plan->name}}: House Plan {{$plan->plan_number}}</h6>
+      <h1 class="h6 font-weight-bold">{{$plan->name}}: House Plan {{$plan->plan_number}}</h1>
       <p class="margin_bt0-xs">{!! $plan->description !!}</p>
     </div>
     <div class="tab-pane fade" id="planSpecifications" role="tabpanel">
