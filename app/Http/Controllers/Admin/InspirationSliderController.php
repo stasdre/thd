@@ -178,7 +178,27 @@ class InspirationSliderController extends Controller
      */
     public function destroy(InspirationSlider $inspirationSlider)
     {
-        //
+        if ($inspirationSlider->logo_img) {
+            Storage::delete('public/inspiration-slider/' . $inspirationSlider->logo_img);
+            Storage::delete('public/inspiration-slider/thumb/' . $inspirationSlider->logo_img);
+            Storage::delete('public/inspiration-slider/original/' . $inspirationSlider->logo_img);
+        }        
+
+        if ($inspirationSlider->slider_img) {
+            Storage::delete('public/inspiration-slider/' . $inspirationSlider->slider_img);
+            Storage::delete('public/inspiration-slider/thumb/' . $inspirationSlider->slider_img);
+            Storage::delete('public/inspiration-slider/original/' . $inspirationSlider->slider_img);
+        }  
+        
+        $inspirationSlider->delete();
+
+        return redirect()->route('inspiration-slider.index')
+            ->with('message', [
+                'type' => 'success',
+                'title' => 'Success!',
+                'message' => $inspirationSlider->name . ' was deleted',
+                'autoHide' => 1
+            ]);        
     }
 
     /**
