@@ -161,6 +161,9 @@ Route::prefix('admin-thd')->group(function(){
 
         Route::get('inspiration-blocks/edit', 'Admin\InspirationBlocksController@edit')->name('inspiration-blocks.edit');
         Route::post('inspiration-blocks/update', 'Admin\InspirationBlocksController@update')->name('inspiration-blocks.update');
+
+        Route::resource('inspiration-products', 'Admin\InspirationProductsController', ['except'=>['show']]);
+        Route::get('inspiration-products/data', 'Admin\InspirationProductsController@anyData')->name('inspiration-products.data');
     });
 });
 
