@@ -75,71 +75,52 @@
         type="button">Go</button>
     </div>
 </div>
-<div class="row HI-secC py-2 mobile-off">
+<div class="row HI-secC py-2">
     <div class="col-12 col-md-6 center">
-    <img src="/images/HP-imageA.jpg" class="full-image">
-    <div class="py-2">
-        <h5 style="margin-bottom :0;" class="f14 mobile-off info-title"> HOW THE WIGGINS CREATED THEIR DREAM
-        HOME</h5>
-        <h5 style="margin-bottom :0;" class="desktop-off title info-title"> THE WIGGINS CREATE THEIR DREAM HOME
-        </h5>
-        <div class="author_title">DAVID & LIZ</div>
-        <div class="author_info">Best-Selling Architect David Wiggins and his wife open up about
-        the joy and challenges of building a new home.
+        <div class="inspiration-slider embed-responsive embed-responsive-4by3">         
+            <img src="{{asset('storage/inspiration-blocks/'.$blocks->img_l_t)}}" class="embed-responsive-item">
         </div>
-        <div><a href="" class="HP_links">WATCH VIDEO <i class="fa fa-chevron-right"></i></a></div>
+    <div class="py-2">
+        @if ($blocks->first_title_l_t)            
+            <h5 style="margin-bottom :0;" class="f14 info-title">{{$blocks->first_title_l_t}}</h5>
+        @endif
+        @if ($blocks->title_l_t)    
+            <div class="author_title">{{$blocks->title_l_t}}</div>
+        @endif
+        @if ($blocks->desc_l_t)            
+            <div class="author_info">
+                {!!$blocks->desc_l_t!!}
+            </div>
+        @endif
+        @if ($blocks->link_l_t && $blocks->link_name_l_t)            
+            <div><a href="{{$blocks->link_l_t}}" class="HP_links">{{$blocks->link_name_l_t}}<i class="fa fa-chevron-right"></i></a></div>
+        @endif
     </div>
 
     </div>
     <div class="col-12 col-md-6 center">
-    <img src="/images/HP-imageB.jpg" class="full-image">
-    <div class="py-2">
-        <h5 style="margin-bottom :0;" class="f14 info-title">BEHIND THE DESIGN</h5>
-        <div class="author_title">A HOME BLOG JOURNAL</div>
-        <div class="author_info">Find out where David’s inspiration comes from, see our <br>latest house plans
-        and great product ideas.</div>
-        <div><a href="" class="HP_links">READ NOW <i class="fa fa-chevron-right"></i></a></div>
-    </div>
-
+        <div class="inspiration-slider embed-responsive embed-responsive-4by3">         
+                <img src="{{asset('storage/inspiration-blocks/'.$blocks->img_r_t)}}" class="embed-responsive-item">
+        </div>        
+        <div class="py-2">
+                @if ($blocks->first_title_r_t)            
+                <h5 style="margin-bottom :0;" class="f14 info-title">{{$blocks->first_title_r_t}}</h5>
+            @endif
+            @if ($blocks->title_r_t)    
+                <div class="author_title">{{$blocks->title_r_t}}</div>
+            @endif
+            @if ($blocks->desc_r_t)            
+                <div class="author_info">
+                    {!!$blocks->desc_r_t!!}
+                </div>
+            @endif
+            @if ($blocks->link_name_r_t && $blocks->link_r_t)            
+                <div><a href="{{$blocks->link_r_t}}" class="HP_links">{{$blocks->link_name_r_t}}<i class="fa fa-chevron-right"></i></a></div>
+            @endif
+        </div>
     </div>
 
 </div>
-
-
-
-<div class="row HI-secC py-2 desktop-off">
-    <div class="col-12 col-md-6 center">
-    <img src="/images/HP-imageA.jpg" class="full-image">
-    <div class="py-2">
-        <h5 style="margin-bottom :0;" class="f14 mobile-off info-title"> HOW THE WIGGINS CREATED THEIR DREAM
-        HOME</h5>
-        <h5 style="margin-bottom :0;" class="desktop-off title info-title"> THE WIGGINS CREATE THEIR DREAM HOME
-        </h5>
-        <div class="author_title">DAVID & LIZ</div>
-        <div class="author_info">Best-Selling Architect David Wiggins and his wife open up about
-        the joy and challenges of building a new home.
-        </div>
-        <div><a href="" class="HP_links">WATCH VIDEO <i class="fa fa-chevron-right"></i></a></div>
-    </div>
-
-    </div>
-    <div class="col-12 col-md-6 center">
-    <img src="/images/HP-imageB.jpg" class="full-image">
-    <div class="py-2">
-        <h5 style="margin-bottom :0;" class="f14 info-title">BEHIND THE DESIGN</h5>
-        <div class="author_title">A HOME BLOG JOURNAL</div>
-        <div class="author_info">Find out where David’s inspiration comes from, see our latest house plans and
-        great product ideas.</div>
-        <div><a href="" class="HP_links">READ NOW <i class="fa fa-chevron-right"></i></a></div>
-    </div>
-
-    </div>
-
-</div>
-
-
-
-
 
 <hr>
 <div class="desktop-off center HI-slider-text">
@@ -315,41 +296,48 @@
     </div>
 
 </div>
-<div class="row py-3 HI-secE mobile-off">
+<div class="row py-3 HI-secE">
     <div class="col-12 col-md-6 center">
-    <img src="/images/home10.png" class="full-image">
-    <div class="py-2">
-        <h5 class="author_title" style="margin-bottom : 0;"> DAVID’S WEEKLY E-PUB</h5>
-        <div class="author_info">New plans, promotions and great home product recommendations</div>
-        <div><a href="" class="HP_links">SIGN UP NOW <i class="fa fa-chevron-right"></i></a></div>
-    </div>
+        <div class="inspiration-slider embed-responsive embed-responsive-4by3">         
+                <img src="{{asset('storage/inspiration-blocks/'.$blocks->img_b_l)}}" class="embed-responsive-item">
+        </div>        
+        <div class="py-2">
+                @if ($blocks->first_title_b_l)            
+                <h5 style="margin-bottom :0;" class="f14 info-title">{{$blocks->first_title_b_l}}</h5>
+            @endif
+            @if ($blocks->title_b_l)    
+                <div class="author_title">{{$blocks->title_b_l}}</div>
+            @endif
+            @if ($blocks->desc_b_l)            
+                <div class="author_info">
+                    {!!$blocks->desc_b_l!!}
+                </div>
+            @endif
+            @if ($blocks->link_b_l && $blocks->link_name_b_l)            
+                <div><a href="{{$blocks->link_b_l}}" class="HP_links">{{$blocks->link_name_b_l}}<i class="fa fa-chevron-right"></i></a></div>
+            @endif
+        </div>
     </div>
     <div class="col-12 col-md-6 center">
-    <img src="/images/home11.png" class="full-image">
-    <div class="py-2">
-        <h5 class="author_title" style="margin-bottom : 0;"> HOUZZ </h5>
-        <div class="author_info">See photographs of our customer’s favorite house plans</div>
-        <div><a href="" class="HP_links">VIEW NOW <i class="fa fa-chevron-right"></i></a></div>
-    </div>
+        <div class="inspiration-slider embed-responsive embed-responsive-4by3">         
+                <img src="{{asset('storage/inspiration-blocks/'.$blocks->img_b_r)}}" class="embed-responsive-item">
+        </div>        
+        <div class="py-2">
+                @if ($blocks->first_title_b_r)            
+                <h5 style="margin-bottom :0;" class="f14 info-title">{{$blocks->first_title_b_r}}</h5>
+            @endif
+            @if ($blocks->title_b_r)    
+                <div class="author_title">{{$blocks->title_b_r}}</div>
+            @endif
+            @if ($blocks->desc_b_r)            
+                <div class="author_info">
+                    {!!$blocks->desc_b_r!!}
+                </div>
+            @endif
+            @if ($blocks->link_name_b_r && $blocks->link_b_r)            
+                <div><a href="{{$blocks->link_b_r}}" class="HP_links">{{$blocks->link_name_b_r}}<i class="fa fa-chevron-right"></i></a></div>
+            @endif
+        </div>    
     </div>
 </div>
-<div class="row py-3 HI-secE desktop-off">
-    <div class="col-12 col-md-6 center">
-    <img src="/images/home11.png" class="full-image">
-    <div class="py-2">
-        <h5 class="author_title" style="margin-bottom : 0;"> DAVID’S WEEKLY E-PUB</h5>
-        <div class="author_info">New Plans, promotions and great home product recommendations</div>
-        <div><a href="" class="HP_links">SIGN UP NOW<i class="fa fa-chevron-right"></i></a></div>
-    </div>
-    </div>
-    <div class="col-12 col-md-6 center">
-    <img src="/images/home10.png" class="full-image">
-    <div class="py-2">
-        <h5 class="author_title" style="margin-bottom : 0;"> HOUZZ </h5>
-        <div class="author_info">Recent home builds of our customers favorite homes </div>
-        <div><a href="" class="HP_links">VIEW NOW <i class="fa fa-chevron-right"></i></a></div>
-    </div>
-    </div>
-</div>
-
 @endsection
