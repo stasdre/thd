@@ -6,6 +6,7 @@ use Thd\InspirationSlider;
 use Illuminate\Http\Request;
 use Thd\Http\Controllers\Controller;
 use Yajra\Datatables\Datatables;
+use Validator;
 
 class InspirationSliderController extends Controller
 {
@@ -26,7 +27,8 @@ class InspirationSliderController extends Controller
      */
     public function create()
     {
-        return view('admin.inspiration-slider.create');
+        $order = InspirationSlider::select('order')->orderBy('order', 'desc')->first();
+        return view('admin.inspiration-slider.create', ['order' => isset($order->order) ? $order->order + 1 : 1]);
     }
 
     /**
@@ -37,7 +39,54 @@ class InspirationSliderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:190',
+            'desc' => 'required',
+            'slider_img' => 'required|image|dimensions:min_width=500,min_height=400',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('inspiration-slider.create'))
+                ->withErrors($validator)
+                ->withInput();
+        }        
+
+        $dataRequest = $request->except(['_token']);
+
+        if ($request->file('logo_img')) {
+            $logo_img = uploadFile($request->file('logo_img'), [
+                'dir' => 'inspiration-slider',
+                'width' => 210,
+                'height' => null,
+                'quality' => 90,
+                'thumb_width' => 210,
+                'thumb_height' => null
+            ]);
+            $dataRequest['logo_img'] = $logo_img;
+        }
+
+        if ($request->file('slider_img')) {
+            $slider_img = uploadFile($request->file('slider_img'), [
+                'dir' => 'inspiration-slider',
+                'width' => 500,
+                'height' => null,
+                'quality' => 90,
+                'thumb_width' => 210,
+                'thumb_height' => null
+            ]);
+            $dataRequest['slider_img'] = $slider_img;
+        }
+
+        $inspirationSlider = new InspirationSlider($dataRequest);
+        $inspirationSlider->save();
+
+        return redirect()->route('inspiration-slider.index')
+            ->with('message', [
+                'type' => 'success',
+                'title' => 'Success!',
+                'message' => $inspirationSlider->name . ' was added',
+                'autoHide' => 1
+            ]);
     }
 
     /**
