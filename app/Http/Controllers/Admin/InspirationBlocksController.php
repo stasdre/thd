@@ -6,6 +6,7 @@ use Thd\InspirationBloks;
 use Illuminate\Http\Request;
 use Thd\Http\Controllers\Controller;
 use Validator;
+use Illuminate\Support\Facades\Storage;
 
 class InspirationBlocksController extends Controller
 {
