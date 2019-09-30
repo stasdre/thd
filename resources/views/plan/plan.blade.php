@@ -299,8 +299,10 @@ ensure you stay in budget, economy, standard and premium.</p>
                             <p><span class=""><b>Roof:</b></span><span class="text_paddindLeft"> {{$plan->construction['roof_frame']}}</span></p>
                             <p><span class=""><b>Exterior Walls:</b></span><span class="text_paddindLeft"> {{$plan->construction['ext_walls']}}</span></p>
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-12">                              
+                          @isset ($plan->construction['found_type'])                              
                             <p><span class=""><b>Foundation:</b></span><span class="text_paddindLeft"> {{ implode(', ', $plan->construction['found_type'])}}</span><span class="text_paddindLeft"><br></span></p>
+                          @endisset
                             
                         <p><span class="left_boldTxt"><b>Ceiling Height: </b></span><span class="text_paddindLeft"> {{ $plan->ceiling['celing_1_floor'] ? '1st floor: '.$plan->ceiling['celing_1_floor'].';' : '' }}</span><span class="text_paddindLeft mNewline"> {{ $plan->ceiling['celing_2_floor'] ? '2nd floor: '.$plan->ceiling['celing_2_floor'].';' : '' }}</span> <span class="text_paddindLeft mNewline"> {{ $plan->ceiling['celing_3_floor'] ? '3rd floor: '.$plan->ceiling['celing_3_floor'].';' : '' }}</span> <span class="text_paddindLeft mNewline"> {{ $plan->ceiling['celing_lower_floor'] ? 'Lower level: '.$plan->ceiling['celing_lower_floor'].';' : '' }}</span></p> 
                             <p class="small_bottomTxt mobile_txt">*Total heated does not include garages, porches/patios or bonus rooms </p>	
@@ -519,8 +521,9 @@ ensure you stay in budget, economy, standard and premium.</p>
             </div>
             <div class="col-sm-6 col-lg-4">
 
-
-              <p><span class="left_boldTxt"><b>Foundation</b></span><span class="text_paddindLeft">{{ implode(', ', $plan->construction['found_type'])}}</span></p>
+              @isset ($plan->construction['found_type'])
+                <p><span class="left_boldTxt"><b>Foundation</b></span><span class="text_paddindLeft">{{ implode(', ', $plan->construction['found_type'])}}</span></p>
+              @endisset
                 <p><span class="left_boldTxt" style="color: transparent;">..</span><span class="text_paddindLeft"></span></p>	
                 <p><span class="left_boldTxt"><b>Ceiling Height</b></span><span class="text_paddindLeft"> {{ $plan->ceiling['celing_1_floor'] ? '1st floor: '.$plan->ceiling['celing_1_floor'].';' : '' }}</span><span class="text_paddindLeft mNewline"> {{ $plan->ceiling['celing_2_floor'] ? '2nd floor: '.$plan->ceiling['celing_2_floor'].';' : '' }}</span> <span class="text_paddindLeft mNewline"> {{ $plan->ceiling['celing_3_floor'] ? '3rd floor: '.$plan->ceiling['celing_3_floor'].';' : '' }}</span> <span class="text_paddindLeft mNewline"> {{ $plan->ceiling['celing_lower_floor'] ? 'Lower level: '.$plan->ceiling['celing_lower_floor'].';' : '' }}</span></p><br> 
                 <p class="small_bottomTxt">*Total heated does not include garages, porches/patios or bonus rooms </p>	
