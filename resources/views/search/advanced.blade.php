@@ -220,11 +220,11 @@
                 </div>
                 <div class="position-relative">
                   <div id="plan{{$plan->plan_number}}" class="carousel slide" data-ride="carousel" data-interval="false">
-                    <div class="carousel-inner">
+                    <a href="/plan/{{$plan->plan_number}}" class="carousel-inner">
                       @foreach ($plan->images as $img)                          
                     <div class="carousel-item @if($loop->iteration == 1) active @endif"> <img src="/storage/plans/{{$plan->id}}/thumb/{{$img->file_name}}" alt="" class="img-fluid d-block w-100"> </div>
                       @endforeach
-                    </div>
+                    </a>
                     <a class="carousel-control-prev" href="#plan{{$plan->plan_number}}" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#plan{{$plan->plan_number}}" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
                   <div class="media planinfo text-left position-absolute placeholder-black"> <img class="mr-1 align-self-center" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
                     <div class="media-body">
