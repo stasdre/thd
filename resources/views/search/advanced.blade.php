@@ -197,7 +197,7 @@
     <!-- SideBar Left -->
     
     <!-- Content Right -->
-    <div class="col-md-7 col-lg-9 mobile-off">
+    <div class="col-md-7 col-lg-9">
         <div class="row">
           <div class="col-md-12"> 
             <span class="pull-left"><h5 class="font-weight-bold  text-size" style="margin-top : -3px;">View Our Most Popular House Plans</h5></span> <span class="pull-right search_span"><form method="GET" action="{{ route('search') }}">Search <input type="text" name="txt" placeholder="Plan# or name"></form></span>
@@ -222,7 +222,11 @@
                   <div id="plan{{$plan->plan_number}}" class="carousel slide" data-ride="carousel" data-interval="false">
                     <a href="/plan/{{$plan->plan_number}}" class="carousel-inner">
                       @foreach ($plan->images as $img)                          
-                    <div class="carousel-item @if($loop->iteration == 1) active @endif"> <img src="/storage/plans/{{$plan->id}}/thumb/{{$img->file_name}}" alt="" class="img-fluid d-block w-100"> </div>
+                    <div class="carousel-item @if($loop->iteration == 1) active @endif"> 
+                      <div class="embed-responsive embed-responsive-4by3">
+                        <img src="/storage/plans/{{$plan->id}}/thumb/{{$img->file_name}}" alt="" class="embed-responsive-item"> 
+                      </div>
+                    </div>
                       @endforeach
                     </a>
                     <a class="carousel-control-prev" href="#plan{{$plan->plan_number}}" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#plan{{$plan->plan_number}}" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>

@@ -223,7 +223,11 @@
                     <div class="position-relative">
                     <div :id="'plan'+plan.id" class="carousel slide" data-ride="carousel" data-interval="false">
                         <a :href="'/plan/' + plan.plan_number" class="carousel-inner">
-                            <div class="carousel-item" :class="{ active: index === 0 }" v-for="(image, index) in plan.images" :key="image.id"> <img :src="'/storage/plans/'+plan.id+'/thumb/'+image.file_name" alt="" class="img-fluid d-block w-100"> </div>
+                            <div class="carousel-item" :class="{ active: index === 0 }" v-for="(image, index) in plan.images" :key="image.id"> 
+                                <div class="embed-responsive embed-responsive-4by3">
+                                    <img :src="'/storage/plans/'+plan.id+'/thumb/'+image.file_name" alt="" class="embed-responsive-item"> 
+                                </div>
+                            </div>
                         </a>
                         <a class="carousel-control-prev" @click.prevent="" :href="'#plan'+plan.id" role="button" data-slide="prev"> 
                         <span class="carousel-control-prev-icon" aria-hidden="false"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" @click.prevent="" :href="'#plan'+plan.id" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="false"></span> <span class="sr-only">Next</span> </a> </div>

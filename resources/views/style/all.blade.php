@@ -58,13 +58,15 @@
                     @foreach($styles as $style)
                         <div class="col-sm-4 col-md-6 col-lg-4">
                             <div class="plan-grid position-relative"> <a href="{{ route('style.slug', $style->slug) }}">
+                                <div class="embed-responsive embed-responsive-4by3">
                                     @if($style->image)
-                                        <img src="{{asset('storage/styles/thumb/'.$style->image)}}" alt="{{ $style->name }}" class="img-fluid w-100 mobile-grid-img" />
+                                        <img src="{{asset('storage/styles/thumb/'.$style->image)}}" alt="{{ $style->name }}" class="embed-responsive-item" />
                                     @else
-                                        <img src="{{asset('images/plan-1.jpg')}}" alt="{{ $style->name }}" class="img-fluid w-100 mobile-grid-img" />
+                                        <img src="{{asset('images/plan-1.jpg')}}" alt="{{ $style->name }}" class="embed-responsive-item" />
                                     @endif
-                                    <p class="shop-link no-margin-mobile">{{ $style->name }}</p>
-                                    <div class="plan-name position-absolute">plan {{ $style->plan }}</div>
+                                </div>
+                                <p class="shop-link no-margin-mobile">{{ $style->name }}</p>
+                                <div class="plan-name position-absolute">plan {{ $style->plan }}</div>
                                 </a> </div>
                         </div>
                     @endforeach
