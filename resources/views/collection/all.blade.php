@@ -58,13 +58,13 @@
                     @foreach($collections as $collection)
                         <div class="col-sm-4 col-md-6 col-lg-4">
                             <div class="plan-grid position-relative house-grid"> <a href="{{ route('collection.slug', $collection->slug) }}">
-                                <div class="embed-responsive embed-responsive-4by3">
+                                {{-- <div class="embed-responsive embed-responsive-4by3"> --}}
                                     @if($collection->image)
-                                        <img src="{{asset('storage/collections/thumb/'.$collection->image)}}" alt="{{ $collection->name }}" class="embed-responsive-item" />
+                                        <img src="{{asset('storage/collections/thumb/'.$collection->image)}}" alt="{{ $collection->name }}" class="img-fluid d-block w-100" />
                                     @else
-                                        <img src="{{asset('images/plan-1.jpg')}}" alt="{{ $collection->name }}" class="embed-responsive-item" />
+                                        <img src="{{asset('images/plan-1.jpg')}}" alt="{{ $collection->name }}" class="img-fluid d-block w-100" />
                                     @endif
-                                </div>
+                                {{-- </div> --}}
                                 <p class="shop-link no-margin-mobile">{{ $collection->name }}</p>
                                 <div class="plan-name position-absolute">plan {{ $collection->plan }}</div>
                                 </a> </div>

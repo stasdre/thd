@@ -223,9 +223,9 @@
                     <a href="/plan/{{$plan->plan_number}}" class="carousel-inner">
                       @foreach ($plan->images as $img)                          
                     <div class="carousel-item @if($loop->iteration == 1) active @endif"> 
-                      <div class="embed-responsive embed-responsive-4by3">
-                        <img src="/storage/plans/{{$plan->id}}/thumb/{{$img->file_name}}" alt="" class="embed-responsive-item"> 
-                      </div>
+                      {{-- <div class="embed-responsive embed-responsive-4by3"> --}}
+                        <img src="/storage/plans/{{$plan->id}}/thumb/{{$img->file_name}}" alt="" class="img-fluid d-block w-100"> 
+                      {{-- </div> --}}
                     </div>
                       @endforeach
                     </a>
