@@ -16,6 +16,7 @@
             font-weight: 700;
         }
     </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015"></script>
 </head>
 
 <body>
