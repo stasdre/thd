@@ -879,7 +879,8 @@ ensure you stay in budget, economy, standard and premium.</p>
           axios.post('{{route('purchase')}}',{
             plan_id: {!!$plan->id!!},
             plan_package: this.checkedPackage.id,
-            plan_foundation: this.checkedOption.id
+            plan_foundation: this.checkedOption.id,
+            plan_features: this.checkedAddons.join()
           })
           .then(response => {
               if(response.data.status == 'ok'){

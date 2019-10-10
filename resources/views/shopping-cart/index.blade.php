@@ -9,70 +9,73 @@
         </div>
 
         <div class="px-5 py-2" style="padding-right : 0 !important;">
-            @forelse ($plansData as $plan)
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="cart-grid text-center"> 
-                            @if(isset($plan['images'][0]['file_name']))
-                                <img src="{{ asset('storage/plans/'.$plan['id'].'/thumb/'.$plan['images'][0]['file_name']) }}" alt="{{$plan['images'][0]['alt_text']}}" class="img-fluid w-100">
-                            @endif
-                            <p class="plan-name font-weight-bold m-0">{{ $plan['name'] }} House Plan {{ $plan['plan_number'] }}</p>
-                            <p class="plan-meta">{{$plan['square_ft']['str_total']}} s.f. | {{$plan['rooms']['r_bedrooms']}} beds | {{$plan['rooms']['r_full_baths']}} baths</p>
+            @if($plansData)
+                @foreach ($plansData as $plan)
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="cart-grid text-center"> 
+                                @if(isset($plan['images'][0]['file_name']))
+                                    <img src="{{ asset('storage/plans/'.$plan['id'].'/thumb/'.$plan['images'][0]['file_name']) }}" alt="{{$plan['images'][0]['alt_text']}}" class="img-fluid d-block w-100">
+                                @endif
+                                <p class="plan-name font-weight-bold m-0">{{ $plan['name'] }} House Plan {{ $plan['plan_number'] }}</p>
+                                <p class="plan-meta">{{$plan['square_ft']['str_total']}} s.f. | {{$plan['rooms']['r_bedrooms']}} beds | {{$plan['rooms']['r_full_baths']}} baths</p>
+                            </div>
                         </div>
-                    </div>
+                        <div class="col-sm-8">
+                            <h5 class="font-weight-bold">HOUSE PLAN {{ $plan['plan_number'] }}</h5>
+                            <table class="table cart-table">
+                                <tbody>
+                                @if($plan['packages'])
+                                <tr>
+                                    <td><span class="text-primary text-lg">{{$plan['packages'][0]['name']}}</span></td>
+                                    <td class="price">${{number_format($plan['packages'][0]['pivot']['price'], 2, '.', ',')}}</td>
+                                    <td style="border:1px solid white;" class="text-right"><a href="{{route('plan.view', $plan['plan_number'])}}">edit</a></td>
+                                </tr>
+                                @endif
+                                @if($plan['foundation_options'])
+                                <tr>
+                                    <td><span class="text-primary text-lg">{{$plan['foundation_options'][0]['name']}}</span></td>
+                                    <td class="price">${{number_format($plan['foundation_options'][0]['pivot']['price'], 2, '.', ',')}}</td>
+                                    <td style="border:1px solid white;" class="text-right"><a href="{{route('plan.view', $plan['plan_number'])}}">edit</a></td>
+                                </tr>
+                                @endif
+                                @if(isset($plan['addons']))
+                                    @foreach ($plan['addons'] as $item)                                
+                                        <tr>
+                                            <td><span class="text-primary text-lg">{{$item['name']}}</span></td>
+                                            <td class="price">${{number_format($item['pivot']['price'], 2, '.', ',')}}</td>
+                                            <td style="border:1px solid white;" class="text-right"><a href="{{route('plan.view', $plan['plan_number'])}}">edit</a></td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>                    
+                @endforeach
+                <div class="row">
+                    <div class="col-sm-4"></div>
                     <div class="col-sm-8">
-                        <h5 class="font-weight-bold">HOUSE PLAN {{ $plan['plan_number'] }}</h5>
                         <table class="table cart-table">
                             <tbody>
-                            @if($plan['packages'])
-                            <tr>
-                                <td><span class="text-primary text-lg">{{$plan['packages'][0]['name']}}</span></td>
-                                <td class="price">${{number_format($plan['packages'][0]['pivot']['price'], 2, '.', ',')}}</td>
-                                <td style="border:1px solid white;" class="text-right"><a href="{{route('plan.view', $plan['plan_number'])}}">edit</a></td>
-                            </tr>
-                            @endif
-                            @if($plan['foundation_options'])
-                            <tr>
-                                <td><span class="text-primary text-lg">{{$plan['foundation_options'][0]['name']}}</span></td>
-                                <td class="price">${{number_format($plan['foundation_options'][0]['pivot']['price'], 2, '.', ',')}}</td>
-                                <td style="border:1px solid white;" class="text-right"><a href="{{route('plan.view', $plan['plan_number'])}}">edit</a></td>
-                            </tr>
-                            @endif
-                            @if(isset($plan['addons']))
-                            <tr>
-                                <td><span class="text-primary text-lg">{{$plan['addons'][0]['name']}}!!!!</span></td>
-                                <td class="price">${{number_format($plan['addons'][0]['pivot']['price'], 2, '.', ',')}}</td>
-                                <td style="border:1px solid white;" class="text-right"><a href="{{route('plan.view', $plan['plan_number'])}}">edit</a></td>
-                            </tr>
-                            @endif
-                            <tr>
-                                <td class="shipping-values mobile-off"><span class="text-primary text-lg">Shipping</span>
-                                    <select name="" class="form-control d-inline-block w-50" v-on:change="changeShipp">
-                                        @foreach($shipping as $ship)
-                                            <option data-cost="{{$ship->cost}}" value="{{$ship->id}}">{{$ship->name}}</option>
-                                        @endforeach
-                                    </select>
-
-
-                                </td>
-                                <td class="shipping-values desktop-off"><span class="text-primary text-lg">Shipping</span>
-                                    <select name="" class="form-control d-inline-block w-50" v-on:change="changeShipp">
-                                        @foreach($shipping as $ship)
-                                            <option data-cost="{{$ship->cost}}" value="{{$ship->id}}">{{$ship->name}}</option>
-                                        @endforeach
-                                    </select>
-
-
-                                </td>
-                                <td class="price">@{{shippCost}}</td>
-                            </tr>
+                                <tr>
+                                    <td class="shipping-values"><span class="text-primary text-lg">Shipping</span>
+                                        <select name="" class="form-control d-inline-block w-50" v-on:change="changeShipp">
+                                            @foreach($shipping as $ship)
+                                                <option data-cost="{{$ship->cost}}" @if($ship->id === $curShipp['method']) selected @endif value="{{$ship->id}}">{{$ship->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        <i v-if="loadingShip" class="fas fa-sync-alt fa-spin"></i>
+                                    </td>
+                                    <td class="price">@{{shippCost}}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-            @empty
+            @else
                 <p>Empty cart</p>
-            @endforelse
+            @endif
         </div>
     </div>
 
@@ -105,11 +108,11 @@
 
         <div class="container cart-actions-sec">
             @auth
-                <div class="px-5 py-1 text-right cart-actions"> <a href="#" class="btn btn-primary rounded-0  font-weight-semi-bold guest-checkout">CHECKOUT</a> </div>
+                <div class="px-5 py-1 text-right cart-actions"> <a href="{{ route('checkout') }}" class="btn btn-primary rounded-0  font-weight-semi-bold guest-checkout">CHECKOUT</a> </div>
             @endauth
 
             @guest
-                <div class="px-5 py-1 text-right cart-actions"> <a href="{{ route('register') }}" class="btn btn-dark rounded-0 text-uppercase font-weight-semi-bold sign-in-checkout">Sign in to Checkout</a> <a href="#" class="btn btn-primary rounded-0  font-weight-semi-bold guest-checkout">GUEST CHECKOUT</a> </div>
+                <div class="px-5 py-1 text-right cart-actions"> <a href="{{ route('register') }}" class="btn btn-dark rounded-0 text-uppercase font-weight-semi-bold sign-in-checkout">Sign in to Checkout</a> <a href="{{ route('checkout') }}" class="btn btn-primary rounded-0  font-weight-semi-bold guest-checkout">GUEST CHECKOUT</a> </div>
             @endguest
         </div>
     @endif
@@ -185,36 +188,29 @@
         data: {
             total: {{ Cart::total() }},
             calc: parseFloat({{ Cart::total() }}),
-            shippCost: "FREE",
+            shippCost: '{{$curShipp['cost']}}',
             cost: 0,
-            promoCost: 0,
-            promoType: '',
-            promoData: '',
-            loading: false
+            promoData: '{{$curPromo['code']}}',
+            loading: false,
+            loadingShip: false,
         },
         methods: {
             changeShipp: function(e){
-                if(e.target.options.selectedIndex > -1) {
-                    this.cost = parseFloat(e.target.options[e.target.options.selectedIndex].dataset.cost);
-                    this.calculate();
-                }
-            },
-            calculate: function () {
-                if(this.promoType){
-                    if(this.promoType == 'percent'){
-                        var percent = (this.promoCost / 100) * this.calc;
-                        this.total = (this.calc + this.cost) - percent;
-                    }else if(this.promoType == 'cost'){
-                        this.total = (this.calc + this.cost) - this.promoCost;
-                    }
-                }else{
-                    this.total = this.calc + this.cost;
-                }
-
-                if(this.cost > 0)
-                    this.shippCost = '$'+this.cost;
-                else
-                    this.shippCost = 'FREE';
+                e.preventDefault();
+                this.loadingShip = true;
+                axios.post('{{route('cart.update')}}',{
+                    type: 'ship_method',
+                    val: e.target.value
+                })
+                    .then(response => {
+                        if(response.data.status == 'ok'){
+                            this.total = response.data.total;
+                            this.shippCost = response.data.cost;
+                        }
+                        this.loadingShip = false;
+                    }, (error) => {
+                        this.loadingShip = false;
+                    });
             },
             promo: function(e){
                 e.preventDefault();
@@ -224,9 +220,8 @@
                 })
                     .then(response => {
                         if(response.data.status == 'ok'){
-                            this.promoCost = parseFloat(response.data.value);
-                            this.promoType = response.data.type;
-                            this.calculate();
+                            this.promoData = response.data.code;
+                            this.total = response.data.total;
                         }
                         this.loading = false;
                     }, (error) => {

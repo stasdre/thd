@@ -173,5 +173,8 @@ Route::get('contact-us/', 'ContactUsController@index')->name('contact-us');
 Route::post('contact-us/send', 'ContactUsController@send')->name('contact-us.send');
 
 Route::get('cart/', 'ShoppingCartController@index')->name('cart');
+Route::post('cart/update/', 'ShoppingCartController@update')->name('cart.update');
 Route::post('purchase/', 'ShoppingCartController@purchase')->name('purchase');
 Route::post('promo/', 'ShoppingCartController@promo')->name('promo');
+
+Route::get('checkout/', 'CheckoutController@index')->name('checkout');
