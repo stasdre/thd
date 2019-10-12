@@ -25,20 +25,20 @@
                             <h5 class="font-weight-bold">HOUSE PLAN {{ $plan['plan_number'] }}</h5>
                             <table class="table cart-table">
                                 <tbody>
-                                @if($plan['packages'])
+                                @isset($plan['packages'])
                                 <tr>
                                     <td><span class="text-primary text-lg">{{$plan['packages'][0]['name']}}</span></td>
                                     <td class="price">${{number_format($plan['packages'][0]['pivot']['price'], 2, '.', ',')}}</td>
                                     <td style="border:1px solid white;" class="text-right"><a href="{{route('plan.view', $plan['plan_number'])}}">edit</a></td>
                                 </tr>
-                                @endif
-                                @if($plan['foundation_options'])
+                                @endisset
+                                @isset($plan['foundation_options'])
                                 <tr>
                                     <td><span class="text-primary text-lg">{{$plan['foundation_options'][0]['name']}}</span></td>
                                     <td class="price">${{number_format($plan['foundation_options'][0]['pivot']['price'], 2, '.', ',')}}</td>
                                     <td style="border:1px solid white;" class="text-right"><a href="{{route('plan.view', $plan['plan_number'])}}">edit</a></td>
                                 </tr>
-                                @endif
+                                @endisset
                                 @if(isset($plan['addons']))
                                     @foreach ($plan['addons'] as $item)                                
                                         <tr>

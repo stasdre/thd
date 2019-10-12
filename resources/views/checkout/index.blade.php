@@ -179,23 +179,33 @@
        <h4 class="font-weight-bold mobile-off">Order Summary</h4>
        <div class="bg-summary p-3"> 
            @foreach ($plansData as $plan)
-            <img src="images/plan-1.jpg" alt="" class="img-fluid w-100">
-            <h5 class="font-weight-bold">HOUSE PLAN 4839</h5>
-            <dl class="row mb-0">
-                <dt class="col-7 text-primary text-lg  font-weight-semi-bold">5 Printed Sets</dt>
-                <dd class="col-5 text-lg text-secondary font-weight-bold text-right">$1,895.00</dd>
-            </dl>
-            <dl class="row mb-0">
-                <dt class="col-7 text-primary text-lg  font-weight-semi-bold">Slab Foundation</dt>
-                <dd class="col-5 text-lg text-secondary font-weight-bold text-right">$0.00</dd>
-            </dl>
-            <dl class="row mb-0">
-                <dt class="col-7 text-primary text-lg  font-weight-semi-bold">Full Reverse</dt>
-                <dd class="col-5 text-lg text-secondary font-weight-bold text-right">$150.00</dd>
-            </dl>                 
+            @if(isset($plan['images'][0]['file_name']))
+                <img src="{{ asset('storage/plans/'.$plan['id'].'/thumb/'.$plan['images'][0]['file_name']) }}" alt="{{$plan['images'][0]['alt_text']}}" class="img-fluid d-block w-100">
+            @endif
+            <h5 class="font-weight-bold">HOUSE PLAN {{$plan['plan_number']}}</h5>
+            @isset($plan['packages'])
+                <dl class="row mb-0">
+                    <dt class="col-7 text-primary text-lg  font-weight-semi-bold">{{$plan['packages'][0]['name']}}</dt>
+                    <dd class="col-5 text-lg text-secondary font-weight-bold text-right">${{number_format($plan['packages'][0]['pivot']['price'], 2, '.', ',')}}</dd>
+                </dl>
+            @endisset
+            @isset($plan['foundation_options'])
+                <dl class="row mb-0">
+                    <dt class="col-7 text-primary text-lg  font-weight-semi-bold">{{$plan['foundation_options'][0]['name']}}</dt>
+                    <dd class="col-5 text-lg text-secondary font-weight-bold text-right">${{number_format($plan['foundation_options'][0]['pivot']['price'], 2, '.', ',')}}</dd>
+                </dl>
+            @endisset
+            @if(isset($plan['addons']))
+                @foreach ($plan['addons'] as $item)                                
+                    <dl class="row mb-0">
+                        <dt class="col-7 text-primary text-lg  font-weight-semi-bold">{{$item['name']}}</dt>
+                        <dd class="col-5 text-lg text-secondary font-weight-bold text-right">${{number_format($item['pivot']['price'], 2, '.', ',')}}</dd>
+                    </dl>                 
+                @endforeach
+            @endif
            @endforeach
-         <p class="font-weight-bold text-secondary">FREE Ground Shipping</p>
-         <h5 class="font-weight-bold text-right"><span class="text-primary">TOTAL:</span> $2,045</h5>
+        <p class="font-weight-bold text-secondary">{{$curShipp['method']}}</p>
+        <h5 class="font-weight-bold text-right"><span class="text-primary">TOTAL:</span> ${{Cart::total()}}</h5>
        </div>
      </div>
    </div>

@@ -54,7 +54,7 @@ class ShoppingCartController extends Controller
         //dd(Cart::content());
         $dataCart = [];
         $curShipp = ['method'=>0, 'cost'=>0.00];
-        $curPromo = ['code'=>0, 'cost'=>0.00];
+        $curPromo = ['code'=>'', 'cost'=>0.00];
 
         if(Cart::count()){
             foreach (Cart::content() as $cart){
