@@ -57,14 +57,14 @@
                 <div class="row text-center">
                     @foreach($styles as $style)
                         <div class="col-sm-4 col-md-6 col-lg-4">
-                            <div class="plan-grid position-relative"> <a href="{{ route('style.slug', $style->slug) }}">
-                                {{-- <div class="embed-responsive embed-responsive-4by3"> --}}
+                            <div class="plan-grid position-relative"> <a  href="{{ route('style.slug', $style->slug) }}">
+                                <div class="embed-responsive embed-responsive-4by3 percent-70">
                                     @if($style->image)
-                                        <img src="{{asset('storage/styles/thumb/'.$style->image)}}" alt="{{ $style->name }}" class="img-fluid d-block w-100" />
+                                        <img src="{{asset('storage/styles/thumb/'.$style->image)}}" alt="{{ $style->name }}" class="embed-responsive-item" />
                                     @else
-                                        <img src="{{asset('images/plan-1.jpg')}}" alt="{{ $style->name }}" class="img-fluid d-block w-100" />
+                                        <img src="{{asset('images/plan-1.jpg')}}" alt="{{ $style->name }}" class="embed-responsive-item" />
                                     @endif
-                                {{-- </div> --}}
+                                </div>
                                 <p class="shop-link no-margin-mobile">{{ $style->name }}</p>
                                 <div class="plan-name position-absolute">plan {{ $style->plan }}</div>
                                 </a> </div>

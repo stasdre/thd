@@ -120,3 +120,7 @@
 a.carousel-inner{
   display: block;
 }
+
+.percent-70.embed-responsive-4by3::before{
+  padding-top: 70%;
+}

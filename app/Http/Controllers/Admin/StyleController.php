@@ -82,18 +82,14 @@ class StyleController extends Controller
             $path = storage_path('app/public/styles/' . $filename);
 
             $img = Image::make($image->getRealPath());
-            $img->resize(null, 189, function ($constraint) {
-                $constraint->aspectRatio();
-            });
+            $img->fit(470, 265);
             $img->save($path, 90);
 
 
             $pathThumb = storage_path('app/public/styles/thumb/' . $filename);
 
             $imgThumb = Image::make($image->getRealPath());
-            $imgThumb->resize(380, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
+            $imgThumb->fit(238, 166);
             $imgThumb->save($pathThumb);
     
             if(!file_exists(storage_path('app/public/styles/original/'))){
@@ -204,9 +200,7 @@ class StyleController extends Controller
             $path = storage_path('app/public/styles/' . $filename);
 
             $img = Image::make($image->getRealPath());
-            $img->resize(null, 189, function ($constraint) {
-                $constraint->aspectRatio();
-            });
+            $img->fit(470, 265);
             $img->save($path, 90);
 
             Storage::delete('public/styles/'.$style->image);
@@ -218,9 +212,7 @@ class StyleController extends Controller
             $pathThumb = storage_path('app/public/styles/thumb/' . $filename);
 
             $imgThumb = Image::make($image->getRealPath());
-            $imgThumb->resize(380, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
+            $imgThumb->fit(238, 166);
             $imgThumb->save($pathThumb);
     
             if(!file_exists(storage_path('app/public/styles/original/'))){

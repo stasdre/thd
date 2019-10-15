@@ -14,7 +14,9 @@
         </div>
     </div>
     <div class="col-sm-5 style-desc-container__img">
-        <img src="{{ '/storage/styles/'.$style->image }}" alt="{{$style->name}}" class="img-fluid d-block" />        
+        <div class="embed-responsive embed-responsive-16by9">
+            <img src="{{ '/storage/styles/'.$style->image }}" alt="{{$style->name}}" class="embed-responsive-item" />
+        </div>
     </div>
 </div>
 

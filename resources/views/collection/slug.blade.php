@@ -14,7 +14,9 @@
         </div>
     </div>
     <div class="col-sm-5 style-desc-container__img">
-        <img src="{{ '/storage/collections/'.$collection->image }}" alt="{{$collection->name}}" class="img-fluid d-block" />        
+        <div class="embed-responsive embed-responsive-16by9">
+            <img src="{{ '/storage/collections/'.$collection->image }}" alt="{{$collection->name}}" class="embed-responsive-item" />        
+        </div>
     </div>
 </div>    
 <div class="search-wrap light py-2 text-center px-5 mobile-off">
