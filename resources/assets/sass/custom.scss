@@ -124,3 +124,50 @@ a.carousel-inner{
 .percent-70.embed-responsive-4by3::before{
   padding-top: 70%;
 }
+
+.search-mobile-filter{
+  font-size: 16px;
+  color: #000;
+}
+
+.search-mobile-filter .row{
+  height: 65px;
+}
+
+.search-mobile-filter .bottom_border{
+  border-bottom: 2px solid #696969;
+}
+
+.search-mobile-filter .left_border{
+  border-left: 2px solid #696969;
+}
+
+.search-mobile-filter .qty{
+  margin: 0;
+  text-align: center;
+  color:#224195;
+  background: transparent;
+  width: 30px;
+}
+
+.search-mobile-filter .buttons_round{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  font-size: 35px;
+  font-weight: 300;
+  color: #000;
+  line-height: normal;
+}
+.search-mobile-filter .buttons_round.buttons_round_minus span{
+  margin-bottom: 6px;
+}
+
+.mobile-home-search .row{
+  margin: 0;
+}
+
+.px-2.home.mobileHeader{
+  padding: 10px 0 !important;
+}

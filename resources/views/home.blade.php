@@ -302,25 +302,43 @@
 		</div>
 	<div class="text-center page-name mt-1 grey-border" style="padding-top : 20px !important">
       <div class="mobile-home-search"> 
-            <div class="row" style="border-bottom: 2px solid #696969;margin-left: 4px;margin-right: 5px;">
-          		<div class="col-2 search_by_name text-left" style="padding-bottom : 25px;padding-left : 0px;font-weight : normal;text-align: right !important;
-    padding-right: 9px;">Sq. ft. </div>
-                <div class="col-4" style="padding-left : 0;"><input type="number" placeholder="min" size=5 class="center" style="margin-left : -15px;"><span class="small-font"> to </span><input type="number" placeholder="max" size=5 class="center"></div> 
-                <div class="col-2 Sborder-left search_by_name" style="padding-left :10px;font-weight : normal;border-left: 2px solid #696969;">Stories </div>
-                <div class="col-4" style="padding-left : 6px;"><span class="min_icon stories_reduce-mobile"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
-                        <span class="max_icon stories-add-mobile"><i class="fa fa-plus"></i></span></div>
-             </div>
-             <div class="row" style="margin-top : 0;">
-          		<div class="col-2 pt-3 search_by_name" style="font-weight : normal;text-align: right;padding-right: 6px;">Beds</div>
-                <div class="col-4 pt-3 text-left" style="padding-left : 0;"> <span class="min_icon beds-remove-mobile" style="margin-left : 4px !important;"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty"> 
-                        <span class="max_icon beds-add-mobile"><i class="fa fa-plus"></i></span></div>
-                <div class="col-2 Sborder-left pt-3 search_by_name" style="padding-left : 19px;font-weight : normal;border-left: 2px solid #696969;">Baths</div>
-                 <div class="col-4 pt-3" style="padding-left : 6px;"><span class="min_icon baths-remove-mobile"> <i class="fa fa-minus"> </i></span> <input type="text" name="" value="1" class="qty">  
-                        <span class="max_icon baths-add-mobile"><i class="fa fa-plus"></i></span></div>
-             </div>
-             <div style="margin-top : 25px;"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold search-button1" type="button"> SEARCH</button></div>
-             <div class="mt-3"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold grey-button" type="button" style="width :100%;padding : 6px 0;"> Advanced Search</button></div>
-             <div class="mt-3" style="margin-top : 30px !important;"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold grey-button" type="button" style="width :100%;padding : 6px 0;"> Search by Plan #<i class="fa fa-search" aria-hidden="true"></i></button></div>
+			<form method="GET" action="{{ route('search') }}">
+			<div class="row d-flex flex-column search-mobile-filter">
+				<div class="row bottom_border">
+					<div class="col-6 d-flex flex-row align-items-center justify-content-between">
+						<span>Sq. ft.</span>
+						<input type="number" placeholder="min" size=5 name="sq_min" class="center">
+						<span class="small-font">to</span>
+						<input type="number" placeholder="max" size=5 name="sq_max" class="center">
+					</div>
+					<div class="col-6 left_border d-flex flex-row align-items-center justify-content-between">
+						<span>Stories</span>
+						<div class="buttons_round buttons_round_minus d-flex align-items-center justify-content-center stories_reduce-mobile"><span>&ndash;</span></div>
+						<input type="text" name="stories" value="1" class="qty">
+						<div class="buttons_round d-flex align-items-center justify-content-center stories-add-mobile"><span>+</span></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-6 d-flex flex-row align-items-center justify-content-between">
+						<span>Beds</span>
+						<div class="buttons_round buttons_round_minus d-flex align-items-center justify-content-center beds-remove-mobile"><span>&ndash;</span></div>
+						<input type="text" name="beds" value="1" class="qty">
+						<div class="buttons_round d-flex align-items-center justify-content-center beds-add-mobile"><span>+</span></div>	
+					</div>
+					<div class="col-6 left_border d-flex flex-row align-items-center justify-content-between">
+						<span style="margin-right:8px">Baths</span>
+						<div class="buttons_round buttons_round_minus d-flex align-items-center justify-content-center baths-remove-mobile"><span>&ndash;</span></div>
+						<input type="text" name="baths" value="1" class="qty">
+						<div class="buttons_round d-flex align-items-center justify-content-center baths-add-mobile"><span>+</span></div>								
+					</div>	
+				</div>
+			</div>
+             <div style="margin-top : 25px;"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold search-button1" type="submit"> SEARCH</button></div>
+             <div class="mt-3">
+				<a href="{{ route('advanced-search') }}" class="btn btn-primary rounded-0 text-white font-weight-semi-bold grey-button" style="width :100%;padding : 6px 0;"> ADVANCED SEARCH</a>
+			</div>
+			 {{-- <div class="mt-3" style="margin-top : 30px !important;"><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold grey-button" type="button" style="width :100%;padding : 6px 0;"> Search by Plan #<i class="fa fa-search" aria-hidden="true"></i></button></div> --}}
+			</form>
           </div>
        </div>  
        <div style="clear : both;"></div>
