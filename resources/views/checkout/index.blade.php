@@ -8,56 +8,65 @@
     
        <div class="tab-content" id="myTabContent">
          <div class="tab-pane fade show active" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+         <form action="{{ route('checkout.store') }}" id="shippingForm" method="POST">
              <h4 class="font-weight-bold mt-2 mt-20">Shipping Address</h4>
              <div class="row">
                  <div class="col-sm-6">
                      <div class="form-group">
                          <label for="">First Name</label>
-                         <input type="text" class="form-control rounded-0">
+                         <input type="text" name="firstName" class="form-control rounded-0">
+                         <div class="invalid-feedback"></div>
                      </div>
                  </div>
                  <div class="col-sm-6">
                      <div class="form-group">
                          <label for="">Last Name</label>
-                         <input type="text" class="form-control rounded-0">
+                         <input type="text" name="lastName" class="form-control rounded-0">
+                         <div class="invalid-feedback"></div>
                      </div>
                  </div>
                  <div class="col-sm-12">
                      <div class="form-group">
                          <label for="">Street</label>
-                         <input type="text" class="form-control rounded-0">
+                         <input type="text" name="street" class="form-control rounded-0">
+                         <div class="invalid-feedback"></div>
                      </div>
                  </div>
                  <div class="col-sm-4">
                      <div class="form-group">
                          <label for="">City</label>
-                         <input type="text" class="form-control rounded-0">
+                         <input type="text" name="city" class="form-control rounded-0">
+                         <div class="invalid-feedback"></div>
                      </div>
                  </div>
                  <div class="col-sm-4">
                      <div class="form-group">
                          <label for="">State</label>
-                        <select name="" id="" class="form-control rounded-0">
+                        <select name="state" id="" class="form-control rounded-0">
                             <option value="">Select State</option>
                         </select>
+                        <div class="invalid-feedback"></div>
                      </div>
                  </div>
                  <div class="col-sm-4">
                      <div class="form-group">
                          <label for="">Zipcode</label>
-                         <input type="text" class="form-control rounded-0">
+                         <input type="text" name="zip" class="form-control rounded-0">
+                         <div class="invalid-feedback"></div>
                      </div>
                  </div>
                  <div class="col-sm-6">
                      <div class="form-group">
                          <label for="">Email</label>
-                         <input type="text" class="form-control rounded-0">
+                         <input type="email" name="email" class="form-control rounded-0">
+                         <div class="invalid-feedback"></div>
                      </div>
                  </div>
                  <div class="col-sm-6">
                      <div class="form-group">
                          <label for="">Phone</label>
-                         <input type="text" class="form-control rounded-0">
+                         <input type="text" name="phone" class="form-control rounded-0">
+                         <div class="invalid-feedback"></div>
                      </div>
                  </div>
              </div>
@@ -71,27 +80,31 @@
                  <div class="col-sm-12">
                      <div class="form-group">
                          <label for="">Street</label>
-                         <input type="text" class="form-control rounded-0">
+                         <input type="text" name="bil_street" class="form-control rounded-0">
+                         <div class="invalid-feedback"></div>
                      </div>
                  </div>
                  <div class="col-sm-4">
                      <div class="form-group">
                          <label for="">City</label>
-                         <input type="text" class="form-control rounded-0">
+                         <input type="text" name="bil_city" class="form-control rounded-0">
+                         <div class="invalid-feedback"></div>
                      </div>
                  </div>
                  <div class="col-sm-4">
                      <div class="form-group">
                          <label for="">State</label>
-                        <select name="" id="" class="form-control rounded-0">
+                        <select name="bil_state" id="" class="form-control rounded-0">
                             <option value="">Select State</option>
                         </select>
+                        <div class="invalid-feedback"></div>
                      </div>
                  </div>
                  <div class="col-sm-4">
                      <div class="form-group">
                          <label for="">Zipcode</label>
-                         <input type="text" class="form-control rounded-0">
+                         <input type="text" name="bil_zip" class="form-control rounded-0">
+                         <div class="invalid-feedback"></div>
                      </div>
                  </div>
              </div>
@@ -101,47 +114,101 @@
                      <label for="" class="blue-text font-weight-bold">Are you a builder?</label>
                     
                      <div class="custom-control custom-radio custom-control-inline">
-<input type="radio" id="customRadio1" name="customRadio2" class="custom-control-input">
+<input type="radio" id="customRadio1" value="1" name="builder" class="custom-control-input">
 <label class="custom-control-label" for="customRadio1">Yes</label>
 </div>
 <div class="custom-control custom-radio custom-control-inline">
-<input type="radio" id="customRadio2" name="customRadio2" class="custom-control-input">
+<input type="radio" id="customRadio2" value="0" name="builder" checked class="custom-control-input">
 <label class="custom-control-label" for="customRadio2">No</label>
 </div>                    
                  </div>
              </div> 
              <div class="row mb-3">
-                 <div class="col-sm-12">
+                 <div class="col-sm-12 form-group">
                      <label for="" class="blue-text font-weight-bold in-one-line">How did you find us?</label>
                          
                      <div class="custom-control custom-radio custom-control-inline">
-<input type="radio" id="customRadio1" name="customRadio2" class="custom-control-input">
-<label class="custom-control-label" for="customRadio1">Google</label>
+<input type="radio" id="how1" name="how" value="Google" class="custom-control-input">
+<label class="custom-control-label" for="how1">Google</label>
 </div>
 <div class="custom-control custom-radio custom-control-inline">
-<input type="radio" id="customRadio2" name="customRadio2" class="custom-control-input">
-<label class="custom-control-label" for="customRadio2">Bing/Yahoo</label>
+<input type="radio" id="how2" name="how" class="custom-control-input">
+<label class="custom-control-label" for="how2">Bing/Yahoo</label>
 </div>     
                 
 <div class="custom-control custom-radio custom-control-inline">
-<input type="radio" id="customRadio2" name="customRadio2" class="custom-control-input">
-<label class="custom-control-label" for="customRadio2">Pinterest</label>
+<input type="radio" id="how3" name="how" value="Pinterest" class="custom-control-input">
+<label class="custom-control-label" for="how3">Pinterest</label>
 </div>     
 <div class="custom-control custom-radio custom-control-inline">
-<input type="radio" id="customRadio2" name="customRadio2" class="custom-control-input">
-<label class="custom-control-label" for="customRadio2">Other/Referral</label>
+<input type="radio" id="how4" name="how" value="Other/Referral" class="custom-control-input">
+<label class="custom-control-label" for="how4">Other/Referral</label>
 </div>                    
-<input type="text" placeholder="We'd love to know!" class="center" style="width : 152px;"> 
+<input type="text" name="how_txt" placeholder="We'd love to know!" class="center" style="width : 152px;"> 
+<div class="invalid-feedback"></div>
                  </div>
              </div>  
              
              <h4 class="font-weight-bold">Billing</h4>
-             <div class="row"> <div class="col-12 red-text form-group"> <input name="" type="checkbox" > I agree to the <a href="#" style="color:red;text-decoration: underline;font-weight:bold;"> 	Terms and Conditions</a></div></div>                
+             <div class="row"> 
+                 <div class="col-12 red-text form-group">
+                     <div class="form-check">
+                         <input name="confirm" class="form-check-input" type="checkbox" > I agree to the <a href="#" style="color:red;text-decoration: underline;font-weight:bold;"> 	Terms and Conditions</a>
+                         <div class="invalid-feedback"></div>
+                    </div> 
+                </div>
+            </div>                
                      <div class="mobile-center">        
                             <script src="https://www.paypal.com/sdk/js?client-id=AbipKKx6atXELtj6dGItlk-9DDYSLS0d01ff-kqTCtLUvkMygxfNuyz_Ao-Dr9aIoak6Swnz5zslP9Qp"></script>
                             <div id="paypal-button-container"></div>
                             <script>
+                                function toJSONString( form ) {
+                                    var obj = {};
+                                    var elements = form.elements;
+                                    for( var i = 0; i < elements.length; ++i ) {
+                                        var element = elements[i];
+                                        var name = element.name;
+                                        var value = element.value;
+
+                                        if( name ) {
+                                            obj[ name ] = value;
+                                        }
+                                    }
+
+                                    return JSON.stringify( obj );
+                                }
+                                var submitForm = document.getElementById('shippingForm');
                                 paypal.Buttons({
+                                    onClick: function(data, actions){
+                                        $(".invalid-feedback").html("");
+                                        $(".form-group input").removeClass("is-invalid");
+
+                                        return fetch("{{ route('checkout.store') }}", {
+                                            method: 'post',
+                                            headers: {
+                                            'content-type': 'application/json',
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                            },
+                                            body: toJSONString(submitForm)
+                                        }).then(function(res){
+                                            return res.json();
+                                        }).then(function(data){
+                                            if(data.errors){
+                                                for (var prop in data.errors) {
+                                                    submitForm.elements[prop].classList.add("is-invalid");
+                                                    var nextElement = $(submitForm.elements[prop]).parent().find(".invalid-feedback");
+                                                    if(nextElement){
+                                                        nextElement.html(data.errors[prop][0]);
+                                                    }
+                                                }
+                                                return actions.reject();
+                                            }else{
+                                                return actions.resolve();
+                                            }
+                                        }).catch(function(e){                                            
+                                            return actions.reject();
+                                        })
+                                    },
                                     createOrder: function(data, actions) {
                                         // Set up the transaction
                                         console.log('createOrder',data);
@@ -164,10 +231,34 @@
                                         });
                                     }                                    
                                 }).render('#paypal-button-container');
+                                $(document).ready(function () {
+                                    $("#customCheck1").on('click', function(){
+                                        if($(this).prop('checked')){
+                                            submitForm.elements["bil_street"].value = submitForm.elements["street"].value;
+                                            submitForm.elements["bil_street"].disabled = true;
+
+                                            submitForm.elements["bil_city"].value = submitForm.elements["city"].value;
+                                            submitForm.elements["bil_city"].disabled = true;
+
+                                            submitForm.elements["bil_state"].value = submitForm.elements["state"].value;
+                                            submitForm.elements["bil_state"].disabled = true;
+
+                                            submitForm.elements["bil_zip"].value = submitForm.elements["zip"].value;
+                                            submitForm.elements["bil_zip"].disabled = true;
+
+                                        }else{
+                                            submitForm.elements["bil_street"].disabled = false;
+                                            submitForm.elements["bil_city"].disabled = false;
+                                            submitForm.elements["bil_state"].disabled = false;
+                                            submitForm.elements["bil_zip"].disabled = false;
+                                        }
+                                    })
+                                })
                             </script>
                  {{-- <button class="btn btn-primary rounded-0 mb-3 px-4 red-button big-button">Purchase Plan</button>    --}}
             
-            </div>     
+            </div>  
+        </form>   
          </div>
          <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
              <h4 class="font-weight-bold mt-2">2. Billing</h4>            

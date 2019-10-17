@@ -178,3 +178,4 @@ Route::post('purchase/', 'ShoppingCartController@purchase')->name('purchase');
 Route::post('promo/', 'ShoppingCartController@promo')->name('promo');
 
 Route::get('checkout/', 'CheckoutController@index')->name('checkout');
+Route::post('checkout/create', 'CheckoutController@store')->name('checkout.store');
