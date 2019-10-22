@@ -179,3 +179,5 @@ Route::post('promo/', 'ShoppingCartController@promo')->name('promo');
 
 Route::get('checkout/', 'CheckoutController@index')->name('checkout');
 Route::post('checkout/create', 'CheckoutController@store')->name('checkout.store');
+Route::post('checkout/payd', 'CheckoutController@payd')->name('checkout.payd');
+Route::get('checkout/done/{orderID}/{paydID}', 'CheckoutController@done')->name('checkout.done');

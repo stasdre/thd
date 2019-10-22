@@ -9,6 +9,7 @@ use Thd\Checkout;
 use Thd\Plan;
 use Thd\Shipping;
 use Validator;
+use PragmaRX\Countries\Package\Countries;
 
 class CheckoutController extends Controller
 {
@@ -59,7 +60,13 @@ class CheckoutController extends Controller
                 $dataCart[] = $plan->first()->toArray();
             }
 
-            return view('checkout.index', ['plansData'=>$dataCart, 'curShipp'=>$curShipp]);
+            $countries = new Countries();
+            
+            return view('checkout.index', [
+                'plansData'=>$dataCart, 
+                'curShipp'=>$curShipp,
+                'states' => $countries->where('cca3', 'USA')->first()->hydrateStates()->states->pluck('name', 'postal')
+            ]);
         }else{
             return redirect()->route('home');
         }
@@ -69,7 +76,7 @@ class CheckoutController extends Controller
         $validator = Validator::make($request->all(), [
             'firstName' => 'required|alpha_dash',
             'lastName' => 'required|alpha_dash',
-            'street' => 'nullable|alpha_dash',
+            'street' => 'nullable',
             'city' => 'nullable|alpha_dash',
             'state' => 'nullable|exists:states_us,abbr',
             'zip' => 'nullable|numeric',
@@ -87,6 +94,40 @@ class CheckoutController extends Controller
             $checkout->save();
 
             return response()->json(['orderID'=>$checkout->id], 200);
+        }
+    }
+
+    public function payd(Request $request){
+        $checkout = Checkout::where("id", $request->input('orderID'))
+        ->where("pay_status",0);
+
+        $dataCheckout = $checkout->firstOrFail();
+
+        $dataCheckout->payd_id = $request->input('paydID');
+        $dataCheckout->pay_status = 1;
+
+        $dataCheckout->update();
+
+        return response()->json([
+            'pay_status'=>$dataCheckout->pay_status,
+            'orderID'=>$dataCheckout->id,
+            'paydID'=>$dataCheckout->payd_id
+        ], 200);
+    }
+
+    public function done(Request $request, $orderID, $paydID){
+        if(Cart::count()){
+            $checkout = Checkout::where("id", $orderID)
+            ->where("payd_id", $paydID)
+            ->where("pay_status",1);
+    
+            $dataCheckout = $checkout->firstOrFail();
+    
+            Cart::destroy();
+    
+            return view('checkout.done', ['data'=>$dataCheckout]);
+        }else{
+            return redirect()->route('home');
         }
     }
 }

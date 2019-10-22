@@ -42,9 +42,7 @@
                  <div class="col-sm-4">
                      <div class="form-group">
                          <label for="">State</label>
-                        <select name="state" id="" class="form-control rounded-0">
-                            <option value="">Select State</option>
-                        </select>
+                         {!! Form::select('state', $states, null, ['class' => 'form-control rounded-0', 'id' => '', 'placeholder' => '---Select---']) !!}
                         <div class="invalid-feedback"></div>
                      </div>
                  </div>
@@ -94,9 +92,7 @@
                  <div class="col-sm-4">
                      <div class="form-group">
                          <label for="">State</label>
-                        <select name="bil_state" id="" class="form-control rounded-0">
-                            <option value="">Select State</option>
-                        </select>
+                         {!! Form::select('bil_state', $states, null, ['class' => 'form-control rounded-0', 'id' => '', 'placeholder' => '---Select---']) !!}
                         <div class="invalid-feedback"></div>
                      </div>
                  </div>
@@ -158,8 +154,9 @@
                     </div> 
                 </div>
             </div>                
-                     <div class="mobile-center">        
-                            <script src="https://www.paypal.com/sdk/js?client-id=AbipKKx6atXELtj6dGItlk-9DDYSLS0d01ff-kqTCtLUvkMygxfNuyz_Ao-Dr9aIoak6Swnz5zslP9Qp"></script>
+                     <div class="mobile-center">   
+                            <i id="checkout-loading" style="display:none" class="fas fa-sync-alt fa-spin fa-2x"></i>     
+                            <script src="https://www.paypal.com/sdk/js?client-id={{env('PAYPAL_API_KEY')}}"></script>
                             <div id="paypal-button-container"></div>
                             <script>
                                 function toJSONString( form ) {
@@ -178,6 +175,7 @@
                                     return JSON.stringify( obj );
                                 }
                                 var submitForm = document.getElementById('shippingForm');
+                                var orderID = null;
                                 paypal.Buttons({
                                     onClick: function(data, actions){
                                         $(".invalid-feedback").html("");
@@ -202,8 +200,11 @@
                                                     }
                                                 }
                                                 return actions.reject();
-                                            }else{
+                                            }else if(data.orderID){
+                                                orderID = data.orderID;
                                                 return actions.resolve();
+                                            }else{
+                                                return actions.reject();
                                             }
                                         }).catch(function(e){                                            
                                             return actions.reject();
@@ -211,23 +212,40 @@
                                     },
                                     createOrder: function(data, actions) {
                                         // Set up the transaction
-                                        console.log('createOrder',data);
                                         return actions.order.create({
+                                            intent: 'CAPTURE',
                                             purchase_units: [{
                                             amount: {
                                                 currency_code: "USD",
-                                                value: '1000'
+                                                value: '{{Cart::total()}}'
                                             }
                                             }]
                                         });
                                     },
                                     onApprove: function(data, actions) {
                                         // Capture the funds from the transaction
+                                        $("#checkout-loading").show();
+                                        $("#paypal-button-container").hide();
                                         return actions.order.capture().then(function(details) {
                                             // Show a success message to your buyer
-                                            //alert('Transaction completed by ' + details.payer.name.given_name);
-                                            // console.log(data);
-                                            console.log('onApprove',details);
+                                            if(details.status =="COMPLETED"){
+                                                fetch("{{ route('checkout.payd') }}", {
+                                                    method: 'post',
+                                                    headers: {
+                                                    'content-type': 'application/json',
+                                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                    },
+                                                    body: JSON.stringify({orderID:orderID, paydID:details.id})
+                                                }).then(function(res){
+                                                    return res.json();
+                                                }).then(function(data){
+                                                    if(data.pay_status == 1){
+                                                        window.location.replace("/checkout/done/"+data.orderID+"/"+data.paydID);
+                                                    }else{
+                                                        alert('Something went wrong!!!');
+                                                    }
+                                                }); 
+                                            }
                                         });
                                     }                                    
                                 }).render('#paypal-button-container');
