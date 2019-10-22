@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Thd\Checkout;
 use Thd\Plan;
 use Thd\Shipping;
+use Thd\Promo;
 use Validator;
 use PragmaRX\Countries\Package\Countries;
 
@@ -89,6 +90,28 @@ class CheckoutController extends Controller
             return response()->json(['errors'=>$validator->messages()], 200);
         }else{
             $reqData = $request->except(['confirm']);
+            
+            $dataPlans = [];
+            foreach (Cart::content() as $cart){
+
+                if($cart->id === 'ship_method') {
+                    $shipp = Shipping::find($cart->name)->first();
+                    $reqData['shipping'] = json_encode(['method'=>$cart->name, 'cost'=>$cart->price, 'id'=>$shipp->id]);
+                    continue;
+                }
+
+                if($cart->id === 'promo') {
+                    $promo = Promo::where('code', '=', $cart->name)->first();
+                    $reqData['promo'] = json_encode(['code'=>$cart->name, 'cost'=>$cart->price, 'id'=>$promo->id]);
+                    continue;
+                }
+
+                $dataPlans[$cart->id] = $cart->options;
+                      
+            }
+
+            $reqData['plans'] = json_encode($dataPlans, JSON_FORCE_OBJECT);
+            $reqData['total'] = Cart::total();
 
             $checkout = new Checkout($reqData);
             $checkout->save();
