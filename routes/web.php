@@ -87,7 +87,11 @@ Route::prefix('admin-thd')->group(function(){
         Route::get('house-plan/publish/{plan}', 'Admin\HousePlansController@publish')->where('plan', '[0-9]+')->name('house-plan.publish');
         Route::get('house-plan/unpublish/{plan}', 'Admin\HousePlansController@unpublish')->where('plan', '[0-9]+')->name('house-plan.unpublish');
 
-        Route::post('upload-image/', 'Admin\ImageController@upload')->name('image-upload');        
+        Route::post('upload-image/', 'Admin\ImageController@upload')->name('image-upload');     
+        
+        Route::get('orders', 'Admin\OrderController@index')->name('order.index'); 
+        Route::get('orders/data', 'Admin\OrderController@anyData')->name('order.data');
+        Route::get('orders/view/{order}', 'Admin\OrderController@view')->name('order.view');
     });
     Route::middleware(['auth', 'role:owner|admin'])->group(function(){
         Route::resource('styles', 'Admin\StyleController', ['except'=>['show']]);
