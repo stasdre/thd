@@ -197,7 +197,7 @@
     <div class="col-9 text-left font-weight-bold margin_left position_unset">SUBTOTALS:<span>  $@{{total}}</span></div>
      </div>
   </div>
-      <button type="submit" class="btn btn-primary text-uppercase rounded-0 mt-1 offset-1 btn_width">ADD TO CART</button>
+      <button @click.prevent="addToCart()" :disabled="toCartButtonDisable" type="submit" class="btn btn-primary text-uppercase rounded-0 mt-1 offset-1 btn_width">ADD TO CART <i v-if="loading" class="fas fa-sync fa-spin"></i></button>
   </div> <!-- Searchform outer -->
     </div>        
     <div class="col-lg-2 col-sm-5 padd_top pd-md-0 mobile-off"> <!--d-sm-none-->
@@ -489,7 +489,7 @@ ensure you stay in budget, economy, standard and premium.</p>
     <div class="col-9 text-left font-weight-bold margin_left position_unset">SUBTOTALS:<span>  $@{{total}}</span></div>
      </div>
   </div>
-      <button type="submit" class="btn btn-primary text-uppercase rounded-0 mt-1 offset-1 btn_width">ADD TO CART</button>
+      <button type="submit" @click.prevent="addToCart()" class="btn btn-primary text-uppercase rounded-0 mt-1 offset-1 btn_width">ADD TO CART <i v-if="loading" class="fas fa-sync fa-spin"></i></button>
   </div> <!-- Searchform outer -->
     </div>
            </div>
@@ -817,7 +817,13 @@ ensure you stay in budget, economy, standard and premium.</p>
 @endsection
 
 @push('scripts')
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+@if(App::environment('local'))
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+@else
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
+@endif
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script>
     var app = new Vue({
       el: '#searchform_outer',
@@ -825,6 +831,8 @@ ensure you stay in budget, economy, standard and premium.</p>
         viewOptions: false,
         viewPackages: false,
         viewAddons: false,
+        toCartButtonDisable: true,
+        loading: false,
         packages: {!!$packages!!},
         checkedPackage: {
           id: null,
@@ -862,10 +870,37 @@ ensure you stay in budget, economy, standard and premium.</p>
         setActivePackage(package){
           this.checkedPackage = package;
           this.viewPackages = false;
+          this.checkActiveButtonCart();
         },
         setActiveOption(option){
           this.checkedOption = option;
           this.viewOptions = false;
+          this.checkActiveButtonCart();
+        },
+        addToCart(){
+          this.loading = true;
+          axios.post('{{route('purchase')}}',{
+            plan_id: {!!$plan->id!!},
+            plan_package: this.checkedPackage.id,
+            plan_foundation: this.checkedOption.id,
+            plan_features: this.checkedAddons.join()
+          })
+          .then(response => {
+              if(response.data.status == 'ok'){
+                window.location.href = '{{route('cart')}}';
+              }else{
+                this.loading = false;
+              }
+          }, (error) => {
+              this.loading = false;
+          });          
+        },
+        checkActiveButtonCart(){
+          if(this.checkedPackage.id && this.checkedOption.id){
+            this.toCartButtonDisable = false;
+          }else{
+            this.toCartButtonDisable = true;
+          }
         }
       }
     });
@@ -877,6 +912,8 @@ ensure you stay in budget, economy, standard and premium.</p>
         viewOptions: false,
         viewPackages: false,
         viewAddons: false,
+        toCartButtonDisable: true,
+        loading: false,
         packages: {!!$packages!!},
         checkedPackage: {
           id: null,
@@ -918,7 +955,10 @@ ensure you stay in budget, economy, standard and premium.</p>
         setActiveOption(option){
           this.checkedOption = option;
           this.viewOptions = false;
-        }
+        },
+        addToCart(){
+          console.log('Add');
+        } 
       }
     })    
   </script>

@@ -87,7 +87,11 @@ Route::prefix('admin-thd')->group(function(){
         Route::get('house-plan/publish/{plan}', 'Admin\HousePlansController@publish')->where('plan', '[0-9]+')->name('house-plan.publish');
         Route::get('house-plan/unpublish/{plan}', 'Admin\HousePlansController@unpublish')->where('plan', '[0-9]+')->name('house-plan.unpublish');
 
-        Route::post('upload-image/', 'Admin\ImageController@upload')->name('image-upload');        
+        Route::post('upload-image/', 'Admin\ImageController@upload')->name('image-upload');     
+        
+        Route::get('orders', 'Admin\OrderController@index')->name('order.index'); 
+        Route::get('orders/data', 'Admin\OrderController@anyData')->name('order.data');
+        Route::get('orders/view/{order}', 'Admin\OrderController@view')->name('order.view');
     });
     Route::middleware(['auth', 'role:owner|admin'])->group(function(){
         Route::resource('styles', 'Admin\StyleController', ['except'=>['show']]);
@@ -186,8 +190,13 @@ Route::get('contact-us/', 'ContactUsController@index')->name('contact-us');
 Route::post('contact-us/send', 'ContactUsController@send')->name('contact-us.send');
 
 Route::get('cart/', 'ShoppingCartController@index')->name('cart');
+Route::post('cart/update/', 'ShoppingCartController@update')->name('cart.update');
 Route::post('purchase/', 'ShoppingCartController@purchase')->name('purchase');
 Route::post('promo/', 'ShoppingCartController@promo')->name('promo');
 
 Route::get('inspiration/', 'InspirationController@index')->name('inspiration');
 Route::get('inspiration/{link}', 'InspirationController@pages')->name('inspiration.page');
+Route::get('checkout/', 'CheckoutController@index')->name('checkout');
+Route::post('checkout/create', 'CheckoutController@store')->name('checkout.store');
+Route::post('checkout/payd', 'CheckoutController@payd')->name('checkout.payd');
+Route::get('checkout/done/{orderID}/{paydID}', 'CheckoutController@done')->name('checkout.done');
