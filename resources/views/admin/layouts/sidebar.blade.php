@@ -108,6 +108,9 @@
                     </ul>
                 </li>
             @endrole
+            <li>
+                <a href="/blog/wp-admin/"><i class="fa fa-sign-in"></i> <span>Blog</span></a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->
