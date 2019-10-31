@@ -79,7 +79,7 @@ class SearchController extends Controller
 
         $rules = [
             'views' => 'required|in:24,50',
-            'order' => 'nullable|in:popular,recent',
+            'order' => 'nullable|in:popular,recent,s_l,l_s',
             'collection' => 'nullable|integer',
             'style' => 'nullable|integer',
             'sq_min' => 'nullable|numeric',
@@ -203,6 +203,12 @@ class SearchController extends Controller
                 break;
             case 'recent':
                 $plans->orderBy('created_at', 'desc');
+                break;
+            case 's_l':
+                $plans->orderBy('square_ft->str_total', 'asc');
+                break;
+            case 'l_s':
+                $plans->orderBy('square_ft->str_total', 'desc');
                 break;
         }
 

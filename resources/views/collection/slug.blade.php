@@ -179,7 +179,9 @@
                         <label for="">Sort:</label>
                         <select v-model="order" class="form-control form-control-sm rounded-0">
                             <option value="popular">Most Popular</option>
-                            <option value="recent">Most Recent</option>
+                            <option value="recent">Newest</option>
+                            <option value="s_l">Small to Large</option>
+                            <option value="l_s">Large to Small</option>
                         </select>
                     </div>
                     <div class="form-group ml-2">
