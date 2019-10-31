@@ -207,7 +207,7 @@ class SearchController extends Controller
         }
 
         $dataPlans = $plans->with(['images'=>function($query){
-            $query->where('for_search', 1);
+            //$query->where('for_search', 1);
         }])->paginate($views);
         //return view('search.index', ['plans'=>$dataPlans]);
         return response()->json($dataPlans);

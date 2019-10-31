@@ -91,7 +91,7 @@ class ShoppingCartController extends Controller
                 }
 
                 $plan->with(['images' => function($query){
-                    $query->where('for_search', '=', 1);
+                    //$query->where('for_search', '=', 1);
                 }]);
 
                 $dataCart[] = $plan->first()->toArray();
