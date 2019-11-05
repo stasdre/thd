@@ -279,12 +279,14 @@
                             <a href="/plan/{{$plan->plan_number}}" class="carousel-inner">
                                 @foreach ($plan->images as $img)
                                 <div class="carousel-item @if($loop->iteration == 1) active @endif">
-                                    {{-- <div class="embed-responsive embed-responsive-4by3"> --}}
-                                    <img src="/storage/plans/{{$plan->id}}/thumb/{{$img->file_name}}" alt=""
-                                        class="img-fluid d-block w-100">
-                                    {{-- </div> --}}
-                                    <a v-if="image.camera_icon" href="#" class="position-absolute icon-camera"><img
+                                    <div class="embed-responsive embed-responsive-4by3 percent-69">
+                                        <img src="/storage/plans/{{$plan->id}}/thumb/{{$img->file_name}}" alt=""
+                                            class="embed-responsive-item">
+                                    </div>
+                                    @if ($img->camera_icon)
+                                    <a href="#" class="position-absolute icon-camera"><img
                                             src="{{asset('images/icons/icon-camera.png')}}" alt=""></a>
+                                    @endif
                                 </div>
                                 @endforeach
                             </a>

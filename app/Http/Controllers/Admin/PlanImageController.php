@@ -50,20 +50,19 @@ class PlanImageController extends Controller
         $input = $request->all();
 
         $rules = array(
-            'file' => 'image|max:20000',
+            'file' => 'image|max:20000|dimensions:min_width=975,min_height=520',
             'sort_number' => 'integer'
         );
 
         $validation = Validator::make($input, $rules);
-        if ($validation->fails())
-        {
+        if ($validation->fails()) {
             return Response::make($validation->errors()->first('file'), 400);
         }
 
         $image = $request->file('file');
         $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
 
-        if(!file_exists(storage_path('app/public/plans/' . $plan->id . '/original/'))){
+        if (!file_exists(storage_path('app/public/plans/' . $plan->id . '/original/'))) {
             Storage::makeDirectory('public/plans/' . $plan->id . '/original');
         }
 
@@ -72,28 +71,24 @@ class PlanImageController extends Controller
         $pathThumb = storage_path('app/public/plans/' . $plan->id . '/thumb/' . $filename);
 
         $img = Image::make($image->getRealPath());
-        $img->resize(null, 465, function ($constraint) {
-            $constraint->aspectRatio();
-        });
+        $img->fit(975, 520);
         $img->save($path, 90);
 
         $imgThumb = Image::make($image->getRealPath());
-        $imgThumb->resize(380, null, function ($constraint) {
-            $constraint->aspectRatio();
-        });
-        $imgThumb->save($pathThumb);
+        $imgThumb->fit(420, 290);
+        $imgThumb->save($pathThumb, 90);
 
         $imgOriginal = Image::make($image->getRealPath());
         $imgOriginal->save($pathOriginal, 100);
 
-        if( $img &&  $imgThumb ) {
+        if ($img &&  $imgThumb) {
             $imagePlan = new PlanImage([
                 'file_name' => $filename,
                 'sort_number' => $request->input('sort_number')
             ]);
             $imagePlan->plan()->associate($plan);
             $imagePlan->save();
-            return response()->json(['success', 'plan_id' => $plan->id, 'file_name'=>$filename, 'id'=>$imagePlan->id], 200);
+            return response()->json(['success', 'plan_id' => $plan->id, 'file_name' => $filename, 'id' => $imagePlan->id], 200);
         } else {
             return response()->json('error', 400);
         }
@@ -126,13 +121,12 @@ class PlanImageController extends Controller
         );
 
         $validation = Validator::make($input, $rules);
-        if ($validation->fails())
-        {
-            return response()->json(['error'=>$validation->errors()->first()], 400);
+        if ($validation->fails()) {
+            return response()->json(['error' => $validation->errors()->first()], 400);
         }
 
-        if($input['first_image'] == 1)
-            PlanImage::where('plan_id', '=', $image->plan_id)->update(['first_image'=>0]);
+        if ($input['first_image'] == 1)
+            PlanImage::where('plan_id', '=', $image->plan_id)->update(['first_image' => 0]);
 
         $image->title = $input['title'];
         $image->alt_text = $input['alt_text'];
@@ -141,12 +135,11 @@ class PlanImageController extends Controller
         $image->for_search = $input['for_search'] == 1 ? 1 : 0;
         $image->camera_icon = $input['camera_icon'] == 1 ? 1 : 0;
 
-        if($image->update()){
+        if ($image->update()) {
             return response()->json('success', 200);
-        }else{
-            return response()->json(['error'=>'Data not updated'], 400);
+        } else {
+            return response()->json(['error' => 'Data not updated'], 400);
         }
-
     }
 
     public function sort(Request $request)
@@ -158,13 +151,12 @@ class PlanImageController extends Controller
         );
 
         $validation = Validator::make($input, $rules);
-        if ($validation->fails())
-        {
+        if ($validation->fails()) {
             return Response::make($validation->errors()->first('sortable_id.*'), 400);
         }
 
-        foreach ($request->input('sortable_id') as $key=>$image){
-            PlanImage::where('id', $image)->update(['sort_number'=>$key]);
+        foreach ($request->input('sortable_id') as $key => $image) {
+            PlanImage::where('id', $image)->update(['sort_number' => $key]);
         }
 
         return response()->json(['success'], 200);
@@ -178,13 +170,33 @@ class PlanImageController extends Controller
      */
     public function destroy(PlanImage $image)
     {
-        Storage::delete('public/plans/'.$image->plan_id.'/thumb/'.$image->file_name);
-        Storage::delete('public/plans/'.$image->plan_id.'/original/'.$image->file_name);
-        Storage::delete('public/plans/'.$image->plan_id.'/'.$image->file_name);
-        if($image->delete()){
+        Storage::delete('public/plans/' . $image->plan_id . '/thumb/' . $image->file_name);
+        Storage::delete('public/plans/' . $image->plan_id . '/original/' . $image->file_name);
+        Storage::delete('public/plans/' . $image->plan_id . '/' . $image->file_name);
+        if ($image->delete()) {
             return response()->json('success', 200);
-        }else{
-            return response()->json(['error'=>'Image not deleted'], 400);
+        } else {
+            return response()->json(['error' => 'Image not deleted'], 400);
         }
+    }
+
+    public function refactor()
+    {
+        $images = PlanImage::where('id', 447)->get();
+        foreach ($images as $image) {
+            $path = storage_path('app/public/plans/' . $image->plan_id . '/' . $image->file_name);
+            $pathThumb = storage_path('app/public/plans/' . $image->plan_id . '/thumb/' . $image->file_name);
+
+            $img = Image::make($path);
+            $img->fit(975, 520);
+            $img->save($path, 90);
+
+            $imgThumb = Image::make($pathThumb);
+            $imgThumb->fit(420, 290);
+            $imgThumb->save($pathThumb);
+
+            echo $image->id . "<br>";
+        }
+        //dd($images);
     }
 }

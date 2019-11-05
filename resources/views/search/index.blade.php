@@ -136,10 +136,10 @@
                         <a :href="'/plan/' + plan.plan_number" class="carousel-inner">
                             <div class="carousel-item" :class="{ active: index === 0 }"
                                 v-for="(image, index) in plan.images" :key="image.id">
-                                {{-- <div class="embed-responsive embed-responsive-4by3"> --}}
-                                <img :src="'/storage/plans/'+plan.id+'/thumb/'+image.file_name" alt=""
-                                    class="img-fluid d-block w-100">
-                                {{-- </div> --}}
+                                <div class="embed-responsive embed-responsive-4by3">
+                                    <img :src="'/storage/plans/'+plan.id+'/thumb/'+image.file_name" alt=""
+                                        class="embed-responsive-item">
+                                </div>
                                 <a v-if="image.camera_icon" href="#" class="position-absolute icon-camera"><img
                                         src="{{asset('images/icons/icon-camera.png')}}" alt=""></a>
                             </div>

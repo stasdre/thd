@@ -21,7 +21,8 @@
 </div>
       <div class="slider">
           @foreach($plan->images as $image)
-            <figure class="slider_max_height_500"> <img src="{{ asset('storage/plans/'.$plan->id.'/'.$image->file_name) }}" alt="{{$image->alt_text}}" class="img-fluid img_width_100_percent">
+            <figure class="slider_max_height_500"> 
+                <img src="{{ asset('storage/plans/'.$plan->id.'/'.$image->file_name) }}" alt="{{$image->alt_text}}" class="img-fluid img_width_100_percent">
               @if($image->description)
                 <figcaption>{{$image->description}}</figcaption>
               @endif

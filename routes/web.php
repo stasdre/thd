@@ -16,11 +16,11 @@ Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
 Route::get('logout', '\Thd\Http\Controllers\Auth\LoginController@logout');
 
-Route::prefix('admin-thd')->group(function(){
-    Route::middleware(['auth', 'role:owner|admin|manager'])->group(function(){
+Route::prefix('admin-thd')->group(function () {
+    Route::middleware(['auth', 'role:owner|admin|manager'])->group(function () {
         Route::get('/', 'Admin\DashboardController@index')->name('dashboard');
 
-        Route::resource('house-plan', 'Admin\HousePlansController', ['except'=>['show']]);
+        Route::resource('house-plan', 'Admin\HousePlansController', ['except' => ['show']]);
         Route::get('house-plan/data', 'Admin\HousePlansController@anyData')->name('house-plan.data');
         Route::get('house-plan/getid/{str}', 'Admin\HousePlansController@getPlanID')->name('getPlanID');
 
@@ -87,42 +87,42 @@ Route::prefix('admin-thd')->group(function(){
         Route::get('house-plan/publish/{plan}', 'Admin\HousePlansController@publish')->where('plan', '[0-9]+')->name('house-plan.publish');
         Route::get('house-plan/unpublish/{plan}', 'Admin\HousePlansController@unpublish')->where('plan', '[0-9]+')->name('house-plan.unpublish');
 
-        Route::post('upload-image/', 'Admin\ImageController@upload')->name('image-upload');     
-        
-        Route::get('orders', 'Admin\OrderController@index')->name('order.index'); 
+        Route::post('upload-image/', 'Admin\ImageController@upload')->name('image-upload');
+
+        Route::get('orders', 'Admin\OrderController@index')->name('order.index');
         Route::get('orders/data', 'Admin\OrderController@anyData')->name('order.data');
         Route::get('orders/view/{order}', 'Admin\OrderController@view')->name('order.view');
     });
-    Route::middleware(['auth', 'role:owner|admin'])->group(function(){
-        Route::resource('styles', 'Admin\StyleController', ['except'=>['show']]);
+    Route::middleware(['auth', 'role:owner|admin'])->group(function () {
+        Route::resource('styles', 'Admin\StyleController', ['except' => ['show']]);
         Route::get('styles/data', 'Admin\StyleController@anyData')->name('styles.data');
         Route::post('styles/store-data', 'Admin\StyleController@storeData')->name('styles.storeData');
         Route::get('styles/publish/{style}', 'Admin\StyleController@publish')->where('style', '[0-9]+')->name('style.publish');
         Route::get('styles/unpublish/{style}', 'Admin\StyleController@unpublish')->where('style', '[0-9]+')->name('style.unpublish');
 
 
-        Route::resource('collections', 'Admin\CollectionController', ['except'=>['show']]);
+        Route::resource('collections', 'Admin\CollectionController', ['except' => ['show']]);
         Route::get('collections/data', 'Admin\CollectionController@anyData')->name('collections.data');
         Route::post('collections/store-data', 'Admin\CollectionController@storeData')->name('collections.storeData');
         Route::get('collections/publish/{collection}', 'Admin\CollectionController@publish')->where('collection', '[0-9]+')->name('collection.publish');
         Route::get('collections/unpublish/{collection}', 'Admin\CollectionController@unpublish')->where('collection', '[0-9]+')->name('collection.unpublish');
 
-        Route::resource('packages', 'Admin\PackageController', ['except'=>['show']]);
+        Route::resource('packages', 'Admin\PackageController', ['except' => ['show']]);
         Route::get('packages/data', 'Admin\PackageController@anyData')->name('packages.data');
 
-        Route::resource('foundation-options', 'Admin\FoundationOptionController', ['except'=>['show']]);
+        Route::resource('foundation-options', 'Admin\FoundationOptionController', ['except' => ['show']]);
         Route::get('foundation-options/data', 'Admin\FoundationOptionController@anyData')->name('foundation-options.data');
 
-        Route::resource('addons', 'Admin\AddonsController', ['except'=>['show']]);
+        Route::resource('addons', 'Admin\AddonsController', ['except' => ['show']]);
         Route::get('addons/data', 'Admin\AddonsController@anyData')->name('addons.data');
 
-        Route::resource('gallery', 'Admin\GalleryController', ['except'=>['show']]);
+        Route::resource('gallery', 'Admin\GalleryController', ['except' => ['show']]);
         Route::get('gallery/data', 'Admin\GalleryController@anyData')->name('gallery.data');
 
         Route::get('about-david/edit', 'Admin\AboutDavidController@edit')->name('about-david.edit');
         Route::post('about-david/update', 'Admin\AboutDavidController@update')->name('about-david.update');
 
-        Route::resource('user', 'Admin\UserController', ['except'=>['show']]);
+        Route::resource('user', 'Admin\UserController', ['except' => ['show']]);
         Route::get('user/data', 'Admin\UserController@anyData')->name('user.data');
 
         Route::post('admin-thd/get-state', 'Admin\DashboardController@getCountryState')->name('getCountryState');
@@ -139,35 +139,37 @@ Route::prefix('admin-thd')->group(function(){
         Route::get('home-page/mobile-dream', 'Admin\HomePageController@mobileDream')->name('home-page.mobile-dream');
         Route::post('home-page/mobile-dream', 'Admin\HomePageController@mobileDream')->name('home-page.mobile-dream.post');
 
-        Route::resource('mobile-favorite', 'Admin\MobileFavoriteController', ['except'=>['show']]);
+        Route::resource('mobile-favorite', 'Admin\MobileFavoriteController', ['except' => ['show']]);
         Route::get('mobile-favorite/data', 'Admin\MobileFavoriteController@anyData')->name('mobile-favorite.data');
 
-        Route::resource('mobile-new', 'Admin\MobileNewController', ['except'=>['show']]);
+        Route::resource('mobile-new', 'Admin\MobileNewController', ['except' => ['show']]);
         Route::get('mobile-new/data', 'Admin\MobileNewController@anyData')->name('mobile-new.data');
 
         Route::get('home-page/mobile-best', 'Admin\HomePageController@mobileBest')->name('home-page.mobile-best');
         Route::post('home-page/mobile-best', 'Admin\HomePageController@mobileBest')->name('home-page.mobile-best.post');
 
-        Route::resource('shipping', 'Admin\ShippingController', ['except'=>['show']]);
+        Route::resource('shipping', 'Admin\ShippingController', ['except' => ['show']]);
         Route::get('shipping/data', 'Admin\ShippingController@anyData')->name('shipping.data');
 
-        Route::resource('promo', 'Admin\PromoController', ['except'=>['show']]);
+        Route::resource('promo', 'Admin\PromoController', ['except' => ['show']]);
         Route::get('promo/data', 'Admin\PromoController@anyData')->name('promo.data');
 
-        Route::resource('mobile-gallery', 'Admin\MobileGalleryController', ['except'=>['show']]);
+        Route::resource('mobile-gallery', 'Admin\MobileGalleryController', ['except' => ['show']]);
         Route::get('mobile-gallery/data', 'Admin\MobileGalleryController@anyData')->name('mobile-gallery.data');
 
-        Route::resource('inspiration', 'Admin\InspirationController', ['except'=>['show']]);
+        Route::resource('inspiration', 'Admin\InspirationController', ['except' => ['show']]);
         Route::get('inspiration/data', 'Admin\InspirationController@anyData')->name('inspiration.data');
 
-        Route::resource('inspiration-slider', 'Admin\InspirationSliderController', ['except'=>['show']]);
+        Route::resource('inspiration-slider', 'Admin\InspirationSliderController', ['except' => ['show']]);
         Route::get('inspiration-slider/data', 'Admin\InspirationSliderController@anyData')->name('inspiration-slider.data');
 
         Route::get('inspiration-blocks/edit', 'Admin\InspirationBlocksController@edit')->name('inspiration-blocks.edit');
         Route::post('inspiration-blocks/update', 'Admin\InspirationBlocksController@update')->name('inspiration-blocks.update');
 
-        Route::resource('inspiration-products', 'Admin\InspirationProductsController', ['except'=>['show']]);
+        Route::resource('inspiration-products', 'Admin\InspirationProductsController', ['except' => ['show']]);
         Route::get('inspiration-products/data', 'Admin\InspirationProductsController@anyData')->name('inspiration-products.data');
+
+        Route::get('plan-images-refactor', 'Admin\PlanImageController@refactor')->name('image-refactor');
     });
 });
 
@@ -182,8 +184,8 @@ Route::get('collections/', 'CollectionController@all')->name('collections');
 Route::get('styles/', 'StyleController@all')->name('styles');
 
 Route::get('plan/{plan_number}', 'PlanController@view')->name('plan.view')->where('plan_number', '[0-9]+');
-Route::get('modify-plan/{plan_number}','PlanController@modifyplan')->name('modify-plan')->where('plan_number', '[0-9]+');
-Route::post('modify-plan/{plan_number}','PlanController@modifyplanpost')->name('modify-plan-submit')->where('plan_number', '[0-9]+');
+Route::get('modify-plan/{plan_number}', 'PlanController@modifyplan')->name('modify-plan')->where('plan_number', '[0-9]+');
+Route::post('modify-plan/{plan_number}', 'PlanController@modifyplanpost')->name('modify-plan-submit')->where('plan_number', '[0-9]+');
 Route::get('plan/all', 'PlanController@all')->name('plan.all');
 
 Route::get('contact-us/', 'ContactUsController@index')->name('contact-us');
