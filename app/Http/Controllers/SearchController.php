@@ -32,7 +32,9 @@ class SearchController extends Controller
         $styles = Style::orderBy('name')->get();
         $collections = Collection::orderBy('name')->get();
 
-        $mostPlans = Plan::orderBy('views', 'desc')->limit(10)->with('images')->get();
+        $mostPlans = Plan::orderBy('views', 'desc')->limit(10)->with(['images' => function ($query) {
+            $query->where('for_search', 1);
+        }])->get();
 
 
         return view('search.advanced', [
@@ -212,8 +214,8 @@ class SearchController extends Controller
                 break;
         }
 
-        $dataPlans = $plans->with(['images'=>function($query){
-            //$query->where('for_search', 1);
+        $dataPlans = $plans->with(['images' => function ($query) {
+            $query->where('for_search', 1);
         }])->paginate($views);
         //return view('search.index', ['plans'=>$dataPlans]);
         return response()->json($dataPlans);
