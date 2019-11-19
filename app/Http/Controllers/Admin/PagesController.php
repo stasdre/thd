@@ -127,7 +127,7 @@ class PagesController extends Controller
     $pages = Page::select(['id', 'title', 'link', 'created_at', 'updated_at']);
     return Datatables::of($pages)
       ->addColumn('actions', function ($page) {
-        return '<a class="btn btn-info btn-sm" href="' . route('pages.edit', $page->id) . '" role="button">Edit</a> <form style="display: inline-block" action="' . route('pages.destroy', $page->id) . '" method="POST"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="' . csrf_token() . '"><button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
+        return '<a class="btn btn-info btn-sm" href="' . route('pages.edit', $page->link) . '" role="button">Edit</a> <form style="display: inline-block" action="' . route('pages.destroy', $page->link) . '" method="POST"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="' . csrf_token() . '"><button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
       })
       ->rawColumns(['actions'])
       ->make(true);

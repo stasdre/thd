@@ -1,5 +1,5 @@
 @if(Route::currentRouteName() == 'pages.edit')
-{{ Form::model($page, ['route' => ['pages.update', $page->id], 'class' => 'form-horizontal', 'method' => 'PATCH']) }}
+{{ Form::model($page, ['route' => ['pages.update', $page->link], 'class' => 'form-horizontal', 'method' => 'PATCH']) }}
 @else
 {!! Form::open(['route' => 'pages.store', 'class' => 'form-horizontal', 'method' => 'post']) !!}
 @endif
