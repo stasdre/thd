@@ -173,9 +173,11 @@
 <div class="row text-center">
   @if($deskFavor->first_file)
   <div class="col-sm-3">
-    <div class="plan-grid"> <a href="{{$deskFavor->first_link}}"> <img
-          src="{{asset('/storage/home-page/'.$deskFavor->first_file)}}" alt="{{$deskFavor->first_title}}"
-          class="img-fluid" />
+    <div class="plan-grid"> <a href="{{$deskFavor->first_link}}">
+        <div class="embed-responsive embed-responsive-4by3 percent-60">
+          <img src="{{asset('/storage/home-page/'.$deskFavor->first_file)}}" alt="{{$deskFavor->first_title}}"
+            class="embed-responsive-item" />
+        </div>
         <p class="plan-name text-truncate"><strong>{{$deskFavor->first_title}}</strong></p>
         <p class="plan-meta text-truncate">{{$deskFavor->first_desc}}</p>
         <p class="shop-link home">{{$deskFavor->first_link_text}}</p>
@@ -184,9 +186,11 @@
   @endif
   @if($deskFavor->second_file)
   <div class="col-sm-3">
-    <div class="plan-grid"> <a href="{{$deskFavor->second_link}}"> <img
-          src="{{asset('/storage/home-page/'.$deskFavor->second_file)}}" alt="{{$deskFavor->second_title}}"
-          class="img-fluid" />
+    <div class="plan-grid"> <a href="{{$deskFavor->second_link}}">
+        <div class="embed-responsive embed-responsive-4by3 percent-60">
+          <img src="{{asset('/storage/home-page/'.$deskFavor->second_file)}}" alt="{{$deskFavor->second_title}}"
+            class="embed-responsive-item" />
+        </div>
         <p class="plan-name text-truncate"><strong>{{$deskFavor->second_title}}</strong></p>
         <p class="plan-meta text-truncate">{{$deskFavor->second_desc}}</p>
         <p class="shop-link home">{{$deskFavor->second_link_text}}</p>
@@ -195,9 +199,11 @@
   @endif
   @if($deskFavor->third_file)
   <div class="col-sm-3">
-    <div class="plan-grid"> <a href="{{$deskFavor->third_link}}"> <img
-          src="{{asset('/storage/home-page/'.$deskFavor->third_file)}}" alt="{{$deskFavor->third_title}}"
-          class="img-fluid" />
+    <div class="plan-grid"> <a href="{{$deskFavor->third_link}}">
+        <div class="embed-responsive embed-responsive-4by3 percent-60">
+          <img src="{{asset('/storage/home-page/'.$deskFavor->third_file)}}" alt="{{$deskFavor->third_title}}"
+            class="embed-responsive-item" />
+        </div>
         <p class="plan-name text-truncate"><strong>{{$deskFavor->third_title}}</strong></p>
         <p class="plan-meta text-truncate">{{$deskFavor->third_desc}}</p>
         <p class="shop-link home">{{$deskFavor->third_link_text}}</p>
@@ -206,9 +212,11 @@
   @endif
   @if($deskFavor->fourth_file)
   <div class="col-sm-3">
-    <div class="plan-grid"> <a href="{{$deskFavor->fourth_link}}"> <img
-          src="{{asset('/storage/home-page/'.$deskFavor->fourth_file)}}" alt="{{$deskFavor->fourth_title}}"
-          class="img-fluid" />
+    <div class="plan-grid"> <a href="{{$deskFavor->fourth_link}}">
+        <div class="embed-responsive embed-responsive-4by3 percent-60">
+          <img src="{{asset('/storage/home-page/'.$deskFavor->fourth_file)}}" alt="{{$deskFavor->fourth_title}}"
+            class="embed-responsive-item" />
+        </div>
         <p class="plan-name text-truncate"><strong>{{$deskFavor->fourth_title}}</strong></p>
         <p class="plan-meta text-truncate">{{$deskFavor->fourth_desc}}</p>
         <p class="shop-link home">{{$deskFavor->fourth_link_text}}</p>

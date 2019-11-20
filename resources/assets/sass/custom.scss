@@ -182,3 +182,7 @@ a.carousel-inner {
 .media_z-index {
   z-index: 1;
 }
+
+.percent-60.embed-responsive-4by3::before {
+  padding-top: 60%;
+}
