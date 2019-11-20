@@ -51,8 +51,8 @@
             <li><i class="fa fa-caret-down"></i></li>
           </ul>
         </div>
-        <div class="grey-nav-bar mobile-grey-nav-bar d-none d-sm-block d-md-none">
-          <ul class="HI_nav">
+        <div class="grey-nav-bar mobile-grey-nav-bar d-none d-sm-block d-md-none" style="width:100%">
+          <ul class="HI_nav d-flex justify-content-between">
             <li><a href="{{route('inspiration')}}">Home Advice</a></li>
             @foreach ($menu as $item)
             @break($loop->iteration == 4)
@@ -60,11 +60,11 @@
             @endforeach
           </ul>
         </div>
-        <div class="grey-nav-bar mobile-grey-nav-bar d-none d-sm-block d-md-none">
-          <ul class="HI_nav">
+        <div class="grey-nav-bar mobile-grey-nav-bar d-none d-sm-block d-md-none" style="width:100%">
+          <ul class="HI_nav d-flex justify-content-between">
             @foreach ($menu as $item)
             @break($loop->iteration == 7)
-            @continue($loop->iteration <= 3) <li><a
+            @continue($loop->iteration <= 2) <li><a
                 href="{{route('inspiration.page', $item->link)}}">{{$item->name}}</a></li>
               @endforeach
               <li><i class="fa fa-caret-down"></i></li>
