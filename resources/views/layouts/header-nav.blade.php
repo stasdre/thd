@@ -3,8 +3,9 @@
     <div class="col-md-3 col-sm-3 px-xs-0 width-sm-100">
       <div class="navbar-expand-lg navbar-dark bg-dark custom_nav d-block d-sm-block d-md-none">
         <span class="float-left">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler p-0 border-0 d-inline-block" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <a class="d-inline-block align-middle" href="{{route('home')}}"><img src="{{asset('images/icons/logo.png')}}"
@@ -13,13 +14,13 @@
         <span class="float-right">
           <a href="{{route('advanced-search')}}"
             class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i
-              class="fa fa-search d-block" style="font-size:16px;"></i> Search</a>
+              class="fa fa-search d-block" style="font-size:16px; margin-right: 10px;"></i></a>
           <a href="#" class="d-inline-block text-center text-white small align-middle xs-display"
-            style="font-size:10px"><i class="fa fa-phone d-block" style="font-size:16px;"></i> Contact</a>
+            style="font-size:10px"><i class="fa fa-phone d-block" style="font-size:16px; margin-right: 10px;"></i></a>
           <a href="#" class="d-inline-block text-center text-white small align-middle xs-display"
-            style="font-size:10px"><i class="fa fa-user d-block" style="font-size:16px;"></i> Account</a>
+            style="font-size:10px"><i class="fa fa-user d-block" style="font-size:16px; margin-right: 10px;"></i></a>
           <a href="{{route('cart')}}" class="d-inline-block text-center text-white small align-middle xs-display"
-            style="font-size:10px"><i class="fa fa-shopping-cart d-block" style="font-size:16px;"></i> Cart</a>
+            style="font-size:10px"><i class="fa fa-shopping-cart d-block" style="font-size:16px;"></i></a>
         </span>
       </div>
       <a href="{{route('home')}}" class="d-none d-lg-block"><img src="{{asset('images/icons/logo.png')}}" alt=""
