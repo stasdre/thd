@@ -37,9 +37,9 @@
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="mb-0 p-0 width_100">
-            <li class="list-inline-item dropdown"><a href="{{ route('contact-us') }}">Email</a></li>
-            <li class="list-inline-item dropdown"><a href="{{ route('contact-us') }}">Live Chat</a></li>
-            <li class="list-inline-item dropdown"><a href="tel:832-521-5820">Phone</a></li>
+            <li class="list-inline-item dropdown d-lg-none"><a href="{{ route('contact-us') }}">Email</a></li>
+            <li class="list-inline-item dropdown d-lg-none"><a href="{{ route('contact-us') }}">Live Chat</a></li>
+            <li class="list-inline-item dropdown d-lg-none"><a href="tel:832-521-5820">Phone</a></li>
             <li class="list-inline-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button"
                 aria-haspopup="true" aria-expanded="false" href="#link"><img
                   src="{{asset('images/icons/icon-search.png')}}" alt="search"> House Plans</a>
