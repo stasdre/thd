@@ -47,6 +47,7 @@
             <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
             <li class="list-inline-item"><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
             <li class="list-inline-item"><a href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fab fa-houzz" aria-hidden="true"></i></a></li>
           </ul>
       </div>
       <div class="col-md-12">
