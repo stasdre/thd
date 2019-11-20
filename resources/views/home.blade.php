@@ -466,7 +466,8 @@
 
   <div class="position-relative">
 
-    <img src="{{asset('/storage/home-page/'.$bestMob->file)}}" alt="{{$bestMob->name}}" class="img-fluid w-100 my-2">
+    <a href="/collection/best-selling-house-plans"><img src="{{asset('/storage/home-page/'.$bestMob->file)}}"
+        alt="{{$bestMob->name}}" class="img-fluid w-100 my-2"></a>
     <div class="media planinfo text-left top position-absolute mobile-planinfo"
       style="padding-top : 20px !important;font-family:FuturaPT;"> <img class="mr-1 align-self-center logo-on-mobile"
         src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
