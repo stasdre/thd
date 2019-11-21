@@ -79,6 +79,7 @@ class SearchController extends Controller
     $ef = $request->get('ef');
     $styles = $request->get('styles');
     $collections = $request->get('collections');
+    $style_or_collection = $request->get('style_or_collection');
 
     $rules = [
       'views' => 'required|in:24,50',
@@ -96,6 +97,7 @@ class SearchController extends Controller
       'width_max' => 'nullable|numeric',
       'depth_min' => 'nullable|numeric',
       'depth_max' => 'nullable|numeric',
+      'style_or_collection' => 'nullable|string',
     ];
 
 
@@ -197,6 +199,14 @@ class SearchController extends Controller
     if (!empty($collections)) {
       $plans->whereHas('collections', function ($query) use ($collections) {
         $query->whereIn('collection_id', explode(",", $collections));
+      });
+    }
+
+    if (!empty($style_or_collection)) {
+      $plans->whereHas('collections', function ($query) use ($style_or_collection) {
+        $query->where('short_name', 'like', '%' . $style_or_collection . '%');
+      })->orWhereHas('styles', function ($query) use ($style_or_collection) {
+        $query->where('short_name', 'like', '%' . $style_or_collection . '%');
       });
     }
 

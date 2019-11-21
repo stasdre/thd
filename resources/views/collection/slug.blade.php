@@ -21,24 +21,17 @@
   </div>
 </div>
 <div class="search-wrap light py-2 text-center px-5 mobile-off">
-  <form class="form-main-search text-center space_left">
+  <form class="form-main-search text-center space_left" action="{{ route('search') }}" method="GET">
     <div class="row no-gutters">
       <div class="col-md-2 col-sm-3 common_width padd_bottom_10">
         <div class="form-group">
           <div class="select-custom-wrap select-custom-wrap-lg">
-            <div class="select"><select name="select-custom-style" class="select-custom select-hidden">
-                <option value="hide">Styles \ Collections</option>
-                <option value="Collection1">Collection1</option>
-                <option value="Collection2">Collection2</option>
-                <option value="Collection3">Collection3</option>
+            <div class="select"><select name="style-or-collection" class="select-custom select-hidden">
+                <option value="">Styles \ Collections</option>
+                @foreach ($searchFilter as $item)
+                <option value="{{$item}}">{{$item}}</option>
+                @endforeach
               </select>
-              <div class="select-styled">Styles \ Collections</div>
-              <ul class="select-options">
-                <li rel="hide">Styles \ Collections</li>
-                <li rel="Collection1">Collection1</li>
-                <li rel="Collection2">Collection2</li>
-                <li rel="Collection3">Collection3</li>
-              </ul>
             </div>
           </div>
         </div>
@@ -46,19 +39,17 @@
       <div class="col-md-1 col-sm-3 common_width padd_bottom_10">
         <div class="form-group">
           <div class="select-custom-wrap select-custom-wrap-sm">
-            <div class="select"><select name="select-custom-beds" class="select-custom select-hidden">
-                <option value="hide">Beds</option>
-                <option value="Bed1">1</option>
-                <option value="Bed2">2</option>
-                <option value="Bed3">3</option>
+            <div class="select"><select name="beds" class="select-custom select-hidden">
+                <option value="">Beds</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
               </select>
-              <div class="select-styled">Beds</div>
-              <ul class="select-options">
-                <li rel="hide">Beds</li>
-                <li rel="Bed1">1</li>
-                <li rel="Bed2">2</li>
-                <li rel="Bed3">3</li>
-              </ul>
             </div>
           </div>
         </div>
@@ -66,19 +57,20 @@
       <div class="col-md-1 col-sm-3 common_width padd_bottom_10">
         <div class="form-group">
           <div class="select-custom-wrap select-custom-wrap-sm">
-            <div class="select"><select name="select-custom-baths" class="select-custom select-hidden">
-                <option value="hide">Baths</option>
-                <option value="Bath1">1</option>
-                <option value="Bath2">2</option>
-                <option value="Bath3">3</option>
+            <div class="select"><select name="baths" class="select-custom select-hidden">
+                <option value="">Baths</option>
+                <option value="1">1</option>
+                <option value="1.5">1.5</option>
+                <option value="2">2</option>
+                <option value="2.5">2.5</option>
+                <option value="3">3</option>
+                <option value="3.5">3.5</option>
+                <option value="4">4</option>
+                <option value="4.5">4.5</option>
+                <option value="5">5</option>
+                <option value="5.5">5.5</option>
+                <option value="6">6</option>
               </select>
-              <div class="select-styled">Baths</div>
-              <ul class="select-options">
-                <li rel="hide">Baths</li>
-                <li rel="Bath1">1</li>
-                <li rel="Bath2">2</li>
-                <li rel="Bath3">3</li>
-              </ul>
             </div>
           </div>
         </div>
@@ -86,19 +78,13 @@
       <div class="col-md-1 col-sm-3 common_width padd_bottom_10">
         <div class="form-group">
           <div class="select-custom-wrap select-custom-wrap-sm">
-            <div class="select"><select name="select-custom-stories" class="select-custom select-hidden">
-                <option value="hide">Stories</option>
-                <option value="Story1">Story1</option>
-                <option value="Story2">Story2</option>
-                <option value="Story3">Story3</option>
+            <div class="select"><select name="stories" class="select-custom select-hidden">
+                <option value="">Stories</option>
+                <option value="1">1</option>
+                <option value="1.5">1.5</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
               </select>
-              <div class="select-styled">Stories</div>
-              <ul class="select-options">
-                <li rel="hide">Stories</li>
-                <li rel="Story1">Story1</li>
-                <li rel="Story2">Story2</li>
-                <li rel="Story3">Story3</li>
-              </ul>
             </div>
           </div>
         </div>
@@ -106,31 +92,29 @@
       <div class="col-md-2 col-sm-3 common_width padd_bottom_10 max-width">
         <div class="form-group">
           <div class="select-custom-wrap select-custom-wrap-md">
-            <div class="select"><select name="select-custom-garages" class="select-custom select-hidden">
-                <option value="hide">Garages</option>
-                <option value="Garage1">Garage1</option>
-                <option value="Garage2">Garage2</option>
-                <option value="Garage3">Garage3</option>
+            <div class="select"><select name="garages" class="select-custom select-hidden">
+                <option value="">Garages</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
               </select>
-              <div class="select-styled">Garages</div>
-              <ul class="select-options">
-                <li rel="hide">Garages</li>
-                <li rel="Garage1">Garage1</li>
-                <li rel="Garage2">Garage2</li>
-                <li rel="Garage3">Garage3</li>
-              </ul>
             </div>
           </div>
         </div>
       </div>
       <div class="col-md-1 col-sm-3 common_width">
         <div class="form-group">
-          <input type="text" placeholder="Min Sq Ft" class="center" style="font-size : 12px;padding :0;">
+          <input type="text" name="sq_min" placeholder="Min Sq Ft" class="center" style="font-size : 12px;padding :0;">
         </div>
       </div>
       <div class="col-md-1 col-sm-3 common_width">
         <div class="form-group">
-          <input type="text" placeholder="Max Sq Ft" class="center" style="font-size : 12px;padding :0;">
+          <input type="text" name="sq_max" placeholder="Max Sq Ft" class="center" style="font-size : 12px;padding :0;">
         </div>
       </div>
       <div class="col-md-1 col-sm-3 common_width">

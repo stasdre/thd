@@ -114,8 +114,8 @@
       <div class="plan-list mt-3">
         <div class="row align-items-center py-2 px-1">
           <div class="col-8">
-            <p class="plan-name font-weight-bold mb-0">@{{plan.square_ft.str_total}} sq ft | <span
-                class="text-white">plan @{{plan.plan_number}}</span></p>
+            <p class="plan-name font-weight-bold mb-0">@{{plan.square_ft ? plan.square_ft.str_total : 0}} sq
+              ft | <span class="text-white">plan @{{plan.plan_number}}</span></p>
           </div>
           <div class="col-4">
             <ul class="list-inline mb-0 text-right font-icons">
@@ -160,14 +160,16 @@
               alt=""></a>
         </div>
         <div class="row no-gutters plan-info">
-          <div class="col bg-light"> bed<strong class="d-block">@{{plan.rooms.r_bedrooms}}</strong> </div>
-          <div class="col"> bath<strong class="d-block">@{{plan.rooms.r_full_baths}}</strong> </div>
-          <div class="col bg-light"> story<strong class="d-block">@{{plan.dimensions.stories}}</strong> </div>
-          <div class="col"> gar<strong class="d-block">@{{plan.garage.car}}</strong> </div>
-          <div class="col bg-light"> width<span class="d-block">@{{plan.dimensions.width_ft}}’
-              @{{plan.dimensions.width_in}}"</span> </div>
-          <div class="col"> depth<span class="d-block">@{{plan.dimensions.depth_ft}}’
-              @{{plan.dimensions.depth_in}}”</span> </div>
+          <div class="col bg-light"> bed<strong class="d-block">@{{plan.rooms ? plan.rooms.r_bedrooms : ''}}</strong>
+          </div>
+          <div class="col"> bath<strong class="d-block">@{{plan.rooms ? plan.rooms.r_full_baths : ''}}</strong> </div>
+          <div class="col bg-light"> story<strong
+              class="d-block">@{{plan.dimensions ? plan.dimensions.stories : ''}}</strong> </div>
+          <div class="col"> gar<strong class="d-block">@{{plan.garage ? plan.garage.car : ''}}</strong> </div>
+          <div class="col bg-light"> width<span class="d-block">@{{plan.dimensions ? plan.dimensions.width_ft : ''}}’
+              @{{plan.dimensions ? plan.dimensions.width_in : ''}}"</span> </div>
+          <div class="col"> depth<span class="d-block">@{{plan.dimensions ? plan.dimensions.depth_ft : ''}}’
+              @{{plan.dimensions ? plan.dimensions.depth_in : ''}}”</span> </div>
         </div>
       </div>
     </div>
@@ -206,7 +208,8 @@
             gf: '{{request()->get('gf') ? implode(",", request()->get('gf')): ''}}',
             ef: '{{request()->get('ef') ? implode(",", request()->get('ef')): ''}}',
             styles: '{{request()->get('styles') ? implode(",", request()->get('styles')): ''}}',
-            collections: '{{request()->get('collections') ? implode(",", request()->get('collections')): ''}}'
+            collections: '{{request()->get('collections') ? implode(",", request()->get('collections')): ''}}',
+            style_or_collection: '{{request()->get('style-or-collection')}}',
         },
         methods: {
             next(){
@@ -251,6 +254,7 @@
                         ef: this.ef,
                         styles: this.styles,
                         collections: this.collections,
+                        style_or_collection: this.style_or_collection
                     }
                 })
                 .then(response=> {
