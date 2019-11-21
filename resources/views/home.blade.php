@@ -68,9 +68,11 @@
   <div class="carousel-inner">
     @foreach($gallery as $img)
     <div class="carousel-item @if($loop->index == 0) active @endif">
-      <div class="embed-responsive embed-responsive-21by9">
-        <img class="embed-responsive-item" src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}">
-      </div>
+      <a href="{{$img->url}}">
+        <div class="embed-responsive embed-responsive-21by9">
+          <img class="embed-responsive-item" src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}">
+        </div>
+      </a>
       <div class="caption-quote-wrap">
         <div class="caption-quote @if(!$img->quote) custom_capt @endif">{{$img->description}}</div>
         <p class="@if($img->quote==1) caption-quote-author @else caption-quote-small @endif">{{$img->caption}}</p>
@@ -339,8 +341,11 @@
       </ol>
       <div class="carousel-inner">
         @foreach($gallery as $img)
-        <div class="carousel-item @if($loop->index == 0) active @endif"> <img class="d-block w-100"
-            src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}" style="min-height : 210px !important;">
+        <div class="carousel-item @if($loop->index == 0) active @endif">
+          <a href="{{$img->url}}">
+            <img class="d-block w-100" src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}"
+              style="min-height : 210px !important;">
+          </a>
           <div class="caption-quote-wrap">
             <div class="caption-quote @if(!$img->quote) custom_capt @endif">{{$img->description}}</div>
             <p class="@if($img->quote==1) caption-quote-author @else caption-quote-small @endif">{{$img->caption}}</p>
@@ -429,8 +434,11 @@
     <div id="new_plans" class="carousel slide" data-ride="carousel" data-interval="false">
       <div class="carousel-inner">
         @foreach($newMob as $img)
-        <div class="carousel-item @if($loop->index == 0) active @endif"> <img
-            src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}" class="img-fluid d-block w-100"> </div>
+        <div class="carousel-item @if($loop->index == 0) active @endif">
+          <a href="{{$img->url}}">
+            <img src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}" class="img-fluid d-block w-100">
+          </a>
+        </div>
         @endforeach
       </div>
       <a class="carousel-control-prev" href="#new_plans" role="button" data-slide="prev"> <span
