@@ -29,7 +29,7 @@
     <div class="col-md-7 col-sm-6 text-center z-index-xs width-sm-100">
       <ul class="list-inline text-center mb-4 toplinks  d-none d-lg-block">
         <li class="list-inline-item"><a href="{{ route('contact-us') }}">Email</a></li>
-        <li class="list-inline-item"><a href="#link">Chat</a></li>
+        <li class="list-inline-item"><a href="{{ route('contact-us') }}">Chat</a></li>
         <li class="list-inline-item"><a href="tel:832-521-5820">832-521-5820</a></li>
       </ul>
 

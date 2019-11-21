@@ -22,7 +22,8 @@
     initial homework, you’ll simply determine the square footage range needed to coordinate with your budget, style
     of home you want and then your preferences for bedrooms, baths, number of stories and garages. If there are lot
     restrictions, you can also add width and depth parameters in your home plan search to narrow down your results.
-    To have your questions answered by our team of house plan experts, simply <a href="#">email</a> or <a href="#">live
+    To have your questions answered by our team of house plan experts, simply <a
+      href="{{ route('contact-us') }}">email</a> or <a href="{{ route('contact-us') }}">live
       chat</a> us today!</span>
 </p>
 <div class="desktop-off read_more" id="read_more"><span class="read-more-link-wrapper">Read More </span></div>

@@ -16,9 +16,9 @@
     <div class="col-sm-4">
       <h3 class="font-weight-bold mb-3">CONTACT US</h3>
       <ul class="list-inline text-center">
-        <li><a href="">Live Chat</a></li>
+        <li><a href="{{ route('contact-us') }}">Live Chat</a></li>
         <li><a href="{{ route('contact-us') }}">Email</a></li>
-        <li><a href="">832-521-5820</a></li>
+        <li><a href="tel:832-521-5820">832-521-5820</a></li>
         <li><a href="">E-Newsletter Signup</a></li>
         <li><a href="/privacy-policy">Privacy Policy</a></li>
         <li><a href="/terms-of-use">Terms of Use</a></li>
