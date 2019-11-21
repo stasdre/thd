@@ -265,7 +265,7 @@
             </div>
             <div class="col-4">
               <ul class="list-inline mb-0 text-right font-icons">
-                <li class="list-inline-item icon-heart-mob"><a href="#"><i class="fa fa-heart-o"
+                <li class="list-inline-item icon-heart-mob"><a href="#"><i class="far fa-heart"
                       style="color:white"></i></a></li>
                 <li class="list-inline-item icon-search-mob"><a href="#" data-toggle="modal" data-target="#quickView"><i
                       class="fa fa-search" style="color:white"></i></a>
