@@ -45,7 +45,7 @@
   <br>
 </div>
 <div style="clear : both;"></div>
-<div id="plans_search" class="search-results" v-cloak :class="{loading: isLoading}">
+{{-- <div id="plans_search" class="search-results" v-cloak :class="{loading: isLoading}">
   <i class="loading-icon fas fa-sync-alt fa-6x fa-spin"></i>
   <div class="page-name mt-3 py-2 px-2 mobile-off">
     <div class="row align-items-center">
@@ -99,101 +99,104 @@
               <input type="text" class="form-control rounded-0" @keyup.enter="goToPage" v-model="current_page">
             </li>
             <li class="list-inline-item"><span class="text-secondary">of</span> @{{last_page}}</li>
-            <li class="list-inline-item">
-              <button class="btn btn-sm btn-secondary rounded-0" :disabled="current_page === last_page"
-                @click.prevent="next">&gt; Next</button>
+<li class="list-inline-item">
+  <button class="btn btn-sm btn-secondary rounded-0" :disabled="current_page === last_page" @click.prevent="next">&gt;
+    Next</button>
+</li>
+<li class="list-inline-item ml-2"><strong><span class="text-primary">PLANS:</span>
+    @{{total}}</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- Sorting on mobile -->
+<div class="desktop-off">
+  <br>
+  <div class="row page-name sort-by-sec">
+    <div class="col-6">
+      <span>SORT BY <button style="font-size:12px;padding : 0;"><i class="fa fa-caret-down"></i></button></span>
+    </div>
+    <div class="col-6 navbar-light" style="text-align: right;padding-right: 0;">
+      <span>Filter</span><span class="navbar-toggler-icon" style="height : 24px;"></span>
+      &nbsp;
+      <span class="blue-text" style="font-size : 12px;">PLANS : </span><span>@{{total}}</span>
+    </div>
+
+  </div>
+
+  <div class="row ind_search_div">
+    <br>
+    <div class="col-6 save-search"> <span> SAVE YOUR SEARCH</span></div>
+    <div class="col-6"> <input type="text" placeholder="Nickname" style="width : 75%" class="save_search_box"><button
+        class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding save_search_button"
+        type="button"> Save</button></div>
+  </div>
+</div>
+<!-- Sorting on mobile -->
+
+<div class="row">
+  <div class="col-sm-4" v-for="plan in plans" :key="plan.id">
+    <div class="plan-list mt-3">
+      <div class="row align-items-center py-2 px-1">
+        <div class="col-8">
+          <p class="plan-name font-weight-bold mb-0">@{{plan.square_ft.str_total}} sq ft | <span class="text-white">plan
+              @{{plan.plan_number}}</span></p>
+        </div>
+        <div class="col-4">
+          <ul class="list-inline mb-0 text-right font-icons">
+            <li class="list-inline-item icon-heart-mob"><a href="#"><i class="far fa-heart" style="color:white"></i></a>
             </li>
-            <li class="list-inline-item ml-2"><strong><span class="text-primary">PLANS:</span>
-                @{{total}}</strong></li>
+            <li class="list-inline-item icon-search-mob"><a href="#"><i class="fas fa-search"
+                  style="color:white"></i></a></li>
           </ul>
         </div>
       </div>
-    </div>
-  </div>
-
-
-  <!-- Sorting on mobile -->
-  <div class="desktop-off">
-    <br>
-    <div class="row page-name sort-by-sec">
-      <div class="col-6">
-        <span>SORT BY <button style="font-size:12px;padding : 0;"><i class="fa fa-caret-down"></i></button></span>
-      </div>
-      <div class="col-6 navbar-light" style="text-align: right;padding-right: 0;">
-        <span>Filter</span><span class="navbar-toggler-icon" style="height : 24px;"></span>
-        &nbsp;
-        <span class="blue-text" style="font-size : 12px;">PLANS : </span><span>@{{total}}</span>
-      </div>
-
-    </div>
-
-    <div class="row ind_search_div">
-      <br>
-      <div class="col-6 save-search"> <span> SAVE YOUR SEARCH</span></div>
-      <div class="col-6"> <input type="text" placeholder="Nickname" style="width : 75%" class="save_search_box"><button
-          class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding save_search_button"
-          type="button"> Save</button></div>
-    </div>
-  </div>
-  <!-- Sorting on mobile -->
-
-  <div class="row">
-    <div class="col-sm-4" v-for="plan in plans" :key="plan.id">
-      <div class="plan-list mt-3">
-        <div class="row align-items-center py-2 px-1">
-          <div class="col-8">
-            <p class="plan-name font-weight-bold mb-0">@{{plan.square_ft.str_total}} sq ft | <span
-                class="text-white">plan @{{plan.plan_number}}</span></p>
-          </div>
-          <div class="col-4">
-            <ul class="list-inline mb-0 text-right font-icons">
-              <li class="list-inline-item icon-heart-mob"><a href="#"><i class="far fa-heart"
-                    style="color:white"></i></a></li>
-              <li class="list-inline-item icon-search-mob"><a href="#"><i class="fas fa-search"
-                    style="color:white"></i></a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="position-relative">
-          <div :id="'plan'+plan.id" class="carousel slide" data-ride="carousel" data-interval="false">
-            <a :href="'/plan/' + plan.plan_number" class="carousel-inner">
-              <div class="carousel-item" :class="{ active: index === 0 }" v-for="(image, index) in plan.images"
-                :key="image.id">
-                <img :src="'/storage/plans/'+plan.id+'/thumb/'+image.file_name" alt="" class="img-fluid d-block w-100">
-                <a v-if="image.camera_icon" href="#" class="position-absolute icon-camera"><img
-                    src="{{asset('images/icons/icon-camera.png')}}" alt=""></a>
-              </div>
-            </a>
-            <a class="carousel-control-prev" @click.prevent="" :href="'#plan'+plan.id" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="false"></span> <span class="sr-only">Previous</span>
-            </a> <a class="carousel-control-next" @click.prevent="" :href="'#plan'+plan.id" role="button"
-              data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="false"></span> <span
-                class="sr-only">Next</span> </a> </div>
-          <div class="media planinfo text-left position-absolute placeholder-black"> <img class="mr-1 align-self-center"
-              src="{{asset('images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
-            <div class="media-body">
-              <h5 class="mb-0 text-white">plan <span class="text-secondary">@{{plan.plan_number}}</span>
-              </h5>
-              <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span>
-              </h5>
+      <div class="position-relative">
+        <div :id="'plan'+plan.id" class="carousel slide" data-ride="carousel" data-interval="false">
+          <a :href="'/plan/' + plan.plan_number" class="carousel-inner">
+            <div class="carousel-item" :class="{ active: index === 0 }" v-for="(image, index) in plan.images"
+              :key="image.id">
+              <img :src="'/storage/plans/'+plan.id+'/thumb/'+image.file_name" alt="" class="img-fluid d-block w-100">
+              <a v-if="image.camera_icon" href="#" class="position-absolute icon-camera"><img
+                  src="{{asset('images/icons/icon-camera.png')}}" alt=""></a>
             </div>
+          </a>
+          <a class="carousel-control-prev" @click.prevent="" :href="'#plan'+plan.id" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="false"></span> <span class="sr-only">Previous</span>
+          </a> <a class="carousel-control-next" @click.prevent="" :href="'#plan'+plan.id" role="button"
+            data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="false"></span> <span
+              class="sr-only">Next</span> </a> </div>
+        <div class="media planinfo text-left position-absolute placeholder-black"> <img class="mr-1 align-self-center"
+            src="{{asset('images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
+          <div class="media-body">
+            <h5 class="mb-0 text-white">plan <span class="text-secondary">@{{plan.plan_number}}</span>
+            </h5>
+            <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span>
+            </h5>
           </div>
-          <a href="#" class="position-absolute pinterest"><img src="{{asset('images/icons/icon-pinterest.png')}}"
-              alt=""></a>
         </div>
-        <div class="row no-gutters plan-info">
-          <div class="col bg-light"> bed<strong class="d-block">@{{plan.rooms.r_bedrooms}}</strong> </div>
-          <div class="col"> bath<strong class="d-block">@{{plan.rooms.r_full_baths}}</strong> </div>
-          <div class="col bg-light"> story<strong class="d-block">@{{plan.dimensions.stories}}</strong> </div>
-          <div class="col"> gar<strong class="d-block">@{{plan.garage.car}}</strong> </div>
-          <div class="col bg-light"> width<span class="d-block">@{{plan.dimensions.width_ft}}’
-              @{{plan.dimensions.width_in}}"</span> </div>
-          <div class="col"> depth<span class="d-block">@{{plan.dimensions.depth_ft}}’
-              @{{plan.dimensions.depth_in}}”</span> </div>
-        </div>
+        <a href="#" class="position-absolute pinterest"><img src="{{asset('images/icons/icon-pinterest.png')}}"
+            alt=""></a>
+      </div>
+      <div class="row no-gutters plan-info">
+        <div class="col bg-light"> bed<strong class="d-block">@{{plan.rooms.r_bedrooms}}</strong> </div>
+        <div class="col"> bath<strong class="d-block">@{{plan.rooms.r_full_baths}}</strong> </div>
+        <div class="col bg-light"> story<strong class="d-block">@{{plan.dimensions.stories}}</strong> </div>
+        <div class="col"> gar<strong class="d-block">@{{plan.garage.car}}</strong> </div>
+        <div class="col bg-light"> width<span class="d-block">@{{plan.dimensions.width_ft}}’
+            @{{plan.dimensions.width_in}}"</span> </div>
+        <div class="col"> depth<span class="d-block">@{{plan.dimensions.depth_ft}}’
+            @{{plan.dimensions.depth_in}}”</span> </div>
       </div>
     </div>
   </div>
+</div>
+</div> --}}
+<div class="search-results" id="plans-search" v-cloak :class="{loading: isLoading}">
+
 </div>
 <br>
 <!-- Sidebar content only for mobile -->
@@ -234,7 +237,7 @@
 @endsection
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
@@ -300,5 +303,6 @@ var app = new Vue({
         this.search();
     }
 }).$mount('#plans_search');
-</script>
+</script> --}}
+<script src="/js/plans-search.js"></script>
 @endpush
