@@ -56,20 +56,6 @@ class ContactUsController extends Controller
 
   public function index()
   {
-    $plans = Plan::whereIn('plan_number', [2091, 1421, 2214])->with(['images' => function ($query) {
-      $query->orderBy('for_search', 'desc');
-      $query->orderBy('sort_number', 'asc');
-    }])->get()->sortBy(function ($value, $key) {
-      switch ($value->plan_number) {
-        case 2091:
-          return 1;
-        case 1421:
-          return 2;
-        case 2214:
-          return 3;
-      }
-    });
-
     return view('contact-us.index', [
       'subject' => $this->_subject,
       'land' => $this->_land,
@@ -77,7 +63,6 @@ class ContactUsController extends Controller
       'builder' => $this->_builder,
       'how' => $this->_how,
       'user' => Auth::user(),
-      'plans' => $plans
     ]);
   }
 
