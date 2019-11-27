@@ -1,14 +1,8 @@
-import Vue from "vue";
+window.Vue = require("vue");
+
+Vue.component("plans-list", require("./components/PlansList.vue"));
+Vue.component("promo", require("./components/Promo.vue"));
 
 const plans = new Vue({
-  el: "#plans-search",
-  data: {
-    isLoading: true,
-    plans: [],
-    last_page: 1,
-    total: 0,
-    current_page: 1,
-    views: 24,
-    order: "popular"
-  }
+  el: "#plans-search"
 });

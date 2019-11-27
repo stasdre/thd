@@ -80,9 +80,10 @@ class SearchController extends Controller
     $styles = $request->get('styles');
     $collections = $request->get('collections');
     $style_or_collection = $request->get('style_or_collection');
+    $b_s_p = $request->get('b_s_p');
 
     $rules = [
-      'views' => 'required|in:24,50',
+      'views' => 'required|integer',
       'order' => 'nullable|in:popular,recent,s_l,l_s',
       'collection' => 'nullable|integer',
       'style' => 'nullable|integer',
@@ -98,6 +99,7 @@ class SearchController extends Controller
       'depth_min' => 'nullable|numeric',
       'depth_max' => 'nullable|numeric',
       'style_or_collection' => 'nullable|string',
+      'b_s_p' => 'nullable|in:1',
     ];
 
 
@@ -106,6 +108,38 @@ class SearchController extends Controller
     if ($validation->fails()) {
       return abort(404);
     }
+
+    if ($b_s_p == 1) {
+      $plans = Plan::whereIn('plan_number', [2091, 1421, 2214])->with(['images' => function ($query) {
+        $query->orderBy('for_search', 'desc');
+        $query->orderBy('sort_number', 'asc');
+      }])->get()->sortBy(function ($value, $key) {
+        switch ($value->plan_number) {
+          case 2091:
+            return 1;
+          case 1421:
+            return 2;
+          case 2214:
+            return 3;
+        }
+      });
+
+      return response()->json([
+        "current_page" => 1,
+        "data" => array_values($plans->toArray()),
+        "first_page_url" => "",
+        "from" => 1,
+        "last_page" => 1,
+        "last_page_url" => "",
+        "next_page_url" => "",
+        "path" => "/search/result",
+        "per_page" => $views,
+        "prev_page_url" => null,
+        "to" => $views,
+        "total" => $views,
+      ]);
+    }
+
     $plans = Plan::where('is_active', '=', 1);
 
     if (!empty($collection)) {

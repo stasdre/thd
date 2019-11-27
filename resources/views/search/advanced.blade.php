@@ -254,77 +254,15 @@
         </span>
       </div>
     </div>
-    <div class="row">
-      @foreach ($mostPlans as $plan)
-      <div class="col-md-6">
-        <div class="plan-list mt-3">
-          <div class="row align-items-center py-2 px-1">
-            <div class="col-8">
-              <p class="plan-name font-weight-bold mb-0">{{$plan->square_ft['str_total']}} sq ft | <span
-                  class="text-white">plan {{$plan->plan_number}}</span></p>
-            </div>
-            <div class="col-4">
-              <ul class="list-inline mb-0 text-right font-icons">
-                <li class="list-inline-item icon-heart-mob"><a href="#"><i class="far fa-heart"
-                      style="color:white"></i></a></li>
-                <li class="list-inline-item icon-search-mob"><a href="#" data-toggle="modal" data-target="#quickView"><i
-                      class="fa fa-search" style="color:white"></i></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="position-relative">
-            <div id="plan{{$plan->plan_number}}" class="carousel slide" data-ride="carousel" data-interval="false">
-              <a href="/plan/{{$plan->plan_number}}" class="carousel-inner">
-                @foreach ($plan->images as $img)
-                <div class="carousel-item @if($loop->iteration == 1) active @endif">
-                  <div class="embed-responsive embed-responsive-4by3 percent-69">
-                    <img src="/storage/plans/{{$plan->id}}/thumb/{{$img->file_name}}" alt=""
-                      class="embed-responsive-item">
-                  </div>
-                  @if ($img->camera_icon)
-                  <a href="#" class="position-absolute icon-camera"><img src="{{asset('images/icons/icon-camera.png')}}"
-                      alt=""></a>
-                  @endif
-                </div>
-                @endforeach
-              </a>
-              <a class="carousel-control-prev" href="#plan{{$plan->plan_number}}" role="button" data-slide="prev"> <span
-                  class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span> </a> <a class="carousel-control-next"
-                href="#plan{{$plan->plan_number}}" role="button" data-slide="next"> <span
-                  class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
-            </div>
-            <div class="media planinfo text-left position-absolute placeholder-black">
-              <div class="media media_z-index">
-
-                <img class="mr-1 align-self-center" src="/images/icons/logo-placeholder.png"
-                  alt="Generic placeholder image">
-                <div class="media-body">
-                  <h5 class="mb-0 text-white">plan <span class="text-secondary">{{$plan->plan_number}}</span></h5>
-                  <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
-                </div>
-              </div>
-            </div>
-            <a href="#" class="position-absolute pinterest"><img src="/images/icons/icon-pinterest.png" alt=""></a>
-          </div>
-          <div class="row no-gutters plan-info">
-            <div class="col bg-light"> bed<strong class="d-block">{{$plan->rooms['r_bedrooms']}}</strong>
-            </div>
-            <div class="col"> bath<strong class="d-block">{{$plan->rooms['r_full_baths']}}</strong> </div>
-            <div class="col bg-light"> story<strong class="d-block">{{$plan->dimensions['stories']}}</strong> </div>
-            <div class="col"> gar<strong class="d-block">{{$plan->garage['car']}}</strong> </div>
-            <div class="col bg-light"> width<span class="d-block">{{$plan->dimensions['width_ft']}}’
-                {{$plan->dimensions['width_in']}}"</span> </div>
-            <div class="col"> depth<span class="d-block">{{$plan->dimensions['depth_ft']}}’
-                {{$plan->dimensions['depth_in']}}”</span> </div>
-          </div>
-        </div>
-      </div>
-      @endforeach
+    <div class="search-results" id="plans-search" v-cloak>
+      <plans-list :no-filter=true :colums=2 :view=10></plans-list>
     </div>
   </div>
   <!-- Content Right -->
 </div>
 
 @endsection
+
+@push('scripts')
+<script src="/js/plans-search.js"></script>
+@endpush
