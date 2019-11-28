@@ -170,4 +170,11 @@ class PlanController extends Controller
 
     return view('plan.all', ['allCollections' => $allCollections, 'allStyles' => $allStyles]);
   }
+
+  public function save(Plan $id)
+  {
+    return response()->json([
+      'status' => 1
+    ]);
+  }
 }

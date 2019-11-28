@@ -115,7 +115,7 @@
 
       <div class="row ind_search_div">
         <br />
-        <div class="col-6 save-search">
+        <!-- <div class="col-6 save-search">
           <span>SAVE YOUR SEARCH</span>
         </div>
         <div class="col-6">
@@ -124,7 +124,7 @@
             class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding save_search_button"
             type="button"
           >Save</button>
-        </div>
+        </div>-->
       </div>
     </div>
     <!-- Sorting on mobile -->
@@ -155,8 +155,8 @@
             <div class="col-4">
               <ul class="list-inline mb-0 text-right font-icons">
                 <li class="list-inline-item icon-heart-mob">
-                  <a href="#">
-                    <i class="far fa-heart" style="color:white"></i>
+                  <a href="#" @click.prevent="savePlan(plan, index)">
+                    <i :class="[plan.saved ? 'fas' : 'far', 'fa-heart', 'plan-heart']"></i>
                   </a>
                 </li>
                 <!-- <li class="list-inline-item icon-search-mob">
@@ -413,6 +413,20 @@ export default {
         })
         .then(() => {
           this.isLoading = false;
+        });
+    },
+    savePlan(plan, index) {
+      axios
+        .post(`save-plan/${plan.id}`)
+        .then(response => {
+          if (response.data.status == 1) {
+            this.$set(this.plans[index], "saved", 1);
+          }
+        })
+        .catch(error => {
+          if (error.response.status === 401) {
+            window.location.href = "/register";
+          }
         });
     }
   },
