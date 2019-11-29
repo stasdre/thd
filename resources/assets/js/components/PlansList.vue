@@ -156,7 +156,7 @@
               <ul class="list-inline mb-0 text-right font-icons">
                 <li class="list-inline-item icon-heart-mob">
                   <a href="#" @click.prevent="savePlan(plan, index)">
-                    <i :class="[plan.saved ? 'fas' : 'far', 'fa-heart', 'plan-heart']"></i>
+                    <i :class="[plan.saved_plans.length ? 'fas' : 'far', 'fa-heart', 'plan-heart']"></i>
                   </a>
                 </li>
                 <!-- <li class="list-inline-item icon-search-mob">
@@ -306,7 +306,8 @@ export default {
     "colums",
     "view",
     "bestSelling",
-    "promo-block"
+    "promo-block",
+    "saved-user"
   ],
   data: function() {
     return {
@@ -402,7 +403,8 @@ export default {
             styles: this.styles,
             collections: this.collections,
             style_or_collection: this.style_or_collection,
-            b_s_p: this.bestSellingPlans
+            b_s_p: this.bestSellingPlans,
+            saved_user: this.savedUser
           }
         })
         .then(response => {
@@ -417,10 +419,18 @@ export default {
     },
     savePlan(plan, index) {
       axios
-        .post(`save-plan/${plan.id}`)
+        .post(`/save-plan/${plan.id}`)
         .then(response => {
-          if (response.data.status == 1) {
-            this.$set(this.plans[index], "saved", 1);
+          if (response.data.status == "add") {
+            this.$set(this.plans[index], "saved_plans", "saved");
+          } else if (response.data.status == "del") {
+            this.$set(this.plans[index], "saved_plans", []);
+            if (this.savedUser) {
+              this.plans = this.plans.filter(item => {
+                return plan.id !== item.id;
+              });
+              this.total -= 1;
+            }
           }
         })
         .catch(error => {

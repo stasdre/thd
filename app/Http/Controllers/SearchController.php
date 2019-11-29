@@ -13,6 +13,8 @@ use Thd\Garage;
 use Thd\Outdoor;
 use Thd\Collection;
 use Thd\Style;
+use Illuminate\Support\Facades\Auth;
+use Thd\SavedPlan;
 
 class SearchController extends Controller
 {
@@ -81,6 +83,8 @@ class SearchController extends Controller
     $collections = $request->get('collections');
     $style_or_collection = $request->get('style_or_collection');
     $b_s_p = $request->get('b_s_p');
+    $saved_user = $request->get('saved_user');
+
 
     $rules = [
       'views' => 'required|integer',
@@ -100,6 +104,7 @@ class SearchController extends Controller
       'depth_max' => 'nullable|numeric',
       'style_or_collection' => 'nullable|string',
       'b_s_p' => 'nullable|in:1',
+      'saved_user' => 'nullable|exists:users,id',
     ];
 
 
@@ -259,10 +264,20 @@ class SearchController extends Controller
         break;
     }
 
+    if (Auth::id()) {
+      $plans->with(['saved_plans' => function ($query) {
+        $query->where('user_id', Auth::id());
+      }]);
+      if ($saved_user == Auth::id()) {
+        $plans->has('saved_plans');
+      }
+    }
+
     $dataPlans = $plans->with(['images' => function ($query) {
       $query->orderBy('for_search', 'desc');
       $query->orderBy('sort_number', 'asc');
     }])->paginate($views);
+
     //return view('search.index', ['plans'=>$dataPlans]);
     return response()->json($dataPlans);
   }

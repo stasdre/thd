@@ -17,7 +17,7 @@
               class="fa fa-search d-block" style="font-size:16px; margin-right: 10px;"></i></a>
           <a href="tel:832-521-5820" class="d-inline-block text-center text-white small align-middle xs-display"
             style="font-size:10px"><i class="fa fa-phone d-block" style="font-size:16px; margin-right: 10px;"></i></a>
-          <a href="{{ route('register') }}" class="d-inline-block text-center text-white small align-middle xs-display"
+          <a href="/saved-plans" class="d-inline-block text-center text-white small align-middle xs-display"
             style="font-size:10px"><i class="fa fa-user d-block" style="font-size:16px; margin-right: 10px;"></i></a>
           <a href="{{route('cart')}}" class="d-inline-block text-center text-white small align-middle xs-display"
             style="font-size:10px"><i class="fa fa-shopping-cart d-block" style="font-size:16px;"></i></a>
@@ -66,6 +66,7 @@
     <div class="col-md-2 col-sm-3 xs-set-position d-none d-lg-block">
       <ul class="list-inline text-center text-sm-right text-small text-uppercase mt-1 mb-3">
         @auth
+        <li class="list-inline-item"><a href="/saved-plans">Dashboard</a></li>
         <li class="list-inline-item"><a href="{{ route('logout') }}">Logout</a></li>
         @endauth
 

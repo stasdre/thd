@@ -207,7 +207,8 @@ Route::post('checkout/payd', 'CheckoutController@payd')->name('checkout.payd');
 Route::get('checkout/done/{orderID}/{paydID}', 'CheckoutController@done')->name('checkout.done');
 
 Route::middleware(['auth'])->group(function () {
-  Route::post('save-plan/{id}', 'PlanController@save')->name('plan.save');
+  Route::post('save-plan/{plan}', 'SavedPlanController@save');
+  Route::get('saved-plans/', 'SavedPlanController@index');
 });
 
 Route::get('/{page}', function (Thd\Page $page) {
