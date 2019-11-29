@@ -115,7 +115,7 @@
 
       <div class="row ind_search_div">
         <br />
-        <div class="col-6 save-search">
+        <!-- <div class="col-6 save-search">
           <span>SAVE YOUR SEARCH</span>
         </div>
         <div class="col-6">
@@ -124,7 +124,7 @@
             class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding save_search_button"
             type="button"
           >Save</button>
-        </div>
+        </div>-->
       </div>
     </div>
     <!-- Sorting on mobile -->
@@ -155,8 +155,8 @@
             <div class="col-4">
               <ul class="list-inline mb-0 text-right font-icons">
                 <li class="list-inline-item icon-heart-mob">
-                  <a href="#">
-                    <i class="far fa-heart" style="color:white"></i>
+                  <a href="#" @click.prevent="savePlan(plan, index)">
+                    <i :class="[plan.saved_plans.length ? 'fas' : 'far', 'fa-heart', 'plan-heart']"></i>
                   </a>
                 </li>
                 <!-- <li class="list-inline-item icon-search-mob">
@@ -306,7 +306,8 @@ export default {
     "colums",
     "view",
     "bestSelling",
-    "promo-block"
+    "promo-block",
+    "saved-user"
   ],
   data: function() {
     return {
@@ -402,7 +403,8 @@ export default {
             styles: this.styles,
             collections: this.collections,
             style_or_collection: this.style_or_collection,
-            b_s_p: this.bestSellingPlans
+            b_s_p: this.bestSellingPlans,
+            saved_user: this.savedUser
           }
         })
         .then(response => {
@@ -413,6 +415,28 @@ export default {
         })
         .then(() => {
           this.isLoading = false;
+        });
+    },
+    savePlan(plan, index) {
+      axios
+        .post(`/save-plan/${plan.id}`)
+        .then(response => {
+          if (response.data.status == "add") {
+            this.$set(this.plans[index], "saved_plans", "saved");
+          } else if (response.data.status == "del") {
+            this.$set(this.plans[index], "saved_plans", []);
+            if (this.savedUser) {
+              this.plans = this.plans.filter(item => {
+                return plan.id !== item.id;
+              });
+              this.total -= 1;
+            }
+          }
+        })
+        .catch(error => {
+          if (error.response.status === 401) {
+            window.location.href = "/register";
+          }
         });
     }
   },

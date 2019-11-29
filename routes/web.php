@@ -206,6 +206,11 @@ Route::post('checkout/create', 'CheckoutController@store')->name('checkout.store
 Route::post('checkout/payd', 'CheckoutController@payd')->name('checkout.payd');
 Route::get('checkout/done/{orderID}/{paydID}', 'CheckoutController@done')->name('checkout.done');
 
+Route::middleware(['auth'])->group(function () {
+  Route::post('save-plan/{plan}', 'SavedPlanController@save');
+  Route::get('saved-plans/', 'SavedPlanController@index');
+});
+
 Route::get('/{page}', function (Thd\Page $page) {
   return view('page', ['page' => $page]);
 })->where('page', '[a-zA-Z0-9_-]+');
