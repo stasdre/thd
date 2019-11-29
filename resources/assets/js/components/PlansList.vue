@@ -156,7 +156,9 @@
               <ul class="list-inline mb-0 text-right font-icons">
                 <li class="list-inline-item icon-heart-mob">
                   <a href="#" @click.prevent="savePlan(plan, index)">
-                    <i :class="[plan.saved_plans.length ? 'fas' : 'far', 'fa-heart', 'plan-heart']"></i>
+                    <i
+                      :class="[plan.saved_plans && plan.saved_plans.length ? 'fas' : 'far', 'fa-heart', 'plan-heart']"
+                    ></i>
                   </a>
                 </li>
                 <!-- <li class="list-inline-item icon-search-mob">
