@@ -132,8 +132,9 @@
 
 <div class="row mobile-off">
   <div class="col-sm-12 center">
-    <div><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" type="button">
-        Quick Plan Search</button>
+    <div>
+      <a href="{{ route('plan.all') }}" class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding">
+        Quick Plan Search</a>
       <a href="{{ route('advanced-search') }}"
         class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" style="padding : 10px 34px;">
         Advanced Plan Search</a>
@@ -143,8 +144,8 @@
 
 <div class="row desktop-off">
   <div class="col-6 col-sm-6 set-left center">
-    <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" type="button"> Quick
-      <br>Plan Search</button>
+    <a href="{{ route('plan.all') }}" class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding">
+      Quick<br> Plan Search</a>
   </div>
   <div class="col-6 col-sm-6 set-left center">
     <a href="{{ route('advanced-search') }}"

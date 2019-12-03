@@ -194,3 +194,9 @@ a.carousel-inner {
 .far.plan-heart {
   color: white;
 }
+
+@media (max-width: 600px) {
+  .style-desc-container__img {
+    margin-bottom: 20px;
+  }
+}
