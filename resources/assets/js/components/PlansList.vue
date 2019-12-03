@@ -95,21 +95,44 @@
     <!-- Sorting on mobile -->
     <div v-if="showFilter" class="desktop-off">
       <br />
-      <div class="row page-name sort-by-sec">
-        <div class="col-6">
-          <span>
-            SORT BY
-            <button style="font-size:12px;padding : 0;">
-              <i class="fa fa-caret-down"></i>
-            </button>
-          </span>
+      <div class="row page-name sort-by-sec d-flex justify-content-between align-items-center">
+        <div class="col-5" :style="{padding: '0 5px 0 0'}">
+          <div class>
+            <select v-model="order" class="form-control form-control-sm rounded-0">
+              <option value="popular">Most Popular</option>
+              <option value="recent">Newest</option>
+              <option value="s_l">Small to Large</option>
+              <option value="l_s">Large to Small</option>
+            </select>
+          </div>
         </div>
-        <div class="col-6 navbar-light" style="text-align: right;padding-right: 0;">
-          <span>Filter</span>
-          <span class="navbar-toggler-icon" style="height : 24px;"></span>
-          &nbsp;
-          <span class="blue-text" style="font-size : 12px;">PLANS :</span>
-          <span>{{ total }}</span>
+        <div class="col-5" :style="{padding: '0 5px 0 0'}">
+          <div class="text-center text-sm-right">
+            <ul class="list-inline m-0 paging">
+              <li class="list-inline-item">
+                <button
+                  class="btn btn-sm btn-secondary rounded-0"
+                  :disabled="current_page === 1"
+                  @click.prevent="prev"
+                >&lt; Prev</button>
+              </li>
+              <li class="list-inline-item">
+                <button
+                  class="btn btn-sm btn-secondary rounded-0"
+                  :disabled="current_page === last_page"
+                  @click.prevent="next"
+                >&gt; Next</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-2 navbar-light" :style="{padding: '0'}">
+          <!-- <span>Filter</span>
+          <span class="navbar-toggler-icon" style="height : 24px;"></span>-->
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="blue-text" style="font-size : 12px; padding-right: 5px;">PLANS:</span>
+            <span>{{ total }}</span>
+          </div>
         </div>
       </div>
 
