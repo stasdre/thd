@@ -52,8 +52,8 @@
     </div>
   </div>
   <div class="row desktop-off center">
-    <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold new_style " type="button"> SEARCH OUR
-      ARCHITECTURAL STYLES </button>
+    <a href="{{ route('styles') }}" class="btn btn-primary rounded-0 text-white font-weight-semi-bold new_style "
+      >SEARCH OUR ARCHITECTURAL STYLES</a>
   </div><br>
 
   <div class="row ">
