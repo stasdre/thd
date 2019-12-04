@@ -211,6 +211,8 @@ Route::middleware(['auth'])->group(function () {
   Route::get('saved-plans/', 'SavedPlanController@index');
 });
 
+Route::get('/about-us', 'SpecialPageController@about')->name('about-us');
+
 Route::get('/{page}', function (Thd\Page $page) {
   return view('page', ['page' => $page]);
 })->where('page', '[a-zA-Z0-9_-]+');
