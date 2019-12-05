@@ -175,6 +175,9 @@ Route::prefix('admin-dwhp')->group(function () {
     Route::get('pages/data', 'Admin\PagesController@anyData')->name('pages.data');
     Route::get('pages/about', 'Admin\PagesController@about')->name('pages.about');
     Route::post('pages/about', 'Admin\PagesController@aboutStore')->name('pages.about-store');
+
+    Route::resource('about-article', 'Admin\AboutArticleController', ['except' => ['show']]);
+    Route::get('about-article/data', 'Admin\AboutArticleController@anyData')->name('about-article.data');
   });
 });
 
