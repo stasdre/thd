@@ -50,7 +50,7 @@ class AboutArticleController extends Controller
       $path = storage_path('app/public/about/' . $filename);
 
       $img = Image::make($image->getRealPath());
-      $img->fit(265, 200);
+      $img->fit(650, 470);
       $img->save($path, 90);
 
 
@@ -125,7 +125,7 @@ class AboutArticleController extends Controller
       $path = storage_path('app/public/about/' . $filename);
 
       $img = Image::make($image->getRealPath());
-      $img->fit(265, 200);
+      $img->fit(650, 470);
       $img->save($path, 90);
 
       Storage::delete('public/about/' . $aboutArticle->image);
