@@ -1,32 +1,20 @@
 @extends('layouts.index')
 
-{{-- @section('title', $page->title) --}}
+@section('title', $data->title)
 
 @section('content')
 <div class="container align-items-center style-desc-container">
-  <h1 class="text-center h2 about-page-title font-weight-bold">Why Buy From Us?</h1>
+  <h1 class="text-center h2 about-page-title font-weight-bold">{{$data->title}}</h1>
   <div class="row">
     <div class="col-sm-6 about-page-desc">
-      <p> DavidWigginsHousePlans.com offers high quality, ready-to-build house plans designed by the country’s favorite
-        residential architect, David E. Wiggins, and leading architects and designers around the country. Find home
-        plans in every architectural size and style that come with free modification estimates, free product
-        recommendations and free shipping!
-        Be confident when purchasing online house plans from our site as our house plans meet the strict standards of
-        the IRC (International Residential Code) and have the full architectural detailing builders prefer. Many of our
-        home plans have photos from customers that show how the same design was built by different clients customized to
-        fit individual needs, budgets, and building lots. David’s plans also come with a 100% satisfaction exchange
-        policy.
-        As you take your first step in building your new home by finding your perfect house plan, know that we’re here
-        to assist you and answer all of your questions along the way. Feel free to contact us and we’d be happy to help
-        in any way that we can!
-        bneeds, budgets, and building lots. David’s plans also come with a 100% satisfaction exchange policy. As you
-        take your first step in building your new home by finding your perfect house plan, know that we’re here to
-        assist you and answer all of your questions along the way. Feel free to contact us by live chat, email or phone
-        at (XXX) XXX-XXXX. We’d be happy to help in any way that we can!</p>
+      {!!$data->desc!!}
     </div>
     <div class="col-sm-6 about-page-img-container">
       <div class="embed-responsive embed-responsive-16by9">
-        <img src="https://dummyimage.com/580x320" alt="" class="embed-responsive-item">
+        @if ($data->image)
+        <a href="/collection/new-house-plans"><img src="{{ '/storage/about/'.$data->image }}"
+            alt="{{$data->image_title}}" class="embed-responsive-item"></a>
+        @endif
       </div>
       <h3 class="text-center font-weight-bold about-page-sub-title">Explore our New House Plan Collection</h3>
     </div>

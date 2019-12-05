@@ -16,7 +16,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
 Route::get('logout', '\Thd\Http\Controllers\Auth\LoginController@logout');
 
-Route::prefix('admin-thd')->group(function () {
+Route::prefix('admin-dwhp')->group(function () {
   Route::middleware(['auth', 'role:owner|admin|manager'])->group(function () {
     Route::get('/', 'Admin\DashboardController@index')->name('dashboard');
 
