@@ -5,7 +5,11 @@ namespace Thd\Http\Controllers\Admin;
 use Thd\Page;
 use Illuminate\Http\Request;
 use Thd\Http\Controllers\Controller;
+use Thd\SpecialPage;
 use Yajra\Datatables\Datatables;
+use Validator;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class PagesController extends Controller
 {
@@ -131,5 +135,82 @@ class PagesController extends Controller
       })
       ->rawColumns(['actions'])
       ->make(true);
+  }
+
+  public function about()
+  {
+    $data = SpecialPage::findOrFail('about-us');
+    return view('admin.pages.about-us', [
+      'data' => json_decode($data->data)
+    ]);
+  }
+
+  public function aboutStore(Request $request)
+  {
+    $data = SpecialPage::findOrFail('about-us');
+
+    $validator = Validator::make($request->all(), [
+      'title' => 'required|max:190',
+      'desc' => 'required'
+    ]);
+
+    if ($validator->fails()) {
+      return redirect(route('pages.about'))
+        ->withErrors($validator)
+        ->withInput();
+    } else {
+      $dataPage = $request->except('_method', '_token', 'image');
+
+      $oldData = json_decode($data->data);
+
+      $dataPage['image'] = isset($oldData->image) ? $oldData->image : '';
+
+      $image = $request->file('image');
+
+      if ($image && isset($oldData->image) && !empty($oldData->image)) {
+        Storage::delete('public/about/' . $oldData->image);
+        Storage::delete('public/about/thumb/' . $oldData->image);
+        Storage::delete('public/about/original/' . $oldData->image);
+      }
+
+      if (!file_exists(storage_path('app/public/about/original/'))) {
+        Storage::makeDirectory('public/about/original');
+      }
+      if (!file_exists(storage_path('app/public/about/thumb/'))) {
+        Storage::makeDirectory('public/about/thumb');
+      }
+
+      if ($image) {
+        $filename  = str_random(40) . '.' . $image->getClientOriginalExtension();
+
+        $pathOriginal = storage_path('app/public/about/original/' . $filename);
+        $path = storage_path('app/public/about/' . $filename);
+        $pathThumb = storage_path('app/public/about/thumb/' . $filename);
+
+        $img = Image::make($image->getRealPath());
+        $img->fit(580, 330);
+        $img->save($path, 90);
+
+        $imgThumb = Image::make($image->getRealPath());
+        $imgThumb->fit(200, 200);
+        $imgThumb->save($pathThumb, 90);
+
+        $imgOriginal = Image::make($image->getRealPath());
+        $imgOriginal->save($pathOriginal, 100);
+
+        $dataPage['image'] = $filename;
+      }
+
+      $data->data = json_encode($dataPage);
+      $data->update();
+
+      return redirect()->route('pages.about')
+        ->with('message', [
+          'type' => 'success',
+          'title' => 'Success!',
+          'message' => 'Data was updated',
+          'autoHide' => 1
+        ]);
+    }
   }
 }

@@ -173,6 +173,8 @@ Route::prefix('admin-thd')->group(function () {
 
     Route::resource('pages', 'Admin\PagesController', ['except' => ['show']]);
     Route::get('pages/data', 'Admin\PagesController@anyData')->name('pages.data');
+    Route::get('pages/about', 'Admin\PagesController@about')->name('pages.about');
+    Route::post('pages/about', 'Admin\PagesController@aboutStore')->name('pages.about-store');
   });
 });
 

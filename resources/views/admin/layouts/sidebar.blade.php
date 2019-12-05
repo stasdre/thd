@@ -111,8 +111,16 @@
           <li><a href="{{ route('about-david.edit') }}"><i class="fa fa-pencil-square-o"></i> Home Page.</a></li>
         </ul>
       </li>
-      <li>
-        <a href="{{ route('pages.index') }}"><i class="fa fa-pencil-square-o"></i> <span>Pages</span></a>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-pencil-square-o"></i>
+          <span>Pages</span>
+          <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{ route('pages.about') }}"><i class="fa fa-address-card-o"></i> <span>AboutUs</span></a></li>
+          <li><a href="{{ route('pages.index') }}"><i class="fa fa-file-o"></i> <span>Other</span></a></li>
+        </ul>
       </li>
       @endrole
       <li>
