@@ -58,7 +58,7 @@
               </ul>
             </li>
             <li class="list-inline-item"><a href="{{route('inspiration')}}">Home Inspiration</a></li>
-            <li class="list-inline-item"><a href="/about">About</a></li>
+            <li class="list-inline-item"><a href="/about-us">About</a></li>
           </ul>
         </div>
       </nav>
