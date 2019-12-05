@@ -16,7 +16,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
 Route::get('logout', '\Thd\Http\Controllers\Auth\LoginController@logout');
 
-Route::prefix('admin-thd')->group(function () {
+Route::prefix('admin-dwhp')->group(function () {
   Route::middleware(['auth', 'role:owner|admin|manager'])->group(function () {
     Route::get('/', 'Admin\DashboardController@index')->name('dashboard');
 
@@ -173,6 +173,11 @@ Route::prefix('admin-thd')->group(function () {
 
     Route::resource('pages', 'Admin\PagesController', ['except' => ['show']]);
     Route::get('pages/data', 'Admin\PagesController@anyData')->name('pages.data');
+    Route::get('pages/about', 'Admin\PagesController@about')->name('pages.about');
+    Route::post('pages/about', 'Admin\PagesController@aboutStore')->name('pages.about-store');
+
+    Route::resource('about-article', 'Admin\AboutArticleController', ['except' => ['show']]);
+    Route::get('about-article/data', 'Admin\AboutArticleController@anyData')->name('about-article.data');
   });
 });
 
@@ -210,6 +215,8 @@ Route::middleware(['auth'])->group(function () {
   Route::post('save-plan/{plan}', 'SavedPlanController@save');
   Route::get('saved-plans/', 'SavedPlanController@index');
 });
+
+Route::get('/about-us', 'SpecialPageController@about')->name('about-us');
 
 Route::get('/{page}', function (Thd\Page $page) {
   return view('page', ['page' => $page]);

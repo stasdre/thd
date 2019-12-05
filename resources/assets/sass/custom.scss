@@ -200,3 +200,43 @@ a.carousel-inner {
     margin-bottom: 20px;
   }
 }
+
+.about-page-title {
+  padding: 20px 0;
+  border-bottom: 2px solid #384a9f;
+  border-top: 2px solid #384a9f;
+  margin-bottom: 20px;
+}
+
+.about-page-desc {
+  font-family: Baskerville, Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+}
+
+.about-page-img-container {
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.about-page-sub-title {
+  font-size: 1.5rem;
+  margin-top: 15px;
+}
+.about-us-list {
+  padding: 0;
+  margin: 0;
+  margin-top: 35px;
+}
+.about-us-item {
+  margin-bottom: 30px !important;
+}
+.about-us-item-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.about-us-item-desc {
+  font-size: 0.8rem;
+  line-height: 1.4rem;
+}
