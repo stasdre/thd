@@ -1,7 +1,7 @@
 $(document).ready(function() {
   // custom select
 
-  $(".select-custom").each(function() {
+  $(".select-custom-jq").each(function() {
     var $this = $(this),
       numberOfOptions = $(this).children("option").length;
 

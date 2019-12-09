@@ -26,7 +26,7 @@
       <div class="col-md-2 col-sm-3 common_width padd_bottom_10">
         <div class="form-group">
           <div class="select-custom-wrap select-custom-wrap-lg">
-            <div class="select"><select name="style-or-collection" class="select-custom select-hidden">
+            <div class="select"><select name="style-or-collection" class="select-custom select-custom-jq select-hidden">
                 <option value="">Styles \ Collections</option>
                 @foreach ($searchFilter as $item)
                 <option value="{{$item}}">{{$item}}</option>
@@ -39,7 +39,7 @@
       <div class="col-md-1 col-sm-3 common_width padd_bottom_10">
         <div class="form-group">
           <div class="select-custom-wrap select-custom-wrap-sm">
-            <div class="select"><select name="beds" class="select-custom select-hidden">
+            <div class="select"><select name="beds" class="select-custom select-custom-jq select-hidden">
                 <option value="">Beds</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -57,7 +57,7 @@
       <div class="col-md-1 col-sm-3 common_width padd_bottom_10">
         <div class="form-group">
           <div class="select-custom-wrap select-custom-wrap-sm">
-            <div class="select"><select name="baths" class="select-custom select-hidden">
+            <div class="select"><select name="baths" class="select-custom select-custom-jq select-hidden">
                 <option value="">Baths</option>
                 <option value="1">1</option>
                 <option value="1.5">1.5</option>
@@ -78,7 +78,7 @@
       <div class="col-md-1 col-sm-3 common_width padd_bottom_10">
         <div class="form-group">
           <div class="select-custom-wrap select-custom-wrap-sm">
-            <div class="select"><select name="stories" class="select-custom select-hidden">
+            <div class="select"><select name="stories" class="select-custom select-custom-jq select-hidden">
                 <option value="">Stories</option>
                 <option value="1">1</option>
                 <option value="1.5">1.5</option>
@@ -92,7 +92,7 @@
       <div class="col-md-2 col-sm-3 common_width padd_bottom_10 max-width">
         <div class="form-group">
           <div class="select-custom-wrap select-custom-wrap-md">
-            <div class="select"><select name="garages" class="select-custom select-hidden">
+            <div class="select"><select name="garages" class="select-custom select-custom-jq select-hidden">
                 <option value="">Garages</option>
                 <option value="1">1</option>
                 <option value="2">2</option>

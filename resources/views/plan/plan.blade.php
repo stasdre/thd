@@ -589,7 +589,7 @@
                     $@{{total}}</span></div>
               </div>
             </div>
-            <button type="submit" @click.prevent="addToCart()"
+            <button type="submit" @click.prevent="addToCart()" :disabled="toCartButtonDisable"
               class="btn btn-primary text-uppercase rounded-0 mt-1 offset-1 btn_width">ADD TO CART <i v-if="loading"
                 class="fas fa-sync fa-spin"></i></button>
           </div> <!-- Searchform outer -->
@@ -1104,14 +1104,38 @@
         setActivePackage(package){
           this.checkedPackage = package;
           this.viewPackages = false;
+          this.checkActiveButtonCart();
         },
         setActiveOption(option){
           this.checkedOption = option;
           this.viewOptions = false;
+          this.checkActiveButtonCart();
         },
         addToCart(){
-          console.log('Add');
-        } 
+          this.loading = true;
+          axios.post('{{route('purchase')}}',{
+            plan_id: {!!$plan->id!!},
+            plan_package: this.checkedPackage.id,
+            plan_foundation: this.checkedOption.id,
+            plan_features: this.checkedAddons.join()
+          })
+          .then(response => {
+              if(response.data.status == 'ok'){
+                window.location.href = '{{route('cart')}}';
+              }else{
+                this.loading = false;
+              }
+          }, (error) => {
+              this.loading = false;
+          });                    
+        },
+        checkActiveButtonCart(){
+          if(this.checkedPackage.id && this.checkedOption.id){
+            this.toCartButtonDisable = false;
+          }else{
+            this.toCartButtonDisable = true;
+          }
+        }
       }
     })    
 </script>
