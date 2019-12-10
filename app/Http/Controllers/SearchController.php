@@ -115,8 +115,22 @@ class SearchController extends Controller
     }
 
     if ($b_s_p == 1) {
-      $plans = Plan::whereIn('plan_number', [2091, 1421, 2214])->with(['images' => function ($query) {
+      $plans = Plan::select(
+        'id',
+        'name',
+        'plan_number',
+        'rooms',
+        'dimensions',
+        'square_ft',
+        'garage',
+      )->whereIn('plan_number', [2091, 1421, 2214])->with(['images' => function ($query) {
         $query->orderBy('for_search', 'desc');
+        $query->orderBy('sort_number', 'asc');
+      }])->with(['images_first' => function ($query) {
+        $query->orderBy('sort_number', 'asc');
+      }])->with(['images_second' => function ($query) {
+        $query->orderBy('sort_number', 'asc');
+      }])->with(['images_basement' => function ($query) {
         $query->orderBy('sort_number', 'asc');
       }])->get()->sortBy(function ($value, $key) {
         switch ($value->plan_number) {
@@ -145,7 +159,15 @@ class SearchController extends Controller
       ]);
     }
 
-    $plans = Plan::where('is_active', '=', 1);
+    $plans = Plan::select(
+      'id',
+      'name',
+      'plan_number',
+      'rooms',
+      'dimensions',
+      'square_ft',
+      'garage',
+    )->where('is_active', '=', 1);
 
     if (!empty($collection)) {
       $plans->whereHas('collections', function ($query) use ($collection) {
@@ -275,6 +297,12 @@ class SearchController extends Controller
 
     $dataPlans = $plans->with(['images' => function ($query) {
       $query->orderBy('for_search', 'desc');
+      $query->orderBy('sort_number', 'asc');
+    }])->with(['images_first' => function ($query) {
+      $query->orderBy('sort_number', 'asc');
+    }])->with(['images_second' => function ($query) {
+      $query->orderBy('sort_number', 'asc');
+    }])->with(['images_basement' => function ($query) {
       $query->orderBy('sort_number', 'asc');
     }])->paginate($views);
 

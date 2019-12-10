@@ -184,11 +184,11 @@
                     ></i>
                   </a>
                 </li>
-                <!-- <li class="list-inline-item icon-search-mob">
-                  <a href="#">
+                <li class="list-inline-item icon-search-mob">
+                  <a href="#" @click.prevent="quickView(plan, index)">
                     <i class="fas fa-search" style="color:white"></i>
                   </a>
-                </li>-->
+                </li>
               </ul>
             </div>
           </div>
@@ -460,6 +460,236 @@
         </div>-->
       </div>
     </div>
+
+    <!-- QuickView Modal -->
+    <div
+      class="modal fade"
+      id="quickView"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="QuickView"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{selectedPlan.name}}: House Plan {{selectedPlan.plan_number}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-7">
+                <ul class="nav mt-2" id="floorPlan" role="tablist">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link rounded-0 active"
+                      id="first-floor"
+                      data-toggle="tab"
+                      href="#first"
+                      role="tab"
+                    >First Floor Plan</a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link rounded-0"
+                      id="second-floor"
+                      data-toggle="tab"
+                      href="#second"
+                      role="tab"
+                    >Second Floor Plan</a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link rounded-0"
+                      id="basement-floor"
+                      data-toggle="tab"
+                      href="#basement"
+                      role="tab"
+                    >Basement Floor Plan</a>
+                  </li>
+                </ul>
+                <div class="tab-content" id="myTabContent1">
+                  <div class="tab-pane fade show active" id="first" role="tabpanel">
+                    <img v-for="img in selectedPlan.images_first" :key="img.id" :src="`/storage/plans/${selectedPlan.id}/${img.file_name}`" alt class="img-fluid mx-auto d-block" />
+                  </div>
+                  <div class="tab-pane fade" id="second" role="tabpanel">
+                    <img v-for="img in selectedPlan.images_second" :key="img.id" :src="`/storage/plans/${selectedPlan.id}/${img.file_name}`" alt class="img-fluid mx-auto d-block" />
+                  </div>
+                  <div class="tab-pane fade" id="basement" role="tabpanel">
+                    <img v-for="img in selectedPlan.images_basement" :key="img.id" :src="`/storage/plans/${selectedPlan.id}/${img.file_name}`" alt class="img-fluid mx-auto d-block" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="plan-list">
+                  <div class="row align-items-center py-2 px-1">
+                    <div class="col-8">
+                      <p class="plan-name font-weight-bold mb-0">
+                        {{ selectedPlan.square_ft ? selectedPlan.square_ft.str_total : "" }} sq ft |
+                        <span
+                          class="text-white"
+                        >plan {{selectedPlan.plan_number}}</span>
+                      </p>
+                    </div>
+                    <div class="col-4">
+                      <ul class="list-inline mb-0 text-right">
+                        <li class="list-inline-item">
+                          <a href="#" @click.prevent="savePlan(selectedPlan, selectedPlan.index)">
+                            <i
+                              :class="[selectedPlan.saved_plans && selectedPlan.saved_plans.length ? 'fas' : 'far', 'fa-heart', 'plan-heart']"
+                            ></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="position-relative">
+                    <div
+                      :id="'plan-view' + selectedPlan.id"
+                      class="carousel slide"
+                      data-ride="carousel"
+                      data-interval="1800"
+                    >
+                      <a :href="'/plan/' + selectedPlan.plan_number" class="carousel-inner">
+                        <div
+                          class="carousel-item"
+                          :class="{ active: index === 0 }"
+                          v-for="(image, index) in selectedPlan.images"
+                          :key="image.id"
+                        >
+                          <img
+                            :src="
+                      '/storage/plans/' + selectedPlan.id + '/thumb/' + image.file_name
+                    "
+                            alt
+                            class="img-fluid d-block w-100"
+                          />
+                          <a
+                            v-if="image.camera_icon"
+                            href="#"
+                            class="position-absolute icon-camera"
+                          >
+                            <img src="/images/icons/icon-camera.png" alt />
+                          </a>
+                        </div>
+                      </a>
+                      <a
+                        class="carousel-control-prev"
+                        @click.prevent
+                        :href="'#plan-view' + selectedPlan.id"
+                        role="button"
+                        data-slide="prev"
+                      >
+                        <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a
+                        class="carousel-control-next"
+                        @click.prevent
+                        :href="'#plan-view' + selectedPlan.id"
+                        role="button"
+                        data-slide="next"
+                      >
+                        <span class="carousel-control-next-icon" aria-hidden="false"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                    <div class="media planinfo text-left position-absolute placeholder-black">
+                      <img
+                        class="mr-1 align-self-center"
+                        src="/images/icons/logo-placeholder.png"
+                        alt="Generic placeholder image"
+                      />
+                      <div class="media-body">
+                        <h5 class="mb-0 text-white">
+                          plan
+                          <span class="text-secondary">{{ selectedPlan.plan_number }}</span>
+                        </h5>
+                        <h5 class="m-0 text-white">
+                          davidwiggins
+                          <span class="text-secondary">houseplans.com</span>
+                        </h5>
+                      </div>
+                    </div>
+                    <!-- <a href="#" class="position-absolute pinterest">
+                      <img src="images/icons/icon-pinterest.png" alt />
+                    </a>-->
+                  </div>
+                </div>
+                <div class="row text-center no-gutters">
+                  <div class="col py-1 border border-light font-weight-semi-bold">
+                    Sq. Ft.
+                    <span
+                      class="d-block text-secondary"
+                    >{{ selectedPlan.square_ft ? selectedPlan.square_ft.str_total : "" }}</span>
+                  </div>
+                  <div class="col py-1 border border-light font-weight-semi-bold bg-secondary">
+                    1st Fl
+                    <span
+                      class="d-block text-white"
+                    >{{ selectedPlan.square_ft ? selectedPlan.square_ft['1_floor'] : "" }}</span>
+                  </div>
+                  <div class="col py-1 border border-light font-weight-semi-bold">
+                    2nd Fl
+                    <span
+                      class="d-block text-secondary"
+                    >{{ selectedPlan.square_ft ? selectedPlan.square_ft['2_floor'] : "" }}</span>
+                  </div>
+                  <div class="col py-1 border border-light font-weight-semi-bold bg-secondary">
+                    Garages
+                    <span
+                      class="d-block text-white"
+                    >{{ selectedPlan.garage ? selectedPlan.garage.car : "" }} car</span>
+                  </div>
+                </div>
+                <div class="row text-center no-gutters">
+                  <div class="col py-1 border border-light font-weight-semi-bold bg-secondary">
+                    Beds
+                    <span
+                      class="d-block text-white"
+                    >{{ selectedPlan.rooms ? selectedPlan.rooms.r_bedrooms : "" }}</span>
+                  </div>
+                  <div class="col py-1 border border-light font-weight-semi-bold">
+                    Baths
+                    <span
+                      class="d-block text-secondary"
+                    >{{ selectedPlan.rooms ? selectedPlan.rooms.r_full_baths : "" }}</span>
+                  </div>
+                  <div class="col py-1 border border-light font-weight-semi-bold bg-secondary">
+                    Width
+                    <span
+                      class="d-block text-white"
+                    >{{ selectedPlan.dimensions ? `${selectedPlan.dimensions.width_ft}' ${selectedPlan.dimensions.width_in}"` : "" }}</span>
+                  </div>
+                  <div class="col py-1 border border-light font-weight-semi-bold">
+                    Depth
+                    <span
+                      class="d-block text-secondary"
+                    >{{ selectedPlan.dimensions ? `${selectedPlan.dimensions.depth_ft}' ${selectedPlan.dimensions.depth_in}"` : "" }}</span>
+                  </div>
+                </div>
+                <div class="text-center px-5">
+                  <p>
+                    <a
+                      :href="`/plan/${selectedPlan.plan_number}`"
+                      class="btn btn-primary btn-block text-uppercase rounded-0 mt-3"
+                    >Purchase Plans</a>
+                  </p>
+                  <p>
+                    <a
+                      :href="`/plan/${selectedPlan.plan_number}`"
+                      class="btn btn-primary btn-block rounded-0 mt-3"
+                    >View ALL plan details</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -487,6 +717,7 @@ export default {
     return {
       isLoading: false,
       plans: [],
+      selectedPlan: Object,
       last_page: 1,
       total: 0,
       current_page: 1,
@@ -612,6 +843,11 @@ export default {
             window.location.href = "/register";
           }
         });
+    },
+    quickView(plan, index) {
+      this.selectedPlan = plan;
+      this.selectedPlan.index = index;
+      $("#quickView").modal("show");
     }
   },
   watch: {
