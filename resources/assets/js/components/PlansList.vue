@@ -311,6 +311,155 @@
         </div>
       </div>
     </div>
+    <div v-if="showFilter" class="page-name mt-3 py-2 px-2 mobile-off">
+      <div class="row align-items-center">
+        <div class="col-sm-3 col-md-5 col-lg-4">
+          <form action class="form-inline">
+            <div class="form-group">
+              <label for>Sort:</label>
+              <select v-model="order" class="form-control form-control-sm rounded-0">
+                <option value="popular">Most Popular</option>
+                <option value="recent">Newest</option>
+                <option value="s_l">Small to Large</option>
+                <option value="l_s">Large to Small</option>
+              </select>
+            </div>
+            <div class="form-group ml-2">
+              <label for>Views:</label>
+              <select v-model="views" class="form-control form-control-sm rounded-0">
+                <option value="24">24</option>
+                <option value="50">50</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <br />
+        <div class="col-sm-4 col-md-6 col-lg-3 text-center">
+          <!-- <div class="row align-items-center no-gutters">
+            <div class="col-6 save-search">
+              <h6 class="font-futura m-0 ls-1 text-right pr-2">SAVE SEARCH</h6>
+            </div>
+            <div class="col-6">
+              <div class="form-group text-left m-0">
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    class="form-control rounded-0 border-secondary"
+                    placeholder="Nickname"
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="btn btn-primary rounded-0 text-white font-weight-semi-bold"
+                      type="button"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>-->
+        </div>
+        <div class="col-sm-5 col-md-12 col-lg-5">
+          <div class="text-center text-sm-right search_pagination">
+            <ul class="list-inline m-0 paging">
+              <li class="list-inline-item">
+                <button
+                  class="btn btn-sm btn-secondary rounded-0"
+                  :disabled="current_page === 1"
+                  @click.prevent="prev"
+                >&lt; Prev</button>
+              </li>
+              <li class="list-inline-item text-secondary">Page</li>
+              <li class="list-inline-item">
+                <input
+                  type="text"
+                  class="form-control rounded-0"
+                  @keyup.enter="goToPage"
+                  v-model="current_page"
+                />
+              </li>
+              <li class="list-inline-item">
+                <span class="text-secondary">of</span>
+                {{ last_page }}
+              </li>
+              <li class="list-inline-item">
+                <button
+                  class="btn btn-sm btn-secondary rounded-0"
+                  :disabled="current_page === last_page"
+                  @click.prevent="next"
+                >&gt; Next</button>
+              </li>
+              <li class="list-inline-item ml-2">
+                <strong>
+                  <span class="text-primary">PLANS:</span>
+                  {{ total }}
+                </strong>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sorting on mobile -->
+    <div v-if="showFilter" class="desktop-off">
+      <br />
+      <div class="row page-name sort-by-sec d-flex justify-content-between align-items-center">
+        <div class="col-5" :style="{padding: '0 5px 0 0'}">
+          <div class>
+            <select v-model="order" class="form-control form-control-sm rounded-0">
+              <option value="popular">Most Popular</option>
+              <option value="recent">Newest</option>
+              <option value="s_l">Small to Large</option>
+              <option value="l_s">Large to Small</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-5" :style="{padding: '0 5px 0 0'}">
+          <div class="text-center text-sm-right">
+            <ul class="list-inline m-0 paging">
+              <li class="list-inline-item">
+                <button
+                  class="btn btn-sm btn-secondary rounded-0"
+                  :disabled="current_page === 1"
+                  @click.prevent="prev"
+                >&lt; Prev</button>
+              </li>
+              <li class="list-inline-item">
+                <button
+                  class="btn btn-sm btn-secondary rounded-0"
+                  :disabled="current_page === last_page"
+                  @click.prevent="next"
+                >&gt; Next</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-2 navbar-light" :style="{padding: '0'}">
+          <!-- <span>Filter</span>
+          <span class="navbar-toggler-icon" style="height : 24px;"></span>-->
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="blue-text" style="font-size : 12px; padding-right: 5px;">PLANS:</span>
+            <span>{{ total }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row ind_search_div">
+        <br />
+        <!-- <div class="col-6 save-search">
+          <span>SAVE YOUR SEARCH</span>
+        </div>
+        <div class="col-6">
+          <input type="text" placeholder="Nickname" style="width : 75%" class="save_search_box" />
+          <button
+            class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding save_search_button"
+            type="button"
+          >Save</button>
+        </div>-->
+      </div>
+    </div>
   </div>
 </template>
 
