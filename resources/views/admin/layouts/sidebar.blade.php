@@ -122,6 +122,16 @@
           <li><a href="{{ route('pages.index') }}"><i class="fa fa-file-o"></i> <span>Other</span></a></li>
         </ul>
       </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-folder-o"></i>
+          <span>Footer</span>
+          <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{ route('footer-blocks.index') }}"><i class="fa fa-th-large"></i> <span>Blocks</span></a></li>
+        </ul>
+      </li>
       @endrole
       <li>
         <a href="/blog/wp-admin/"><i class="fa fa-sign-in"></i> <span>Blog</span></a>

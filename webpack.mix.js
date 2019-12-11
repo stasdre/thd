@@ -31,3 +31,5 @@ mix.copy(
 );
 
 mix.js("resources/assets/js/plans-search.js", "public/js");
+
+mix.js("resources/assets/js/admin/footer.js", "public/js/admin");

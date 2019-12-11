@@ -178,6 +178,11 @@ Route::prefix('admin-dwhp')->group(function () {
 
     Route::resource('about-article', 'Admin\AboutArticleController', ['except' => ['show']]);
     Route::get('about-article/data', 'Admin\AboutArticleController@anyData')->name('about-article.data');
+    Route::resource('footer-blocks', 'Admin\FooterBlockController', ['except' => ['show']]);
+
+    Route::post('update-footer-block-name/{block}', 'Admin\FooterBlockController@update');
+
+    Route::resource('footer-items', 'Admin\FooterItemController', ['except' => ['show', 'index']]);
   });
 });
 
