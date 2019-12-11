@@ -122,7 +122,7 @@ class SearchController extends Controller
         'rooms',
         'dimensions',
         'square_ft',
-        'garage',
+        'garage'
       )->whereIn('plan_number', [2091, 1421, 2214])->with(['images' => function ($query) {
         $query->orderBy('for_search', 'desc');
         $query->orderBy('sort_number', 'asc');
@@ -166,7 +166,7 @@ class SearchController extends Controller
       'rooms',
       'dimensions',
       'square_ft',
-      'garage',
+      'garage'
     )->where('is_active', '=', 1);
 
     if (!empty($collection)) {

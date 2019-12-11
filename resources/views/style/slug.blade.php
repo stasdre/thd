@@ -13,9 +13,26 @@
       <div class="col-3 style-desc-container__border"></div>
     </div>
   </div>
-  <div class="col-sm-5 style-desc-container__img">
+  <div class="col-sm-5 style-desc-container__img" style="position:relative">
     <div class="embed-responsive embed-responsive-16by9">
+      @if ($style->plan)
+      <a href="{{route('plan.view', $style->plan)}}">
+        <img src="{{ '/storage/styles/'.$style->image }}" alt="{{$style->name}}" class="embed-responsive-item" />
+      </a>
+      @else
       <img src="{{ '/storage/styles/'.$style->image }}" alt="{{$style->name}}" class="embed-responsive-item" />
+      @endif
+    </div>
+    <div class="media planinfo text-left position-absolute placeholder-black" style="bottom:0"><img
+        src="/images/icons/logo-placeholder.png" alt="Generic placeholder image" class="mr-1 align-self-center">
+      <div class="media-body">
+        <h5 class="mb-0 text-white">
+          plan
+          <span class="text-secondary">{{$style->plan}}</span></h5>
+        <h5 class="m-0 text-white">
+          davidwiggins
+          <span class="text-secondary">houseplans.com</span></h5>
+      </div>
     </div>
   </div>
 </div>

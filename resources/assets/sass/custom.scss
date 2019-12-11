@@ -116,6 +116,10 @@
   opacity: 0.5;
 }
 
+.placeholder-black img,
+.placeholder-black .media-body {
+  z-index: 10;
+}
 .inspiration-slider.embed-responsive-4by3::before {
   padding-top: 83%;
 }
