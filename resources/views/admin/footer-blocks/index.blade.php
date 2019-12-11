@@ -9,29 +9,19 @@
   <div class="box-body" id="footer-blocks">
     <div>
       <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active">
-          <a href="#b1" aria-controls="general" role="tab" data-toggle="tab">
-            Block
-            1
-          </a>
+        @foreach ($blocks as $item)
+        <li role="presentation" @if($loop->iteration === 1) class="active" @endif>
+          <a href="#b{{$item->id}}" aria-controls="general" role="tab" data-toggle="tab">Block {{$loop->iteration}}</a>
         </li>
-        <li role="presentation">
-          <a href="#b2" aria-controls="details" role="tab" data-toggle="tab">Block 2</a>
-        </li>
-        <li role="presentation">
-          <a href="#b3" aria-controls="details" role="tab" data-toggle="tab">Block 3</a>
-        </li>
+        @endforeach
       </ul>
       <div class="tab-content">
-        <div role="tabpanel" class="tab-pane fade in active" id="b1">
-          <footer-block block-id="1"></footer-block>
+        @foreach ($blocks as $item)
+        <div role="tabpanel" class="tab-pane fade in @if($loop->iteration === 1) active @endif" id="b{{$item->id}}">
+          <footer-block block-id="{{$item->id}}" :items="{{$item->footer_items}}" block-name="{{$item->name}}">
+          </footer-block>
         </div>
-        <div role="tabpanel" class="tab-pane fade in" id="b2">
-          <footer-block block-id="2"></footer-block>
-        </div>
-        <div role="tabpanel" class="tab-pane fade in" id="b3">
-          <footer-block block-id="3"></footer-block>
-        </div>
+        @endforeach
       </div>
     </div>
   </div>

@@ -10,7 +10,7 @@
           placeholder="Name"
         />
       </div>
-      <div class="col-md-5">
+      <div class="col-md-4">
         <input
           v-model="itemInfo.link"
           type="text"
@@ -19,10 +19,24 @@
           placeholder="link"
         />
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="btn-group" role="group" aria-label="...">
-          <button type="button" class="btn btn-info">Update</button>
-          <button v-on:click="removeItem(itemInfo.id)" type="button" class="btn btn-danger">Remove</button>
+          <button
+            :disabled="isLoading"
+            v-on:click="updateItem(itemInfo.id)"
+            type="button"
+            class="btn btn-info"
+          >
+            <i v-if="isLoading" class="fa fa-spinner fa-spin"></i> Update
+          </button>
+          <button
+            :disabled="isLoading"
+            v-on:click="removeItem(itemInfo.id)"
+            type="button"
+            class="btn btn-danger"
+          >
+            <i v-if="isLoading" class="fa fa-spinner fa-spin"></i> Remove
+          </button>
         </div>
       </div>
     </div>
@@ -30,14 +44,41 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   props: ["item-info"],
   data: function() {
-    return {};
+    return {
+      isLoading: false
+    };
   },
   methods: {
     removeItem(id) {
-      this.$emit("remove-item", id);
+      this.isLoading = true;
+      axios
+        .delete(`/admin-dwhp/footer-items/${id}`)
+        .then(response => {
+          if (response.data.status === "ok") {
+            this.isLoading = false;
+            this.$emit("remove-item", id);
+          }
+        })
+        .catch(error => {});
+    },
+    updateItem(id) {
+      this.isLoading = true;
+      axios
+        .patch(`/admin-dwhp/footer-items/${id}`, {
+          name: this.itemInfo.name,
+          link: this.itemInfo.link
+        })
+        .then(response => {
+          if (response.data.status === "ok") {
+            this.isLoading = false;
+          }
+        })
+        .catch(error => {});
     }
   }
 };

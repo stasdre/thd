@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 52);
+/******/ 	return __webpack_require__(__webpack_require__.s = 69);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -581,77 +581,94 @@ exports.clearImmediate = clearImmediate;
 /* 49 */,
 /* 50 */,
 /* 51 */,
-/* 52 */
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(53);
+module.exports = __webpack_require__(70);
 
 
 /***/ }),
-/* 53 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tinymce_tinymce__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tinymce_tinymce__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tinymce_tinymce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_tinymce_tinymce__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tinymce_themes_modern_theme__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tinymce_themes_modern_theme__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tinymce_themes_modern_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_tinymce_themes_modern_theme__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_tinymce_plugins_advlist_plugin__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_tinymce_plugins_advlist_plugin__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_tinymce_plugins_advlist_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_tinymce_plugins_advlist_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_tinymce_plugins_autolink_plugin__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_tinymce_plugins_autolink_plugin__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_tinymce_plugins_autolink_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_tinymce_plugins_autolink_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_tinymce_plugins_link_plugin__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_tinymce_plugins_link_plugin__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_tinymce_plugins_link_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_tinymce_plugins_link_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_tinymce_plugins_image_plugin__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_tinymce_plugins_image_plugin__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_tinymce_plugins_image_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_tinymce_plugins_image_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_tinymce_plugins_lists_plugin__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_tinymce_plugins_lists_plugin__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_tinymce_plugins_lists_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_tinymce_plugins_lists_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_tinymce_plugins_charmap_plugin__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_tinymce_plugins_charmap_plugin__ = __webpack_require__(78);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_tinymce_plugins_charmap_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_tinymce_plugins_charmap_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_tinymce_plugins_print_plugin__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_tinymce_plugins_print_plugin__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_tinymce_plugins_print_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_tinymce_plugins_print_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_tinymce_plugins_preview_plugin__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_tinymce_plugins_preview_plugin__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_tinymce_plugins_preview_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_tinymce_plugins_preview_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_tinymce_plugins_hr_plugin__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_tinymce_plugins_hr_plugin__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_tinymce_plugins_hr_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_tinymce_plugins_hr_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_tinymce_plugins_anchor_plugin__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_tinymce_plugins_anchor_plugin__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_tinymce_plugins_anchor_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_tinymce_plugins_anchor_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_tinymce_plugins_pagebreak_plugin__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_tinymce_plugins_pagebreak_plugin__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_tinymce_plugins_pagebreak_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_tinymce_plugins_pagebreak_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_tinymce_plugins_spellchecker_plugin__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_tinymce_plugins_spellchecker_plugin__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_tinymce_plugins_spellchecker_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_tinymce_plugins_spellchecker_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_tinymce_plugins_searchreplace_plugin__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_tinymce_plugins_searchreplace_plugin__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_tinymce_plugins_searchreplace_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_tinymce_plugins_searchreplace_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_tinymce_plugins_wordcount_plugin__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_tinymce_plugins_wordcount_plugin__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_tinymce_plugins_wordcount_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_tinymce_plugins_wordcount_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_tinymce_plugins_visualblocks_plugin__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_tinymce_plugins_visualblocks_plugin__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_tinymce_plugins_visualblocks_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16_tinymce_plugins_visualblocks_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_tinymce_plugins_visualchars_plugin__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_tinymce_plugins_visualchars_plugin__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_tinymce_plugins_visualchars_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_tinymce_plugins_visualchars_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_tinymce_plugins_code_plugin__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_tinymce_plugins_code_plugin__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_tinymce_plugins_code_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_tinymce_plugins_code_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_tinymce_plugins_fullscreen_plugin__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_tinymce_plugins_fullscreen_plugin__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_tinymce_plugins_fullscreen_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19_tinymce_plugins_fullscreen_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_tinymce_plugins_insertdatetime_plugin__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_tinymce_plugins_insertdatetime_plugin__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_tinymce_plugins_insertdatetime_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20_tinymce_plugins_insertdatetime_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_tinymce_plugins_media_plugin__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_tinymce_plugins_media_plugin__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_tinymce_plugins_media_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_21_tinymce_plugins_media_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_tinymce_plugins_nonbreaking_plugin__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_tinymce_plugins_nonbreaking_plugin__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_tinymce_plugins_nonbreaking_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_22_tinymce_plugins_nonbreaking_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_tinymce_plugins_save_plugin__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_tinymce_plugins_save_plugin__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_tinymce_plugins_save_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_23_tinymce_plugins_save_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_tinymce_plugins_table_plugin__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_tinymce_plugins_table_plugin__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_tinymce_plugins_table_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_24_tinymce_plugins_table_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_tinymce_plugins_contextmenu_plugin__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_tinymce_plugins_contextmenu_plugin__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_tinymce_plugins_contextmenu_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_25_tinymce_plugins_contextmenu_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_tinymce_plugins_directionality_plugin__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_tinymce_plugins_directionality_plugin__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_tinymce_plugins_directionality_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_26_tinymce_plugins_directionality_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_tinymce_plugins_template_plugin__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_tinymce_plugins_template_plugin__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_tinymce_plugins_template_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_27_tinymce_plugins_template_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_tinymce_plugins_paste_plugin__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_tinymce_plugins_paste_plugin__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_tinymce_plugins_paste_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_28_tinymce_plugins_paste_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29_tinymce_plugins_textcolor_plugin__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29_tinymce_plugins_textcolor_plugin__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29_tinymce_plugins_textcolor_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_29_tinymce_plugins_textcolor_plugin__);
 // Core
 
@@ -720,7 +737,7 @@ var editor_config = {
 __WEBPACK_IMPORTED_MODULE_0_tinymce_tinymce___default.a.init(editor_config);
 
 /***/ }),
-/* 54 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate) {// 4.8.3 (2018-09-13)
@@ -27607,7 +27624,7 @@ __WEBPACK_IMPORTED_MODULE_0_tinymce_tinymce___default.a.init(editor_config);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6).setImmediate))
 
 /***/ }),
-/* 55 */
+/* 72 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -37654,7 +37671,7 @@ var modern = (function () {
 
 
 /***/ }),
-/* 56 */
+/* 73 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -37820,7 +37837,7 @@ var advlist = (function () {
 
 
 /***/ }),
-/* 57 */
+/* 74 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -38006,7 +38023,7 @@ var autolink = (function () {
 
 
 /***/ }),
-/* 58 */
+/* 75 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -38725,7 +38742,7 @@ var link = (function () {
 
 
 /***/ }),
-/* 59 */
+/* 76 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -39942,7 +39959,7 @@ var image = (function () {
 
 
 /***/ }),
-/* 60 */
+/* 77 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -41063,7 +41080,7 @@ var lists = (function () {
 
 
 /***/ }),
-/* 61 */
+/* 78 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -42344,7 +42361,7 @@ var charmap = (function () {
 
 
 /***/ }),
-/* 62 */
+/* 79 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -42388,7 +42405,7 @@ var print = (function () {
 
 
 /***/ }),
-/* 63 */
+/* 80 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -42517,7 +42534,7 @@ var preview = (function () {
 
 
 /***/ }),
-/* 64 */
+/* 81 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -42562,7 +42579,7 @@ var hr = (function () {
 
 
 /***/ }),
-/* 65 */
+/* 82 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -42686,7 +42703,7 @@ var anchor = (function () {
 
 
 /***/ }),
-/* 66 */
+/* 83 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -42801,7 +42818,7 @@ var pagebreak = (function () {
 
 
 /***/ }),
-/* 67 */
+/* 84 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -43564,7 +43581,7 @@ var spellchecker = (function () {
 
 
 /***/ }),
-/* 68 */
+/* 85 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -44173,7 +44190,7 @@ var searchreplace = (function () {
 
 
 /***/ }),
-/* 69 */
+/* 86 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -44522,7 +44539,7 @@ var wordcount = (function () {
 
 
 /***/ }),
-/* 70 */
+/* 87 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -44663,7 +44680,7 @@ var visualblocks = (function () {
 
 
 /***/ }),
-/* 71 */
+/* 88 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -45174,7 +45191,7 @@ var visualchars = (function () {
 
 
 /***/ }),
-/* 72 */
+/* 89 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -45274,7 +45291,7 @@ var code = (function () {
 
 
 /***/ }),
-/* 73 */
+/* 90 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -45457,7 +45474,7 @@ var fullscreen = (function () {
 
 
 /***/ }),
-/* 74 */
+/* 91 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -45636,7 +45653,7 @@ var insertdatetime = (function () {
 
 
 /***/ }),
-/* 75 */
+/* 92 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -46808,7 +46825,7 @@ var media = (function () {
 
 
 /***/ }),
-/* 76 */
+/* 93 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -46899,7 +46916,7 @@ var nonbreaking = (function () {
 
 
 /***/ }),
-/* 77 */
+/* 94 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -47025,7 +47042,7 @@ var save = (function () {
 
 
 /***/ }),
-/* 78 */
+/* 95 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -57175,7 +57192,7 @@ var table = (function () {
 
 
 /***/ }),
-/* 79 */
+/* 96 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -57349,7 +57366,7 @@ var contextmenu = (function () {
 
 
 /***/ }),
-/* 80 */
+/* 97 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -57421,7 +57438,7 @@ var directionality = (function () {
 
 
 /***/ }),
-/* 81 */
+/* 98 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -57772,7 +57789,7 @@ var template = (function () {
 
 
 /***/ }),
-/* 82 */
+/* 99 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -59275,7 +59292,7 @@ var paste = (function () {
 
 
 /***/ }),
-/* 83 */
+/* 100 */
 /***/ (function(module, exports) {
 
 (function () {

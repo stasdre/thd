@@ -1,8 +1,8 @@
 {
     "/js/plans-search.js": "/js/plans-search.js",
+    "/js/admin/footer.js": "/js/admin/footer.js",
     "/js/admin/tinymce.js": "/js/admin/tinymce.js",
     "/js/admin/app.js": "/js/admin/app.js",
-    "/js/admin/footer.js": "/js/admin/footer.js",
     "/js/admin/datatables.js": "/js/admin/datatables.js",
     "/js/app.js": "/js/app.js",
     "/css/main.css": "/css/main.css",

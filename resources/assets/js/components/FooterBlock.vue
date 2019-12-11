@@ -3,9 +3,16 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Block name" />
+          <input type="text" v-model="blockName" class="form-control" placeholder="Block name" />
           <span class="input-group-btn">
-            <button class="btn btn-success" v-on:click="updateName" type="button">Change name</button>
+            <button
+              class="btn btn-success"
+              v-on:click="updateName"
+              :disabled="isLoading"
+              type="button"
+            >
+              <i v-if="isLoading" class="fa fa-spinner fa-spin"></i> Change name
+            </button>
           </span>
         </div>
       </div>
@@ -33,7 +40,14 @@
             />
           </div>
           <div class="col-md-2">
-            <button type="button" class="btn btn-primary" v-on:click="addNewItem">Add new link</button>
+            <button
+              :disabled="isLoading"
+              type="button"
+              class="btn btn-primary"
+              v-on:click="addNewItem"
+            >
+              <i v-if="isLoading" class="fa fa-spinner fa-spin"></i> Add new link
+            </button>
           </div>
         </div>
       </div>
@@ -51,28 +65,50 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  props: ["block-id"],
+  props: ["block-id", "block-name", "items"],
   data: function() {
     return {
-      items: [],
       name: "",
-      link: ""
+      link: "",
+      isLoading: false
     };
   },
   methods: {
     updateName: function() {
-      console.log(this.blockId);
+      this.isLoading = true;
+      axios
+        .post(`/admin-dwhp/update-footer-block-name/${this.blockId}`, {
+          name: this.blockName
+        })
+        .then(response => {
+          this.isLoading = false;
+        })
+        .catch(error => {});
     },
     addNewItem: function() {
-      this.items.push({
-        id: 1,
-        name: this.name,
-        link: this.link
-      });
-
-      this.name = "";
-      this.link = "";
+      this.isLoading = true;
+      axios
+        .post(`/admin-dwhp/footer-items`, {
+          name: this.name,
+          link: this.link,
+          footer_block_id: this.blockId
+        })
+        .then(response => {
+          this.isLoading = false;
+          if (response.data.status === "ok") {
+            this.items.push({
+              id: response.data.data.id,
+              name: response.data.data.name,
+              link: response.data.data.link
+            });
+            this.name = "";
+            this.link = "";
+          }
+        })
+        .catch(error => {});
     },
     removeItem: function(id) {
       this.items = this.items.filter(item => id !== item.id);
