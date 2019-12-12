@@ -12,9 +12,14 @@
               alt="" class="img-fluid mr-2" style="max-width:160px;"></a>
         </span>
         <span class="float-right">
-          <a href="{{route('advanced-search')}}"
-            class="d-inline-block text-center text-white small align-middle xs-display" style="font-size:10px"><i
+          <a href="#" class="dropdown-toggle dropdown-toggle-search-mobile d-inline-block text-center text-white small align-middle xs-display"
+            style="font-size:10px" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i
               class="fa fa-search d-block" style="font-size:16px; margin-right: 10px;"></i></a>
+          <ul class="dropdown-menu dropdown-toggle-search-mobile">
+            <li><a href="{{ route('advanced-search') }}">Advanced Search</a></li>
+            <li><a href="{{ route('styles') }}">Architectural Styles</a></li>
+            <li><a href="{{ route('collections') }}">Specialty Collections</a></li>
+          </ul>
           <a href="tel:832-521-5820" class="d-inline-block text-center text-white small align-middle xs-display"
             style="font-size:10px"><i class="fa fa-phone d-block" style="font-size:16px; margin-right: 10px;"></i></a>
           <a href="/saved-plans" class="d-inline-block text-center text-white small align-middle xs-display"

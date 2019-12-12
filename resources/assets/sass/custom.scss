@@ -243,3 +243,14 @@ a.carousel-inner {
   font-size: 0.8rem;
   line-height: 1.4rem;
 }
+
+.dropdown-toggle.dropdown-toggle-search-mobile::after{
+  display: none;
+}
+.dropdown-menu.dropdown-toggle-search-mobile {
+  background-color: #231f20;
+}
+
+.dropdown-menu.dropdown-toggle-search-mobile a {
+  color: #fff;
+}
