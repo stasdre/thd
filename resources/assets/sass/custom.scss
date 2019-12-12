@@ -244,7 +244,7 @@ a.carousel-inner {
   line-height: 1.4rem;
 }
 
-.dropdown-toggle.dropdown-toggle-search-mobile::after{
+.dropdown-toggle.dropdown-toggle-search-mobile::after {
   display: none;
 }
 .dropdown-menu.dropdown-toggle-search-mobile {
@@ -253,4 +253,21 @@ a.carousel-inner {
 
 .dropdown-menu.dropdown-toggle-search-mobile a {
   color: #fff;
+}
+
+.home-page-search.home-mobile-search {
+  position: initial;
+}
+
+.home-mobile-search table {
+  width: 80%;
+}
+
+.home-mobile-search table th {
+  padding: 10px 5px !important;
+}
+
+.home-mobile-search table input.center {
+  border: 1px solid #ccc;
+  margin: 0 10px;
 }
