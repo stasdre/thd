@@ -30,7 +30,7 @@ class BuildersController extends Controller
   public function create()
   {
     $countries = new Countries();
-    $states = $countries->where('cca3', 'USA')->first()->hydrateStates()->states->pluck('name', 'postal');
+    $states = $countries->where('cca3', 'USA')->first()->hydrateStates()->states->pluck('name', 'name');
 
     return view('admin.builders.create', [
       'states' => $states
@@ -91,7 +91,7 @@ class BuildersController extends Controller
   public function edit(Builder $builder)
   {
     $countries = new Countries();
-    $states = $countries->where('cca3', 'USA')->first()->hydrateStates()->states->pluck('name', 'postal');
+    $states = $countries->where('cca3', 'USA')->first()->hydrateStates()->states->pluck('name', 'name');
 
     return view('admin.builders.edit', [
       'builder' => $builder,
