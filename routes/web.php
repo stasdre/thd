@@ -183,6 +183,9 @@ Route::prefix('admin-dwhp')->group(function () {
     Route::post('update-footer-block-name/{block}', 'Admin\FooterBlockController@update');
 
     Route::resource('footer-items', 'Admin\FooterItemController', ['except' => ['show', 'index']]);
+
+    Route::resource('builders', 'Admin\BuildersController', ['except' => ['show']]);
+    Route::get('builders/data', 'Admin\BuildersController@anyData')->name('builders.data');
   });
 });
 

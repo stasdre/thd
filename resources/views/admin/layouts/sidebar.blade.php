@@ -25,6 +25,16 @@
       </li>
       <li class="treeview">
         <a href="#">
+          <i class="fa fa-building-o"></i>
+          <span>Builders</span>
+          <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{ route('builders.index') }}"><i class="fa fa-users"></i> <span>Builders</span></a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
           <i class="fa fa-cubes"></i>
           <span>House Plans</span>
           <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
