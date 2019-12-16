@@ -44,6 +44,15 @@ true]) !!}
     </div>
   </div>
   <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          {{ Form::checkbox('show_landing', 1) }} Show on landing page
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
     {{ Form::label('img', 'Image', ['class' => 'col-sm-2 control-label']) }}
     <div class="col-sm-4 input-file">
       @if(isset($builder->img))
