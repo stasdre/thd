@@ -34,6 +34,8 @@
           <li><a href="{{ route('builders-preferred.index') }}"><i class="fa fa-list-ul"></i> <span>Builder Preferred
                 Plans</span></a>
           </li>
+          <li><a href="{{ route('builder-landing-blocks.edit') }}"><i class="fa fa-th-large"></i> <span>Landing
+                blocks</span></a></li>
         </ul>
       </li>
       <li class="treeview">

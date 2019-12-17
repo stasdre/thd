@@ -189,6 +189,9 @@ Route::prefix('admin-dwhp')->group(function () {
 
     Route::resource('builders-preferred', 'Admin\BuiderPreferredController', ['except' => ['show']]);
     Route::get('builders-preferred/data', 'Admin\BuiderPreferredController@anyData')->name('builders-preferred.data');
+
+    Route::get('builder-landing-blocks/edit', 'Admin\BuildersLandingBlocks@index')->name('builder-landing-blocks.edit');
+    Route::post('builder-landing-blocks/update', 'Admin\BuildersLandingBlocks@update')->name('builder-landing-blocks.update');
   });
 });
 
