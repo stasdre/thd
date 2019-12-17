@@ -12,7 +12,8 @@
               alt="" class="img-fluid mr-2" style="max-width:160px;"></a>
         </span>
         <span class="float-right">
-          <a href="#" class="dropdown-toggle dropdown-toggle-search-mobile d-inline-block text-center text-white small align-middle xs-display"
+          <a href="#"
+            class="dropdown-toggle dropdown-toggle-search-mobile d-inline-block text-center text-white small align-middle xs-display"
             style="font-size:10px" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i
               class="fa fa-search d-block" style="font-size:16px; margin-right: 10px;"></i></a>
           <ul class="dropdown-menu dropdown-toggle-search-mobile">
@@ -58,8 +59,8 @@
             <li class="list-inline-item"><a class="dropdown-toggle" data-toggle="dropdown" role="button"
                 aria-haspopup="true" aria-expanded="false" href="#link">Builders</a>
               <ul class="dropdown-menu">
-                <li><a href="#">Preferred Building Program</a></li>
-                <li><a href="#">Find a Home Builder</a></li>
+                <li><a href="{{ route('builders.index') }}">Preferred Building Program</a></li>
+                <li><a href="{{ route('builders.index') }}">Find a Home Builder</a></li>
               </ul>
             </li>
             <li class="list-inline-item"><a href="{{route('inspiration')}}">Home Inspiration</a></li>
