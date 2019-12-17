@@ -133,29 +133,27 @@
 
 <div id="carousel4" class="carousel slide font_16 desktop-off" data-ride="carousel" data-interval="false">
   <div class="carousel-inner">
-    <div class="carousel-item active">
+    @foreach ($preferred as $item)
+    <div class="carousel-item @if($loop->iteration === 1) active @endif">
       <div class="slides row center">
         <div class="col-12">
-          <div style=""><img src="images/mobile_prefered_img3.png"></div>
-          <div class="p_title center font_16"><u>L’ATTESA D’VITA</u></div>
+          <div class="d-flex justify-content-center align-items-center">
+            <div style="width:233px; height:191px">
+              <div class="embed-responsive embed-responsive-4by3 percent-82">
+                <img class="embed-responsive-item" src="{{asset('/storage/builders/'.$item->img)}}">
+              </div>
+            </div>
+          </div>
+          <div class="p_title center font_16">
+            <u><a href="{{$item->link}}">{{$item->name}}</a></u>
+          </div>
           <div class="p_title center font_16 house_plan_text">
-            <p>House Plan 1895</p>
+            <p>{{$item->plan}}</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="carousel-item">
-      <div class="slides row center">
-        <div class="col-12">
-          <div style=""><img src="images/mobile_prefered_img3.png"></div>
-          <div class="p_title center font_16"><u>L’ATTESA D’VITA</u></div>
-          <div class="p_title center font_16 house_plan_text">
-            <p>House Plan 1895</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    @endforeach
 
     <a class="carousel-control-prev" href="#carousel4" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>

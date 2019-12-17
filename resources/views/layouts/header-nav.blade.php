@@ -59,8 +59,8 @@
             <li class="list-inline-item"><a class="dropdown-toggle" data-toggle="dropdown" role="button"
                 aria-haspopup="true" aria-expanded="false" href="#link">Builders</a>
               <ul class="dropdown-menu">
-                <li><a href="{{ route('builders.index') }}">Preferred Building Program</a></li>
-                <li><a href="{{ route('builders.index') }}">Find a Home Builder</a></li>
+                <li><a href="{{ route('builders-home.index') }}">Preferred Building Program</a></li>
+                <li><a href="{{ route('builders-home.index') }}">Find a Home Builder</a></li>
               </ul>
             </li>
             <li class="list-inline-item"><a href="{{route('inspiration')}}">Home Inspiration</a></li>
