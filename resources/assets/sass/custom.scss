@@ -257,6 +257,7 @@ a.carousel-inner {
 
 .home-page-search.home-mobile-search {
   position: initial;
+  padding: 0;
 }
 
 .home-mobile-search table {
@@ -270,4 +271,22 @@ a.carousel-inner {
 .home-mobile-search table input.center {
   border: 1px solid #ccc;
   margin: 0 10px;
+}
+
+.asp-basicsearch {
+  width: 85%;
+}
+.asp-basicsearch tr td:nth-child(2) {
+  text-align: center;
+}
+
+.asp-basicsearch input.center {
+  margin: 0 13px;
+  border: 1px solid #ccc;
+}
+
+@media (max-width: 600px) {
+  .asp-basicsearch input.center {
+    margin: 0 20px;
+  }
 }

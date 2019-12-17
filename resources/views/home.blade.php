@@ -369,7 +369,7 @@
 
   </div>
 </div>
-<div class="text-center page-name mt-1 grey-border" style="padding-top : 20px !important">
+<div class="text-center page-name mt-1 grey-border" style="">
   {{-- <div class="mobile-home-search">
     <form method="GET" action="{{ route('search') }}">
   <div class="row d-flex flex-column search-mobile-filter">
@@ -422,7 +422,7 @@
   </form>
 </div> --}}
 <div class="home-page-search home-mobile-search">
-  <h4 class="blue-text"> Search House Plans </h4>
+
   <form method="GET" action="{{ route('search') }}">
     <TABLE class="home-search-new">
       <tr>
@@ -430,6 +430,17 @@
         <td align="center"> <input type="text" placeholder="min" size=5 class="center" name="sq_min"> to <input
             type="text" placeholder="max" size=5 class="center" name="sq_max"></td>
       </tr>
+      <tr>
+        <Th>Width</Th>
+        <td align="center"> <input type="text" placeholder="min" size=5 class="center" name="width_min"> to <input
+            type="text" placeholder="max" size=5 class="center" name="width_max"></td>
+      </tr>
+      <tr>
+        <Th>Depth</Th>
+        <td align="center"> <input type="text" placeholder="min" size=5 class="center" name="depth_min"> to <input
+            type="text" placeholder="max" size=5 class="center" name="depth_max"></td>
+      </tr>
+
       <tr>
         <Th>Beds</Th>
         <td align="center">
@@ -465,7 +476,7 @@
     </TABLE>
     <div class="">
       <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold" type="submit" style="width :100%;">
-        SEARCH</button>
+        SEARCH HOUSE PLANS</button>
     </div>
   </form>
 </div>
