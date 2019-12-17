@@ -53,11 +53,14 @@
                           <li>
                             <select>
                               <option>State</option>
+                              @foreach ($states as $item)
+                              <option value="{{$item}}">{{$item}}</option>
+                              @endforeach
                             </select>
                             <i class="fa fa-caret-down" aria-hidden="true"></i>
                           </li>
                           <li><input type="text" placeholder="Zip Code" size="11"></li>
-                          <li><input class="pref_searchbtn" type="button" value="Search"></li>
+                          <li><input class="pref_searchbtn" type="submit" value="Search"></li>
                         </form>
                       </ul>
 

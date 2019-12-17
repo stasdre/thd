@@ -279,3 +279,9 @@ a.carousel-inner {
 .p_title.center.font_16 a {
   color: #212529;
 }
+
+@media (max-width: 1024px) {
+  .pref_bluelinks_outer .pref_builderform select {
+    width: 55px;
+  }
+}
