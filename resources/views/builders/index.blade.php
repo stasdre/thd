@@ -80,31 +80,15 @@
     <h4>Builder Preferred House Plans</h4>
   </div>
   <div class="row py-3 insipiration_below_slider_outer">
+    @foreach ($preferred as $item)
     <div class="col-3">
-      <div><img src="images/preffered_product1.png"></div>
-      <div class="lattesa">L’ATTESA D’VITA</div>
-      <div class="center house_plan_text">House Plan 1895</div>
-
+      <div class="embed-responsive embed-responsive-4by3 percent-82">
+        <img class="embed-responsive-item" src="{{asset('/storage/builders/'.$item->img)}}">
+      </div>
+      <div class="lattesa"><a href="{{$item->link}}">{{$item->name}}</a></div>
+      <div class="center house_plan_text">{{$item->plan}}</div>
     </div>
-    <div class="col-3">
-      <div><img src="images/preffered_product2.png"></div>
-      <div class="lattesa">L’ATTESA D’VITA</div>
-      <div class="center house_plan_text">House Plan 1895</div>
-
-
-    </div>
-    <div class="col-3">
-      <div><img src="images/preffered_product3.png"></div>
-      <div class="lattesa">L’ATTESA D’VITA</div>
-      <div class="center house_plan_text">House Plan 1895</div>
-
-    </div>
-    <div class="col-3">
-      <div><img src="images/preffered_product4.png"></div>
-      <div class="lattesa">L’ATTESA D’VITA</div>
-      <div class="center house_plan_text">House Plan 1895</div>
-
-    </div>
+    @endforeach
   </div>
 </div>
 <div id="carousel3" class="carousel slide desktop-off" data-ride="carousel" data-interval="false">
