@@ -233,6 +233,7 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/about-us', 'SpecialPageController@about')->name('about-us');
 
 Route::get('/builders', 'BuildersController@index')->name('builders-home.index');
+Route::get('/builders-search', 'BuildersController@search')->name('builders.search');
 
 Route::get('/{page}', function (Thd\Page $page) {
   return view('page', ['page' => $page]);
