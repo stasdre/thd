@@ -48,6 +48,7 @@ class BuildersController extends Controller
     $validator = Validator::make($request->all(), [
       'name' => 'required|max:100',
       'img' => 'required|image|dimensions:min_width=370,min_height=210',
+      'recently_img' => 'nullable|image|dimensions:min_width=485,min_height=390'
     ]);
 
     if ($validator->fails()) {
@@ -68,6 +69,18 @@ class BuildersController extends Controller
         'thumb_height' => 190
       ]);
       $dataRequest['img'] = $img;
+    }
+
+    if ($request->file('recently_img')) {
+      $img = uploadFile($request->file('recently_img'), [
+        'dir' => 'builders',
+        'width' => 485,
+        'height' => 390,
+        'quality' => 90,
+        'thumb_width' => 250,
+        'thumb_height' => 200
+      ]);
+      $dataRequest['recently_img'] = $img;
     }
 
     $builder = new Builder($dataRequest);
@@ -110,7 +123,8 @@ class BuildersController extends Controller
   {
     $validator = Validator::make($request->all(), [
       'name' => 'required|max:100',
-      'img' => 'nullable|image|dimensions:min_width=370,min_height=210'
+      'img' => 'nullable|image|dimensions:min_width=370,min_height=210',
+      'recently_img' => 'nullable|image|dimensions:min_width=485,min_height=390'
     ]);
 
     if ($validator->fails()) {
@@ -137,6 +151,22 @@ class BuildersController extends Controller
       Storage::delete('public/builders/original/' . $builder->img);
     }
 
+    if ($request->file('recently_img')) {
+      $img = uploadFile($request->file('recently_img'), [
+        'dir' => 'builders',
+        'width' => 485,
+        'height' => 390,
+        'quality' => 90,
+        'thumb_width' => 250,
+        'thumb_height' => 200
+      ]);
+      $dataRequest['recently_img'] = $img;
+
+      Storage::delete('public/builders/' . $builder->recently_img);
+      Storage::delete('public/builders/thumb/' . $builder->recently_img);
+      Storage::delete('public/builders/original/' . $builder->recently_img);
+    }
+
     $builder->update($dataRequest);
 
     return redirect()->route('builders.index')
@@ -160,6 +190,12 @@ class BuildersController extends Controller
       Storage::delete('public/builders/' . $builder->img);
       Storage::delete('public/builders/thumb/' . $builder->img);
       Storage::delete('public/builders/original/' . $builder->img);
+    }
+
+    if ($builder->recently_img) {
+      Storage::delete('public/builders/' . $builder->recently_img);
+      Storage::delete('public/builders/thumb/' . $builder->recently_img);
+      Storage::delete('public/builders/original/' . $builder->recently_img);
     }
 
     $builder->delete();

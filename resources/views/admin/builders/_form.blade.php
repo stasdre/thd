@@ -68,6 +68,47 @@ true]) !!}
       @endif
     </div>
   </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          {{ Form::checkbox('recently_built', 1, null, ['id'=>'recently-check']) }} Recently Built Homes
+        </label>
+      </div>
+    </div>
+  </div>
+  <div id="recently-container"
+    class="@if(!isset($builder->recently_built) || $builder->recently_built != 1) hide @endif">
+    <div class="form-group">
+      {{ Form::label('recently_title', 'Recently title', ['class' => 'col-sm-2 control-label']) }}
+      <div class="col-sm-4">
+        {{ Form::text('recently_title', null, ['class'=>'form-control', 'placeholder'=>'Recently title', 'id'=>'recently_title']) }}
+      </div>
+    </div>
+    <div class="form-group">
+      {{ Form::label('phtoto_link', 'Photos link', ['class' => 'col-sm-2 control-label']) }}
+      <div class="col-sm-4">
+        {{ Form::text('phtoto_link', null, ['class'=>'form-control', 'placeholder'=>'Photos link', 'id'=>'phtoto_link']) }}
+      </div>
+    </div>
+    <div class="form-group">
+      {{ Form::label('recently_img', 'Recently Image', ['class' => 'col-sm-2 control-label']) }}
+      <div class="col-sm-4 input-file">
+        @if(isset($builder->recently_img))
+        {{ Form::file('recently_img', ['class'=>'form-control hidden']) }}
+        <p class="file-name">/builders/{{ $builder->recently_img }} <a href="#" class="delete-file"
+            style="margin-left: 15px; color: red;"><i class="fa fa-ban"></i></a></p>
+        <div class="edit-img"><a href="{{asset('/storage/builders/'.$builder->recently_img)}}" target="_blank"><img
+              src="{{asset('/storage/builders/'.$builder->recently_img)}}"
+              data-origin="/storage/builders/original/{{$builder->recently_img}}" class="img-responsive" alt=""></a>
+        </div>
+        @else
+        {{ Form::file('recently_img', ['class'=>'form-control']) }}
+        @endif
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <div class="box-footer">
@@ -88,5 +129,12 @@ true]) !!}
     $(this).parent('.file-name').parent('.input-file').find(".file-input").removeClass('hidden');
     $(this).parent('.file-name').parent('.input-file').find(".edit-img").addClass('hidden');
 });
+$("#recently-check").on('change', function(){
+  if(this.checked){
+    $("#recently-container").removeClass("hide");
+  }else{
+    $("#recently-container").addClass("hide");
+  }
+})
 </script>
 @endpush

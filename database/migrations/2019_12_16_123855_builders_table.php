@@ -23,6 +23,10 @@ class BuildersTable extends Migration
       $table->text('description')->nullable();
       $table->string('img', 50)->nullable();
       $table->boolean('show_landing')->default(0);
+      $table->boolean('recently_built')->default(0);
+      $table->string('recently_title', 100)->nullable();
+      $table->string('phtoto_link', 191)->nullable();
+      $table->string('recently_img', 50)->nullable();
       $table->timestamps();
     });
   }
