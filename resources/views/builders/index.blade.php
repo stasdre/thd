@@ -5,31 +5,27 @@
 @section('content')
 <div class="row HI-secC preff_first_sec">
   <div class="col-12 col-md-6 center prefimg_mobmargin prefmob_padding">
-    <img src="images/HP-imageAnew.jpg" class="full-image">
-    <div class="img_footer_text">
+    <img src="{{asset('/storage/builders/'.$blocks->img_l)}}" class="full-image">
+    {{-- <div class="img_footer_text">
       <p>Featured Builder - Wasson Home Builders, CO</p>
-    </div>
+    </div> --}}
     <div class="lattesa_text">
-      <h5 style="margin-bottom :0;" class="f14 info-title">VIP: BUILDERS ONLY</h5>
-      <div class="wason_home_build">Join Our Preferred Builders Program</div>
-      <div class="author_info">This FREE program offers special discounts, multi-licenses, marketing materials,
-        expedited modifications and a free business listing.</div>
-      <div class="orange_btn"><a href="#">Sign up</a></div>
+      <h5 style="margin-bottom :0;" class="f14 info-title">{{$blocks->first_title_l}}</h5>
+      <div class="wason_home_build">{{$blocks->title_l}}</div>
+      <div class="author_info">{!!$blocks->desc_l!!}</div>
+      <div class="orange_btn"><a href="{{$blocks->link_l}}">{{$blocks->link_name_l}}</a></div>
     </div>
   </div>
   <div class="col-12 col-md-6 center prefmob_padding">
-    <div class="mobile-off"><img src="images/HP-imageBnew.jpg" class="full-image"></div>
-    <div class="desktop-off"><img src="images/HP-imageAnew.jpg" class="full-image"></div>
-    <div class="img_footer_text">
+    <img src="{{asset('/storage/builders/'.$blocks->img_r)}}" class="full-image">
+    {{-- <div class="img_footer_text">
       <p>Featured Builder - Wasson Home Builders, CO</p>
-    </div>
+    </div> --}}
     <div class="lattesa_text">
-      <h5 style="margin-bottom :0;" class="f14 info-title">FOR CONSUMERS</h5>
-      <div class="wason_home_build">Find the Right Builder</div>
-      <div class="author_info">Let our team of house plan specialists pair you with one of our
-        Preferred Builders to assist you with building your dream home.
-      </div>
-      <div class="orange_btn"><a href="#">Contact</a></div>
+      <h5 style="margin-bottom :0;" class="f14 info-title">{{$blocks->first_title_r}}</h5>
+      <div class="wason_home_build">{{$blocks->title_r}}</div>
+      <div class="author_info">{!!$blocks->desc_r!!}</div>
+      <div class="orange_btn"><a href="{{$blocks->link_r}}">{{$blocks->link_name_r}}</a></div>
     </div>
   </div>
 </div>
