@@ -186,6 +186,9 @@ Route::prefix('admin-dwhp')->group(function () {
 
     Route::resource('builders', 'Admin\BuildersController', ['except' => ['show']]);
     Route::get('builders/data', 'Admin\BuildersController@anyData')->name('builders.data');
+
+    Route::resource('builders-preferred', 'Admin\BuiderPreferredController', ['except' => ['show']]);
+    Route::get('builders-preferred/data', 'Admin\BuiderPreferredController@anyData')->name('builders-preferred.data');
   });
 });
 

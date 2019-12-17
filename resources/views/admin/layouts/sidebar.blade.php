@@ -31,6 +31,9 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="{{ route('builders.index') }}"><i class="fa fa-users"></i> <span>Builders</span></a></li>
+          <li><a href="{{ route('builders-preferred.index') }}"><i class="fa fa-list-ul"></i> <span>Builder Preferred
+                Plans</span></a>
+          </li>
         </ul>
       </li>
       <li class="treeview">
