@@ -183,6 +183,15 @@ Route::prefix('admin-dwhp')->group(function () {
     Route::post('update-footer-block-name/{block}', 'Admin\FooterBlockController@update');
 
     Route::resource('footer-items', 'Admin\FooterItemController', ['except' => ['show', 'index']]);
+
+    Route::resource('builders', 'Admin\BuildersController', ['except' => ['show']]);
+    Route::get('builders/data', 'Admin\BuildersController@anyData')->name('builders.data');
+
+    Route::resource('builders-preferred', 'Admin\BuiderPreferredController', ['except' => ['show']]);
+    Route::get('builders-preferred/data', 'Admin\BuiderPreferredController@anyData')->name('builders-preferred.data');
+
+    Route::get('builder-landing-blocks/edit', 'Admin\BuildersLandingBlocks@index')->name('builder-landing-blocks.edit');
+    Route::post('builder-landing-blocks/update', 'Admin\BuildersLandingBlocks@update')->name('builder-landing-blocks.update');
   });
 });
 
@@ -222,6 +231,9 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/about-us', 'SpecialPageController@about')->name('about-us');
+
+Route::get('/builders', 'BuildersController@index')->name('builders-home.index');
+Route::get('/builders-search', 'BuildersController@search')->name('builders.search');
 
 Route::get('/{page}', function (Thd\Page $page) {
   return view('page', ['page' => $page]);

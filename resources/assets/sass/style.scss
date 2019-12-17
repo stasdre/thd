@@ -4698,3 +4698,316 @@ margin-left: 20%;
 button#additional-options {
     background-image: none !important;
 }
+
+/* Prefferd Builder Page */
+
+.pref_border 
+{
+	border-top: 3px solid rgba(0,0,0,.2) !important; 
+}
+
+.preffered_page_outer .author_info
+{
+	font-size: 14px !important; 
+}
+
+.orange_btn a
+{
+	color: white;
+    width: 120px;
+    height: 40px;
+    background: #F7941D;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+  font-family: 'Open Sans', 'sans-serif';
+  padding: 8px 28px;
+  display: inline-block;
+}
+.pref_head
+{
+	background-image : url("/Projects/Tammy/DWHP/images/header1.png");
+	width: 100%;
+	padding: 3%;
+	background-repeat: no-repeat
+}
+
+.pref_menu
+{
+	background: #2F358F;
+	width:827px;
+	height:59px;
+	border-radius: 7px;
+}
+.pref_menu a
+{
+	color: white;
+	text-decoration: none;
+	    padding-left: 20px;
+		border-right: 2px white solid;
+    padding-right: 20px;
+}
+.img_footer_text
+{
+	position: absolute;
+    top: 340px;
+    background: white;
+    width: 490px;
+    opacity: 0.8;
+	height: 30px;
+	display : none;
+}
+.img_footer_text p
+{
+	 padding-top: 5px;
+}
+.lattesa
+{
+	text-decoration: underline;
+	margin-top: 10px;
+}
+.lattesa a {
+  color: #212529;
+}
+.pref_bulid
+{
+	background: white;
+    width: 552px;
+	opacity:0.8;
+}
+.pref_menu
+{
+	
+}
+.pref_whitebg
+{
+	background:rgba(255,255,255, 0.7); 
+	padding: 6px 0px;
+	width: 55%;
+    margin: 0 auto;
+	
+}
+.pref_blueheading
+{
+	text-align: center;
+    color: #2E3192;
+    font-family: auto;
+    text-transform: uppercase;
+}
+.pref_blackheading
+{
+	text-align: center;
+}
+.pref_bluelinks_outer 
+{
+	background: #2E3192;
+	margin-top:12px;
+	float: left;
+	border-radius: 6px; 
+}
+.pref_bluelinks_outer ul li 
+{
+	display: inline; 
+	list-style: none; 
+	padding: 14px 14px;
+    float: left;
+	min-width: 130px;
+	border-right: 1px solid #fff; 
+	color: #fff;
+}
+.pref_bluelinks_outer ul li:last-child
+{
+	border-right: 0; 
+}
+.pref_bluelinks_outer ul li a 
+{
+	color: #fff; 
+}
+.pref_builderform input, .pref_builderform select, .pref_builderform input::placeholder  
+{
+	background:none; 
+	border: none; 
+	color: #fff;
+} 
+.pref_searchbtn
+{
+	background-image: url('/Projects/Tammy/DWHP/images/search_icon.png') !important;
+	background-repeat: no-repeat !important;
+    width: 100%;
+	background-position-x: 16% !important;
+}
+.pref_blackheading
+{
+	font-family: auto !important;
+} 
+.pref_blueheading h3
+{
+	letter-spacing: 4px;
+} 
+
+.pref_whitestrip_outer
+	{
+		width: 100%;
+	}
+	.pref_whitestrip_outer .enter_city
+	{
+		margin-left: 33%;
+		min-width: 430px; 
+		font-weight: bold; 
+	}
+	.pref_whitestrip_outer .enter_city p 
+	{
+		margin-bottom: 0;
+		padding: 0px; 
+		word-spacing: 0px;
+		letter-spacing: 1px;
+		text-align: CENTER;
+	}
+	
+	.pref_bluelinks_outer 
+	{
+		margin: 0 5%;
+	}
+	.pref_bluelinks_outer 
+	{
+		margin-top: 20px; 
+	}
+	.pref_blueheading h2 
+	{
+		margin-bottom:0; 
+		letter-spacing: 6px; 
+	}
+	.pref_blackheading p 
+	{
+		margin-bottom: 0; 
+	}
+	.pref_blackheading p 
+	{
+		letter-spacing: 0; 
+	}
+	
+	.preffered_page_outer .house_plan_text 
+	{
+		// font-family: baskerville;
+		font-size: 16px;
+		font-weight: bold; 
+	}
+	.builder_pref h4
+	{
+		//font-family: baskerville;
+	}
+	.preffered_page_outer .contact_link
+	{
+		//font-family: baskerville;
+		font-size: 14px;
+		font-weight: bold; 
+		color: #2F358F !important;
+	}
+	.preffered_page_outer .wason_home
+	{
+		//font-family: baskerville;
+		font-size: 16px;
+		font-weight: bold; 
+		color:#464646;
+	}
+	.preffered_page_outer .denver_colardo
+	{
+		//font-family: baskerville;
+		font-size: 14px;
+		font-weight: bold; 
+		color:#464646;
+	}
+	.preffered_page_outer .wason_home_build
+	{
+		font-size: 15pt;
+		font-weight: bold;
+	}
+	.pref_mid_heading
+	{
+		color: #000000;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 22px;
+		margin-bottom: 0;
+		font-weight: 600;
+	}
+	.pref_blackheading p   
+	{
+		font-size: 26px;
+		letter-spacing: 1px !important; 
+		font-weight: normal;
+	}
+	.pref_builderform li input
+	{
+		text-align: center;
+	}
+	.pref_builderform li 
+	{
+		text-align: center;
+			
+	}
+	.pref_bluelinks_outer ul 
+	{
+		   padding-left:0; 
+	}
+	.pref_builderform li:nth-child(1)
+	{
+		 text-align: center;
+		     min-width: 235px !important; 
+	}
+	.pref_builderform li:nth-child(5)
+	{
+		 text-align: center;
+		     min-width: 170px !important; 
+	}
+	.enter_city
+	{
+		background:rgba(255,255,255, 0.7);
+	}
+	.preffered_page_outer .view_all_photo a
+	{
+		font-size: 18px;
+		font-weight: bold;
+	}
+	.preffered_page_outer .denver_colrado
+	{
+		font-size: 16px;
+		font-weight: bold;
+	}
+	.preffered_page_outer .view_all_photo
+	{
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	.preffered_page_outer .lattesa_text
+	{
+		margin-top:20px;
+	}
+	.preffered_page_outer .preff_first_sec
+	{
+		margin-top:25px;
+	}
+	.preffered_page_outer .recently_build h4
+	{
+		//font-family: baskerville;
+	}
+	.pref_mid_headingdiv 
+	{
+		padding: 8px 0px !important;
+	}
+	.pref_builderform select 
+	{
+		-webkit-appearance: none;
+		-moz-appearance: none;
+	}
+	.preffered_page_outer .img_footer_text p
+	{
+		font-family: sans-serif;
+		letter-spacing: 1px;
+		font-size: 15px
+	}
+	.pref_builderform .fa-caret-down 
+	{
+		font-size: 18px; 
+	}
+	
+/* Pref page */
