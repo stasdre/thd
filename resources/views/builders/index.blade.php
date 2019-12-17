@@ -14,7 +14,7 @@
       <div class="wason_home_build">Join Our Preferred Builders Program</div>
       <div class="author_info">This FREE program offers special discounts, multi-licenses, marketing materials,
         expedited modifications and a free business listing.</div>
-      <div class="orange_btn"><button>Sign up</button></div>
+      <div class="orange_btn"><a href="#">Sign up</a></div>
     </div>
   </div>
   <div class="col-12 col-md-6 center prefmob_padding">
@@ -29,7 +29,7 @@
       <div class="author_info">Let our team of house plan specialists pair you with one of our
         Preferred Builders to assist you with building your dream home.
       </div>
-      <div class="orange_btn"><button>Contact</button></div>
+      <div class="orange_btn"><a href="#">Contact</a></div>
     </div>
   </div>
 </div>
@@ -41,63 +41,38 @@
   <h6>Recent Homes by Our Preferred Builders</h6>
 </div>
 <div class="row HI-secC py-2">
+  @foreach ($recently as $item)
   <div class="col-12 col-md-6 center prefimg_mobmargin prefmob_padding">
-    <img src="images/HP-imageAnew.jpg" class="full-image">
-    <div class="img_footer_text">
+    <img src="{{asset('/storage/builders/'.$item->recently_img)}}" class="full-image">
+    {{-- <div class="img_footer_text">
       <p>Featured Builder - Wasson Home Builders, CO</p>
-    </div>
+    </div> --}}
     <div class="lattesa_text">
-      <p style="margin-bottom :0;" class="info-title">L’ATTESA D’VITA HOUSE PLAN</p>
-      <div class="wason_home_build">Wasson Home Builders</div>
-      <div class="denver_colrado">Denver, Colorado</div>
-      <div class="view_all_photo"><a href="" class="blue-text">View All Photos <i
+      <p style="margin-bottom :0;" class="info-title">{{$item->recently_title}}</p>
+      <div class="wason_home_build">{{$item->name}}</div>
+      <div class="denver_colrado">{{$item->city}}, {{$item->state}}</div>
+      <div class="view_all_photo"><a href="{{$item->phtoto_link}}" class="blue-text">View All Photos <i
             class="fas fa fa-chevron-right"></i></a></div>
-      <div class="orange_btn"><button>Contact</button></div>
+      <div class="orange_btn"><a href="{{$item->link}}">Contact</a></div>
     </div>
   </div>
-  <div class="col-12 col-md-6 center mobile-off">
-    <img src="images/HP-imageBnew.jpg" class="full-image">
-    <div class="img_footer_text">
-      <p>Featured Builder - Wasson Home Builders, CO</p>
-    </div>
-    <div class="lattesa_text">
-      <p style="margin-bottom :0;" class="mobile-off info-title">L’ATTESA D’VITA HOUSE PLAN</p>
-      <div class="wason_home_build">Wasson Home Builders</div>
-      <div class="denver_colrado">Denver, Colorado</div>
-      <div class="view_all_photo"><a href="" class="blue-text">View All Photos <i
-            class="fas fa fa-chevron-right"></i></a></div>
-      <div class="orange_btn"><button>Contact</button></div>
-    </div>
-  </div>
+  @endforeach
+
 </div>
 
 
 <div class="center mobile-off insipiration_below_slider_outer">
   <div class="row py-3 insipiration_below_slider_outer">
+    @foreach ($builders as $item)
     <div class="col-3">
-      <div style=""><img src="images/preffered_product1.png"></div>
-      <div class="wason_home">Wasson Home Builders</div>
-      <div class="denver_colardo">Denver, Colorado</div>
-      <div><a href="" class="contact_link">CONTACT</a></div>
+      <div class="embed-responsive embed-responsive-4by3 percent-82">
+        <img class="embed-responsive-item" src="{{asset('/storage/builders/'.$item->img)}}">
+      </div>
+      <div class="wason_home">{{$item->name}}</div>
+      <div class="denver_colardo">{{$item->city}}, {{$item->state}}</div>
+      <div><a href="{{$item->link}}" class="contact_link">CONTACT</a></div>
     </div>
-    <div class="col-3">
-      <div style=""><img src="images/preffered_product2.png"></div>
-      <div class="wason_home">Wasson Home Builders</div>
-      <div class="denver_colardo">Denver, Colorado</div>
-      <div><a href="" class="contact_link">CONTACT</a></div>
-    </div>
-    <div class="col-3">
-      <div style="" class=""><img src="images/preffered_product3.png"></div>
-      <div class="wason_home">Wasson Home Builders</div>
-      <div class="denver_colardo">Denver, Colorado</div>
-      <div><a href="" class="contact_link">CONTACT</a></div>
-    </div>
-    <div class="col-3">
-      <div style=""><img src="images/preffered_product4.png"></div>
-      <div class="wason_home">Wasson Home Builders</div>
-      <div class="denver_colardo">Denver, Colorado</div>
-      <div><a href="" class="contact_link">CONTACT</a></div>
-    </div>
+    @endforeach
   </div>
   <hr class="pref_border">
 
@@ -134,29 +109,24 @@
 </div>
 <div id="carousel3" class="carousel slide desktop-off" data-ride="carousel" data-interval="false">
   <div class="carousel-inner">
-    <div class="carousel-item active">
+    @foreach ($builders as $item)
+    <div class="carousel-item @if($loop->iteration === 1) active @endif">
       <div class="slides row center">
         <div class="col-12">
-          <div style=""><img src="images/mobile_prefered_img1.png"></div>
-          <div class="p_title center font_16">Wasson Home Build</div>
-          <div class="p_title center font_16">Denver, Colorado</div>
-          <div><a href="" class="links font_16">CONTACT</a></div>
+          <div class="d-flex justify-content-center align-items-center">
+            <div style="width:233px; height:191px">
+              <div class="embed-responsive embed-responsive-4by3 percent-82">
+                <img class="embed-responsive-item" src="{{asset('/storage/builders/'.$item->img)}}">
+              </div>
+            </div>
+          </div>
+          <div class="p_title center font_16">{{$item->name}}</div>
+          <div class="p_title center font_16">{{$item->city}}, {{$item->state}}</div>
+          <div><a href="{{$item->link}}" class="links font_16">CONTACT</a></div>
         </div>
       </div>
     </div>
-    <div class="carousel-item">
-      <div class="slides row center">
-        <div class="col-12">
-          <div style=""><img src="images/mobile_prefered_img1.png"></div>
-          <div class="p_title center font_16">Wasson Home Build</div>
-          <div class="p_title center font_16">Denver, Colorado</div>
-          <div><a href="" class="links font_16">CONTACT</a></div>
-        </div>
-      </div>
-    </div>
-
-
-
+    @endforeach
 
     <a class="carousel-control-prev" href="#carousel3" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -169,44 +139,6 @@
   </div>
 </div> <!-- crousel -->
 <!-- Crousel -->
-<div id="carousel2" class="carousel slide font_16 desktop-off" data-ride="carousel" data-interval="false">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <div class="slides row center">
-        <div class="col-12">
-          <div style=""><img src="images/mobile_prefered_img2.png"></div>
-          <div class="p_title center font_16">Wasson Home Build</div>
-          <div class="p_title center font_16">Denver, Colorado</div>
-          <div><a href="" class="links font_16">CONTACT</a></div>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="slides row center">
-        <div class="col-12">
-          <div style=""><img src="images/mobile_prefered_img2.png"></div>
-          <div class="p_title center font_16">Wasson Home Build</div>
-          <div class="p_title center font_16">Denver, Colorado</div>
-          <div><a href="" class="links font_16">CONTACT</a></div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-
-
-    <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carousel2" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div> <!-- crousel -->
 <div class="desktop-off">
   <hr class="pref_border">
 </div>

@@ -4711,7 +4711,7 @@ button#additional-options {
 	font-size: 14px !important; 
 }
 
-.orange_btn button
+.orange_btn a
 {
 	color: white;
     width: 120px;
@@ -4720,7 +4720,9 @@ button#additional-options {
     border: none;
     border-radius: 5px;
     font-size: 18px;
-	font-family: 'Open Sans', 'sans-serif';
+  font-family: 'Open Sans', 'sans-serif';
+  padding: 8px 28px;
+  display: inline-block;
 }
 .pref_head
 {
