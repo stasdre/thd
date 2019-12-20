@@ -48,7 +48,7 @@ class BuildersController extends Controller
     $validator = Validator::make($request->all(), [
       'name' => 'required|max:100',
       'img' => 'required|image|dimensions:min_width=370,min_height=210',
-      'recently_img' => 'nullable|image|dimensions:min_width=485,min_height=390'
+      'recently_img' => 'nullable|image|dimensions:min_width=480,min_height=380'
     ]);
 
     if ($validator->fails()) {
@@ -124,7 +124,7 @@ class BuildersController extends Controller
     $validator = Validator::make($request->all(), [
       'name' => 'required|max:100',
       'img' => 'nullable|image|dimensions:min_width=370,min_height=210',
-      'recently_img' => 'nullable|image|dimensions:min_width=485,min_height=390'
+      'recently_img' => 'nullable|image|dimensions:min_width=480,min_height=380'
     ]);
 
     if ($validator->fails()) {
