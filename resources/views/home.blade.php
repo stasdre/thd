@@ -369,7 +369,7 @@
 
   </div>
 </div>
-<div class="text-center page-name mt-1 grey-border" style="">
+<div class="text-center page-name mt-1" style="">
   {{-- <div class="mobile-home-search">
     <form method="GET" action="{{ route('search') }}">
   <div class="row d-flex flex-column search-mobile-filter">
@@ -427,18 +427,18 @@
     <TABLE class="home-search-new">
       <tr>
         <Th>Sq. Ft.</Th>
-        <td align="center"> <input type="text" placeholder="min" size=5 class="center" name="sq_min"> to <input
-            type="text" placeholder="max" size=5 class="center" name="sq_max"></td>
+        <td align="center"> <input type="number" placeholder="min" size=5 class="center" name="sq_min"> to <input
+            type="number" placeholder="max" size=5 class="center" name="sq_max"></td>
       </tr>
       <tr>
         <Th>Width</Th>
-        <td align="center"> <input type="text" placeholder="min" size=5 class="center" name="width_min"> to <input
-            type="text" placeholder="max" size=5 class="center" name="width_max"></td>
+        <td align="center"> <input type="number" placeholder="min" size=5 class="center" name="width_min"> to <input
+            type="number" placeholder="max" size=5 class="center" name="width_max"></td>
       </tr>
       <tr>
         <Th>Depth</Th>
-        <td align="center"> <input type="text" placeholder="min" size=5 class="center" name="depth_min"> to <input
-            type="text" placeholder="max" size=5 class="center" name="depth_max"></td>
+        <td align="center"> <input type="number" placeholder="min" size=5 class="center" name="depth_min"> to <input
+            type="number" placeholder="max" size=5 class="center" name="depth_max"></td>
       </tr>
 
       <tr>
