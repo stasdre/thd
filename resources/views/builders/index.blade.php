@@ -6,9 +6,9 @@
 <div class="row HI-secC preff_first_sec">
   <div class="col-12 col-md-6 center prefimg_mobmargin prefmob_padding">
     <img src="{{asset('/storage/builders/'.$blocks->img_l)}}" class="full-image">
-    {{-- <div class="img_footer_text">
-      <p>Featured Builder - Wasson Home Builders, CO</p>
-    </div> --}}
+    <div class="img_footer_text">
+      <p>{{$blocks->img_title_l}}</p>
+    </div>
     <div class="lattesa_text">
       <h5 style="margin-bottom :0;" class="f14 info-title">{{$blocks->first_title_l}}</h5>
       <div class="wason_home_build">{{$blocks->title_l}}</div>
@@ -18,9 +18,9 @@
   </div>
   <div class="col-12 col-md-6 center prefmob_padding">
     <img src="{{asset('/storage/builders/'.$blocks->img_r)}}" class="full-image">
-    {{-- <div class="img_footer_text">
-      <p>Featured Builder - Wasson Home Builders, CO</p>
-    </div> --}}
+    <div class="img_footer_text">
+      <p>{{$blocks->img_title_r}}</p>
+    </div>
     <div class="lattesa_text">
       <h5 style="margin-bottom :0;" class="f14 info-title">{{$blocks->first_title_r}}</h5>
       <div class="wason_home_build">{{$blocks->title_r}}</div>
@@ -47,9 +47,9 @@
       <p style="margin-bottom :0;" class="info-title">{{$item->recently_title}}</p>
       <div class="wason_home_build">{{$item->name}}</div>
       <div class="denver_colrado">{{$item->city}}, {{$item->state}}</div>
-      <div class="view_all_photo"><a href="{{$item->phtoto_link}}" class="blue-text">View All Photos <i
+      <div class="view_all_photo"><a target="_blank" href="{{$item->phtoto_link}}" class="blue-text">View All Photos <i
             class="fas fa fa-chevron-right"></i></a></div>
-      <div class="orange_btn"><a href="{{$item->link}}">Contact</a></div>
+      <div class="orange_btn"><a target="_blank" href="{{$item->link}}">Contact</a></div>
     </div>
   </div>
   @endforeach

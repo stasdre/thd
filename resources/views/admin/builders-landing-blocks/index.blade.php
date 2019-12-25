@@ -45,6 +45,12 @@
           </div>
         </div>
         <div class="form-group">
+          {{ Form::label('img_title_l', 'Image title', ['class' => 'col-sm-2 control-label']) }}
+          <div class="col-sm-4">
+            {{ Form::text('img_title_l', null, ['class'=>'form-control', 'placeholder'=>'Image title']) }}
+          </div>
+        </div>
+        <div class="form-group">
           {{ Form::label('img_l', 'Image', ['class' => 'col-sm-2 control-label']) }}
           <div class="col-sm-4 input-file">
             @if(isset($data->img_l))
@@ -90,6 +96,12 @@
           {{ Form::label('link_r', 'Link', ['class' => 'col-sm-2 control-label']) }}
           <div class="col-sm-4">
             {{ Form::text('link_r', null, ['class'=>'form-control', 'placeholder'=>'Link']) }}
+          </div>
+        </div>
+        <div class="form-group">
+          {{ Form::label('img_title_r', 'Image title', ['class' => 'col-sm-2 control-label']) }}
+          <div class="col-sm-4">
+            {{ Form::text('img_title_r', null, ['class'=>'form-control', 'placeholder'=>'Image title']) }}
           </div>
         </div>
         <div class="form-group">
