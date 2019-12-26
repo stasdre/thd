@@ -422,7 +422,7 @@
   </form>
 </div> --}}
 <div class="home-page-search home-mobile-search">
-
+  <div class="font-weight-bold sidebar-heading">Find Your House Plan</div>
   <form method="GET" action="{{ route('search') }}">
     <TABLE class="home-search-new">
       <tr>
@@ -475,15 +475,15 @@
       </tr>
     </TABLE>
     <div class="">
-      <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold" type="submit" style="width :100%;">
-        SEARCH HOUSE PLANS</button>
+      <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold" type="submit" style="width :60%;">
+        SEARCH PLANS</button>
     </div>
   </form>
 </div>
 
 <div class="mt-3">
   <a href="{{ route('advanced-search') }}"
-    class="btn btn-primary rounded-0 text-white font-weight-semi-bold grey-button" style="width :100%;padding : 6px 0;">
+    class="btn btn-primary rounded-0 text-white font-weight-semi-bold grey-button" style="width :60%;padding : 6px 0;">
     ADVANCED SEARCH</a>
 </div>
 </div>
@@ -491,7 +491,7 @@
 <div class="text-center text-uppercase lead font-weight-normal align-middle py-2 only_under_767 contact-method mf18"> <a
     href="{{ route('contact-us') }}" class="align-middle text-primary">Live Chat</a> | <a
     href="{{ route('contact-us') }}" class="align-middle text-primary">Email</a> |
-  <a href="tel:832-521-5820" class="align-middle text-secondary">832-521-5820</a> </div>
+  <a href="tel:832-521-5820" class="align-middle text-primary">832-521-5820</a> </div>
 
 <div class="plan-list my-1">
   <div class="position-relative">
