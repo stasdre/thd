@@ -1,117 +1,129 @@
 <input type="hidden" name="redirect" id="redirect" value="next">
 
 <div class="nav-tabs-custom">
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="#packages" data-toggle="tab">Packages</a></li>
-        <li><a href="#options" data-toggle="tab">Foundation Options</a></li>
-        <li><a href="#addons" data-toggle="tab">Add-Ons</a></li>
-    </ul>
-    <div class="tab-content">
-        <div class="tab-pane active" id="packages" style="padding-left: 50px;">
-            <img class="img-responsive galery_loader" style="margin: 0 auto; display: none" src="/img/load_horizontal.gif">
-            <div class="form-group">
-                @foreach($packages as $n => $package)
-                        <div class="checkbox">
-                            <label>{{ Form::checkbox('package['.$package->id.']', $package->id, $plan->packages->contains($package->id), ['class'=>'use-package']) }} Use {{ $package->name }}</label>
-                        </div>
-                        @if(old('package'))
-                            <div id="package_files_{{ $package->id }}" class="row plan-packages" {!! !old('package.'.$package->id) ? 'style="display: none"' : '' !!}>
-                        @else
-                            <div id="package_files_{{ $package->id }}" class="row plan-packages" {!! !$plan->packages->contains($package->id) ? 'style="display: none"' : '' !!}>
-                        @endif
-                            <div class="col-sm-4">
-                                <div class="input-group input-group-sm package-price {{ $errors->has('package_price.'.$package->id.'.'.$n) ? 'has-error' : '' }}">
-                                    <span class="input-group-addon">$</span>
-                                    @if(old('package_price'))
-                                        {{ Form::text('package_price['.$package->id.']', old('package_price.'.$package->id.'.'.$n), ['class'=>'form-control']) }}
-                                    @else
-                                        {{ Form::text('package_price['.$package->id.']', $plan->packages->contains($package->id) ? $plan->packages->find($package->id)->pivot->price : '', ['class'=>'form-control']) }}
-                                    @endif
-                                </div>
-                                <div class="files-fields">
-                                    <div id="files-package-{{ $package->id }}" class="dropzone needsclick dz-clickable">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-            </div>
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#packages" data-toggle="tab">Packages</a></li>
+    <li><a href="#options" data-toggle="tab">Foundation Options</a></li>
+    <li><a href="#addons" data-toggle="tab">Add-Ons</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="packages" style="padding-left: 50px;">
+      <img class="img-responsive galery_loader" style="margin: 0 auto; display: none" src="/img/load_horizontal.gif">
+      <div class="form-group">
+        @foreach($packages as $n => $package)
+        <div class="checkbox">
+          <label>{{ Form::checkbox('package['.$package->id.']', $package->id, $plan->packages->contains($package->id), ['class'=>'use-package']) }}
+            Use {{ $package->name }}</label>
         </div>
-        <!-- /.tab-pane -->
-        <div class="tab-pane" id="options" style="padding-left: 50px;">
-            <img class="img-responsive galery_loader" style="margin: 0 auto; display: none" src="/img/load_horizontal.gif">
-            <div class="form-group">
-                @foreach($foundations as $n => $option)
-                    <div class="checkbox">
-                        <label>{{ Form::checkbox('foundation['.$option->id.']', $option->id, $plan->foundationOptions->contains($option->id), ['class'=>'use-foundation']) }} Use {{ $option->name }}</label>
-                    </div>
-                    @if(old('foundation'))
-                        <div id="foundation_files_{{ $option->id }}" class="row plan-foundations" {!! !old('foundation.'.$option->id) ? 'style="display: none"' : '' !!}>
-                    @else
-                        <div id="foundation_files_{{ $option->id }}" class="row plan-foundations" {!! !$plan->foundationOptions->contains($option->id) ? 'style="display: none"' : '' !!}>
-                    @endif
-                        <div class="col-sm-4">
-                            <div class="input-group input-group-sm foundation-price {{ $errors->has('foundation_price.'.$option->id.'.'.$n) ? 'has-error' : '' }}">
-                                <span class="input-group-addon">$</span>
-                                @if(old('foundation_price'))
-                                    {{ Form::text('foundation_price['.$option->id.']', old('foundation_price.'.$option->id.'.'.$n), ['class'=>'form-control']) }}
-                                @else
-                                    {{ Form::text('foundation_price['.$option->id.']', $plan->foundationOptions->contains($option->id) ? $plan->foundationOptions->find($option->id)->pivot->price : '', ['class'=>'form-control']) }}
-                                @endif
-                            </div>
-                            <div class="files-fields">
-                                <div id="files-foundation-{{ $option->id }}" class="dropzone needsclick dz-clickable">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+        @if(old('package'))
+        <div id="package_files_{{ $package->id }}" class="row plan-packages" {!! !old('package.'.$package->id) ?
+          'style="display: none"' : '' !!}>
+          @else
+          <div id="package_files_{{ $package->id }}" class="row plan-packages" {!! !$plan->
+            packages->contains($package->id) ? 'style="display: none"' : '' !!}>
+            @endif
+            <div class="col-sm-4">
+              <div
+                class="input-group input-group-sm package-price {{ $errors->has('package_price.'.$package->id.'.'.$n) ? 'has-error' : '' }}">
+                <span class="input-group-addon">$</span>
+                @if(old('package_price'))
+                {{ Form::text('package_price['.$package->id.']', old('package_price.'.$package->id.'.'.$n), ['class'=>'form-control']) }}
+                @else
+                {{ Form::text('package_price['.$package->id.']', $plan->packages->contains($package->id) ? $plan->packages->find($package->id)->pivot->price : '', ['class'=>'form-control']) }}
+                @endif
+              </div>
+              <div class="files-fields">
+                <div id="files-package-{{ $package->id }}" class="dropzone needsclick dz-clickable">
+                </div>
+              </div>
             </div>
+          </div>
+          @endforeach
+        </div>
+      </div>
+      <!-- /.tab-pane -->
+      <div class="tab-pane" id="options" style="padding-left: 50px;">
+        <img class="img-responsive galery_loader" style="margin: 0 auto; display: none" src="/img/load_horizontal.gif">
+        <div class="form-group">
+          @foreach($foundations as $n => $option)
+          <div class="checkbox">
+            <label>{{ Form::checkbox('foundation['.$option->id.']', $option->id, $plan->foundationOptions->contains($option->id), ['class'=>'use-foundation']) }}
+              Use {{ $option->name }}</label>
+          </div>
+          @if(old('foundation'))
+          <div id="foundation_files_{{ $option->id }}" class="row plan-foundations" {!! !old('foundation.'.$option->id)
+            ? 'style="display: none"' : '' !!}>
+            @else
+            <div id="foundation_files_{{ $option->id }}" class="row plan-foundations" {!! !$plan->
+              foundationOptions->contains($option->id) ? 'style="display: none"' : '' !!}>
+              @endif
+              <div class="col-sm-4">
+                <div
+                  class="input-group input-group-sm foundation-price {{ $errors->has('foundation_price.'.$option->id.'.'.$n) ? 'has-error' : '' }}">
+                  <span class="input-group-addon">$</span>
+                  @if(old('foundation_price'))
+                  {{ Form::text('foundation_price['.$option->id.']', old('foundation_price.'.$option->id.'.'.$n), ['class'=>'form-control']) }}
+                  @else
+                  {{ Form::text('foundation_price['.$option->id.']', $plan->foundationOptions->contains($option->id) ? $plan->foundationOptions->find($option->id)->pivot->price : '', ['class'=>'form-control']) }}
+                  @endif
+                </div>
+                <div class="files-fields">
+                  <div id="files-foundation-{{ $option->id }}" class="dropzone needsclick dz-clickable">
+                  </div>
+                </div>
+              </div>
+            </div>
+            @endforeach
+          </div>
         </div>
         <!-- /.tab-pane -->
         <div class="tab-pane" id="addons" style="padding-left: 50px;">
-            <img class="img-responsive galery_loader" style="margin: 0 auto; display: none" src="/img/load_horizontal.gif">
-            <div class="form-group">
-                @foreach($addons as $n => $addon)
-                    <div class="checkbox">
-                        <label>{{ Form::checkbox('addon['.$addon->id.']', $addon->id, $plan->addons->contains($addon->id), ['class'=>'use-addon']) }} Use {{ $addon->name }}</label>
-                    </div>
-                    @if(old('addon'))
-                        <div id="addon_files_{{ $addon->id }}" class="row plan-addon" {!! !old('addon.'.$addon->id) ? 'style="display: none"' : '' !!}>
-                    @else
-                        <div id="addon_files_{{ $addon->id }}" class="row plan-addon" {!! !$plan->addons->contains($addon->id) ? 'style="display: none"' : '' !!}>
-                    @endif
-                    <div class="col-sm-4">
-                        <div class="input-group input-group-sm addon-price {{ $errors->has('addon_price.'.$addon->id.'.'.$n) ? 'has-error' : '' }}">
-                            <span class="input-group-addon">$</span>
-                            @if(old('addon_price'))
-                                {{ Form::text('addon_price['.$addon->id.']', old('addon_price.'.$addon->id.'.'.$n), ['class'=>'form-control']) }}
-                            @else
-                                {{ Form::text('addon_price['.$addon->id.']', $plan->addons->contains($addon->id) ? $plan->addons->find($addon->id)->pivot->price : '', ['class'=>'form-control']) }}
-                            @endif
-                        </div>
-                        <div class="files-fields">
-                            <div id="files-addon-{{ $addon->id }}" class="dropzone needsclick dz-clickable">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
+          <img class="img-responsive galery_loader" style="margin: 0 auto; display: none"
+            src="/img/load_horizontal.gif">
+          <div class="form-group">
+            @foreach($addons as $n => $addon)
+            <div class="checkbox">
+              <label>{{ Form::checkbox('addon['.$addon->id.']', $addon->id, $plan->addons->contains($addon->id), ['class'=>'use-addon']) }}
+                Use {{ $addon->name }}</label>
             </div>
+            @if(old('addon'))
+            <div id="addon_files_{{ $addon->id }}" class="row plan-addon" {!! !old('addon.'.$addon->id) ?
+              'style="display: none"' : '' !!}>
+              @else
+              <div id="addon_files_{{ $addon->id }}" class="row plan-addon" {!! !$plan->addons->contains($addon->id) ?
+                'style="display: none"' : '' !!}>
+                @endif
+                <div class="col-sm-4">
+                  <div
+                    class="input-group input-group-sm addon-price {{ $errors->has('addon_price.'.$addon->id.'.'.$n) ? 'has-error' : '' }}">
+                    <span class="input-group-addon">$</span>
+                    @if(old('addon_price'))
+                    {{ Form::text('addon_price['.$addon->id.']', old('addon_price.'.$addon->id.'.'.$n), ['class'=>'form-control']) }}
+                    @else
+                    {{ Form::text('addon_price['.$addon->id.']', $plan->addons->contains($addon->id) ? $plan->addons->find($addon->id)->pivot->price : '', ['class'=>'form-control']) }}
+                    @endif
+                  </div>
+                  <div class="files-fields">
+                    <div id="files-addon-{{ $addon->id }}" class="dropzone needsclick dz-clickable">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              @endforeach
+            </div>
+          </div>
+          <!-- /.tab-pane -->
         </div>
-        <!-- /.tab-pane -->
-    </div>
-    <!-- /.tab-content -->
-</div>
+        <!-- /.tab-content -->
+      </div>
 
-@push('css')
-<link rel="stylesheet" href="{{asset('css/admin/dropzone.min.css')}}">
-@endpush
-@push('scripts')
-<script src="{{ asset('js/admin/dropzone.min.js') }}"></script>
-<script>
-
-    Dropzone.autoDiscover = false;
+      @push('css')
+      <link rel="stylesheet" href="{{asset('css/admin/dropzone.min.css')}}">
+      @endpush
+      @push('scripts')
+      <script src="{{ asset('js/admin/dropzone.min.js') }}"></script>
+      <script>
+        Dropzone.autoDiscover = false;
 
     $( document ).ajaxStart(function() {
         $('#plans-submit-next').prop('disabled', true);
@@ -149,7 +161,7 @@
                 file.previewElement.classList.add('dz-file-preview');
                 file.previewElement.classList.add('dz-success');
                 file.previewElement.classList.add('dz-processing');
-                $(file.previewElement).attr('data-url','/admin-thd/plan-packages/file-download/{{ $plan->id }}/{{ $package->id }}/{{ $file }}');
+                $(file.previewElement).attr('data-url','/admin-dwhp/plan-packages/file-download/{{ $plan->id }}/{{ $package->id }}/{{ $file }}');
             @endforeach
             }
         @endif
@@ -166,13 +178,13 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 method: 'DELETE',
-                url: '/admin-thd/plan-packages/file-destroy/{{ $plan->id }}/{{ $package->id }}/'+$(file.previewElement).find('[data-dz-name]').html(),
+                url: '/admin-dwhp/plan-packages/file-destroy/{{ $plan->id }}/{{ $package->id }}/'+$(file.previewElement).find('[data-dz-name]').html(),
             });
         });
 
         package{{ $package->id }}.on('success', function(file, response){
             $(file.previewElement).find('[data-dz-name]').html(response.file_name);
-            $(file.previewElement).attr('data-url','/admin-thd/plan-packages/file-download/'+response.plan_id+'/'+response.package_id+'/'+response.file_name);
+            $(file.previewElement).attr('data-url','/admin-dwhp/plan-packages/file-download/'+response.plan_id+'/'+response.package_id+'/'+response.file_name);
         });
     @endforeach
 
@@ -200,7 +212,7 @@
                     file.previewElement.classList.add('dz-file-preview');
                     file.previewElement.classList.add('dz-success');
                     file.previewElement.classList.add('dz-processing');
-                    $(file.previewElement).attr('data-url','/admin-thd/plan-foundation/file-download/{{ $plan->id }}/{{ $option->id }}/{{ $file }}');
+                    $(file.previewElement).attr('data-url','/admin-dwhp/plan-foundation/file-download/{{ $plan->id }}/{{ $option->id }}/{{ $file }}');
                     @endforeach
                 }
                 @endif
@@ -217,13 +229,13 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 method: 'DELETE',
-                url: '/admin-thd/plan-foundation/file-destroy/{{ $plan->id }}/{{ $option->id }}/'+$(file.previewElement).find('[data-dz-name]').html(),
+                url: '/admin-dwhp/plan-foundation/file-destroy/{{ $plan->id }}/{{ $option->id }}/'+$(file.previewElement).find('[data-dz-name]').html(),
             });
         });
 
         foundation{{ $option->id }}.on('success', function(file, response){
             $(file.previewElement).find('[data-dz-name]').html(response.file_name);
-            $(file.previewElement).attr('data-url','/admin-thd/plan-foundation/file-download/'+response.plan_id+'/'+response.package_id+'/'+response.file_name);
+            $(file.previewElement).attr('data-url','/admin-dwhp/plan-foundation/file-download/'+response.plan_id+'/'+response.package_id+'/'+response.file_name);
         });
     @endforeach
 
@@ -251,7 +263,7 @@
                     file.previewElement.classList.add('dz-file-preview');
                     file.previewElement.classList.add('dz-success');
                     file.previewElement.classList.add('dz-processing');
-                    $(file.previewElement).attr('data-url','/admin-thd/plan-addon/file-download/{{ $plan->id }}/{{ $addon->id }}/{{ $file }}');
+                    $(file.previewElement).attr('data-url','/admin-dwhp/plan-addon/file-download/{{ $plan->id }}/{{ $addon->id }}/{{ $file }}');
                     @endforeach
                 }
                 @endif
@@ -268,13 +280,13 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             method: 'DELETE',
-            url: '/admin-thd/plan-addon/file-destroy/{{ $plan->id }}/{{ $addon->id }}/'+$(file.previewElement).find('[data-dz-name]').html(),
+            url: '/admin-dwhp/plan-addon/file-destroy/{{ $plan->id }}/{{ $addon->id }}/'+$(file.previewElement).find('[data-dz-name]').html(),
         });
     });
 
     addon{{ $addon->id }}.on('success', function(file, response){
         $(file.previewElement).find('[data-dz-name]').html(response.file_name);
-        $(file.previewElement).attr('data-url','/admin-thd/plan-addon/file-download/'+response.plan_id+'/'+response.package_id+'/'+response.file_name);
+        $(file.previewElement).attr('data-url','/admin-dwhp/plan-addon/file-download/'+response.plan_id+'/'+response.package_id+'/'+response.file_name);
     });
     @endforeach
 
@@ -339,5 +351,5 @@
             }
         });
     });
-</script>
-@endpush
+      </script>
+      @endpush

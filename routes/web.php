@@ -125,7 +125,7 @@ Route::prefix('admin-dwhp')->group(function () {
     Route::resource('user', 'Admin\UserController', ['except' => ['show']]);
     Route::get('user/data', 'Admin\UserController@anyData')->name('user.data');
 
-    Route::post('admin-thd/get-state', 'Admin\DashboardController@getCountryState')->name('getCountryState');
+    Route::post('admin-dwhp/get-state', 'Admin\DashboardController@getCountryState')->name('getCountryState');
 
     Route::get('home-page/desktop-dream', 'Admin\HomePageController@desktopDream')->name('home-page.desktop-dream');
     Route::post('home-page/desktop-dream', 'Admin\HomePageController@desktopDream')->name('home-page.desktop-dream.post');

@@ -59,7 +59,7 @@ document.querySelector("body").addEventListener("click", e => {
         formData.append("src", imgUrl);
 
         let xhr = new XMLHttpRequest();
-        xhr.open("POST", "/admin-thd/upload-image/", true);
+        xhr.open("POST", "/admin-dwhp/upload-image/", true);
         xhr.setRequestHeader("X-CSRF-TOKEN", token.getAttribute("content"));
         xhr.send(formData);
 
