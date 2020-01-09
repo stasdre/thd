@@ -5,12 +5,23 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.1.12",
+        "davejamesmiller/laravel-breadcrumbs": "^4.2",
+        "doctrine/dbal": "^2.6",
         "fideloper/proxy": "~3.3",
+        "gloudemans/shoppingcart": "^2.6",
+        "intervention/image": "^2.4",
+        "jenssegers/agent": "^2.6",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "laravelcollective/html": "^5.5",
+        "pragmarx/countries": "^0.5.8",
+        "unisharp/laravel-filemanager": "~1.8",
+        "yajra/laravel-datatables-oracle": "^8.3",
+        "zizaco/entrust": "dev-master"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.1",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "~1.0",
@@ -22,8 +33,11 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/"
-        }
+            "Thd\\": "app/"
+        },
+        "files":[
+            "app/helpers/FileUploader.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

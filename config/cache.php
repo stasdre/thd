@@ -91,4 +91,5 @@ return [
         str_slug(env('APP_NAME', 'laravel'), '_').'_cache'
     ),
 
+    'ttl' => 30
 ];

@@ -6,11 +6,152 @@
 @import "variables";
 
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~bootstrap/dist/css/bootstrap.css";
 
 // FontAwesome
 @import "~font-awesome/css/font-awesome.css";
 
 // import admin lte css
+@import "~select2/dist/css/select2.min.css";
 @import "~admin-lte/dist/css/adminLTE.css";
 @import "~admin-lte/dist/css/skins/_all-skins.css";
+
+@import "~jquery-ui/themes/base/core.css";
+@import "~jquery-ui/themes/base/base.css";
+@import "~jquery-ui/themes/base/theme.css";
+@import "~jquery-ui/themes/base/datepicker.css";
+@import "~jquery-ui/themes/base/autocomplete.css";
+
+// Bootstrap
+@import "~datatables-bootstrap3-plugin/media/css/datatables-bootstrap3.css";
+
+.dt-center{
+  text-align: center;
+}
+
+.placeholder {
+  border: 1px solid #148CBF;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 10px #888;
+  -moz-box-shadow: 0px 0px 10px #888;
+  box-shadow: 0px 0px 10px #888;
+  width: 120px;
+  height: 120px;
+}
+
+.biggest{
+  width: 160px !important;
+  height: 160px !important;
+}
+.dropzone .dz-preview .dz-error-message{
+  top: 90px !important;
+}
+
+.dropzone .dz-preview.dz-error .dz-error-message{
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.dropzone.dz-clickable *{
+  cursor: pointer !important;
+}
+
+.tab-pane{
+  padding-top: 20px;
+}
+
+.green-icon{
+  color: #00a65a;
+}
+
+.red-icon{
+  color: #dd4b39;
+}
+
+.click-icon{
+  cursor: pointer;
+}
+
+.plan-packages{
+  padding-left: 50px;
+  padding-top: 10px;
+}
+
+.package-file{
+  padding-bottom: 10px;
+}
+
+.package-price{
+  padding-bottom: 10px;
+  width: 100px;
+}
+
+.foundation-price{
+  padding-bottom: 10px;
+  width: 100px;
+}
+
+.addon-price{
+  padding-bottom: 10px;
+  width: 100px;
+}
+
+.ui-autocomplete-loading {
+  background: white url("/img/ui-anim_basic_16x16.gif") right center no-repeat;
+}
+
+.dropzone .biggest img{
+  display: block;
+  width: 100%;
+}
+
+.edit-img{
+  position: relative;
+  &:hover{
+    &::before{
+      opacity: 1;
+    }
+  }
+  &::before{
+    font-family: "FontAwesome";
+    content: "\f044";
+    font-size: 1.5rem;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    font-weight: 900;
+    position: absolute;
+    left: 2%;
+    bottom: 10%;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(#000, .5);
+    opacity: 0;
+    transition: .5s;
+  }
+}
+
+.doka-info{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    background-color: rgba(#ccc, 0.2);
+}
+
+.table__img{
+  width: 50px;
+  height: 50px;
+}
+
+.table__img img{
+  width: 100%;
+  display: block;
+  height: auto;
+}
