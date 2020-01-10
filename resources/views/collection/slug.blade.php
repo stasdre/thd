@@ -32,8 +32,8 @@
           plan
           <span class="text-secondary">{{$collection->plan}}</span></h5>
         <h5 class="m-0 text-white">
-          davidwiggins
-          <span class="text-secondary">houseplans.com</span></h5>
+          houseplans
+          <span class="text-secondary">bydavidwiggins.com</span></h5>
       </div>
     </div>
   </div>

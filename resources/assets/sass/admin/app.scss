@@ -1,4 +1,3 @@
-
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
@@ -13,7 +12,7 @@
 
 // import admin lte css
 @import "~select2/dist/css/select2.min.css";
-@import "~admin-lte/dist/css/adminLTE.css";
+@import "~admin-lte/dist/css/AdminLTE.css";
 @import "~admin-lte/dist/css/skins/_all-skins.css";
 
 @import "~jquery-ui/themes/base/core.css";
@@ -25,12 +24,12 @@
 // Bootstrap
 @import "~datatables-bootstrap3-plugin/media/css/datatables-bootstrap3.css";
 
-.dt-center{
+.dt-center {
   text-align: center;
 }
 
 .placeholder {
-  border: 1px solid #148CBF;
+  border: 1px solid #148cbf;
   background-color: white;
   -webkit-box-shadow: 0px 0px 10px #888;
   -moz-box-shadow: 0px 0px 10px #888;
@@ -39,58 +38,58 @@
   height: 120px;
 }
 
-.biggest{
+.biggest {
   width: 160px !important;
   height: 160px !important;
 }
-.dropzone .dz-preview .dz-error-message{
+.dropzone .dz-preview .dz-error-message {
   top: 90px !important;
 }
 
-.dropzone .dz-preview.dz-error .dz-error-message{
+.dropzone .dz-preview.dz-error .dz-error-message {
   opacity: 1 !important;
   pointer-events: auto !important;
 }
-.dropzone.dz-clickable *{
+.dropzone.dz-clickable * {
   cursor: pointer !important;
 }
 
-.tab-pane{
+.tab-pane {
   padding-top: 20px;
 }
 
-.green-icon{
+.green-icon {
   color: #00a65a;
 }
 
-.red-icon{
+.red-icon {
   color: #dd4b39;
 }
 
-.click-icon{
+.click-icon {
   cursor: pointer;
 }
 
-.plan-packages{
+.plan-packages {
   padding-left: 50px;
   padding-top: 10px;
 }
 
-.package-file{
+.package-file {
   padding-bottom: 10px;
 }
 
-.package-price{
-  padding-bottom: 10px;
-  width: 100px;
-}
-
-.foundation-price{
+.package-price {
   padding-bottom: 10px;
   width: 100px;
 }
 
-.addon-price{
+.foundation-price {
+  padding-bottom: 10px;
+  width: 100px;
+}
+
+.addon-price {
   padding-bottom: 10px;
   width: 100px;
 }
@@ -99,19 +98,19 @@
   background: white url("/img/ui-anim_basic_16x16.gif") right center no-repeat;
 }
 
-.dropzone .biggest img{
+.dropzone .biggest img {
   display: block;
   width: 100%;
 }
 
-.edit-img{
+.edit-img {
   position: relative;
-  &:hover{
-    &::before{
+  &:hover {
+    &::before {
       opacity: 1;
     }
   }
-  &::before{
+  &::before {
     font-family: "FontAwesome";
     content: "\f044";
     font-size: 1.5rem;
@@ -128,29 +127,29 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: rgba(#000, .5);
+    background-color: rgba(#000, 0.5);
     opacity: 0;
-    transition: .5s;
+    transition: 0.5s;
   }
 }
 
-.doka-info{
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    padding: 10px;
-    color: #fff;
-    border-radius: 5px;
-    background-color: rgba(#ccc, 0.2);
+.doka-info {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  color: #fff;
+  border-radius: 5px;
+  background-color: rgba(#ccc, 0.2);
 }
 
-.table__img{
+.table__img {
   width: 50px;
   height: 50px;
 }
 
-.table__img img{
+.table__img img {
   width: 100%;
   display: block;
   height: auto;

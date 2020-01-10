@@ -251,8 +251,8 @@
                   <span class="text-secondary">{{ plan.plan_number }}</span>
                 </h5>
                 <h5 class="m-0 text-white">
-                  davidwiggins
-                  <span class="text-secondary">houseplans.com</span>
+                  houseplans
+                  <span class="text-secondary">bydavidwiggins.com</span>
                 </h5>
               </div>
             </div>
@@ -512,13 +512,31 @@
                 </ul>
                 <div class="tab-content" id="myTabContent1">
                   <div class="tab-pane fade show active" id="first" role="tabpanel">
-                    <img v-for="img in selectedPlan.images_first" :key="img.id" :src="`/storage/plans/${selectedPlan.id}/${img.file_name}`" alt class="img-fluid mx-auto d-block" />
+                    <img
+                      v-for="img in selectedPlan.images_first"
+                      :key="img.id"
+                      :src="`/storage/plans/${selectedPlan.id}/${img.file_name}`"
+                      alt
+                      class="img-fluid mx-auto d-block"
+                    />
                   </div>
                   <div class="tab-pane fade" id="second" role="tabpanel">
-                    <img v-for="img in selectedPlan.images_second" :key="img.id" :src="`/storage/plans/${selectedPlan.id}/${img.file_name}`" alt class="img-fluid mx-auto d-block" />
+                    <img
+                      v-for="img in selectedPlan.images_second"
+                      :key="img.id"
+                      :src="`/storage/plans/${selectedPlan.id}/${img.file_name}`"
+                      alt
+                      class="img-fluid mx-auto d-block"
+                    />
                   </div>
                   <div class="tab-pane fade" id="basement" role="tabpanel">
-                    <img v-for="img in selectedPlan.images_basement" :key="img.id" :src="`/storage/plans/${selectedPlan.id}/${img.file_name}`" alt class="img-fluid mx-auto d-block" />
+                    <img
+                      v-for="img in selectedPlan.images_basement"
+                      :key="img.id"
+                      :src="`/storage/plans/${selectedPlan.id}/${img.file_name}`"
+                      alt
+                      class="img-fluid mx-auto d-block"
+                    />
                   </div>
                 </div>
               </div>
@@ -608,8 +626,8 @@
                           <span class="text-secondary">{{ selectedPlan.plan_number }}</span>
                         </h5>
                         <h5 class="m-0 text-white">
-                          davidwiggins
-                          <span class="text-secondary">houseplans.com</span>
+                          houseplans
+                          <span class="text-secondary">bydavidwiggins.com</span>
                         </h5>
                       </div>
                     </div>

@@ -81,7 +81,7 @@
           src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
         <div class="media-body">
           <h5 class="mb-0 text-white">plan <span class="text-secondary">{{$img->plan}}</span></h5>
-          <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
+          <h5 class="m-0 text-white">houseplans<span class="text-secondary">bydavidwiggins.com</span></h5>
         </div>
       </div>
     </div>
