@@ -200,7 +200,7 @@ Route::get('advanced-search/', 'SearchController@advanced')->name('advanced-sear
 Route::get('search/result', 'SearchController@result')->name('search-result');
 
 Route::get('collection/{slug}', 'CollectionController@slug')->name('collection.slug');
-Route::get('style/{slug}', 'StyleController@slug')->name('style.slug');
+Route::get('architectural-styles/{slug}', 'StyleController@slug')->name('style.slug');
 
 Route::get('collections/', 'CollectionController@all')->name('collections');
 Route::get('architectural-styles/', 'StyleController@all')->name('styles');
