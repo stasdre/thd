@@ -98,7 +98,7 @@
 
 <div class="row align-items-center py-2 pd_bottom_0">
   <div class="col-sm-3">
-    <h4 class="m-0 font-weight-bold"><a href="#" class="text-primary">FAQs</a></h4>
+    <h4 class="m-0 font-weight-bold"><a href="/faq" class="text-primary">FAQs</a></h4>
     <p class="m-0 font-weight-light">Frequently Asked Questions</p>
   </div>
   <div class="col-sm-6">
