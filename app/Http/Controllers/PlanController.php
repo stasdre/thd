@@ -96,7 +96,21 @@ class PlanController extends Controller
       'plan' => $dataPlan,
       'packages' => json_encode($packages),
       'foundations' => json_encode($foundations),
-      'addons' => json_encode($addons)
+      'addons' => json_encode($addons),
+      'similarPlans' => Plan::whereIn('plan_number', $dataPlan->similar)
+        ->with(['images' => function ($query) {
+          $query->orderBy('for_search', 'desc');
+          $query->orderBy('sort_number', 'ASC');
+        }])
+        ->limit(2)
+        ->get(),
+      'customerTopPlans' => Plan::whereIn('plan_number', [2191, 2482])
+        ->with(['images' => function ($query) {
+          $query->orderBy('for_search', 'desc');
+          $query->orderBy('sort_number', 'ASC');
+        }])
+        ->limit(2)
+        ->get()
     ]);
   }
 
