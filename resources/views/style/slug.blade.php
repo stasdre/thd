@@ -29,9 +29,7 @@
         <h5 class="mb-0 text-white">
           plan
           <span class="text-secondary">{{$style->plan}}</span></h5>
-        <h5 class="m-0 text-white">
-          davidwiggins
-          <span class="text-secondary">houseplans.com</span></h5>
+        <h5 class="m-0 text-white">houseplans<span class="text-secondary">bydavidwiggins.com</span></h5>
       </div>
     </div>
   </div>

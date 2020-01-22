@@ -81,7 +81,7 @@
           src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
         <div class="media-body">
           <h5 class="mb-0 text-white">plan <span class="text-secondary">{{$img->plan}}</span></h5>
-          <h5 class="m-0 text-white">davidwiggins<span class="text-secondary">houseplans.com</span></h5>
+          <h5 class="m-0 text-white">houseplans<span class="text-secondary">bydavidwiggins.com</span></h5>
         </div>
       </div>
     </div>
@@ -98,7 +98,7 @@
 
 <div class="row align-items-center py-2 pd_bottom_0">
   <div class="col-sm-3">
-    <h4 class="m-0 font-weight-bold"><a href="#" class="text-primary">FAQs</a></h4>
+    <h4 class="m-0 font-weight-bold"><a href="/faq" class="text-primary">FAQs</a></h4>
     <p class="m-0 font-weight-light">Frequently Asked Questions</p>
   </div>
   <div class="col-sm-6">

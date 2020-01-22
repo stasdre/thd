@@ -200,10 +200,10 @@ Route::get('advanced-search/', 'SearchController@advanced')->name('advanced-sear
 Route::get('search/result', 'SearchController@result')->name('search-result');
 
 Route::get('collection/{slug}', 'CollectionController@slug')->name('collection.slug');
-Route::get('style/{slug}', 'StyleController@slug')->name('style.slug');
+Route::get('architectural-styles/{slug}', 'StyleController@slug')->name('style.slug');
 
 Route::get('collections/', 'CollectionController@all')->name('collections');
-Route::get('styles/', 'StyleController@all')->name('styles');
+Route::get('architectural-styles/', 'StyleController@all')->name('styles');
 
 Route::get('plan/{plan_number}', 'PlanController@view')->name('plan.view')->where('plan_number', '[0-9]+');
 Route::get('modify-plan/{plan_number}', 'PlanController@modifyplan')->name('modify-plan')->where('plan_number', '[0-9]+');

@@ -33,8 +33,7 @@
                 src="{{asset('images/icons/logo-placeholder.png')}}" alt="DWHP">
               <div class="media-body">
                 <h5 class="mb-0 text-white">plan <span class="text-secondary">{{$plan->plan_number}}</span></h5>
-                <h5 class="m-0 text-white">davidwiggins<span class="text-secondary mobile-off">houseplans.com</span>
-                </h5>
+                <h5 class="m-0 text-white">houseplans<span class="text-secondary">bydavidwiggins.com</span></h5>
               </div>
             </div>
           </figure>
