@@ -933,35 +933,76 @@
     <div class="col-md-6">
       <h5 class="font-weight-bold mt-3">View Similar House Plans</h5>
       <div class="row text-center">
+        @if($similarPlans)
+        @foreach ($similarPlans as $item)
         <div class="col-sm-6">
-          <div class="plan-grid"> <a href="#"> <img src="/images/plan-1.jpg" alt="New House Plans" class="img-fluid" />
-              <p class="plan-name text-truncate px-2">dell’ Azienda Agricola House Plan 4839</p>
-              <p class="plan-meta text-truncate px-2">4,839 s.f. | 4 beds | 3.5 baths</p>
+          <div class="plan-grid">
+            <a href="{{route('plan.view', $item->plan_number)}}">
+              <div class="position-relative">
+                <div id="plan{{$item->plan_number}}" data-ride="carousel" data-interval="false" class="carousel slide">
+                  <div class="carousel-inner">
+                    @foreach ($item->images as $img)
+                    <div class="carousel-item @if($loop->iteration === 1) active @endif">
+                      <img src="{{ asset('storage/plans/'.$item->id.'/thumb/'.$img->file_name) }}" alt=""
+                        class="img-fluid">
+                    </div>
+                    @endforeach
+                  </div>
+                  <a href="#plan{{$item->plan_number}}" role="button" data-slide="prev"
+                    class="carousel-control-prev"><span aria-hidden="false" class="carousel-control-prev-icon"></span>
+                    <span class="sr-only">Previous</span></a>
+                  <a href="#plan{{$item->plan_number}}" role="button" data-slide="next"
+                    class="carousel-control-next"><span aria-hidden="false" class="carousel-control-next-icon"></span>
+                    <span class="sr-only">Next</span></a>
+                </div>
+              </div>
+              {{-- <img src="/images/plan-1.jpg"
+                alt="New House Plans" class="img-fluid" /> --}}
+              <p class="plan-name text-truncate px-2">{{$item->name}} House Plan {{$item->plan_number}}</p>
+              <p class="plan-meta text-truncate px-2">{{$item->square_ft['str_total']}} s.f. |
+                {{$item->rooms['r_bedrooms']}} beds | {{$item->rooms['r_full_baths']}} baths</p>
             </a> </div>
         </div>
-        <div class="col-sm-6">
-          <div class="plan-grid"> <a href="#"> <img src="/images/plan-1.jpg" alt="New House Plans" class="img-fluid" />
-              <p class="plan-name text-truncate px-2">dell’ Azienda Agricola House Plan 4839</p>
-              <p class="plan-meta text-truncate px-2">4,839 s.f. | 4 beds | 3.5 baths</p>
-            </a> </div>
-        </div>
+        @endforeach
+        @endif
       </div>
     </div>
     <div class="col-md-6 xs-hide-portrait">
       <h5 class="font-weight-bold mt-3">Customer Top Picks</h5>
       <div class="row text-center">
+        @if($customerTopPlans)
+        @foreach ($customerTopPlans as $item)
         <div class="col-sm-6">
-          <div class="plan-grid"> <a href="#"> <img src="/images/plan-1.jpg" alt="New House Plans" class="img-fluid" />
-              <p class="plan-name text-truncate px-2">dell’ Azienda Agricola House Plan 4839</p>
-              <p class="plan-meta text-truncate px-2">4,839 s.f. | 4 beds | 3.5 baths</p>
+          <div class="plan-grid">
+            <a href="{{route('plan.view', $item->plan_number)}}">
+              <div class="position-relative">
+                <div id="plan{{$item->plan_number}}" data-ride="carousel" data-interval="false" class="carousel slide">
+                  <div class="carousel-inner">
+                    @foreach ($item->images as $img)
+                    <div class="carousel-item @if($loop->iteration === 1) active @endif">
+                      <img src="{{ asset('storage/plans/'.$item->id.'/thumb/'.$img->file_name) }}" alt=""
+                        class="img-fluid">
+                    </div>
+                    @endforeach
+                  </div>
+                  <a href="#plan{{$item->plan_number}}" role="button" data-slide="prev"
+                    class="carousel-control-prev"><span aria-hidden="false" class="carousel-control-prev-icon"></span>
+                    <span class="sr-only">Previous</span></a>
+                  <a href="#plan{{$item->plan_number}}" role="button" data-slide="next"
+                    class="carousel-control-next"><span aria-hidden="false" class="carousel-control-next-icon"></span>
+                    <span class="sr-only">Next</span></a>
+                </div>
+              </div>
+              {{-- <img src="/images/plan-1.jpg"
+                alt="New House Plans" class="img-fluid" /> --}}
+              <p class="plan-name text-truncate px-2">{{$item->name}} House Plan {{$item->plan_number}}</p>
+              <p class="plan-meta text-truncate px-2">{{$item->square_ft['str_total']}} s.f. |
+                {{$item->rooms['r_bedrooms']}} beds | {{$item->rooms['r_full_baths']}} baths</p>
             </a> </div>
         </div>
-        <div class="col-sm-6">
-          <div class="plan-grid"> <a href="#"> <img src="/images/plan-1.jpg" alt="New House Plans" class="img-fluid" />
-              <p class="plan-name text-truncate px-2">dell’ Azienda Agricola House Plan 4839</p>
-              <p class="plan-meta text-truncate px-2">4,839 s.f. | 4 beds | 3.5 baths</p>
-            </a> </div>
-        </div>
+        @endforeach
+        @endif
+
       </div>
     </div>
   </div>
