@@ -4,6 +4,8 @@ namespace Thd\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Thd\Mail\ContactUs;
 use Thd\Plan;
 use Validator;
 
@@ -87,6 +89,8 @@ class ContactUsController extends Controller
         ->withInput();
     } else {
       //-----send email-----//
+      //dd($request->post());
+      Mail::to('stasdre@gmail.com')->send(new ContactUs($request->post()));
       return redirect(route('contact-us'));
     }
   }
