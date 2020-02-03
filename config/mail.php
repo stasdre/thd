@@ -29,7 +29,7 @@ return [
     |
     */
 
-  'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+  'host' => env('MAIL_HOST', ''),
 
   /*
     |--------------------------------------------------------------------------
@@ -60,6 +60,10 @@ return [
     'name' => env('MAIL_FROM_NAME', 'HouseplansByDavidWiggins'),
   ],
 
+  'to' => [
+    'address' => env('ADMIN_EMAIL', 'admin@admin.com'),
+    'name' => 'HouseplansByDavidWiggins'
+  ],
   /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

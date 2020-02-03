@@ -88,10 +88,22 @@ class ContactUsController extends Controller
         ->withErrors($validator)
         ->withInput();
     } else {
-      //-----send email-----//
-      //dd($request->post());
-      Mail::to('stasdre@gmail.com')->send(new ContactUs($request->post()));
-      return redirect(route('contact-us'));
+      $dataSend = $request->post();
+      $dataSend['subject'] = $this->_subject[$dataSend['subject']];
+      $dataSend['land'] = $this->_land[$dataSend['land']];
+      $dataSend['when'] = $this->_when[$dataSend['when']];
+      $dataSend['builder'] = $this->_builder[$dataSend['builder']];
+      $dataSend['how'] = $this->_how[$dataSend['how']];
+
+      Mail::to(config('mail.to.address'))->send(new ContactUs($dataSend));
+
+      return redirect()->route('contact-us')
+        ->with('message', [
+          'type' => 'success',
+          'title' => 'Success!',
+          'message' => 'Your message was send',
+          'autoHide' => 1
+        ]);
     }
   }
 }

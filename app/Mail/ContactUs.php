@@ -29,6 +29,7 @@ class ContactUs extends Mailable
    */
   public function build()
   {
-    return $this->view('emails.contact-us');
+    return $this->from($this->dataForm['email'], $this->dataForm['first_name'] . ' ' . $this->dataForm['lastt_name'])
+      ->view('emails.contact-us');
   }
 }
