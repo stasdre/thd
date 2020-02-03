@@ -31,6 +31,15 @@
     @include('layouts.header-nav')
     @yield('carousel')
     <main>
+      @if (session()->has('message'))
+      @component('partials.alert', ['type'=>session()->get('message')['type'],
+      'autoHide'=>session()->get('message')['autoHide']])
+      @slot('title')
+      {{ session()->get('message')['title'] }}
+      @endslot
+      {{ session()->get('message')['message'] }}
+      @endcomponent
+      @endif
       @yield('content')
     </main>
     @include('layouts.footer')
@@ -42,6 +51,15 @@
   <div class="d-block d-md-none">
     @include('layouts.header-nav')
     <main>
+      @if (session()->has('message'))
+      @component('partials.alert', ['type'=>session()->get('message')['type'],
+      'autoHide'=>session()->get('message')['autoHide']])
+      @slot('title')
+      {{ session()->get('message')['title'] }}
+      @endslot
+      {{ session()->get('message')['message'] }}
+      @endcomponent
+      @endif
       @yield('content')
     </main>
     @include('layouts.footer')
