@@ -1,6 +1,7 @@
 @extends('layouts.index')
 @section('title', $plan->meta_title)
 @section('description', $plan->meta_description)
+@section('keywords', $plan->meta_keywords)
 @section('content')
 <div id="plan_page">
   <div class="bg-dark pb-2 position-relative padding-botton_0_xs">
