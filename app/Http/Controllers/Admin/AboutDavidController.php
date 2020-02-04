@@ -11,72 +11,67 @@ use Intervention\Image\Facades\Image;
 
 class AboutDavidController extends Controller
 {
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit()
-    {
-        $data = AboutDavid::findOrFail(1);
-        return view('admin.about-david.edit')->with('data', $data);
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function edit()
+  {
+    $data = AboutDavid::findOrFail(1);
+    return view('admin.about-david.edit')->with('data', $data);
+  }
+
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return \Illuminate\Http\Response
+   */
+  public function update(Request $request)
+  {
+    $data = AboutDavid::findOrFail(1);
+
+    $validator = Validator::make($request->all(), [
+      'title' => 'required|max:190',
+      'photo' => 'mimetypes:image/jpeg,image/png,image/bmp,image/gif'
+    ]);
+
+    if ($validator->fails()) {
+      return redirect(route('about-david.edit'))
+        ->withErrors($validator)
+        ->withInput();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request)
-    {
-        $data = AboutDavid::findOrFail(1);
+    $dataPost = $request->except('_method', '_token');
 
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|max:190',
-            'photo' => 'mimetypes:image/jpeg,image/png,image/bmp,image/gif'
-        ]);
+    if ($request->file('photo')) {
+      $file = $request->file('photo');
+      $filename  = str_random(40) . '.' . $file->getClientOriginalExtension();
+      $pathThumb = storage_path('app/public/about/' . $filename);
 
-        if ($validator->fails()) {
-            return redirect(route('about-david.edit'))
-                ->withErrors($validator)
-                ->withInput();
-        }
+      $imgThumb = Image::make($file->getRealPath());
+      $imgThumb->resize(479, null, function ($constraint) {
+        $constraint->aspectRatio();
+      });
+      $imgThumb->save($pathThumb);
 
-        if($request->file('photo')){
-            $file = $request->file('photo');
-            $filename  = str_random(40) . '.' . $file->getClientOriginalExtension();
-            $pathThumb = storage_path('app/public/about/' . $filename);
+      //Storage::putFileAs('public/about/', $file, $filename);
 
-            $imgThumb = Image::make($file->getRealPath());
-            $imgThumb->resize(479, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-            $imgThumb->save($pathThumb);
+      if ($data->photo)
+        Storage::delete('public/about/' . $data->photo);
 
-            //Storage::putFileAs('public/about/', $file, $filename);
-
-            if($data->photo)
-                Storage::delete('public/about/'.$data->photo);
-
-            $data->photo = $filename;
-        }
-
-        $data->title = $request->input('title');
-        $data->description = $request->input('description');
-        $data->url = $request->input('url');
-
-        $data->why_text = $request->input('why_text');
-        $data->best_text = $request->input('best_text');
-        $data->free_text = $request->input('free_text');
-
-        $data->update();
-
-        return redirect()->route('about-david.edit')
-            ->with('message', [
-                'type'=>'success',
-                'title'=>'Success!',
-                'message'=>'Data was updated',
-                'autoHide'=>1]);
+      $dataPost['photo'] = $filename;
     }
+
+    $data->update($dataPost);
+
+    return redirect()->route('about-david.edit')
+      ->with('message', [
+        'type' => 'success',
+        'title' => 'Success!',
+        'message' => 'Data was updated',
+        'autoHide' => 1
+      ]);
+  }
 }

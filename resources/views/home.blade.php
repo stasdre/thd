@@ -1,5 +1,15 @@
 @extends('layouts.index')
 
+@isset($aboutData['meta']['title'])
+@section('title', $aboutData['meta']['title'])
+@endisset
+@isset($aboutData['meta']['description'])
+@section('description', $aboutData['meta']['description'])
+@endisset
+@isset($aboutData['meta']['keywords'])
+@section('keywords', $aboutData['meta']['keywords'])
+@endisset
+
 @section('carousel')
 <div id="banner" class="carousel slide" data-ride="carousel">
   @if ($agent->isDesktop() || $agent->isTablet())
