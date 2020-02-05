@@ -1,5 +1,9 @@
 @extends('layouts.index')
 
+@section('title', $style->meta_title)
+@section('description', $style->meta_description)
+@section('keywords', $style->meta_keywords)
+
 @section('content')
 <div class="row align-items-center style-desc-container">
   <div class="col-sm-7">
