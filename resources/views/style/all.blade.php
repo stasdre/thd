@@ -1,5 +1,9 @@
 @extends('layouts.index')
 
+@section('title', $styleData->meta['title'])
+@section('description', $styleData->meta['description'])
+@section('keywords', $styleData->meta['keywords'])
+
 @section('content')
 <div class="plan-full position-relative d-none d-sm-block" style="width: 100%;">
   <div class="mobile-off">
@@ -51,8 +55,8 @@
     </div>
   </div>
   <div class="row desktop-off center">
-    <a href="{{ route('collections') }}" class="btn btn-primary rounded-0 text-white font-weight-semi-bold new_style"
-      >SEARCH OUR SPECIALITY COLLECTIONS</a>
+    <a href="{{ route('collections') }}"
+      class="btn btn-primary rounded-0 text-white font-weight-semi-bold new_style">SEARCH OUR SPECIALITY COLLECTIONS</a>
   </div><br>
 
   <div class="row ">

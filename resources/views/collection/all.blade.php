@@ -1,5 +1,9 @@
 @extends('layouts.index')
 
+@section('title', $collectionData->meta['title'])
+@section('description', $collectionData->meta['description'])
+@section('keywords', $collectionData->meta['keywords'])
+
 @section('content')
 <div class="plan-full position-relative d-none d-sm-block" style="width: 100%;">
   <div class="mobile-off">
@@ -52,8 +56,8 @@
     </div>
   </div>
   <div class="row desktop-off center">
-    <a href="{{ route('styles') }}" class="btn btn-primary rounded-0 text-white font-weight-semi-bold new_style "
-      >SEARCH OUR ARCHITECTURAL STYLES</a>
+    <a href="{{ route('styles') }}" class="btn btn-primary rounded-0 text-white font-weight-semi-bold new_style ">SEARCH
+      OUR ARCHITECTURAL STYLES</a>
   </div><br>
 
   <div class="row ">
