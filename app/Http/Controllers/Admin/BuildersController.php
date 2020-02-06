@@ -47,8 +47,8 @@ class BuildersController extends Controller
   {
     $validator = Validator::make($request->all(), [
       'name' => 'required|max:100',
-      'img' => 'required|image|dimensions:min_width=370,min_height=210',
-      'recently_img' => 'nullable|image|dimensions:min_width=480,min_height=380'
+      'img' => 'required|image|dimensions:min_width=325,min_height=190',
+      'recently_img' => 'nullable|image|dimensions:min_width=490,min_height=395'
     ]);
 
     if ($validator->fails()) {
@@ -62,8 +62,8 @@ class BuildersController extends Controller
     if ($request->file('img')) {
       $img = uploadFile($request->file('img'), [
         'dir' => 'builders',
-        'width' => 370,
-        'height' => 210,
+        'width' => 325,
+        'height' => 190,
         'quality' => 90,
         'thumb_width' => 230,
         'thumb_height' => 190
@@ -74,11 +74,11 @@ class BuildersController extends Controller
     if ($request->file('recently_img')) {
       $img = uploadFile($request->file('recently_img'), [
         'dir' => 'builders',
-        'width' => 485,
-        'height' => 390,
+        'width' => 490,
+        'height' => 395,
         'quality' => 90,
-        'thumb_width' => 250,
-        'thumb_height' => 200
+        'thumb_width' => 230,
+        'thumb_height' => 190
       ]);
       $dataRequest['recently_img'] = $img;
     }
@@ -123,8 +123,8 @@ class BuildersController extends Controller
   {
     $validator = Validator::make($request->all(), [
       'name' => 'required|max:100',
-      'img' => 'nullable|image|dimensions:min_width=370,min_height=210',
-      'recently_img' => 'nullable|image|dimensions:min_width=480,min_height=380'
+      'img' => 'nullable|image|dimensions:min_width=325,min_height=190',
+      'recently_img' => 'nullable|image|dimensions:min_width=490,min_height=395'
     ]);
 
     if ($validator->fails()) {
@@ -138,8 +138,8 @@ class BuildersController extends Controller
     if ($request->file('img')) {
       $img = uploadFile($request->file('img'), [
         'dir' => 'builders',
-        'width' => 370,
-        'height' => 210,
+        'width' => 325,
+        'height' => 190,
         'quality' => 90,
         'thumb_width' => 230,
         'thumb_height' => 190
@@ -154,11 +154,11 @@ class BuildersController extends Controller
     if ($request->file('recently_img')) {
       $img = uploadFile($request->file('recently_img'), [
         'dir' => 'builders',
-        'width' => 485,
-        'height' => 390,
+        'width' => 490,
+        'height' => 395,
         'quality' => 90,
-        'thumb_width' => 250,
-        'thumb_height' => 200
+        'thumb_width' => 230,
+        'thumb_height' => 190
       ]);
       $dataRequest['recently_img'] = $img;
 
@@ -216,12 +216,22 @@ class BuildersController extends Controller
    */
   public function anyData()
   {
-    $builders = Builder::select(['name', 'city', 'state', 'zip', 'created_at', 'updated_at', 'id']);
+    $builders = Builder::select(['name', 'city', 'state', 'zip', 'show_landing', 'recently_built', 'created_at', 'updated_at', 'id']);
     return Datatables::of($builders)
       ->addColumn('actions', function ($builder) {
         return '<a class="btn btn-info btn-sm" href="' . route('builders.edit', $builder->id) . '" role="button">Edit</a> <form style="display: inline-block" action="' . route('builders.destroy', $builder->id) . '" method="POST"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="' . csrf_token() . '"><button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
       })
-      ->rawColumns(['actions'])
+      ->editColumn('show_landing', function ($builders) {
+        if ($builders->show_landing == 1)
+          return '<i style="color: green;" class="fa fa-check" aria-hidden="true"></i>';
+        return '';
+      })
+      ->editColumn('recently_built', function ($builders) {
+        if ($builders->show_landing == 1)
+          return '<i style="color: green;" class="fa fa-check" aria-hidden="true"></i>';
+        return '';
+      })
+      ->rawColumns(['show_landing', 'recently_built', 'actions'])
       ->make(true);
   }
 }

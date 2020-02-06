@@ -15,6 +15,8 @@
           <th>City</th>
           <th>State</th>
           <th>Zip</th>
+          <th>Recently</th>
+          <th>Recently big</th>
           <th>Created At</th>
           <th>Updated At</th>
           <th>Actions</th>
@@ -42,6 +44,8 @@
                 { data: 'city', name: 'city', className: "dt-center" },
                 { data: 'state', name: 'state', className: "dt-center" },
                 { data: 'zip', name: 'zip', className: "dt-center" },
+                { data: 'show_landing', name: 'show_landing', className: "dt-center" },
+                { data: 'recently_built', name: 'recently_built', className: "dt-center" },
                 { data: 'created_at', name: 'created_at', className: "dt-center" },
                 { data: 'updated_at', name: 'updated_at', className: "dt-center" },
                 { data: 'actions', name: 'actions', orderable: false, searchable: false, className: "dt-center" }
