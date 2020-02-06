@@ -19,6 +19,18 @@
   <link href="{{ asset('css/main.css') }}" rel="stylesheet">
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  @if (App::environment('production'))
+  <!-- Start Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157886202-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-157886202-1');
+  </script>
+  <!-- End Global site tag (gtag.js) - Google Analytics -->
+  @endif
 </head>
 
 <body>
