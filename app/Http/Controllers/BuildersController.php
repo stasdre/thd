@@ -39,7 +39,7 @@ class BuildersController extends Controller
     if (!empty($request->get('city'))) {
       $builders->orWhere('city', 'like', '%' . $request->get('city') . '%');
     }
-    if (!empty($request->get('state'))) {
+    if (!empty($request->get('state')) && $request->get('state') != 'State') {
       $builders->orWhere('state', 'like', '%' . $request->get('state') . '%');
     }
     if (!empty($request->get('zip'))) {
