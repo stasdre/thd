@@ -12,7 +12,8 @@
       <div class="col-lg-8 col-sm-12 px-0 form-white">
         <div class="text-center">
           <h4 class="font-weight-bold mt-3">Modification Request Form</h4>
-          <p><a href="#" class="text-primary">Helpful tips to know before you submit your modifications </a>
+          <p><a href="/blog/helpful-tips-to-know-before-you-submit-your-house-plan-modifications"
+              class="text-primary">Helpful tips to know before you submit your modifications </a>
           </p>
           @if (session()->has('message'))
           @component('partials.alert', ['type'=>session()->get('message')['type']])
