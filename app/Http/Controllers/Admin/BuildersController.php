@@ -47,8 +47,8 @@ class BuildersController extends Controller
   {
     $validator = Validator::make($request->all(), [
       'name' => 'required|max:100',
-      'img' => 'required|image|dimensions:min_width=370,min_height=210',
-      'recently_img' => 'nullable|image|dimensions:min_width=480,min_height=380'
+      'img' => 'required|image|dimensions:min_width=325,min_height=190',
+      'recently_img' => 'nullable|image|dimensions:min_width=490,min_height=395'
     ]);
 
     if ($validator->fails()) {
@@ -62,8 +62,8 @@ class BuildersController extends Controller
     if ($request->file('img')) {
       $img = uploadFile($request->file('img'), [
         'dir' => 'builders',
-        'width' => 370,
-        'height' => 210,
+        'width' => 325,
+        'height' => 190,
         'quality' => 90,
         'thumb_width' => 230,
         'thumb_height' => 190
@@ -74,11 +74,11 @@ class BuildersController extends Controller
     if ($request->file('recently_img')) {
       $img = uploadFile($request->file('recently_img'), [
         'dir' => 'builders',
-        'width' => 485,
-        'height' => 390,
+        'width' => 490,
+        'height' => 395,
         'quality' => 90,
-        'thumb_width' => 250,
-        'thumb_height' => 200
+        'thumb_width' => 230,
+        'thumb_height' => 190
       ]);
       $dataRequest['recently_img'] = $img;
     }
@@ -123,8 +123,8 @@ class BuildersController extends Controller
   {
     $validator = Validator::make($request->all(), [
       'name' => 'required|max:100',
-      'img' => 'nullable|image|dimensions:min_width=370,min_height=210',
-      'recently_img' => 'nullable|image|dimensions:min_width=480,min_height=380'
+      'img' => 'nullable|image|dimensions:min_width=325,min_height=190',
+      'recently_img' => 'nullable|image|dimensions:min_width=490,min_height=395'
     ]);
 
     if ($validator->fails()) {
@@ -138,8 +138,8 @@ class BuildersController extends Controller
     if ($request->file('img')) {
       $img = uploadFile($request->file('img'), [
         'dir' => 'builders',
-        'width' => 370,
-        'height' => 210,
+        'width' => 325,
+        'height' => 190,
         'quality' => 90,
         'thumb_width' => 230,
         'thumb_height' => 190
@@ -154,11 +154,11 @@ class BuildersController extends Controller
     if ($request->file('recently_img')) {
       $img = uploadFile($request->file('recently_img'), [
         'dir' => 'builders',
-        'width' => 485,
-        'height' => 390,
+        'width' => 490,
+        'height' => 395,
         'quality' => 90,
-        'thumb_width' => 250,
-        'thumb_height' => 200
+        'thumb_width' => 230,
+        'thumb_height' => 190
       ]);
       $dataRequest['recently_img'] = $img;
 

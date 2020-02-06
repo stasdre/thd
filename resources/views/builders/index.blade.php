@@ -44,12 +44,16 @@
       <p>Featured Builder - Wasson Home Builders, CO</p>
     </div> --}}
     <div class="lattesa_text">
-      <p style="margin-bottom :0;" class="info-title">{{$item->recently_title}}</p>
-      <div class="wason_home_build">{{$item->name}}</div>
-      <div class="denver_colrado">{{$item->city}}, {{$item->state}}</div>
+      <p style="margin-bottom :0;" class="info-title">{{$item->title}}</p>
+      <div class="wason_home_build">{{$item->recently_title}}</div>
+      <div class="denver_colrado">{{$item->recently_city}}, {{$item->recently_state}}</div>
+      @if ($item->phtoto_link)
       <div class="view_all_photo"><a target="_blank" href="{{$item->phtoto_link}}" class="blue-text">View All Photos <i
             class="fas fa fa-chevron-right"></i></a></div>
-      <div class="orange_btn"><a target="_blank" href="{{$item->link}}">Contact</a></div>
+      @endif
+      @if ($item->recently_contact_link)
+      <div class="orange_btn"><a target="_blank" href="{{$item->recently_contact_link}}">Contact</a></div>
+      @endif
     </div>
   </div>
   @endforeach
@@ -62,11 +66,18 @@
     @foreach ($builders as $item)
     <div class="col-3">
       <div class="embed-responsive embed-responsive-4by3 percent-82">
-        <img class="embed-responsive-item" src="{{asset('/storage/builders/'.$item->img)}}">
+        @if ($item->view_photo_link)
+        <a href="{{$item->view_photo_link}}"><img class="embed-responsive-item"
+            src="{{asset('/storage/builders/thumb/'.$item->img)}}"></a>
+        @else
+        <img class="embed-responsive-item" src="{{asset('/storage/builders/thumb/'.$item->img)}}">
+        @endif
       </div>
       <div class="wason_home">{{$item->name}}</div>
       <div class="denver_colardo">{{$item->city}}, {{$item->state}}</div>
+      @if ($item->link)
       <div><a href="{{$item->link}}" class="contact_link">CONTACT</a></div>
+      @endif
     </div>
     @endforeach
   </div>
