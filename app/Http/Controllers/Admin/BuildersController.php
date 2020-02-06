@@ -216,12 +216,22 @@ class BuildersController extends Controller
    */
   public function anyData()
   {
-    $builders = Builder::select(['name', 'city', 'state', 'zip', 'created_at', 'updated_at', 'id']);
+    $builders = Builder::select(['name', 'city', 'state', 'zip', 'show_landing', 'recently_built', 'created_at', 'updated_at', 'id']);
     return Datatables::of($builders)
       ->addColumn('actions', function ($builder) {
         return '<a class="btn btn-info btn-sm" href="' . route('builders.edit', $builder->id) . '" role="button">Edit</a> <form style="display: inline-block" action="' . route('builders.destroy', $builder->id) . '" method="POST"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="' . csrf_token() . '"><button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
       })
-      ->rawColumns(['actions'])
+      ->editColumn('show_landing', function ($builders) {
+        if ($builders->show_landing == 1)
+          return '<i style="color: green;" class="fa fa-check" aria-hidden="true"></i>';
+        return '';
+      })
+      ->editColumn('recently_built', function ($builders) {
+        if ($builders->show_landing == 1)
+          return '<i style="color: green;" class="fa fa-check" aria-hidden="true"></i>';
+        return '';
+      })
+      ->rawColumns(['show_landing', 'recently_built', 'actions'])
       ->make(true);
   }
 }
