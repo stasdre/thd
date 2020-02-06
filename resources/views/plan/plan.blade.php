@@ -245,11 +245,14 @@
           <!--<p class="small m-0">The PDF Plan Package offers Immediate delivery of your House Plans!</p>-->
         </div>
         <div class="bg-secondary px-2 py-2 mb-1">
-          <h5 class="text-primary">What's Included with Your Plans</h5>
+          <h5 class="text-primary"><a href="/blog/whats-included-in-a-stock-house-plan-set" target="_blank">What's
+              Included with Your Plans</a></h5>
           <!--<p class="small m-0">The PDF Plan Package offers Immediate delivery of your House Plans!</p>-->
         </div>
         <div class="bg-secondary px-2 py-2">
-          <h5 class="text-primary">Important Info Before You Buy</h5>
+          <h5 class="text-primary"><a href="/important-information-to-know-before-buying-house-plans"
+              target="_blank">Important
+              Info Before You Buy</a></h5>
           <!--<p class="small m-0">The PDF Plan Package offers Immediate delivery of your House Plans!</p>-->
         </div>
       </div>
@@ -424,7 +427,7 @@
           <div class="text-center text-uppercase lead font-weight-normal align-middle py-2" style="font-size: 19px;"> <a
               href="{{ route('contact-us') }}" class="align-middle text-primary">Live Chat</a> | <a
               href="{{ route('contact-us') }}" class="align-middle text-primary">Email</a> | <a href="tel:832-521-5820"
-              class="align-middle text-secondary">832-521-5820</a> </div>
+              class="align-middle text-primary">832-521-5820</a> </div>
         </div>
         <!--  Floor Plan /images Slider -->
 
@@ -468,11 +471,14 @@
             <!--<p class="small m-0">The PDF Plan Package offers Immediate delivery of your House Plans!</p>-->
           </div>
           <div class="bg-secondary px-2 py-2 mb-1">
-            <h5 class="text-primary text-center buy-plan">What's Included with Your Plans</h5>
+            <h5 class="text-primary text-center buy-plan"><a href="/blog/whats-included-in-a-stock-house-plan-set"
+                target="_blank">What's Included with Your Plans</a></h5>
             <!--<p class="small m-0">The PDF Plan Package offers Immediate delivery of your House Plans!</p>-->
           </div>
           <div class="bg-secondary px-2 py-2">
-            <h5 class="text-primary text-center buy-plan">Important Info Before You Buy</h5>
+            <h5 class="text-primary text-center buy-plan"><a
+                href="/important-information-to-know-before-buying-house-plans" target="_blank">Important Info Before
+                You Buy</a></h5>
             <!--<p class="small m-0">The PDF Plan Package offers Immediate delivery of your House Plans!</p>-->
           </div>
         </div>
@@ -771,8 +777,7 @@
           <div class="col-md-3 text-xs-center"><a href="#searchform_outer"
               class="btn btn-primary text-uppercase rounded-0">PURCHASE PLANS</a></div>
           <div class="col-md-6 text-center">
-            <a download="first-floor-Plan.png" target="_blank"
-              href="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" title="{{ $image->alt_text }}">
+            <a target="_blank" href="/blog/whats-included-in-a-stock-house-plan-set" title="{{ $image->alt_text }}">
               <h6 class="font-weight-bold mb-0" style="line-height: 40px;color:#000">Download Sample Construction Plans
               </h6>
             </a>
@@ -805,8 +810,7 @@
           <div class="col-md-3 text-xs-center"><a href="#searchform_outer"
               class="btn btn-primary text-uppercase rounded-0">PURCHASE PLANS</a></div>
           <div class="col-md-6 text-center">
-            <a download="first-floor-Plan.png" target="_blank"
-              href="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" title="{{ $image->alt_text }}">
+            <a target="_blank" href="/blog/whats-included-in-a-stock-house-plan-set/" title="{{ $image->alt_text }}">
               <h6 class="font-weight-bold mb-0" style="line-height: 40px;color:#000">Download Sample Construction Plans
               </h6>
             </a>
@@ -839,8 +843,7 @@
           <div class="col-md-3 text-xs-center"><a href="#searchform_outer"
               class="btn btn-primary text-uppercase rounded-0">PURCHASE PLANS</a></div>
           <div class="col-md-6 text-center">
-            <a download="first-floor-Plan.png" target="_blank"
-              href="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" title="{{ $image->alt_text }}">
+            <a target="_blank" href="/blog/whats-included-in-a-stock-house-plan-set/" title="{{ $image->alt_text }}">
               <h6 class="font-weight-bold mb-0" style="line-height: 40px;color:#000">Download Sample Construction Plans
               </h6>
             </a>
@@ -873,8 +876,7 @@
           <div class="col-md-3 text-xs-center"><a href="#searchform_outer"
               class="btn btn-primary text-uppercase rounded-0">PURCHASE PLANS</a></div>
           <div class="col-md-6 text-center">
-            <a download="first-floor-Plan.png" target="_blank"
-              href="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" title="{{ $image->alt_text }}">
+            <a target="_blank" href="/blog/whats-included-in-a-stock-house-plan-set/" title="{{ $image->alt_text }}">
               <h6 class="font-weight-bold mb-0" style="line-height: 40px;color:#000">Download Sample Construction Plans
               </h6>
             </a>
@@ -907,8 +909,7 @@
           <div class="col-md-3 text-xs-center"><a href="#searchform_outer"
               class="btn btn-primary text-uppercase rounded-0">PURCHASE PLANS</a></div>
           <div class="col-md-6 text-center">
-            <a download="first-floor-Plan.png" target="_blank"
-              href="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}" title="{{ $image->alt_text }}">
+            <a target="_blank" href="/blog/whats-included-in-a-stock-house-plan-set/" title="{{ $image->alt_text }}">
               <h6 class="font-weight-bold mb-0" style="line-height: 40px;color:#000">Download Sample Construction Plans
               </h6>
             </a>
