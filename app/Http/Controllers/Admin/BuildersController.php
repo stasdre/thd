@@ -227,7 +227,7 @@ class BuildersController extends Controller
         return '';
       })
       ->editColumn('recently_built', function ($builders) {
-        if ($builders->show_landing == 1)
+        if ($builders->recently_built == 1)
           return '<i style="color: green;" class="fa fa-check" aria-hidden="true"></i>';
         return '';
       })
