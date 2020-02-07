@@ -22,10 +22,10 @@
   <div class="row mobile-off" style="margin-bottom: 40px;">
     <div class="col-sm-12 center">
       <div>
-        <a href="http://104.236.20.15:8080/plan/all"
+        <a href="https://houseplansbydavidwiggins.com/plan/all"
           class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" style="margin-right:25px;">
           Quick Plan Search</a>
-        <a href="http://104.236.20.15:8080/advanced-search"
+        <a href="https://houseplansbydavidwiggins.com/advanced-search"
           class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" style="padding : 10px 34px;">
           Advanced Plan Search</a>
       </div>
@@ -34,12 +34,12 @@
   <div class="row desktop-off" style="margin-bottom: 20px;">
     <div class="row">
       <div class="col-6 col-sm-6 center">
-        <a href="http://104.236.20.15:8080/plan/all"
+        <a href="https://houseplansbydavidwiggins.com/plan/all"
           class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding">
           Quick<br> Plan Search</a>
       </div>
       <div class="col-6 col-sm-6 center">
-        <a href="http://104.236.20.15:8080/advanced-search"
+        <a href="https://houseplansbydavidwiggins.com/advanced-search"
           class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding"> Advanced <br>Plan
           Search</a>
       </div>
