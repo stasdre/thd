@@ -1,6 +1,5 @@
-version: '2'
+version: "2"
 services:
-
   # The Application
   app:
     build:
@@ -27,7 +26,7 @@ services:
 
   # The Database
   database:
-    image: mysql:5.7.21
+    image: mariadb:10.3.22
     volumes:
       - dbdata:/var/lib/mysql
     environment:
@@ -36,19 +35,19 @@ services:
       - "MYSQL_PASSWORD=secret"
       - "MYSQL_ROOT_PASSWORD=secret"
     ports:
-        - "33061:3306"
+      - "33061:3306"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     links:
-      - 'database:mysql'
+      - "database:mariadb"
     environment:
       PMA_HOST: database
       PMA_PORT: 3306
       PMA_USER: homestead
       PMA_PASSWORD: secret
     ports:
-        - '8181:80'
+      - "8181:80"
 
 volumes:
   dbdata:

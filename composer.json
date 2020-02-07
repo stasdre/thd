@@ -20,6 +20,7 @@
         "pragmarx/countries": "^0.5.8",
         "unisharp/laravel-filemanager": "~1.8",
         "yajra/laravel-datatables-oracle": "^8.3",
+        "ybr-nx/laravel-mariadb": "^1.0",
         "zizaco/entrust": "dev-master"
     },
     "require-dev": {
