@@ -715,6 +715,12 @@
 import VueRouter from "vue-router";
 import axios from "axios";
 
+function normalizeDataPost(param) {
+  if (!param) return "";
+  if (Array.isArray(param)) return param.join();
+  return param;
+}
+
 const router = new VueRouter({
   mode: "history"
 });
@@ -761,21 +767,17 @@ export default {
       width_max: this.$route.query.width_max ? this.$route.query.width_max : "",
       depth_min: this.$route.query.depth_min ? this.$route.query.depth_min : "",
       depth_max: this.$route.query.depth_max ? this.$route.query.depth_max : "",
-      bf: this.$route.query["bf[]"] ? this.$route.query["bf[]"].join() : "",
-      kf: this.$route.query["kf[]"] ? this.$route.query["kf[]"].join() : "",
-      rf: this.$route.query["rf[]"] ? this.$route.query["rf[]"].join() : "",
-      gf: this.$route.query["gf[]"] ? this.$route.query["gf[]"].join() : "",
-      ef: this.$route.query["ef[]"] ? this.$route.query["ef[]"].join() : "",
+      bf: normalizeDataPost(this.$route.query["bf[]"]),
+      kf: normalizeDataPost(this.$route.query["kf[]"]),
+      rf: normalizeDataPost(this.$route.query["rf[]"]),
+      gf: normalizeDataPost(this.$route.query["gf[]"]),
+      ef: normalizeDataPost(this.$route.query["ef[]"]),
       styles: this.styleId
         ? this.styleId
-        : this.$route.query["styles[]"]
-        ? this.$route.query["styles[]"].join()
-        : "",
+        : normalizeDataPost(this.$route.query["styles[]"]),
       collections: this.collectionId
         ? this.collectionId
-        : this.$route.query["collections[]"]
-        ? this.$route.query["collections[]"].join()
-        : "",
+        : normalizeDataPost(this.$route.query["collections[]"]),
       style_or_collection: this.$route.query.style_or_collection
         ? this.$route.query.style_or_collection
         : ""
