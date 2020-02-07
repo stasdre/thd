@@ -25,7 +25,7 @@ function uploadFile($file, $options)
   $pathThumb = storage_path('app/public/' . $options['dir'] . '/thumb/' . $filename);
 
   $imgThumb = Image::make($image->getRealPath());
-  $img->fit($options['thumb_width'], $options['thumb_height']);
+  $imgThumb->fit($options['thumb_width'], $options['thumb_height']);
   $imgThumb->save($pathThumb);
 
   if (!file_exists(storage_path('app/public/' . $options['dir'] . '/original/'))) {
