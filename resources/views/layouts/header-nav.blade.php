@@ -35,7 +35,7 @@
     <div class="col-md-7 col-sm-6 text-center z-index-xs width-sm-100">
       <ul class="list-inline text-center mb-4 toplinks  d-none d-lg-block">
         <li class="list-inline-item"><a href="{{ route('contact-us') }}">Email</a></li>
-        <li class="list-inline-item"><a href="{{ route('contact-us') }}">Chat</a></li>
+        <li class="list-inline-item"><a href="{{ route('contact-us') }}">Contact</a></li>
         <li class="list-inline-item"><a href="tel:832-521-5820">832-521-5820</a></li>
       </ul>
 
@@ -44,7 +44,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="mb-0 p-0 width_100">
             <li class="list-inline-item dropdown d-lg-none"><a href="{{ route('contact-us') }}">Email</a></li>
-            <li class="list-inline-item dropdown d-lg-none"><a href="{{ route('contact-us') }}">Live Chat</a></li>
+            <li class="list-inline-item dropdown d-lg-none"><a href="{{ route('contact-us') }}">Contact</a></li>
             <li class="list-inline-item dropdown d-lg-none"><a href="tel:832-521-5820">Phone</a></li>
             <li class="list-inline-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button"
                 aria-haspopup="true" aria-expanded="false" href="#link"><img
