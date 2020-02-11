@@ -155,8 +155,9 @@
             <div class="row">
               <div class="col-12 red-text form-group">
                 <div class="form-check">
-                  <input name="confirm" class="form-check-input" type="checkbox"> I agree to the <a href="/terms-of-use"
-                    target="_blank" style="color:red;text-decoration: underline;font-weight:bold;"> Terms and
+                  <input name="confirm" class="form-check-input" type="checkbox"> I agree to the <a
+                    href="/purchase-terms-and-conditions" target="_blank"
+                    style="color:red;text-decoration: underline;font-weight:bold;"> Terms and
                     Conditions</a>
                   <div class="invalid-feedback"></div>
                 </div>
