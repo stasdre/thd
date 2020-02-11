@@ -23,6 +23,16 @@
               placeholder="max" size=5 class="center" name="sq_max"></td>
         </tr>
         <tr>
+          <Th>Width</Th>
+          <td> <input type="text" placeholder="min" size=5 class="center" name="width_min"> to <input type="text"
+              placeholder="max" size=5 class="center" name="width_max"></td>
+        </tr>
+        <tr>
+          <Th>Depth</Th>
+          <td> <input type="text" placeholder="min" size=5 class="center" name="depth_min"> to <input type="text"
+              placeholder="max" size=5 class="center" name="depth_max"></td>
+        </tr>
+        <tr>
           <Th>Beds</Th>
           <td>
             <div><span class="min_icon  beds-remove"> <i class="fa fa-minus"> </i></span> <input type="text" name="beds"
@@ -54,7 +64,6 @@
               <span class="max_icon  stories_add"><i class="fa fa-plus"></i></span></div>
           </td>
         </tr>
-
         <tr>
           <td colspan="2">
             <div class="">
@@ -440,17 +449,6 @@
         <td align="center"> <input type="number" placeholder="min" size=5 class="center" name="sq_min"> to <input
             type="number" placeholder="max" size=5 class="center" name="sq_max"></td>
       </tr>
-      <tr>
-        <Th>Width</Th>
-        <td align="center"> <input type="number" placeholder="min" size=5 class="center" name="width_min"> to <input
-            type="number" placeholder="max" size=5 class="center" name="width_max"></td>
-      </tr>
-      <tr>
-        <Th>Depth</Th>
-        <td align="center"> <input type="number" placeholder="min" size=5 class="center" name="depth_min"> to <input
-            type="number" placeholder="max" size=5 class="center" name="depth_max"></td>
-      </tr>
-
       <tr>
         <Th>Beds</Th>
         <td align="center">
