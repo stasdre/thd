@@ -16,11 +16,21 @@
 
 
           <ul class="list-inline">
-            <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="fab fa-houzz" aria-hidden="true"></i></a></li>
+            <li class="list-inline-item"><a target="_blank"
+                href="https://www.facebook.com/Houseplansbydavidwiggins-103151967932347/?tn-str=k*F"><i
+                  class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+            <li class="list-inline-item"><a target="_blank"
+                href="https://www.pinterest.com/houseplansbydavidwiggins/"><i class="fab fa-pinterest-p"
+                  aria-hidden="true"></i></a></li>
+            <li class="list-inline-item"><a target="_blank"
+                href="https://www.instagram.com/houseplansbydavidwiggins/"><i class="fab fa-instagram"
+                  aria-hidden="true"></i></a></li>
+            <li class="list-inline-item"><a target="_blank"
+                href="https://www.youtube.com/channel/UCI-yz_XyxPUxciDxVQPkaow"><i class="fab fa-youtube"
+                  aria-hidden="true"></i></a></li>
+            <li class="list-inline-item"><a target="_blank"
+                href="https://www.houzz.com/pro/houseplansbydavidwiggins/house-plans-by-david-wiggins"><i
+                  class="fab fa-houzz" aria-hidden="true"></i></a></li>
           </ul>
       </div>
       <div class="col-md-12">
