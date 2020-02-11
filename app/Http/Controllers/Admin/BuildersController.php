@@ -167,6 +167,9 @@ class BuildersController extends Controller
       Storage::delete('public/builders/original/' . $builder->recently_img);
     }
 
+    $dataRequest['show_landing'] = !isset($dataRequest['show_landing']) ? 0 : 1;
+    $dataRequest['recently_built'] = !isset($dataRequest['recently_built']) ? 0 : 1;
+
     $builder->update($dataRequest);
 
     return redirect()->route('builders.index')
