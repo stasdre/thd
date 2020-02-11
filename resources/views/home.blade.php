@@ -497,8 +497,8 @@
 </div>
 <div style="clear : both;"></div>
 <div class="text-center text-uppercase lead font-weight-normal align-middle py-2 only_under_767 contact-method mf18"> <a
-    href="{{ route('contact-us') }}" class="align-middle text-primary">Live Chat</a> | <a
-    href="{{ route('contact-us') }}" class="align-middle text-primary">Email</a> |
+    href="{{ route('contact-us') }}" class="align-middle text-primary">Contact</a> | <a href="{{ route('contact-us') }}"
+    class="align-middle text-primary">Email</a> |
   <a href="tel:832-521-5820" class="align-middle text-primary">832-521-5820</a> </div>
 
 <div class="plan-list my-1">

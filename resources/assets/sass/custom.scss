@@ -265,7 +265,7 @@ a.carousel-inner {
 }
 
 .home-mobile-search table th {
-  padding: 10px 5px !important;
+  padding: 25px 5px !important;
 }
 
 .home-mobile-search table input.center {
@@ -354,10 +354,23 @@ a.carousel-inner {
 }
 
 .home-mobile-search input.center {
-  width: 65px;
-  height: 35px;
+  width: 75px;
+  height: 40px;
+  font-size: 18px;
 }
 
 .home-mobile-search .sidebar-heading {
   margin-bottom: 15px;
+}
+
+.home-mobile-search .min_icon .fa-minus::before {
+  font-size: 20px;
+}
+
+.home-mobile-search .max_icon .fa-plus::before {
+  font-size: 20px;
+}
+
+.home-mobile-search input.qty {
+  font-size: 20px;
 }

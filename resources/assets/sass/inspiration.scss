@@ -3648,10 +3648,11 @@ h5.read_more {
 }
 .home-page-search input {
   line-height: 22px;
-  width: 45px;
+  width: 55px;
   padding: 0;
   margin: 0 2px;
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: bold;
 }
 .home-page-search h4 {
   font-size: 20px;
@@ -4014,6 +4015,8 @@ input.qty {
   /*  width: 10px; */
   width: 21px;
   margin-left: 12px;
+  font-size: 16px;
+  font-weight: bold;
 }
 .max_icon,
 .min_icon {
