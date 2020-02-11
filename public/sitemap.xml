@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<sitemap>
+		<loc>http://0.0.0.0:8080/sitemap-collections.xml</loc>
+		</sitemap>
+	<sitemap>
+		<loc>http://0.0.0.0:8080/sitemap-styles.xml</loc>
+		</sitemap>
+	<sitemap>
+		<loc>http://0.0.0.0:8080/sitemap-plans.xml</loc>
+		</sitemap>
+	<sitemap>
+		<loc>http://0.0.0.0:8080/sitemap-inspirations.xml</loc>
+		</sitemap>
+	<sitemap>
+		<loc>http://0.0.0.0:8080/sitemap-builders.xml</loc>
+		</sitemap>
+	<sitemap>
+		<loc>http://0.0.0.0:8080/sitemap-pages.xml</loc>
+		</sitemap>
+</sitemapindex>

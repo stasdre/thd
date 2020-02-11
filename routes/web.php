@@ -192,6 +192,71 @@ Route::prefix('admin-dwhp')->group(function () {
 
     Route::get('builder-landing-blocks/edit', 'Admin\BuildersLandingBlocks@index')->name('builder-landing-blocks.edit');
     Route::post('builder-landing-blocks/update', 'Admin\BuildersLandingBlocks@update')->name('builder-landing-blocks.update');
+
+    Route::get('sitemap', function () {
+
+      $aspsData = DB::table('asps')->orderBy('id', 'asc')->get();
+      // create new sitemap collections
+      $sitemap_collections = App::make("sitemap");
+      $collections = DB::table('collections')->where('is_active', 1)->orderBy('created_at', 'desc')->get();
+      $sitemap_collections->add(route('collections'), $aspsData[0]->updated_at, '1.0', 'weekly');
+      foreach ($collections as $item) {
+        $sitemap_collections->add(route('collection.slug', $item->slug), $item->updated_at, '1.0', 'weekly');
+      }
+      $sitemap_collections->store('xml', 'sitemap-collections');
+
+      // create new sitemap styles
+      $sitemap_styles = App::make("sitemap");
+      $styles = DB::table('styles')->where('is_active', 1)->orderBy('created_at', 'desc')->get();
+      $sitemap_styles->add(route('styles'), $aspsData[1]->updated_at, '1.0', 'weekly');
+      foreach ($styles as $item) {
+        $sitemap_styles->add(route('style.slug', $item->slug), $item->updated_at, '1.0', 'weekly');
+      }
+      $sitemap_styles->store('xml', 'sitemap-styles');
+
+      // create new sitemap plans
+      $sitemap_plans = App::make("sitemap");
+      $plans = DB::table('plans')->where('is_active', 1)->orderBy('created_at', 'desc')->get();
+      foreach ($plans as $plan) {
+        $sitemap_plans->add(route('plan.view', $plan->plan_number), $plan->updated_at, '1.0', 'weekly');
+      }
+      $sitemap_plans->store('xml', 'sitemap-plans');
+
+      // create new sitemap inspiration
+      $sitemap_insp = App::make("sitemap");
+      $inspData = DB::table('inspirations')->orderBy('created_at', 'desc')->get();
+      $inspHome = DB::table('inspiration-blocks')->first();
+      $sitemap_insp->add(route('inspiration'), $inspHome->updated_at, '1.0', 'weekly');
+      foreach ($inspData as $item) {
+        $sitemap_insp->add(route('inspiration.page', $item->link), $item->updated_at, '1.0', 'weekly');
+      }
+      $sitemap_insp->store('xml', 'sitemap-inspirations');
+
+      // create new sitemap builders
+      $sitemap_builders = App::make("sitemap");
+      $buildersHome = DB::table('builder_landing_blocks')->first();
+      $sitemap_builders->add(route('builders-home.index'), $buildersHome->updated_at, '1.0', 'weekly');
+      $sitemap_builders->add(route('builders.search'), $buildersHome->updated_at, '1.0', 'weekly');
+      $sitemap_builders->store('xml', 'sitemap-builders');
+
+      // create new sitemap pages
+      $sitemap_pages = App::make("sitemap");
+      $pagesData = DB::table('pages')->orderBy('created_at', 'desc')->get();
+      foreach ($pagesData as $item) {
+        $sitemap_pages->add(route('pages', $item->link), $item->updated_at, '1.0', 'weekly');
+      }
+      $sitemap_pages->store('xml', 'sitemap-pages');
+
+      // create sitemap index
+      $sitemap = App::make("sitemap");
+      $sitemap->addSitemap(URL::to('sitemap-collections.xml'));
+      $sitemap->addSitemap(URL::to('sitemap-styles.xml'));
+      $sitemap->addSitemap(URL::to('sitemap-plans.xml'));
+      $sitemap->addSitemap(URL::to('sitemap-inspirations.xml'));
+      $sitemap->addSitemap(URL::to('sitemap-builders.xml'));
+      $sitemap->addSitemap(URL::to('sitemap-pages.xml'));
+      $sitemap->store('sitemapindex', 'sitemap');
+    });
   });
 });
 
@@ -237,4 +302,4 @@ Route::get('/builders-search', 'BuildersController@search')->name('builders.sear
 
 Route::get('/{page}', function (Thd\Page $page) {
   return view('page', ['page' => $page]);
-})->where('page', '[a-zA-Z0-9_-]+');
+})->where('page', '[a-zA-Z0-9_-]+')->name('pages');

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+	<url>
+	<loc>http://0.0.0.0:8080/important-information-to-know-before-buying-house-plans</loc>
+		<priority>1.0</priority>
+		<lastmod>2020-01-30T12:53:55+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+	<loc>http://0.0.0.0:8080/faq</loc>
+		<priority>1.0</priority>
+		<lastmod>2020-01-20T02:20:01+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+	<loc>http://0.0.0.0:8080/returns-and-exchanges</loc>
+		<priority>1.0</priority>
+		<lastmod>2020-01-20T01:56:48+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+	<loc>http://0.0.0.0:8080/copyright-information</loc>
+		<priority>1.0</priority>
+		<lastmod>2019-12-06T03:04:11+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+	<loc>http://0.0.0.0:8080/terms-of-use</loc>
+		<priority>1.0</priority>
+		<lastmod>2019-12-06T03:02:10+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+	<loc>http://0.0.0.0:8080/privacy-policy</loc>
+		<priority>1.0</priority>
+		<lastmod>2019-12-06T02:58:41+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+</urlset>
+

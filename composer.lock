@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bc6366b5076cb01b557780697901a834",
-    "content-hash": "5c22b60c2f5f03ae24d59dccbf9ca81c",
+    "hash": "761c12fb58757231e0f1c99634b5a45e",
+    "content-hash": "2cc5cf0bd65c9fc0385b874a26913559",
     "packages": [
         {
             "name": "colinodell/json5",
@@ -1458,6 +1458,67 @@
             "description": "HTML and Form Builders for the Laravel Framework",
             "homepage": "https://laravelcollective.com",
             "time": "2018-03-24 00:39:21"
+        },
+        {
+            "name": "laravelium/sitemap",
+            "version": "v2.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/Laravelium/Sitemap.git",
+                "reference": "fe11a834fbd495e81c1b36b0bfa0fa1954bc4db1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/Laravelium%2FSitemap/repository/archive.zip?sha=fe11a834fbd495e81c1b36b0bfa0fa1954bc4db1",
+                "reference": "fe11a834fbd495e81c1b36b0bfa0fa1954bc4db1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.5.*",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.5.*",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravelium\\Sitemap\\SitemapServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Laravelium\\Sitemap": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roumen Damianoff",
+                    "email": "roumen@damianoff.com",
+                    "homepage": "https://damianoff.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravelium Sitemap package for Laravel.",
+            "homepage": "https://laravelium.com",
+            "keywords": [
+                "Sitemap",
+                "generator",
+                "google-news",
+                "html",
+                "laravel",
+                "laravelium",
+                "php",
+                "xml"
+            ],
+            "time": "2018-09-04 12:36:37"
         },
         {
             "name": "league/flysystem",
