@@ -196,6 +196,20 @@ Route::prefix('admin-dwhp')->group(function () {
     Route::get('sitemap', function () {
 
       $aspsData = DB::table('asps')->orderBy('id', 'asc')->get();
+
+      // create new sitemap general
+      $sitemap_general = App::make("sitemap");
+
+      $dataHome = DB::table('about_david')->first();
+      $sitemap_general->add(route('home'), $dataHome->updated_at, '1.0', 'weekly');
+
+      $dataAbout = DB::table('special_pages')->where('id', 1)->first();
+      $sitemap_general->add(route('about-us'), $dataAbout->updated_at, '1.0', 'weekly');
+
+      $sitemap_general->add(route('contact-us'), '2020-02-11 00:00:00', '1.0', 'monthly');
+      $sitemap_general->add(route('advanced-search'), '2020-02-11 00:00:00', '1.0', 'weekly');
+      $sitemap_general->store('xml', 'sitemap-general');
+
       // create new sitemap collections
       $sitemap_collections = App::make("sitemap");
       $collections = DB::table('collections')->where('is_active', 1)->orderBy('created_at', 'desc')->get();
@@ -217,6 +231,7 @@ Route::prefix('admin-dwhp')->group(function () {
       // create new sitemap plans
       $sitemap_plans = App::make("sitemap");
       $plans = DB::table('plans')->where('is_active', 1)->orderBy('created_at', 'desc')->get();
+      $sitemap_plans->add(route('plan.all'), '2020-02-11 00:00:00', '1.0', 'weekly');
       foreach ($plans as $plan) {
         $sitemap_plans->add(route('plan.view', $plan->plan_number), $plan->updated_at, '1.0', 'weekly');
       }
@@ -249,6 +264,7 @@ Route::prefix('admin-dwhp')->group(function () {
 
       // create sitemap index
       $sitemap = App::make("sitemap");
+      $sitemap->addSitemap(URL::to('sitemap-general.xml'));
       $sitemap->addSitemap(URL::to('sitemap-collections.xml'));
       $sitemap->addSitemap(URL::to('sitemap-styles.xml'));
       $sitemap->addSitemap(URL::to('sitemap-plans.xml'));

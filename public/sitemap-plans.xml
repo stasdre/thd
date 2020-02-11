@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 	<url>
+	<loc>http://0.0.0.0:8080/plan/all</loc>
+		<priority>1.0</priority>
+		<lastmod>2020-02-11T00:00:00+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
 	<loc>http://0.0.0.0:8080/plan/1917</loc>
 		<priority>1.0</priority>
 		<lastmod>2020-02-07T10:36:35+00:00</lastmod>
@@ -303,13 +309,13 @@
 	<url>
 	<loc>http://0.0.0.0:8080/plan/1486</loc>
 		<priority>1.0</priority>
-		<lastmod>2020-02-06T05:23:53+00:00</lastmod>
+		<lastmod>2020-02-11T11:01:21+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 	</url>
 	<url>
 	<loc>http://0.0.0.0:8080/plan/2091</loc>
 		<priority>1.0</priority>
-		<lastmod>2020-02-07T16:27:49+00:00</lastmod>
+		<lastmod>2020-02-11T11:23:20+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 	</url>
 	<url>
