@@ -152,36 +152,39 @@
               </ul>
             </div>
           </div>
-          <div class="position-relative">
-            <div id="plan{{$plan->plan_number}}" class="carousel slide" data-ride="carousel" data-interval="5000">
-              <div class="carousel-inner">
-                @foreach ($plan->images as $img)
-                <div class="carousel-item @if($loop->iteration == 1) active @endif">
-                  <img src="/storage/plans/{{$plan->id}}/thumb/{{$img->file_name}}" alt="{{$plan->name}}"
-                    class="img-fluid d-block w-100">
-                  @if($img->camera_icon)
-                  <a href="#" class="position-absolute icon-camera"><img src="{{asset('images/icons/icon-camera.png')}}"
-                      alt=""></a>
-                  @endif
+          <a href="{{route('plan.view', $plan->plan_number)}}">
+            <div class="position-relative">
+              <div id="plan{{$plan->plan_number}}" class="carousel slide" data-ride="carousel" data-interval="5000">
+                <div class="carousel-inner">
+                  @foreach ($plan->images as $img)
+                  <div class="carousel-item @if($loop->iteration == 1) active @endif">
+                    <img src="/storage/plans/{{$plan->id}}/thumb/{{$img->file_name}}" alt="{{$plan->name}}"
+                      class="img-fluid d-block w-100">
+                    @if($img->camera_icon)
+                    <a href="#" class="position-absolute icon-camera"><img
+                        src="{{asset('images/icons/icon-camera.png')}}" alt=""></a>
+                    @endif
 
+                  </div>
+                  @endforeach
                 </div>
-                @endforeach
+                <a class="carousel-control-prev" href="#plan{{$plan->plan_number}}" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span> </a> <a class="carousel-control-next"
+                  href="#plan{{$plan->plan_number}}" role="button" data-slide="next"> <span
+                    class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
               </div>
-              <a class="carousel-control-prev" href="#plan{{$plan->plan_number}}" role="button" data-slide="prev"> <span
-                  class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span> </a> <a class="carousel-control-next"
-                href="#plan{{$plan->plan_number}}" role="button" data-slide="next"> <span
-                  class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
-            </div>
-            <div class="media planinfo text-left position-absolute placeholder-black"> <img
-                class="mr-1 align-self-center" src="/images/icons/logo-placeholder.png" alt="Generic placeholder image">
-              <div class="media-body">
-                <h5 class="mb-0 text-white">plan <span class="text-secondary">{{$plan->plan_number}}</span></h5>
-                <h5 class="m-0 text-white">houseplans<span class="text-secondary">bydavidwiggins.com</span></h5>
+              <div class="media planinfo text-left position-absolute placeholder-black"> <img
+                  class="mr-1 align-self-center" src="/images/icons/logo-placeholder.png"
+                  alt="Generic placeholder image">
+                <div class="media-body">
+                  <h5 class="mb-0 text-white">plan <span class="text-secondary">{{$plan->plan_number}}</span></h5>
+                  <h5 class="m-0 text-white">houseplans<span class="text-secondary">bydavidwiggins.com</span></h5>
+                </div>
               </div>
+              <a href="#" class="position-absolute pinterest"><img src="/images/icons/icon-pinterest.png" alt=""></a>
             </div>
-            <a href="#" class="position-absolute pinterest"><img src="/images/icons/icon-pinterest.png" alt=""></a>
-          </div>
+          </a>
           <div class="row no-gutters plan-info">
             <div class="col bg-light"> bed<strong class="d-block">{{$plan->rooms['r_bedrooms']}}</strong>
             </div>
