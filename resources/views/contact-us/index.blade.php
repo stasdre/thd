@@ -8,9 +8,9 @@
       <div class="center blue-text font-weight-bold font-10">Questions about our house plans and services? <br>
         Simply fill out the form below and we’ll get back to you quickly.</div>
       <hr class="underline">
-      <h5 class="save-paln-red-heading center"> Frequently Asked Questions</h5>
-      <div class="center mt-2 mt-20 font-weight-bold font-10"><a href=""
-          style="color :black;text-decoration:underline;">Read these commonly asked house plan questions</a></div>
+      <h5 class="save-paln-red-heading center"> <a style="color:inherit" href="/faq">Frequently Asked Questions</a></h5>
+      {{-- <div class="center mt-2 mt-20 font-weight-bold font-10"><a href=""
+          style="color :black;text-decoration:underline;">Read these commonly asked house plan questions</a></div> --}}
       <div class="tab-content mt-20  contact-form" id="myTabContent">
         <div class="tab-pane fade show active" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
           {!! Form::model($user, ['route' => 'contact-us.send', 'class' => 'form-horizontal', 'method' => 'post']) !!}

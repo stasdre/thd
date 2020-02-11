@@ -135,12 +135,14 @@
         {!! Form::close() !!}
       </div>
       <div class="col-lg-4 col-sm-12">
-        <h5 class="font-weight-bold mt-3">{{$plan->name}} | plan {{$plan->plan_number}}</h5>
+        <h5 class="font-weight-bold mt-3">{{$plan->name}} | plan
+          {{$plan->plan_number}}</h5>
         <div class="plan-list mt-0">
           <div class="row align-items-center py-2 px-1">
             <div class="col-8">
               <p class="plan-name font-weight-bold mb-0">{{$plan->square_ft['str_total']}} sq ft | <span
-                  class="text-white">plan {{$plan->plan_number}}</span></p>
+                  class="text-white"><a style="color:inherit" href="{{route('plan.view', $plan->plan_number)}}">plan
+                    {{$plan->plan_number}}</a></span></p>
             </div>
             <div class="col-4">
               <ul class="list-inline mb-0 text-right">
