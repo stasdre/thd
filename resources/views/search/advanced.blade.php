@@ -30,8 +30,17 @@
 <div style="display : none;" id="read_less" class="read_less"><span class="read-less-link-wrapper">Read Less </span>
 </div>
 
-<div class="center mb-3 desktop-off"> <button class="btn btn-primary rounded-0 font-weight-semi-bold grey-button"
-    type="button" style="width : 90%;">Search by plan # <i class="fa fa-search" style="color:white"></i></button>
+<div class="center mb-3 desktop-off">
+  {{-- <button class="btn btn-primary rounded-0 font-weight-semi-bold grey-button"
+    type="button" style="width : 90%;">Search by plan # <i class="fa fa-search" style="color:white"></i></button> --}}
+  <form style="width:91.5%;" class="input-group input-group-sm mb-1 plan_name_search" method="GET" action="{{ route('search') }}">
+    <input type="text" name="txt" class="form-control rounded-0 border-secondary" placeholder="Search by plan #">
+    <div class="input-group-append">
+      <button class="btn btn-primary rounded-0 text-uppercase text-dark font-weight-semi-bold" style="margin: 0 !important; color: #fff !important;"
+        type="submit">GO</button>
+    </div>
+  </form>
+
 </div>
 
 <div class="row">
