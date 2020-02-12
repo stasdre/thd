@@ -40,7 +40,7 @@ class HomeController extends Controller
       $favorMob = MobileFavorite::all();
       $newMob = MobileNew::all();
       $bestMob = MobileBest::find(1);
-      $gallery = MobileGallery::all();
+      $gallery = MobileGallery::orderBy('order', 'asc')->get();
     } else {
       $deskMob = null;
       $favorMob = null;
