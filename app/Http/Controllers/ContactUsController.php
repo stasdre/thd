@@ -101,7 +101,7 @@ class ContactUsController extends Controller
         ->with('message', [
           'type' => 'success',
           'title' => 'Success!',
-          'message' => 'Your message was send',
+          'message' => 'Your message was sent',
           'autoHide' => 1
         ]);
     }
