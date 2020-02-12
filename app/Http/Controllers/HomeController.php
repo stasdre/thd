@@ -46,7 +46,7 @@ class HomeController extends Controller
       $favorMob = null;
       $newMob = null;
       $bestMob = null;
-      $gallery = Gallery::all();
+      $gallery = Gallery::orderBy('order', 'asc')->get();
     }
     //dd($aboutData);
     return view('home', [
