@@ -9,7 +9,7 @@
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
           <form action="{{ route('checkout.store') }}" id="shippingForm" method="POST">
-            <h4 class="font-weight-bold mt-2 mt-20">Shipping Address</h4>
+            <h4 class="font-weight-bold mt-2 mt-20">Billing Address</h4>
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
@@ -71,8 +71,8 @@
             </div>
             <div class="custom-control custom-checkbox text-uppercase">
               <input type="checkbox" class="custom-control-input" id="customCheck1">
-              <label class="custom-control-label font-weight-bold" for="customCheck1" style="color:#224195">Use this as
-                Billing Address</label>
+              <label class="custom-control-label font-weight-bold" for="customCheck1" style="color:#224195">USE AS
+                SHIPPING ADDRESS IF ORDERING PRINTED PLANS</label>
             </div>
 
             <h4 class="font-weight-bold mt-20">Building/Site Address <span class="desktop-off text-danger if-known"> (if
@@ -262,23 +262,24 @@
                                     $("#customCheck1").on('click', function(){
                                         if($(this).prop('checked')){
                                             submitForm.elements["bil_street"].value = submitForm.elements["street"].value;
-                                            submitForm.elements["bil_street"].disabled = true;
+                                            //submitForm.elements["bil_street"].disabled = true;
 
                                             submitForm.elements["bil_city"].value = submitForm.elements["city"].value;
-                                            submitForm.elements["bil_city"].disabled = true;
+                                            // submitForm.elements["bil_city"].disabled = true;
 
                                             submitForm.elements["bil_state"].value = submitForm.elements["state"].value;
-                                            submitForm.elements["bil_state"].disabled = true;
+                                            // submitForm.elements["bil_state"].disabled = true;
 
                                             submitForm.elements["bil_zip"].value = submitForm.elements["zip"].value;
-                                            submitForm.elements["bil_zip"].disabled = true;
+                                            // submitForm.elements["bil_zip"].disabled = true;
 
-                                        }else{
-                                            submitForm.elements["bil_street"].disabled = false;
-                                            submitForm.elements["bil_city"].disabled = false;
-                                            submitForm.elements["bil_state"].disabled = false;
-                                            submitForm.elements["bil_zip"].disabled = false;
                                         }
+                                        // else{
+                                        //     submitForm.elements["bil_street"].disabled = false;
+                                        //     submitForm.elements["bil_city"].disabled = false;
+                                        //     submitForm.elements["bil_state"].disabled = false;
+                                        //     submitForm.elements["bil_zip"].disabled = false;
+                                        // }
                                     })
                                 })
               </script>
