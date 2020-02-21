@@ -294,7 +294,7 @@
         </div>
       </div>
     </div>
-    <div class="tab-pane fade" id="customerReviews" role="tabpanel">
+    {{-- <div class="tab-pane fade" id="customerReviews" role="tabpanel">
       <div class="col-lg-9 cust_reviews">
         <p>“ Quickly + Instantly calculate the cost-to-build this home. This report will estimate the costs based
           on your building location, materials and labor. You can select the construction quality levels to
@@ -307,7 +307,7 @@
         <span class="fa fa-star checked"></span>
       </div>
 
-    </div>
+    </div> --}}
   </div>
 
 
@@ -329,8 +329,8 @@
           href="#costBuild" role="tab">Cost to <span class="d-sm-block d-md-inline">Build</span></a> </li>
       <li class="nav-item border-left-xs desktop-off"> <a class="nav-link rounded-0" id="costbuild1" data-toggle="tab"
           href="#costBuild1" role="tab">Cost to Build</span></a> </li>
-      <li class="nav-item xs-hide-portrait"> <a class="nav-link rounded-0" id="customerreviews" data-toggle="tab"
-          href="#Reviews" role="tab">Customer Reviews</a> </li>
+      {{-- <li class="nav-item xs-hide-portrait"> <a class="nav-link rounded-0" id="customerreviews" data-toggle="tab"
+          href="#Reviews" role="tab">Customer Reviews</a> </li> --}}
     </ul>
     <div class="only_under_767 desktop-off">
       <!-- Mobile Content  	-->
@@ -725,7 +725,7 @@
           </div>
         </div>
       </div>
-      <div class="tab-pane fade" id="Reviews" role="tabpanel">
+      {{-- <div class="tab-pane fade" id="Reviews" role="tabpanel">
         <div class="col-lg-9 cust_reviews">
           <p>“ Quickly + Instantly calculate the cost-to-build this home. This report will estimate the costs based
             on your building location, materials and labor. You can select the construction quality levels to
@@ -738,7 +738,7 @@
           <span class="fa fa-star checked"></span>
         </div>
 
-      </div>
+      </div> --}}
     </div>
   </div>
   <ul class="nav nav-pills nav-justified text-uppercase mt-2 xs-hide-portrait" id="floorPlan" role="tablist">
