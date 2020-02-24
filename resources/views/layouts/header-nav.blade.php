@@ -55,7 +55,8 @@
                 <li><a href="{{ route('collections') }}">Specialty Collections</a></li>
               </ul>
             </li>
-            {{-- <li class="list-inline-item"><a href="#link">Reviews</a></li> --}}
+            <li class="list-inline-item"><a href="/blog/customers-share-their-home-building-experience/">Reviews</a>
+            </li>
             <li class="list-inline-item"><a class="dropdown-toggle" data-toggle="dropdown" role="button"
                 aria-haspopup="true" aria-expanded="false" href="#link">Builders</a>
               <ul class="dropdown-menu">
