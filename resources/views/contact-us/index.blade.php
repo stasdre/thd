@@ -113,11 +113,13 @@
         </div>
         <div class="row mobile-off">
           <div class="col-sm-6 text-right">
-            <button class="btn btn-primary rounded-0 mb-3 px-4"
-              style="padding-left : 39px !important;padding-right : 39px !important;">Quick Plan Search</button>
+            <a href="{{ route('advanced-search') }}" class="btn btn-primary rounded-0 mb-3 px-4"
+              style="padding-left : 39px !important;padding-right : 39px !important;">
+              Quick Plan Search</a>
           </div>
           <div class="col-sm-6">
-            <button class="btn btn-primary rounded-0 mb-3 px-4">Advanced Plan Search</button>
+            <a href="{{ route('advanced-search') }}" class="btn btn-primary rounded-0 mb-3 px-4">
+              Advanced Plan Search</a>
           </div>
         </div>
         <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">

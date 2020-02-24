@@ -23,8 +23,9 @@
 </div>
 <div class="row mobile-off">
   <div class="col-sm-12 center">
-    <div><button class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" type="button">
-        Quick Plan Search</button>
+    <div><a href="{{ route('advanced-search') }}"
+        class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" style="margin-right:25px;">
+        Quick Plan Search</a>
       <a href="{{ route('advanced-search') }}"
         class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding" style="padding : 10px 34px;">
         Advanced Plan Search</a>
