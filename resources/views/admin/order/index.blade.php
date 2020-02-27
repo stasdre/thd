@@ -4,12 +4,12 @@
 
 @section('content')
 <div class="box box-default">
-        <div class="box-header">
-        
-        </div>
-        <div class="box-body">
-            <table class="table table-bordered table-striped" id="orders-table">
-                <thead>
+    <div class="box-header">
+
+    </div>
+    <div class="box-body">
+        <table class="table table-bordered table-striped" id="orders-table">
+            <thead>
                 <tr>
                     <th>Order ID</th>
                     <th>PayPal ID</th>
@@ -18,10 +18,10 @@
                     <th>Created At</th>
                     <th>Actions</th>
                 </tr>
-                </thead>
-            </table>
-        </div>
+            </thead>
+        </table>
     </div>
+</div>
 @endsection
 
 @push('datatables')
@@ -34,6 +34,7 @@
             autoWidth: false,
             processing: true,
             serverSide: true,
+            order: [ 4, 'desc' ],
             ajax: '{!! route('order.data') !!}',
             columns: [
                 { data: 'id', name: 'id', className: "dt-center" },
