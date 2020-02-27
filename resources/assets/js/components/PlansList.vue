@@ -1,3 +1,180 @@
+<script>
+import VueRouter from "vue-router";
+import axios from "axios";
+import { number_format } from "../helpers.js";
+
+function normalizeDataPost(param) {
+  if (!param) return "";
+  if (Array.isArray(param)) return param.join();
+  return param;
+}
+
+const router = new VueRouter({
+  mode: "history"
+});
+
+export default {
+  router,
+  props: [
+    "style-id",
+    "collection-id",
+    "noFilter",
+    "colums",
+    "view",
+    "bestSelling",
+    "promo-block",
+    "saved-user"
+  ],
+  data: function() {
+    return {
+      isLoading: false,
+      plans: [],
+      selectedPlan: Object,
+      last_page: 1,
+      total: 0,
+      current_page: 1,
+      views: this.view ? this.view : 24,
+      order: "popular",
+      showFilter: this.noFilter === true ? false : true,
+      cols:
+        this.colums === 2
+          ? "col-md-6"
+          : this.colums === 1
+          ? "col-sm-12"
+          : "col-sm-4",
+      bestSellingPlans: this.bestSelling === true ? 1 : "",
+      showPromo: this.promoBlock === true ? true : false,
+      txt: this.$route.query.txt ? this.$route.query.txt : "",
+      sq_min: this.$route.query.sq_min ? this.$route.query.sq_min : "",
+      sq_max: this.$route.query.sq_max ? this.$route.query.sq_max : "",
+      beds: this.$route.query.beds ? this.$route.query.beds : "",
+      baths: this.$route.query.baths ? this.$route.query.baths : "",
+      garages: this.$route.query.garages ? this.$route.query.garages : "",
+      stories: this.$route.query.stories ? this.$route.query.stories : "",
+      width_min: this.$route.query.width_min ? this.$route.query.width_min : "",
+      width_max: this.$route.query.width_max ? this.$route.query.width_max : "",
+      depth_min: this.$route.query.depth_min ? this.$route.query.depth_min : "",
+      depth_max: this.$route.query.depth_max ? this.$route.query.depth_max : "",
+      bf: normalizeDataPost(this.$route.query["bf[]"]),
+      kf: normalizeDataPost(this.$route.query["kf[]"]),
+      rf: normalizeDataPost(this.$route.query["rf[]"]),
+      gf: normalizeDataPost(this.$route.query["gf[]"]),
+      ef: normalizeDataPost(this.$route.query["ef[]"]),
+      styles: this.styleId
+        ? this.styleId
+        : normalizeDataPost(this.$route.query["styles[]"]),
+      collections: this.collectionId
+        ? this.collectionId
+        : normalizeDataPost(this.$route.query["collections[]"]),
+      style_or_collection: this.$route.query.style_or_collection
+        ? this.$route.query.style_or_collection
+        : ""
+    };
+  },
+  methods: {
+    next() {
+      if (this.current_page < this.last_page) {
+        this.current_page++;
+        this.search();
+      }
+    },
+    prev() {
+      if (this.current_page > 1) {
+        this.current_page--;
+        this.search();
+      }
+    },
+    goToPage() {
+      if (this.current_page <= this.last_page && this.current_page >= 1) {
+        this.search();
+      }
+    },
+    search() {
+      this.isLoading = true;
+      axios
+        .get("/search/result", {
+          params: {
+            page: this.current_page,
+            views: this.views,
+            order: this.order,
+            txt: this.txt ? this.txt : "",
+            sq_min: this.sq_min,
+            sq_max: this.sq_max,
+            beds: this.beds,
+            baths: this.baths,
+            garages: this.garages,
+            stories: this.stories,
+            width_min: this.width_min,
+            width_max: this.width_max,
+            depth_min: this.depth_min,
+            depth_max: this.depth_max,
+            bf: this.bf,
+            kf: this.kf,
+            rf: this.rf,
+            gf: this.gf,
+            ef: this.ef,
+            styles: this.styles,
+            collections: this.collections,
+            style_or_collection: this.style_or_collection,
+            b_s_p: this.bestSellingPlans,
+            saved_user: this.savedUser
+          }
+        })
+        .then(response => {
+          this.plans = response.data.data;
+          this.last_page = response.data.last_page;
+          this.total = response.data.total;
+          this.current_page = response.data.current_page;
+        })
+        .then(() => {
+          this.isLoading = false;
+        });
+    },
+    savePlan(plan, index) {
+      axios
+        .post(`/save-plan/${plan.id}`)
+        .then(response => {
+          if (response.data.status == "add") {
+            this.$set(this.plans[index], "saved_plans", "saved");
+          } else if (response.data.status == "del") {
+            this.$set(this.plans[index], "saved_plans", []);
+            if (this.savedUser) {
+              this.plans = this.plans.filter(item => {
+                return plan.id !== item.id;
+              });
+              this.total -= 1;
+            }
+          }
+        })
+        .catch(error => {
+          if (error.response.status === 401) {
+            window.location.href = "/register";
+          }
+        });
+    },
+    quickView(plan, index) {
+      this.selectedPlan = plan;
+      this.selectedPlan.index = index;
+      $("#quickView").modal("show");
+    },
+    numberFormat(num) {
+      return number_format(num);
+    }
+  },
+  watch: {
+    views: function() {
+      this.search();
+    },
+    order: function() {
+      this.search();
+    }
+  },
+  created: function() {
+    this.search();
+  }
+};
+</script>
+
 <template>
   <div :class="{ loading: isLoading }">
     <i class="loading-icon fas fa-sync-alt fa-6x fa-spin"></i>
@@ -169,7 +346,7 @@
           <div class="row align-items-center py-2 px-1">
             <div class="col-8">
               <p class="plan-name font-weight-bold mb-0">
-                {{ plan.square_ft ? plan.square_ft.str_total : "" }} sq ft |
+                {{ plan.square_ft ? numberFormat(plan.square_ft.str_total) : "" }} sq ft |
                 <span
                   class="text-white"
                 >plan {{ plan.plan_number }}</span>
@@ -545,7 +722,7 @@
                   <div class="row align-items-center py-2 px-1">
                     <div class="col-8">
                       <p class="plan-name font-weight-bold mb-0">
-                        {{ selectedPlan.square_ft ? selectedPlan.square_ft.str_total : "" }} sq ft |
+                        {{ selectedPlan.square_ft ? numberFormat(selectedPlan.square_ft.str_total) : "" }} sq ft |
                         <span
                           class="text-white"
                         >plan {{selectedPlan.plan_number}}</span>
@@ -710,176 +887,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import VueRouter from "vue-router";
-import axios from "axios";
-
-function normalizeDataPost(param) {
-  if (!param) return "";
-  if (Array.isArray(param)) return param.join();
-  return param;
-}
-
-const router = new VueRouter({
-  mode: "history"
-});
-
-export default {
-  router,
-  props: [
-    "style-id",
-    "collection-id",
-    "noFilter",
-    "colums",
-    "view",
-    "bestSelling",
-    "promo-block",
-    "saved-user"
-  ],
-  data: function() {
-    return {
-      isLoading: false,
-      plans: [],
-      selectedPlan: Object,
-      last_page: 1,
-      total: 0,
-      current_page: 1,
-      views: this.view ? this.view : 24,
-      order: "popular",
-      showFilter: this.noFilter === true ? false : true,
-      cols:
-        this.colums === 2
-          ? "col-md-6"
-          : this.colums === 1
-          ? "col-sm-12"
-          : "col-sm-4",
-      bestSellingPlans: this.bestSelling === true ? 1 : "",
-      showPromo: this.promoBlock === true ? true : false,
-      txt: this.$route.query.txt ? this.$route.query.txt : "",
-      sq_min: this.$route.query.sq_min ? this.$route.query.sq_min : "",
-      sq_max: this.$route.query.sq_max ? this.$route.query.sq_max : "",
-      beds: this.$route.query.beds ? this.$route.query.beds : "",
-      baths: this.$route.query.baths ? this.$route.query.baths : "",
-      garages: this.$route.query.garages ? this.$route.query.garages : "",
-      stories: this.$route.query.stories ? this.$route.query.stories : "",
-      width_min: this.$route.query.width_min ? this.$route.query.width_min : "",
-      width_max: this.$route.query.width_max ? this.$route.query.width_max : "",
-      depth_min: this.$route.query.depth_min ? this.$route.query.depth_min : "",
-      depth_max: this.$route.query.depth_max ? this.$route.query.depth_max : "",
-      bf: normalizeDataPost(this.$route.query["bf[]"]),
-      kf: normalizeDataPost(this.$route.query["kf[]"]),
-      rf: normalizeDataPost(this.$route.query["rf[]"]),
-      gf: normalizeDataPost(this.$route.query["gf[]"]),
-      ef: normalizeDataPost(this.$route.query["ef[]"]),
-      styles: this.styleId
-        ? this.styleId
-        : normalizeDataPost(this.$route.query["styles[]"]),
-      collections: this.collectionId
-        ? this.collectionId
-        : normalizeDataPost(this.$route.query["collections[]"]),
-      style_or_collection: this.$route.query.style_or_collection
-        ? this.$route.query.style_or_collection
-        : ""
-    };
-  },
-  methods: {
-    next() {
-      if (this.current_page < this.last_page) {
-        this.current_page++;
-        this.search();
-      }
-    },
-    prev() {
-      if (this.current_page > 1) {
-        this.current_page--;
-        this.search();
-      }
-    },
-    goToPage() {
-      if (this.current_page <= this.last_page && this.current_page >= 1) {
-        this.search();
-      }
-    },
-    search() {
-      this.isLoading = true;
-      axios
-        .get("/search/result", {
-          params: {
-            page: this.current_page,
-            views: this.views,
-            order: this.order,
-            txt: this.txt ? this.txt : "",
-            sq_min: this.sq_min,
-            sq_max: this.sq_max,
-            beds: this.beds,
-            baths: this.baths,
-            garages: this.garages,
-            stories: this.stories,
-            width_min: this.width_min,
-            width_max: this.width_max,
-            depth_min: this.depth_min,
-            depth_max: this.depth_max,
-            bf: this.bf,
-            kf: this.kf,
-            rf: this.rf,
-            gf: this.gf,
-            ef: this.ef,
-            styles: this.styles,
-            collections: this.collections,
-            style_or_collection: this.style_or_collection,
-            b_s_p: this.bestSellingPlans,
-            saved_user: this.savedUser
-          }
-        })
-        .then(response => {
-          this.plans = response.data.data;
-          this.last_page = response.data.last_page;
-          this.total = response.data.total;
-          this.current_page = response.data.current_page;
-        })
-        .then(() => {
-          this.isLoading = false;
-        });
-    },
-    savePlan(plan, index) {
-      axios
-        .post(`/save-plan/${plan.id}`)
-        .then(response => {
-          if (response.data.status == "add") {
-            this.$set(this.plans[index], "saved_plans", "saved");
-          } else if (response.data.status == "del") {
-            this.$set(this.plans[index], "saved_plans", []);
-            if (this.savedUser) {
-              this.plans = this.plans.filter(item => {
-                return plan.id !== item.id;
-              });
-              this.total -= 1;
-            }
-          }
-        })
-        .catch(error => {
-          if (error.response.status === 401) {
-            window.location.href = "/register";
-          }
-        });
-    },
-    quickView(plan, index) {
-      this.selectedPlan = plan;
-      this.selectedPlan.index = index;
-      $("#quickView").modal("show");
-    }
-  },
-  watch: {
-    views: function() {
-      this.search();
-    },
-    order: function() {
-      this.search();
-    }
-  },
-  created: function() {
-    this.search();
-  }
-};
-</script>
