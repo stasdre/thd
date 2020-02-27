@@ -78,19 +78,24 @@ class CheckoutController extends Controller
         $validator = Validator::make($request->all(), [
             'firstName' => 'required',
             'lastName' => 'required',
-            'street' => 'nullable',
-            'city' => 'nullable',
-            'state' => 'nullable|exists:states_us,abbr',
-            'zip' => 'nullable|numeric',
+            'street' => 'required',
+            'city' => 'required',
+            'state' => 'required|exists:states_us,abbr',
+            'zip' => 'required|numeric',
             'email' => 'required|email',
             'phone' => 'required|alpha_dash',
             'confirm' => 'required|accepted',
+            'shipping_address' => 'nullable',
+            'bil_street' => 'nullable|required_if:shipping_address,1',
+            'bil_city' => 'nullable|required_if:shipping_address,1',
+            'bil_state' => 'nullable|required_if:shipping_address,1|exists:states_us,abbr',
+            'bil_zip' => 'nullable|required_if:shipping_address,1|numeric',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->messages()], 200);
         } else {
-            $reqData = $request->except(['confirm']);
+            $reqData = $request->except(['confirm', 'shipping_address']);
 
             $dataPlans = [];
             foreach (Cart::content() as $cart) {
