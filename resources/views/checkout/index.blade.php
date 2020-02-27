@@ -239,6 +239,17 @@
                                         // Set up the transaction
                                         return actions.order.create({
                                             intent: 'CAPTURE',
+                                            payer: {
+                                                name:{
+                                                    given_name: submitForm.elements["firstName"].value, 
+                                                    surname: submitForm.elements["lastName"].value, 
+                                                },
+                                                email_address: submitForm.elements["email"].value,
+                                                // address_portable: {
+                                                //     address_line_1: submitForm.elements["street"].value,
+                                                //     postal_code: submitForm.elements["zip"].value,
+                                                // }
+                                            },
                                             purchase_units: [{
                                             amount: {
                                                 currency_code: "USD",
