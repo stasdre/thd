@@ -179,7 +179,9 @@
                         </div>
                         <div class="mobile-center">
                             <i id="checkout-loading" style="display:none" class="fas fa-sync-alt fa-spin fa-2x"></i>
-                            <script src="https://www.paypal.com/sdk/js?client-id={{env('PAYPAL_API_KEY')}}"></script>
+                            <script
+                                src="https://www.paypal.com/sdk/js?client-id={{env('PAYPAL_API_KEY')}}&disable-funding=credit">
+                            </script>
                             <div id="paypal-button-container"></div>
                             <script>
                                 function toJSONString( form ) {
