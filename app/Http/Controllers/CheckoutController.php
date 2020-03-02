@@ -161,7 +161,7 @@ class CheckoutController extends Controller
 
             Cart::destroy();
 
-            Mail::to($dataCheckout->email)->send(new MailCheckout($dataCheckout));
+            Mail::to($dataCheckout->email)->cc(config('mail.to_admin_email'))->send(new MailCheckout($dataCheckout));
 
             return view('checkout.done', ['data' => $dataCheckout]);
         } else {

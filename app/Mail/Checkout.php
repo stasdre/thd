@@ -29,6 +29,6 @@ class Checkout extends Mailable
      */
     public function build()
     {
-        return $this->cc("admin@houseplansbydavidwiggins.com")->subject("HouseplansByDavidWiggins Order Confirmation")->view('mail.checkout');
+        return $this->subject("HouseplansByDavidWiggins Order Confirmation")->view('mail.checkout');
     }
 }
