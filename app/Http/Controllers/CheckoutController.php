@@ -11,6 +11,8 @@ use Thd\Shipping;
 use Thd\Promo;
 use Validator;
 use PragmaRX\Countries\Package\Countries;
+use Illuminate\Support\Facades\Mail;
+use Thd\Mail\Checkout as MailCheckout;
 
 class CheckoutController extends Controller
 {
@@ -153,7 +155,13 @@ class CheckoutController extends Controller
 
             $dataCheckout = $checkout->firstOrFail();
 
+            $dataShip = json_decode($dataCheckout->shipping);
+            $shipMethod = Shipping::find($dataShip->method);
+            $dataCheckout['ship_via'] = $shipMethod->name;
+
             Cart::destroy();
+
+            Mail::to($dataCheckout->email)->send(new MailCheckout($dataCheckout));
 
             return view('checkout.done', ['data' => $dataCheckout]);
         } else {

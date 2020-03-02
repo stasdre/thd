@@ -1,0 +1,55 @@
+<mjml>
+  <mj-body>
+    <mj-section padding-bottom="0">
+       <mj-column>
+	      <mj-text font-size="14px">Hello {{ $dataForm['firstName'] }},</mj-text>
+        <mj-text font-weight="bold" font-size="14px">Thank you for your order!</mj-text>
+        <mj-text font-size="14px" line-height="20px">We're so happy you chose HousePlansByDavidWiggins.com to purchase your house plans to build your dream home.</mj-text>
+         <mj-text font-size="14px" line-height="20px">Please be sure to review the contents of your order to ensure everything is correct. If you have any questions or concerns about your house plans, please contact us <a href="https://houseplansbydavidwiggins.com/contact-us">in writing</a> within 14 days of the date of your purchase and we'd be happy to help!</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding-top="0" padding-bottom="0">
+	    <mj-column>
+        <mj-text font-size="14px"><b>Order Number</b>: {{ $dataForm['id'] }}</mj-text>
+      </mj-column>
+      <mj-column>
+        <mj-text font-size="14px"><b>Order Date</b>: {{ date("m/d/Y", strtotime($dataForm['created_at'])) }}</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+    	<mj-column>
+        <mj-divider padding="0" border-width="1px"></mj-divider>
+      </mj-column>
+    </mj-section>
+    <mj-section padding-top="0" padding-bottom="10px">
+    	<mj-column>
+        <mj-text font-size="14px"><b>Bill To:</b></mj-text>
+        <mj-text font-size="14px" line-height="17px">
+          {{ $dataForm['firstName'] }} {{ $dataForm['lastName'] }}<br />
+        	{{ $dataForm['street'] }}<br />
+          {{ $dataForm['city'] }}, {{ $dataForm['state'] }} {{ $dataForm['zip'] }}<br/>
+          Phone: {{ $dataForm['phone'] }}
+        </mj-text>
+        <mj-text font-size="14px">Email: {{ $dataForm['email'] }}</mj-text>
+      </mj-column>
+      <mj-column>
+        <mj-text font-size="14px"><b>Ship To:</b></mj-text>
+        <mj-text font-size="14px" line-height="17px">
+          {{ $dataForm['firstName'] }} {{ $dataForm['lastName'] }}<br />
+        	{{ $dataForm['bil_street'] ? $dataForm['bil_street'] : $dataForm['street'] }}<br />
+          {{ $dataForm['bil_city'] ? $dataForm['bil_city'] : $dataForm['city'] }}, {{ $dataForm['bil_state'] ? $dataForm['bil_state'] : $dataForm['state'] }} {{ $dataForm['bil_zip'] ? $dataForm['bil_zip'] : $dataForm['zip'] }}<br/>
+          Phone: {{ $dataForm['phone'] }}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding-top="0">
+    	<mj-column>
+      	<mj-text font-size="14px"><b>Ship Via:</b> {{ $dataForm['ship_via'] }}</mj-text>
+      </mj-column>
+      <mj-column>
+      	<mj-text font-size="14px"><b>Payment Type:</b> PayPal</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section></mj-section>
+  </mj-body>
+</mjml>

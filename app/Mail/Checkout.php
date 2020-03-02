@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ContactUs extends Mailable
+class Checkout extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,7 +29,6 @@ class ContactUs extends Mailable
      */
     public function build()
     {
-        return $this->from($this->dataForm['email'], $this->dataForm['first_name'] . ' ' . $this->dataForm['lastt_name'])
-            ->view('emails.contact-us');
+        return $this->cc("admin@houseplansbydavidwiggins.com")->subject("HouseplansByDavidWiggins Order Confirmation")->view('mail.checkout');
     }
 }
