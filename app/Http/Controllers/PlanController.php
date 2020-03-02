@@ -176,6 +176,8 @@ class PlanController extends Controller
                 $dataForm['file'] = $request->file('files');
             }
 
+            $dataForm['plan_number'] = $plan_number;
+
             Mail::to(config('mail.to_admin_email'))->send(new ModifyPlan($dataForm));
 
             return redirect()->route('modify-plan', $plan_number)->with('message', [
