@@ -1,0 +1,60 @@
+<mjml>
+  <mj-body>
+    <mj-section padding="0">
+      <mj-column>
+        <mj-text font-size="14px"><b>First Name:</b> {{ $dataForm['first_name'] }}</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0">
+      <mj-column>
+        <mj-text font-size="14px"><b>Last Name:</b> {{ $dataForm['last_name'] }}</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0">
+      <mj-column>
+        <mj-text font-size="14px"><b>Email:</b> {{ $dataForm['email'] }}</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0">
+      <mj-column>
+        <mj-text font-size="14px"><b>Phone:</b> {{ $dataForm['phone'] }}</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0">
+      <mj-column>
+        <mj-text font-size="14px"><b>State you are building in:</b> {{ $dataForm['state'] }}</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0">
+      <mj-column>
+        <mj-text font-size="14px"><b>When you are planning to build?:</b> {{ $dataForm['when'] }} months</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0">
+      <mj-column>
+        <mj-text font-size="14px"><b>If you know, select foundation type:</b> {{ $dataForm['foundation'] }}</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0">
+      <mj-column>
+        <mj-text font-size="14px"><b>Do you have a builder?:</b> {{ $dataForm['builder'] }}</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0">
+      <mj-column>
+        <mj-text font-size="14px"><b>Do you have land?:</b> {{ $dataForm['land'] }}</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0">
+      <mj-column>
+        <mj-text font-size="14px"><b>Framing Preference:</b> {{ $dataForm['framing'] }}</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0">
+      <mj-column>
+        <mj-text font-size="14px"><b>Message:</b></mj-text>
+        <mj-text font-size="14px">{{ $dataForm['message'] }}</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
