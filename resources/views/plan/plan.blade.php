@@ -55,10 +55,6 @@
                 <ul class="list-unstyled single-plan-actions text-center">
                     <li><a href="#" class="text-secondary"><img src="{{asset('images/icons/icon-heart.png')}}" alt=""
                                 class="img-fluid"></a></li>
-                    <li><a href="javascript:window.print()" class="text-secondary"><img
-                                src="{{asset('images/icons/icon-print.png')}}" alt="" class="img-fluid"></a></li>
-                    <li><a href="#" class="text-secondary"><img src="{{asset('images/icons/icon-share.png')}}" alt=""
-                                class="img-fluid"></a></li>
                 </ul>
             </div>
         </div>
@@ -79,13 +75,13 @@
             </div>
         </div>
         <div class="position-absolute social-share xs-hide-portrait">
-            <ul class="list-unstyled m-0 text-center">
+            {{-- <ul class="list-unstyled m-0 text-center">
                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                 <li><a href="#"><i class="fab fa-youtube"></i></a></li>
                 <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                 <li><a href="#"><i class="fab fa-houzz"></i></a></li>
                 <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-            </ul>
+            </ul> --}}
         </div>
     </div>
     <div class="px-4 position-relative padding-botton_0_xs mt-4 mb-4 trim-margin-mobile">
@@ -1098,8 +1094,13 @@
 @endif
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script>
-    var app = new Vue({
+<!—- ShareThis BEGIN -—>
+    <script async
+        src="https://platform-api.sharethis.com/js/sharethis.js#property=5e5146450825e00012817450&product=sticky-share-buttons">
+    </script>
+    <!—- ShareThis END -—>
+        <script>
+            var app = new Vue({
       el: '#searchform_outer',
       data: {
         viewOptions: false,
@@ -1275,5 +1276,5 @@
         }
       }
     })    
-</script>
-@endpush
+        </script>
+        @endpush
