@@ -186,12 +186,10 @@ class CheckoutController extends Controller
                 $dataPlans[] = $plan->first();
             }
             $dataCheckout['data_plans'] = $dataPlans;
-            //dd($dataCheckout['data_plans']);
 
-            //Cart::destroy();
+            Cart::destroy();
 
-            //Mail::to($dataCheckout->email)->cc(config('mail.to_admin_email'))->send(new MailCheckout($dataCheckout));
-            Mail::to(config('mail.to_admin_email'))->send(new MailCheckout($dataCheckout));
+            Mail::to($dataCheckout->email)->cc(config('mail.to_admin_email'))->send(new MailCheckout($dataCheckout));
 
             return view('checkout.done', ['data' => $dataCheckout]);
         } else {
