@@ -1,15 +1,15 @@
 <mjml>
   <mj-body>
     <mj-section padding-bottom="0">
-       <mj-column>
-	      <mj-text font-size="14px">Hello {{ $dataForm['firstName'] }},</mj-text>
+      <mj-column>
+        <mj-text font-size="14px">Hello {{ $dataForm['firstName'] }},</mj-text>
         <mj-text font-weight="bold" font-size="14px">Thank you for your order!</mj-text>
         <mj-text font-size="14px" line-height="20px">We're so happy you chose HousePlansByDavidWiggins.com to purchase your house plans to build your dream home.</mj-text>
-         <mj-text font-size="14px" line-height="20px">Please be sure to review the contents of your order to ensure everything is correct. If you have any questions or concerns about your house plans, please contact us <a href="https://houseplansbydavidwiggins.com/contact-us">in writing</a> within 14 days of the date of your purchase and we'd be happy to help!</mj-text>
+        <mj-text font-size="14px" line-height="20px">Please be sure to review the contents of your order to ensure everything is correct. If you have any questions or concerns about your house plans, please contact us <a href="https://houseplansbydavidwiggins.com/contact-us">in writing</a> within 14 days of the date of your purchase and we'd be happy to help!</mj-text>
       </mj-column>
     </mj-section>
     <mj-section padding-top="0" padding-bottom="0">
-	    <mj-column>
+      <mj-column>
         <mj-text font-size="14px"><b>Order Number</b>: {{ $dataForm['id'] }}</mj-text>
       </mj-column>
       <mj-column>
@@ -17,17 +17,17 @@
       </mj-column>
     </mj-section>
     <mj-section>
-    	<mj-column>
+      <mj-column>
         <mj-divider padding="0" border-width="1px"></mj-divider>
       </mj-column>
     </mj-section>
     <mj-section padding-top="0" padding-bottom="10px">
-    	<mj-column>
+      <mj-column>
         <mj-text font-size="14px"><b>Bill To:</b></mj-text>
         <mj-text font-size="14px" line-height="17px">
           {{ $dataForm['firstName'] }} {{ $dataForm['lastName'] }}<br />
-        	{{ $dataForm['street'] }}<br />
-          {{ $dataForm['city'] }}, {{ $dataForm['state'] }} {{ $dataForm['zip'] }}<br/>
+          {{ $dataForm['street'] }}<br />
+          {{ $dataForm['city'] }}, {{ $dataForm['state'] }} {{ $dataForm['zip'] }}<br />
           Phone: {{ $dataForm['phone'] }}
         </mj-text>
         <mj-text font-size="14px">Email: {{ $dataForm['email'] }}</mj-text>
@@ -36,20 +36,71 @@
         <mj-text font-size="14px"><b>Ship To:</b></mj-text>
         <mj-text font-size="14px" line-height="17px">
           {{ $dataForm['firstName'] }} {{ $dataForm['lastName'] }}<br />
-        	{{ $dataForm['bil_street'] ? $dataForm['bil_street'] : $dataForm['street'] }}<br />
-          {{ $dataForm['bil_city'] ? $dataForm['bil_city'] : $dataForm['city'] }}, {{ $dataForm['bil_state'] ? $dataForm['bil_state'] : $dataForm['state'] }} {{ $dataForm['bil_zip'] ? $dataForm['bil_zip'] : $dataForm['zip'] }}<br/>
+          {{ $dataForm['bil_street'] ? $dataForm['bil_street'] : $dataForm['street'] }}<br />
+          {{ $dataForm['bil_city'] ? $dataForm['bil_city'] : $dataForm['city'] }}, {{ $dataForm['bil_state'] ? $dataForm['bil_state'] : $dataForm['state'] }} {{ $dataForm['bil_zip'] ? $dataForm['bil_zip'] : $dataForm['zip'] }}<br />
           Phone: {{ $dataForm['phone'] }}
         </mj-text>
       </mj-column>
     </mj-section>
     <mj-section padding-top="0">
-    	<mj-column>
-      	<mj-text font-size="14px"><b>Ship Via:</b> {{ $dataForm['ship_via'] }}</mj-text>
+      <mj-column>
+        <mj-text font-size="14px"><b>Ship Via:</b> {{ $dataForm['ship_via'] }}</mj-text>
       </mj-column>
       <mj-column>
-      	<mj-text font-size="14px"><b>Payment Type:</b> PayPal</mj-text>
+        <mj-text font-size="14px"><b>Payment Type:</b> PayPal</mj-text>
       </mj-column>
     </mj-section>
-    <mj-section></mj-section>
+    <mj-section padding-top="0">
+      <mj-column>
+        <mj-text font-size="14px"><b>Purchase Detail:</b></mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw>
+      @foreach($dataForm['data_plans'] as $item)
+    </mj-raw>
+    <mj-section padding-top="0" padding-bottom="0">
+      <mj-column>
+        <mj-text align="center">
+          <h2>HOUSE PLAN {{$item->plan_number}}</h2>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0">
+      <mj-column padding="0" padding-right="20px" width="30%" vertical-align="bottom">
+        <mj-image align="left" padding="0" width="200px" src="https://houseplansbydavidwiggins.com/storage/plans/{{$item->id}}/thumb/{{$item->images[0]->file_name}}" />
+      </mj-column>
+      <mj-column padding="0" width="70%" vertical-align="middle">
+        <mj-table padding="0">
+          <tr style="border-bottom:1px solid #000;">
+            <td align="left" style="font-size:16px; color:#224195; padding: 10px 10px 10px 0;">{{$item->packages[0]->name}}</td>
+            <td align="right" style="font-size:16px; padding: 10px 0 10px 10px;"><b>${{number_format($item->packages[0]->pivot->price, 2, '.', ',')}}</b></td>
+          </tr>
+          <tr @isset($item->addons) style="border-bottom:1px solid #000;" @endisset>
+            <td align="left" style="font-size:16px; color:#224195; padding: 10px 10px 10px 0;">{{$item->foundationOptions[0]->name}}</td>
+            <td align="right" style="font-size:16px; padding: 10px 0 10px 10px;"><b>${{number_format($item->foundationOptions[0]->pivot->price, 2, '.', ',')}}</b></td>
+          </tr>
+          <mj-raw>
+            @isset($item->addons)
+            @foreach ($item->addons as $addon)
+          </mj-raw>
+          <tr @if($loop->count != $loop->iteration) style="border-bottom:1px solid #000;" @endif>
+            <td align="left" style="font-size:16px; color:#224195; padding: 10px 10px 10px 0;">{{$addon->name}}</td>
+            <td align="right" style="font-size:16px; padding: 10px 0 10px 10px;"><b>${{number_format($addon->pivot->price, 2, '.', ',')}}</b></td>
+          </tr>
+          <mj-raw>
+            @endforeach
+            @endisset
+          </mj-raw>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+    <mj-raw>
+      @endforeach
+    </mj-raw>
+    <mj-section>
+      <mj-column background-color="#efefee">
+        <mj-text align="right" font-size="16px" padding-right="5px"><span style="color:#224195;"><b>TOTAL: </b></span> <b>${{ number_format($dataForm['total'], 2, '.', ',') }}</b></mj-text>
+      </mj-column>
+    </mj-section>
   </mj-body>
 </mjml>

@@ -35,4 +35,8 @@ mix.js("resources/assets/js/plans-search.js", "public/js");
 mix.js("resources/assets/js/admin/footer.js", "public/js/admin");
 
 
-mix.mjml('resources/assets/mail', 'resources/views/mail');
+mix.mjml('resources/assets/mail', 'resources/views/mail', {
+    mjmlOptions: {
+        validationLevel: 'skip'
+    }
+});

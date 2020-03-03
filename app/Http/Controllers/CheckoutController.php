@@ -159,9 +159,39 @@ class CheckoutController extends Controller
             $shipMethod = Shipping::find($dataShip->method);
             $dataCheckout['ship_via'] = $shipMethod->name;
 
-            Cart::destroy();
+            $orderPlans = json_decode($dataCheckout->plans);
+            $dataPlans = [];
+            foreach ($orderPlans as $id => $orderData) {
+                $plan = Plan::where('id', $id)->with(['images' => function ($query) {
+                    $query->where('first_image', 1);
+                }]);
 
-            Mail::to($dataCheckout->email)->cc(config('mail.to_admin_email'))->send(new MailCheckout($dataCheckout));
+                if ($orderData->plan_package) {
+                    $plan->with(['packages' => function ($query) use ($orderData) {
+                        $query->where('package_id', $orderData->plan_package);
+                    }]);
+                }
+
+                if ($orderData->plan_foundation) {
+                    $plan->with(['foundationOptions' => function ($query) use ($orderData) {
+                        $query->where('foundation_options_id', $orderData->plan_foundation);
+                    }]);
+                }
+
+                if ($orderData->plan_features) {
+                    $plan->with(['addons' => function ($query) use ($orderData) {
+                        $query->whereIn('addon_id', (array) $orderData->plan_features);
+                    }]);
+                }
+                $dataPlans[] = $plan->first();
+            }
+            $dataCheckout['data_plans'] = $dataPlans;
+            //dd($dataCheckout['data_plans']);
+
+            //Cart::destroy();
+
+            //Mail::to($dataCheckout->email)->cc(config('mail.to_admin_email'))->send(new MailCheckout($dataCheckout));
+            Mail::to(config('mail.to_admin_email'))->send(new MailCheckout($dataCheckout));
 
             return view('checkout.done', ['data' => $dataCheckout]);
         } else {
