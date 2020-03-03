@@ -244,7 +244,7 @@
                                     $@{{total}}</span></div>
                         </div>
                     </div>
-                    <button @click.prevent="addToCart()" :disabled="toCartButtonDisable" type="submit"
+                    <button @click.prevent="addToCart()" type="submit"
                         class="btn btn-primary text-uppercase rounded-0 mt-1 offset-1 btn_width">ADD TO CART <i
                             v-if="loading" class="fas fa-sync fa-spin"></i></button>
                 </div> <!-- Searchform outer -->
@@ -629,7 +629,7 @@
                                         $@{{total}}</span></div>
                             </div>
                         </div>
-                        <button type="submit" @click.prevent="addToCart()" :disabled="toCartButtonDisable"
+                        <button type="submit" @click.prevent="addToCart()"
                             class="btn btn-primary text-uppercase rounded-0 mt-1 offset-1 btn_width">ADD TO CART <i
                                 v-if="loading" class="fas fa-sync fa-spin"></i></button>
                     </div> <!-- Searchform outer -->
@@ -1072,8 +1072,24 @@
         </div>
     </div>
 </div>
+<div class="modal" id="buy-error-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="buy-error-modal-message" style="color:red; font-size: 18px;"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
-
 @push('scripts')
 @if(App::environment('local'))
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -1136,22 +1152,30 @@
           this.checkActiveButtonCart();
         },
         addToCart(){
-          this.loading = true;
-          axios.post('{{route('purchase')}}',{
-            plan_id: {!!$plan->id!!},
-            plan_package: this.checkedPackage.id,
-            plan_foundation: this.checkedOption.id,
-            plan_features: this.checkedAddons.join()
-          })
-          .then(response => {
-              if(response.data.status == 'ok'){
-                window.location.href = '{{route('cart')}}';
-              }else{
-                this.loading = false;
-              }
-          }, (error) => {
-              this.loading = false;
-          });          
+            if(!this.checkedPackage.id){
+                $("#buy-error-modal-message").html('Please choose a plan packcage.');
+                $('#buy-error-modal').modal('show');
+            }else if(!this.checkedOption.id){
+                $("#buy-error-modal-message").html('Please choose a foundation option.');
+                $('#buy-error-modal').modal('show');
+            }else{
+                this.loading = true;
+                axios.post('{{route('purchase')}}',{
+                  plan_id: {!!$plan->id!!},
+                  plan_package: this.checkedPackage.id,
+                  plan_foundation: this.checkedOption.id,
+                  plan_features: this.checkedAddons.join()
+                })
+                .then(response => {
+                    if(response.data.status == 'ok'){
+                      window.location.href = '{{route('cart')}}';
+                    }else{
+                      this.loading = false;
+                    }
+                }, (error) => {
+                    this.loading = false;
+                });          
+            }
         },
         checkActiveButtonCart(){
           if(this.checkedPackage.id && this.checkedOption.id){
@@ -1217,22 +1241,30 @@
           this.checkActiveButtonCart();
         },
         addToCart(){
-          this.loading = true;
-          axios.post('{{route('purchase')}}',{
-            plan_id: {!!$plan->id!!},
-            plan_package: this.checkedPackage.id,
-            plan_foundation: this.checkedOption.id,
-            plan_features: this.checkedAddons.join()
-          })
-          .then(response => {
-              if(response.data.status == 'ok'){
-                window.location.href = '{{route('cart')}}';
-              }else{
-                this.loading = false;
-              }
-          }, (error) => {
-              this.loading = false;
-          });                    
+            if(!this.checkedPackage.id){
+                $("#buy-error-modal-message").html('Please choose a plan packcage.');
+                $('#buy-error-modal').modal('show');
+            }else if(!this.checkedOption.id){
+                $("#buy-error-modal-message").html('Please choose a foundation option.');
+                $('#buy-error-modal').modal('show');
+            }else{
+                this.loading = true;
+                axios.post('{{route('purchase')}}',{
+                plan_id: {!!$plan->id!!},
+                plan_package: this.checkedPackage.id,
+                plan_foundation: this.checkedOption.id,
+                plan_features: this.checkedAddons.join()
+                })
+                .then(response => {
+                    if(response.data.status == 'ok'){
+                    window.location.href = '{{route('cart')}}';
+                    }else{
+                    this.loading = false;
+                    }
+                }, (error) => {
+                    this.loading = false;
+                });                    
+            }
         },
         checkActiveButtonCart(){
           if(this.checkedPackage.id && this.checkedOption.id){
