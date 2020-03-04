@@ -50,8 +50,14 @@ class PlanController extends Controller
         if (!Auth::user() || Auth::user()->hasRole('customer'))
             $plan->where('is_active', 1);
 
-        $dataPlan = $plan->firstOrFail();
+        if (Auth::id()) {
+            $plan->with(['saved_plans' => function ($query) {
+                $query->where('user_id', Auth::id());
+            }]);
+        }
 
+        $dataPlan = $plan->firstOrFail();
+        //dd($dataPlan);
         $dataPlan->views += 1;
         $dataPlan->update();
 

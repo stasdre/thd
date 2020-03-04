@@ -16,8 +16,11 @@
                         </div>
                         <div class="col-4">
                             <ul class="list-inline mb-0 text-right">
-                                <li class="list-inline-item save_this_plan"><i class="fa fa-heart"
-                                        style="color:white;font-size : 25px;"></i></li>
+                                <li class="list-inline-item save_this_plan"><a href="#" data-plan-id="{{$plan->id}}"
+                                        class="text-secondary dw-add-to-saved"><i
+                                            class="fa fa-heart @if(count($plan->saved_plans)) dw-saved-plan @endif"
+                                            style="font-size:25px; color:white;"></i></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -53,8 +56,9 @@
             </div>
             <div class="col xs-hide-portrait">
                 <ul class="list-unstyled single-plan-actions text-center">
-                    <li><a href="#" class="text-secondary"><img src="{{asset('images/icons/icon-heart.png')}}" alt=""
-                                class="img-fluid"></a></li>
+                    <li><a href="#" data-plan-id="{{$plan->id}}" class="text-secondary dw-add-to-saved"><i
+                                class="fa fa-heart fa-3x @if(count($plan->saved_plans)) dw-saved-plan @endif"></i></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -451,7 +455,9 @@
                 <div class="col-md-12 FloorPlanSlider">
                     <div class="carousel slide" data-ride="carousel" data-interval="false" id="carouselPlan">
                         <div class="carousel-inner">
-                            <div class="floor-plan-like"><i class="fa fa-heart"></i></div>
+                            <a href="#" data-plan-id="{{$plan->id}}"
+                                class="floor-plan-like text-secondary dw-add-to-saved"><i
+                                    class="fa fa-heart @if(count($plan->saved_plans)) dw-saved-plan @endif"></i></a>
                             @foreach($plan->images_first as $image)
                             <div class="carousel-item {{ $loop->index === 0 ? 'active' : ''}}"> <img
                                     src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}"
@@ -828,7 +834,10 @@
                 </div>
                 <div class="row mobile-off">
                     <div class="col-md-12">
-                        <div class="floor-plan-like-desktop"><i class="fa fa-heart"></i></div>
+                        <a href="#" data-plan-id="{{$plan->id}}"
+                            class="floor-plan-like-desktop text-secondary dw-add-to-saved"><i
+                                class="fa fa-heart @if(count($plan->saved_plans)) dw-saved-plan @endif"></i></a>
+
                         <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}"
                             alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
                     </div>
@@ -863,7 +872,9 @@
                 </div>
                 <div class="row mobile-off">
                     <div class="col-md-12">
-                        <div class="floor-plan-like-desktop"><i class="fa fa-heart"></i></div>
+                        <a href="#" data-plan-id="{{$plan->id}}"
+                            class="floor-plan-like-desktop text-secondary dw-add-to-saved"><i
+                                class="fa fa-heart @if(count($plan->saved_plans)) dw-saved-plan @endif"></i></a>
                         <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}"
                             alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
                     </div>
@@ -898,7 +909,9 @@
                 </div>
                 <div class="row mobile-off">
                     <div class="col-md-12">
-                        <div class="floor-plan-like-desktop"><i class="fa fa-heart"></i></div>
+                        <a href="#" data-plan-id="{{$plan->id}}"
+                            class="floor-plan-like-desktop text-secondary dw-add-to-saved"><i
+                                class="fa fa-heart @if(count($plan->saved_plans)) dw-saved-plan @endif"></i></a>
                         <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}"
                             alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
                     </div>
@@ -933,7 +946,9 @@
                 </div>
                 <div class="row mobile-off">
                     <div class="col-md-12">
-                        <div class="floor-plan-like-desktop"><i class="fa fa-heart"></i></div>
+                        <a href="#" data-plan-id="{{$plan->id}}"
+                            class="floor-plan-like-desktop text-secondary dw-add-to-saved"><i
+                                class="fa fa-heart @if(count($plan->saved_plans)) dw-saved-plan @endif"></i></a>
                         <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}"
                             alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
                     </div>
@@ -968,7 +983,9 @@
                 </div>
                 <div class="row mobile-off">
                     <div class="col-md-12">
-                        <div class="floor-plan-like-desktop"><i class="fa fa-heart"></i></div>
+                        <a href="#" data-plan-id="{{$plan->id}}"
+                            class="floor-plan-like-desktop text-secondary dw-add-to-saved"><i
+                                class="fa fa-heart @if(count($plan->saved_plans)) dw-saved-plan @endif"></i></a>
                         <img src="{{asset('storage/plans/'.$plan->id.'/'.$image->file_name)}}"
                             alt="{{ $image->alt_text }}" class="img-fluid mx-auto d-block">
                     </div>
