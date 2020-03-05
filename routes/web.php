@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+use Thd\Inspiration;
+
 Route::middleware(['promo'])->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
 });
@@ -327,6 +330,13 @@ Route::middleware(['promo'])->group(function () {
 
     Route::get('/builders', 'BuildersController@index')->name('builders-home.index');
     Route::get('/builders-search', 'BuildersController@search')->name('builders.search');
+
+    Route::get('/step-by-step', function () {
+        $menu = Inspiration::select('name', 'link')->where('in_menu', '=', 1)->orderBy('order', 'asc')->get();
+        return view('inspirations.step-by-step', [
+            'menu' => $menu,
+        ]);
+    });
 
     Route::get('/{page}', function (Thd\Page $page) {
         return view('page', ['page' => $page]);
