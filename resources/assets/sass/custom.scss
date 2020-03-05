@@ -379,3 +379,121 @@ a.carousel-inner {
 .dw-saved-plan {
     color: red !important;
 }
+
+.modal.dw-promo-modal .modal-dialog {
+    max-width: 350px;
+}
+
+.modal.dw-promo-modal .modal-header {
+    padding: 0;
+}
+
+.modal.dw-promo-modal .modal-header .close {
+    margin: -1.7rem -1.7rem -1rem auto;
+}
+
+.modal.dw-promo-modal .modal-content {
+    background-image: url("/img/bg_popup.jpg");
+    border: solid 1px #000;
+}
+
+.modal.dw-promo-modal .modal-body {
+    padding: 0 0 20px 0;
+}
+
+.modal.dw-promo-modal .PopupSubTitleBold {
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: normal;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    margin: 0;
+}
+
+.modal.dw-promo-modal .PopupTitle {
+    font-size: 90px;
+    line-height: 85px;
+    color: #ffffff;
+    font-weight: normal;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.modal.dw-promo-modal .PopupSubTitle {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: normal;
+    text-align: center;
+    font-family: "Open Sans";
+    padding-bottom: 20px;
+}
+
+.modal.dw-promo-modal .contentemail {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.modal.dw-promo-modal .contentemail .txtEmail {
+    display: block;
+    outline: none;
+    color: #ffffff;
+    border: 0px solid #ffffff;
+    background: transparent;
+    z-index: 1;
+    border-bottom: 1px solid #ffffff;
+    width: 234px;
+    margin: auto auto 20px auto;
+    text-align: center;
+}
+
+.modal.dw-promo-modal .btnsubmit {
+    display: block;
+    color: #fff;
+    background: transparent;
+    z-index: 1;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.95rem;
+    line-height: 16px;
+    height: 1.8rem;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    text-transform: uppercase;
+    width: 134px;
+    margin: auto;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    text-align: center;
+    outline: none;
+}
+
+.modal.dw-promo-modal .popopSubmit1 {
+    font-size: 32px;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.modal.dw-promo-modal .popopSubmit2 {
+    display: block;
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 45px;
+}
+
+.modal.dw-promo-modal .popopSubmit3 {
+    font-size: 16px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.modal.dw-promo-modal .popopSubmit3Link {
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: bold;
+}

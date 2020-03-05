@@ -213,6 +213,22 @@ $(document).ready(function () {
                 window.location.href = "/register";
             }
         })
+    });
+
+    $(".dw-popup-submit-btn").on('click', e => {
+        e.preventDefault();
+        const email = $("#dw-promo-email").val();
+        $.ajax({
+            method: 'POST',
+            url: `/promo-email-send/${email}`,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            dataType: "json"
+        }).always(function () {
+            $(".dw-promo-sign-up").hide();
+            $(".dw-promo-thank").show();
+        })
     })
 });
 

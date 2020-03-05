@@ -13,6 +13,7 @@ use Validator;
 use PragmaRX\Countries\Package\Countries;
 use Illuminate\Support\Facades\Mail;
 use Thd\Mail\Checkout as MailCheckout;
+use Thd\User;
 
 class CheckoutController extends Controller
 {
@@ -186,6 +187,14 @@ class CheckoutController extends Controller
                 $dataPlans[] = $plan->first();
             }
             $dataCheckout['data_plans'] = $dataPlans;
+
+            if (Auth::id()) {
+                $dataPromo = json_decode($dataCheckout->promo);
+                if (isset($dataPromo->id)) {
+                    $user = User::find(Auth::id());
+                    $user->promos()->attach($dataPromo->id);
+                }
+            }
 
             Cart::destroy();
 

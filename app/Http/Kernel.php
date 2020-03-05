@@ -58,5 +58,6 @@ class Kernel extends HttpKernel
         'guest' => \Thd\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'role' => \Thd\Http\Middleware\ThdRole::class,
+        'promo' => \Thd\Http\Middleware\PromoPopup::class,
     ];
 }

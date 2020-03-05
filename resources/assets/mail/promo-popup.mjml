@@ -1,0 +1,25 @@
+<mjml>
+  <mj-head>
+    <mj-font name="Roboto" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap" />
+  </mj-head>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-text font-family="Roboto, sans-serif" align="center" font-size="16px">
+          <b>Thank you!</b>
+        </mj-text>
+        <mj-text font-family="Roboto, sans-serif" align="center" font-size="16px">
+          Simply use WELCOME50 to receive a $50 discount when ordering your house plans.
+        </mj-text>
+        <mj-text font-family="Roboto, sans-serif" align="center" font-size="16px">
+          Click <a href="https://houseplansbydavidwiggins.com/register">here</a> to login to use our planning dashboard, save favorite plans,
+          view modification details, see cost-to-build estimates, access
+          communication from your home plan advisor and more!
+        </mj-text>
+        <mj-text font-family="Roboto, sans-serif" align="center" font-size="16px">
+          <b>Username: {{ $dataForm['email'] }}</b>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
