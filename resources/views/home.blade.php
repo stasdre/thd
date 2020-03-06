@@ -149,7 +149,8 @@
         <p>{{$deckBest->main_desc}}</p>
         <a href="{{$deckBest->main_link}}" class="btn btn-dark rounded-0">Click Here</a>
     </div>
-    <div class="plan-name position-absolute">{{$deckBest->main_plan}}</div>
+    <a href="{{$deckBest->main_plan_link}}"
+        class="plan-name position-absolute btn btn-dark rounded-0">{{$deckBest->main_plan}}</a>
 </div>
 @endif
 <div class="row">
@@ -162,7 +163,8 @@
                 <p>{{ $deckBest->first_desc }}</p>
                 <a href="{{ $deckBest->first_link }}" class="btn btn-dark rounded-0">Click Here</a>
             </div>
-            <div class="plan-name position-absolute">{{ $deckBest->first_plan }}</div>
+            <a href="{{$deckBest->first_plan_link}}"
+                class="plan-name position-absolute btn btn-dark rounded-0">{{$deckBest->first_plan}}</a>
         </div>
     </div>
     @endif
@@ -175,7 +177,9 @@
                 <p>{{ $deckBest->second_desc }}</p>
                 <a href="{{ $deckBest->second_link }}" class="btn btn-dark rounded-0">Click Here</a>
             </div>
-            <div class="plan-name position-absolute">{{ $deckBest->second_plan }}</div>
+            <a href="{{$deckBest->second_plan_link}}"
+                class="plan-name position-absolute btn btn-dark rounded-0">{{$deckBest->second_plan}}</a>
+
         </div>
     </div>
     @endif
@@ -188,7 +192,9 @@
                 <p>{{ $deckBest->third_desc }}</p>
                 <a href="{{ $deckBest->third_link }}" class="btn btn-dark rounded-0">Click Here</a>
             </div>
-            <div class="plan-name position-absolute">{{ $deckBest->third_plan }}</div>
+            <a href="{{$deckBest->third_plan_link}}"
+                class="plan-name position-absolute btn btn-dark rounded-0">{{$deckBest->third_plan}}</a>
+
         </div>
     </div>
     @endif

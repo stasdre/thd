@@ -143,24 +143,28 @@ class HomePageController extends Controller
                 $data->main_desc = $request->input('main_desc');
                 $data->main_plan = $request->input('main_plan');
                 $data->main_link = $request->input('main_link');
+                $data->main_plan_link = $request->input('main_plan_link');
 
                 $data->first_type = $request->input('first_type');
                 $data->first_title = $request->input('first_title');
                 $data->first_desc = $request->input('first_desc');
                 $data->first_plan = $request->input('first_plan');
                 $data->first_link = $request->input('first_link');
+                $data->first_plan_link = $request->input('first_plan_link');
 
                 $data->second_type = $request->input('second_type');
                 $data->second_title = $request->input('second_title');
                 $data->second_desc = $request->input('second_desc');
                 $data->second_plan = $request->input('second_plan');
                 $data->second_link = $request->input('second_link');
+                $data->second_plan_link = $request->input('second_plan_link');
 
                 $data->third_type = $request->input('third_type');
                 $data->third_title = $request->input('third_title');
                 $data->third_desc = $request->input('third_desc');
                 $data->third_plan = $request->input('third_plan');
                 $data->third_link = $request->input('third_link');
+                $data->third_plan_link = $request->input('third_plan_link');
 
                 $data->update();
 
