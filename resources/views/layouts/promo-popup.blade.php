@@ -17,11 +17,11 @@
                     </div>
                     <div class="contentemail">
                         <input name="email" id="dw-promo-email" onclick="javascript:this.value='';"
-                            value="enter your email address" size="14" class="txtEmail"
-                            placeholder="enter your email address">
+                            value="Enter your email address" size="14" class="txtEmail"
+                            placeholder="Enter your email address">
                     </div>
-                    <input type="button" value=" GET MY COUPON " name="NewsletterSignUp"
-                        class="btnsubmit dw-popup-submit-btn">
+                    {{-- <input type="button" value=" GET MY COUPON " name="NewsletterSignUp"
+                        class="btnsubmit dw-popup-submit-btn"> --}}
                 </div>
 
                 <div class="dw-promo-thank" style="display:none;">

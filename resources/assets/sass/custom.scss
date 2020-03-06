@@ -438,13 +438,14 @@ a.carousel-inner {
     display: block;
     outline: none;
     color: #ffffff;
-    border: 0px solid #ffffff;
+    border: 1px solid #ffffff;
     background: transparent;
     z-index: 1;
-    border-bottom: 1px solid #ffffff;
     width: 234px;
-    margin: auto auto 20px auto;
+    margin: auto auto 5px auto;
     text-align: center;
+    padding: 8px;
+    font-size: 16px;
 }
 
 .modal.dw-promo-modal .btnsubmit {

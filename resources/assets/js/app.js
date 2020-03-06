@@ -215,20 +215,23 @@ $(document).ready(function () {
         })
     });
 
-    $(".dw-popup-submit-btn").on('click', e => {
-        e.preventDefault();
+    $("#dw-promo-email").on('keypress', e => {
         const email = $("#dw-promo-email").val();
-        $.ajax({
-            method: 'POST',
-            url: `/promo-email-send/${email}`,
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            dataType: "json"
-        }).always(function () {
-            $(".dw-promo-sign-up").hide();
-            $(".dw-promo-thank").show();
-        })
+
+        if (e.keyCode == 13) {
+            $.ajax({
+                method: 'POST',
+                url: `/promo-email-send/${email}`,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                dataType: "json"
+            }).always(function () {
+                $(".dw-promo-sign-up").hide();
+                $(".dw-promo-thank").show();
+            })
+        }
+
     })
 });
 
