@@ -11,7 +11,8 @@
         <div class="plan-caption position-absolute top center">
             <h3 class="font-weight-semi-bold text-white pt-2 px-2 pb-1">{{ $collectionData->title }}</h3>
         </div>
-        <div class="plan-name position-absolute">{{ $collectionData->subtitle }}</div>
+        <a href="{{$collectionData->subtitle_link}}"
+            class="plan-name position-absolute btn btn-dark rounded-0">{{$collectionData->subtitle}}</a>
     </div>
     <div class="desktop-off">
         <h5 class="center font-weight-bold no-margin mt-3"> Specialty Collections</h5>
