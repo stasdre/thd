@@ -20,6 +20,21 @@ class SearchController extends Controller
 {
     public function index(Request $request)
     {
+        if (isset($request->txt) && !empty($request->txt)) {
+
+            $dataPlan = Plan::where('is_active', 1)
+                ->where(function ($query) use ($request) {
+                    $query->where('plan_number', $request->txt);
+                    $query->orWhere('name', $request->txt);
+                })
+                ->first();
+            if (isset($dataPlan->plan_number)) {
+                return redirect(route('plan.view', $dataPlan->plan_number));
+            } else {
+                return redirect('/collection/best-selling-house-plans');
+            }
+        }
+
         return view('search.index');
     }
 
