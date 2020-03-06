@@ -6,8 +6,8 @@
 
 @section('content')
 <div class="center mid-heading py-3">
-    <h2 class="blue-text mid-main-title">Design Inspiration</h2>
-    <h4 class="mid-heading-black mobile-off">Product ideas for beautiful and innovative living spaces</h4>
+    <h2 class="mid-main-title" style="font-family: 'Baskervville', serif !important; font-weight:400 !important; font-size:33px !important;">Design Inspiration</h2>
+    <h4 class="mid-heading-black mobile-off" style="font-family: 'Baskervville', serif !important; font-weight:400 !important; color:#2f358f!important;">Product ideas for beautiful and innovative living spaces</h4>
     <h4 class="mid-heading-black desktop-off">Product ideas for beautiful living spaces</h4>
 </div>
 

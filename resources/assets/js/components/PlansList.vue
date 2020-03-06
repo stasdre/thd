@@ -751,7 +751,7 @@ export default {
       showFilter: this.noFilter === true ? false : true,
       cols:
         this.colums === 2
-          ? "col-md-6"
+          ? "col-sm-12 col-xl-6"
           : this.colums === 1
           ? "col-sm-12"
           : "col-sm-4",

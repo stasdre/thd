@@ -15,6 +15,8 @@
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Baskervville|Libre+Baskerville:400,700&display=swap"
+        rel="stylesheet">
 
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015"></script>
@@ -39,8 +41,11 @@ gtag('config', 'UA-157886202-1');
         <main class="home-inspiration-page">
             <div class="home-insipiration">
                 <div class="center top-heading py-3">
-                    <h2 class="blue-text"> Home Inspiration</h2>
-                    <h5 class="HI-subheading mobile-off">FROM DAVID WIGGINS HOUSE PLANS</h5>
+                    <h2 class=""
+                        style="font-family: 'Libre Baskerville', serif !important; font-weight:400 !important; font-size:42px !important;">
+                        Home Inspiration</h2>
+                    <h5 style="font-family: 'Baskervville', serif !important; font-weight:400 !important; font-size:22px !important; color:#2f358f!important;"
+                        class="HI-subheading mobile-off">From House Plans by David Wiggins</h5>
                 </div>
                 @isset ($menu)
                 <div class="grey-nav-bar d-none d-lg-block">
