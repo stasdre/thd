@@ -206,16 +206,18 @@
                   v-for="(image, index) in plan.images"
                   :key="image.id"
                 >
-                  <img
-                    :src="
+                  <div class="embed-responsive embed-responsive-4by3 plans-list-search">
+                    <img
+                      :src="
                       '/storage/plans/' + plan.id + '/thumb/' + image.file_name
                     "
-                    alt
-                    class="img-fluid d-block w-100"
-                  />
-                  <a v-if="image.camera_icon" href="#" class="position-absolute icon-camera">
-                    <img src="/images/icons/icon-camera.png" alt />
-                  </a>
+                      alt
+                      class="embed-responsive-item"
+                    />
+                    <a v-if="image.camera_icon" href="#" class="position-absolute icon-camera">
+                      <img src="/images/icons/icon-camera.png" alt />
+                    </a>
+                  </div>
                 </div>
               </a>
               <a

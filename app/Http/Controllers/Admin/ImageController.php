@@ -13,13 +13,13 @@ class ImageController extends Controller
         $imgPath = parse_url(str_replace("/storage", "", $request->post('src')));
 
         $img = Image::make($request->image);
-        $img->save(storage_path('app/public'.$imgPath['path']), 100);
+        $img->save(storage_path('app/public' . $imgPath['path']), 100);
 
         return response()->json([
-            'success'=>'ok',
-            'path'=>$imgPath['path'],
-            'size'=>$img->filesize(),
-            'fileName'=>basename($request->post('src'))
+            'success' => 'ok',
+            'path' => $imgPath['path'],
+            'size' => $img->filesize(),
+            'fileName' => basename($request->post('src'))
         ], 200);
     }
 }
