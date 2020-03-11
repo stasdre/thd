@@ -1,4 +1,7 @@
 @extends('layouts.index')
+@section('title', 'Search and customize house plans by David Wiggins')
+@section('description', 'Search America’s favorite home designs and house plans, find beautiful, easy to customize
+blueprints and floor plans and order direct from David Wiggins, Architect')
 
 @section('content')
 <div class="plan-full position-relative mb-3 mobile-off">
