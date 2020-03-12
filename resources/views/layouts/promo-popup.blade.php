@@ -19,19 +19,18 @@
                         <input name="email" id="dw-promo-email" onclick="javascript:this.value='';"
                             value="Enter your email address" size="14" class="txtEmail"
                             placeholder="Enter your email address">
+                        <button class="dw-promo-submit" id="dw-promo-submit">></button>
                     </div>
-                    {{-- <input type="button" value=" GET MY COUPON " name="NewsletterSignUp"
-                        class="btnsubmit dw-popup-submit-btn"> --}}
                 </div>
 
                 <div class="dw-promo-thank" style="display:none;">
-                    <div class="popopSubmit1">THANK YOU!</div>
-                    <strong class="popopSubmit2"><strong>Welcome to HouseplansByDavidWiggins!</strong><br>Your promo
-                        code:
-                        <span style="color:#ffffff;"><strong>WELCOME50</strong></span></strong>
-                    <div class="popopSubmit3"><br><a class="popopSubmit3Link" href="javascript:void(0);"
-                            onclick="javascript:$('#dw-promo-popup').modal('hide');">Start
-                            Shopping &gt;</a><br>&nbsp;</div>
+                    <div class="popopSubmit1">Welcome to</div>
+                    <strong class="popopSubmit2"><strong>House Plans By David Wiggins!</strong><br><br>
+                        Your Promo Code: <span style="color:#ffffff;"><strong>WELCOME50</strong></span></strong>
+                    <div class="popopSubmit3"><br>
+                        An email will be sent with your<br>
+                        promo code shortly.
+                    </div>
                 </div>
         </div>
     </div>

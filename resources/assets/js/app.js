@@ -219,19 +219,15 @@ $(document).ready(function () {
         const email = $("#dw-promo-email").val();
 
         if (e.keyCode == 13) {
-            $.ajax({
-                method: 'POST',
-                url: `/promo-email-send/${email}`,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType: "json"
-            }).always(function () {
-                $(".dw-promo-sign-up").hide();
-                $(".dw-promo-thank").show();
-            })
+            dwPromoSend(email);
         }
+    });
 
+    $("#dw-promo-submit").on('click', e => {
+        e.preventDefault();
+        const email = $("#dw-promo-email").val();
+
+        dwPromoSend(email);
     })
 });
 
@@ -381,3 +377,17 @@ $(".features ul li.listname").click(function () {
         .next("div")
         .slideToggle(1000);
 });
+
+function dwPromoSend(email) {
+    $.ajax({
+        method: 'POST',
+        url: `/promo-email-send/${email}`,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        dataType: "json"
+    }).always(function () {
+        $(".dw-promo-sign-up").hide();
+        $(".dw-promo-thank").show();
+    })
+}

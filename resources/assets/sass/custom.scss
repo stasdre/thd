@@ -432,6 +432,9 @@ a.carousel-inner {
     max-width: 500px;
     margin: 0 auto;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal.dw-promo-modal .contentemail .txtEmail {
@@ -442,7 +445,6 @@ a.carousel-inner {
     background: transparent;
     z-index: 1;
     width: 234px;
-    margin: auto auto 5px auto;
     text-align: center;
     padding: 8px;
     font-size: 16px;
@@ -484,7 +486,6 @@ a.carousel-inner {
     font-size: 16px;
     color: #ffffff;
     text-align: center;
-    line-height: 45px;
 }
 
 .modal.dw-promo-modal .popopSubmit3 {
@@ -501,4 +502,15 @@ a.carousel-inner {
 
 .plans-list-search.embed-responsive-4by3::before {
     padding-top: 69%;
+}
+
+.dw-promo-submit {
+    height: 42px;
+    width: 40px;
+    border: 0;
+    outline: 0;
+    font-weight: bold;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: #fff;
 }
