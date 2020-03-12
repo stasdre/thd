@@ -6,18 +6,35 @@
     <mj-section>
       <mj-column>
         <mj-text font-family="Roboto, sans-serif" align="center" font-size="16px">
-          <b>Thank you!</b>
+          <b>Thank you for signing up to receive information from David Wiggins!</b>
         </mj-text>
         <mj-text font-family="Roboto, sans-serif" align="center" font-size="16px">
-          Simply use WELCOME50 to receive a $50 discount when ordering your house plans.
+          Simply use <b>WELCOME50</b> to receive a $50 discount<br>when ordering your house plans.
         </mj-text>
         <mj-text font-family="Roboto, sans-serif" align="center" font-size="16px">
-          Click <a href="https://houseplansbydavidwiggins.com/register">here</a> to login to use our planning dashboard, save favorite plans,
-          view modification details, see cost-to-build estimates, access
-          communication from your home plan advisor and more!
+          Click <a href="https://houseplansbydavidwiggins.com/register">here</a> to login to use our planning dashboard, save favorite plans, view modification details, see cost-to-build estimates, access communication from your home plan advisor and more!
         </mj-text>
         <mj-text font-family="Roboto, sans-serif" align="center" font-size="16px">
           <b>Username: {{ $dataForm['email'] }}</b>
+        </mj-text>
+        <mj-text font-family="Roboto, sans-serif" align="center" font-size="16px">
+          If you have questions about our house plans <a href="https://houseplansbydavidwiggins.com/contact-us">email us</a> <br>or call us at (832) 521-5820.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section text-align="left">
+      <mj-column>
+        <mj-text font-family="Roboto, sans-serif" align="left" font-size="16px">
+          David E. Wiggins, Architect
+        </mj-text>
+        <mj-text font-family="Roboto, sans-serif" align="left" font-size="16px">
+          House Plans By David Wiggins
+        </mj-text>
+        <mj-text font-family="Roboto, sans-serif" align="left" font-size="16px">
+          <a href="mailto:davidwiggins@houseplansbydavidwiggns.com">davidwiggins@houseplansbydavidwiggns.com</a>
+        </mj-text>
+        <mj-text font-family="Roboto, sans-serif" align="left" font-size="16px">
+          832-521-5820
         </mj-text>
       </mj-column>
     </mj-section>

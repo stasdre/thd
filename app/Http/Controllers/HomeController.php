@@ -68,7 +68,7 @@ class HomeController extends Controller
 
     public function sendPromotoEmail($email)
     {
-        Mail::to($email)->send(new PromoPopup(['email' => $email]));
+        Mail::to($email)->cc(config('mail.to_admin_email'))->send(new PromoPopup(['email' => $email]));
 
         return [
             'status' => 'ok'
