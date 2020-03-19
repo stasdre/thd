@@ -300,12 +300,22 @@ Route::middleware(['auth'])->group(function () {
     Route::post('save-plan/{plan}', 'SavedPlanController@save');
 });
 
+Route::post('change-filter-url', function () {
+    $newParams = request()->except(['_token', 'action_name', 'action_params', 'page', 'old_page']);
+    $oldParams = json_decode(request()->post('action_params'), true);
+    $mergeParams = array_merge($oldParams, $newParams);
+    $actionName = request()->post('action_name');
+    $page = request()->post('old_page') != request()->post('page') ? "?page=" . request()->post('page') : "";
+
+    return redirect(route($actionName, $mergeParams) . $page);
+})->name('change-filter-url');
+
 Route::middleware(['promo'])->group(function () {
     Route::get('search/', 'SearchController@index')->name('search');
     Route::get('advanced-search/', 'SearchController@advanced')->name('advanced-search');
 
     Route::get('collection/{slug}', 'CollectionController@slug')->name('collection.slug');
-    Route::get('architectural-styles/{slug}', 'StyleController@slug')->name('style.slug');
+    Route::get('architectural-styles/{slug}/{views?}/{order?}', 'StyleController@slug')->name('style.slug');
 
     Route::get('collections/', 'CollectionController@all')->name('collections');
     Route::get('architectural-styles/', 'StyleController@all')->name('styles');
