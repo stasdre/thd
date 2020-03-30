@@ -65,8 +65,9 @@
                 <div class="col-4">
                     <ul class="list-inline mb-0 text-right font-icons">
                         <li class="list-inline-item icon-heart-mob">
-                            <a href="#">
-                                <i class="far fa-heart plan-heart"></i>
+                            <a href="#" class="dwhp-like-plan" data-plan-id="{{$plan->id}}">
+                                <i
+                                    class="@if(count($plan->saved_plans)) fa dw-saved-plan @else far @endif fa-heart plan-heart"></i>
                             </a>
                         </li>
                         <li class="list-inline-item icon-search-mob">
