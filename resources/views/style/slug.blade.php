@@ -224,3 +224,7 @@
 
 <!-- Sidebar content only for mobile -->
 @endsection
+
+@push('scripts')
+<script src="/js/plans-list.js"></script>
+@endpush

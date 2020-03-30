@@ -12,6 +12,8 @@
 */
 
 use Thd\Inspiration;
+use Thd\Plan;
+use Illuminate\Support\Facades\Auth;
 
 Route::middleware(['promo'])->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
@@ -309,6 +311,31 @@ Route::post('change-filter-url', function () {
 
     return redirect(route($actionName, $mergeParams) . $page);
 })->name('change-filter-url');
+
+Route::get('get-plan-data/{id}', function ($id) {
+    return Plan::select(
+        'id',
+        'name',
+        'plan_number',
+        'rooms',
+        'dimensions',
+        'square_ft',
+        'garage'
+    )
+        ->where('id', $id)
+        ->where('is_active', 1)
+        ->with(['images' => function ($query) {
+            $query->orderBy('for_search', 'desc');
+            $query->orderBy('sort_number', 'asc');
+        }])
+        ->with('images_first')
+        ->with('images_second')
+        ->with('images_basement')
+        ->with(['saved_plans' => function ($query) {
+            $query->where('user_id', Auth::id());
+        }])
+        ->first();
+});
 
 Route::middleware(['promo'])->group(function () {
     Route::get('search/', 'SearchController@index')->name('search');

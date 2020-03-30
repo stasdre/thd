@@ -6,6 +6,7 @@
     "/js/app.js": "/js/app.js",
     "/css/main.css": "/css/main.css",
     "/css/admin/app.css": "/css/admin/app.css",
+    "/js/plans-list.js": "/js/plans-list.js",
     "/js/plans-search.js": "/js/plans-search.js",
     "/js/bootstrap-slider.min.js": "/js/bootstrap-slider.min.js"
 }

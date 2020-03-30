@@ -30,7 +30,6 @@ trait SearchPlansResult
                 $query->where('style_id', '=', $this->style);
             });
         }
-
         if (Auth::id()) {
             $plans->with(['saved_plans' => function ($query) {
                 $query->where('user_id', Auth::id());
