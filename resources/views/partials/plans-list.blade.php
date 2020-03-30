@@ -1,56 +1,4 @@
 @include('partials.plans-list-filter')
-<!-- Sorting on mobile -->
-<div class="desktop-off">
-    <br />
-    <div class="row page-name sort-by-sec d-flex justify-content-between align-items-center">
-        <div class="col-5" style="padding: 0 5px 0 0;">
-            <div class>
-                <select name="order" class="form-control form-control-sm rounded-0">
-                    <option value="popular">Most Popular</option>
-                    <option value="recent">Newest</option>
-                    <option value="s_l">Small to Large</option>
-                    <option value="l_s">Large to Small</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-5" style="padding: 0 5px 0 0;">
-            <div class="text-center text-sm-right">
-                <ul class="list-inline m-0 paging">
-                    <li class="list-inline-item">
-                        <button class="btn btn-sm btn-secondary rounded-0">&lt; Prev</button>
-                    </li>
-                    <li class="list-inline-item">
-                        <button class="btn btn-sm btn-secondary rounded-0">&gt; Next</button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-2 navbar-light" style="padding: 0;">
-            <!-- <span>Filter</span>
-            <span class="navbar-toggler-icon" style="height : 24px;"></span>-->
-            <div class="d-flex justify-content-between align-items-center">
-                <span class="blue-text" style="font-size : 12px; padding-right: 5px;">PLANS:</span>
-                <span>{{$plans->total()}}</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="row ind_search_div">
-        <br />
-        <!-- <div class="col-6 save-search">
-            <span>SAVE YOUR SEARCH</span>
-          </div>
-          <div class="col-6">
-            <input type="text" placeholder="Nickname" style="width : 75%" class="save_search_box" />
-            <button
-              class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding save_search_button"
-              type="button"
-            >Save</button>
-          </div>-->
-    </div>
-</div>
-<!-- Sorting on mobile -->
-
 <div class="row">
     @foreach ($plans as $plan)
     <div class="col-sm-4">
@@ -168,56 +116,6 @@
 </div>
 
 @include('partials.plans-list-filter')
-<!-- Sorting on mobile -->
-<div class="desktop-off">
-    <br />
-    <div class="row page-name sort-by-sec d-flex justify-content-between align-items-center">
-        <div class="col-5" style="padding: 0 5px 0 0;">
-            <div class>
-                <select name="order" class="form-control form-control-sm rounded-0">
-                    <option value="popular">Most Popular</option>
-                    <option value="recent">Newest</option>
-                    <option value="s_l">Small to Large</option>
-                    <option value="l_s">Large to Small</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-5" style="padding: 0 5px 0 0;">
-            <div class="text-center text-sm-right">
-                <ul class="list-inline m-0 paging">
-                    <li class="list-inline-item">
-                        <button class="btn btn-sm btn-secondary rounded-0">&lt; Prev</button>
-                    </li>
-                    <li class="list-inline-item">
-                        <button class="btn btn-sm btn-secondary rounded-0">&gt; Next</button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-2 navbar-light" style="padding: 0;">
-            <!-- <span>Filter</span>
-            <span class="navbar-toggler-icon" style="height : 24px;"></span>-->
-            <div class="d-flex justify-content-between align-items-center">
-                <span class="blue-text" style="font-size : 12px; padding-right: 5px;">PLANS:</span>
-                <span>{{$plans->total()}}</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="row ind_search_div">
-        <br />
-        <!-- <div class="col-6 save-search">
-            <span>SAVE YOUR SEARCH</span>
-          </div>
-          <div class="col-6">
-            <input type="text" placeholder="Nickname" style="width : 75%" class="save_search_box" />
-            <button
-              class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding save_search_button"
-              type="button"
-            >Save</button>
-          </div>-->
-    </div>
-</div>
 
 <!-- QuickView Modal -->
 <div class="modal fade" id="quickView" tabindex="-1" role="dialog" aria-labelledby="QuickView" aria-hidden="true">

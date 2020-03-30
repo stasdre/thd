@@ -92,3 +92,68 @@
         </div>
     </form>
 </div>
+
+<!-- Sorting on mobile -->
+<div class="desktop-off">
+    <br />
+    <form action="{{route('change-filter-url')}}" method="POST">
+        {{ csrf_field() }}
+        <input type="hidden" value="{{Route::currentRouteName()}}" name="action_name">
+        <input type="hidden" value="{{$plans->currentPage()}}" name="old_page">
+        <input type="hidden" value="{{json_encode(request()->route()->parameters())}}" name="action_params">
+        <input type="hidden" value="24" name="views">
+        <div class="row page-name sort-by-sec d-flex justify-content-between align-items-center">
+            <div class="col-5" style="padding: 0 5px 0 0;">
+                <div class>
+                    <select onchange="this.form.submit()" name="order" class="form-control form-control-sm rounded-0">
+                        <option value="popular">Most Popular</option>
+                        <option @if(request()->route()->parameter('order')=='recent') selected @endif
+                            value="recent">Newest</option>
+                        <option @if(request()->route()->parameter('order')=='s_l') selected @endif value="s_l">Small
+                            to Large</option>
+                        <option @if(request()->route()->parameter('order')=='l_s') selected @endif value="l_s">Large
+                            to Small</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-5" style="padding: 0 5px 0 0;">
+                <div class="text-center text-sm-right">
+                    <ul class="list-inline m-0 paging">
+                        <li class="list-inline-item">
+                            <a href="{{$plans->previousPageUrl()}}"
+                                class="btn btn-sm btn-secondary rounded-0 @if($plans->currentPage() === 1) disabled @endif">&lt;
+                                Prev</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{{$plans->nextPageUrl()}}"
+                                class="btn btn-sm btn-secondary rounded-0 @if($plans->currentPage() === $plans->lastPage()) disabled @endif">Next
+                                &gt;</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-2 navbar-light" style="padding: 0;">
+                <!-- <span>Filter</span>
+            <span class="navbar-toggler-icon" style="height : 24px;"></span>-->
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="blue-text" style="font-size : 12px; padding-right: 5px;">PLANS:</span>
+                    <span>{{$plans->total()}}</span>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row ind_search_div">
+        <br />
+        <!-- <div class="col-6 save-search">
+            <span>SAVE YOUR SEARCH</span>
+          </div>
+          <div class="col-6">
+            <input type="text" placeholder="Nickname" style="width : 75%" class="save_search_box" />
+            <button
+              class="btn btn-primary rounded-0 text-white font-weight-semi-bold with_padding save_search_button"
+              type="button"
+            >Save</button>
+          </div>-->
+    </div>
+</div>
+<!-- Sorting on mobile -->
