@@ -11,6 +11,7 @@ trait SearchPlansResult
     public $order = 'popular';
 
     public $style;
+    public $collection;
 
     public function get_plans()
     {
@@ -30,6 +31,13 @@ trait SearchPlansResult
                 $query->where('style_id', '=', $this->style);
             });
         }
+
+        if ($this->collection) {
+            $plans->whereHas('collections', function ($query) {
+                $query->where('collection_id', '=', $this->collection);
+            });
+        }
+
         if (Auth::id()) {
             $plans->with(['saved_plans' => function ($query) {
                 $query->where('user_id', Auth::id());

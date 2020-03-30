@@ -341,7 +341,7 @@ Route::middleware(['promo'])->group(function () {
     Route::get('search/', 'SearchController@index')->name('search');
     Route::get('advanced-search/', 'SearchController@advanced')->name('advanced-search');
 
-    Route::get('collection/{slug}', 'CollectionController@slug')->name('collection.slug');
+    Route::get('collection/{slug}/{views?}/{order?}', 'CollectionController@slug')->name('collection.slug');
     Route::get('architectural-styles/{slug}/{views?}/{order?}', 'StyleController@slug')->name('style.slug');
 
     Route::get('collections/', 'CollectionController@all')->name('collections');
