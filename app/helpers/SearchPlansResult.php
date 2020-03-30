@@ -38,11 +38,9 @@ trait SearchPlansResult
             });
         }
 
-        if (Auth::id()) {
-            $plans->with(['saved_plans' => function ($query) {
-                $query->where('user_id', Auth::id());
-            }]);
-        }
+        $plans->with(['saved_plans' => function ($query) {
+            $query->where('user_id', Auth::id());
+        }]);
 
         switch ($this->order) {
             case 'popular':
