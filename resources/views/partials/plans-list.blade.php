@@ -28,12 +28,13 @@
             </div>
             <div class="position-relative">
                 <div id="plan{{$plan->id}}" class="carousel slide" data-ride="carousel" data-interval="false">
-                    <a href="{{route('plan.view', $plan->plan_number)}}" class="carousel-inner">
+                    <div class="carousel-inner">
                         @foreach ($plan->images as $img)
                         <div class="carousel-item @if($loop->index === 0) active @endif">
                             <div class="embed-responsive embed-responsive-4by3 plans-list-search">
-                                <img src="/storage/plans/{{$plan->id}}/thumb/{{$img->file_name}}" alt
-                                    class="embed-responsive-item" />
+                                <a href="{{route('plan.view', $plan->plan_number)}}"><img
+                                        src="/storage/plans/{{$plan->id}}/thumb/{{$img->file_name}}"
+                                        class="embed-responsive-item" /></a>
                                 @if($img->camera_icon)
                                 <a href="#" class="position-absolute icon-camera">
                                     <img src="/images/icons/icon-camera.png" alt />
@@ -42,7 +43,7 @@
                             </div>
                         </div>
                         @endforeach
-                    </a>
+                    </div>
                     <a class="carousel-control-prev" href="#plan{{$plan->id}}" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="false"></span>
                         <span class="sr-only">Previous</span>
@@ -196,16 +197,16 @@
                     </div>
                     <div class="position-relative">
                         <div id="plan-view{{id}}" class="carousel slide" data-ride="carousel" data-interval="1800">
-                            <a href="/plan/{{plan_number}}" class="carousel-inner">
+                            <div class="carousel-inner">
                                 {{#each images}}
                                 <div class="carousel-item {{#if @first}}active{{/if}}">
-                                    <img src="/storage/plans/{{../id}}/thumb/{{this.file_name}}" alt class="img-fluid d-block w-100" />
+                                    <a href="/plan/{{../plan_number}}"><img src="/storage/plans/{{../id}}/thumb/{{this.file_name}}" alt class="img-fluid d-block w-100" /></a>
                                     {{#if this.camera_icon}}
                                     <a href="#" class="position-absolute icon-camera"> <img src="/images/icons/icon-camera.png" alt /> </a>
                                     {{/if}}
                                 </div>
                                 {{/each}}
-                            </a>
+                            </div>
                             <a class="carousel-control-prev"
                                 href="#plan-view{{id}}" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="false"></span>
