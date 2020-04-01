@@ -21,7 +21,8 @@
                     <ul class="dropdown-menu dropdown-toggle-search-mobile">
                         <li><a href="{{ route('advanced-search') }}">Advanced Search</a></li>
                         <li><a href="{{ route('styles') }}">Architectural Styles</a></li>
-                        <li><a href="{{ route('plan.all') }}">Best-Selling Plans</a></li>
+                        <li><a href="{{ route('collection.slug', 'best-selling-house-plans') }}">Best-Selling Plans</a>
+                        </li>
                         <li><a href="{{ route('collections') }}">Specialty Collections</a></li>
                     </ul>
                     <a href="tel:832-521-5820"
@@ -61,7 +62,8 @@
                             <ul class="dropdown-menu">
                                 <li><a href="{{ route('advanced-search') }}">Advanced Search</a></li>
                                 <li><a href="{{ route('styles') }}">Architectural Styles</a></li>
-                                <li><a href="{{ route('plan.all') }}">Best-Selling Plans</a></li>
+                                <li><a href="{{ route('collection.slug', 'best-selling-house-plans') }}">Best-Selling
+                                        Plans</a></li>
                                 <li><a href="{{ route('collections') }}">Specialty Collections</a></li>
                             </ul>
                         </li>
