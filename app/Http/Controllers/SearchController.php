@@ -203,16 +203,16 @@ class SearchController extends Controller
             $plans->where('square_ft->str_total', '<=', 1 * $sq_max);
 
         if ($beds)
-            $plans->where('rooms->r_bedrooms', '>=', 1 * $beds);
+            $plans->where('rooms->r_bedrooms', '=', 1 * $beds);
 
         if ($baths)
-            $plans->where('rooms->r_full_baths', '>=', 1 * $baths);
+            $plans->where('rooms->r_full_baths', '=', 1 * $baths);
 
         if ($garages)
-            $plans->where('garage->car', '>=', 1 * $garages);
+            $plans->where('garage->car', '=', 1 * $garages);
 
         if ($stories)
-            $plans->where('dimensions->stories', '>=', 1 * $stories);
+            $plans->where('dimensions->stories', '=', 1 * $stories);
 
         if ($txt) {
             $plans->where(function ($query) use ($txt) {
