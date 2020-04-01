@@ -11,7 +11,8 @@
                 <div class="plan-list my-1 only_under_767" style="margin-bottom : 0 !important;padding-bottom : 5px;">
                     <div class="row no-gutters align-items-center py-2 px-2">
                         <div class="col-8">
-                            <p class="plan-name font-weight-bold mb-0">{{number_format($plan->square_ft['str_total'])}}
+                            <p class="plan-name font-weight-bold mb-0">
+                                @if(is_numeric($plan->square_ft['str_total'])){{number_format($plan->square_ft['str_total'])}}@endif
                                 sq ft | <span class="text-white">plan {{$plan->plan_number}}</span></p>
                         </div>
                         <div class="col-4">
@@ -96,12 +97,13 @@
                 <div class="py-2 px-5 font-weight-bold">
                     <div class="row text-center no-gutters">
                         <div class="col py-1 border border-light font-weight-semi-bold">Sq. Ft. <span
-                                class="d-block text-secondary">{{number_format($plan->square_ft['str_total'])}}</span>
+                                class="d-block text-secondary">@if(is_numeric($plan->square_ft['str_total'])){{number_format($plan->square_ft['str_total'])}}@endif</span>
                         </div>
                         <div class="col py-1 border border-light font-weight-semi-bold bg-secondary">1st Fl <span
-                                class="d-block text-white">{{number_format($plan->square_ft['1_floor'])}}</span></div>
+                                class="d-block text-white">@if(is_numeric($plan->square_ft['1_floor'])){{number_format($plan->square_ft['1_floor'])}}@endif</span>
+                        </div>
                         <div class="col py-1 border border-light font-weight-semi-bold">2nd Fl <span
-                                class="d-block text-secondary">{{number_format($plan->square_ft['2_floor'])}}</span>
+                                class="d-block text-secondary">@if(is_numeric($plan->square_ft['2_floor'])){{number_format($plan->square_ft['2_floor'])}}@endif</span>
                         </div>
                         <div class="col py-1 border border-light font-weight-semi-bold bg-secondary">Garages <span
                                 class="d-block text-white">{{$plan->garage['car']}} car</span></div>
@@ -355,9 +357,15 @@
                     <div class="col-lg-12">
                         <p><b>Square Footage Breakdown</b></p>
                         <ul class="Planspec_con1 pl-0">
-                            <li>Total Heated: <b>{{number_format($plan->square_ft['str_total'])}} s.f.</b></li>
-                            <li>1st Floor: <b>{{number_format($plan->square_ft['1_floor'])}} s.f.</b></li>
-                            <li>2nd Floor: <b>{{number_format($plan->square_ft['2_floor'])}} s.f.</b></li>
+                            <li>Total Heated:
+                                <b>@if(is_numeric($plan->square_ft['str_total'])){{number_format($plan->square_ft['str_total'])}}@endif
+                                    s.f.</b></li>
+                            <li>1st Floor:
+                                <b>@if(is_numeric($plan->square_ft['1_floor'])){{number_format($plan->square_ft['1_floor'])}}@endif
+                                    s.f.</b></li>
+                            <li>2nd Floor:
+                                <b>@if(is_numeric($plan->square_ft['2_floor'])){{number_format($plan->square_ft['2_floor'])}}@endif
+                                    s.f.</b></li>
                             <li>Stories: <b>{{$plan->dimensions['stories']}}</b></li>
                             <li>Porch: <b>{{$plan->square_ft['porch']}} s.f.</b></li>
                         </ul>
@@ -650,9 +658,15 @@
                     <div class="col-sm-6 col-lg-4">
                         <p><b>Square Footage Breakdown</b></p>
                         <ul class="Planspec_con1 pl-0">
-                            <li>Total Heated: <b>{{number_format($plan->square_ft['str_total'])}} s.f.</b></li>
-                            <li>1st Floor: <b>{{number_format($plan->square_ft['1_floor'])}} s.f.</b></li>
-                            <li>2nd Floor: <b>{{number_format($plan->square_ft['2_floor'])}} s.f.</b></li>
+                            <li>Total Heated:
+                                <b>@if(is_numeric($plan->square_ft['str_total'])){{number_format($plan->square_ft['str_total'])}}@endif
+                                    s.f.</b></li>
+                            <li>1st Floor:
+                                <b>@if(is_numeric($plan->square_ft['1_floor'])){{number_format($plan->square_ft['1_floor'])}}@endif
+                                    s.f.</b></li>
+                            <li>2nd Floor:
+                                <b>@if(is_numeric($plan->square_ft['2_floor'])){{number_format($plan->square_ft['2_floor'])}}@endif
+                                    s.f.</b></li>
                             <li>Porch: <b>{{$plan->square_ft['porch']}} s.f.</b></li>
                         </ul>
                     </div>
@@ -1031,7 +1045,8 @@
                 alt="New House Plans" class="img-fluid" /> --}}
                             <p class="plan-name text-truncate px-2">{{$item->name}} House Plan {{$item->plan_number}}
                             </p>
-                            <p class="plan-meta text-truncate px-2">{{number_format($item->square_ft['str_total'])}}
+                            <p class="plan-meta text-truncate px-2">
+                                @if(is_numeric($plan->square_ft['str_total'])){{number_format($item->square_ft['str_total'])}}@endif
                                 s.f. |
                                 {{$item->rooms['r_bedrooms']}} beds | {{$item->rooms['r_full_baths']}} baths</p>
                         </a> </div>
@@ -1073,7 +1088,8 @@
                 alt="New House Plans" class="img-fluid" /> --}}
                             <p class="plan-name text-truncate px-2">{{$item->name}} House Plan {{$item->plan_number}}
                             </p>
-                            <p class="plan-meta text-truncate px-2">{{number_format($item->square_ft['str_total'])}}
+                            <p class="plan-meta text-truncate px-2">
+                                @if(is_numeric($plan->square_ft['str_total'])){{number_format($item->square_ft['str_total'])}}@endif
                                 s.f. |
                                 {{$item->rooms['r_bedrooms']}} beds | {{$item->rooms['r_full_baths']}} baths</p>
                         </a> </div>

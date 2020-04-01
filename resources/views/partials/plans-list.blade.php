@@ -6,7 +6,9 @@
             <div class="row align-items-center py-2 px-1">
                 <div class="col-8">
                     <p class="plan-name font-weight-bold mb-0">
-                        {{ number_format($plan->square_ft['str_total']) }} sq ft |
+                        @if(is_numeric($plan->square_ft['str_total'])) {{number_format($plan->square_ft['str_total'])}}
+                        @endif sq ft
+                        |
                         <span class="text-white">plan {{ $plan->plan_number }}</span>
                     </p>
                 </div>
