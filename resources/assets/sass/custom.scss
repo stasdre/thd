@@ -518,3 +518,117 @@ a.carousel-inner {
 .home-page-search {
     padding-bottom: 0 !important;
 }
+
+.std-search-form__row {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.std-search-form__label {
+    display: block;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgb(33, 37, 41);
+    margin-right: 10px;
+    flex-basis: 35%;
+}
+
+.std-search-form__controls {
+    box-sizing: border-box;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    &.std-search-form__controls-pading {
+        padding-left: 7px;
+    }
+    &.std-search-form__controls-justify-center {
+        justify-content: center;
+    }
+}
+
+.std-search-form__count-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: transparent;
+    &:focus {
+        outline: none;
+    }
+    &.std-search-form__count-btn-disable {
+        border: 1px solid silver;
+        color: grey;
+        opacity: 0.6;
+    }
+    & i {
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+}
+
+.std-saerch-form__input {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    &::placeholder {
+        text-align: center;
+        padding: 5px 10px;
+    }
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    -moz-appearance: textfield;
+}
+
+.std-search-form__del {
+    margin: 0 5px;
+}
+
+.std-search-form {
+    .std-saerch-form__input-row {
+        margin: 0 10px;
+        border: none;
+        width: 30px;
+        text-align: center;
+        &::placeholder {
+            text-align: center;
+            padding: 5px 10px;
+        }
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        -moz-appearance: textfield;
+    }
+}
+
+@media (max-width: 1000px) {
+    .std-search-form__row {
+        margin-bottom: 5px;
+    }
+    .home-page-search {
+        top: 0 !important;
+    }
+    .home-page-search form {
+        margin-bottom: 0;
+    }
+}

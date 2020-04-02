@@ -16,7 +16,76 @@
     <div class="home-page-search mobile-off">
         <h4 class="blue-text"> Search House Plans </h4>
         <form method="GET" action="{{ route('search') }}">
-            <TABLE class="home-search-new">
+            <div class="std-search-form">
+                <div class="std-search-form__row">
+                    <span class="std-search-form__label">
+                        Sq. Ft.
+                    </span>
+                    <div class="std-search-form__controls std-search-form__controls-pading">
+                        <input type="number" placeholder="min" class="std-saerch-form__input" name="sq_min">
+                        <span class="std-search-form__del">to</span>
+                        <input type="number" placeholder="max" class="std-saerch-form__input" name="sq_max">
+                    </div>
+                </div>
+                <div class="std-search-form__row">
+                    <span class="std-search-form__label">
+                        Beds
+                    </span>
+                    <div class="std-search-form__controls">
+                        <button type="button" class="std-search-form__count-btn beds-remove"><i
+                                class="fa fa-minus"></i></button>
+                        <input type="number" class="std-saerch-form__input-row qty" name="beds" value="1">
+                        <button type="button" class="std-search-form__count-btn beds-add"><i
+                                class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="std-search-form__row">
+                    <span class="std-search-form__label">
+                        Baths
+                    </span>
+                    <div class="std-search-form__controls">
+                        <button type="button" class="std-search-form__count-btn baths-remove"><i
+                                class="fa fa-minus"></i></button>
+                        <input type="number" class="std-saerch-form__input-row qty" name="baths" value="1">
+                        <button type="button" class="std-search-form__count-btn baths-add"><i
+                                class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="std-search-form__row">
+                    <span class="std-search-form__label">
+                        Garages
+                    </span>
+                    <div class="std-search-form__controls">
+                        <button type="button" class="std-search-form__count-btn garage-remove"><i
+                                class="fa fa-minus"></i></button>
+                        <input type="number" class="std-saerch-form__input-row qty" name="garages" value="1">
+                        <button type="button" class="std-search-form__count-btn garage-add"><i
+                                class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="std-search-form__row">
+                    <span class="std-search-form__label">
+                        Stories
+                    </span>
+                    <div class="std-search-form__controls">
+                        <button type="button" class="std-search-form__count-btn stories_reduce"><i
+                                class="fa fa-minus"></i></button>
+                        <input type="number" class="std-saerch-form__input-row qty" name="stories" value="1">
+                        <button type="button" class="std-search-form__count-btn stories_add"><i
+                                class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="std-search-form__row" style="margin-bottom:0;">
+                    <button class="btn btn-primary rounded-0 text-white font-weight-semi-bold" type="submit"
+                        style="width :100%;"> SEARCH</button>
+                </div>
+                <div class="std-search-form__row" style="justify-content:center;">
+                    <div class="text-center advanced_search_text mt-2"><a href="{{ route('advanced-search') }}"
+                            class="red-links" style="font-size:14px;"> ADVANCED SEARCH</a>
+                    </div>
+                </div>
+            </div>
+            {{-- <TABLE class="home-search-new">
                 <tr>
                     <Th>Sq. Ft.</Th>
                     <td> <input type="text" placeholder="min" size=5 class="center" name="sq_min"> to <input type="text"
@@ -61,47 +130,47 @@
                                 style="width :100%;"> SEARCH</button>
                         </div>
                         <div class="text-center advanced_search_text mt-2"><a href="{{ route('advanced-search') }}"
-                                class="red-links" style="font-size:14px;"> ADVANCED SEARCH</a></div>
-                    </td>
-                </tr>
-
-            </TABLE>
-        </form>
+            class="red-links" style="font-size:14px;"> ADVANCED SEARCH</a>
     </div>
-    @endif
-    <ol class="carousel-indicators">
-        @foreach($gallery as $img)
-        <li data-target="#banner" data-slide-to="{{$loop->index}}" @if($loop->index == 0)class="active"@endif></li>
-        @endforeach
-    </ol>
-    <div class="carousel-inner">
-        @foreach($gallery as $img)
-        <div class="carousel-item @if($loop->index == 0) active @endif">
-            <a href="{{$img->url}}">
-                <div class="embed-responsive embed-responsive-21by9">
-                    <img class="embed-responsive-item" src="{{asset('/storage/gallery/'.$img->file)}}"
-                        alt="{{$img->name}}">
-                </div>
-            </a>
-            <div class="caption-quote-wrap">
-                <div class="caption-quote @if(!$img->quote) custom_capt @endif">{{$img->description}}</div>
-                <p class="@if($img->quote==1) caption-quote-author @else caption-quote-small @endif">{{$img->caption}}
-                </p>
+    </td>
+    </tr>
+
+    </TABLE> --}}
+    </form>
+</div>
+@endif
+<ol class="carousel-indicators">
+    @foreach($gallery as $img)
+    <li data-target="#banner" data-slide-to="{{$loop->index}}" @if($loop->index == 0)class="active"@endif></li>
+    @endforeach
+</ol>
+<div class="carousel-inner">
+    @foreach($gallery as $img)
+    <div class="carousel-item @if($loop->index == 0) active @endif">
+        <a href="{{$img->url}}">
+            <div class="embed-responsive embed-responsive-21by9">
+                <img class="embed-responsive-item" src="{{asset('/storage/gallery/'.$img->file)}}" alt="{{$img->name}}">
             </div>
-            <div class="media planinfo text-left"> <img class="mr-1 align-self-end"
-                    src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
-                <div class="media-body">
-                    <h5 class="mb-0 text-white">plan <span class="text-secondary">{{$img->plan}}</span></h5>
-                    <h5 class="m-0 text-white">houseplans<span class="text-secondary">bydavidwiggins.com</span></h5>
-                </div>
+        </a>
+        <div class="caption-quote-wrap">
+            <div class="caption-quote @if(!$img->quote) custom_capt @endif">{{$img->description}}</div>
+            <p class="@if($img->quote==1) caption-quote-author @else caption-quote-small @endif">{{$img->caption}}
+            </p>
+        </div>
+        <div class="media planinfo text-left"> <img class="mr-1 align-self-end"
+                src="{{asset('/images/icons/logo-placeholder.png')}}" alt="Generic placeholder image">
+            <div class="media-body">
+                <h5 class="mb-0 text-white">plan <span class="text-secondary">{{$img->plan}}</span></h5>
+                <h5 class="m-0 text-white">houseplans<span class="text-secondary">bydavidwiggins.com</span></h5>
             </div>
         </div>
-        @endforeach
     </div>
-    <a class="carousel-control-prev" href="#banner" role="button" data-slide="prev"> <span
-            class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a
-        class="carousel-control-next" href="#banner" role="button" data-slide="next"> <span
-            class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+    @endforeach
+</div>
+<a class="carousel-control-prev" href="#banner" role="button" data-slide="prev"> <span
+        class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a
+    class="carousel-control-next" href="#banner" role="button" data-slide="next"> <span
+        class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
 </div>
 @endsection
 @if ($agent->isDesktop() || $agent->isTablet())
