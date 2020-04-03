@@ -19,6 +19,7 @@ class Kernel extends HttpKernel
         \Thd\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \Thd\Http\Middleware\TrustProxies::class,
+        \Thd\Http\Middleware\PreferredDomain::class,
     ];
 
     /**
